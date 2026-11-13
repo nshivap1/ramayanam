@@ -1,0 +1,209 @@
+/* Samskuru design-system components. Class prefix: sk-  (games use their own prefix g-<id>-). */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#root { height: 100%; }
+button { font: inherit; color: inherit; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; border-radius: 6px; }
+.sk-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ── Sanskrit text ───────────────────────────────────────────── */
+.sk-sa { font-family: var(--font-deva); /* never force OpenType features here: the Indic shaper applies half/haln/akhn contextually; forcing them drops virāmas */ font-feature-settings: normal; line-height: 1.6; hyphens: none; word-break: keep-all; overflow-wrap: normal; letter-spacing: normal; text-transform: none; }
+.sk-sa--iast { font-family: var(--font-iast); line-height: 1.4; letter-spacing: 0.005em; }
+.sk-sa--shloka { font-family: var(--font-shloka); }
+.sk-sa--shloka.sk-sa--iast { font-family: var(--font-iast); font-style: italic; }
+.sk-sa--nowrap { white-space: nowrap; }
+
+/* one-line text that shrinks to fit (see <FitText>) */
+.sk-fit { display: block; width: 100%; min-width: 0; overflow: hidden; white-space: nowrap; text-align: center; }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.sk-btn {
+  --btn-bg: var(--accent); --btn-edge: var(--accent-ink); --btn-fg: var(--on-accent);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: 48px; padding: 0 var(--s-5);
+  border: 0; border-radius: var(--r-lg);
+  background: var(--btn-bg); color: var(--btn-fg);
+  font-weight: 800; font-size: var(--fs-md); letter-spacing: 0.02em; text-transform: uppercase;
+  box-shadow: 0 var(--edge) 0 var(--btn-edge);
+  cursor: pointer; user-select: none; touch-action: manipulation;
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), filter var(--t-fast);
+}
+.sk-btn:hover { filter: brightness(1.05); }
+.sk-btn:active:not(:disabled), .sk-btn.is-pressed { transform: translateY(var(--edge)); box-shadow: 0 0 0 var(--btn-edge); }
+.sk-btn:disabled { --btn-bg: var(--mute-soft); --btn-edge: var(--line-strong); --btn-fg: var(--mute); cursor: not-allowed; filter: none; }
+.sk-btn--secondary { --btn-bg: var(--surface); --btn-fg: var(--accent); --btn-edge: var(--line-strong); border: 2px solid var(--line-strong); }
+.sk-btn--ghost { --btn-bg: transparent; --btn-fg: var(--ink-2); box-shadow: none; text-transform: none; font-weight: 700; }
+.sk-btn--ghost:active:not(:disabled) { transform: none; background: var(--paper-2); }
+.sk-btn--ok { --btn-bg: var(--ok); --btn-edge: var(--ok-ink); }
+.sk-btn--bad { --btn-bg: var(--bad); --btn-edge: var(--bad-ink); }
+.sk-btn--sm { min-height: 36px; padding: 0 var(--s-3); font-size: var(--fs-sm); border-radius: var(--r-md); --edge: 3px; }
+.sk-btn--full { width: 100%; }
+.sk-iconbtn { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--ink-2); font-size: 22px; cursor: pointer; touch-action: manipulation; }
+.sk-iconbtn:hover { background: var(--paper-2); }
+
+/* ── Choice (selectable answer) ──────────────────────────────── */
+.sk-choice {
+  display: flex; align-items: center; justify-content: center; gap: var(--s-3);
+  width: 100%; min-height: 56px; padding: var(--s-3) var(--s-4);
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--line-strong); border-radius: var(--r-lg);
+  box-shadow: 0 var(--edge) 0 var(--line-strong);
+  font-size: var(--fs-lg); font-weight: 600; text-align: center;
+  cursor: pointer; touch-action: manipulation; user-select: none;
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), background var(--t-fast), border-color var(--t-fast);
+}
+.sk-choice:active:not(:disabled) { transform: translateY(var(--edge)); box-shadow: 0 0 0 var(--line-strong); }
+.sk-choice.is-selected { background: var(--indigo-soft); border-color: var(--indigo); box-shadow: 0 var(--edge) 0 var(--indigo); color: var(--indigo-ink); }
+.sk-choice.is-correct { background: var(--ok-soft); border-color: var(--ok); box-shadow: 0 var(--edge) 0 var(--ok); color: var(--ok-ink); }
+.sk-choice.is-wrong { background: var(--bad-soft); border-color: var(--bad); box-shadow: 0 var(--edge) 0 var(--bad); color: var(--bad-ink); animation: sk-shake var(--t-slow) var(--ease); }
+.sk-choice.is-muted, .sk-choice:disabled { opacity: 0.55; cursor: default; }
+.sk-choice.is-correct:disabled, .sk-choice.is-wrong:disabled { opacity: 1; }
+.sk-choice__key { flex: none; display: inline-grid; place-items: center; width: 26px; height: 26px; border: 2px solid var(--line-strong); border-radius: 8px; font-size: var(--fs-xs); font-weight: 800; color: var(--ink-3); font-family: var(--font-ui); }
+.sk-choices { display: grid; gap: var(--s-3); grid-template-columns: 1fr; }
+.sk-choices--2 { grid-template-columns: 1fr 1fr; }
+
+/* ── Tiles (akṣara / letter blocks) ──────────────────────────── */
+.sk-tile {
+  display: inline-grid; place-items: center;
+  width: var(--tile, 52px); height: var(--tile, 52px);
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--line-strong); border-radius: var(--r-md);
+  font-family: var(--font-deva); font-size: calc(var(--tile, 52px) * 0.44); font-weight: 700; line-height: 1;
+  user-select: none;
+  transition: background var(--t-med), border-color var(--t-med), color var(--t-med), transform var(--t-fast) var(--ease);
+}
+.sk-tile--iast { font-family: var(--font-iast); font-size: calc(var(--tile, 52px) * 0.36); }
+.sk-tile.is-filled { border-color: var(--ink-3); animation: sk-pop var(--t-med) var(--ease-pop); }
+.sk-tile.is-correct { background: var(--ok); border-color: var(--ok); color: var(--on-accent); }
+.sk-tile.is-present { background: var(--warn); border-color: var(--warn); color: var(--on-accent); }
+.sk-tile.is-absent { background: var(--mute); border-color: var(--mute); color: var(--on-accent); }
+.sk-tile.is-selected { border-color: var(--indigo); background: var(--indigo-soft); color: var(--indigo-ink); }
+.sk-tile.is-accent { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.sk-tile.is-soft { background: var(--accent-soft); border-color: transparent; color: var(--accent-ink); }
+button.sk-tile { cursor: pointer; touch-action: manipulation; box-shadow: 0 3px 0 var(--line-strong); }
+button.sk-tile:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
+button.sk-tile:disabled { opacity: 0.45; cursor: default; }
+
+/* ── Chips / word-bank tokens ────────────────────────────────── */
+.sk-chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: var(--s-2) var(--s-3);
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--line-strong); border-radius: var(--r-md);
+  box-shadow: 0 3px 0 var(--line-strong);
+  font-size: var(--fs-lg); font-weight: 600;
+  cursor: pointer; touch-action: manipulation; user-select: none;
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast);
+}
+.sk-chip:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
+.sk-chip.is-used { background: var(--mute-soft); color: transparent; border-color: var(--line); box-shadow: none; pointer-events: none; }
+.sk-chip.is-used * { visibility: hidden; }
+.sk-chip.is-selected { border-color: var(--indigo); background: var(--indigo-soft); box-shadow: 0 3px 0 var(--indigo); }
+.sk-chip.is-correct { border-color: var(--ok); background: var(--ok-soft); box-shadow: 0 3px 0 var(--ok); color: var(--ok-ink); }
+.sk-chip.is-wrong { border-color: var(--bad); background: var(--bad-soft); box-shadow: 0 3px 0 var(--bad); animation: sk-shake var(--t-slow) var(--ease); }
+.sk-chip.is-done { opacity: 0.35; pointer-events: none; box-shadow: none; }
+.sk-bank { display: flex; flex-wrap: wrap; gap: var(--s-2); justify-content: center; }
+.sk-answerline { display: flex; flex-wrap: wrap; gap: var(--s-2); align-content: flex-start; min-height: 112px; padding: var(--s-3) 0; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); background: repeating-linear-gradient(to bottom, transparent 0, transparent 54px, var(--line) 54px, var(--line) 56px); }
+
+/* ── Progress, hearts, pills ─────────────────────────────────── */
+.sk-progress { position: relative; flex: 1; height: 14px; background: var(--paper-3); border-radius: var(--r-pill); overflow: hidden; }
+.sk-progress__fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: var(--r-pill); transition: width var(--t-slow) var(--ease); min-width: 14px; }
+.sk-progress__fill::after { content: ''; position: absolute; left: 8px; right: 8px; top: 3px; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, 0.35); }
+.sk-hearts { display: inline-flex; align-items: center; gap: 4px; font-weight: 800; color: var(--bad); font-variant-numeric: tabular-nums; }
+.sk-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--r-pill); background: var(--paper-2); color: var(--ink-2); font-size: var(--fs-sm); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sk-pill--accent { background: var(--accent-soft); color: var(--accent-ink); }
+.sk-pill--ok { background: var(--ok-soft); color: var(--ok-ink); }
+.sk-pill--bad { background: var(--bad-soft); color: var(--bad-ink); }
+.sk-pill--gold { background: var(--gold-soft); color: var(--gold-ink); }
+
+/* ── Cards ───────────────────────────────────────────────────── */
+.sk-card { background: var(--surface); border: 2px solid var(--line); border-radius: var(--r-xl); padding: var(--s-4); box-shadow: var(--shadow-1); }
+.sk-card--flat { box-shadow: none; }
+
+/* ── Sheet (modal bottom sheet) ──────────────────────────────── */
+.sk-sheet-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(30, 14, 8, 0.45); display: flex; align-items: flex-end; justify-content: center; animation: sk-fade var(--t-med) var(--ease); }
+.sk-sheet { width: 100%; max-width: var(--content-max); max-height: 88dvh; overflow: auto; background: var(--surface); border-radius: var(--r-xl) var(--r-xl) 0 0; padding: var(--s-4) var(--s-4) calc(var(--s-5) + var(--safe-bottom)); box-shadow: var(--shadow-2); animation: sk-rise var(--t-med) var(--ease); }
+.sk-sheet__head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); margin-bottom: var(--s-3); }
+.sk-sheet__title { font-size: var(--fs-lg); font-weight: 800; }
+@media (min-width: 640px) { .sk-sheet-backdrop { align-items: center; } .sk-sheet { border-radius: var(--r-xl); } }
+
+/* ── Feedback bar (after answering) ──────────────────────────── */
+.sk-feedback { position: sticky; bottom: 0; z-index: 5; margin: 0 calc(-1 * var(--s-4)); padding: var(--s-4) var(--s-4) calc(var(--s-4) + var(--safe-bottom)); display: grid; gap: var(--s-3); border-top: 2px solid var(--line); background: var(--paper); }
+.sk-feedback.is-correct { background: var(--ok-soft); border-color: transparent; color: var(--ok-ink); }
+.sk-feedback.is-wrong { background: var(--bad-soft); border-color: transparent; color: var(--bad-ink); }
+.sk-feedback__title { font-size: var(--fs-lg); font-weight: 800; display: flex; align-items: center; gap: var(--s-2); }
+.sk-feedback__body { font-size: var(--fs-md); }
+.sk-feedback.is-correct, .sk-feedback.is-wrong { animation: sk-rise var(--t-med) var(--ease); }
+
+/* ── Akṣara keyboard ─────────────────────────────────────────── */
+.sk-kbd { display: grid; gap: 5px; width: 100%; max-width: var(--content-max); margin: 0 auto; user-select: none; touch-action: manipulation; }
+.sk-kbd__row { display: flex; gap: 4px; justify-content: center; }
+.sk-key { flex: 1 1 0; min-width: 0; max-width: 46px; height: 44px; padding: 0; border: 0; border-radius: 8px; background: var(--paper-3); color: var(--ink); font-family: var(--font-deva); font-size: 19px; font-weight: 600; line-height: 1; box-shadow: 0 2px 0 var(--line-strong); cursor: pointer; touch-action: manipulation; }
+.sk-key:active { transform: translateY(2px); box-shadow: none; }
+.sk-key--wide { flex: 1.6 1 0; max-width: 76px; font-family: var(--font-ui); font-size: 13px; font-weight: 800; text-transform: uppercase; }
+.sk-key--mark { background: var(--paper-2); color: var(--accent-ink); }
+.sk-key--enter { background: var(--accent); color: var(--on-accent); box-shadow: 0 2px 0 var(--accent-ink); }
+.sk-key.is-correct { background: var(--ok); color: var(--on-accent); box-shadow: 0 2px 0 var(--ok-ink); }
+.sk-key.is-present { background: var(--warn); color: var(--on-accent); box-shadow: 0 2px 0 var(--gold-ink); }
+.sk-key.is-absent { background: var(--mute); color: var(--on-accent); box-shadow: none; opacity: 0.7; }
+.sk-key:disabled { opacity: 0.35; cursor: default; }
+
+/* ── Quiz runner layout ──────────────────────────────────────── */
+.sk-quiz { display: flex; flex-direction: column; min-height: 100%; padding: var(--s-4) var(--s-4) 0; gap: var(--s-4); }
+.sk-quiz__instruction { font-size: var(--fs-lg); font-weight: 800; color: var(--ink); }
+.sk-quiz__prompt { display: grid; gap: var(--s-2); padding: var(--s-4); background: var(--accent-soft); color: var(--accent-ink); border-radius: var(--r-xl); text-align: center; }
+.sk-quiz__prompt .sk-sa { font-size: var(--fs-2xl); font-weight: 700; }
+.sk-quiz__prompt-text { font-size: var(--fs-lg); font-weight: 700; }
+.sk-quiz__context { font-size: var(--fs-md); color: var(--ink-2); font-weight: 600; }
+.sk-quiz__body { flex: 1; display: grid; align-content: start; gap: var(--s-4); }
+.sk-quiz__footer { position: sticky; bottom: 0; margin: 0 calc(-1 * var(--s-4)); padding: var(--s-3) var(--s-4) calc(var(--s-4) + var(--safe-bottom)); background: var(--paper); border-top: 2px solid var(--line); }
+.sk-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.sk-pairs__col { display: grid; gap: var(--s-3); align-content: start; }
+.sk-typed { min-height: 64px; display: flex; align-items: center; justify-content: center; padding: var(--s-2) var(--s-4); border: 2px solid var(--line-strong); border-radius: var(--r-lg); background: var(--surface); font-size: var(--fs-2xl); font-weight: 700; }
+.sk-typed:empty::before { content: '…'; color: var(--mute); }
+
+/* ── Toast ───────────────────────────────────────────────────── */
+.sk-toast { position: fixed; left: 50%; bottom: calc(var(--nav-h) + var(--s-4) + var(--safe-bottom)); transform: translateX(-50%); z-index: 80; padding: var(--s-3) var(--s-4); background: var(--ink); color: var(--paper); border-radius: var(--r-pill); font-weight: 700; font-size: var(--fs-sm); box-shadow: var(--shadow-2); animation: sk-rise var(--t-med) var(--ease); max-width: calc(100vw - 32px); text-align: center; }
+
+/* ── Layout helpers ──────────────────────────────────────────── */
+.sk-stack { display: grid; gap: var(--s-3); }
+.sk-stack--lg { gap: var(--s-5); }
+.sk-row { display: flex; align-items: center; gap: var(--s-3); }
+.sk-row--between { justify-content: space-between; }
+.sk-row--center { justify-content: center; }
+.sk-row--wrap { flex-wrap: wrap; }
+.sk-center { display: grid; place-items: center; text-align: center; }
+.sk-muted { color: var(--ink-3); }
+.sk-h1 { font-size: var(--fs-2xl); font-weight: 800; line-height: 1.2; }
+.sk-h2 { font-size: var(--fs-xl); font-weight: 800; line-height: 1.25; }
+.sk-h3 { font-size: var(--fs-lg); font-weight: 800; }
+.sk-small { font-size: var(--fs-sm); }
+.sk-stage { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; padding: var(--s-4); gap: var(--s-4); }
+
+/* ── Motion ──────────────────────────────────────────────────── */
+@keyframes sk-pop { 0% { transform: scale(0.85); } 100% { transform: scale(1); } }
+@keyframes sk-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+@keyframes sk-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sk-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes sk-flip { 0% { transform: rotateX(0); } 50% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
+@keyframes sk-bounce { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } }
+.sk-anim-pop { animation: sk-pop var(--t-med) var(--ease-pop); }
+.sk-anim-shake { animation: sk-shake var(--t-slow) var(--ease); }
+.sk-anim-flip { animation: sk-flip var(--t-slow) var(--ease); }
+.sk-anim-bounce { animation: sk-bounce var(--t-slow) var(--ease); }
+.sk-toast.sk-toast--center { left: 50%; transform: translateX(-50%); }
+
+:root[data-reduced-motion='true'] *, :root[data-reduced-motion='true'] *::before, :root[data-reduced-motion='true'] *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; } }

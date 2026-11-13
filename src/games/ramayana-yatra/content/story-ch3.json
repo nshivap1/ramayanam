@@ -1,0 +1,2414 @@
+{
+ "version": 1,
+ "chapters": [
+  {
+   "kanda": 3,
+   "nameId": "kanda.3",
+   "summary": "In the Dandaka forest Rama promises to protect the sages. At Panchavati he defeats Khara's army, but Ravana, warned in vain by Maricha, sends the golden deer. Sita is carried off; the dying Jatayu tells Rama, and Shabari points the way to Sugriva.",
+   "startMap": "dandaka_vana",
+   "startX": 2,
+   "startY": 13,
+   "shlokaIds": [
+    "s-ramo-vigrahavan",
+    "s-golden-deer",
+    "s-aranya-3"
+   ],
+   "keyShloka": "s-ramo-vigrahavan"
+  }
+ ],
+ "maps": [
+  {
+   "id": "dandaka_vana",
+   "nameId": "place.dandaka_vana",
+   "kanda": 3,
+   "width": 40,
+   "height": 26,
+   "legend": {
+    "\"": "kusha",
+    "$": "chest",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "O": "boulder",
+    "S": "shrine",
+    "T": "tree",
+    "X": "fire_altar",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "b": "bush",
+    "f": "flowers_red",
+    "h": "hut_wall",
+    "i": "hut_window",
+    "l": "log",
+    "r": "rock",
+    "t": "stump"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT.A^^^]......TTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT.hihih.fSf..TTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT.........,.bTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT..,.........TTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT...,.,..,.X.TTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT.,....,.,...TTTTTTTTTTTTT",
+    "TT\"\"\"\"TTTTTTTTT....::::::,.TTTTTTTTTTTTT",
+    "TT\"\".\"TTTTTTTTT....::::::..TTTTTTTTTTTTT",
+    "TT\"\"\"\"TTTTTTTT:::::::TTT::\"\"\"\"TTTTTTTTTT",
+    "TT.\"\"\"TTTTTTTT::\"\"\"\"\"\"\"T::\"\"T\"TTTTTTTTTT",
+    ":::::T::TTTTTT::.\"\"\"\"\"\"T::\"\"\".TTTTTTTTTT",
+    "::::::::TTTTTT::\"\"\"\"\"\"\"T:::::::::TTTTTTT",
+    "TTT...::\"\"\"\"\"T::\"\"\"\"\"b\"T:\"\"\"\"\"\"::\"\"\"\"\"TT",
+    "TT.t..::..\"\"\"T::\"\"\"\"\"\"TTT.\"\"\"\"\"::\".\"\"\"TT",
+    "TT....::\"\"\"\"\"T::..\"\"\"\"\"TT\"\"\"O\"\"::\"\"\"\".TT",
+    "TTT.,.::::::O:::.......TT\"\"\"\"\"..:\"\"\"?\"TT",
+    "TTTTTT::\"\"\"\"\"\"::...lt..TT\"\"\"\"\"\":::::::::",
+    "TTTTTTTT\"\"\"\"\"\"TT.r.....TT\"\"\"\"\"\"::\"\"\"\"\"::",
+    "TTTTTTTT\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTT\"\"\"\"\"TT",
+    "TTTTTTTT\"..\"\"\"TTTTTTTTTTTTTTTTTTT$T\"\"\"TT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "sage_elder",
+     "sprite": "rishi",
+     "x": 20,
+     "y": 6,
+     "facing": "down",
+     "event": "ch3.dandaka_sages"
+    },
+    {
+     "id": "sage_b",
+     "sprite": "rishi",
+     "x": 18,
+     "y": 7,
+     "facing": "right",
+     "event": "ch3.dandaka_sage_b"
+    },
+    {
+     "id": "sage_c",
+     "sprite": "rishika",
+     "x": 22,
+     "y": 6,
+     "facing": "left",
+     "event": "ch3.dandaka_sage_c"
+    },
+    {
+     "id": "trader",
+     "sprite": "merchant",
+     "x": 25,
+     "y": 9,
+     "facing": "left",
+     "event": "ch3.dandaka_trader"
+    },
+    {
+     "id": "hermit",
+     "sprite": "rishi",
+     "x": 4,
+     "y": 15,
+     "facing": "right",
+     "event": "ch3.dandaka_hermit"
+    },
+    {
+     "id": "lurker",
+     "sprite": "rakshasa",
+     "x": 21,
+     "y": 19,
+     "facing": "left",
+     "event": "ch3.dandaka_lurker",
+     "showIf": "!ch3.lurker_beaten"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 13,
+     "to": "chitrakuta",
+     "tx": 17,
+     "ty": 24,
+     "facing": "up"
+    },
+    {
+     "x": 0,
+     "y": 14,
+     "to": "chitrakuta",
+     "tx": 18,
+     "ty": 24,
+     "facing": "up"
+    },
+    {
+     "x": 39,
+     "y": 19,
+     "to": "panchavati",
+     "tx": 1,
+     "ty": 10,
+     "facing": "right",
+     "requires": "ch3.sages_asked",
+     "lockedEvent": "ch3.dandaka_locked"
+    },
+    {
+     "x": 39,
+     "y": 20,
+     "to": "panchavati",
+     "tx": 1,
+     "ty": 11,
+     "facing": "right",
+     "requires": "ch3.sages_asked",
+     "lockedEvent": "ch3.dandaka_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 1,
+     "y": 9,
+     "w": 3,
+     "h": 10,
+     "event": "ch3.intro",
+     "requires": "!ch3.started"
+    },
+    {
+     "x": 33,
+     "y": 21,
+     "w": 1,
+     "h": 1,
+     "event": "ch3.grass_chest",
+     "once": true
+    }
+   ],
+   "signs": [
+    {
+     "x": 36,
+     "y": 18,
+     "text": "East: Panchavati, by the river Godavari."
+    }
+   ],
+   "encounters": {
+    "rate": 0.08,
+    "table": [
+     {
+      "enemyId": "yatudhana",
+      "weight": 3,
+      "minLevel": 11,
+      "maxLevel": 13
+     },
+     {
+      "enemyId": "rakshasi",
+      "weight": 2,
+      "minLevel": 11,
+      "maxLevel": 13
+     },
+     {
+      "enemyId": "nishachara",
+      "weight": 2,
+      "minLevel": 11,
+      "maxLevel": 13
+     },
+     {
+      "enemyId": "vrka",
+      "weight": 2,
+      "minLevel": 11,
+      "maxLevel": 13
+     }
+    ]
+   }
+  },
+  {
+   "id": "panchavati",
+   "nameId": "place.panchavati",
+   "kanda": 3,
+   "width": 34,
+   "height": 24,
+   "legend": {
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "B": "tree_banyan",
+    "F": "fence",
+    "H": "bridge_v",
+    "L": "lotus",
+    "P": "tree_palm",
+    "Q": "well",
+    "R": "reeds",
+    "S": "shrine",
+    "T": "tree",
+    "W": "water_deep",
+    "X": "fire_altar",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "b": "bush",
+    "f": "flowers_red",
+    "h": "hut_wall",
+    "i": "hut_window",
+    "l": "log",
+    "n": "shore_n",
+    "r": "rock",
+    "s": "sand",
+    "t": "stump",
+    "v": "shore_s",
+    "~": "water"
+   },
+   "ground": [
+    "TTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTT....::............TTTTTTTTTTT",
+    "TTTT.....::.............TTTTT.TTTT",
+    "TTT...A..::..............ATTTTTATT",
+    "T........::...............,..TTTTT",
+    "T.,....f.::.BFFFFFFFB.......,....T",
+    "T........::..F[^^^]F..........b..T",
+    "T...fSf..::..FhihihF.X..f........T",
+    "T........::.BF,f:f,FB............T",
+    "T.?......::..FFF:.FF...,.......?.T",
+    "::::::::::::::::::::::::::::::::::",
+    "::::::::::::::::::::::::::::::::::",
+    "T.FffffF.,.....FFFFF.....:.P...A.T",
+    "T.Fff,fF.....B.F,,,F.tl..:...Q.,.T",
+    "TTFffffF..A...,FF.FF.....:.,....PT",
+    "TTT.,.........,.....b.A.,:.......T",
+    "TTTT.f..r..b.,,........,.:.,,.f..T",
+    "TR....ssssssss.R....sssss:.....R.T",
+    "TnnnnnnnnnnnnnnnnnnnnnnnnHnnnnnnnT",
+    "T~~~LL~~~~~~~~~~~~~~~~~~~H~~~~~~~T",
+    "TWWWWWWWWWWWWWWWWWWWWWWWWHWWWWWWWT",
+    "T~~~~~~~~~~~L~~~~~~~~~~~~H~~~~~~~T",
+    "TvvvvvvvvvvvvvvvvvvvvvvvvHvvvvvvvT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTHTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "sita",
+     "sprite": "sita",
+     "x": 16,
+     "y": 8,
+     "facing": "down",
+     "event": "ch3.sita",
+     "showIf": "!ch3.maricha_defeated"
+    },
+    {
+     "id": "keeper",
+     "sprite": "rishi",
+     "x": 6,
+     "y": 8,
+     "facing": "up",
+     "event": "ch3.keeper"
+    },
+    {
+     "id": "jatayu",
+     "sprite": "jatayu",
+     "x": 22,
+     "y": 6,
+     "facing": "left",
+     "event": "ch3.jatayu_meet",
+     "showIf": "!ch3.maricha_defeated"
+    },
+    {
+     "id": "golden_deer",
+     "sprite": "golden_deer",
+     "x": 27,
+     "y": 8,
+     "facing": "left",
+     "event": "ch3.deer_glimpse",
+     "showIf": "restored.s-ramo-vigrahavan&!ch3.deer_seen"
+    },
+    {
+     "id": "hermit",
+     "sprite": "rishika",
+     "x": 28,
+     "y": 14,
+     "facing": "up",
+     "event": "ch3.panchavati_hermit"
+    },
+    {
+     "id": "lakshmana",
+     "sprite": "lakshmana",
+     "x": 17,
+     "y": 9,
+     "facing": "down",
+     "event": "ch3.lakshmana_guard",
+     "showIf": "ch3.deer_seen&!ch3.maricha_defeated"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 10,
+     "to": "dandaka_vana",
+     "tx": 38,
+     "ty": 19,
+     "facing": "left"
+    },
+    {
+     "x": 0,
+     "y": 11,
+     "to": "dandaka_vana",
+     "tx": 38,
+     "ty": 20,
+     "facing": "left"
+    },
+    {
+     "x": 9,
+     "y": 0,
+     "to": "khara_camp",
+     "tx": 14,
+     "ty": 18,
+     "facing": "up",
+     "requires": "ch3.at_panchavati",
+     "lockedEvent": "ch3.north_locked"
+    },
+    {
+     "x": 10,
+     "y": 0,
+     "to": "khara_camp",
+     "tx": 15,
+     "ty": 18,
+     "facing": "up",
+     "requires": "ch3.at_panchavati",
+     "lockedEvent": "ch3.north_locked"
+    },
+    {
+     "x": 33,
+     "y": 10,
+     "to": "mriga_vana",
+     "tx": 1,
+     "ty": 10,
+     "facing": "right",
+     "requires": "ch3.deer_seen",
+     "lockedEvent": "ch3.east_locked"
+    },
+    {
+     "x": 33,
+     "y": 11,
+     "to": "mriga_vana",
+     "tx": 1,
+     "ty": 11,
+     "facing": "right",
+     "requires": "ch3.deer_seen",
+     "lockedEvent": "ch3.east_locked"
+    },
+    {
+     "x": 25,
+     "y": 23,
+     "to": "jatayu_glade",
+     "tx": 14,
+     "ty": 1,
+     "facing": "down",
+     "requires": "ch3.maricha_defeated",
+     "lockedEvent": "ch3.south_locked"
+    }
+   ],
+   "triggers": [],
+   "signs": [
+    {
+     "x": 2,
+     "y": 9,
+     "text": "Panchavati: the place of the five banyan trees, by the Godavari."
+    },
+    {
+     "x": 31,
+     "y": 9,
+     "text": "East: the deep forest. North: Janasthana. South, across the river: the road to Pampa."
+    }
+   ],
+   "onEnter": "ch3.enter_panchavati"
+  },
+  {
+   "id": "khara_camp",
+   "nameId": "place.khara_camp",
+   "kanda": 3,
+   "width": 30,
+   "height": 20,
+   "legend": {
+    "!": "banner",
+    "\"": "kusha",
+    ".": "grass",
+    ":": "path",
+    "C": "cliff",
+    "F": "fence",
+    "O": "boulder",
+    "T": "tree",
+    "X": "fire_altar",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "b": "bush",
+    "h": "hut_wall",
+    "l": "log",
+    "q": "torch",
+    "r": "rock",
+    "z": "battle_ground"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTT......CCCCCC....TTTTTTTT",
+    "TTTT..r.....CCCCCC....r.TTTTTT",
+    "TT.O.........zzzz.......O.TTTT",
+    "T..qzzzzzzzz!zzzz!zzzzzzzzq..T",
+    "T..z[^]zz[^]zzzzzzz[^]zz[^]..T",
+    "T..zhhhzzhhhzzzzzzzhhhzzhhh..T",
+    "T..zzzzzzzzzzzzzzzzzzzzzzzz..T",
+    "T..zzzzzlXlzzzzzzzzlXlzzzzz..T",
+    "T..zzzzzqzzzzzzzzzzzzqzzzzz..T",
+    "T.OzzzzzzzzzzzzzzzzzzzzzzzzO.T",
+    "T..zzzzzzzzzzzzzzzzzzzzzzzz..T",
+    "T..FFFFFFFFFzzzzzzFFFFFFFFF..T",
+    "T...r.....q.zzzzzz.q.....r...T",
+    "T............z::z............T",
+    "T.\"\"\"\"\"\"\"...b.::....\"\"\"\"\"\"\"..T",
+    "T..\"\"\"\"\"\"\"\"...::...\"\"\"\"\"\"\"O..T",
+    "TO.\"\"\"\"\"\"\"....::..\"\"\"\"\"\"\"....T",
+    "T.............::.............T",
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "battlefield",
+   "light": "dusk",
+   "npcs": [
+    {
+     "id": "khara",
+     "sprite": "rakshasa",
+     "x": 14,
+     "y": 4,
+     "facing": "down",
+     "event": "ch3.khara",
+     "showIf": "!ch3.khara_defeated"
+    },
+    {
+     "id": "dushana",
+     "sprite": "rakshasa",
+     "x": 15,
+     "y": 4,
+     "facing": "down",
+     "event": "ch3.khara",
+     "showIf": "!ch3.khara_defeated"
+    },
+    {
+     "id": "scout",
+     "sprite": "rakshasi",
+     "x": 7,
+     "y": 11,
+     "facing": "right",
+     "event": "ch3.camp_scout",
+     "showIf": "!ch3.khara_defeated&!ch3.scout_beaten"
+    },
+    {
+     "id": "sentry",
+     "sprite": "rakshasa",
+     "x": 22,
+     "y": 10,
+     "facing": "left",
+     "event": "ch3.camp_sentry",
+     "showIf": "!ch3.khara_defeated&!ch3.sentry_beaten"
+    }
+   ],
+   "warps": [
+    {
+     "x": 14,
+     "y": 19,
+     "to": "panchavati",
+     "tx": 9,
+     "ty": 1,
+     "facing": "down"
+    },
+    {
+     "x": 15,
+     "y": 19,
+     "to": "panchavati",
+     "tx": 10,
+     "ty": 1,
+     "facing": "down"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 1,
+     "y": 12,
+     "w": 28,
+     "h": 1,
+     "event": "ch3.camp_warning",
+     "requires": "!ch3.khara_defeated"
+    }
+   ],
+   "encounters": {
+    "rate": 0.08,
+    "table": [
+     {
+      "enemyId": "yatudhana",
+      "weight": 3,
+      "minLevel": 12,
+      "maxLevel": 13
+     },
+     {
+      "enemyId": "rakshasi",
+      "weight": 3,
+      "minLevel": 12,
+      "maxLevel": 13
+     },
+     {
+      "enemyId": "nishachara",
+      "weight": 1,
+      "minLevel": 12,
+      "maxLevel": 13
+     }
+    ]
+   }
+  },
+  {
+   "id": "mriga_vana",
+   "nameId": "place.mriga_vana",
+   "kanda": 3,
+   "width": 36,
+   "height": 22,
+   "legend": {
+    "\"": "kusha",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "A": "tree_ashoka",
+    "O": "boulder",
+    "T": "tree",
+    "b": "bush",
+    "f": "flowers_red",
+    "l": "log",
+    "r": "rock",
+    "t": "stump"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTT\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTT::\"\"\"\"\":::TTTTTTTTTTATTTTTTTTTT",
+    "TT.f.::\"\"\"\"\":::TTTTTTTTTTTTTTTTTTTTT",
+    "TT.,.::\"\"\"\"\"T::TTfTTTTTTTTTTTTTTTTTT",
+    "TT...::\"\"\"\"\"T::TTTTTT:::::::::TTTTTT",
+    "TT..t::\"\"\"\"\"T::TTTTTT:::::::::TTTTTT",
+    "TTTTT::TTTTTT::TTTTTT::\"\"\"\"T:b....TT",
+    ":::::::TTTTTT::\"\"\"\"\"T::\"\"\"\"T:.f,,.TT",
+    "::::::TTTfTTT::\"\"\"\"\"T::\"\"\"\"T:.....TT",
+    "TT\"\"\"\"TTTTTTT::\"\"\"\"\"T::\"\"\"\"T:,....:T",
+    "TT\"\"\"\"TTTTTTT::\"\"\"\"\"T::\"\"\"\"T:.....TT",
+    "TT\"\"\"\"TTTTTTT::\"\"\"\"\"T::\"\"\"\"TT.,A.fTT",
+    "TT\"\"\"\"TTTTTTT::TTTTTT::TTTTTT.....TT",
+    "TT\"\"\"\"TTTTTTT:::l:r::::TTTTTTTTTTTTT",
+    "TT\"\"\"\"TTTTTTT::\"\"\"\"\"::TTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT\"\"\"\"OTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTT\"\"\"\"\"TTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "dusk",
+   "npcs": [
+    {
+     "id": "deer_far",
+     "sprite": "golden_deer",
+     "x": 32,
+     "y": 12,
+     "facing": "left",
+     "event": "ch3.maricha_deer",
+     "showIf": "!ch3.maricha_defeated"
+    },
+    {
+     "id": "deer_glimpse_1",
+     "sprite": "golden_deer",
+     "x": 9,
+     "y": 5,
+     "facing": "right",
+     "event": "ch3.deer_glimpse",
+     "showIf": "!ch3.chase_1"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 10,
+     "to": "panchavati",
+     "tx": 32,
+     "ty": 10,
+     "facing": "left"
+    },
+    {
+     "x": 0,
+     "y": 11,
+     "to": "panchavati",
+     "tx": 32,
+     "ty": 11,
+     "facing": "left"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 5,
+     "y": 6,
+     "w": 2,
+     "h": 1,
+     "event": "ch3.chase_1"
+    },
+    {
+     "x": 13,
+     "y": 12,
+     "w": 2,
+     "h": 1,
+     "event": "ch3.chase_2"
+    },
+    {
+     "x": 21,
+     "y": 10,
+     "w": 2,
+     "h": 1,
+     "event": "ch3.chase_3"
+    }
+   ],
+   "encounters": {
+    "rate": 0.1,
+    "table": [
+     {
+      "enemyId": "maya_mriga",
+      "weight": 5,
+      "minLevel": 12,
+      "maxLevel": 14
+     },
+     {
+      "enemyId": "rakshasi",
+      "weight": 1,
+      "minLevel": 12,
+      "maxLevel": 14
+     }
+    ]
+   }
+  },
+  {
+   "id": "jatayu_glade",
+   "nameId": "place.jatayu_glade",
+   "kanda": 3,
+   "width": 32,
+   "height": 20,
+   "legend": {
+    "!": "banner",
+    "\"": "kusha",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "O": "boulder",
+    "T": "tree",
+    "b": "bush",
+    "f": "flowers_red",
+    "l": "log",
+    "r": "rock",
+    "t": "stump"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTA.:::.ATTTTTTTTTTTTTT",
+    "TTTTTTTTTA.,..:.f..bTTTTTTTTTTTT",
+    "TTTTTTTT.,.llO.....br.TTTTTTTTTT",
+    "TTTTTTTT...!...f..,...TTT?TTTTTT",
+    "TTTTTTTTT.......,.....::::::::::",
+    "TTTTTTTTTb..O.....l...::::::::::",
+    "TTTTTTTT.,.l......,.,.TTTTTTTTTT",
+    "TTTTTTTTT.t...:..f.O.TTTTTTTTTTT",
+    "TTTTTTTTTTA...:..TTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTT.:TTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTT...:..TTTTTTTTTTTTTTT",
+    "TTTTTTTT.b...\"\"\"\"..\"\"tTTTTTTTTTT",
+    "TTTTTTTT..\"\"\"\"..\"\"\".\"\".TTTTTTTTT",
+    "TTTTTTTTO..\"\"....r..TTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "dusk",
+   "npcs": [
+    {
+     "id": "jatayu",
+     "sprite": "jatayu",
+     "x": 14,
+     "y": 9,
+     "facing": "down",
+     "event": "ch3.jatayu",
+     "showIf": "!ch3.jatayu_done"
+    },
+    {
+     "id": "kabandha",
+     "sprite": "rakshasa",
+     "x": 15,
+     "y": 16,
+     "facing": "up",
+     "event": "ch3.kabandha",
+     "showIf": "!ch3.kabandha_freed"
+    }
+   ],
+   "warps": [
+    {
+     "x": 14,
+     "y": 0,
+     "to": "panchavati",
+     "tx": 25,
+     "ty": 22,
+     "facing": "up"
+    },
+    {
+     "x": 15,
+     "y": 0,
+     "to": "panchavati",
+     "tx": 25,
+     "ty": 22,
+     "facing": "up"
+    },
+    {
+     "x": 31,
+     "y": 9,
+     "to": "shabari_ashrama",
+     "tx": 1,
+     "ty": 10,
+     "facing": "right",
+     "requires": "ch3.jatayu_done",
+     "lockedEvent": "ch3.glade_locked"
+    },
+    {
+     "x": 31,
+     "y": 10,
+     "to": "shabari_ashrama",
+     "tx": 1,
+     "ty": 11,
+     "facing": "right",
+     "requires": "ch3.jatayu_done",
+     "lockedEvent": "ch3.glade_locked"
+    }
+   ],
+   "triggers": [],
+   "signs": [
+    {
+     "x": 25,
+     "y": 8,
+     "text": "East: Lake Pampa and the hermitage of Matanga."
+    }
+   ],
+   "encounters": {
+    "rate": 0.08,
+    "table": [
+     {
+      "enemyId": "rakshasi",
+      "weight": 2,
+      "minLevel": 12,
+      "maxLevel": 14
+     },
+     {
+      "enemyId": "yatudhana",
+      "weight": 2,
+      "minLevel": 12,
+      "maxLevel": 14
+     },
+     {
+      "enemyId": "vrka",
+      "weight": 1,
+      "minLevel": 12,
+      "maxLevel": 14
+     }
+    ]
+   }
+  },
+  {
+   "id": "shabari_ashrama",
+   "nameId": "place.shabari_ashrama",
+   "kanda": 3,
+   "width": 32,
+   "height": 22,
+   "legend": {
+    "&": "market_stall",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "B": "tree_banyan",
+    "F": "fence",
+    "L": "lotus",
+    "P": "tree_palm",
+    "S": "shrine",
+    "T": "tree",
+    "W": "water_deep",
+    "X": "fire_altar",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "e": "shore_e",
+    "f": "flowers_red",
+    "h": "hut_wall",
+    "i": "hut_window",
+    "n": "shore_n",
+    "v": "shore_s",
+    "w": "shore_w",
+    "~": "water"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTA.............TTTTTTTTTTTTTTT",
+    "TTA..............nnnnnnnnnnnnneT",
+    "TA..............w~LL~~~~~~~~~~eT",
+    "T...............w~LWWWWWWWWW~~eT",
+    "T.....[^^^].....w~~WWWWWWWWW~~eT",
+    "T.....hihih.fSf.w~~WWWWWWWWWL~eT",
+    "T.......:....:..w~~~~~~~~~~LL~eT",
+    "T.......:....:...vvvvvvvvvvvvveT",
+    "T.......:....:.................T",
+    ":::::::::::::::::::::::::::::::T",
+    "::::::::::::::::::::::::::::::::",
+    "T.................,.:::::..,.?.T",
+    "T....fffff.....,....&&....,....T",
+    "T....ff,ff.....,...........P...T",
+    "T....fffff....B..,.....,....,..T",
+    "T..FFFFFFFFF....[^^^]....X.....T",
+    "TA.FA,A,A,AF....hihih..A.......T",
+    "TTAF,A,A,A,F....,.......,...,..T",
+    "TTTFA,A,A,AF...................T",
+    "TTTFFFF.FFFF...................T",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "ashrama",
+   "battleBg": "ashrama",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "shabari",
+     "sprite": "shabari",
+     "x": 8,
+     "y": 8,
+     "facing": "down",
+     "event": "ch3.shabari",
+     "showIf": "!ch3.complete"
+    },
+    {
+     "id": "merchant",
+     "sprite": "merchant",
+     "x": 21,
+     "y": 14,
+     "facing": "up",
+     "event": "ch3.pampa_merchant"
+    },
+    {
+     "id": "disciple",
+     "sprite": "rishika",
+     "x": 14,
+     "y": 7,
+     "facing": "left",
+     "event": "ch3.matanga_disciple"
+    },
+    {
+     "id": "child",
+     "sprite": "child",
+     "x": 24,
+     "y": 15,
+     "facing": "left",
+     "event": "ch3.pampa_child"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 10,
+     "to": "jatayu_glade",
+     "tx": 30,
+     "ty": 9,
+     "facing": "left"
+    },
+    {
+     "x": 0,
+     "y": 11,
+     "to": "jatayu_glade",
+     "tx": 30,
+     "ty": 10,
+     "facing": "left"
+    },
+    {
+     "x": 31,
+     "y": 11,
+     "to": "rishyamuka",
+     "tx": 1,
+     "ty": 15,
+     "facing": "right",
+     "requires": "ch3.complete",
+     "lockedEvent": "ch3.pampa_locked"
+    }
+   ],
+   "triggers": [],
+   "signs": [
+    {
+     "x": 29,
+     "y": 12,
+     "text": "East: the hill of Rishyamuka, where Sugriva lives in hiding."
+    }
+   ],
+   "onEnter": "ch3.enter_pampa"
+  }
+ ],
+ "events": [
+  {
+   "id": "ch3.intro",
+   "cmds": [
+    {
+     "if": "!ch3.started",
+     "then": [
+      {
+       "chapter": 3
+      },
+      {
+       "music": "forest"
+      },
+      {
+       "say": "The forest of Dandaka: vast, ancient, and full of danger. Hermitages shelter in its clearings, and night-wanderers roam between them."
+      },
+      {
+       "say": "Stay close, Sita. Lakshmana, keep your bow ready.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "I am not afraid, as long as we are together.",
+       "who": "person.sita",
+       "portrait": "sita"
+      },
+      {
+       "rest": true
+      },
+      {
+       "set": "ch3.started"
+      },
+      {
+       "objective": "Find the hermitage of the Dandaka sages."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.dandaka_sages",
+   "cmds": [
+    {
+     "if": "ch3.sages_asked",
+     "then": [
+      {
+       "say": "Panchavati lies east, by the Godavari. May you live there in peace.",
+       "who": "Sage of Dandaka",
+       "portrait": "rishi"
+      }
+     ],
+     "else": [
+      {
+       "say": "Rama! We have heard of you, even here. Look at us: we are old and few. The night-wanderers of Janasthana hunt us like deer.",
+       "who": "Sage of Dandaka",
+       "portrait": "rishi"
+      },
+      {
+       "say": "We do not ask for wealth. We ask for protection. You are the king's son; protect us.",
+       "who": "Sage of Dandaka",
+       "portrait": "rishi"
+      },
+      {
+       "say": "Revered sages, I came to the forest to keep my father's word. Now I have a second reason. I will protect you, as long as I live here.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "Then go to Panchavati, by the Godavari, as the sage Agastya advised. Live there, and the forest will be safer for it.",
+       "who": "Sage of Dandaka",
+       "portrait": "rishi"
+      },
+      {
+       "give": "oshadhi",
+       "qty": 1
+      },
+      {
+       "say": "The sages give you a healing herb."
+      },
+      {
+       "set": "ch3.sages_asked"
+      },
+      {
+       "objective": "Travel east through the forest to Panchavati."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.dandaka_sage_b",
+   "cmds": [
+    {
+     "if": "!style.katha",
+     "then": [
+      {
+       "say": "The tall kusha grass here is thick with night-wanderers. Do not walk through it unless you are ready to fight.",
+       "who": "Sage of Dandaka",
+       "portrait": "rishi"
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "The tall kusha grass here is thick with night-wanderers, but they fear Rama's bow and stay hidden. Walk on in peace.",
+       "who": "Sage of Dandaka",
+       "portrait": "rishi"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.dandaka_sage_c",
+   "cmds": [
+    {
+     "say": "Our shrine is open to you. Rest there before you go on. Each verse you restore makes your heroes stronger.",
+     "who": "Sage",
+     "portrait": "rishika"
+    }
+   ]
+  },
+  {
+   "id": "ch3.dandaka_trader",
+   "cmds": [
+    {
+     "say": "Even here, a trader finds a way! Fruit, roots, honey and herbs.",
+     "who": "Forest trader",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.dandaka_hermit",
+   "cmds": [
+    {
+     "say": "The sages' hermitage is north of here, in a clearing. They have been hoping someone would come.",
+     "who": "Hermit",
+     "portrait": "rishi"
+    }
+   ]
+  },
+  {
+   "id": "ch3.dandaka_lurker",
+   "cmds": [
+    {
+     "say": "Another hermit to frighten? No... a prince with a bow. Then fight me!",
+     "who": "Night-wanderer",
+     "portrait": "rakshasa"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "yatudhana",
+        "level": 12
+       }
+      ],
+      "kind": "wild",
+      "canRun": false,
+      "canLose": false,
+      "bg": "forest",
+      "music": "battle",
+      "intro": "A night-wanderer of the Dandaka forest attacks!"
+     },
+     "onWin": [
+      {
+       "say": "The night-wanderer vanishes into the trees, leaving fruit behind."
+      },
+      {
+       "give": "phala",
+       "qty": 2
+      },
+      {
+       "set": "ch3.lurker_beaten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.dandaka_locked",
+   "cmds": [
+    {
+     "say": "The sages of this forest need us. Let us find their hermitage first.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "objective": "Find the hermitage of the Dandaka sages."
+    }
+   ]
+  },
+  {
+   "id": "ch3.enter_panchavati",
+   "cmds": [
+    {
+     "if": "ch3.sages_asked&!ch3.at_panchavati",
+     "then": [
+      {
+       "say": "Panchavati: five great banyan trees beside the Godavari. Lakshmana builds a fine hut of leaves and bamboo, and the seasons turn in peace."
+      },
+      {
+       "say": "Do not be alarmed, children. I am Jatayu, king of the vultures, and a friend of your father, King Dasharatha.",
+       "who": "person.jatayu",
+       "portrait": "jatayu"
+      },
+      {
+       "say": "When you go out into the forest, I will watch over Sita.",
+       "who": "person.jatayu",
+       "portrait": "jatayu"
+      },
+      {
+       "say": "Thank you, friend of my father. We are honoured.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "music": "sorrow"
+      },
+      {
+       "say": "One day, Surpanakha, sister of Ravana, sees Rama and wants him for herself. Rama gently refuses, and Lakshmana drives her away when she turns on Sita."
+      },
+      {
+       "say": "Wounded and furious, she flees to her brother Khara at Janasthana. Now an army of night-wanderers is gathering to the north."
+      },
+      {
+       "music": "forest"
+      },
+      {
+       "rest": true
+      },
+      {
+       "set": "ch3.at_panchavati"
+      },
+      {
+       "objective": "Face Khara's army at Janasthana, north of Panchavati."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.north_locked",
+   "cmds": [
+    {
+     "say": "Thick thorn bushes block the way north."
+    }
+   ]
+  },
+  {
+   "id": "ch3.jatayu_meet",
+   "cmds": [
+    {
+     "say": "I am old, but my eyes are sharp. Nothing moves in this forest that I do not see.",
+     "who": "person.jatayu",
+     "portrait": "jatayu"
+    }
+   ]
+  },
+  {
+   "id": "ch3.panchavati_hermit",
+   "cmds": [
+    {
+     "if": "heard.s-ramo-vigrahavan&!ch3.maricha_defeated",
+     "then": [
+      {
+       "say": "They say even Maricha, Rama's old enemy, warned Ravana: 'Rama is dharma in bodily form, good, and true in his valour.'",
+       "who": "Hermit",
+       "portrait": "rishika"
+      },
+      {
+       "say": "{w:vigrahavat} means \"having a body\". Think of it: {w:dharma} itself, walking among us in bark cloth.",
+       "who": "Hermit",
+       "portrait": "rishika"
+      },
+      {
+       "say": "But the forest to the east glitters strangely at dusk. Be careful of things that seem too beautiful.",
+       "who": "Hermit",
+       "portrait": "rishika"
+      }
+     ],
+     "else": [
+      {
+       "say": "The Godavari is gentle here. But the forest to the east glitters strangely at dusk. Be careful of things that seem too beautiful.",
+       "who": "Hermit",
+       "portrait": "rishika"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.keeper",
+   "cmds": [
+    {
+     "say": "I keep the shrine of Panchavati. Rest, save, or recite: it is open to all.",
+     "who": "Sage of Panchavati",
+     "portrait": "rishi"
+    },
+    {
+     "if": "ch3.heard_vigrahavan",
+     "then": [
+      {
+       "if": "restored.s-ramo-vigrahavan",
+       "then": [
+        {
+         "if": "!ch3.restored_vigrahavan",
+         "then": [
+          {
+           "say": "Rama is {w:dharma} (righteousness) in human form. Now that verse is a mantra for Rama himself.",
+           "who": "Sage of Panchavati",
+           "portrait": "rishi"
+          },
+          {
+           "rest": true
+          },
+          {
+           "save": true
+          },
+          {
+           "objective": "Return to the hut. Something golden glimmers among the trees..."
+          },
+          {
+           "set": "ch3.restored_vigrahavan"
+          }
+         ],
+         "else": [
+          {
+           "say": "The verse is whole. Keep it close; you will need its strength.",
+           "who": "Sage of Panchavati",
+           "portrait": "rishi"
+          }
+         ]
+        }
+       ],
+       "else": [
+        {
+         "say": "You have heard a terrible warning, spoken far away by the sea. Even a night-wanderer knew what Rama is. Recite it for me, so that it is whole.",
+         "who": "Sage of Panchavati",
+         "portrait": "rishi"
+        },
+        {
+         "choice": "Recite the verse now?",
+         "options": [
+          {
+           "label": "Recite it",
+           "set": "ch3.tmp_recite"
+          },
+          {
+           "label": "Not yet"
+          }
+         ]
+        },
+        {
+         "if": "ch3.tmp_recite",
+         "then": [
+          {
+           "unset": "ch3.tmp_recite"
+          },
+          {
+           "shloka": "s-ramo-vigrahavan",
+           "mode": "restore"
+          },
+          {
+           "if": "restored.s-ramo-vigrahavan",
+           "then": [
+            {
+             "say": "Rama is {w:dharma} (righteousness) in human form. Now that verse is a mantra for Rama himself.",
+             "who": "Sage of Panchavati",
+             "portrait": "rishi"
+            },
+            {
+             "rest": true
+            },
+            {
+             "save": true
+            },
+            {
+             "objective": "Return to the hut. Something golden glimmers among the trees..."
+            },
+            {
+             "set": "ch3.restored_vigrahavan"
+            }
+           ],
+           "else": [
+            {
+             "say": "Not yet whole. Look at the verse card again and recite it once more.",
+             "who": "Sage of Panchavati",
+             "portrait": "rishi"
+            }
+           ]
+          }
+         ],
+         "else": [
+          {
+           "say": "Come back when you are ready.",
+           "who": "Sage of Panchavati",
+           "portrait": "rishi"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.sita",
+   "cmds": [
+    {
+     "if": "ch3.deer_seen",
+     "then": [
+      {
+       "say": "Lakshmana is with me. Go, and come back soon.",
+       "who": "person.sita",
+       "portrait": "sita"
+      }
+     ],
+     "else": [
+      {
+       "if": "restored.s-ramo-vigrahavan",
+       "then": [
+        {
+         "say": "A {w:mrga} (deer) of pure gold, dappled with silver and jewels, steps out from the trees near the hut."
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "label": "k_what"
+          },
+          {
+           "choice": "Sita asks: \"{player}, what is that, among the trees?\"",
+           "options": [
+            {
+             "label": "It is there, among the trees.",
+             "goto": "k_what_m0"
+            },
+            {
+             "label": "A deer made of gold!"
+            },
+            {
+             "label": "Lakshmana is watching it.",
+             "goto": "k_what_m2"
+            }
+           ]
+          },
+          {
+           "goto": "k_what_end"
+          },
+          {
+           "label": "k_what_m0"
+          },
+          {
+           "say": "Yes, there. But what is it?",
+           "who": "person.sita",
+           "portrait": "sita"
+          },
+          {
+           "goto": "k_what"
+          },
+          {
+           "label": "k_what_m2"
+          },
+          {
+           "say": "Lakshmana sees it too. But what is it?",
+           "who": "person.sita",
+           "portrait": "sita"
+          },
+          {
+           "goto": "k_what"
+          },
+          {
+           "label": "k_what_end"
+          }
+         ]
+        },
+        {
+         "say": "Rama, look! I have never seen anything so beautiful.",
+         "who": "person.sita",
+         "portrait": "sita"
+        },
+        {
+         "shloka": "s-golden-deer",
+         "mode": "hear"
+        },
+        {
+         "say": "Brother, no deer is made of gold. I think it is Maricha, in disguise. He has led many hunters to their death.",
+         "who": "person.lakshmana",
+         "portrait": "lakshmana"
+        },
+        {
+         "say": "If it is Maricha, I will deal with him; if it is a real deer, Sita shall have it. Lakshmana, guard Sita. Do not leave her for anything.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "say": "I will not leave her side, brother.",
+         "who": "person.lakshmana",
+         "portrait": "lakshmana"
+        },
+        {
+         "quiz": "artha",
+         "shlokaId": "s-golden-deer",
+         "onCorrect": [
+          {
+           "say": "Yes, that is what I said. Go carefully, Rama.",
+           "who": "person.sita",
+           "portrait": "sita"
+          }
+         ],
+         "onWrong": [
+          {
+           "say": "The verse card shows each word, {player}. Go carefully, Rama.",
+           "who": "person.sita",
+           "portrait": "sita"
+          }
+         ]
+        },
+        {
+         "leave": "lakshmana"
+        },
+        {
+         "say": "Lakshmana stays behind to guard Sita. Rama takes up his bow and follows the deer."
+        },
+        {
+         "set": "ch3.deer_seen"
+        },
+        {
+         "objective": "Follow the golden deer east into the forest."
+        }
+       ],
+       "else": [
+        {
+         "if": "ch3.khara_defeated",
+         "then": [
+          {
+           "say": "Rama has been quiet since Janasthana. He says a storm is coming.",
+           "who": "person.sita",
+           "portrait": "sita"
+          },
+          {
+           "say": "The sage by the shrine asked for you, {player}.",
+           "who": "person.sita",
+           "portrait": "sita"
+          },
+          {
+           "objective": "Recite Maricha's warning with the sage at the shrine."
+          }
+         ],
+         "else": [
+          {
+           "say": "The banyans give such cool shade. This is the happiest home we have had in the forest.",
+           "who": "person.sita",
+           "portrait": "sita"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.lakshmana_guard",
+   "cmds": [
+    {
+     "say": "I will guard Sita with my life, brother. Go after the deer, but come back quickly.",
+     "who": "person.lakshmana",
+     "portrait": "lakshmana"
+    }
+   ]
+  },
+  {
+   "id": "ch3.deer_glimpse",
+   "cmds": [
+    {
+     "say": "The golden deer looks back at you, then bounds away between the trees."
+    }
+   ]
+  },
+  {
+   "id": "ch3.east_locked",
+   "cmds": [
+    {
+     "if": "!ch3.khara_defeated",
+     "then": [
+      {
+       "say": "The forest to the east is dense and strangely quiet. There is no reason to go there yet."
+      }
+     ],
+     "else": [
+      {
+       "if": "!restored.s-ramo-vigrahavan",
+       "then": [
+        {
+         "say": "A whisper on the wind, Valmiki's voice: \"Restore the verse you heard by the sea first, child. The sage at the shrine will hear you.\""
+        },
+        {
+         "objective": "Recite Maricha's warning with the sage at the shrine."
+        }
+       ],
+       "else": [
+        {
+         "say": "Sita is calling from the hut."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.south_locked",
+   "cmds": [
+    {
+     "say": "The Godavari runs deep here. There is no need to cross it yet."
+    }
+   ]
+  },
+  {
+   "id": "ch3.camp_warning",
+   "cmds": [
+    {
+     "music": "boss"
+    },
+    {
+     "say": "Drums thunder across the camp. Fourteen thousand night-wanderers stand ready, and at their head stand Khara and Dushana."
+    },
+    {
+     "say": "Stand with me, Lakshmana. We fight for the sages of the forest.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "music": "forest"
+    },
+    {
+     "objective": "Defeat Khara and Dushana."
+    }
+   ]
+  },
+  {
+   "id": "ch3.camp_scout",
+   "cmds": [
+    {
+     "say": "Khara will crush you! He has never lost a battle! But first you must get past me!",
+     "who": "Night-wanderer",
+     "portrait": "rakshasi"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "rakshasi",
+        "level": 12
+       }
+      ],
+      "kind": "wild",
+      "canRun": false,
+      "canLose": false,
+      "bg": "battlefield",
+      "music": "battle",
+      "intro": "A night-wanderer of Janasthana attacks!"
+     },
+     "onWin": [
+      {
+       "say": "The night-wanderer flees into the dark."
+      },
+      {
+       "set": "ch3.scout_beaten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.camp_sentry",
+   "cmds": [
+    {
+     "say": "Hermits in our camp? I will show you the strength of Janasthana!",
+     "who": "Night-wanderer",
+     "portrait": "rakshasa"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "yatudhana",
+        "level": 13
+       }
+      ],
+      "kind": "wild",
+      "canRun": false,
+      "canLose": false,
+      "bg": "battlefield",
+      "music": "battle",
+      "intro": "A sentry of Khara's camp attacks!"
+     },
+     "onWin": [
+      {
+       "say": "The sentry drops a pouch of roots as he runs."
+      },
+      {
+       "give": "kanda_mula",
+       "qty": 1
+      },
+      {
+       "set": "ch3.sentry_beaten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.khara",
+   "cmds": [
+    {
+     "if": "ch3.khara_defeated",
+     "then": [
+      {
+       "say": "The camp is silent now."
+      }
+     ],
+     "else": [
+      {
+       "say": "So these are the hermits who wounded my sister! Dushana, we will finish them together.",
+       "who": "Khara",
+       "portrait": "rakshasa"
+      },
+      {
+       "choice": "Rest and save before the battle?",
+       "options": [
+        {
+         "label": "Rest and save, then fight",
+         "set": "ch3.tmp_rest"
+        },
+        {
+         "label": "Fight now"
+        }
+       ]
+      },
+      {
+       "if": "ch3.tmp_rest",
+       "then": [
+        {
+         "unset": "ch3.tmp_rest"
+        },
+        {
+         "rest": true
+        },
+        {
+         "save": true
+        }
+       ]
+      },
+      {
+       "battle": {
+        "enemies": [
+         {
+          "id": "dushana",
+          "level": 12
+         },
+         {
+          "id": "khara",
+          "level": 13
+         }
+        ],
+        "kind": "boss",
+        "canRun": false,
+        "canLose": false,
+        "bg": "battlefield",
+        "music": "boss",
+        "intro": "Dushana and Khara lead the army of Janasthana!"
+       },
+       "onWin": [
+        {
+         "say": "Dushana falls, and then Khara himself. The army of Janasthana is scattered like dry leaves in the wind."
+        },
+        {
+         "music": "victory"
+        },
+        {
+         "say": "The sages of the forest come out to bless Rama. Sita embraces him with joy."
+        },
+        {
+         "set": "ch3.khara_defeated"
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "music": "sorrow"
+        },
+        {
+         "say": "Far away, one survivor reaches Lanka and tells Ravana everything. Ravana listens, and a plan forms: he will carry off Rama's wife."
+        },
+        {
+         "say": "He flies to the hermitage of Maricha by the sea. Maricha, who once was flung into the ocean by Rama's weapon, turns pale."
+        },
+        {
+         "say": "Ravana, do not do this! I have seen Rama. Listen to me.",
+         "who": "Maricha",
+         "portrait": "rakshasa"
+        },
+        {
+         "shloka": "s-ramo-vigrahavan",
+         "mode": "hear"
+        },
+        {
+         "say": "He is {w:dharma} itself. If you take his wife, Lanka will burn.",
+         "who": "Maricha",
+         "portrait": "rakshasa"
+        },
+        {
+         "say": "But Ravana will not listen. He commands Maricha to help him, on pain of death."
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "music": "forest"
+        },
+        {
+         "quiz": "artha",
+         "shlokaId": "s-ramo-vigrahavan",
+         "onCorrect": [
+          {
+           "say": "Even his enemies know what my brother is.",
+           "who": "person.lakshmana",
+           "portrait": "lakshmana"
+          }
+         ],
+         "onWrong": [
+          {
+           "say": "Look at the verse card again, {player}. Even his enemies know what my brother is.",
+           "who": "person.lakshmana",
+           "portrait": "lakshmana"
+          }
+         ]
+        },
+        {
+         "set": "ch3.heard_vigrahavan"
+        },
+        {
+         "objective": "Return to Panchavati. Recite Maricha's warning with the sage at the shrine."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.chase_1",
+   "cmds": [
+    {
+     "say": "A flash of gold between the trees! The deer leaps away, just out of reach."
+    },
+    {
+     "set": "ch3.chase_1"
+    }
+   ]
+  },
+  {
+   "id": "ch3.chase_2",
+   "cmds": [
+    {
+     "say": "The deer stops and looks back, as if waiting. When you come near, it is gone again."
+    },
+    {
+     "set": "ch3.chase_2"
+    }
+   ]
+  },
+  {
+   "id": "ch3.chase_3",
+   "cmds": [
+    {
+     "say": "The forest grows strange. Some of the deer around you are only shadows. Rama grips his bow."
+    },
+    {
+     "set": "ch3.chase_3"
+    },
+    {
+     "objective": "Catch up with the golden deer at the far end of the forest."
+    }
+   ]
+  },
+  {
+   "id": "ch3.maricha_deer",
+   "cmds": [
+    {
+     "if": "ch3.maricha_defeated",
+     "then": [
+      {
+       "say": "Only trampled grass remains."
+      }
+     ],
+     "else": [
+      {
+       "say": "The golden deer stands still at last, in the middle of the clearing."
+      },
+      {
+       "say": "Enough. Show yourself!",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "choice": "Rest and save before the battle?",
+       "options": [
+        {
+         "label": "Rest and save, then fight",
+         "set": "ch3.tmp_rest"
+        },
+        {
+         "label": "Fight now"
+        }
+       ]
+      },
+      {
+       "if": "ch3.tmp_rest",
+       "then": [
+        {
+         "unset": "ch3.tmp_rest"
+        },
+        {
+         "rest": true
+        },
+        {
+         "save": true
+        }
+       ]
+      },
+      {
+       "battle": {
+        "enemies": [
+         {
+          "id": "maricha",
+          "level": 14
+         }
+        ],
+        "kind": "boss",
+        "canRun": false,
+        "canLose": false,
+        "bg": "forest",
+        "music": "boss",
+        "intro": "The golden deer is Maricha in disguise!"
+       },
+       "onWin": [
+        {
+         "music": "sorrow"
+        },
+        {
+         "say": "Struck by Rama's arrow, Maricha takes his true form. With his last breath he cries out in Rama's own voice: \"Ha Sita! Ha Lakshmana!\""
+        },
+        {
+         "say": "Lakshmana was right. That cry will reach Sita. What will she think? We must hurry back!",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "say": "On the way, Rama meets Lakshmana running toward him."
+        },
+        {
+         "say": "Brother! Sita heard the cry and begged me to go to you. When I would not, she said terrible things. I had to come.",
+         "who": "person.lakshmana",
+         "portrait": "lakshmana"
+        },
+        {
+         "say": "You left her alone? Quickly, Lakshmana!",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "join": "lakshmana"
+        },
+        {
+         "say": "Lakshmana rejoins your party."
+        },
+        {
+         "set": "ch3.maricha_defeated"
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "warp": "panchavati",
+         "x": 16,
+         "y": 10,
+         "facing": "up"
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "say": "The hut is empty. Flowers lie scattered on the ground. Sita is gone."
+        },
+        {
+         "say": "Sita! Sita!",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "say": "Rama searches every grove and riverbank, calling her name. The trees and the river give no answer."
+        },
+        {
+         "say": "Brother, look: broken flowers, and marks on the ground leading south, across the river.",
+         "who": "person.lakshmana",
+         "portrait": "lakshmana"
+        },
+        {
+         "rest": true
+        },
+        {
+         "objective": "Search for Sita. Cross the Godavari to the south."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.jatayu",
+   "cmds": [
+    {
+     "if": "ch3.jatayu_done",
+     "then": [
+      {
+       "say": "Only feathers remain in the quiet glade."
+      }
+     ],
+     "else": [
+      {
+       "music": "sorrow"
+      },
+      {
+       "say": "In a clearing, among the broken pieces of a great chariot, lies Jatayu, king of the vultures, gravely wounded."
+      },
+      {
+       "say": "Jatayu! Friend of my father, what has happened?",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "Rama... {w:ayushmat} (long-lived one), listen to me.",
+       "who": "person.jatayu",
+       "portrait": "jatayu"
+      },
+      {
+       "shloka": "s-aranya-3",
+       "mode": "hear"
+      },
+      {
+       "say": "It was Ravana. He took Sita in his flying chariot and flew south. I broke his chariot and fought him with all my strength.",
+       "who": "person.jatayu",
+       "portrait": "jatayu"
+      },
+      {
+       "say": "But I am old, and he struck me down. She cried out your name, Rama. Go south. You will find her.",
+       "who": "person.jatayu",
+       "portrait": "jatayu"
+      },
+      {
+       "say": "With these words, Jatayu, faithful friend of Dasharatha, gives up his life in Rama's arms."
+      },
+      {
+       "say": "Rama himself performs the last rites for Jatayu, as he would for his own father."
+      },
+      {
+       "say": "He gave his life for Sita. We will not forget him.",
+       "who": "person.lakshmana",
+       "portrait": "lakshmana"
+      },
+      {
+       "music": "forest"
+      },
+      {
+       "set": "ch3.jatayu_done"
+      },
+      {
+       "objective": "Go east toward Lake Pampa."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.glade_locked",
+   "cmds": [
+    {
+     "say": "Something lies in the clearing ahead. You cannot pass by."
+    }
+   ]
+  },
+  {
+   "id": "ch3.kabandha",
+   "cmds": [
+    {
+     "if": "ch3.kabandha_freed",
+     "then": [
+      {
+       "say": "The hollow is peaceful now."
+      }
+     ],
+     "else": [
+      {
+       "say": "A huge, headless form blocks the hollow. Its long arms sweep the ground, catching anything that comes near. This is Kabandha."
+      },
+      {
+       "choice": "Face Kabandha?",
+       "options": [
+        {
+         "label": "Rest and save, then face him",
+         "set": "ch3.tmp_kabandha_rest"
+        },
+        {
+         "label": "Face him now",
+         "set": "ch3.tmp_kabandha"
+        },
+        {
+         "label": "Leave him be"
+        }
+       ]
+      },
+      {
+       "if": "ch3.tmp_kabandha_rest",
+       "then": [
+        {
+         "unset": "ch3.tmp_kabandha_rest"
+        },
+        {
+         "rest": true
+        },
+        {
+         "save": true
+        },
+        {
+         "set": "ch3.tmp_kabandha"
+        }
+       ]
+      },
+      {
+       "if": "ch3.tmp_kabandha",
+       "then": [
+        {
+         "unset": "ch3.tmp_kabandha"
+        },
+        {
+         "battle": {
+          "enemies": [
+           {
+            "id": "kabandha",
+            "level": 14
+           }
+          ],
+          "kind": "boss",
+          "canRun": false,
+          "canLose": false,
+          "bg": "forest",
+          "music": "boss",
+          "intro": "Kabandha seizes the princes in his long arms!"
+         },
+         "onWin": [
+          {
+           "say": "Rama and Lakshmana cut free of Kabandha's arms. His curse is broken, and a shining celestial rises from the hollow."
+          },
+          {
+           "say": "Thank you, Rama. I was cursed to take that form until you came. Hear my advice.",
+           "who": "Danu",
+           "portrait": "rishi"
+          },
+          {
+           "say": "Go to Lake Pampa, where the holy woman Shabari waits for you. Then find Sugriva, the vanara, on Rishyamuka hill. He will help you find Sita.",
+           "who": "Danu",
+           "portrait": "rishi"
+          },
+          {
+           "give": "oshadhi",
+           "qty": 2
+          },
+          {
+           "say": "You received 2 healing herbs."
+          },
+          {
+           "set": "ch3.kabandha_freed"
+          }
+         ]
+        }
+       ],
+       "else": [
+        {
+         "say": "You step back quietly."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.enter_pampa",
+   "cmds": [
+    {
+     "if": "ch3.jatayu_done&!ch3.at_pampa",
+     "then": [
+      {
+       "say": "Lake Pampa: clear water, lotuses of every colour, and the old hermitage of the sage Matanga on its shore."
+      },
+      {
+       "rest": true
+      },
+      {
+       "set": "ch3.at_pampa"
+      },
+      {
+       "objective": "Find Shabari at Matanga's hermitage."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.shabari",
+   "cmds": [
+    {
+     "if": "ch3.complete",
+     "then": [
+      {
+       "say": "Shabari's seat by the hermitage is empty, but her flowers still bloom."
+      }
+     ],
+     "else": [
+      {
+       "say": "An old woman in bark garments rises to greet them, her eyes full of light. She is Shabari, the last disciple of the sage Matanga."
+      },
+      {
+       "say": "Rama! My teachers told me you would come, and that I must wait for you. I have waited all these years.",
+       "who": "person.shabari",
+       "portrait": "shabari"
+      },
+      {
+       "say": "Now that I have seen you, my life is complete. Please accept these fruits. I gathered them from the forest for you.",
+       "who": "person.shabari",
+       "portrait": "shabari"
+      },
+      {
+       "say": "Your devotion honours us, Shabari.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "Go to Rishyamuka hill, east of here. Sugriva the vanara lives there in hiding, with four companions. He will help you find Sita.",
+       "who": "person.shabari",
+       "portrait": "shabari"
+      },
+      {
+       "say": "Then, with Rama's blessing, Shabari enters the sacred fire and rises, radiant, to the world of her teachers."
+      },
+      {
+       "music": "shloka"
+      },
+      {
+       "say": "Brother, we have a path now. Sugriva will help us.",
+       "who": "person.lakshmana",
+       "portrait": "lakshmana"
+      },
+      {
+       "say": "Then we go to Rishyamuka. Sita, we are coming.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "So ends the third book, the Book of the Forest."
+      },
+      {
+       "set": "ch3.complete"
+      },
+      {
+       "objective": "Go east to Rishyamuka hill to begin Book 4."
+      },
+      {
+       "rest": true
+      },
+      {
+       "save": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.pampa_locked",
+   "cmds": [
+    {
+     "say": "Shabari is waiting for us at the hermitage, brother. Let us see her first.",
+     "who": "person.lakshmana",
+     "portrait": "lakshmana"
+    }
+   ]
+  },
+  {
+   "id": "ch3.pampa_merchant",
+   "cmds": [
+    {
+     "say": "Pilgrims come to Pampa from everywhere. I sell what they need.",
+     "who": "Pampa trader",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch3.matanga_disciple",
+   "cmds": [
+    {
+     "say": "The flowers the sage Matanga's students wore never fade, they say. Rest at our shrine. It is a place of great peace.",
+     "who": "Sage",
+     "portrait": "rishika"
+    }
+   ]
+  },
+  {
+   "id": "ch3.pampa_child",
+   "cmds": [
+    {
+     "say": "There are monkeys on the hill to the east! Big ones! They watch everyone who comes to the lake.",
+     "who": "Child",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch3.grass_chest",
+   "cmds": [
+    {
+     "say": "Deep in the kusha grass, a sage has hidden a chest of healing herbs."
+    },
+    {
+     "give": "oshadhi",
+     "qty": 1
+    },
+    {
+     "say": "You found 1 healing herb."
+    }
+   ]
+  }
+ ],
+ "walkthrough": [
+  {
+   "chapter": 3,
+   "map": "dandaka_vana",
+   "action": {
+    "reach": {
+     "x": 3,
+     "y": 13
+    }
+   },
+   "expectFlag": "ch3.started"
+  },
+  {
+   "chapter": 3,
+   "map": "dandaka_vana",
+   "action": {
+    "talk": "sage_elder"
+   },
+   "expectFlag": "ch3.sages_asked"
+  },
+  {
+   "chapter": 3,
+   "map": "panchavati",
+   "action": {
+    "reach": {
+     "x": 2,
+     "y": 10
+    }
+   },
+   "expectFlag": "ch3.at_panchavati"
+  },
+  {
+   "chapter": 3,
+   "map": "khara_camp",
+   "action": {
+    "talk": "khara"
+   },
+   "expectFlag": "ch3.khara_defeated"
+  },
+  {
+   "chapter": 3,
+   "map": "panchavati",
+   "action": {
+    "talk": "keeper"
+   },
+   "expectFlag": "ch3.restored_vigrahavan"
+  },
+  {
+   "chapter": 3,
+   "map": "panchavati",
+   "action": {
+    "talk": "sita"
+   },
+   "expectFlag": "ch3.deer_seen"
+  },
+  {
+   "chapter": 3,
+   "map": "mriga_vana",
+   "action": {
+    "talk": "deer_far"
+   },
+   "expectFlag": "ch3.maricha_defeated"
+  },
+  {
+   "chapter": 3,
+   "map": "jatayu_glade",
+   "action": {
+    "talk": "jatayu"
+   },
+   "expectFlag": "ch3.jatayu_done"
+  },
+  {
+   "chapter": 3,
+   "map": "shabari_ashrama",
+   "action": {
+    "talk": "shabari"
+   },
+   "expectFlag": "ch3.complete"
+  }
+ ]
+}

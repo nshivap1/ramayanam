@@ -1,0 +1,1960 @@
+{
+ "version": 1,
+ "chapters": [
+  {
+   "kanda": 4,
+   "nameId": "kanda.4",
+   "summary": "Kishkindha: Hanuman meets Rama with flawless speech, Rama and Sugriva become friends, and the vanaras search the south until Jambavan reminds Hanuman of his strength.",
+   "startMap": "rishyamuka",
+   "startX": 1,
+   "startY": 15,
+   "shlokaIds": [
+    "s-nanrgveda",
+    "s-vyakaranam",
+    "s-naham-janami"
+   ],
+   "keyShloka": "s-vyakaranam"
+  }
+ ],
+ "maps": [
+  {
+   "id": "rishyamuka",
+   "nameId": "place.rishyamuka",
+   "kanda": 4,
+   "width": 32,
+   "height": 22,
+   "legend": {
+    "\"": "kusha",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "C": "cliff",
+    "L": "lotus",
+    "M": "mountain",
+    "O": "boulder",
+    "R": "reeds",
+    "T": "tree",
+    "U": "cave_entrance",
+    "X": "fire_altar",
+    "b": "bush",
+    "f": "flowers_red",
+    "r": "rock",
+    "s": "sand",
+    "~": "water"
+   },
+   "ground": [
+    "MMMMMMMMMMMMMMMMMMMMMMMMMMUMMMMM",
+    "MMMMMMMMMMMMMMMMMMCCCCCCCC:CCCMM",
+    "MMMCCCCCCCMMMMMMMC.f..,...:...CM",
+    "MMC..r\"\"\"CCMMMMMMC...X....:.bOCM",
+    "MC..::::::::::::::.....::::...CM",
+    "MC..:.\"\"\"...r....C.,.......,..CM",
+    "MC..:.b\"\".....O..C...b.......,CM",
+    "MCC.:........rr..CCCCCCCCCCCCCCM",
+    "MC..:..\"\"\".r....rr.CCCCCCCCCCCCM",
+    "MC..:::::::::::::::::::::.OO..CM",
+    "MC.r.....,....\"\"\"\"\"...r.:..r..CM",
+    "MC....bb.....\"\"\"\"\"\"\"..O.:..\"\".CM",
+    "MCrr..bb....\"\"\"\"\"\"\"\"..r.:.\"\"\".CM",
+    "MC....OO.,..\"\"O\"\"\"....rr:..f..CM",
+    "MC.?........,.......O...:..O..CM",
+    ":::::::::::::::::::::::::.....CM",
+    "MCsssss..,...\"\"\"\"\".......,..b.CM",
+    "MR~~R~~s...\"\"\"\"\"\"..T....T.....CM",
+    "M~~L~~~s..\"b\"\"\"...TTT...TT...TCM",
+    "M~~~~LRs......,TTTTTTTTTTTTTTTCM",
+    "MR~~~Rss..TTTTTTTTTTTTTTTTTTTTCM",
+    "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "mendicant",
+     "sprite": "rishi",
+     "x": 12,
+     "y": 9,
+     "facing": "right",
+     "event": "ch4.mendicant",
+     "showIf": "!ch4.met_mendicant"
+    },
+    {
+     "id": "hanuman_test",
+     "sprite": "hanuman",
+     "x": 12,
+     "y": 9,
+     "facing": "right",
+     "event": "ch4.hanuman_retry",
+     "showIf": "ch4.met_mendicant&!ch4.hanuman_joined"
+    },
+    {
+     "id": "sentinel",
+     "sprite": "vanara",
+     "x": 17,
+     "y": 4,
+     "facing": "left",
+     "event": "ch4.sentinel",
+     "showIf": "!ch4.hanuman_joined"
+    },
+    {
+     "id": "sugriva",
+     "sprite": "sugriva",
+     "x": 24,
+     "y": 3,
+     "facing": "down",
+     "event": "ch4.sugriva_alliance",
+     "showIf": "!ch4.alliance"
+    },
+    {
+     "id": "nila",
+     "sprite": "vanara",
+     "x": 27,
+     "y": 5,
+     "facing": "left",
+     "event": "ch4.nila"
+    },
+    {
+     "id": "minister",
+     "sprite": "vanara",
+     "x": 20,
+     "y": 6,
+     "facing": "up",
+     "event": "ch4.minister"
+    },
+    {
+     "id": "pampa_rishi",
+     "sprite": "rishi",
+     "x": 9,
+     "y": 16,
+     "facing": "left",
+     "event": "ch4.pampa_rishi"
+    }
+   ],
+   "warps": [
+    {
+     "x": 26,
+     "y": 0,
+     "to": "kishkindha_caves",
+     "tx": 5,
+     "ty": 22,
+     "facing": "up",
+     "requires": "ch4.alliance",
+     "lockedEvent": "ch4.cave_locked"
+    },
+    {
+     "x": 0,
+     "y": 15,
+     "to": "shabari_ashrama",
+     "tx": 30,
+     "ty": 11,
+     "facing": "left"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 2,
+     "y": 15,
+     "w": 1,
+     "h": 1,
+     "event": "ch4.arrive_rishyamuka",
+     "requires": "!ch4.started"
+    }
+   ],
+   "signs": [
+    {
+     "x": 3,
+     "y": 14,
+     "text": "Rishyamuka hill. The vanara Sugriva lives in hiding on its summit. Lake Pampa lies below."
+    }
+   ],
+   "encounters": {
+    "rate": 0.1,
+    "table": [
+     {
+      "enemyId": "vrka",
+      "weight": 3,
+      "minLevel": 15,
+      "maxLevel": 16
+     },
+     {
+      "enemyId": "nishachara",
+      "weight": 2,
+      "minLevel": 15,
+      "maxLevel": 17
+     }
+    ]
+   }
+  },
+  {
+   "id": "kishkindha_caves",
+   "nameId": "place.kishkindha_caves",
+   "kanda": 4,
+   "width": 34,
+   "height": 24,
+   "legend": {
+    "!": "banner",
+    "&": "market_stall",
+    "*": "lamp",
+    "+": "palace_floor",
+    ",": "grass_flowers",
+    ".": "grass",
+    "?": "sign",
+    "G": "cave_wall",
+    "H": "bridge_v",
+    "I": "pillar",
+    "K": "throne",
+    "L": "lotus",
+    "O": "boulder",
+    "P": "tree_palm",
+    "Q": "well",
+    "R": "reeds",
+    "S": "shrine",
+    "T": "tree",
+    "U": "cave_entrance",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "_": "cave_floor",
+    "b": "bush",
+    "c": "carpet",
+    "d": "hut_door",
+    "i": "hut_window",
+    "q": "torch",
+    "r": "rock",
+    "~": "water"
+   },
+   "ground": [
+    "GGGGqGGGGGGGGqGGGGGGqGGGGGGGqGGGGG",
+    "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
+    "G_*S___GGGG!++*++K++*+!G_[^]_[^]_G",
+    "G______GGGG+I++++c+++I+G_idi_idi_G",
+    "q______GGGG++++++c+++++q_________G",
+    "G______qGGG+I++++c+++I+G,_______,G",
+    "G______GGGGGGGGGGcGGGGGG_________G",
+    "G_b_________________O__________b_G",
+    "G________________________________q",
+    "G_&&&___&&__TP..T__T.,.q_________G",
+    "q___________.,Q..__.,.,._________U",
+    "G___________...,.._....T___GG____G",
+    "GrrO________T.,..________________q",
+    "G___________q________________O___G",
+    "GR~~~H~~~L~~~~~~~~~~R~~~L~~H~~~~~G",
+    "G~~~~H~~~~~~R~~~~L~~~~~~~~~H~~~~RG",
+    "G________________________________G",
+    "Gq______O_______________[^]_[^]_qG",
+    "q_r______[^]__T....,.___idi_idi__G",
+    "G________idi__.,.T...____________G",
+    "G__r__________..,...T____________q",
+    "G___?_____O_r_____GG_____q_____r_G",
+    "G________________________________G",
+    "GGGGGUGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
+   ],
+   "music": "kishkindha",
+   "battleBg": "cave",
+   "light": "interior",
+   "npcs": [
+    {
+     "id": "keeper",
+     "sprite": "vanara",
+     "x": 5,
+     "y": 2,
+     "facing": "left",
+     "event": "ch4.shrine_keeper"
+    },
+    {
+     "id": "angada",
+     "sprite": "angada",
+     "x": 18,
+     "y": 3,
+     "facing": "down",
+     "event": "ch4.council"
+    },
+    {
+     "id": "merchant",
+     "sprite": "merchant",
+     "x": 5,
+     "y": 9,
+     "facing": "down",
+     "event": "ch4.merchant"
+    },
+    {
+     "id": "fruit_seller",
+     "sprite": "vanara",
+     "x": 10,
+     "y": 9,
+     "facing": "down",
+     "event": "ch4.fruit_seller"
+    },
+    {
+     "id": "child",
+     "sprite": "child",
+     "x": 15,
+     "y": 10,
+     "facing": "left",
+     "event": "ch4.vanara_child"
+    },
+    {
+     "id": "mother",
+     "sprite": "vanara",
+     "x": 26,
+     "y": 4,
+     "facing": "down",
+     "event": "ch4.vanara_home"
+    },
+    {
+     "id": "elder",
+     "sprite": "vanara",
+     "x": 22,
+     "y": 12,
+     "facing": "left",
+     "event": "ch4.vanara_elder"
+    },
+    {
+     "id": "east_guard",
+     "sprite": "vanara",
+     "x": 31,
+     "y": 9,
+     "facing": "down",
+     "event": "ch4.east_guard"
+    },
+    {
+     "id": "south_guard",
+     "sprite": "vanara",
+     "x": 6,
+     "y": 21,
+     "facing": "left",
+     "event": "ch4.south_guard"
+    }
+   ],
+   "warps": [
+    {
+     "x": 5,
+     "y": 23,
+     "to": "rishyamuka",
+     "tx": 26,
+     "ty": 1,
+     "facing": "down"
+    },
+    {
+     "x": 33,
+     "y": 10,
+     "to": "vindhya_search",
+     "tx": 1,
+     "ty": 10,
+     "facing": "right",
+     "requires": "ch4.search_begun&restored.s-vyakaranam",
+     "lockedEvent": "ch4.east_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 5,
+     "y": 21,
+     "w": 1,
+     "h": 1,
+     "event": "ch4.arrive_kishkindha",
+     "requires": "!ch4.kishkindha_arrived"
+    }
+   ],
+   "signs": [
+    {
+     "x": 4,
+     "y": 21,
+     "text": "Kishkindha, the cave city of the vanaras. Throne hall to the north, shrine to the north-west."
+    }
+   ]
+  },
+  {
+   "id": "vindhya_search",
+   "nameId": "place.vindhya_search",
+   "kanda": 4,
+   "width": 36,
+   "height": 22,
+   "legend": {
+    "\"": "kusha",
+    "$": "chest",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "=": "bridge_h",
+    "A": "tree_ashoka",
+    "C": "cliff",
+    "M": "mountain",
+    "O": "boulder",
+    "P": "tree_palm",
+    "T": "tree",
+    "U": "cave_entrance",
+    "b": "bush",
+    "e": "shore_e",
+    "f": "flowers_red",
+    "n": "shore_n",
+    "o": "ocean",
+    "r": "rock",
+    "s": "sand",
+    "w": "shore_w"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTMMMMMMMMMMMMMMTTTTTTTTTTTTTTTTTTTT",
+    "T.MMMMMCMMMMMMMM.we................T",
+    "T.MMMMMMCUCMMMMM.we.\"\"b\"\"\"\"..TA....T",
+    "T.CCCCC,,,,CCCCC.we.\"\"\"\"\".\"T....T..T",
+    "T..b...f...f.....we.\"\"\"\"\"\"\"........T",
+    "T.......f.f....T.we.\"\"\"\"\"\"\".T....T.T",
+    "T...T..f.....T...we.\"\"\"\"\"\"\"........T",
+    "T....T........T..we.\"\"...r.......b.T",
+    "T............A...we.T...:::::::....T",
+    ":::::::::f....b..we....b:.....:....T",
+    "T.T......::::::::==::::::.....::::::",
+    "T.....r........r.we.......r..P.OO.PT",
+    "T..\".\"\"\"\"b..T....we..\"\"\"\"\"\".rrsssrsT",
+    "T..\"\"\"\"\"\"\".\"\"\"\"..we...\"\"\"\"\"\".ssssssT",
+    "T..\"\"\"\"\"\"\".\"\"\"\"..we.T\"O\"\"\"\"\".nnnnnnT",
+    "T..\"\"\"\"\"\"\".\"\".\"..we..\"\"\"\"\"\"\"wooooooT",
+    "T..\"\"T.\"\"\".\"\"\"b..we..\"\"\"\"\"\"\"wooooooT",
+    "T..,......T\"\"\"\"..we...T.....wooooooT",
+    "T$T..............we.......b.wooooooT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "svayamprabha",
+     "sprite": "rishika",
+     "x": 9,
+     "y": 6,
+     "facing": "down",
+     "event": "ch4.svayamprabha"
+    },
+    {
+     "id": "sampati",
+     "sprite": "jatayu",
+     "x": 31,
+     "y": 14,
+     "facing": "left",
+     "event": "ch4.sampati"
+    },
+    {
+     "id": "angada_v",
+     "sprite": "angada",
+     "x": 30,
+     "y": 13,
+     "facing": "down",
+     "event": "ch4.angada_despair"
+    },
+    {
+     "id": "scout",
+     "sprite": "vanara",
+     "x": 21,
+     "y": 10,
+     "facing": "left",
+     "event": "ch4.scout"
+    },
+    {
+     "id": "lurker",
+     "sprite": "rakshasa",
+     "x": 25,
+     "y": 16,
+     "facing": "left",
+     "event": "ch4.vindhya_lurker",
+     "showIf": "!ch4.lurker_beaten"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 10,
+     "to": "kishkindha_caves",
+     "tx": 32,
+     "ty": 10,
+     "facing": "left"
+    },
+    {
+     "x": 35,
+     "y": 11,
+     "to": "mahendra_hill",
+     "tx": 1,
+     "ty": 16,
+     "facing": "right",
+     "requires": "ch4.sampati",
+     "lockedEvent": "ch4.mahendra_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 2,
+     "y": 9,
+     "w": 1,
+     "h": 3,
+     "event": "ch4.vindhya_enter",
+     "requires": "!ch4.vindhya_entered"
+    },
+    {
+     "x": 1,
+     "y": 18,
+     "w": 1,
+     "h": 1,
+     "event": "ch4.forest_chest",
+     "once": true
+    }
+   ],
+   "encounters": {
+    "rate": 0.1,
+    "table": [
+     {
+      "enemyId": "vrka",
+      "weight": 3,
+      "minLevel": 16,
+      "maxLevel": 18
+     },
+     {
+      "enemyId": "nishachara",
+      "weight": 2,
+      "minLevel": 16,
+      "maxLevel": 18
+     },
+     {
+      "enemyId": "yatudhana",
+      "weight": 1,
+      "minLevel": 17,
+      "maxLevel": 18
+     }
+    ]
+   }
+  },
+  {
+   "id": "mahendra_hill",
+   "nameId": "place.mahendra_hill",
+   "kanda": 4,
+   "width": 30,
+   "height": 22,
+   "legend": {
+    "\"": "kusha",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "C": "cliff",
+    "M": "mountain",
+    "O": "boulder",
+    "T": "tree",
+    "b": "bush",
+    "f": "flowers_red",
+    "n": "shore_n",
+    "o": "ocean",
+    "r": "rock",
+    "s": "sand",
+    "w": "shore_w"
+   },
+   "ground": [
+    "MMMMMMMMMMMMMMMMMMMMMMMMMMMooo",
+    "MMMMMMMMMMMMMMMMMCMMMMM:MMwooo",
+    "MMMMMMMMMMMMMMMMMC.r...:.rwooo",
+    "MMMMMMMMMMMMMMMMMC...,.:..wooo",
+    "MMMMMMMMMMMMMMMMMC...:::..wooo",
+    "MMMMMMMMMMCCCCCCCC...:....wooo",
+    "MMMMMMMMMM.......Cr..:..b.wooo",
+    "MCCCCCC...TT.::::::,::....wooo",
+    "MCCCCCC......:...CCCCCCCCCwooo",
+    "M.......::::::............wooo",
+    "M.\"\"\"\"\"O:..b..\"\".\"\"r\"...r.wooo",
+    "M.\"\"\"\"\".:::::.\"\"\"\"\"\"\"..O..wooo",
+    "M.\"\"\"\"\".....:.\"\"\"\"\"\"\".r...wooo",
+    "M.\"\"\"\"\"..rr.:.\"\"\"\"\"\"\"....Owooo",
+    "M...T..r..b.:...r.f...Tr..wooo",
+    "Msss?sssssss:ssssssssssssswooo",
+    "s::::::::::::ssssssssssssswooo",
+    "Mnnnnnnnnnnnnnnnnnnnnnnnnnwooo",
+    "oooooooooooooooooooooooooooooo",
+    "oooooooooooooooooooooooooooooo",
+    "oooooooooooooooooooooooooooooo",
+    "oooooooooooooooooooooooooooooo"
+   ],
+   "music": "ocean",
+   "battleBg": "ocean",
+   "light": "dusk",
+   "npcs": [
+    {
+     "id": "gaja",
+     "sprite": "vanara",
+     "x": 6,
+     "y": 16,
+     "facing": "down",
+     "event": "ch4.vanara_gaja"
+    },
+    {
+     "id": "gavaksha",
+     "sprite": "vanara",
+     "x": 10,
+     "y": 15,
+     "facing": "down",
+     "event": "ch4.vanara_gavaksha"
+    },
+    {
+     "id": "sharabha",
+     "sprite": "vanara",
+     "x": 16,
+     "y": 16,
+     "facing": "down",
+     "event": "ch4.vanara_sharabha"
+    },
+    {
+     "id": "mainda",
+     "sprite": "vanara",
+     "x": 20,
+     "y": 15,
+     "facing": "down",
+     "event": "ch4.vanara_mainda"
+    },
+    {
+     "id": "angada_m",
+     "sprite": "angada",
+     "x": 22,
+     "y": 4,
+     "facing": "left",
+     "event": "ch4.jambavan_speech"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 16,
+     "to": "vindhya_search",
+     "tx": 34,
+     "ty": 11,
+     "facing": "left"
+    },
+    {
+     "x": 23,
+     "y": 1,
+     "to": "ocean_leap",
+     "tx": 2,
+     "ty": 8,
+     "facing": "right",
+     "requires": "ch4.complete",
+     "lockedEvent": "ch4.summit_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 2,
+     "y": 15,
+     "w": 1,
+     "h": 2,
+     "event": "ch4.mahendra_enter",
+     "requires": "!ch4.mahendra_reached"
+    }
+   ],
+   "signs": [
+    {
+     "x": 4,
+     "y": 15,
+     "text": "Mahendra hill, above the southern ocean."
+    }
+   ],
+   "encounters": {
+    "rate": 0.08,
+    "table": [
+     {
+      "enemyId": "vrka",
+      "weight": 2,
+      "minLevel": 17,
+      "maxLevel": 18
+     },
+     {
+      "enemyId": "nishachara",
+      "weight": 2,
+      "minLevel": 17,
+      "maxLevel": 18
+     }
+    ]
+   }
+  }
+ ],
+ "events": [
+  {
+   "id": "ch4.arrive_rishyamuka",
+   "cmds": [
+    {
+     "chapter": 4
+    },
+    {
+     "music": "forest"
+    },
+    {
+     "say": "Following Shabari's directions, Rama and Lakshmana walk along Lake Pampa toward the hill {n:place.rishyamuka}."
+    },
+    {
+     "say": "Rama still grieves for Sita, but the lotus lake and the birdsong lift his heart a little."
+    },
+    {
+     "say": "Shabari said the vanara Sugriva hides on this hill. He will help us find her.",
+     "who": "person.lakshmana",
+     "portrait": "lakshmana"
+    },
+    {
+     "rest": true
+    },
+    {
+     "objective": "Climb Rishyamuka hill and find Sugriva."
+    },
+    {
+     "set": "ch4.started"
+    }
+   ]
+  },
+  {
+   "id": "ch4.pampa_rishi",
+   "cmds": [
+    {
+     "say": "These are the shores of Pampa. Shabari served the sages here all her life.",
+     "who": "Hermit",
+     "portrait": "rishi"
+    },
+    {
+     "say": "The vanaras on the hill above watch every traveller. Walk peacefully and they will come to you.",
+     "who": "Hermit",
+     "portrait": "rishi"
+    }
+   ]
+  },
+  {
+   "id": "ch4.mendicant",
+   "cmds": [
+    {
+     "say": "A wandering mendicant comes down the path, bows, and greets the princes in a gentle voice."
+    },
+    {
+     "say": "Who are you, radiant ones, walking these hills with bows in your hands and bark garments on your shoulders? Sugriva, king of the vanaras, sent me to ask.",
+     "who": "Mendicant",
+     "portrait": "rishi"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "label": "k_who2"
+      },
+      {
+       "choice": "The mendicant asks you: \"Who are these two?\"",
+       "options": [
+        {
+         "label": "We are going up to see Sugriva.",
+         "goto": "k_who2_m0"
+        },
+        {
+         "label": "Rama and Lakshmana, the sons of King Dasharatha."
+        },
+        {
+         "label": "They have come from Ayodhya.",
+         "goto": "k_who2_m2"
+        }
+       ]
+      },
+      {
+       "goto": "k_who2_end"
+      },
+      {
+       "label": "k_who2_m0"
+      },
+      {
+       "say": "Sugriva himself sent me here. But first tell me: who are they?",
+       "who": "Mendicant",
+       "portrait": "rishi"
+      },
+      {
+       "goto": "k_who2"
+      },
+      {
+       "label": "k_who2_m2"
+      },
+      {
+       "say": "From Ayodhya! But who are they?",
+       "who": "Mendicant",
+       "portrait": "rishi"
+      },
+      {
+       "goto": "k_who2"
+      },
+      {
+       "label": "k_who2_end"
+      },
+      {
+       "say": "The sons of Dasharatha! Then my king will be glad to meet them.",
+       "who": "Mendicant",
+       "portrait": "rishi"
+      }
+     ]
+    },
+    {
+     "say": "His words are clear, measured and sweet. Rama turns to Lakshmana in wonder."
+    },
+    {
+     "say": "Listen to how he speaks, Lakshmana. No one could speak like this without having learned the Vedas.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "shloka": "s-nanrgveda",
+     "mode": "hear"
+    },
+    {
+     "say": "And surely he has studied the whole of grammar, again and again. He has said so much, yet not one word was wrong.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "shloka": "s-vyakaranam",
+     "mode": "hear"
+    },
+    {
+     "say": "Rama praises {w:vyakarana} itself! Your verse book glows: this is the key verse of Kishkindha."
+    },
+    {
+     "quiz": "viccheda",
+     "shlokaId": "s-vyakaranam",
+     "onCorrect": [
+      {
+       "say": "Exactly. Words joined by sandhi come apart cleanly when you know the rules."
+      }
+     ],
+     "onWrong": [
+      {
+       "say": "Not quite. Sandhi joins words at their edges; learn the split and the words appear."
+      }
+     ]
+    },
+    {
+     "say": "You honour me, prince. Forgive my disguise. I am Hanuman, son of the Wind, minister to Sugriva.",
+     "who": "Mendicant",
+     "portrait": "rishi"
+    },
+    {
+     "set": "ch4.met_mendicant"
+    },
+    {
+     "say": "Your young companion carries a book of verses. Let us test words together, friend, so I can tell my king what kind of people you are.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "label": "duel"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "hanuman_duel",
+        "level": 16
+       }
+      ],
+      "kind": "duel",
+      "canRun": false,
+      "canLose": true,
+      "bg": "forest",
+      "music": "duel",
+      "intro": "Hanuman invites you to a friendly contest of verses."
+     },
+     "onWin": [
+      {
+       "say": "Your words ring true, and your heart is honest. I am persuaded.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "join": "hanuman"
+      },
+      {
+       "say": "Hanuman joins your party!"
+      },
+      {
+       "say": "He takes his true form, mighty as a hill, and lifts both princes onto his shoulders to carry them to his king."
+      },
+      {
+       "set": "ch4.hanuman_joined"
+      },
+      {
+       "objective": "Follow the path up to Sugriva on the hilltop."
+      }
+     ],
+     "onLose": [
+      {
+       "say": "Well argued, but not yet convincing.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "choice": "Debate with Hanuman again?",
+       "options": [
+        {
+         "label": "Debate again",
+         "goto": "duel"
+        },
+        {
+         "label": "Not now",
+         "goto": "later"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goto": "done"
+    },
+    {
+     "label": "later"
+    },
+    {
+     "say": "Gather your thoughts, friend, and speak with me again when you are ready.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "label": "done"
+    }
+   ]
+  },
+  {
+   "id": "ch4.hanuman_retry",
+   "cmds": [
+    {
+     "say": "Shall we test words again, friend? Speak, and I will listen.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "label": "duel"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "hanuman_duel",
+        "level": 16
+       }
+      ],
+      "kind": "duel",
+      "canRun": false,
+      "canLose": true,
+      "bg": "forest",
+      "music": "duel",
+      "intro": "Hanuman smiles and waits for your verse."
+     },
+     "onWin": [
+      {
+       "say": "Your words ring true, and your heart is honest. I am persuaded.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "join": "hanuman"
+      },
+      {
+       "say": "Hanuman joins your party!"
+      },
+      {
+       "say": "He takes his true form and lifts both princes onto his shoulders to carry them to his king."
+      },
+      {
+       "set": "ch4.hanuman_joined"
+      },
+      {
+       "objective": "Follow the path up to Sugriva on the hilltop."
+      }
+     ],
+     "onLose": [
+      {
+       "say": "Not yet convincing, but closer.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "choice": "Debate with Hanuman again?",
+       "options": [
+        {
+         "label": "Debate again",
+         "goto": "duel"
+        },
+        {
+         "label": "Not now",
+         "goto": "later"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goto": "done"
+    },
+    {
+     "label": "later"
+    },
+    {
+     "say": "Rest a while, and we will speak again.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "label": "done"
+    }
+   ]
+  },
+  {
+   "id": "ch4.sentinel",
+   "cmds": [
+    {
+     "say": "Halt! Two strangers with bows climb toward our king.",
+     "who": "Vanara sentinel",
+     "portrait": "vanara"
+    },
+    {
+     "say": "Only Hanuman, our wise minister, may bring strangers before Sugriva. He went down the path to meet you.",
+     "who": "Vanara sentinel",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.minister",
+   "cmds": [
+    {
+     "if": "ch4.alliance",
+     "then": [
+      {
+       "say": "Our king has a friend at last. The whole hill feels lighter.",
+       "who": "Vanara minister",
+       "portrait": "vanara"
+      }
+     ],
+     "else": [
+      {
+       "say": "King Sugriva has lived in fear since his brother Vali drove him out of Kishkindha.",
+       "who": "Vanara minister",
+       "portrait": "vanara"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.nila",
+   "cmds": [
+    {
+     "if": "ch4.alliance",
+     "then": [
+      {
+       "say": "The path behind me leads down through a cave to Kishkindha. Go with our king.",
+       "who": "Nila",
+       "portrait": "vanara"
+      }
+     ],
+     "else": [
+      {
+       "say": "I am Nila. Speak with our king, and may this day bring good fortune.",
+       "who": "Nila",
+       "portrait": "vanara"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.sugriva_alliance",
+   "cmds": [
+    {
+     "say": "Sugriva welcomes the princes warmly. Hanuman kindles a fire between two stones."
+    },
+    {
+     "say": "Rama and Sugriva walk around the fire together and swear friendship, with the fire as their witness."
+    },
+    {
+     "say": "Friend, some days ago we saw a lady carried through the sky by Ravana. She cried out, 'Rama! Lakshmana!'",
+     "who": "person.sugriva",
+     "portrait": "sugriva"
+    },
+    {
+     "say": "She dropped these jewels, wrapped in her upper cloth. We have kept them safe.",
+     "who": "person.sugriva",
+     "portrait": "sugriva"
+    },
+    {
+     "say": "Rama presses the jewels to his heart and weeps. He asks Lakshmana whether he knows them."
+    },
+    {
+     "say": "I do not know the {w:keyura}, nor the {w:kundala}. But the {w:nupura} I know, for every day I bowed at her feet.",
+     "who": "person.lakshmana",
+     "portrait": "lakshmana"
+    },
+    {
+     "shloka": "s-naham-janami",
+     "mode": "hear"
+    },
+    {
+     "quiz": "artha",
+     "shlokaId": "s-naham-janami",
+     "onCorrect": [
+      {
+       "say": "Right! Lakshmana's devotion shows in every word of this verse."
+      }
+     ],
+     "onWrong": [
+      {
+       "say": "Not quite. Look again at the word card, then the meaning will stay with you."
+      }
+     ]
+    },
+    {
+     "say": "My brother Vali drove me from Kishkindha and took everything I had. I live here only because he cannot climb this hill.",
+     "who": "person.sugriva",
+     "portrait": "sugriva"
+    },
+    {
+     "say": "Rama promised to help his friend. In time, Sugriva regained his kingdom, and he vowed in turn to search the whole earth for Sita."
+    },
+    {
+     "join": "sugriva"
+    },
+    {
+     "say": "Sugriva joins your party!"
+    },
+    {
+     "set": "ch4.alliance"
+    },
+    {
+     "objective": "Take the cave path north to Kishkindha."
+    }
+   ]
+  },
+  {
+   "id": "ch4.cave_locked",
+   "cmds": [
+    {
+     "say": "A dark cave leads north into the mountain. The vanaras on the hilltop should be met first."
+    }
+   ]
+  },
+  {
+   "id": "ch4.arrive_kishkindha",
+   "cmds": [
+    {
+     "music": "kishkindha"
+    },
+    {
+     "say": "{n:place.kishkindha_caves}: a city of caves and gardens, bright with torches and flowers."
+    },
+    {
+     "say": "The rains came and went. Rama waited out the monsoon on a nearby hill while the city celebrated its king."
+    },
+    {
+     "say": "When autumn cleared the skies, Sugriva called the vanara armies together."
+    },
+    {
+     "objective": "Go to Sugriva's council in the throne hall."
+    },
+    {
+     "set": "ch4.kishkindha_arrived"
+    }
+   ]
+  },
+  {
+   "id": "ch4.council",
+   "cmds": [
+    {
+     "if": "ch4.search_begun",
+     "then": [
+      {
+       "say": "The southern party waits for us. Have you restored the verse at the shrine?",
+       "who": "person.angada",
+       "portrait": "angada"
+      }
+     ],
+     "else": [
+      {
+       "say": "I am Angada, son of Vali. The vanara chiefs are gathered. My uncle the king will speak.",
+       "who": "person.angada",
+       "portrait": "angada"
+      },
+      {
+       "say": "Search parties, go east, west and north! Search every forest, river and cave. Return within one month.",
+       "who": "person.sugriva",
+       "portrait": "sugriva"
+      },
+      {
+       "say": "Angada will lead the south, with Hanuman, and Jambavan, king of the bears.",
+       "who": "person.sugriva",
+       "portrait": "sugriva"
+      },
+      {
+       "say": "An old bear with a white mane steps forward and bows to Rama."
+      },
+      {
+       "join": "jambavan"
+      },
+      {
+       "say": "Jambavan joins your party!"
+      },
+      {
+       "say": "Rama takes Hanuman aside and gives him his ring, engraved with his name."
+      },
+      {
+       "say": "If you find her, give her this. She will know you come from me.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "give": "kusha_mudrika"
+      },
+      {
+       "set": "ch4.search_begun"
+      },
+      {
+       "objective": "Restore the verse of perfect speech at the north-west shrine, then head east."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.shrine_keeper",
+   "cmds": [
+    {
+     "if": "restored.s-vyakaranam",
+     "then": [
+      {
+       "set": "ch4.restored_vyakaranam"
+      },
+      {
+       "say": "The verse of perfect speech shines gold. A messenger with such words cannot fail.",
+       "who": "Shrine keeper",
+       "portrait": "vanara"
+      },
+      {
+       "shrine": true
+      }
+     ],
+     "else": [
+      {
+       "say": "Welcome to the shrine of Kishkindha. Rest here whenever you are weary.",
+       "who": "Shrine keeper",
+       "portrait": "vanara"
+      },
+      {
+       "say": "Hanuman's flawless speech moved Rama himself. Recite that verse with me, so its words return whole to your verse book.",
+       "who": "Shrine keeper",
+       "portrait": "vanara"
+      },
+      {
+       "shloka": "s-vyakaranam",
+       "mode": "restore"
+      },
+      {
+       "if": "restored.s-vyakaranam",
+       "then": [
+        {
+         "set": "ch4.restored_vyakaranam"
+        },
+        {
+         "say": "The verse glows gold! Your recitation is as clear as Hanuman's speech.",
+         "who": "Shrine keeper",
+         "portrait": "vanara"
+        },
+        {
+         "say": "A new mantra wakes in you: {n:move.shuddha_vak}. It strengthens the whole party."
+        },
+        {
+         "if": "ch4.search_begun",
+         "then": [
+          {
+           "objective": "Leave Kishkindha by the east tunnel with the southern search party."
+          }
+         ],
+         "else": [
+          {
+           "objective": "Go to Sugriva's council in the throne hall."
+          }
+         ]
+        }
+       ],
+       "else": [
+        {
+         "say": "Almost. A few words slipped. Rest a moment, then recite with me again.",
+         "who": "Shrine keeper",
+         "portrait": "vanara"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.merchant",
+   "cmds": [
+    {
+     "say": "Fruit from the forest, roots, honey and herbs! Stock up before the search.",
+     "who": "Merchant",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.fruit_seller",
+   "cmds": [
+    {
+     "if": "heard.s-vyakaranam",
+     "then": [
+      {
+       "say": "Everyone is talking about Hanuman! Rama said he must have studied the whole of grammar, many times over.",
+       "who": "Fruit seller",
+       "portrait": "vanara"
+      },
+      {
+       "say": "In all Hanuman said, not one word came out wrong. That is {w:vyakarana}: every word in its right form.",
+       "who": "Fruit seller",
+       "portrait": "vanara"
+      }
+     ]
+    },
+    {
+     "say": "Mangoes, jackfruit, rose-apples! Kishkindha has the sweetest fruit in the world.",
+     "who": "Fruit seller",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.vanara_child",
+   "cmds": [
+    {
+     "say": "Is it true that Hanuman jumped at the sun when he was a baby? He thought it was a ripe fruit!",
+     "who": "Vanara child",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch4.vanara_home",
+   "cmds": [
+    {
+     "say": "My husband goes north with the search party. We will all look for Rama's queen.",
+     "who": "Vanara",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.vanara_elder",
+   "cmds": [
+    {
+     "say": "Our new king forgot his promise during the rains, and Lakshmana came to the gate in fury. Queen Tara calmed him.",
+     "who": "Vanara elder",
+     "portrait": "vanara"
+    },
+    {
+     "say": "Now Sugriva keeps his word. A true friend remembers.",
+     "who": "Vanara elder",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.east_guard",
+   "cmds": [
+    {
+     "if": "ch4.search_begun&restored.s-vyakaranam",
+     "then": [
+      {
+       "say": "The east tunnel leads to the Vindhya forests. Go well, southern party!",
+       "who": "Vanara guard",
+       "portrait": "vanara"
+      }
+     ],
+     "else": [
+      {
+       "say": "The east tunnel leads out to the Vindhya forests.",
+       "who": "Vanara guard",
+       "portrait": "vanara"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.south_guard",
+   "cmds": [
+    {
+     "say": "The south tunnel goes back to Rishyamuka hill.",
+     "who": "Vanara guard",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.east_locked",
+   "cmds": [
+    {
+     "if": "ch4.search_begun",
+     "then": [
+      {
+       "say": "A messenger's words must be flawless. Let us restore the verse of perfect speech at the shrine before we go.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "objective": "Restore the verse of perfect speech at the north-west shrine."
+      }
+     ],
+     "else": [
+      {
+       "say": "Sugriva has not sent out the search parties yet. Meet his council in the throne hall.",
+       "who": "Vanara guard",
+       "portrait": "vanara"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.vindhya_enter",
+   "cmds": [
+    {
+     "say": "The southern party combs the Vindhya forests, caves and rivers. Weeks pass with no sign of Sita."
+    },
+    {
+     "objective": "Search south-east through the Vindhya forest."
+    },
+    {
+     "set": "ch4.vindhya_entered"
+    }
+   ]
+  },
+  {
+   "id": "ch4.svayamprabha",
+   "cmds": [
+    {
+     "if": "ch4.met_svayamprabha",
+     "then": [
+      {
+       "say": "Rest, children of the forest. Then go on with your search.",
+       "who": "Svayamprabha",
+       "portrait": "rishika"
+      },
+      {
+       "rest": true
+      },
+      {
+       "say": "Your party is fully rested."
+      }
+     ],
+     "else": [
+      {
+       "say": "Lost in a great cave, the hungry vanaras found a shining grove and a holy woman in bark garments."
+      },
+      {
+       "say": "I am Svayamprabha, keeper of this place. Eat, drink, and rest. Then close your eyes, and I will lead you out.",
+       "who": "Svayamprabha",
+       "portrait": "rishika"
+      },
+      {
+       "rest": true
+      },
+      {
+       "say": "Your party is fully rested."
+      },
+      {
+       "set": "ch4.met_svayamprabha"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.scout",
+   "cmds": [
+    {
+     "say": "The month the king gave us is almost over, and we have found nothing.",
+     "who": "Vanara scout",
+     "portrait": "vanara"
+    },
+    {
+     "say": "If we return empty-handed, Sugriva will be angry. Some of us want to give up.",
+     "who": "Vanara scout",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.angada_despair",
+   "cmds": [
+    {
+     "if": "ch4.sampati",
+     "then": [
+      {
+       "say": "Sita is in Lanka! Come, to Mahendra hill. From there we will see the ocean.",
+       "who": "person.angada",
+       "portrait": "angada"
+      }
+     ],
+     "else": [
+      {
+       "say": "The month is over. We reached the sea and found nothing. I would rather fast here than return in shame.",
+       "who": "person.angada",
+       "portrait": "angada"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.sampati",
+   "cmds": [
+    {
+     "if": "ch4.sampati",
+     "then": [
+      {
+       "say": "Go to Mahendra, children. Lanka lies a hundred yojanas to the south.",
+       "who": "Sampati",
+       "portrait": "jatayu"
+      }
+     ],
+     "else": [
+      {
+       "say": "At the edge of the sea the vanaras sit in despair. Angada speaks of Jatayu, who gave his life defending Sita."
+      },
+      {
+       "say": "An old vulture with burnt wings drags himself out from the rocks."
+      },
+      {
+       "say": "Jatayu? Who speaks of my younger brother? Tell me how he died.",
+       "who": "Sampati",
+       "portrait": "jatayu"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "label": "k_how"
+        },
+        {
+         "choice": "Sampati asks: \"How did my brother die?\"",
+         "options": [
+          {
+           "label": "Angada spoke his name.",
+           "goto": "k_how_m0"
+          },
+          {
+           "label": "He fought Ravana to save Sita, and Ravana struck him down."
+          },
+          {
+           "label": "In the forest, near Panchavati.",
+           "goto": "k_how_m2"
+          }
+         ]
+        },
+        {
+         "goto": "k_how_end"
+        },
+        {
+         "label": "k_how_m0"
+        },
+        {
+         "say": "I heard the prince, child. But how did my brother die?",
+         "who": "Sampati",
+         "portrait": "jatayu"
+        },
+        {
+         "goto": "k_how"
+        },
+        {
+         "label": "k_how_m2"
+        },
+        {
+         "say": "In the forest... But how? Tell me how.",
+         "who": "Sampati",
+         "portrait": "jatayu"
+        },
+        {
+         "goto": "k_how"
+        },
+        {
+         "label": "k_how_end"
+        },
+        {
+         "say": "Alas, my brother! He was a hero.",
+         "who": "Sampati",
+         "portrait": "jatayu"
+        }
+       ]
+      },
+      {
+       "say": "Long ago I flew too near the sun to shield him, and my wings burned away. But my eyes are still the sharpest in the world.",
+       "who": "Sampati",
+       "portrait": "jatayu"
+      },
+      {
+       "say": "I saw Ravana carry a lady crying 'Rama! Lakshmana!' She is held in Lanka, an island a hundred yojanas across this ocean, in Ravana's garden.",
+       "who": "Sampati",
+       "portrait": "jatayu"
+      },
+      {
+       "say": "Hope returns to the vanaras. They cheer and leap among the rocks."
+      },
+      {
+       "set": "ch4.sampati"
+      },
+      {
+       "objective": "Go east to Mahendra hill above the ocean."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.mahendra_locked",
+   "cmds": [
+    {
+     "say": "The trail leads toward a great hill by the sea. But where would we go? We must keep searching.",
+     "who": "person.jambavan",
+     "portrait": "jambavan"
+    }
+   ]
+  },
+  {
+   "id": "ch4.mahendra_enter",
+   "cmds": [
+    {
+     "say": "The vanaras reach the shore of the vast ocean. Its waves roar like a living thing."
+    },
+    {
+     "say": "Who can leap a hundred yojanas? One by one, the vanaras say how far they could jump."
+    },
+    {
+     "objective": "Climb to Angada on the clifftop."
+    },
+    {
+     "set": "ch4.mahendra_reached"
+    }
+   ]
+  },
+  {
+   "id": "ch4.vanara_gaja",
+   "cmds": [
+    {
+     "say": "I can leap ten yojanas. Not one more!",
+     "who": "Gaja",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.vanara_gavaksha",
+   "cmds": [
+    {
+     "say": "Twenty yojanas, perhaps. The ocean is so wide...",
+     "who": "Gavaksha",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.vanara_sharabha",
+   "cmds": [
+    {
+     "say": "Thirty yojanas for me. Still not enough.",
+     "who": "Sharabha",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.vanara_mainda",
+   "cmds": [
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "label": "k_far"
+      },
+      {
+       "choice": "Mainda asks: \"How many yojanas is it from here to Lanka?\"",
+       "options": [
+        {
+         "label": "A hundred yojanas. Sampati said so."
+        },
+        {
+         "label": "It lies to the south, on the far shore of the sea.",
+         "goto": "k_far_m1"
+        }
+       ]
+      },
+      {
+       "goto": "k_far_end"
+      },
+      {
+       "label": "k_far_m1"
+      },
+      {
+       "say": "To the south, yes. But how many yojanas?",
+       "who": "Mainda",
+       "portrait": "vanara"
+      },
+      {
+       "goto": "k_far"
+      },
+      {
+       "label": "k_far_end"
+      }
+     ]
+    },
+    {
+     "say": "Sixty yojanas, if the wind is kind. But Lanka is a hundred away.",
+     "who": "Mainda",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch4.jambavan_speech",
+   "cmds": [
+    {
+     "if": "ch4.complete",
+     "then": [
+      {
+       "say": "The summit is just above us. Go, Hanuman. All our hopes go with you.",
+       "who": "person.angada",
+       "portrait": "angada"
+      }
+     ],
+     "else": [
+      {
+       "say": "I could leap a hundred yojanas, but I am not sure I could come back. Who among us can do it?",
+       "who": "person.angada",
+       "portrait": "angada"
+      },
+      {
+       "say": "In my youth I could have crossed it. Now I am old.",
+       "who": "person.jambavan",
+       "portrait": "jambavan"
+      },
+      {
+       "say": "Jambavan turns to Hanuman, who sits apart, silent."
+      },
+      {
+       "say": "Why are you silent, Hanuman? You are the son of the Wind, as swift as Garuda.",
+       "who": "person.jambavan",
+       "portrait": "jambavan"
+      },
+      {
+       "say": "As a child you leapt toward the rising sun, thinking it was a fruit. Because of a sage's curse you forgot your strength, until someone reminds you.",
+       "who": "person.jambavan",
+       "portrait": "jambavan"
+      },
+      {
+       "say": "I remind you now. Rise, Hanuman! Cross the ocean and find Sita!",
+       "who": "person.jambavan",
+       "portrait": "jambavan"
+      },
+      {
+       "say": "Hanuman rises. He grows and grows, as vast as a mountain, and the vanaras roar with joy."
+      },
+      {
+       "leave": "hanuman"
+      },
+      {
+       "join": "hanuman",
+       "level": 19
+      },
+      {
+       "say": "Hanuman remembers his true strength! He returns to your side stronger than ever."
+      },
+      {
+       "say": "I will leap from the peak of Mahendra. I will find Sita, or I will not return without news.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "heal": true
+      },
+      {
+       "set": "ch4.complete"
+      },
+      {
+       "objective": "Climb to the summit of Mahendra and leap: Book 5 begins there."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.summit_locked",
+   "cmds": [
+    {
+     "say": "The summit of Mahendra. The vanaras below have not yet chosen who will leap."
+    }
+   ]
+  },
+  {
+   "id": "ch4.forest_chest",
+   "cmds": [
+    {
+     "say": "An old chest sits in the corner of the clearing. Some earlier search party left fruit for the next."
+    },
+    {
+     "give": "phala",
+     "qty": 3
+    },
+    {
+     "say": "You found 3 fruits."
+    }
+   ]
+  },
+  {
+   "id": "ch4.vindhya_lurker",
+   "cmds": [
+    {
+     "say": "A vanara search party, this far south? Ravana will reward me for your tails!",
+     "who": "Night-wanderer",
+     "portrait": "rakshasa"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "yatudhana",
+        "level": 17
+       }
+      ],
+      "kind": "wild",
+      "canRun": false,
+      "canLose": false,
+      "bg": "forest",
+      "music": "battle",
+      "intro": "A night-wanderer springs out of the grass!"
+     },
+     "onWin": [
+      {
+       "say": "The night-wanderer flees into the forest, dropping a pouch of roots."
+      },
+      {
+       "give": "kanda_mula",
+       "qty": 1
+      },
+      {
+       "say": "You received 1 bundle of roots."
+      },
+      {
+       "set": "ch4.lurker_beaten"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "walkthrough": [
+  {
+   "chapter": 4,
+   "map": "rishyamuka",
+   "action": {
+    "reach": {
+     "x": 2,
+     "y": 15
+    }
+   },
+   "expectFlag": "ch4.started"
+  },
+  {
+   "chapter": 4,
+   "map": "rishyamuka",
+   "action": {
+    "talk": "mendicant"
+   },
+   "expectFlag": "ch4.hanuman_joined"
+  },
+  {
+   "chapter": 4,
+   "map": "rishyamuka",
+   "action": {
+    "talk": "sugriva"
+   },
+   "expectFlag": "ch4.alliance"
+  },
+  {
+   "chapter": 4,
+   "map": "kishkindha_caves",
+   "action": {
+    "reach": {
+     "x": 5,
+     "y": 21
+    }
+   },
+   "expectFlag": "ch4.kishkindha_arrived"
+  },
+  {
+   "chapter": 4,
+   "map": "kishkindha_caves",
+   "action": {
+    "talk": "angada"
+   },
+   "expectFlag": "ch4.search_begun"
+  },
+  {
+   "chapter": 4,
+   "map": "kishkindha_caves",
+   "action": {
+    "talk": "keeper"
+   },
+   "expectFlag": "ch4.restored_vyakaranam"
+  },
+  {
+   "chapter": 4,
+   "map": "vindhya_search",
+   "action": {
+    "reach": {
+     "x": 2,
+     "y": 10
+    }
+   },
+   "expectFlag": "ch4.vindhya_entered"
+  },
+  {
+   "chapter": 4,
+   "map": "vindhya_search",
+   "action": {
+    "talk": "sampati"
+   },
+   "expectFlag": "ch4.sampati"
+  },
+  {
+   "chapter": 4,
+   "map": "mahendra_hill",
+   "action": {
+    "reach": {
+     "x": 2,
+     "y": 16
+    }
+   },
+   "expectFlag": "ch4.mahendra_reached"
+  },
+  {
+   "chapter": 4,
+   "map": "mahendra_hill",
+   "action": {
+    "talk": "angada_m"
+   },
+   "expectFlag": "ch4.complete"
+  }
+ ]
+}

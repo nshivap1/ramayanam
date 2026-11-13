@@ -1,0 +1,869 @@
+{
+ "version": 1,
+ "about": "Sambhāṣaṇa content strings (OWNER: ui-c): NPC speaker titles (labels), chapter summaries, move / ally / enemy / item descriptions, move origins, and the logic's own story lines. Keyed by the exact English (collectStoryStrings → file 4); the views read them with useUi().c(en) or <StoryLine>. Rules: notes/sambhashana.md.",
+ "models": [
+  {
+   "stem": "तापसी",
+   "gender": "f",
+   "paradigm": "nadi-f",
+   "en": "female ascetic (Svayamprabhā's title)",
+   "source": "MW tApasI f. 'a female ascetic' (fem. of tApasa); ī-stem declined like nadI"
+  }
+ ],
+ "entries": [
+  {
+   "en": "Explore the hermitage and talk to everyone you meet.",
+   "sa": "आश्रमे सर्वत्र गच्छतु। सर्वैः जनैः सह वदतु।",
+   "ctx": "logic-state DEFAULT_OBJECTIVE · objective (quest-log line at a new game)"
+  },
+  {
+   "en": "The heroes rest at the hermitage and recover.",
+   "sa": "वीराः आश्रमे विश्राम्यन्ति। ते पुनः स्वस्थाः भवन्ति।",
+   "ctx": "logic-events DEFEAT_TEXT · narration (the party lost and wakes at the respawn point)"
+  },
+  {
+   "en": "You rest by the shrine. Everyone is fully restored.",
+   "sa": "त्वं मन्दिरस्य पार्श्वे विश्राम्यसि। सर्वेषां बलं पुनः पूर्णं भवति।",
+   "ctx": "logic-events REST_TEXT · narration (shrine: rest)"
+  },
+  {
+   "en": "Book 2 begins. Look around and talk to the people here.",
+   "sa": "अयोध्याकाण्डस्य आरम्भः। सर्वत्र पश्यतु। अत्र जनैः सह वदतु।",
+   "ctx": "logic-events nextBookObjective(1) · objective (after Book 1 ends)"
+  },
+  {
+   "en": "Book 3 begins. Look around and talk to the people here.",
+   "sa": "अरण्यकाण्डस्य आरम्भः। सर्वत्र पश्यतु। अत्र जनैः सह वदतु।",
+   "ctx": "logic-events nextBookObjective(2) · objective (after Book 2 ends)"
+  },
+  {
+   "en": "Book 4 begins. Look around and talk to the people here.",
+   "sa": "किष्किन्धाकाण्डस्य आरम्भः। सर्वत्र पश्यतु। अत्र जनैः सह वदतु।",
+   "ctx": "logic-events nextBookObjective(3) · objective (after Book 3 ends)"
+  },
+  {
+   "en": "Book 5 begins. Look around and talk to the people here.",
+   "sa": "सुन्दरकाण्डस्य आरम्भः। सर्वत्र पश्यतु। अत्र जनैः सह वदतु।",
+   "ctx": "logic-events nextBookObjective(4) · objective (after Book 4 ends)"
+  },
+  {
+   "en": "Book 6 begins. Look around and talk to the people here.",
+   "sa": "युद्धकाण्डस्य आरम्भः। सर्वत्र पश्यतु। अत्र जनैः सह वदतु।",
+   "ctx": "logic-events nextBookObjective(5) · objective (after Book 5 ends)"
+  },
+  {
+   "en": "The journey is complete. Rest well, student.",
+   "sa": "यात्रायाः अन्तः अभवत्। हे {g:शिष्य|शिष्ये}, सुखेन विश्राम्यतु।",
+   "ctx": "logic-events nextBookObjective(6) · objective (after Book 6 ends)"
+  },
+  {
+   "en": "Merchant",
+   "sa": "वणिक्",
+   "label": true,
+   "ctx": "common.shop_basic · speaker title (label)"
+  },
+  {
+   "en": "Hermit",
+   "sa": "तपस्वी",
+   "label": true,
+   "ctx": "common.shrine_hint · speaker title (label)"
+  },
+  {
+   "en": "Fisherman",
+   "sa": "धीवरः",
+   "label": true,
+   "ctx": "ch1.fisher · speaker title (label)"
+  },
+  {
+   "en": "Village trader",
+   "sa": "ग्रामस्य वणिक्",
+   "label": true,
+   "ctx": "ch1.trader · speaker title (label)"
+  },
+  {
+   "en": "Villager",
+   "sa": "ग्रामस्य नारी",
+   "label": true,
+   "ctx": "ch1.well_woman · speaker title (label)"
+  },
+  {
+   "en": "Child",
+   "sa": "बालकः",
+   "label": true,
+   "ctx": "ch1.child · speaker title (label)"
+  },
+  {
+   "en": "Cowherd",
+   "sa": "गोपालः",
+   "label": true,
+   "ctx": "ch1.cowherd · speaker title (label)"
+  },
+  {
+   "en": "Guest",
+   "sa": "अतिथिः",
+   "label": true,
+   "ctx": "ch1.hut_guest · speaker title (label)"
+  },
+  {
+   "en": "Young student",
+   "sa": "बालः शिष्यः",
+   "label": true,
+   "ctx": "ch1.hut_child · speaker title (label)"
+  },
+  {
+   "en": "Student",
+   "sa": "छात्रः",
+   "label": true,
+   "ctx": "ch1.student · speaker title (label)"
+  },
+  {
+   "en": "Wandering sage",
+   "sa": "यात्रिकः मुनिः",
+   "label": true,
+   "ctx": "ch1.road_sage · speaker title (label)"
+  },
+  {
+   "en": "Frightened hermit",
+   "sa": "भीतः तपस्वी",
+   "label": true,
+   "ctx": "ch1.forest_hermit · speaker title (label)"
+  },
+  {
+   "en": "Night-wanderer",
+   "sa": "निशाचरः",
+   "label": true,
+   "ctx": "ch1.forest_prowler · speaker title (label)"
+  },
+  {
+   "en": "Disciple",
+   "sa": "शिष्यः",
+   "label": true,
+   "ctx": "ch1.yajna · speaker title (label)"
+  },
+  {
+   "en": "Sage",
+   "sa": "ऋषिः",
+   "label": true,
+   "ctx": "ch1.siddha_sage · speaker title (label)"
+  },
+  {
+   "en": "Elder sage",
+   "sa": "वृद्धः ऋषिः",
+   "label": true,
+   "ctx": "ch1.siddha_elder · speaker title (label)"
+  },
+  {
+   "en": "Guard",
+   "sa": "द्वारपालः",
+   "label": true,
+   "ctx": "ch2.guard_gate · speaker title (label)"
+  },
+  {
+   "en": "Temple priest",
+   "sa": "मन्दिरस्य आचार्यः",
+   "label": true,
+   "ctx": "ch2.priest · speaker title (label)"
+  },
+  {
+   "en": "Herb seller",
+   "sa": "ओषधीनां विक्रेता",
+   "label": true,
+   "ctx": "ch2.merchant_herbs · speaker title (label)"
+  },
+  {
+   "en": "Citizen",
+   "sa": "नागरिकः",
+   "label": true,
+   "ctx": "ch2.citizen_a · speaker title (label)"
+  },
+  {
+   "en": "Scholar",
+   "sa": "पण्डितः",
+   "label": true,
+   "ctx": "ch2.pandita_1 · speaker title (label)"
+  },
+  {
+   "en": "Boatman",
+   "sa": "नाविकः",
+   "label": true,
+   "ctx": "ch2.ferry_locked · speaker title (label)"
+  },
+  {
+   "en": "Nishada trader",
+   "sa": "निषादः वणिक्",
+   "label": true,
+   "ctx": "ch2.nishada_merchant · speaker title (label)"
+  },
+  {
+   "en": "Nishada woman",
+   "sa": "निषादानां नारी",
+   "label": true,
+   "ctx": "ch2.nishada_woman · speaker title (label)"
+  },
+  {
+   "en": "Forest trader",
+   "sa": "वनस्य वणिक्",
+   "label": true,
+   "ctx": "ch2.forest_merchant · speaker title (label)"
+  },
+  {
+   "en": "Sage of Dandaka",
+   "sa": "दण्डकारण्यस्य ऋषिः",
+   "label": true,
+   "ctx": "ch3.dandaka_sages · speaker title (label)"
+  },
+  {
+   "en": "Sage of Panchavati",
+   "sa": "पञ्चवट्याः ऋषिः",
+   "label": true,
+   "ctx": "ch3.keeper · speaker title (label)"
+  },
+  {
+   "en": "Khara",
+   "sa": "खरः",
+   "label": true,
+   "ctx": "ch3.khara · speaker title (label)"
+  },
+  {
+   "en": "Maricha",
+   "sa": "मारीचः",
+   "label": true,
+   "ctx": "ch3.khara · speaker title (label)"
+  },
+  {
+   "en": "Danu",
+   "sa": "कबन्धः",
+   "label": true,
+   "ctx": "ch3.kabandha · speaker title (label)"
+  },
+  {
+   "en": "Pampa trader",
+   "sa": "पम्पायाः वणिक्",
+   "label": true,
+   "ctx": "ch3.pampa_merchant · speaker title (label)"
+  },
+  {
+   "en": "Mendicant",
+   "sa": "भिक्षुकः",
+   "label": true,
+   "ctx": "ch4.mendicant · speaker title (label)"
+  },
+  {
+   "en": "Vanara sentinel",
+   "sa": "वानरः सैनिकः",
+   "label": true,
+   "ctx": "ch4.sentinel · speaker title (label)"
+  },
+  {
+   "en": "Vanara minister",
+   "sa": "वानराणां मन्त्री",
+   "label": true,
+   "ctx": "ch4.minister · speaker title (label)"
+  },
+  {
+   "en": "Nila",
+   "sa": "नीलः",
+   "label": true,
+   "ctx": "ch4.nila · speaker title (label)"
+  },
+  {
+   "en": "Shrine keeper",
+   "sa": "मन्दिरस्य सेवकः",
+   "label": true,
+   "ctx": "ch4.shrine_keeper · speaker title (label)"
+  },
+  {
+   "en": "Fruit seller",
+   "sa": "फलानां विक्रेता",
+   "label": true,
+   "ctx": "ch4.fruit_seller · speaker title (label)"
+  },
+  {
+   "en": "Vanara child",
+   "sa": "वानराणां बालकः",
+   "label": true,
+   "ctx": "ch4.vanara_child · speaker title (label)"
+  },
+  {
+   "en": "Vanara",
+   "sa": "वानरः",
+   "label": true,
+   "ctx": "ch4.vanara_home · speaker title (label)"
+  },
+  {
+   "en": "Vanara elder",
+   "sa": "वृद्धः वानरः",
+   "label": true,
+   "ctx": "ch4.vanara_elder · speaker title (label)"
+  },
+  {
+   "en": "Vanara guard",
+   "sa": "वानरः द्वारपालः",
+   "label": true,
+   "ctx": "ch4.east_guard · speaker title (label)"
+  },
+  {
+   "en": "Svayamprabha",
+   "sa": "गुहायाः तापसी",
+   "label": true,
+   "ctx": "ch4.svayamprabha · speaker title (label)"
+  },
+  {
+   "en": "Vanara scout",
+   "sa": "वानरः दूतः",
+   "label": true,
+   "ctx": "ch4.scout · speaker title (label)"
+  },
+  {
+   "en": "Sampati",
+   "sa": "जटायोः भ्राता",
+   "label": true,
+   "ctx": "ch4.sampati · speaker title (label)"
+  },
+  {
+   "en": "Gaja",
+   "sa": "गजः",
+   "label": true,
+   "ctx": "ch4.vanara_gaja · speaker title (label)"
+  },
+  {
+   "en": "Gavaksha",
+   "sa": "वानरः",
+   "label": true,
+   "ctx": "ch4.vanara_gavaksha · speaker title (label)"
+  },
+  {
+   "en": "Sharabha",
+   "sa": "वानरः",
+   "label": true,
+   "ctx": "ch4.vanara_sharabha · speaker title (label)"
+  },
+  {
+   "en": "Mainda",
+   "sa": "वानरः",
+   "label": true,
+   "ctx": "ch4.vanara_mainda · speaker title (label)"
+  },
+  {
+   "en": "Vanara quartermaster",
+   "sa": "वानराणां वणिक्",
+   "label": true,
+   "ctx": "ch5.quartermaster · speaker title (label)"
+  },
+  {
+   "en": "Mainaka",
+   "sa": "मैनाकः",
+   "label": true,
+   "ctx": "ch5.mainaka · speaker title (label)"
+  },
+  {
+   "en": "Night trader",
+   "sa": "आपणस्य राक्षसी",
+   "label": true,
+   "ctx": "ch5.night_market · speaker title (label)"
+  },
+  {
+   "en": "Trijata",
+   "sa": "त्रिजटा",
+   "label": true,
+   "ctx": "ch5.trijata · speaker title (label)"
+  },
+  {
+   "en": "Aksha",
+   "sa": "अक्षः",
+   "label": true,
+   "ctx": "ch5.aksha · speaker title (label)"
+  },
+  {
+   "en": "Vanara builder",
+   "sa": "वानरः कर्मकरः",
+   "label": true,
+   "ctx": "ch6.worker · speaker title (label)"
+  },
+  {
+   "en": "Nala",
+   "sa": "नलः",
+   "label": true,
+   "ctx": "ch6.nala · speaker title (label)"
+  },
+  {
+   "en": "Vanara sentry",
+   "sa": "वानरः सैनिकः",
+   "label": true,
+   "ctx": "ch6.camp_sentry · speaker title (label)"
+  },
+  {
+   "en": "Sushena",
+   "sa": "सुषेणः",
+   "label": true,
+   "ctx": "ch6.sushena · speaker title (label)"
+  },
+  {
+   "en": "Dhumraksha",
+   "sa": "धूम्राक्षः",
+   "label": true,
+   "ctx": "ch6.dhumraksha · speaker title (label)"
+  },
+  {
+   "en": "Rakshasa scout",
+   "sa": "राक्षसः दूतः",
+   "label": true,
+   "ctx": "ch6.setu_scout · speaker title (label)"
+  },
+  {
+   "en": "At Valmiki's hermitage the first verse is born from grief. Stepping into the story, you walk with Vishvamitra, Rama and Lakshmana, free Tataka's forest and guard the sacrifice at Siddhashrama.",
+   "sa": "वाल्मीकेः आश्रमे शोकात् प्रथमः श्लोकः जायते। त्वं कथां प्रविशसि। त्वं विश्वामित्रेण रामेण लक्ष्मणेन च सह गच्छसि। त्वं ताटकायाः वनं भयात् मुक्तं करोषि। सिद्धाश्रमे यज्ञं च रक्षसि।",
+   "ctx": "chapter 1 · summary (title card)"
+  },
+  {
+   "en": "On the eve of Rama's coronation, Kaikeyi claims her two boons. Rama accepts exile without a word of complaint. Sumitra blesses Lakshmana, Guha ferries them over the Ganga, and at Chitrakuta Bharata takes Rama's sandals to rule in his name.",
+   "sa": "श्वः रामः राजा भविष्यति। परन्तु अद्य कैकेयी द्वौ वरौ याचते। रामः वनं गच्छति। सः दुःखस्य एकम् अपि शब्दं न वदति। सुमित्रा लक्ष्मणं वदति, “शुभं भवतु” इति। गुहस्य नौकया ते गङ्गां तरन्ति। चित्रकूटे भरतः रामस्य पादुके स्वीकरोति। सः रामस्य नाम्ना राज्यं पालयति।",
+   "ctx": "chapter 2 · summary (title card)"
+  },
+  {
+   "en": "In the Dandaka forest Rama promises to protect the sages. At Panchavati he defeats Khara's army, but Ravana, warned in vain by Maricha, sends the golden deer. Sita is carried off; the dying Jatayu tells Rama, and Shabari points the way to Sugriva.",
+   "sa": "दण्डकारण्ये रामः वदति, “अहम् ऋषीन् रक्षिष्यामि” इति। पञ्चवट्यां सः खरस्य सैनिकान् जयति। मारीचः रावणं वदति, “एवं मा कुरु” इति। परन्तु रावणः न शृणोति, मायामृगं प्रेषयति। रावणः सीतां हरति। जटायुः रामाय सर्वं वदति, ततः म्रियते। शबरी सुग्रीवं प्रति मार्गं दर्शयति।",
+   "ctx": "chapter 3 · summary (title card)"
+  },
+  {
+   "en": "Kishkindha: Hanuman meets Rama with flawless speech, Rama and Sugriva become friends, and the vanaras search the south until Jambavan reminds Hanuman of his strength.",
+   "sa": "किष्किन्धाकाण्डम्। हनुमान् शुद्धया वाचा रामेण सह वदति। रामः सुग्रीवः च मित्रे भवतः। वानराः दक्षिणस्यां दिशि सीतां मार्गयन्ति। अन्ते जाम्बवान् हनुमते वदति, “तव बलं महत्” इति।",
+   "ctx": "chapter 4 · summary (title card)"
+  },
+  {
+   "en": "Sundara: Hanuman leaps the ocean, passes Surasa and Simhika, overcomes Lanka's guardian, finds Sita in the Ashoka grove and proclaims Rama's victory.",
+   "sa": "सुन्दरकाण्डम्। हनुमान् समुद्रस्य उपरि उत्पतति। सः सुरसां सिंहिकां च अतिक्रामति। सः लङ्कायाः देवीं जयति। सः अशोकवनिकायां सीतां पश्यति। सः उच्चैः वदति, “रामः जयति” इति।",
+   "ctx": "chapter 5 · summary (title card)"
+  },
+  {
+   "en": "Yuddha: Vibhishana takes refuge with Rama, the vanaras build the setu, Agastya teaches the Aditya-hridaya, Ravana falls, and Rama is crowned in Ayodhya.",
+   "sa": "युद्धकाण्डम्। विभीषणः रामस्य रक्षां याचते। वानराः समुद्रे सेतुं बध्नन्ति। अगस्त्यः रामाय आदित्यहृदयम् उपदिशति। रावणः पतति। रामः अयोध्यायां राजा भवति।",
+   "ctx": "chapter 6 · summary (title card)"
+  },
+  {
+   "en": "A strike of speech: name the word's meaning to loose it.",
+   "sa": "वाक् एव बाणः। शब्दस्य अर्थं वद, तदा बाणः गच्छति।",
+   "ctx": "move pada_bana · description"
+  },
+  {
+   "en": "Protection: read the script truly and the heroes' defence rises one stage.",
+   "sa": "रक्षा। अक्षराणि सम्यक् पठ। तदा वीराणां धैर्यं वर्धते।",
+   "ctx": "move lipi_raksha · description"
+  },
+  {
+   "en": "Grief become verse: complete a line of a verse to strike. Strong against illusion.",
+   "sa": "शोकः एव श्लोकः अभवत्। श्लोकस्य पादं पूर्णं कुरु, तदा प्रहरसि। मायां प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move shoka_shloka · description"
+  },
+  {
+   "en": "Auspicious dawn: every hero recovers a third of their strength.",
+   "sa": "शुभं प्रभातम्। सर्वेषां वीराणां बलं वर्धते — शते पञ्चत्रिंशत्।",
+   "ctx": "move suprabhata · description"
+  },
+  {
+   "en": "Grammar: split the joined words cleanly and the heroes' attack rises one stage.",
+   "sa": "व्याकरणम्। मिलितान् शब्दान् सम्यक् पृथक् कुरु। तदा वीराणां तेजः वर्धते।",
+   "ctx": "move shuddha_vak · description"
+  },
+  {
+   "en": "A plain arrow, loosed by knowing a word's meaning.",
+   "sa": "सरलः बाणः। शब्दस्य अर्थं जानीहि, तदा बाणः गच्छति।",
+   "ctx": "move bana · description"
+  },
+  {
+   "en": "The fire missile. Strong against wind.",
+   "sa": "अग्नेः अस्त्रम्। वायुं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move agneyastra · description"
+  },
+  {
+   "en": "The water missile. Strong against fire.",
+   "sa": "जलस्य अस्त्रम्। अग्निं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move varunastra · description"
+  },
+  {
+   "en": "The wind missile. Strong against earth.",
+   "sa": "वायोः अस्त्रम्। भूमिं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move vayavyastra · description"
+  },
+  {
+   "en": "Righteousness embodied: order the words of a verse line to strike. Strong against illusion.",
+   "sa": "रामः एव धर्मः। श्लोकस्य पादे शब्दान् क्रमेण रचय, तदा प्रहरसि। मायां प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move dharma_vigraha · description"
+  },
+  {
+   "en": "Fearlessness: the heroes' defence rises two stages.",
+   "sa": "अभयम्। वीराणां धैर्यं बहु वर्धते।",
+   "ctx": "move abhaya · description"
+  },
+  {
+   "en": "The hymn to the sun: every hero recovers half their strength, and attack rises one stage.",
+   "sa": "सूर्यस्य श्लोकाः। सर्वेषां वीराणां बलं वर्धते — शते पञ्चाशत्। वीराणां तेजः अपि वर्धते।",
+   "ctx": "move aditya_hrdaya · description"
+  },
+  {
+   "en": "The supreme missile. Strong against illusion.",
+   "sa": "परमम् अस्त्रम्। मायां प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move brahmastra · description"
+  },
+  {
+   "en": "A sword stroke.",
+   "sa": "वीरः खड्गेन प्रहरति।",
+   "ctx": "move khadga · description"
+  },
+  {
+   "en": "\"Know this!\": the foe's defence falls two stages.",
+   "sa": "“विद्धि” इति मन्त्रः। शत्रोः धैर्यं बहु न्यूनं भवति।",
+   "ctx": "move viddhi · description"
+  },
+  {
+   "en": "A fire arrow. Strong against wind.",
+   "sa": "अग्नेः बाणः। वायुं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move agni_bana · description"
+  },
+  {
+   "en": "A rush of wind. Strong against earth.",
+   "sa": "वायोः वेगः। भूमिं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move vayu_vega · description"
+  },
+  {
+   "en": "A blow of the mace. Strong against water.",
+   "sa": "वीरः गदया प्रहरति। जलं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move gada · description"
+  },
+  {
+   "en": "Victory cry: the heroes' attack rises two stages.",
+   "sa": "जयस्य उच्चः शब्दः। वीराणां तेजः बहु वर्धते।",
+   "ctx": "move jaya_ghosha · description"
+  },
+  {
+   "en": "Undaunted: recover half of one's strength.",
+   "sa": "मनः न श्राम्यति। यः एतत् करोति, तस्य बलं वर्धते — शते पञ्चाशत्।",
+   "ctx": "move anirveda · description"
+  },
+  {
+   "en": "A hurled mountain crag. Strong against water.",
+   "sa": "वीरः पर्वतस्य महतीं शिलां क्षिपति। जलं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move shaila · description"
+  },
+  {
+   "en": "An uprooted tree, swung hard. Strong against water.",
+   "sa": "वीरः वृक्षम् उद्धृत्य बलेन प्रहरति। जलं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move vriksha · description"
+  },
+  {
+   "en": "Wisdom: every hero recovers almost a third of their strength.",
+   "sa": "प्रज्ञा। सर्वेषां वीराणां बलं वर्धते — शते त्रिंशत्।",
+   "ctx": "move prajna · description"
+  },
+  {
+   "en": "Counsel: the foe's attack falls two stages.",
+   "sa": "मन्त्रणम्। शत्रोः तेजः बहु न्यूनं भवति।",
+   "ctx": "move mantrana · description"
+  },
+  {
+   "en": "A torrent of water. Strong against fire.",
+   "sa": "जलस्य महान् वेगः। अग्निं प्रति एतत् तीक्ष्णम्।",
+   "ctx": "move jala_dhara · description"
+  },
+  {
+   "en": "Claws.",
+   "sa": "तीक्ष्णाः नखाः।",
+   "ctx": "move nakha · description"
+  },
+  {
+   "en": "A net of illusion; may lower defence.",
+   "sa": "शत्रुः मायया प्रहरति। कदाचित् वीरस्य धैर्यं न्यूनं भवति।",
+   "ctx": "move maya_jala · description"
+  },
+  {
+   "en": "A spear thrust.",
+   "sa": "शत्रुः शूलेन प्रहरति।",
+   "ctx": "move shula · description"
+  },
+  {
+   "en": "A roar that raises attack.",
+   "sa": "शत्रुः उच्चैः गर्जति। तस्य तेजः वर्धते।",
+   "ctx": "move garjana · description"
+  },
+  {
+   "en": "A cloud of darkness.",
+   "sa": "अन्धकारस्य मेघः।",
+   "ctx": "move andhakara · description"
+  },
+  {
+   "en": "An iron club.",
+   "sa": "कठिनः महान् दण्डः।",
+   "ctx": "move parigha · description"
+  },
+  {
+   "en": "A rain of fire.",
+   "sa": "अग्नेः वृष्टिः।",
+   "ctx": "move agni_varsha · description"
+  },
+  {
+   "en": "A serpent noose; may bind the target for a turn.",
+   "sa": "सर्पाः रज्जुः इव बध्नन्ति। कदाचित् बद्धः किञ्चित् कालं किम् अपि कर्तुं न शक्नोति।",
+   "ctx": "move naga_pasha · description"
+  },
+  {
+   "en": "The moon-bright sword.",
+   "sa": "अस्मिन् खड्गे चन्द्रस्य इव प्रकाशः अस्ति।",
+   "ctx": "move chandrahasa · description"
+  },
+  {
+   "en": "A sharp argument.",
+   "sa": "तीक्ष्णः वादः।",
+   "ctx": "move tarka · description"
+  },
+  {
+   "en": "A probing question that lowers attack.",
+   "sa": "कठिनः प्रश्नः। तेन वीरस्य तेजः न्यूनं भवति।",
+   "ctx": "move prashna · description"
+  },
+  {
+   "en": "Restore the first verse at a shrine",
+   "sa": "मन्दिरे प्रथमं श्लोकं पूर्णं कुरु।",
+   "ctx": "move shoka_shloka · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the dawn verse of {n:person.vishvamitra}",
+   "sa": "विश्वामित्रस्य प्रभातस्य श्लोकं पूर्णं कुरु।",
+   "ctx": "move suprabhata · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the verse praising flawless speech",
+   "sa": "शुद्धस्य वचनस्य श्लोकं पूर्णं कुरु।",
+   "ctx": "move shuddha_vak · origin (how it is learned)"
+  },
+  {
+   "en": "Granted by {n:person.vishvamitra}",
+   "sa": "विश्वामित्रः एतत् दत्तवान्।",
+   "ctx": "move agneyastra · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the verse of {n:person.rama} as dharma embodied",
+   "sa": "“रामः विग्रहवान् धर्मः” इति श्लोकं पूर्णं कुरु।",
+   "ctx": "move dharma_vigraha · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the verse of refuge",
+   "sa": "अभयस्य श्लोकं पूर्णं कुरु।",
+   "ctx": "move abhaya · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the hymn taught by {n:person.agastya}",
+   "sa": "अगस्त्यस्य आदित्यहृदयं पूर्णं कुरु।",
+   "ctx": "move aditya_hrdaya · origin (how it is learned)"
+  },
+  {
+   "en": "Taught by {n:person.agastya} with the hymn to the sun",
+   "sa": "अगस्त्यः आदित्यहृदयेन सह एतत् अपि उपदिष्टवान्।",
+   "ctx": "move brahmastra · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the blessing of {n:person.sumitra}",
+   "sa": "सुमित्रायाः श्लोकं पूर्णं कुरु।",
+   "ctx": "move viddhi · origin (how it is learned)"
+  },
+  {
+   "en": "Learned at level 8",
+   "sa": "यदा स्तरः अष्टौ भवति, तदा वीरः एतत् जानाति।",
+   "ctx": "move agni_bana · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the victory verse of {n:person.hanuman}",
+   "sa": "हनुमतः जयस्य श्लोकं पूर्णं कुरु।",
+   "ctx": "move jaya_ghosha · origin (how it is learned)"
+  },
+  {
+   "en": "Restore the verse on perseverance",
+   "sa": "अनिर्वेदस्य श्लोकं पूर्णं कुरु।",
+   "ctx": "move anirveda · origin (how it is learned)"
+  },
+  {
+   "en": "Learned by level",
+   "sa": "यदा स्तरः वर्धते, तदा वीरः एतत् जानाति।",
+   "ctx": "move shaila · origin (how it is learned)"
+  },
+  {
+   "en": "The student reciter: supports the heroes with protective and healing mantras.",
+   "sa": "{g:शिष्यः|शिष्या} श्लोकान् पठति। {g:सः|सा} मन्त्रैः वीरान् रक्षति, तेषां बलं च पुनः ददाति।",
+   "ctx": "ally player · description"
+  },
+  {
+   "en": "Prince of {n:place.ayodhya_city} and peerless archer; the strongest of the heroes.",
+   "sa": "अयोध्यायाः राजकुमारः। धनुषा सः सर्वेषु उत्तमः। वीरेषु सः एव अधिकं बलवान्।",
+   "ctx": "ally rama · description"
+  },
+  {
+   "en": "Devoted younger brother of {n:person.rama}: fast, fierce and steadfast.",
+   "sa": "रामस्य भक्तः अनुजः। सः शीघ्रः, बलवान्, स्थिरः च।",
+   "ctx": "ally lakshmana · description"
+  },
+  {
+   "en": "Son of the wind: immense strength, learning and devotion.",
+   "sa": "वायोः पुत्रः। सः अतीव बलवान्, ज्ञानी, भक्तः च।",
+   "ctx": "ally hanuman · description"
+  },
+  {
+   "en": "King of the monkey folk of {n:place.kishkindha_caves}, a mighty brawler.",
+   "sa": "किष्किन्धायां वानराणां राजा। सः बलेन युध्यते।",
+   "ctx": "ally sugriva · description"
+  },
+  {
+   "en": "The wise and ancient king of the bears; hardy and a healer.",
+   "sa": "भल्लूकानां वृद्धः बुद्धिमान् राजा। सः न श्राम्यति। सः वैद्यः अपि।",
+   "ctx": "ally jambavan · description"
+  },
+  {
+   "en": "Brother of {n:person.ravana} who chose the right path; a wise counsellor.",
+   "sa": "रावणस्य भ्राता। सः धर्मस्य मार्गं स्वीकृतवान्। सः बुद्धिमान् मन्त्री।",
+   "ctx": "ally vibhishana · description"
+  },
+  {
+   "en": "A night-wanderer of the forest.",
+   "sa": "वनस्य निशाचरः। सः रात्रौ चरति।",
+   "ctx": "enemy nishachara · description"
+  },
+  {
+   "en": "A sorcerer-demon who haunts sacred places.",
+   "sa": "राक्षसः। सः मायां करोति। सः पुण्येषु स्थानेषु भ्रमति।",
+   "ctx": "enemy yatudhana · description"
+  },
+  {
+   "en": "A demoness of illusions.",
+   "sa": "राक्षसी। सा मायया युध्यते।",
+   "ctx": "enemy rakshasi · description"
+  },
+  {
+   "en": "An illusory deer that glitters and vanishes.",
+   "sa": "मायायाः मृगः। सः प्रकाशते, सहसा च नश्यति।",
+   "ctx": "enemy maya_mriga · description"
+  },
+  {
+   "en": "A forest wolf.",
+   "sa": "वनस्य वृकः।",
+   "ctx": "enemy vrka · description"
+  },
+  {
+   "en": "The sea-demoness who seizes flyers by their shadows.",
+   "sa": "समुद्रस्य राक्षसी। आकाशे यः गच्छति, तस्य छायां सा गृह्णाति।",
+   "ctx": "enemy simhika · description"
+  },
+  {
+   "en": "Mother of serpents, who tests the wind-son's wit.",
+   "sa": "सर्पाणां माता। सा वायोः पुत्रस्य बुद्धेः परीक्षां करोति।",
+   "ctx": "enemy surasa_duel · description"
+  },
+  {
+   "en": "A fearsome demoness who lays waste the forest.",
+   "sa": "राक्षसी। सर्वे जनाः तस्याः बिभ्यति। सा वनं पीडयति।",
+   "ctx": "enemy tataka · description"
+  },
+  {
+   "en": "A demon who defiles the sacrifice.",
+   "sa": "राक्षसः। सः यज्ञं पीडयति।",
+   "ctx": "enemy subahu · description"
+  },
+  {
+   "en": "A master of illusion, son of {n:enemy.tataka}.",
+   "sa": "ताटकायाः पुत्रः। सः मायायां कुशलः।",
+   "ctx": "enemy maricha · description"
+  },
+  {
+   "en": "Commander of the demon army in the forest.",
+   "sa": "वने राक्षसानां सैनिकानां नेता।",
+   "ctx": "enemy khara · description"
+  },
+  {
+   "en": "General at the side of {n:enemy.khara}.",
+   "sa": "सैनिकानां नेता। सः खरेण सह युध्यते।",
+   "ctx": "enemy dushana · description"
+  },
+  {
+   "en": "A headless giant with long, grasping arms.",
+   "sa": "शिरः विना महान् राक्षसः। तस्य बाहू अतीव दीर्घौ।",
+   "ctx": "enemy kabandha · description"
+  },
+  {
+   "en": "The guardian goddess of the city.",
+   "sa": "नगरस्य देवी। सा नगरं रक्षति।",
+   "ctx": "enemy lanka_devi · description"
+  },
+  {
+   "en": "A young prince of the island city, son of {n:person.ravana}.",
+   "sa": "द्वीपस्य नगरस्य तरुणः राजकुमारः। सः रावणस्य पुत्रः।",
+   "ctx": "enemy aksha · description"
+  },
+  {
+   "en": "A smoke-eyed general of the island city.",
+   "sa": "द्वीपस्य नगरस्य सैनिकानां नेता। तस्य नेत्रयोः धूमस्य वर्णः।",
+   "ctx": "enemy dhumraksha · description"
+  },
+  {
+   "en": "The giant brother of {n:person.ravana}, woken from his long sleep.",
+   "sa": "रावणस्य विशालः भ्राता। सः बहु कालं सुप्तवान्। अधुना सः प्रबुद्धः।",
+   "ctx": "enemy kumbhakarna · description"
+  },
+  {
+   "en": "Son of {n:person.ravana}, master of illusion who fights unseen.",
+   "sa": "रावणस्य पुत्रः। सः मायायां कुशलः। कः अपि तं न पश्यति, परन्तु सः युध्यते।",
+   "ctx": "enemy indrajit · description"
+  },
+  {
+   "en": "The ten-headed king of the island city.",
+   "sa": "द्वीपस्य नगरस्य राजा। तस्य दश शिरांसि सन्ति।",
+   "ctx": "enemy ravana · description"
+  },
+  {
+   "en": "Disciple of the sage, who was with him at the river. A friendly rival.",
+   "sa": "मुनेः शिष्यः। सः मुनिना सह नद्याः तीरे आसीत्। सः स्नेहेन वादं करोति।",
+   "ctx": "enemy bharadvaja_duel · description"
+  },
+  {
+   "en": "A learned scholar of the royal assembly.",
+   "sa": "राज्ञः भवने पण्डितः। सः बहु जानाति।",
+   "ctx": "enemy pandita_duel · description"
+  },
+  {
+   "en": "The wind-son in disguise, testing the strangers with eloquent speech.",
+   "sa": "वायोः पुत्रः। सः भिक्षुकः इव आगच्छति। सः शुद्धया वाचा नूतनान् जनान् परीक्षते।",
+   "ctx": "enemy hanuman_duel · description"
+  },
+  {
+   "en": "A ripe forest fruit. Restores 40% of a hero's strength.",
+   "sa": "वनस्य पक्वं फलम्। एकस्य वीरस्य बलं वर्धते — शते चत्वारिंशत्।",
+   "ctx": "item phala · description"
+  },
+  {
+   "en": "Roots and tubers, as eaten by hermits. Restores 70% of a hero's strength.",
+   "sa": "मूलानि। मुनयः एतानि खादन्ति। एकस्य वीरस्य बलं वर्धते — शते सप्ततिः।",
+   "ctx": "item kanda_mula · description"
+  },
+  {
+   "en": "Wild honey. Restores 5 PP to each of the active hero's moves.",
+   "sa": "वनस्य मधु। युद्धे स्थितस्य वीरस्य सर्वेषां मन्त्राणाम् उत्साहः वर्धते — पञ्च।",
+   "ctx": "item madhu · description"
+  },
+  {
+   "en": "A healing herb. Revives an exhausted hero with half strength.",
+   "sa": "ओषधिः। श्रान्तः वीरः पुनः उत्तिष्ठति। तस्य बलं भवति — शते पञ्चाशत्।",
+   "ctx": "item oshadhi · description"
+  },
+  {
+   "en": "The life-restoring herb. Revives and fully restores every hero. Not sold.",
+   "sa": "मृतसञ्जीवनी ओषधिः। सर्वे वीराः पुनः उत्तिष्ठन्ति, पूर्णं बलं च लभन्ते। कः अपि एतां न विक्रीणीते।",
+   "ctx": "item sanjivani · description"
+  },
+  {
+   "en": "The ring of {n:person.rama}, carried by {n:person.hanuman} as a token for {n:person.sita}.",
+   "sa": "रामस्य अङ्गुलीयकम्। हनुमान् एतत् सीतायै नयति। एतत् दृष्ट्वा सीता रामं स्मरति।",
+   "ctx": "item kusha_mudrika · description"
+  },
+  {
+   "en": "The crest jewel of {n:person.sita}, given to {n:person.hanuman} as a token for {n:person.rama}.",
+   "sa": "सीता हनुमते चूडामणिं ददाति। तं दृष्ट्वा रामः सीतां स्मरति।",
+   "ctx": "item chudamani · description"
+  }
+ ]
+}

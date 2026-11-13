@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.dev/
+.shots/
+*.log
+.DS_Store
+.e2e/
+src/app/registry.gen.ts
+src/app/styles.gen.css

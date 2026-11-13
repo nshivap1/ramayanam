@@ -1,0 +1,2742 @@
+{
+ "chapters": [
+  {
+   "kanda": 1,
+   "nameId": "kanda.1",
+   "summary": "At Valmiki's hermitage the first verse is born from grief. Stepping into the story, you walk with Vishvamitra, Rama and Lakshmana, free Tataka's forest and guard the sacrifice at Siddhashrama.",
+   "startMap": "tamasa_ashrama",
+   "startX": 15,
+   "startY": 7,
+   "shlokaIds": [
+    "s-tapah-svadhyaya",
+    "s-ko-nvasmin",
+    "s-ma-nishada",
+    "s-kausalya-supraja",
+    "s-samudra-iva"
+   ],
+   "keyShloka": "s-ma-nishada"
+  }
+ ],
+ "maps": [
+  {
+   "id": "tamasa_ashrama",
+   "nameId": "place.tamasa_ashrama",
+   "kanda": 1,
+   "width": 30,
+   "height": 22,
+   "legend": {
+    "&": "market_stall",
+    ",": "grass_flowers",
+    "-": "stone_road",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "B": "tree_banyan",
+    "F": "fence",
+    "L": "lotus",
+    "Q": "well",
+    "R": "reeds",
+    "S": "shrine",
+    "T": "tree",
+    "X": "fire_altar",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "b": "bush",
+    "d": "hut_door",
+    "e": "shore_e",
+    "f": "flowers_red",
+    "h": "hut_wall",
+    "i": "hut_window",
+    "l": "log",
+    "n": "shore_n",
+    "t": "stump",
+    "v": "shore_s",
+    "w": "shore_w",
+    "~": "water"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTAA.,[^^^].[^^^^^]...b..,.AAT",
+    "TA.f..hihih.[^^^^^]..FFFFF.ATT",
+    "TA..........hihdhih..F,f,F..AT",
+    "T..[^^^]..,..f:::?f..FfXfF.,.T",
+    "T..hidih....,.:::....F.:.F...T",
+    "T..,.:...ff.A..:..A..FF:FF...T",
+    "T.b..:.......,.:.,.....:...,.T",
+    "T,...:.........:.......:...b.T",
+    "T....:::::::::::.-----.:..,..T",
+    "T.......,......:B-fSf-B:.....T",
+    "T......bQ......:.-----.:...?.T",
+    "T.::::::::::::::::::::::::::::",
+    "T..A.,..A......:....A....,A..T",
+    "T..FFFFFF......:..FFFFFF&&...T",
+    "T.bFf,ffF......:.bF,,,,F.....T",
+    "T..Fff,fF......:..F,,,,F..b..T",
+    "T..FFF.FF......:..FFFFFF.....T",
+    "T.RnnnnnR...A.::.A....,...A.AT",
+    "TbwLL~L~e...A.::?A..tl..TTTTTT",
+    "TTRvvvvvR...A.::.A.....TTTTTTT",
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTT"
+   ],
+   "music": "ashrama",
+   "battleBg": "ashrama",
+   "light": "dawn",
+   "npcs": [
+    {
+     "id": "valmiki_dawn",
+     "sprite": "valmiki",
+     "x": 14,
+     "y": 5,
+     "facing": "down",
+     "event": "ch1.valmiki_courtyard",
+     "showIf": "!ch1.krauncha_seen"
+    },
+    {
+     "id": "narada",
+     "sprite": "narada",
+     "x": 16,
+     "y": 5,
+     "facing": "down",
+     "event": "ch1.narada",
+     "showIf": "!common.intro_done"
+    },
+    {
+     "id": "valmiki",
+     "sprite": "valmiki",
+     "x": 20,
+     "y": 11,
+     "facing": "left",
+     "event": "ch1.valmiki_shrine",
+     "showIf": "ch1.duel_done&!ch6.crowned"
+    },
+    {
+     "id": "bharadvaja",
+     "sprite": "bharadvaja",
+     "x": 13,
+     "y": 13,
+     "facing": "down",
+     "event": "ch1.bharadvaja_ashrama",
+     "showIf": "ch1.duel_done"
+    },
+    {
+     "id": "hermit",
+     "sprite": "rishika",
+     "x": 18,
+     "y": 11,
+     "facing": "right",
+     "event": "common.shrine_hint"
+    },
+    {
+     "id": "trader",
+     "sprite": "merchant",
+     "x": 24,
+     "y": 15,
+     "facing": "up",
+     "event": "ch1.trader"
+    },
+    {
+     "id": "well_woman",
+     "sprite": "villager_f",
+     "x": 9,
+     "y": 11,
+     "facing": "left",
+     "event": "ch1.well_woman"
+    },
+    {
+     "id": "child",
+     "sprite": "child",
+     "x": 10,
+     "y": 16,
+     "facing": "up",
+     "event": "ch1.child"
+    },
+    {
+     "id": "cowherd",
+     "sprite": "villager_m",
+     "x": 26,
+     "y": 8,
+     "facing": "left",
+     "event": "ch1.cowherd"
+    },
+    {
+     "id": "valmiki_epilogue",
+     "sprite": "valmiki",
+     "x": 15,
+     "y": 6,
+     "facing": "down",
+     "event": "ch6.epilogue_valmiki",
+     "showIf": "ch6.crowned"
+    }
+   ],
+   "warps": [
+    {
+     "x": 15,
+     "y": 3,
+     "to": "valmiki_hut",
+     "tx": 5,
+     "ty": 5,
+     "facing": "up"
+    },
+    {
+     "x": 5,
+     "y": 5,
+     "to": "tamasa_shishya_hut",
+     "tx": 4,
+     "ty": 4,
+     "facing": "up"
+    },
+    {
+     "x": 14,
+     "y": 21,
+     "to": "tamasa_bank",
+     "tx": 14,
+     "ty": 1,
+     "facing": "down"
+    },
+    {
+     "x": 15,
+     "y": 21,
+     "to": "tamasa_bank",
+     "tx": 15,
+     "ty": 1,
+     "facing": "down"
+    },
+    {
+     "x": 29,
+     "y": 12,
+     "to": "siddhashrama_road",
+     "tx": 1,
+     "ty": 9,
+     "facing": "right",
+     "requires": "restored.s-ma-nishada",
+     "lockedEvent": "ch1.gate_locked"
+    }
+   ],
+   "triggers": [],
+   "signs": [
+    {
+     "x": 17,
+     "y": 4,
+     "text": "Valmiki's hut. Guests are always welcome."
+    },
+    {
+     "x": 27,
+     "y": 11,
+     "text": "East: the road beyond the hermitage. Those who walk it with a verse in their heart step into the story."
+    },
+    {
+     "x": 16,
+     "y": 19,
+     "text": "South: the ford of the Tamasa."
+    }
+   ]
+  },
+  {
+   "id": "valmiki_hut",
+   "nameId": "place.valmiki_hut",
+   "kanda": 1,
+   "width": 11,
+   "height": 7,
+   "legend": {
+    "#": "wall_inner",
+    "$": "chest",
+    "*": "lamp",
+    "X": "fire_altar",
+    "b": "bush",
+    "c": "carpet",
+    "d": "hut_door",
+    "k": "wood_floor",
+    "m": "mat_floor"
+   },
+   "ground": [
+    "###########",
+    "#*k$kXk$k*#",
+    "#kkmmmmmkk#",
+    "#bkmmmmmkb#",
+    "#kkmmmmmkk#",
+    "#kkkkckkkk#",
+    "#####d#####"
+   ],
+   "music": "ashrama",
+   "battleBg": "ashrama",
+   "light": "interior",
+   "npcs": [
+    {
+     "id": "guest",
+     "sprite": "rishi",
+     "x": 5,
+     "y": 2,
+     "facing": "down",
+     "event": "ch1.hut_guest"
+    },
+    {
+     "id": "sweeper",
+     "sprite": "child",
+     "x": 8,
+     "y": 4,
+     "facing": "left",
+     "event": "ch1.hut_child"
+    }
+   ],
+   "warps": [
+    {
+     "x": 5,
+     "y": 6,
+     "to": "tamasa_ashrama",
+     "tx": 15,
+     "ty": 4,
+     "facing": "down"
+    }
+   ],
+   "triggers": []
+  },
+  {
+   "id": "tamasa_shishya_hut",
+   "nameId": "place.tamasa_ashrama",
+   "kanda": 1,
+   "width": 9,
+   "height": 6,
+   "legend": {
+    "#": "wall_inner",
+    "$": "chest",
+    "*": "lamp",
+    "b": "bush",
+    "c": "carpet",
+    "d": "hut_door",
+    "k": "wood_floor",
+    "m": "mat_floor"
+   },
+   "ground": [
+    "#########",
+    "#$k*k*kb#",
+    "#mkkkkkm#",
+    "#mkkkkkm#",
+    "#bkkckkb#",
+    "####d####"
+   ],
+   "music": "ashrama",
+   "battleBg": "ashrama",
+   "light": "interior",
+   "npcs": [
+    {
+     "id": "student",
+     "sprite": "villager_m",
+     "x": 2,
+     "y": 2,
+     "facing": "down",
+     "event": "ch1.student"
+    },
+    {
+     "id": "young",
+     "sprite": "child",
+     "x": 6,
+     "y": 3,
+     "facing": "left",
+     "event": "ch1.young_student"
+    }
+   ],
+   "warps": [
+    {
+     "x": 4,
+     "y": 5,
+     "to": "tamasa_ashrama",
+     "tx": 5,
+     "ty": 6,
+     "facing": "down"
+    }
+   ],
+   "triggers": []
+  },
+  {
+   "id": "tamasa_bank",
+   "nameId": "place.tamasa_bank",
+   "kanda": 1,
+   "width": 30,
+   "height": 20,
+   "legend": {
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "H": "bridge_v",
+    "L": "lotus",
+    "O": "boulder",
+    "R": "reeds",
+    "T": "tree",
+    "W": "water_deep",
+    "b": "bush",
+    "f": "flowers_red",
+    "l": "log",
+    "n": "shore_n",
+    "s": "sand",
+    "v": "shore_s",
+    "~": "water"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTA.::.ATTTTTTTTTTTT",
+    "TTTTTTTTA,....::..,.ATTTTA.ATT",
+    "TTTA.b.....,..::....b...,..ATT",
+    "TTA..bb...f.f.::.......,.,..AT",
+    "T...b..l......::.?.......O...T",
+    "T..,..........::..A...,......T",
+    "T......,,,....::.........,...T",
+    "T...........,.::..,......b...T",
+    "TbbRssssssssssssssssAsssssR.RT",
+    "T.RsssssOssssssssssssssssssR.T",
+    "T..RssssssssssssssssssssssR..T",
+    "TnnnnnnnnnnnnnnnnnnnnnnnnHnnnT",
+    "T~~~~~~~~~~~~~~~~~~~~~LL~H~~~T",
+    "TWWWWWWWWWWWWWWWWWWWWWWLLHWWWT",
+    "TWWWWWWWWWWWWWWWWWWWWWWWWWWWWT",
+    "T~~~~~~~~~~~~~~~~~~~~~~~~~~~~T",
+    "TvvvvvvvvvvvvvvvvvvvvvvvvvvvvT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "ashrama",
+   "battleBg": "river",
+   "light": "dawn",
+   "npcs": [
+    {
+     "id": "valmiki",
+     "sprite": "valmiki",
+     "x": 13,
+     "y": 10,
+     "facing": "right",
+     "event": "ch1.valmiki_bank",
+     "showIf": "!ch1.duel_done"
+    },
+    {
+     "id": "bharadvaja",
+     "sprite": "bharadvaja",
+     "x": 17,
+     "y": 10,
+     "facing": "left",
+     "event": "ch1.bharadvaja_duel",
+     "showIf": "!ch1.duel_done"
+    },
+    {
+     "id": "krauncha_a",
+     "sprite": "krauncha",
+     "x": 21,
+     "y": 9,
+     "facing": "left",
+     "event": "ch1.krauncha_birds",
+     "showIf": "!ch1.krauncha_seen"
+    },
+    {
+     "id": "krauncha_b",
+     "sprite": "krauncha",
+     "x": 21,
+     "y": 10,
+     "facing": "left",
+     "event": "ch1.krauncha_birds",
+     "showIf": "!ch1.krauncha_seen"
+    },
+    {
+     "id": "hunter",
+     "sprite": "hunter",
+     "x": 5,
+     "y": 9,
+     "facing": "right",
+     "event": "ch1.hunter",
+     "showIf": "!ch1.krauncha_seen"
+    },
+    {
+     "id": "fisher",
+     "sprite": "villager_m",
+     "x": 25,
+     "y": 14,
+     "facing": "down",
+     "event": "ch1.fisher"
+    }
+   ],
+   "warps": [
+    {
+     "x": 14,
+     "y": 0,
+     "to": "tamasa_ashrama",
+     "tx": 14,
+     "ty": 20,
+     "facing": "up"
+    },
+    {
+     "x": 15,
+     "y": 0,
+     "to": "tamasa_ashrama",
+     "tx": 15,
+     "ty": 20,
+     "facing": "up"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 1,
+     "y": 7,
+     "w": 28,
+     "h": 1,
+     "event": "ch1.krauncha",
+     "requires": "!ch1.krauncha_seen"
+    }
+   ],
+   "signs": [
+    {
+     "x": 17,
+     "y": 5,
+     "text": "The ford of the Tamasa. Bathe in peace."
+    }
+   ]
+  },
+  {
+   "id": "siddhashrama_road",
+   "nameId": "place.siddhashrama_road",
+   "kanda": 1,
+   "width": 40,
+   "height": 18,
+   "legend": {
+    "\"": "kusha",
+    "$": "chest",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "L": "lotus",
+    "O": "boulder",
+    "R": "reeds",
+    "T": "tree",
+    "X": "fire_altar",
+    "b": "bush",
+    "f": "flowers_red",
+    "r": "rock",
+    "v": "shore_s",
+    "~": "water"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "T~~~~~L~~~~~~~~~~~~~~~LL~~~~~~~~~~~L~~~T",
+    "TvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvT",
+    "TT..R.,....R....r.....A..R....TTT......T",
+    "TT.....,..,...........TT......TT.......T",
+    "T...,....TT..\"\"\".....,...,.....\"\"\".....T",
+    "T..........TT.\"\"\"\"........r.........?..T",
+    "T..?..,....A.\"\"\".....:::::::::::::::::::",
+    "::::::::::::::.......:...\"\"\"\"..........T",
+    "T.....X......:\"\".....:..\"\"\"\"\"\"...b.....T",
+    "T............:\"\"\"\".AA:...\"\"\"\"\"\".....TTTT",
+    "T..TT........::::::::::...\"\"\"\"....TTTTTT",
+    "TT.\"\"\"..TT......b....,......O.r..TTTTTTT",
+    "TT\"\"\"\"\".TTT....r..O.TT......O..O.....TTT",
+    "TTT\"\"\"...T....,....TTT,.f..........T.TTT",
+    "TTTT..,.....f..b....T....,,...,....T$TTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "dawn",
+   "npcs": [
+    {
+     "id": "vishvamitra",
+     "sprite": "vishvamitra",
+     "x": 6,
+     "y": 7,
+     "facing": "down",
+     "event": "ch1.vishvamitra_road",
+     "showIf": "!ch1.party_joined"
+    },
+    {
+     "id": "rama",
+     "sprite": "rama",
+     "x": 5,
+     "y": 10,
+     "facing": "up",
+     "event": "ch1.sleeping",
+     "showIf": "!ch1.party_joined"
+    },
+    {
+     "id": "lakshmana",
+     "sprite": "lakshmana",
+     "x": 7,
+     "y": 10,
+     "facing": "up",
+     "event": "ch1.sleeping",
+     "showIf": "!ch1.party_joined"
+    },
+    {
+     "id": "sage",
+     "sprite": "rishi",
+     "x": 18,
+     "y": 5,
+     "facing": "down",
+     "event": "ch1.road_sage"
+    },
+    {
+     "id": "vishvamitra_edge",
+     "sprite": "vishvamitra",
+     "x": 35,
+     "y": 7,
+     "facing": "left",
+     "event": "ch1.tataka_story",
+     "showIf": "ch1.party_joined&!ch1.tataka_defeated"
+    },
+    {
+     "id": "cowherd",
+     "sprite": "villager_m",
+     "x": 26,
+     "y": 13,
+     "facing": "up",
+     "event": "ch1.road_cowherd"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 9,
+     "to": "tamasa_ashrama",
+     "tx": 28,
+     "ty": 12,
+     "facing": "left"
+    },
+    {
+     "x": 39,
+     "y": 8,
+     "to": "tataka_vana",
+     "tx": 1,
+     "ty": 11,
+     "facing": "right",
+     "requires": "ch1.tataka_told",
+     "lockedEvent": "ch1.forest_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 2,
+     "y": 1,
+     "w": 1,
+     "h": 16,
+     "event": "ch1.road_dawn",
+     "requires": "!ch1.party_joined"
+    },
+    {
+     "x": 36,
+     "y": 15,
+     "w": 1,
+     "h": 1,
+     "event": "ch1.road_chest",
+     "once": true
+    }
+   ],
+   "signs": [
+    {
+     "x": 3,
+     "y": 8,
+     "text": "West: back to the hermitage of Valmiki, outside the story."
+    },
+    {
+     "x": 36,
+     "y": 7,
+     "text": "East: the forest of Tataka. Travellers, turn back!"
+    }
+   ],
+   "encounters": {
+    "rate": 0.08,
+    "table": [
+     {
+      "enemyId": "nishachara",
+      "weight": 3,
+      "minLevel": 3,
+      "maxLevel": 5
+     },
+     {
+      "enemyId": "vrka",
+      "weight": 2,
+      "minLevel": 3,
+      "maxLevel": 5
+     }
+    ]
+   }
+  },
+  {
+   "id": "tataka_vana",
+   "nameId": "place.tataka_vana",
+   "kanda": 1,
+   "width": 34,
+   "height": 20,
+   "legend": {
+    "\"": "kusha",
+    "$": "chest",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "O": "boulder",
+    "T": "tree",
+    "b": "bush",
+    "l": "log",
+    "t": "stump"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTT\"\"\"\"TTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTT\"\"\"\"\"\".TTTTTT\"\"\"\"\"\"TTTTTTTT",
+    "TTTTTT:::::::::::\"\"\"\"\"\"\"\"\"\".$TTTTT",
+    "TTTTTT:\"\"\"\"\"TTTT:TT\"\"\"\"\"\"TTTTTTTTT",
+    "TTTTTT:\"\"TTTTTTT:TTTTTTTTTTTTTTTTT",
+    "TTTTTT:TTTTTTTTT:TTTTTTTTTTTTTTTTT",
+    "TTTTTT:TTTTTTTT.:TTTTTTTTTTTTTTTTT",
+    "TT....:TTTTTTTT.:.TTT.....TTTTTTTT",
+    "TT..,.:TTTTTTTT.:..T.......bTTTTTT",
+    ":::::::TTTTTTTT.:::::......TTTTTTT",
+    "TT.t..TTTTTTTTT..\"........::::::::",
+    "TT..,.TTTTTTTT.\"\"\".l.......TTTTTTT",
+    "TTT..TTT\"\"\"\"\"TT.\".\"T.....O.TTTTTTT",
+    "TTTT\"\"\"\"\"\"\"\"TTT...TT.......TTTTTTT",
+    "TTTT\"\"\"\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTT\"\"\"\"TTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "forest",
+   "battleBg": "forest",
+   "light": "night",
+   "npcs": [
+    {
+     "id": "tataka",
+     "sprite": "rakshasi",
+     "x": 27,
+     "y": 12,
+     "facing": "left",
+     "event": "ch1.tataka",
+     "showIf": "!ch1.tataka_defeated"
+    },
+    {
+     "id": "hermit",
+     "sprite": "rishi",
+     "x": 3,
+     "y": 10,
+     "facing": "right",
+     "event": "ch1.forest_hermit"
+    },
+    {
+     "id": "prowler",
+     "sprite": "rakshasa",
+     "x": 17,
+     "y": 14,
+     "facing": "down",
+     "event": "ch1.forest_prowler",
+     "showIf": "!ch1.prowler_beaten"
+    },
+    {
+     "id": "vishvamitra",
+     "sprite": "vishvamitra",
+     "x": 24,
+     "y": 11,
+     "facing": "right",
+     "event": "ch1.vishvamitra_forest",
+     "showIf": "ch1.tataka_defeated"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 11,
+     "to": "siddhashrama_road",
+     "tx": 38,
+     "ty": 8,
+     "facing": "left"
+    },
+    {
+     "x": 33,
+     "y": 12,
+     "to": "siddhashrama",
+     "tx": 1,
+     "ty": 11,
+     "facing": "right"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 19,
+     "y": 9,
+     "w": 1,
+     "h": 7,
+     "event": "ch1.tataka_roar",
+     "requires": "!ch1.tataka_defeated"
+    },
+    {
+     "x": 27,
+     "y": 4,
+     "w": 1,
+     "h": 1,
+     "event": "ch1.forest_chest",
+     "once": true
+    }
+   ],
+   "encounters": {
+    "rate": 0.08,
+    "table": [
+     {
+      "enemyId": "nishachara",
+      "weight": 3,
+      "minLevel": 4,
+      "maxLevel": 6
+     },
+     {
+      "enemyId": "vrka",
+      "weight": 2,
+      "minLevel": 4,
+      "maxLevel": 6
+     }
+    ]
+   }
+  },
+  {
+   "id": "siddhashrama",
+   "nameId": "place.siddhashrama",
+   "kanda": 1,
+   "width": 32,
+   "height": 22,
+   "legend": {
+    "&": "market_stall",
+    ",": "grass_flowers",
+    "-": "stone_road",
+    ".": "grass",
+    ":": "path",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "F": "fence",
+    "L": "lotus",
+    "Q": "well",
+    "R": "reeds",
+    "S": "shrine",
+    "T": "tree",
+    "X": "fire_altar",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "b": "bush",
+    "d": "hut_door",
+    "e": "shore_e",
+    "f": "flowers_red",
+    "h": "hut_wall",
+    "i": "hut_window",
+    "n": "shore_n",
+    "s": "sand",
+    "v": "shore_s",
+    "w": "shore_w",
+    "~": "water"
+   },
+   "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TTTAA..,....A.......A..,....AATT",
+    "TTA..f.f....FFFFFFFFF...f.f..ATT",
+    "TA..[^^^]...F,sssss,F...[^^^].TT",
+    "T...hidih..AFsfsXsfsFA..hidih..T",
+    "T.....:.....FsssssssF.....:....T",
+    "T.f.f.:.....FsssssssF.....:.f.fT",
+    "T.....:.....FsssssssF.....:....T",
+    "T.....:.....FFFF:FFFF.....:....T",
+    "T.....:....A....:....A....:....T",
+    "T..?..:.........:.........:....T",
+    ":::::::::::::::::::::::::::::::T",
+    "T.....,..,......:.....,,...,.,.T",
+    "T.ff.....&&....A:A..-----..Q...T",
+    "T.ff.,,.........:...-fSf-......T",
+    "T...[^^^].......:...-----......T",
+    "T..,hihih......A:A.,....FFFFFF.T",
+    "T...,......,....:.......F,ff,F.T",
+    "TA.....,...RnnnnnnnnnR..Ff,,fF.T",
+    "TTA.b......w~~LL~~L~~eb.FFFFFF.T",
+    "TTTA.......RvvvvvvvvvR....ATTTTT",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+   ],
+   "music": "ashrama",
+   "battleBg": "ashrama",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "vishvamitra",
+     "sprite": "vishvamitra",
+     "x": 16,
+     "y": 5,
+     "facing": "down",
+     "event": "ch1.vishvamitra_silent"
+    },
+    {
+     "id": "disciple",
+     "sprite": "rishi",
+     "x": 17,
+     "y": 7,
+     "facing": "down",
+     "event": "ch1.yajna"
+    },
+    {
+     "id": "merchant",
+     "sprite": "merchant",
+     "x": 9,
+     "y": 14,
+     "facing": "up",
+     "event": "ch1.siddha_merchant"
+    },
+    {
+     "id": "sage_a",
+     "sprite": "rishi",
+     "x": 23,
+     "y": 12,
+     "facing": "down",
+     "event": "ch1.siddha_sage"
+    },
+    {
+     "id": "sage_b",
+     "sprite": "rishika",
+     "x": 21,
+     "y": 15,
+     "facing": "up",
+     "event": "common.shrine_hint"
+    },
+    {
+     "id": "child",
+     "sprite": "child",
+     "x": 26,
+     "y": 14,
+     "facing": "left",
+     "event": "ch1.siddha_child"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 11,
+     "to": "tataka_vana",
+     "tx": 32,
+     "ty": 12,
+     "facing": "left"
+    },
+    {
+     "x": 6,
+     "y": 4,
+     "to": "siddhashrama_hut",
+     "tx": 4,
+     "ty": 4,
+     "facing": "up"
+    },
+    {
+     "x": 26,
+     "y": 4,
+     "to": "siddhashrama_hut_2",
+     "tx": 4,
+     "ty": 4,
+     "facing": "up"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 2,
+     "y": 1,
+     "w": 1,
+     "h": 20,
+     "event": "ch1.siddha_arrive",
+     "requires": "ch1.tataka_defeated&!ch1.siddha_arrived"
+    }
+   ],
+   "signs": [
+    {
+     "x": 3,
+     "y": 10,
+     "text": "Siddhashrama, the hermitage of Vishvamitra."
+    }
+   ]
+  },
+  {
+   "id": "siddhashrama_hut",
+   "nameId": "place.siddhashrama",
+   "kanda": 1,
+   "width": 9,
+   "height": 6,
+   "legend": {
+    "#": "wall_inner",
+    "$": "chest",
+    "*": "lamp",
+    "b": "bush",
+    "c": "carpet",
+    "d": "hut_door",
+    "k": "wood_floor",
+    "m": "mat_floor"
+   },
+   "ground": [
+    "#########",
+    "#*kk$kk*#",
+    "#kmmmmmk#",
+    "#kmmmmmk#",
+    "#bkkckkb#",
+    "####d####"
+   ],
+   "music": "ashrama",
+   "battleBg": "ashrama",
+   "light": "interior",
+   "npcs": [
+    {
+     "id": "elder",
+     "sprite": "rishi",
+     "x": 2,
+     "y": 2,
+     "facing": "down",
+     "event": "ch1.siddha_elder"
+    },
+    {
+     "id": "student",
+     "sprite": "child",
+     "x": 6,
+     "y": 2,
+     "facing": "down",
+     "event": "ch1.siddha_student"
+    }
+   ],
+   "warps": [
+    {
+     "x": 4,
+     "y": 5,
+     "to": "siddhashrama",
+     "tx": 6,
+     "ty": 5,
+     "facing": "down"
+    }
+   ],
+   "triggers": []
+  },
+  {
+   "id": "siddhashrama_hut_2",
+   "nameId": "place.siddhashrama",
+   "kanda": 1,
+   "width": 9,
+   "height": 6,
+   "legend": {
+    "#": "wall_inner",
+    "$": "chest",
+    "*": "lamp",
+    "X": "fire_altar",
+    "b": "bush",
+    "c": "carpet",
+    "d": "hut_door",
+    "k": "wood_floor",
+    "m": "mat_floor"
+   },
+   "ground": [
+    "#########",
+    "#X$kkk$*#",
+    "#kkkkkkk#",
+    "#bkmmmkb#",
+    "#kkkckkk#",
+    "####d####"
+   ],
+   "music": "ashrama",
+   "battleBg": "ashrama",
+   "light": "interior",
+   "npcs": [
+    {
+     "id": "cook",
+     "sprite": "rishika",
+     "x": 5,
+     "y": 2,
+     "facing": "down",
+     "event": "ch1.siddha_cook"
+    }
+   ],
+   "warps": [
+    {
+     "x": 4,
+     "y": 5,
+     "to": "siddhashrama",
+     "tx": 26,
+     "ty": 5,
+     "facing": "down"
+    }
+   ],
+   "triggers": []
+  }
+ ],
+ "events": [
+  {
+   "id": "ch1.narada",
+   "cmds": [
+    {
+     "say": "Listen well, child. A great story is about to be born.",
+     "who": "person.narada",
+     "portrait": "narada"
+    }
+   ]
+  },
+  {
+   "id": "ch1.valmiki_courtyard",
+   "cmds": [
+    {
+     "say": "Go on ahead, {player}. The ford is just south of the hermitage. I will follow you.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "objective": "Go south to the bank of the Tamasa."
+    }
+   ]
+  },
+  {
+   "id": "ch1.valmiki_bank",
+   "cmds": [
+    {
+     "if": "ch1.krauncha_seen",
+     "then": [
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Learn the new verse by heart with Bharadvaja, child. Speak with him.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        }
+       ],
+       "else": [
+        {
+         "say": "Bharadvaja wishes to test you, child. Speak with him.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        }
+       ]
+      }
+     ],
+     "else": [
+      {
+       "say": "Look how clear the water is today.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.krauncha_birds",
+   "cmds": [
+    {
+     "say": "A pair of krauncha birds, singing to each other."
+    }
+   ]
+  },
+  {
+   "id": "ch1.hunter",
+   "cmds": [
+    {
+     "say": "A hunter crouches in the bushes, bow in hand."
+    }
+   ]
+  },
+  {
+   "id": "ch1.fisher",
+   "cmds": [
+    {
+     "say": "The Tamasa keeps her own counsel. But since that morning, she seems to murmur in verse.",
+     "who": "Fisherman",
+     "portrait": "villager_m"
+    }
+   ]
+  },
+  {
+   "id": "ch1.krauncha",
+   "cmds": [
+    {
+     "say": "At the ford the Tamasa runs clear over white sand. Valmiki and Bharadvaja are already waiting."
+    },
+    {
+     "say": "Look, Bharadvaja. This water is as clear as the mind of a good person. Set down the water pot; I will bathe here.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "say": "In a tree by the water, a pair of krauncha birds sing to each other, never apart."
+    },
+    {
+     "music": "sorrow"
+    },
+    {
+     "say": "Then a {w:nishada} (hunter) looses an arrow from the bushes. The male bird falls to the sand, and his mate cries out over him."
+    },
+    {
+     "say": "Valmiki's heart fills with pity. Words rise out of his grief, measured and whole."
+    },
+    {
+     "shloka": "s-ma-nishada",
+     "mode": "hear"
+    },
+    {
+     "music": "shloka"
+    },
+    {
+     "say": "What have I spoken? It came from grief, and it has become a verse.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "say": "Four quarters, eight syllables in each, fit to be sung to the strings of the vina. Let it be called a verse, and nothing else.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "quiz": "artha",
+     "shlokaId": "s-ma-nishada",
+     "onCorrect": [
+      {
+       "say": "Yes. You listen well, {player}.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      }
+     ],
+     "onWrong": [
+      {
+       "say": "Not quite. Every word has its meaning on the verse card. Look again when you can.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      }
+     ]
+    },
+    {
+     "say": "Keep these two words close: the first two words of the verse. Tap any word on a card to see what it means.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "learn": [
+      "ma",
+      "nishada"
+     ]
+    },
+    {
+     "say": "A cold wind sweeps over the river. Smoke-dark shapes rise from the reeds, and the words of the new verse scatter like startled birds."
+    },
+    {
+     "say": "Teacher, the words! They are flying away!",
+     "who": "person.bharadvaja",
+     "portrait": "bharadvaja"
+    },
+    {
+     "say": "This is illusion: a shadow that hates the story before it is even told. It has scattered every verse I am yet to sing.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "say": "{player}, take this palm-leaf book. Every verse you hear will be written in it, and every word you learn will gather there.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "say": "You received the palm-leaf book of verses!"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Bharadvaja, learn this new verse by heart, and teach it to our young friend too. Then we walk back.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      }
+     ],
+     "else": [
+      {
+       "say": "Bharadvaja, test our young friend. A verse is only truly ours when we can defend it.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      }
+     ]
+    },
+    {
+     "music": "ashrama"
+    },
+    {
+     "set": "ch1.krauncha_seen"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "objective": "Talk to Bharadvaja and learn the new verse by heart."
+      }
+     ],
+     "else": [
+      {
+       "objective": "Talk to Bharadvaja for a friendly verse-debate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.bharadvaja_duel",
+   "cmds": [
+    {
+     "if": "ch1.krauncha_seen",
+     "then": [
+      {
+       "if": "!style.katha",
+       "then": [
+        {
+         "say": "A debate of verses! Every move you make is a question about the words you have heard. Answer well, and your argument lands.",
+         "who": "person.bharadvaja",
+         "portrait": "bharadvaja"
+        },
+        {
+         "say": "Answer swiftly and perfectly, and it lands even harder. Ready?",
+         "who": "person.bharadvaja",
+         "portrait": "bharadvaja"
+        }
+       ]
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "The teacher's new verse! Let us learn it by heart first, then walk back.",
+         "who": "person.bharadvaja",
+         "portrait": "bharadvaja"
+        },
+        {
+         "say": "I say a line, and you say it after me. Where a word is missing, tap the right one.",
+         "who": "person.bharadvaja",
+         "portrait": "bharadvaja"
+        }
+       ]
+      },
+      {
+       "battle": {
+        "enemies": [
+         {
+          "id": "bharadvaja_duel",
+          "level": 3
+         }
+        ],
+        "kind": "duel",
+        "canRun": false,
+        "canLose": true,
+        "bg": "river",
+        "music": "duel",
+        "intro": "Bharadvaja challenges you to a friendly verse-debate!",
+        "tutorial": true
+       },
+       "onWin": [
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "say": "Now the verse lives in two memories. Let us tell the guru.",
+           "who": "person.bharadvaja",
+           "portrait": "bharadvaja"
+          }
+         ],
+         "else": [
+          {
+           "say": "I am persuaded! You really did hear every word.",
+           "who": "person.bharadvaja",
+           "portrait": "bharadvaja"
+          }
+         ]
+        },
+        {
+         "set": "ch1.duel_won"
+        }
+       ],
+       "onLose": [
+        {
+         "if": "!style.katha",
+         "then": [
+          {
+           "say": "You nearly had me! Every wrong answer shows you the right word, so you learn either way.",
+           "who": "person.bharadvaja",
+           "portrait": "bharadvaja"
+          }
+         ]
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "say": "You nearly had me! When you forget a word, the line shows you the right one, so you learn either way.",
+           "who": "person.bharadvaja",
+           "portrait": "bharadvaja"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "heal": true
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "I heard you both, and I am pleased. Come back to the hermitage now, {player}. At the shrine you will recite the verse and make it whole again.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        }
+       ],
+       "else": [
+        {
+         "say": "Well argued, both of you. Come back to the hermitage now, {player}. At the shrine you will recite the verse and make it whole again.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        }
+       ]
+      },
+      {
+       "fade": "out"
+      },
+      {
+       "set": "ch1.duel_done"
+      },
+      {
+       "fade": "in"
+      },
+      {
+       "objective": "Return to the hermitage and talk to Valmiki at the shrine."
+      }
+     ],
+     "else": [
+      {
+       "say": "The teacher wants to bathe here. Is the water not clear today?",
+       "who": "person.bharadvaja",
+       "portrait": "bharadvaja"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.valmiki_shrine",
+   "cmds": [
+    {
+     "if": "restored.s-ma-nishada",
+     "then": [
+      {
+       "if": "!ch1.restored_ma_nishada",
+       "then": [
+        {
+         "sfx": "levelup"
+        },
+        {
+         "say": "Listen! The verse lives again. Born of grief, it is now a mantra you can speak in battle.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        },
+        {
+         "say": "Your verse is restored. You can now use the move {n:move.shoka_shloka}. Check your moves in the party menu."
+        },
+        {
+         "say": "The poem I will compose tells of Rama, the man Narada described. The illusion has scattered its words through the whole tale.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        },
+        {
+         "say": "Go into the story, {player}. Walk beside Rama, hear each verse where it is spoken, and restore it at a shrine. The east gate will open for you.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        },
+        {
+         "rest": true
+        },
+        {
+         "save": true
+        },
+        {
+         "objective": "Go through the east gate into the story."
+        },
+        {
+         "set": "ch1.restored_ma_nishada"
+        }
+       ],
+       "else": [
+        {
+         "say": "The verse is whole again. Go east through the gate and step into the story. Rama is waiting on the road.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        },
+        {
+         "objective": "Go through the east gate into the story."
+        }
+       ]
+      }
+     ],
+     "else": [
+      {
+       "say": "This is the hermitage shrine. Here you may rest, save your journey, and recite the verses you have heard.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "There is a study hall here too, for practising words. Go there only when you wish.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        }
+       ]
+      },
+      {
+       "say": "To recite is to put the scattered words back in their places, quarter by quarter. Recite the verse of the krauncha for me.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      },
+      {
+       "choice": "Recite the verse now?",
+       "options": [
+        {
+         "label": "Recite it",
+         "set": "ch1.tmp_recite"
+        },
+        {
+         "label": "Not yet"
+        }
+       ]
+      },
+      {
+       "if": "ch1.tmp_recite",
+       "then": [
+        {
+         "unset": "ch1.tmp_recite"
+        },
+        {
+         "shloka": "s-ma-nishada",
+         "mode": "restore"
+        },
+        {
+         "if": "restored.s-ma-nishada",
+         "then": [
+          {
+           "sfx": "levelup"
+          },
+          {
+           "say": "Listen! The verse lives again. Born of grief, it is now a mantra you can speak in battle.",
+           "who": "person.valmiki",
+           "portrait": "valmiki"
+          },
+          {
+           "say": "Your verse is restored. You can now use the move {n:move.shoka_shloka}. Check your moves in the party menu."
+          },
+          {
+           "say": "The poem I will compose tells of Rama, the man Narada described. The illusion has scattered its words through the whole tale.",
+           "who": "person.valmiki",
+           "portrait": "valmiki"
+          },
+          {
+           "say": "Go into the story, {player}. Walk beside Rama, hear each verse where it is spoken, and restore it at a shrine. The east gate will open for you.",
+           "who": "person.valmiki",
+           "portrait": "valmiki"
+          },
+          {
+           "rest": true
+          },
+          {
+           "save": true
+          },
+          {
+           "objective": "Go through the east gate into the story."
+          },
+          {
+           "set": "ch1.restored_ma_nishada"
+          }
+         ],
+         "else": [
+          {
+           "say": "Some words are still out of place. Do not worry: rest, look at the verse card again, and recite it for me once more.",
+           "who": "person.valmiki",
+           "portrait": "valmiki"
+          }
+         ]
+        }
+       ],
+       "else": [
+        {
+         "say": "Take your time, child. Speak to me again when you are ready.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.gate_locked",
+   "cmds": [
+    {
+     "if": "ch1.duel_done",
+     "then": [
+      {
+       "say": "The path east shimmers like heat over sand. Valmiki calls after you: \"Restore the verse at the shrine first, child. Talk to me there when you are ready.\""
+      },
+      {
+       "objective": "Talk to Valmiki at the shrine and recite the verse."
+      }
+     ],
+     "else": [
+      {
+       "if": "ch1.krauncha_seen",
+       "then": [
+        {
+         "say": "The path east shimmers like heat over sand. Not yet: Bharadvaja is waiting for you on the riverbank to the south."
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "objective": "Talk to Bharadvaja and learn the new verse by heart."
+          }
+         ],
+         "else": [
+          {
+           "objective": "Talk to Bharadvaja for a friendly verse-debate."
+          }
+         ]
+        }
+       ],
+       "else": [
+        {
+         "say": "The path east shimmers like heat over sand. Something tells you it is not time yet. Valmiki is going down to the river, south of the hermitage."
+        },
+        {
+         "objective": "Go south to the bank of the Tamasa."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.bharadvaja_ashrama",
+   "cmds": [
+    {
+     "if": "!style.katha",
+     "then": [
+      {
+       "say": "Did you know? Each word you answer correctly grows stronger in your word book. Words you miss come back more often, until they stick.",
+       "who": "person.bharadvaja",
+       "portrait": "bharadvaja"
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Did you know? Each line you recite in battle stays with you. A line you forget comes back more often, until it sticks.",
+       "who": "person.bharadvaja",
+       "portrait": "bharadvaja"
+      }
+     ]
+    },
+    {
+     "if": "!ch1.gift_bharadvaja",
+     "then": [
+      {
+       "say": "Here, take these for the road. Fruit restores a tired hero.",
+       "who": "person.bharadvaja",
+       "portrait": "bharadvaja"
+      },
+      {
+       "give": "phala",
+       "qty": 3
+      },
+      {
+       "say": "You received 3 fruits."
+      },
+      {
+       "set": "ch1.gift_bharadvaja"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.trader",
+   "cmds": [
+    {
+     "say": "Fruit from the village orchards and honey from the forest. Honey refreshes the mind, so your heroes can call on their mantras again.",
+     "who": "Village trader",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "madhu"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.well_woman",
+   "cmds": [
+    {
+     "say": "Fresh water from the well! The sage says a clear mind is like clear water: you can see all the way to the bottom.",
+     "who": "Villager",
+     "portrait": "villager_f"
+    }
+   ]
+  },
+  {
+   "id": "ch1.child",
+   "cmds": [
+    {
+     "say": "Psst! Sanskrit can be shown in Devanagari, or in Roman letters with little marks. Pick the script in your Samskuru profile settings. I like Devanagari!",
+     "who": "Child",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch1.cowherd",
+   "cmds": [
+    {
+     "say": "The cows were restless last night, as if a shadow walked among the trees. Stay on the path, young one.",
+     "who": "Cowherd",
+     "portrait": "villager_m"
+    }
+   ]
+  },
+  {
+   "id": "ch1.hut_guest",
+   "cmds": [
+    {
+     "say": "I came with Narada and stayed to listen. What a night of words!",
+     "who": "Guest",
+     "portrait": "rishi"
+    },
+    {
+     "if": "!ch1.gift_hut",
+     "then": [
+      {
+       "say": "Take some honey with you. A reciter needs a sweet voice.",
+       "who": "Guest",
+       "portrait": "rishi"
+      },
+      {
+       "give": "madhu",
+       "qty": 1
+      },
+      {
+       "say": "You received 1 honey."
+      },
+      {
+       "set": "ch1.gift_hut"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.hut_child",
+   "cmds": [
+    {
+     "say": "I am sweeping the teacher's hut. He says even sweeping can be done with a whole heart.",
+     "who": "Young student",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch1.student",
+   "cmds": [
+    {
+     "say": "Your word book, {n:ui.words}, keeps every word you have met. It shows how well you know each one: unseen, seen, known, and mastered.",
+     "who": "Student",
+     "portrait": "villager_m"
+    },
+    {
+     "say": "Tap a Sanskrit word in someone's speech to see what it means.",
+     "who": "Student",
+     "portrait": "villager_m"
+    }
+   ]
+  },
+  {
+   "id": "ch1.young_student",
+   "cmds": [
+    {
+     "if": "heard.s-ma-nishada",
+     "then": [
+      {
+       "say": "Did you hear the teacher's verse at the river? Let me say what it means, to check I have it right.",
+       "who": "Young student",
+       "portrait": "child"
+      },
+      {
+       "say": "'Hunter, may you find no lasting place for endless years, because you killed one of the krauncha pair, lost in love.'",
+       "who": "Young student",
+       "portrait": "child"
+      },
+      {
+       "say": "The first word, {w:ma}, means \"may you not\". And {w:nishada} is the hunter. The whole verse is a wish, born of grief!",
+       "who": "Young student",
+       "portrait": "child"
+      }
+     ]
+    },
+    {
+     "say": "When I recite, I go quarter by quarter. Eight syllables, then the next eight. It is like climbing steps!",
+     "who": "Young student",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch1.road_dawn",
+   "cmds": [
+    {
+     "music": "shloka"
+    },
+    {
+     "say": "You step through the gate, and the world turns like a page."
+    },
+    {
+     "say": "You stand on the bank of the Sarayu in the {w:sandhya} (twilight) before dawn. Two young men sleep on beds of leaves, and a sage in white sits beside them."
+    },
+    {
+     "say": "Who are you, child? You have the look of a student from a poet's hermitage.",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "label": "k_who"
+      },
+      {
+       "choice": "Vishvamitra asks: \"Who are you, child? Where do you come from?\"",
+       "options": [
+        {
+         "label": "I am going east, to the forest.",
+         "goto": "k_who_m0"
+        },
+        {
+         "label": "I am {player}, from Valmiki's hermitage."
+        },
+        {
+         "label": "The princes are still asleep.",
+         "goto": "k_who_m2"
+        }
+       ]
+      },
+      {
+       "goto": "k_who_end"
+      },
+      {
+       "label": "k_who_m0"
+      },
+      {
+       "say": "East, with us? Good. But I asked who you are, and where you come from.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "goto": "k_who"
+      },
+      {
+       "label": "k_who_m2"
+      },
+      {
+       "say": "Let them sleep a little longer. But tell me about yourself, child.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "goto": "k_who"
+      },
+      {
+       "label": "k_who_end"
+      }
+     ]
+    },
+    {
+     "say": "You tell the sage of Valmiki, of the verse, and of the scattered words."
+    },
+    {
+     "say": "I am Vishvamitra. King Dasharatha has entrusted his sons to me, to guard my sacrifice from the night-wanderers. Watch, and listen.",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    },
+    {
+     "say": "The sage rises and gently wakes the elder prince."
+    },
+    {
+     "shloka": "s-kausalya-supraja",
+     "mode": "hear"
+    },
+    {
+     "say": "We are awake, revered teacher. First the morning prayers, and then the road.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "say": "And who is this? A friend from the forest?",
+     "who": "person.lakshmana",
+     "portrait": "lakshmana"
+    },
+    {
+     "say": "A student of the poet who will one day sing of you. Let the child walk with us.",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    },
+    {
+     "join": "rama"
+    },
+    {
+     "say": "Rama joins your party!"
+    },
+    {
+     "join": "lakshmana"
+    },
+    {
+     "say": "Lakshmana joins your party!"
+    },
+    {
+     "quiz": "artha",
+     "shlokaId": "s-kausalya-supraja",
+     "onCorrect": [
+      {
+       "say": "Well said. My teacher will be pleased with you.",
+       "who": "person.rama",
+       "portrait": "rama"
+      }
+     ],
+     "onWrong": [
+      {
+       "say": "Close! Look at the verse card again. Each word is explained there.",
+       "who": "person.lakshmana",
+       "portrait": "lakshmana"
+      }
+     ]
+    },
+    {
+     "music": "forest"
+    },
+    {
+     "if": "!style.katha",
+     "then": [
+      {
+       "say": "Sacred kusha grass grows tall along this road. Night-wanderers hide in it and may leap out as you walk through."
+      },
+      {
+       "say": "In battle, choose a move and answer its question. A correct answer makes the move land. A swift and perfect answer lands it harder."
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Sacred kusha grass grows tall along this road. On this journey the night-wanderers in it stay hidden; only the battles of the story await you."
+      },
+      {
+       "say": "In battle, choose a move. For an astra, recite a line of its verse. Other moves are simple."
+      },
+      {
+       "say": "If a word is missing from the line, choose it with one tap. A line you know well recites itself."
+      }
+     ]
+    },
+    {
+     "rest": true
+    },
+    {
+     "set": "ch1.party_joined"
+    },
+    {
+     "objective": "Follow the road east toward the forest."
+    }
+   ]
+  },
+  {
+   "id": "ch1.vishvamitra_road",
+   "cmds": [
+    {
+     "say": "Come, the day has begun.",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    }
+   ]
+  },
+  {
+   "id": "ch1.sleeping",
+   "cmds": [
+    {
+     "say": "The prince sleeps peacefully on a bed of leaves."
+    }
+   ]
+  },
+  {
+   "id": "ch1.road_sage",
+   "cmds": [
+    {
+     "if": "ch1.heard_samudra",
+     "then": [
+      {
+       "say": "May the road be kind to you. Rest at Vishvamitra's hermitage when you reach it.",
+       "who": "Wandering sage",
+       "portrait": "rishi"
+      }
+     ],
+     "else": [
+      {
+       "say": "So this is the prince the sage Narada sang of! I heard him once, by the Ganga.",
+       "who": "Wandering sage",
+       "portrait": "rishi"
+      },
+      {
+       "say": "Narada said Rama is like the {w:samudra} (ocean) in depth and like the {w:himavat} (Himalaya) in steadiness. Listen.",
+       "who": "Wandering sage",
+       "portrait": "rishi"
+      },
+      {
+       "shloka": "s-samudra-iva",
+       "mode": "hear"
+      },
+      {
+       "quiz": "artha",
+       "shlokaId": "s-samudra-iva",
+       "onCorrect": [
+        {
+         "say": "Just so! Words like these are the arrows of a reciter.",
+         "who": "Wandering sage",
+         "portrait": "rishi"
+        }
+       ],
+       "onWrong": [
+        {
+         "say": "Look again at the card in your verse book. Each word has its meaning beside it.",
+         "who": "Wandering sage",
+         "portrait": "rishi"
+        }
+       ]
+      },
+      {
+       "set": "ch1.heard_samudra"
+      },
+      {
+       "give": "phala",
+       "qty": 2
+      },
+      {
+       "say": "The sage gives you 2 fruits."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.road_cowherd",
+   "cmds": [
+    {
+     "if": "!style.katha",
+     "then": [
+      {
+       "say": "If you get hurt in the tall grass, eat some fruit from your bag. And the hermitage shrines will always restore you.",
+       "who": "Cowherd",
+       "portrait": "villager_m"
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "If you get hurt in a battle, eat some fruit from your bag. And the hermitage shrines will always restore you.",
+       "who": "Cowherd",
+       "portrait": "villager_m"
+      }
+     ]
+    },
+    {
+     "say": "In a fight, a tired hero can switch places with a fresh one. Every hero who takes part learns from the battle.",
+     "who": "Cowherd",
+     "portrait": "villager_m"
+    }
+   ]
+  },
+  {
+   "id": "ch1.tataka_story",
+   "cmds": [
+    {
+     "if": "ch1.tataka_told",
+     "then": [
+      {
+       "say": "Go, Rama. Free this land of its fear.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      }
+     ],
+     "else": [
+      {
+       "say": "Stop here, princes. Beyond these trees lies a forest that was once two rich countries. No one lives there now.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "say": "It is haunted by Tataka, a yakshi with the strength of a thousand elephants. The sage Agastya cursed her, and her son Maricha with her.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "say": "Teacher, she is a woman. Must I raise my bow against her?",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "A king's son protects those who cannot protect themselves, Rama. That is his {w:dharma} (duty). She has emptied this whole land of people.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "say": "My father told me to obey your word. For the sake of the people and the sages, I will do as you say.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "Then rest a moment first. That forest is dark even at noon.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "rest": true
+      },
+      {
+       "set": "ch1.tataka_told"
+      },
+      {
+       "objective": "Enter Tataka's forest to the east and face Tataka."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.forest_locked",
+   "cmds": [
+    {
+     "say": "Vishvamitra calls after you: \"Wait, princes! Hear what lies ahead before you go in.\""
+    }
+   ]
+  },
+  {
+   "id": "ch1.tataka_roar",
+   "cmds": [
+    {
+     "music": "boss"
+    },
+    {
+     "say": "A roar shakes the trees. Dust and stones rain down from the darkness ahead."
+    },
+    {
+     "say": "Brother, she is coming!",
+     "who": "person.lakshmana",
+     "portrait": "lakshmana"
+    },
+    {
+     "music": "forest"
+    },
+    {
+     "objective": "Face Tataka at the far side of the clearing."
+    }
+   ]
+  },
+  {
+   "id": "ch1.forest_hermit",
+   "cmds": [
+    {
+     "say": "You go to face Tataka? Then take this {w:oshadhi} (healing herb). It can rouse a hero who is exhausted.",
+     "who": "Frightened hermit",
+     "portrait": "rishi"
+    },
+    {
+     "if": "!ch1.gift_herb",
+     "then": [
+      {
+       "give": "oshadhi",
+       "qty": 1
+      },
+      {
+       "say": "You received 1 healing herb."
+      },
+      {
+       "set": "ch1.gift_herb"
+      }
+     ],
+     "else": [
+      {
+       "say": "May the gods guard you.",
+       "who": "Frightened hermit",
+       "portrait": "rishi"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.forest_prowler",
+   "cmds": [
+    {
+     "say": "Tataka's forest is ours! Turn back, or fight!",
+     "who": "Night-wanderer",
+     "portrait": "rakshasa"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "nishachara",
+        "level": 5
+       }
+      ],
+      "kind": "wild",
+      "canRun": false,
+      "canLose": false,
+      "bg": "forest",
+      "music": "battle",
+      "intro": "A night-wanderer leaps out of the dark!"
+     },
+     "onWin": [
+      {
+       "say": "The night-wanderer melts back into the shadows."
+      },
+      {
+       "set": "ch1.prowler_beaten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.tataka",
+   "cmds": [
+    {
+     "say": "A shape as vast as a storm cloud bursts out of the darkness, hurling rocks and dust."
+    },
+    {
+     "say": "Now, Rama! For the sake of the people!",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    },
+    {
+     "choice": "Rest and save before the battle?",
+     "options": [
+      {
+       "label": "Rest and save, then fight",
+       "set": "ch1.tmp_rest"
+      },
+      {
+       "label": "Fight now"
+      }
+     ]
+    },
+    {
+     "if": "ch1.tmp_rest",
+     "then": [
+      {
+       "unset": "ch1.tmp_rest"
+      },
+      {
+       "rest": true
+      },
+      {
+       "save": true
+      }
+     ]
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "tataka",
+        "level": 6
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "forest",
+      "music": "boss",
+      "intro": "Tataka rises out of the darkness!"
+     },
+     "onWin": [
+      {
+       "say": "Rama's arrow strikes true, and Tataka falls like a mountain."
+      },
+      {
+       "say": "Silence. Then birdsong, for the first time in years. The forest is free."
+      },
+      {
+       "music": "victory"
+      },
+      {
+       "say": "Well done, my son. I am pleased with you.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "say": "Take the divine weapons that I hold: the {n:move.agneyastra}, the {n:move.varunastra}, the {n:move.vayavyastra}, and many more.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "say": "Vishvamitra teaches Rama the mantras of the divine weapons. They will answer Rama as he grows in strength."
+      },
+      {
+       "set": "ch1.tataka_defeated"
+      },
+      {
+       "heal": true
+      },
+      {
+       "music": "forest"
+      },
+      {
+       "objective": "Go east to Vishvamitra's hermitage, Siddhashrama."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.vishvamitra_forest",
+   "cmds": [
+    {
+     "say": "The land breathes again. Come, my hermitage lies just to the east.",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    }
+   ]
+  },
+  {
+   "id": "ch1.siddha_arrive",
+   "cmds": [
+    {
+     "say": "Siddhashrama: the hermitage where Vishnu once performed his austerities, before he was born as the dwarf Vamana. Vishvamitra's disciples run to greet him."
+    },
+    {
+     "say": "Princes, today I begin my sacrifice. For six days and nights I will keep a vow of silence.",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    },
+    {
+     "say": "Guard the altar well. On the last night, the night-wanderers will come.",
+     "who": "person.vishvamitra",
+     "portrait": "vishvamitra"
+    },
+    {
+     "say": "Vishvamitra takes his seat before the fire and speaks no more."
+    },
+    {
+     "rest": true
+    },
+    {
+     "set": "ch1.siddha_arrived"
+    },
+    {
+     "objective": "Prepare at the shrine, then speak to the disciple at the altar."
+    }
+   ]
+  },
+  {
+   "id": "ch1.vishvamitra_silent",
+   "cmds": [
+    {
+     "if": "ch1.yajna_done",
+     "then": [
+      {
+       "say": "The sacrifice is complete, thanks to you all.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      }
+     ],
+     "else": [
+      {
+       "say": "Vishvamitra sits before the sacred fire, eyes closed, keeping his vow of silence."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.yajna",
+   "cmds": [
+    {
+     "if": "ch1.yajna_done",
+     "then": [
+      {
+       "say": "The fire burns peacefully now. Thank you, friends.",
+       "who": "Disciple",
+       "portrait": "rishi"
+      }
+     ],
+     "else": [
+      {
+       "if": "ch1.siddha_arrived",
+       "then": [
+        {
+         "say": "Five days have passed in peace. Tonight is the sixth night, the last. Are the princes ready?",
+         "who": "Disciple",
+         "portrait": "rishi"
+        },
+        {
+         "choice": "Stand guard on the last night?",
+         "options": [
+          {
+           "label": "Rest and save, then stand guard",
+           "set": "ch1.tmp_rest"
+          },
+          {
+           "label": "Stand guard now",
+           "set": "ch1.tmp_ready"
+          },
+          {
+           "label": "Not yet"
+          }
+         ]
+        },
+        {
+         "if": "ch1.tmp_rest",
+         "then": [
+          {
+           "unset": "ch1.tmp_rest"
+          },
+          {
+           "rest": true
+          },
+          {
+           "save": true
+          },
+          {
+           "set": "ch1.tmp_ready"
+          }
+         ]
+        },
+        {
+         "if": "ch1.tmp_ready",
+         "then": [
+          {
+           "unset": "ch1.tmp_ready"
+          },
+          {
+           "music": "boss"
+          },
+          {
+           "say": "The sacred fire leaps up. Then the sky darkens, and with a roar the night-wanderers come, led by Subahu and Maricha."
+          },
+          {
+           "say": "Lakshmana, stand with me. They shall not touch the altar.",
+           "who": "person.rama",
+           "portrait": "rama"
+          },
+          {
+           "battle": {
+            "enemies": [
+             {
+              "id": "subahu",
+              "level": 7
+             },
+             {
+              "id": "maricha",
+              "level": 7
+             }
+            ],
+            "kind": "boss",
+            "canRun": false,
+            "canLose": false,
+            "bg": "ashrama",
+            "music": "boss",
+            "intro": "Subahu and Maricha descend upon the sacrifice!"
+           },
+           "onWin": [
+            {
+             "say": "Rama looses the weapon of Manu at Maricha. It does not kill him: it carries him a hundred leagues away and drops him, stunned, into the ocean."
+            },
+            {
+             "say": "With the fire weapon Rama strikes down Subahu, and the other night-wanderers flee into the dark."
+            },
+            {
+             "music": "victory"
+            },
+            {
+             "say": "At dawn the sacrifice is complete, and Vishvamitra breaks his silence."
+            },
+            {
+             "say": "My purpose is fulfilled, Rama. You have honoured your father's word. Truly this is now the hermitage of fulfilment.",
+             "who": "person.vishvamitra",
+             "portrait": "vishvamitra"
+            },
+            {
+             "set": "ch1.yajna_done"
+            },
+            {
+             "music": "shloka"
+            },
+            {
+             "say": "From Siddhashrama, Vishvamitra led the princes to Mithila. There Rama lifted the great bow of Shiva and broke it, and King Janaka gave him his daughter Sita in marriage."
+            },
+            {
+             "say": "Many happy years passed in Ayodhya. So ends the first book, the Book of Youth."
+            },
+            {
+             "say": "From far away, you hear Valmiki's voice: \"Well done, {player}. Turn the page. The next book begins in Ayodhya.\""
+            },
+            {
+             "set": "ch1.complete"
+            },
+            {
+             "objective": "Walk into Ayodhya to begin Book 2."
+            },
+            {
+             "fade": "out"
+            },
+            {
+             "warp": "ayodhya_city",
+             "x": 17,
+             "y": 27,
+             "facing": "up"
+            },
+            {
+             "fade": "in"
+            },
+            {
+             "save": true
+            }
+           ]
+          }
+         ],
+         "else": [
+          {
+           "say": "Rest at the shrine and make ready. We will wait for you.",
+           "who": "Disciple",
+           "portrait": "rishi"
+          }
+         ]
+        }
+       ],
+       "else": [
+        {
+         "say": "Welcome, friends.",
+         "who": "Disciple",
+         "portrait": "rishi"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.siddha_merchant",
+   "cmds": [
+    {
+     "say": "Even hermits need supplies! Roots and herbs from the forest, gathered with care.",
+     "who": "Merchant",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.siddha_sage",
+   "cmds": [
+    {
+     "say": "Long ago, Vishnu did his penance here before he was born as Vamana. This is a place where good efforts bear fruit.",
+     "who": "Sage",
+     "portrait": "rishi"
+    }
+   ]
+  },
+  {
+   "id": "ch1.siddha_elder",
+   "cmds": [
+    {
+     "say": "Vishvamitra was once a king. He gave up his throne and won the rank of a great sage through long austerity.",
+     "who": "Elder sage",
+     "portrait": "rishi"
+    },
+    {
+     "say": "If he trusts the princes to guard his sacrifice, they must be extraordinary.",
+     "who": "Elder sage",
+     "portrait": "rishi"
+    }
+   ]
+  },
+  {
+   "id": "ch1.siddha_student",
+   "cmds": [
+    {
+     "say": "I memorise verses by saying them in quarters. A recited verse that is perfect turns gold in your verse book, {n:ui.verses}!",
+     "who": "Young student",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch1.siddha_cook",
+   "cmds": [
+    {
+     "say": "Wild rice and roots from the forest. Simple food for the sacrifice days.",
+     "who": "Hermit",
+     "portrait": "rishika"
+    },
+    {
+     "if": "!ch1.gift_cook",
+     "then": [
+      {
+       "give": "kanda_mula",
+       "qty": 1
+      },
+      {
+       "say": "You received 1 bundle of roots. Roots restore more strength than fruit."
+      },
+      {
+       "set": "ch1.gift_cook"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch1.siddha_child",
+   "cmds": [
+    {
+     "say": "When you restore a verse, a hero learns its power! I want to learn every verse in the poem.",
+     "who": "Child",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch1.road_chest",
+   "cmds": [
+    {
+     "say": "A small chest is tucked between the trees. Some traveller left it for the next one."
+    },
+    {
+     "give": "madhu",
+     "qty": 2
+    },
+    {
+     "say": "You found 2 honey."
+    }
+   ]
+  },
+  {
+   "id": "ch1.forest_chest",
+   "cmds": [
+    {
+     "say": "At the end of the grass trail sits an old chest, half hidden by roots."
+    },
+    {
+     "give": "oshadhi",
+     "qty": 1
+    },
+    {
+     "say": "You found 1 healing herb."
+    }
+   ]
+  }
+ ],
+ "walkthrough": [
+  {
+   "chapter": 1,
+   "map": "tamasa_bank",
+   "action": {
+    "reach": {
+     "x": 14,
+     "y": 7
+    }
+   },
+   "expectFlag": "ch1.krauncha_seen"
+  },
+  {
+   "chapter": 1,
+   "map": "tamasa_bank",
+   "action": {
+    "talk": "bharadvaja"
+   },
+   "expectFlag": "ch1.duel_done"
+  },
+  {
+   "chapter": 1,
+   "map": "tamasa_ashrama",
+   "action": {
+    "talk": "valmiki"
+   },
+   "expectFlag": "ch1.restored_ma_nishada"
+  },
+  {
+   "chapter": 1,
+   "map": "siddhashrama_road",
+   "action": {
+    "reach": {
+     "x": 2,
+     "y": 9
+    }
+   },
+   "expectFlag": "ch1.party_joined"
+  },
+  {
+   "chapter": 1,
+   "map": "siddhashrama_road",
+   "action": {
+    "talk": "sage"
+   },
+   "expectFlag": "ch1.heard_samudra"
+  },
+  {
+   "chapter": 1,
+   "map": "siddhashrama_road",
+   "action": {
+    "talk": "vishvamitra_edge"
+   },
+   "expectFlag": "ch1.tataka_told"
+  },
+  {
+   "chapter": 1,
+   "map": "tataka_vana",
+   "action": {
+    "talk": "tataka"
+   },
+   "expectFlag": "ch1.tataka_defeated"
+  },
+  {
+   "chapter": 1,
+   "map": "siddhashrama",
+   "action": {
+    "reach": {
+     "x": 2,
+     "y": 11
+    }
+   },
+   "expectFlag": "ch1.siddha_arrived"
+  },
+  {
+   "chapter": 1,
+   "map": "siddhashrama",
+   "action": {
+    "talk": "disciple"
+   },
+   "expectFlag": "ch1.complete"
+  }
+ ]
+}

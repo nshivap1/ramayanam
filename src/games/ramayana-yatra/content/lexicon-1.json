@@ -1,0 +1,3372 @@
+{
+  "version": 1,
+  "lexicon": [
+    {
+      "id": "abhirama",
+      "lemma": "अभिराम",
+      "pos": "adjective",
+      "meaning": "pleasing, lovely",
+      "forms": [
+        {
+          "form": "अभिरामः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "emotion"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "adas",
+      "lemma": "अदस्",
+      "pos": "pronoun",
+      "meaning": "that (over there)",
+      "notes": "Demonstrative; nom. sg. m./f. asau.",
+      "forms": [
+        {
+          "form": "असौ",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "aham",
+      "lemma": "अहम्",
+      "pos": "pronoun",
+      "meaning": "I (first person)",
+      "notes": "First-person pronoun (stem asmad): nom. sg. aham; acc. sg. mām, enclitic mā; gen. sg. mama, enclitic me (also dat.); pl. enclitic naḥ (acc./dat./gen.).",
+      "forms": [
+        {
+          "form": "माम्",
+          "grammar": "acc. sg.",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        },
+        {
+          "form": "मे",
+          "grammar": "gen. sg. (enclitic; same form as dat. sg.)",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        },
+        {
+          "form": "नः",
+          "grammar": "dat./gen. pl. (enclitic)",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        },
+        {
+          "form": "मम",
+          "grammar": "gen. sg.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ahnika",
+      "lemma": "आह्निक",
+      "pos": "noun",
+      "gender": "n",
+      "meaning": "daily rite",
+      "forms": [
+        {
+          "form": "आह्निकम्",
+          "grammar": "nom. sg. n.",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "time",
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams (looked up)"
+        ],
+        "notes": "MW s.v. āhnika, n. \"a religious ceremony to be performed every day at a fixed hour\" (checked via wisdomlib.org/definition/ahnika)."
+      }
+    },
+    {
+      "id": "aryaputra",
+      "lemma": "आर्यपुत्र",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "noble husband (a wife’s address)",
+      "notes": "ārya \"noble\" + putra \"son\"; used by a wife for her husband.",
+      "forms": [
+        {
+          "form": "आर्यपुत्र",
+          "grammar": "voc. sg. m.",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "family",
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "as",
+      "lemma": "अस्",
+      "pos": "verb",
+      "meaning": "to be, exist",
+      "notes": "Present 3rd sg. asti, 1st sg. asmi.",
+      "forms": [
+        {
+          "form": "अस्ति",
+          "grammar": "3rd sg. present active",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "atas",
+      "lemma": "अतस्",
+      "pos": "indeclinable",
+      "meaning": "from this; hence; than this",
+      "notes": "Written ataḥ in pausa, ato before voiced consonants.",
+      "forms": [
+        {
+          "form": "अतः",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "atavi",
+      "lemma": "अटवी",
+      "pos": "noun",
+      "gender": "f",
+      "meaning": "forest",
+      "forms": [
+        {
+          "form": "अटवीम्",
+          "grammar": "acc. sg. f.",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "nature",
+        "place"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ayodhya",
+      "lemma": "अयोध्या",
+      "pos": "name",
+      "gender": "f",
+      "meaning": "Ayodhyā (city of Rāma)",
+      "forms": [
+        {
+          "form": "अयोध्याम्",
+          "grammar": "acc. sg. f.",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "place"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ayushmat",
+      "lemma": "आयुष्मत्",
+      "pos": "adjective",
+      "meaning": "long-lived",
+      "notes": "āyus \"life\" + -mat; voc. sg. m. āyuṣman, a respectful address.",
+      "forms": [
+        {
+          "form": "आयुष्मन्",
+          "grammar": "voc. sg. m.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "time"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "bhash",
+      "lemma": "भाष्",
+      "pos": "verb",
+      "meaning": "to speak, say",
+      "notes": "Middle: bhāṣate; with abhi- \"speak to, address\"; with vi- \"speak, express\" (infinitive vibhāṣitum).",
+      "forms": [
+        {
+          "form": "अभिभाषते",
+          "grammar": "3rd sg. present middle (abhi + √bhāṣ)",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        }
+      ],
+      "tags": [
+        "speech"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "bhu",
+      "lemma": "भू",
+      "pos": "verb",
+      "meaning": "to be, become, exist",
+      "notes": "Present bhavati; future bhaviṣyati.",
+      "forms": [
+        {
+          "form": "भविष्यति",
+          "grammar": "3rd sg. future active",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "bru",
+      "lemma": "ब्रू",
+      "pos": "verb",
+      "meaning": "to say, speak",
+      "notes": "Present bravīti; imperative brūhi.",
+      "forms": [
+        {
+          "form": "ब्रूहि",
+          "grammar": "2nd sg. imperative active",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        }
+      ],
+      "tags": [
+        "speech"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ca",
+      "lemma": "च",
+      "pos": "indeclinable",
+      "meaning": "and",
+      "notes": "Placed after the word it joins.",
+      "forms": [
+        {
+          "form": "च",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-ko-nvasmin",
+            "s-samudra-iva",
+            "s-ramo-dvir",
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "daiva",
+      "lemma": "दैव",
+      "pos": "adjective",
+      "meaning": "divine, relating to the gods",
+      "forms": [
+        {
+          "form": "दैवम्",
+          "grammar": "nom. sg. n.",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "dasharatha",
+      "lemma": "दशरथ",
+      "pos": "name",
+      "gender": "m",
+      "meaning": "Daśaratha (king of Ayodhyā)",
+      "forms": [
+        {
+          "form": "दशरथम्",
+          "grammar": "acc. sg. m.",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "person",
+        "family"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "deva",
+      "lemma": "देव",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "god",
+      "forms": [
+        {
+          "form": "देवानाम्",
+          "grammar": "gen. pl. m.",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "devi",
+      "lemma": "देवी",
+      "pos": "noun",
+      "gender": "f",
+      "meaning": "goddess; queen",
+      "notes": "Vocative devi.",
+      "forms": [
+        {
+          "form": "देवि",
+          "grammar": "voc. sg. f.",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        },
+        {
+          "form": "देवी",
+          "grammar": "nom. sg. f.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "dhairya",
+      "lemma": "धैर्य",
+      "pos": "noun",
+      "gender": "n",
+      "meaning": "steadfastness, firmness",
+      "forms": [
+        {
+          "form": "धैर्येण",
+          "grammar": "instr. sg. n.",
+          "shlokaIds": [
+            "s-samudra-iva"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "dharma",
+      "lemma": "धर्म",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "dharma, righteousness, duty",
+      "forms": [
+        {
+          "form": "धर्मः",
+          "grammar": "nom. sg. m. (predicate)",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "dharmacarana",
+      "lemma": "धर्मचरण",
+      "pos": "compound",
+      "gender": "n",
+      "meaning": "practice of dharma",
+      "notes": "dharma + caraṇa \"practice\" (tatpuruṣa).",
+      "forms": [
+        {
+          "form": "धर्मचरणम्",
+          "grammar": "nom. sg. n. (compound)",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue",
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "dharmajna",
+      "lemma": "धर्मज्ञ",
+      "pos": "adjective",
+      "meaning": "knowing dharma, righteous",
+      "notes": "dharma + jña \"knowing\".",
+      "forms": [
+        {
+          "form": "धर्मज्ञः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "drdhavrata",
+      "lemma": "दृढव्रत",
+      "pos": "compound",
+      "meaning": "firm in vows",
+      "notes": "dṛḍha \"firm\" + vrata \"vow\" (bahuvrīhi).",
+      "forms": [
+        {
+          "form": "दृढव्रतः",
+          "grammar": "nom. sg. m. (compound)",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "dvis",
+      "lemma": "द्विस्",
+      "pos": "indeclinable",
+      "meaning": "twice",
+      "notes": "Written dviḥ in pausa, dvir before voiced sounds.",
+      "forms": [
+        {
+          "form": "द्विः",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        }
+      ],
+      "tags": [
+        "number"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "eka",
+      "lemma": "एक",
+      "pos": "numeral",
+      "meaning": "one",
+      "forms": [
+        {
+          "form": "एकम्",
+          "grammar": "acc. sg. m.",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "number"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "enad",
+      "lemma": "एनद्",
+      "pos": "pronoun",
+      "meaning": "this; he, it (unstressed)",
+      "notes": "Enclitic pronoun used in a few cases; acc. sg. m. enam.",
+      "forms": [
+        {
+          "form": "एनम्",
+          "grammar": "acc. sg. m.",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "gam",
+      "lemma": "गम्",
+      "pos": "verb",
+      "meaning": "to go",
+      "notes": "Present gacchati; aorist agamat. After mā the augment is normally dropped (mā gamaḥ).",
+      "forms": [
+        {
+          "form": "अगमः",
+          "grammar": "2nd sg. aorist active (with augment)",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        },
+        {
+          "form": "गच्छ",
+          "grammar": "2nd sg. imperative active",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "gambhirya",
+      "lemma": "गाम्भीर्य",
+      "pos": "noun",
+      "gender": "n",
+      "meaning": "depth, profundity",
+      "forms": [
+        {
+          "form": "गाम्भीर्ये",
+          "grammar": "loc. sg. n.",
+          "shlokaIds": [
+            "s-samudra-iva"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "gunavat",
+      "lemma": "गुणवत्",
+      "pos": "adjective",
+      "meaning": "virtuous, full of good qualities",
+      "notes": "-vat \"possessing\": nom. sg. m. guṇavān.",
+      "forms": [
+        {
+          "form": "गुणवान्",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "hi",
+      "lemma": "हि",
+      "pos": "indeclinable",
+      "meaning": "for, because; indeed",
+      "notes": "Never first in its clause.",
+      "forms": [
+        {
+          "form": "हि",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "himavat",
+      "lemma": "हिमवत्",
+      "pos": "name",
+      "gender": "m",
+      "meaning": "the Himālaya mountain",
+      "notes": "nom. sg. himavān.",
+      "forms": [
+        {
+          "form": "हिमवान्",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-samudra-iva"
+          ]
+        }
+      ],
+      "tags": [
+        "nature",
+        "place"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "hr",
+      "lemma": "हृ",
+      "pos": "verb",
+      "meaning": "to take, carry off",
+      "notes": "Present harati (also \"captivate\"); past participle hṛta; with vi + ā- \"utter, speak\" (present participle vyāharat).",
+      "forms": [
+        {
+          "form": "हरति",
+          "grammar": "3rd sg. present active",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        },
+        {
+          "form": "हृतम्",
+          "grammar": "past passive participle, nom. sg. n. (used as the verb)",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "idam",
+      "lemma": "इदम्",
+      "pos": "pronoun",
+      "meaning": "this",
+      "notes": "Demonstrative \"this\": loc. sg. m. asmin, instr. sg. m. anena, gen. sg. m. asya, nom. sg. f. iyam.",
+      "forms": [
+        {
+          "form": "अस्मिन्",
+          "grammar": "loc. sg. m.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ish",
+      "lemma": "इष्",
+      "pos": "verb",
+      "meaning": "to wish, desire; seek",
+      "notes": "With anu-: \"search for\" (anveṣati).",
+      "forms": [
+        {
+          "form": "अन्वेषसि",
+          "grammar": "2nd sg. present active (anu + √iṣ)",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "iva",
+      "lemma": "इव",
+      "pos": "indeclinable",
+      "meaning": "like, as",
+      "notes": "Follows the word of comparison.",
+      "forms": [
+        {
+          "form": "इव",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-samudra-iva",
+            "s-ramo-vigrahavan",
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "janakatmaja",
+      "lemma": "जनकात्मजा",
+      "pos": "compound",
+      "gender": "f",
+      "meaning": "daughter of Janaka (Sītā)",
+      "notes": "Janaka + ātmajā \"daughter\" (a + ā → ā; tatpuruṣa).",
+      "forms": [
+        {
+          "form": "जनकात्मजाम्",
+          "grammar": "acc. sg. f. (compound)",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "person",
+        "family"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "jna",
+      "lemma": "ज्ञा",
+      "pos": "verb",
+      "meaning": "to know",
+      "notes": "Present jānāti (1st sg. jānāmi); with abhi- \"recognise, know well\"; with prati- (middle) \"promise\".",
+      "forms": [
+        {
+          "form": "प्रतिजाने",
+          "grammar": "1st sg. present middle (prati + √jñā)",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kamamohita",
+      "lemma": "काममोहित",
+      "pos": "compound",
+      "meaning": "infatuated with love",
+      "notes": "kāma \"love, desire\" + mohita \"bewildered\" (tatpuruṣa).",
+      "forms": [
+        {
+          "form": "काममोहितम्",
+          "grammar": "acc. sg. m. (compound)",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "emotion"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kanksh",
+      "lemma": "काङ्क्ष्",
+      "pos": "verb",
+      "meaning": "to desire, long for",
+      "notes": "Past participle kāṅkṣita; with abhi- \"wish for\".",
+      "forms": [
+        {
+          "form": "अभिकाङ्क्षितम्",
+          "grammar": "past passive participle, nom. sg. n. (abhi + √kāṅkṣ)",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        }
+      ],
+      "tags": [
+        "emotion",
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kausalya",
+      "lemma": "कौसल्या",
+      "pos": "name",
+      "gender": "f",
+      "meaning": "Kausalyā (mother of Rāma)",
+      "forms": [
+        {
+          "form": "कौसल्या",
+          "grammar": "nom. sg. f.",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "person",
+        "family"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kausalyanandavardhana",
+      "lemma": "कौसल्यानन्दवर्धन",
+      "pos": "compound",
+      "meaning": "increasing Kausalyā's joy",
+      "notes": "Kausalyā + ānanda \"joy\" + vardhana \"increasing\" (ā + ā → ā).",
+      "forms": [
+        {
+          "form": "कौसल्यानन्दवर्धनः",
+          "grammar": "nom. sg. m. (compound)",
+          "shlokaIds": [
+            "s-samudra-iva"
+          ]
+        }
+      ],
+      "tags": [
+        "family",
+        "emotion"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kim",
+      "lemma": "किम्",
+      "pos": "pronoun",
+      "meaning": "who? what?",
+      "notes": "Interrogative pronoun; nom. sg. m. kaḥ.",
+      "forms": [
+        {
+          "form": "कः",
+          "grammar": "nom. sg. m. (interrogative)",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kincit",
+      "lemma": "किञ्चित्",
+      "pos": "pronoun",
+      "meaning": "something, anything",
+      "notes": "kim + the particle cit; with na: \"nothing at all\". Printed kiṃcit / kiṃ cit in the sources; MW lists it as kiṃcit.",
+      "forms": [
+        {
+          "form": "किंचित्",
+          "grammar": "nom. sg. n. (indefinite pronoun)",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kr",
+      "lemma": "कृ",
+      "pos": "verb",
+      "meaning": "to do, make",
+      "notes": "Present karoti; future kariṣyati/-te; gerundive kartavya \"to be done\"; passive imperative kriyatām \"let it be done\".",
+      "forms": [
+        {
+          "form": "कर्तव्यम्",
+          "grammar": "gerundive, nom. sg. n. (used as the verb)",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        },
+        {
+          "form": "करिष्ये",
+          "grammar": "1st sg. future middle",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kraunchamithuna",
+      "lemma": "क्रौञ्चमिथुन",
+      "pos": "compound",
+      "gender": "n",
+      "meaning": "pair of krauñca birds",
+      "notes": "krauñca (a crane-like bird) + mithuna \"pair\" (tatpuruṣa).",
+      "forms": [
+        {
+          "form": "क्रौञ्चमिथुनात्",
+          "grammar": "abl. sg. n. (compound)",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "animal"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "kridartha",
+      "lemma": "क्रीडार्थ",
+      "pos": "compound",
+      "meaning": "for play, for amusement",
+      "notes": "krīḍā \"play\" + artha \"purpose\"; the accusative krīḍārtham is used as an adverb.",
+      "forms": [
+        {
+          "form": "क्रीडार्थम्",
+          "grammar": "acc. sg. used as adverb (compound)",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "emotion"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "krtajna",
+      "lemma": "कृतज्ञ",
+      "pos": "adjective",
+      "meaning": "grateful",
+      "notes": "kṛta \"what was done (for one)\" + jña \"knowing\".",
+      "forms": [
+        {
+          "form": "कृतज्ञः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "loka",
+      "lemma": "लोक",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "world; people",
+      "forms": [
+        {
+          "form": "लोके",
+          "grammar": "loc. sg. m.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        },
+        {
+          "form": "लोकस्य",
+          "grammar": "gen. sg. m.",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "place"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ma",
+      "lemma": "मा",
+      "pos": "indeclinable",
+      "meaning": "not (prohibitive)",
+      "notes": "With the aorist (usually without augment): \"may … not, do not\".",
+      "forms": [
+        {
+          "form": "मा",
+          "grammar": "indecl. (prohibitive)",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "mahabahu",
+      "lemma": "महाबाहु",
+      "pos": "compound",
+      "gender": "m",
+      "meaning": "mighty-armed (hero)",
+      "notes": "mahā \"great\" + bāhu \"arm\" (bahuvrīhi); voc. sg. mahābāho.",
+      "forms": [
+        {
+          "form": "महाबाहो",
+          "grammar": "voc. sg. m. (compound)",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "body",
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "mahattara",
+      "lemma": "महत्तर",
+      "pos": "adjective",
+      "meaning": "greater",
+      "notes": "Comparative (-tara) of mahat \"great\".",
+      "forms": [
+        {
+          "form": "महत्तरम्",
+          "grammar": "nom. sg. n. (comparative)",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "mahavana",
+      "lemma": "महावन",
+      "pos": "compound",
+      "gender": "n",
+      "meaning": "great forest",
+      "notes": "mahā \"great\" + vana \"forest\" (karmadhāraya).",
+      "forms": [
+        {
+          "form": "महावने",
+          "grammar": "loc. sg. n. (compound)",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "nature",
+        "place"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "manas",
+      "lemma": "मनस्",
+      "pos": "noun",
+      "gender": "n",
+      "meaning": "mind, heart",
+      "notes": "s-stem: nom./acc. sg. manaḥ.",
+      "forms": [
+        {
+          "form": "मनः",
+          "grammar": "acc. sg. n.",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "body",
+        "emotion"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "mrga",
+      "lemma": "मृग",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "deer; wild animal",
+      "forms": [
+        {
+          "form": "मृगः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "animal"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "munipungava",
+      "lemma": "मुनिपुङ्गव",
+      "pos": "compound",
+      "gender": "m",
+      "meaning": "foremost of sages",
+      "notes": "muni \"sage\" + puṅgava \"bull\", i.e. \"chief\" (tatpuruṣa).",
+      "forms": [
+        {
+          "form": "मुनिपुङ्गवम्",
+          "grammar": "acc. sg. m. (compound)",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "na",
+      "lemma": "न",
+      "pos": "indeclinable",
+      "meaning": "not",
+      "forms": [
+        {
+          "form": "न",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-ramo-dvir",
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "narada",
+      "lemma": "नारद",
+      "pos": "name",
+      "gender": "m",
+      "meaning": "Nārada (a divine sage)",
+      "forms": [
+        {
+          "form": "नारदम्",
+          "grammar": "acc. sg. m.",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "narashardula",
+      "lemma": "नरशार्दूल",
+      "pos": "compound",
+      "gender": "m",
+      "meaning": "tiger among men",
+      "notes": "nara \"man\" + śārdūla \"tiger\": \"best of men\" (tatpuruṣa).",
+      "forms": [
+        {
+          "form": "नरशार्दूल",
+          "grammar": "voc. sg. m. (compound)",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ni",
+      "lemma": "नी",
+      "pos": "verb",
+      "meaning": "to lead",
+      "notes": "Present nayati; with ā- \"bring\" (imperative ānaya).",
+      "forms": [
+        {
+          "form": "आनय",
+          "grammar": "2nd sg. imperative active (ā + √nī)",
+          "shlokaIds": [
+            "s-golden-deer"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "nishada",
+      "lemma": "निषाद",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "hunter (a Niṣāda tribesman)",
+      "forms": [
+        {
+          "form": "निषाद",
+          "grammar": "voc. sg. m.",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "nu",
+      "lemma": "नु",
+      "pos": "indeclinable",
+      "meaning": "now; pray (in questions)",
+      "forms": [
+        {
+          "form": "नु",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "oshadhi",
+      "lemma": "ओषधि",
+      "pos": "noun",
+      "gender": "f",
+      "meaning": "herb, healing plant",
+      "forms": [
+        {
+          "form": "ओषधिम्",
+          "grammar": "acc. sg. f.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "nature"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "pitr",
+      "lemma": "पितृ",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "father",
+      "notes": "-ṛ stem: loc. sg. pitari.",
+      "forms": [
+        {
+          "form": "पितरि",
+          "grammar": "loc. sg. m.",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "family"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "prach",
+      "lemma": "प्रच्छ्",
+      "pos": "verb",
+      "meaning": "to ask, question",
+      "notes": "Present pṛcchati; perfect papraccha; with pari- \"question closely\".",
+      "forms": [
+        {
+          "form": "परिपप्रच्छ",
+          "grammar": "3rd sg. perfect active (pari + √pracch)",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "speech",
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "prana",
+      "lemma": "प्राण",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "breath; life",
+      "notes": "Plural prāṇāḥ \"life (the life-breaths)\".",
+      "forms": [
+        {
+          "form": "प्राणाः",
+          "grammar": "nom. pl. m.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "body"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "pratishtha",
+      "lemma": "प्रतिष्ठा",
+      "pos": "noun",
+      "gender": "f",
+      "meaning": "firm standing; fame; resting place",
+      "forms": [
+        {
+          "form": "प्रतिष्ठाम्",
+          "grammar": "acc. sg. f.",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "purva",
+      "lemma": "पूर्व",
+      "pos": "adjective",
+      "meaning": "first; eastern; former",
+      "forms": [
+        {
+          "form": "पूर्वा",
+          "grammar": "nom. sg. f.",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "time",
+        "place"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "rajan",
+      "lemma": "राजन्",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "king",
+      "notes": "-an stem: nom. sg. rājā, gen. sg. rājñaḥ.",
+      "forms": [
+        {
+          "form": "राज्ञः",
+          "grammar": "gen. sg. m.",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        },
+        {
+          "form": "राजा",
+          "grammar": "nom. sg. m. (predicate)",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "rama",
+      "lemma": "राम",
+      "pos": "name",
+      "gender": "m",
+      "meaning": "Rāma",
+      "forms": [
+        {
+          "form": "राम",
+          "grammar": "voc. sg. m.",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        },
+        {
+          "form": "रामः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ramo-dvir",
+            "s-ramo-vigrahavan"
+          ]
+        },
+        {
+          "form": "रामम्",
+          "grammar": "acc. sg. m.",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ravana",
+      "lemma": "रावण",
+      "pos": "name",
+      "gender": "m",
+      "meaning": "Rāvaṇa (king of Laṅkā)",
+      "forms": [
+        {
+          "form": "रावणेन",
+          "grammar": "instr. sg. m.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "sadhu",
+      "lemma": "साधु",
+      "pos": "adjective",
+      "meaning": "good, virtuous, righteous",
+      "forms": [
+        {
+          "form": "साधुः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "sama-2",
+      "lemma": "समा",
+      "pos": "noun",
+      "gender": "f",
+      "meaning": "year",
+      "notes": "Usually plural; accusative of duration \"for … years\".",
+      "forms": [
+        {
+          "form": "समाः",
+          "grammar": "acc. pl. f. (duration)",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "time"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ],
+        "notes": "Id sama-2: the slug sama belongs to the adjective सम \"equal\"."
+      }
+    },
+    {
+      "id": "sampratam",
+      "lemma": "साम्प्रतम्",
+      "pos": "indeclinable",
+      "meaning": "now, at present",
+      "forms": [
+        {
+          "form": "साम्प्रतम्",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "time"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "samudra",
+      "lemma": "समुद्र",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "ocean, sea",
+      "forms": [
+        {
+          "form": "समुद्रः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-samudra-iva"
+          ]
+        }
+      ],
+      "tags": [
+        "nature"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "sandhya",
+      "lemma": "सन्ध्या",
+      "pos": "noun",
+      "gender": "f",
+      "meaning": "twilight (dawn or dusk)",
+      "notes": "The verse prints saṃdhyā with anusvāra.",
+      "forms": [
+        {
+          "form": "संध्या",
+          "grammar": "nom. sg. f.",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "time"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "sarva",
+      "lemma": "सर्व",
+      "pos": "adjective",
+      "meaning": "all, whole",
+      "notes": "Declined like a pronoun (gen. sg. sarvasya).",
+      "forms": [
+        {
+          "form": "सर्वस्य",
+          "grammar": "gen. sg. m.",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "number"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "sarvagunopeta",
+      "lemma": "सर्वगुणोपेत",
+      "pos": "compound",
+      "meaning": "endowed with all virtues",
+      "notes": "sarva \"all\" + guṇa \"virtue\" + upeta \"endowed with\" (a + u → o).",
+      "forms": [
+        {
+          "form": "सर्वगुणोपेतः",
+          "grammar": "nom. sg. m. (compound)",
+          "shlokaIds": [
+            "s-samudra-iva"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "satyaparakrama",
+      "lemma": "सत्यपराक्रम",
+      "pos": "compound",
+      "meaning": "of true valour",
+      "notes": "satya \"true\" + parākrama \"valour\" (bahuvrīhi).",
+      "forms": [
+        {
+          "form": "सत्यपराक्रमः",
+          "grammar": "nom. sg. m. (compound)",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "satyavakya",
+      "lemma": "सत्यवाक्य",
+      "pos": "compound",
+      "meaning": "truthful in speech",
+      "notes": "satya \"true\" + vākya \"speech\" (bahuvrīhi: \"whose word is true\").",
+      "forms": [
+        {
+          "form": "सत्यवाक्यः",
+          "grammar": "nom. sg. m. (compound)",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue",
+        "speech"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "shashvata",
+      "lemma": "शाश्वत",
+      "pos": "adjective",
+      "meaning": "eternal, endless, everlasting",
+      "forms": [
+        {
+          "form": "शाश्वतीः",
+          "grammar": "acc. pl. f.",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "time"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "shushrusha",
+      "lemma": "शुश्रूषा",
+      "pos": "noun",
+      "gender": "f",
+      "meaning": "obedient service",
+      "notes": "From the desiderative of √śru \"hear\": \"wish to hear\", hence obedience.",
+      "forms": [
+        {
+          "form": "शुश्रूषा",
+          "grammar": "nom. sg. f.",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "stha",
+      "lemma": "स्था",
+      "pos": "verb",
+      "meaning": "to stand",
+      "notes": "Present tiṣṭhati; with ut- \"stand up, rise\" (uttiṣṭhati).",
+      "forms": [
+        {
+          "form": "उत्तिष्ठ",
+          "grammar": "2nd sg. imperative active (ut + √sthā)",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "supraja",
+      "lemma": "सुप्रज",
+      "pos": "adjective",
+      "meaning": "having good or many children",
+      "notes": "su \"good\" + prajā \"offspring\" (bahuvrīhi); feminine suprajā.",
+      "forms": [
+        {
+          "form": "सुप्रजा",
+          "grammar": "nom. sg. f.",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "family"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams (looked up)"
+        ],
+        "notes": "MW s.v. su-praja, mf(ā)n. \"having good or numerous children\", citing the Rāmāyaṇa (checked via wisdomlib.org/definition/supraja)."
+      }
+    },
+    {
+      "id": "tad",
+      "lemma": "तद्",
+      "pos": "pronoun",
+      "meaning": "that; he, she, it",
+      "notes": "nom. sg. m. saḥ, written sa before consonants.",
+      "forms": [
+        {
+          "form": "सः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-samudra-iva"
+          ]
+        },
+        {
+          "form": "तत्",
+          "grammar": "acc. sg. n.",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        },
+        {
+          "form": "तस्य",
+          "grammar": "gen. sg. m.",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        },
+        {
+          "form": "सा",
+          "grammar": "nom. sg. f.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "tapahsvadhyayanirata",
+      "lemma": "तपःस्वाध्यायनिरत",
+      "pos": "compound",
+      "meaning": "devoted to austerity and Vedic study",
+      "notes": "tapas \"austerity\" + svādhyāya \"Vedic recitation\" (a dvandva: \"austerity and Vedic study\") + nirata \"devoted to\" (tatpuruṣa); used as an adjective.",
+      "forms": [
+        {
+          "form": "तपःस्वाध्यायनिरतम्",
+          "grammar": "acc. sg. m. (compound)",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "tapasvin",
+      "lemma": "तपस्विन्",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "ascetic",
+      "notes": "-in stem: nom. sg. tapasvī.",
+      "forms": [
+        {
+          "form": "तपस्वी",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "tata",
+      "lemma": "तात",
+      "pos": "noun",
+      "gender": "m",
+      "meaning": "dear one (father or son)",
+      "notes": "Affectionate address, mostly in the vocative tāta.",
+      "forms": [
+        {
+          "form": "तात",
+          "grammar": "voc. sg. m.",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "family"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "tvam",
+      "lemma": "त्वम्",
+      "pos": "pronoun",
+      "meaning": "you (singular)",
+      "notes": "Second-person pronoun (stem yuṣmad): nom. sg. tvam, gen. sg. tava.",
+      "forms": [
+        {
+          "form": "त्वम्",
+          "grammar": "nom. sg.",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "ubhaya",
+      "lemma": "उभय",
+      "pos": "adjective",
+      "meaning": "both",
+      "forms": [
+        {
+          "form": "उभयम्",
+          "grammar": "nom. sg. n.",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "number"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "va",
+      "lemma": "वा",
+      "pos": "indeclinable",
+      "meaning": "or",
+      "notes": "Placed after the word it joins.",
+      "forms": [
+        {
+          "form": "वा",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vacana",
+      "lemma": "वचन",
+      "pos": "noun",
+      "gender": "n",
+      "meaning": "word, speech; command",
+      "forms": [
+        {
+          "form": "वचनम्",
+          "grammar": "acc. sg. n.",
+          "shlokaIds": [
+            "s-ramo-dvir"
+          ]
+        }
+      ],
+      "tags": [
+        "speech"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vacanakriya",
+      "lemma": "वचनक्रिया",
+      "pos": "compound",
+      "gender": "f",
+      "meaning": "carrying out a command",
+      "notes": "vacana \"word\" + kriyā \"doing\" (tatpuruṣa).",
+      "forms": [
+        {
+          "form": "वचनक्रिया",
+          "grammar": "nom. sg. f. (compound)",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "action",
+        "speech"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vadh",
+      "lemma": "वध्",
+      "pos": "verb",
+      "meaning": "to strike, kill",
+      "notes": "Defective root: its aorist avadhīt serves as the aorist of han \"kill\".",
+      "forms": [
+        {
+          "form": "अवधीः",
+          "grammar": "2nd sg. aorist active",
+          "shlokaIds": [
+            "s-ma-nishada"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vagvid",
+      "lemma": "वाग्विद्",
+      "pos": "adjective",
+      "meaning": "eloquent, skilled in speech",
+      "notes": "vāc \"speech\" + vid \"knowing\" (consonant stem in -d).",
+      "forms": [
+        {
+          "form": "वाग्विदाम्",
+          "grammar": "gen. pl. m.",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "speech"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "valmiki",
+      "lemma": "वाल्मीकि",
+      "pos": "name",
+      "gender": "m",
+      "meaning": "Vālmīki (poet of the Rāmāyaṇa)",
+      "forms": [
+        {
+          "form": "वाल्मीकिः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vara",
+      "lemma": "वर",
+      "pos": "adjective",
+      "meaning": "best, most excellent",
+      "notes": "With a genitive plural: \"best of …\".",
+      "forms": [
+        {
+          "form": "वरम्",
+          "grammar": "acc. sg. m.",
+          "shlokaIds": [
+            "s-tapah-svadhyaya"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vasava",
+      "lemma": "वासव",
+      "pos": "name",
+      "gender": "m",
+      "meaning": "Vāsava (a name of Indra)",
+      "forms": [
+        {
+          "form": "वासवः",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "person"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vid",
+      "lemma": "विद्",
+      "pos": "verb",
+      "meaning": "to know",
+      "notes": "Present vetti; imperative viddhi. With two accusatives: \"know X as Y\".",
+      "forms": [
+        {
+          "form": "विद्धि",
+          "grammar": "2nd sg. imperative active",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vigrahavat",
+      "lemma": "विग्रहवत्",
+      "pos": "adjective",
+      "meaning": "embodied, having a form",
+      "notes": "vigraha \"form, body\" + -vat: nom. sg. m. vigrahavān.",
+      "forms": [
+        {
+          "form": "विग्रहवान्",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ramo-vigrahavan"
+          ]
+        }
+      ],
+      "tags": [
+        "body"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ],
+        "notes": "MW s.v. vigraha m. \"individual form or shape, figure, the body\" (checked via wisdomlib.org/definition/vigraha); the -vat derivative itself was not looked up."
+      }
+    },
+    {
+      "id": "viryavat",
+      "lemma": "वीर्यवत्",
+      "pos": "adjective",
+      "meaning": "valiant, heroic, mighty",
+      "notes": "vīrya \"valour\" + -vat: nom. sg. m. vīryavān.",
+      "forms": [
+        {
+          "form": "वीर्यवान्",
+          "grammar": "nom. sg. m.",
+          "shlokaIds": [
+            "s-ko-nvasmin"
+          ]
+        }
+      ],
+      "tags": [
+        "virtue"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "vrt",
+      "lemma": "वृत्",
+      "pos": "verb",
+      "meaning": "to turn; to be, exist",
+      "notes": "Present vartate (middle); with pra- \"begin, set in\"; with nis- \"be accomplished\" (past participle nirvṛtta).",
+      "forms": [
+        {
+          "form": "प्रवर्तते",
+          "grammar": "3rd sg. present middle (pra + √vṛt)",
+          "shlokaIds": [
+            "s-kausalya-supraja"
+          ]
+        }
+      ],
+      "tags": [
+        "action"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "yad",
+      "lemma": "यद्",
+      "pos": "pronoun",
+      "meaning": "who, which (relative)",
+      "notes": "Relative pronoun; the neuter yat is also used as a conjunction \"because, that\".",
+      "forms": [
+        {
+          "form": "यत्",
+          "grammar": "indecl. use of nom./acc. sg. n. (conjunction) / nom. sg. n. (relative)",
+          "shlokaIds": [
+            "s-ma-nishada",
+            "s-ramo-dvir"
+          ]
+        },
+        {
+          "form": "याम्",
+          "grammar": "acc. sg. f. (relative)",
+          "shlokaIds": [
+            "s-aranya-3"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "yatha",
+      "lemma": "यथा",
+      "pos": "indeclinable",
+      "meaning": "as, like, in which way",
+      "forms": [
+        {
+          "form": "यथा",
+          "grammar": "indecl.",
+          "shlokaIds": [
+            "s-pitari-shushrusha"
+          ]
+        }
+      ],
+      "tags": [
+        "grammar-word"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    },
+    {
+      "id": "yathasukham",
+      "lemma": "यथासुखम्",
+      "pos": "indeclinable",
+      "meaning": "happily, at ease",
+      "notes": "yathā \"as\" + sukham \"pleasure\" (adverbial compound).",
+      "forms": [
+        {
+          "form": "यथासुखम्",
+          "grammar": "indecl. (compound adverb)",
+          "shlokaIds": [
+            "s-ramam-dasharatham"
+          ]
+        }
+      ],
+      "tags": [
+        "emotion"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Monier-Williams, A Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "accessed": "2026-11-11"
+          }
+        ],
+        "verifiedBy": [
+          "source:monier-williams"
+        ]
+      }
+    }
+  ]
+}

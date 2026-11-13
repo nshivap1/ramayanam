@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "about": "Interface strings of Kathā mode (journey picker, verse moment, recitation, study hall). OWNER: kc-view. Rules: notes/sa-ui.md.",
+  "models": [
+    { "stem": "अन्वय", "gender": "m", "paradigm": "deva-m", "en": "prose order of a verse (anvaya)", "source": "MW anvaya m. 'connection, association'; (in gram.) 'the natural order or arrangement of words in a sentence, syntactical connection'; a-stem without ṇatva like देव" },
+    { "stem": "पदच्छेद", "gender": "m", "paradigm": "deva-m", "en": "word split of a verse (pada-ccheda)", "source": "MW pada-ccheda m. 'the separation of words (in a sentence)'; a-stem without ṇatva like देव" },
+    { "stem": "सरलार्थ", "gender": "m", "paradigm": "deva-m", "en": "simple meaning (saralārtha)", "source": "compound of MW sarala 'straight, upright, honest, simple' + artha m. 'meaning'; the usual name of a plain-Sanskrit paraphrase in school editions; a-stem like देव (ṇatva blocked by the dental th)" },
+    { "stem": "अभ्यासशाला", "gender": "f", "paradigm": "lata-f", "en": "study hall, practice room", "source": "compound of MW abhyAsa m. 'repetition, exercise, discipline, use, habit; repeated reading, study' + zAlA f. 'a house, mansion, hall'; ā-stem like लता" }
+  ],
+  "entries": {
+    "katha.styleKatha": { "en": "Story", "sa": "कथा", "label": true, "ctx": "journey picker (New journey, Settings): the story-first style (Kathā)" },
+    "katha.styleAbhyasa": { "en": "Practice", "sa": "अभ्यासः", "label": true, "ctx": "journey picker (New journey, Settings): the practice style (every move a question)" },
+    "katha.noteKatha": { "en": "Story first: read the epic, and recite a verse to wield its astra.", "sa": "कथां पठ। श्लोकः एव अस्त्रम्।", "ctx": "journey picker: what the story style means (shown under the picker)" },
+    "katha.noteAbhyasa": { "en": "Practice: every move asks a question, and wild foes wait in the grass.", "sa": "युद्धे सर्वदा प्रश्नाः। तृणे शत्रवः प्रतीक्षन्ते।", "ctx": "journey picker: what the practice style means (shown under the picker)" },
+    "katha.autoRecite": { "en": "Automatic recitation", "sa": "स्वयं पाठः", "label": true, "ctx": "toggle (New journey for Kathā, Settings, the cast panel's help): verses in battle recite themselves" },
+    "katha.autoReciteSub": { "en": "Verses recite themselves; you never pick a word.", "sa": "श्लोकाः स्वयं वदन्ति। त्वं पदं न चिनोषि।", "ctx": "under the automatic-recitation toggle" },
+    "katha.tabPada": { "en": "Words", "sa": "पदच्छेदः", "label": true, "ctx": "verse moment tab: the verse's words in verse order (pada-ccheda)" },
+    "katha.tabAnvaya": { "en": "Prose order", "sa": "अन्वयः", "label": true, "ctx": "verse moment tab: the words in prose order (anvaya)" },
+    "katha.tabSarala": { "en": "Simple meaning", "sa": "सरलार्थः", "label": true, "ctx": "verse moment tab: the meaning in simple Sanskrit" },
+    "katha.tabEn": { "en": "English", "sa": "अर्थः", "label": true, "ctx": "verse moment tab (sa-en / en only): the verse's English meaning" },
+    "katha.tapToSee": { "en": "Tap to see it all at once.", "sa": "सर्वं द्रष्टुं स्पृश।", "ctx": "verse moment: hint while the prose order unfolds by itself" },
+    "katha.hint": { "en": "{$a}…", "sa": "{$a}॰", "label": true, "ctx": "recitation line: a first-akṣara memory hint ({$a} = the first akṣara; the abbreviation sign follows it)" },
+    "katha.coach": { "en": "Listen to the line. Where a word is missing, tap the right one.", "sa": "पादं शृणु। रिक्ते स्थाने उचितं पदं चिनु।", "ctx": "recitation panel, the tutorial duel's first turn only: a one-line coach above the line (v0.4.3)" },
+    "katha.echoBar": { "en": "recites with", "sa": "पाठः", "label": true, "ctx": "battle name bar of the tutorial duel (call and response, v0.4.3): between the reciter and Bharadvāja (a lesson, not a debate)" },
+    "katha.recallCap": { "en": "Recall the missing word", "sa": "अत्र किं पदम्?", "label": true, "ctx": "recitation panel caption (first three casts with a gap, every story language; v0.4.3: संस्कृतम् too)" },
+    "katha.chips": { "en": "Choose the missing word", "sa": "पदं चिनु", "label": true, "ctx": "aria label of the three word chips in a recitation" },
+    "katha.hurry": { "en": "Recite faster", "sa": "शीघ्रं पठ", "label": true, "ctx": "aria label / tooltip of the reciting line (a tap hurries it)" },
+    "katha.srCast": { "en": "{$astra}. {$line}. Three choices.", "sa": "{$astra}। {$line}। त्रीणि पदानि।", "ctx": "screen reader: one announcement when the gap opens ({$line} has the word 'blank' for the gap)" },
+    "katha.srLine": { "en": "{$astra}. {$line}.", "sa": "{$astra}। {$line}।", "label": true, "ctx": "screen reader: a cast with no gap, announced once as it starts ({$astra} = the astra's name, {$line} = the recited pāda)" },
+    "katha.srBlank": { "en": "blank", "sa": "रिक्तम्", "label": true, "ctx": "screen reader: the gap in the recited line" },
+    "katha.srMissed": { "en": "The word was {$word}.", "sa": "{$word} इति पदम् आसीत्।", "ctx": "screen reader after a wrong pick: the right word" },
+    "katha.help": { "en": "How recitation works", "sa": "पाठः कथं भवति?", "label": true, "ctx": "recitation panel: the ? help button / heading" },
+    "katha.help1": { "en": "The verse recites itself. Tap it to go faster.", "sa": "श्लोकः स्वयं वदति। शीघ्रं पठितुं तं स्पृश।", "ctx": "recitation help, line 1" },
+    "katha.help2": { "en": "One word is missing: pick it with one tap.", "sa": "एकं स्थानं रिक्तम्। उचितं पदं चिनु।", "ctx": "recitation help, line 2" },
+    "katha.help3": { "en": "A wrong word still works, with less strength.", "sa": "अन्यत् पदम् अपि किञ्चित् फलं ददाति।", "ctx": "recitation help, line 3 (a miss = half effect)" },
+    "katha.studyHall": { "en": "Study hall", "sa": "अभ्यासशाला", "label": true, "ctx": "shrine menu option (Kathā only): five classic challenges" },
+    "katha.studyHallSub": { "en": "Five practice questions.", "sa": "पञ्च प्रश्नाः।", "ctx": "shrine menu: under Study hall" },
+    "party.moveMetaKatha": { "en": "{$el} · PP {$pp}/{$max}", "sa": "{$el} · उत्साहः {$pp}/{$max}", "label": true, "ctx": "party (Kathā): a move's element and PP (no challenge kind: in Kathā only verse-bound astras ask anything)" },
+    "katha.bookProgress": { "en": "{$n} / {$total} heard", "sa": "{$n} / {$total} श्रुताः", "label": true, "ctx": "verse book (Kathā): how many of all verses the player has heard" },
+    "settings.showWay": { "en": "Show the way", "sa": "मार्गं दिश", "label": true, "ctx": "Settings toggle (both journeys, v0.4.2): a marker on the map points to where to go next (the next person, place, shrine or exit); दिश् = to point out, to show (दर्शय is not in the verified packs)" },
+    "settings.showWaySub": { "en": "a marker shows where to go next", "sa": "गन्तव्यं स्थानं दर्शयति", "label": true, "ctx": "Settings: under Show the way — what the marker does (गन्तव्यं स्थानम् = the place to go)" }
+  }
+}

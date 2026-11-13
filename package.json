@@ -1,0 +1,35 @@
+{
+  "name": "samskuru",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Samskuru — a contribution-friendly platform of Sanskrit learning games (PWA).",
+  "type": "module",
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "build": "node tools/build.mjs",
+    "preview": "node tools/serve.mjs dist 4173",
+    "gen": "node tools/gen-registry.mjs",
+    "new-game": "node tools/new-game.mjs",
+    "typecheck": "node tools/typecheck.mjs",
+    "test": "node tools/test.mjs",
+    "test:unit": "node tools/test.mjs unit",
+    "test:contract": "node tools/test.mjs contract",
+    "test:e2e": "node tools/test.mjs e2e",
+    "validate": "node --import tsx tools/validate-content.ts",
+    "check": "node tools/check.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "esbuild": "^0.28.0",
+    "playwright": "^1.63.0",
+    "tsx": "^4.23.0",
+    "typescript": "^5.9.0 || ^6.0.0"
+  }
+}

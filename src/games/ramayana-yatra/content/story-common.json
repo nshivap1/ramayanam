@@ -1,0 +1,148 @@
+{
+ "version": 1,
+ "chapters": [],
+ "maps": [],
+ "events": [
+  {
+   "id": "common.intro",
+   "cmds": [
+    {
+     "fade": "in"
+    },
+    {
+     "music": "ashrama"
+    },
+    {
+     "chapter": 1
+    },
+    {
+     "say": "Dawn on the Tamasa river. Mist lies on the water, and birds stir in the ashoka trees of the hermitage."
+    },
+    {
+     "say": "You are {player}, a young student in the hermitage of the sage Valmiki."
+    },
+    {
+     "say": "{player}, come and sit with us. The sage Narada has been speaking with me all through the night.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "say": "Every story worth telling begins with a question, child. Listen to how this one begins.",
+     "who": "person.narada",
+     "portrait": "narada"
+    },
+    {
+     "say": "These are the very first words of the poem: Valmiki, the {w:tapasvin} (ascetic), questions Narada, the best of speakers."
+    },
+    {
+     "shloka": "s-tapah-svadhyaya",
+     "mode": "hear"
+    },
+    {
+     "say": "And this is the question I asked him. It has filled my heart ever since.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "shloka": "s-ko-nvasmin",
+     "mode": "hear"
+    },
+    {
+     "say": "Such a man lives, Valmiki. He is Rama, born in the line of Ikshvaku.",
+     "who": "person.narada",
+     "portrait": "narada"
+    },
+    {
+     "say": "I must go on my way. Tell his story well, and let this child help you.",
+     "who": "person.narada",
+     "portrait": "narada"
+    },
+    {
+     "move": "narada",
+     "path": [
+      "right",
+      "right",
+      "right",
+      "right"
+     ]
+    },
+    {
+     "say": "Narada lifts his vina and walks away into the morning light."
+    },
+    {
+     "set": "common.intro_done"
+    },
+    {
+     "say": "Now let us go down to the Tamasa to bathe. Bharadvaja has gone ahead to the ford with my bark cloth.",
+     "who": "person.valmiki",
+     "portrait": "valmiki"
+    },
+    {
+     "say": "To walk, use the arrow keys, WASD or the D-pad. To talk to someone or read a sign, face it and press A (Z, Enter or Space)."
+    },
+    {
+     "say": "Press Menu (M) to see your party, your items, your word book {n:ui.words}, your verse book {n:ui.verses}, and the settings."
+    },
+    {
+     "objective": "Go south to the bank of the Tamasa."
+    }
+   ]
+  },
+  {
+   "id": "common.shrine",
+   "cmds": [
+    {
+     "shrine": true
+    }
+   ]
+  },
+  {
+   "id": "common.shop_basic",
+   "cmds": [
+    {
+     "say": "Fruit and forest honey, fresh today. Take what you need for the road.",
+     "who": "Merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "madhu"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "common.shop_full",
+   "cmds": [
+    {
+     "say": "Fruit, roots, honey and healing herbs. Everything a traveller needs.",
+     "who": "Merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "common.shrine_hint",
+   "cmds": [
+    {
+     "say": "The shrine beside me is a place of peace. Face it and press A.",
+     "who": "Hermit",
+     "portrait": "rishika"
+    },
+    {
+     "say": "Rest there to heal your party, save your journey, or recite a verse you have heard. A recited verse is restored and gives your heroes new strength.",
+     "who": "Hermit",
+     "portrait": "rishika"
+    }
+   ]
+  }
+ ],
+ "walkthrough": []
+}

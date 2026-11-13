@@ -1,0 +1,1823 @@
+{
+ "version": 1,
+ "models": [
+  {
+   "stem": "तीर",
+   "gender": "n",
+   "paradigm": "mitra-n",
+   "en": "bank, shore (of a river)",
+   "source": "MW tIra n."
+  },
+  {
+   "stem": "इक्ष्वाकु",
+   "gender": "m",
+   "paradigm": "guru-m",
+   "en": "Ikṣvāku (founder of the solar dynasty; pl. his descendants)",
+   "source": "MW ikzvAku m."
+  },
+  {
+   "stem": "वीणा",
+   "gender": "f",
+   "paradigm": "lata-f",
+   "en": "vīṇā, lute",
+   "source": "MW vIRA f."
+  },
+  {
+   "stem": "वाद",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "debate, discussion",
+   "source": "MW vAda m."
+  },
+  {
+   "stem": "मन्त्र",
+   "gender": "m",
+   "paradigm": "rama-m",
+   "en": "mantra, sacred formula",
+   "source": "MW mantra m."
+  },
+  {
+   "stem": "यज्ञ",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "sacrifice, fire-ritual",
+   "source": "MW yajYa m."
+  },
+  {
+   "stem": "अस्त्र",
+   "gender": "n",
+   "paradigm": "mitra-n",
+   "en": "missile weapon (divine weapon)",
+   "source": "MW astra n."
+  },
+  {
+   "stem": "गङ्गा",
+   "gender": "f",
+   "paradigm": "lata-f",
+   "en": "the Gaṅgā river",
+   "source": "MW gaNgA f."
+  },
+  {
+   "stem": "विष्णु",
+   "gender": "m",
+   "paradigm": "sadhu-m",
+   "en": "Viṣṇu",
+   "source": "MW vizRu m."
+  },
+  {
+   "stem": "बाण",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "arrow",
+   "source": "MW bARa m."
+  },
+  {
+   "stem": "सिद्धाश्रम",
+   "gender": "m",
+   "paradigm": "rama-m",
+   "en": "Siddhāśrama, Viśvāmitra's hermitage",
+   "source": "MW siddhASrama m."
+  },
+  {
+   "stem": "मन्दाकिनी",
+   "gender": "f",
+   "paradigm": "nadi-f",
+   "en": "the Mandākinī river (at Citrakūṭa)",
+   "source": "MW mandAkinI f."
+  },
+  {
+   "stem": "सरयू",
+   "gender": "f",
+   "paradigm": "vadhu-f",
+   "en": "the Sarayū river (at Ayodhyā)",
+   "source": "MW sarayU f."
+  }
+ ],
+ "entries": [
+  {
+   "en": "Dawn on the Tamasa river. Mist lies on the water, and birds stir in the ashoka trees of the hermitage.",
+   "sa": "तमसायाः तीरे प्रभातम्। जलस्य उपरि श्वेतः धूमः इव अस्ति। आश्रमस्य वृक्षेषु पक्षिणः कूजन्ति।",
+   "ctx": "common.intro · narration"
+  },
+  {
+   "en": "You are {player}, a young student in the hermitage of the sage Valmiki.",
+   "sa": "तव नाम {player}। त्वं मुनेः वाल्मीकेः आश्रमे पठसि।",
+   "ctx": "common.intro · narration"
+  },
+  {
+   "en": "{player}, come and sit with us. The sage Narada has been speaking with me all through the night.",
+   "sa": "{player}, आगच्छ। अस्माभिः सह उपविश। नारदः मुनिः सर्वां रात्रिं मया सह भाषितवान्।",
+   "ctx": "common.intro · person.valmiki"
+  },
+  {
+   "en": "Every story worth telling begins with a question, child. Listen to how this one begins.",
+   "sa": "{g:वत्स|वत्से}, सर्वासाम् उत्तमानां कथानाम् आरम्भे प्रश्नः भवति। एतस्याः कथायाः आरम्भं शृणु।",
+   "ctx": "common.intro · person.narada"
+  },
+  {
+   "en": "These are the very first words of the poem: Valmiki, the {w:tapasvin} (ascetic), questions Narada, the best of speakers.",
+   "sa": "एते कथायाः प्रथमाः शब्दाः। तपस्वी वाल्मीकिः नारदं पृच्छति। नारदः सर्वेषु जनेषु उत्तमं वदति।",
+   "ctx": "common.intro · narration"
+  },
+  {
+   "en": "And this is the question I asked him. It has filled my heart ever since.",
+   "sa": "एषः एव मम प्रश्नः। अहं नारदम् एतत् पृष्टवान्। तदा आरभ्य एषः प्रश्नः मम हृदये अस्ति।",
+   "ctx": "common.intro · person.valmiki"
+  },
+  {
+   "en": "Such a man lives, Valmiki. He is Rama, born in the line of Ikshvaku.",
+   "sa": "वाल्मीके, सः पुरुषः अस्ति। सः रामः। सः इक्ष्वाकूणां वंशे जातः।",
+   "ctx": "common.intro · person.narada"
+  },
+  {
+   "en": "I must go on my way. Tell his story well, and let this child help you.",
+   "sa": "अहम् इदानीं गच्छामि। वाल्मीके, रामस्य कथां सम्यक् कथय। {g:वत्स|वत्से}, त्वम् अपि गुरोः उपकुरु।",
+   "ctx": "common.intro · person.narada"
+  },
+  {
+   "en": "Narada lifts his vina and walks away into the morning light.",
+   "sa": "नारदः वीणां गृह्णाति। सः प्रभातस्य प्रकाशं प्रति गच्छति।",
+   "ctx": "common.intro · narration"
+  },
+  {
+   "en": "Now let us go down to the Tamasa to bathe. Bharadvaja has gone ahead to the ford with my bark cloth.",
+   "sa": "अधुना स्नातुं तमसां गच्छाव। भरद्वाजः मम वस्त्रं नीत्वा पूर्वम् एव तीरं गतवान्।",
+   "ctx": "common.intro · person.valmiki"
+  },
+  {
+   "en": "To walk, use the arrow keys, WASD or the D-pad. To talk to someone or read a sign, face it and press A (Z, Enter or Space).",
+   "sa": "सर्वत्र चलतु। जनस्य पुरतः स्थित्वा तेन सह वदतु। फलकस्य पुरतः स्थित्वा तत् पठतु।",
+   "ctx": "common.intro · narration"
+  },
+  {
+   "en": "Press Menu (M) to see your party, your items, your word book {n:ui.words}, your verse book {n:ui.verses}, and the settings.",
+   "sa": "स्यूते वीरान्, वस्तूनि, पदानि, श्लोकान्, इच्छाः च पश्यतु।",
+   "ctx": "common.intro · narration"
+  },
+  {
+   "en": "Go south to the bank of the Tamasa.",
+   "sa": "तमसायाः तीरं गच्छतु। मार्गः दक्षिणां दिशं गच्छति।",
+   "ctx": "common.intro · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Fruit and forest honey, fresh today. Take what you need for the road.",
+   "sa": "फलानि मधु च अत्र सन्ति। अद्य एव आनीतानि। मार्गाय यत् आवश्यकं तत् स्वीकरोतु।",
+   "ctx": "common.shop_basic · Merchant"
+  },
+  {
+   "en": "Fruit, roots, honey and healing herbs. Everything a traveller needs.",
+   "sa": "फलानि, मूलानि, मधु, ओषधयः च अत्र सन्ति। यात्रिकस्य सर्वम् आवश्यकम् अत्र अस्ति।",
+   "ctx": "common.shop_full · Merchant"
+  },
+  {
+   "en": "The shrine beside me is a place of peace. Face it and press A.",
+   "sa": "मम पार्श्वे एतत् मन्दिरम् अस्ति। अत्र शान्तिः अस्ति। तस्य पुरतः तिष्ठतु।",
+   "ctx": "common.shrine_hint · Hermit"
+  },
+  {
+   "en": "Rest there to heal your party, save your journey, or recite a verse you have heard. A recited verse is restored and gives your heroes new strength.",
+   "sa": "तत्र विश्राम्यतु। तदा सर्वेषां बलं पुनः पूर्णं भवति। यात्रा अपि रक्षिता भवति। श्रुतं श्लोकम् अपि तत्र पठतु। पठितः श्लोकः पुनः पूर्णः भवति। सः वीरेभ्यः नूतनं बलं ददाति।",
+   "ctx": "common.shrine_hint · Hermit"
+  },
+  {
+   "en": "Listen well, child. A great story is about to be born.",
+   "sa": "{g:वत्स|वत्से}, सम्यक् शृणु। महती कथा अधुना जायते।",
+   "ctx": "ch1.narada · person.narada"
+  },
+  {
+   "en": "Go on ahead, {player}. The ford is just south of the hermitage. I will follow you.",
+   "sa": "{player}, त्वम् अग्रे गच्छ। आश्रमात् दक्षिणां दिशं गच्छ, तत्र तीरम् अस्ति। अहं पश्चात् आगच्छामि।",
+   "ctx": "ch1.valmiki_courtyard · person.valmiki"
+  },
+  {
+   "en": "Bharadvaja wishes to test you, child. Speak with him.",
+   "sa": "{g:वत्स|वत्से}, भरद्वाजः तव परीक्षां कर्तुम् इच्छति। तेन सह वद।",
+   "ctx": "ch1.valmiki_bank · person.valmiki"
+  },
+  {
+   "en": "Look how clear the water is today.",
+   "sa": "पश्य, अद्य जलम् अतीव निर्मलम् अस्ति।",
+   "ctx": "ch1.valmiki_bank · person.valmiki"
+  },
+  {
+   "en": "A pair of krauncha birds, singing to each other.",
+   "sa": "क्रौञ्चौ पक्षिणौ। तौ सह गायतः।",
+   "ctx": "ch1.krauncha_birds · narration"
+  },
+  {
+   "en": "A hunter crouches in the bushes, bow in hand.",
+   "sa": "एकः निषादः वृक्षाणां पृष्ठतः उपविशति। तस्य हस्ते धनुः अस्ति।",
+   "ctx": "ch1.hunter · narration"
+  },
+  {
+   "en": "The Tamasa keeps her own counsel. But since that morning, she seems to murmur in verse.",
+   "sa": "तमसा तूष्णीं वहति। परन्तु तस्मात् प्रभातात् आरभ्य सा श्लोकान् इव वदति।",
+   "ctx": "ch1.fisher · Fisherman"
+  },
+  {
+   "en": "At the ford the Tamasa runs clear over white sand. Valmiki and Bharadvaja are already waiting.",
+   "sa": "तमसायाः तीरे जलं निर्मलम् अस्ति। वाल्मीकिः भरद्वाजः च पूर्वम् एव तत्र स्तः।",
+   "ctx": "ch1.krauncha · narration"
+  },
+  {
+   "en": "Look, Bharadvaja. This water is as clear as the mind of a good person. Set down the water pot; I will bathe here.",
+   "sa": "भरद्वाज, पश्य। एतत् जलं साधोः मनः इव निर्मलम्। घटम् अत्र निक्षिप। अहम् अत्र स्नामि।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "In a tree by the water, a pair of krauncha birds sing to each other, never apart.",
+   "sa": "जलस्य पार्श्वे एकस्मिन् वृक्षे क्रौञ्चौ पक्षिणौ गायतः। तौ सदा सह तिष्ठतः।",
+   "ctx": "ch1.krauncha · narration"
+  },
+  {
+   "en": "Then a {w:nishada} (hunter) looses an arrow from the bushes. The male bird falls to the sand, and his mate cries out over him.",
+   "sa": "तदा एकः निषादः बाणं क्षिपति। एकः पक्षी वालुकायां पतति। तस्य पत्नी उच्चैः रोदिति।",
+   "ctx": "ch1.krauncha · narration"
+  },
+  {
+   "en": "Valmiki's heart fills with pity. Words rise out of his grief, measured and whole.",
+   "sa": "वाल्मीकेः हृदये करुणा जायते। तस्य शोकात् शब्दाः आगच्छन्ति। ते शब्दाः सुन्दराः पूर्णाः च।",
+   "ctx": "ch1.krauncha · narration"
+  },
+  {
+   "en": "What have I spoken? It came from grief, and it has become a verse.",
+   "sa": "अहं किम् उक्तवान्? एतत् शोकात् आगतम्। मम शोकः श्लोकः अभवत्।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "Four quarters, eight syllables in each, fit to be sung to the strings of the vina. Let it be called a verse, and nothing else.",
+   "sa": "चत्वारः पादाः। पादे पादे अष्ट अक्षराणि। एतत् वीणया सह गातुं शक्यम्। एतस्य नाम श्लोकः एव भवतु।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "Yes. You listen well, {player}.",
+   "sa": "आम्। त्वं सम्यक् शृणोषि, {player}।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "Not quite. Every word has its meaning on the verse card. Look again when you can.",
+   "sa": "न सम्यक्। श्लोकस्य पत्रे सर्वेषां शब्दानाम् अर्थः अस्ति। पुनः पश्य।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "Keep these two words close: the first two words of the verse. Tap any word on a card to see what it means.",
+   "sa": "एतौ द्वौ शब्दौ स्मर। एतौ श्लोकस्य प्रथमौ शब्दौ। पत्रे शब्दं स्पृश, तदा तस्य अर्थं द्रक्ष्यसि।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "A cold wind sweeps over the river. Smoke-dark shapes rise from the reeds, and the words of the new verse scatter like startled birds.",
+   "sa": "नद्याः उपरि शीतः वायुः वहति। जलात् धूमः इव कृष्णाः छायाः उत्तिष्ठन्ति। नूतनस्य श्लोकस्य शब्दाः भीताः पक्षिणः इव सर्वतः उत्पतन्ति।",
+   "ctx": "ch1.krauncha · narration"
+  },
+  {
+   "en": "Teacher, the words! They are flying away!",
+   "sa": "गुरो, शब्दाः! ते उत्पतन्ति!",
+   "ctx": "ch1.krauncha · person.bharadvaja"
+  },
+  {
+   "en": "This is illusion: a shadow that hates the story before it is even told. It has scattered every verse I am yet to sing.",
+   "sa": "एषा माया, एका छाया। कथा अद्य अपि न कथिता, परन्तु एषा छाया पूर्वम् एव कथायाः शत्रुः। यान् श्लोकान् अहं गास्यामि, तान् सर्वान् एषा विक्षिप्तवती।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "{player}, take this palm-leaf book. Every verse you hear will be written in it, and every word you learn will gather there.",
+   "sa": "{player}, एतत् पुस्तकं स्वीकुरु। त्वं यं श्लोकं शृणोषि, सः अत्र लिखितः भविष्यति। त्वं यं शब्दं पठसि, सः अपि अत्र भविष्यति।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "You received the palm-leaf book of verses!",
+   "sa": "श्लोकानां पुस्तकं लब्धम्!",
+   "ctx": "ch1.krauncha · narration"
+  },
+  {
+   "en": "Bharadvaja, test our young friend. A verse is only truly ours when we can defend it.",
+   "sa": "भरद्वाज, एतस्य मित्रस्य परीक्षां कुरु। यदा वयं श्लोकं रक्षितुं शक्नुमः, तदा एव सः अस्माकं भवति।",
+   "ctx": "ch1.krauncha · person.valmiki"
+  },
+  {
+   "en": "Talk to Bharadvaja for a friendly verse-debate.",
+   "sa": "भरद्वाजेन सह श्लोकानां वादं करोतु। एषः मित्रयोः वादः।",
+   "ctx": "ch1.krauncha · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "A debate of verses! Every move you make is a question about the words you have heard. Answer well, and your argument lands.",
+   "sa": "श्लोकानां वादः! वादे त्वं यत् यत् करोषि, तत् सर्वं श्रुतानां शब्दानां प्रश्नः। सम्यक् उत्तरं वद, तदा तव वाक्यं जयति।",
+   "ctx": "ch1.bharadvaja_duel · person.bharadvaja"
+  },
+  {
+   "en": "Answer swiftly and perfectly, and it lands even harder. Ready?",
+   "sa": "शीघ्रं सम्यक् च उत्तरं वद, तदा तव वाक्यम् अधिकं बलं प्राप्नोति। किम् आरभावहै?",
+   "ctx": "ch1.bharadvaja_duel · person.bharadvaja"
+  },
+  {
+   "en": "Bharadvaja challenges you to a friendly verse-debate!",
+   "sa": "भरद्वाजः श्लोकानां वादाय त्वाम् आह्वयति! एषः मित्रयोः वादः।",
+   "ctx": "ch1.bharadvaja_duel · battle intro (narration)"
+  },
+  {
+   "en": "I am persuaded! You really did hear every word.",
+   "sa": "अहम् अङ्गीकरोमि! सत्यम्, त्वं सर्वान् शब्दान् सम्यक् अशृणोः।",
+   "ctx": "ch1.bharadvaja_duel · person.bharadvaja"
+  },
+  {
+   "en": "You nearly had me! Every wrong answer shows you the right word, so you learn either way.",
+   "sa": "अहो, त्वं प्रायः {g:जितवान्|जितवती}! यदा तव उत्तरं न समीचीनम्, तदा समीचीनं शब्दं पश्यसि। अतः जयसि वा न वा, त्वं पठसि एव।",
+   "ctx": "ch1.bharadvaja_duel · person.bharadvaja"
+  },
+  {
+   "en": "Well argued, both of you. Come back to the hermitage now, {player}. At the shrine you will recite the verse and make it whole again.",
+   "sa": "साधु साधु, युवां द्वौ अपि सम्यक् वदथः। {player}, अधुना आश्रमं प्रत्यागच्छ। मन्दिरे त्वं श्लोकं पठिष्यसि। तदा सः पुनः पूर्णः भविष्यति।",
+   "ctx": "ch1.bharadvaja_duel · person.valmiki"
+  },
+  {
+   "en": "Return to the hermitage and talk to Valmiki at the shrine.",
+   "sa": "आश्रमं प्रत्यागच्छतु। मन्दिरे वाल्मीकिना सह वदतु।",
+   "ctx": "ch1.bharadvaja_duel · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The teacher wants to bathe here. Is the water not clear today?",
+   "sa": "गुरुः अत्र स्नातुम् इच्छति। अद्य जलं किं न निर्मलम्?",
+   "ctx": "ch1.bharadvaja_duel · person.bharadvaja"
+  },
+  {
+   "en": "Listen! The verse lives again. Born of grief, it is now a mantra you can speak in battle.",
+   "sa": "शृणु! श्लोकः पुनः जीवति। सः शोकात् जातः। अधुना सः मन्त्रः। युद्धे त्वं तं वक्तुं शक्नोषि।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "Your verse is restored. You can now use the move {n:move.shoka_shloka}. Check your moves in the party menu.",
+   "sa": "तव श्लोकः पुनः पूर्णः। अधुना युद्धे नूतनं मन्त्रं वक्तुं शक्नोषि। स्यूते वीरान् पश्य, तत्र मन्त्राः सन्ति।",
+   "ctx": "ch1.valmiki_shrine · narration"
+  },
+  {
+   "en": "The poem I will compose tells of Rama, the man Narada described. The illusion has scattered its words through the whole tale.",
+   "sa": "अहं रामस्य कथां रचयिष्यामि। नारदः यस्य कथां कथितवान्, सः एव रामः। माया तस्याः कथायाः शब्दान् सर्वत्र विक्षिप्तवती।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "Go into the story, {player}. Walk beside Rama, hear each verse where it is spoken, and restore it at a shrine. The east gate will open for you.",
+   "sa": "{player}, कथां प्रविश। रामेण सह चल। यत्र जनाः श्लोकं वदन्ति, तत्र तं शृणु। ततः मन्दिरे तं पूर्णं कुरु। पूर्वस्यां दिशि द्वारम् अस्ति। तत् तुभ्यम् उद्घाटितं भविष्यति।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "Go through the east gate into the story.",
+   "sa": "पूर्वां दिशं गच्छतु। द्वारेण कथां प्रविशतु।",
+   "ctx": "ch1.valmiki_shrine · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The verse is whole again. Go east through the gate and step into the story. Rama is waiting on the road.",
+   "sa": "श्लोकः पुनः पूर्णः। पूर्वां दिशं गच्छ, द्वारेण कथां प्रविश। रामः मार्गे त्वां प्रतीक्षते।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "This is the hermitage shrine. Here you may rest, save your journey, and recite the verses you have heard.",
+   "sa": "एतत् आश्रमस्य मन्दिरम्। अत्र विश्राम्य, यात्रां रक्ष, श्रुतान् श्लोकान् च पठ।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "To recite is to put the scattered words back in their places, quarter by quarter. Recite the verse of the krauncha for me.",
+   "sa": "यदा त्वं पठसि, तदा विक्षिप्ताः शब्दाः पुनः उचितं स्थानं गच्छन्ति, पादे पादे। मम कृते क्रौञ्चस्य श्लोकं पठ।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "Recite the verse now?",
+   "sa": "किम् अधुना श्लोकं पठसि?",
+   "ctx": "ch1.valmiki_shrine · choice prompt"
+  },
+  {
+   "en": "Recite it",
+   "sa": "आम्, पठामि।",
+   "ctx": "ch1.valmiki_shrine · choice option (player's reply/action)"
+  },
+  {
+   "en": "Not yet",
+   "sa": "अधुना न।",
+   "ctx": "ch1.valmiki_shrine · choice option (player's reply/action)"
+  },
+  {
+   "en": "Some words are still out of place. Do not worry: rest, look at the verse card again, and recite it for me once more.",
+   "sa": "के अपि शब्दाः अद्य अपि उचिते स्थाने न सन्ति। चिन्ता मास्तु। विश्राम्य, श्लोकस्य पत्रं पुनः पश्य, मम कृते पुनः पठ च।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "Take your time, child. Speak to me again when you are ready.",
+   "sa": "{g:वत्स|वत्से}, चिन्ता मास्तु। यदा इच्छसि, तदा पुनः मया सह वद।",
+   "ctx": "ch1.valmiki_shrine · person.valmiki"
+  },
+  {
+   "en": "The path east shimmers like heat over sand. Valmiki calls after you: \"Restore the verse at the shrine first, child. Talk to me there when you are ready.\"",
+   "sa": "पूर्वां दिशं प्रति मार्गः वालुकायाम् आतपः इव कम्पते। वाल्मीकिः त्वाम् आह्वयति, \"{g:वत्स|वत्से}, प्रथमं मन्दिरे श्लोकं पूर्णं कुरु। यदा इच्छसि, तदा तत्र मया सह वद।\"",
+   "ctx": "ch1.gate_locked · narration"
+  },
+  {
+   "en": "Talk to Valmiki at the shrine and recite the verse.",
+   "sa": "मन्दिरे वाल्मीकिना सह वदतु, श्लोकं च पठतु।",
+   "ctx": "ch1.gate_locked · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The path east shimmers like heat over sand. Not yet: Bharadvaja is waiting for you on the riverbank to the south.",
+   "sa": "पूर्वां दिशं प्रति मार्गः वालुकायाम् आतपः इव कम्पते। अधुना न। दक्षिणां दिशं गच्छ। तत्र नद्याः तीरे भरद्वाजः त्वां प्रतीक्षते।",
+   "ctx": "ch1.gate_locked · narration"
+  },
+  {
+   "en": "The path east shimmers like heat over sand. Something tells you it is not time yet. Valmiki is going down to the river, south of the hermitage.",
+   "sa": "पूर्वां दिशं प्रति मार्गः वालुकायाम् आतपः इव कम्पते। तव मनः वदति, अधुना समयः न इति। वाल्मीकिः आश्रमात् दक्षिणां दिशं गच्छति, नदीं प्रति।",
+   "ctx": "ch1.gate_locked · narration"
+  },
+  {
+   "en": "Did you know? Each word you answer correctly grows stronger in your word book. Words you miss come back more often, until they stick.",
+   "sa": "किं त्वं जानासि? यस्य शब्दस्य उत्तरं त्वं सम्यक् ददासि, सः शब्दानां पुस्तके बलवान् भवति। यान् शब्दान् त्वं विस्मरसि, ते पुनः पुनः आगच्छन्ति, यावत् त्वं तान् सम्यक् न जानासि।",
+   "ctx": "ch1.bharadvaja_ashrama · person.bharadvaja"
+  },
+  {
+   "en": "Here, take these for the road. Fruit restores a tired hero.",
+   "sa": "एतानि स्वीकुरु, मार्गाय। फलं श्रान्तं वीरं पुनः स्वस्थं करोति।",
+   "ctx": "ch1.bharadvaja_ashrama · person.bharadvaja"
+  },
+  {
+   "en": "You received 3 fruits.",
+   "sa": "त्रीणि फलानि लब्धानि।",
+   "ctx": "ch1.bharadvaja_ashrama · narration"
+  },
+  {
+   "en": "Fruit from the village orchards and honey from the forest. Honey refreshes the mind, so your heroes can call on their mantras again.",
+   "sa": "ग्रामस्य उद्यानेभ्यः फलानि, वनात् मधु च। मधु मनः पुनः नूतनं करोति। अतः वीराः पुनः मन्त्रान् वक्तुं शक्नुवन्ति।",
+   "ctx": "ch1.trader · Village trader"
+  },
+  {
+   "en": "Fresh water from the well! The sage says a clear mind is like clear water: you can see all the way to the bottom.",
+   "sa": "कूपात् नूतनं जलम्! मुनिः वदति, निर्मलं मनः निर्मलं जलम् इव। तत्र अधः अपि सर्वं पश्यामः।",
+   "ctx": "ch1.well_woman · Villager"
+  },
+  {
+   "en": "Psst! Sanskrit can be shown in Devanagari, or in Roman letters with little marks. Pick the script in your Samskuru profile settings. I like Devanagari!",
+   "sa": "शृणु! संस्कृतम् अन्यैः अक्षरैः अपि लेखितुं शक्यम्। तव इच्छासु अक्षराणि चिनु। मह्यं तु एतानि अक्षराणि एव रोचन्ते!",
+   "ctx": "ch1.child · Child"
+  },
+  {
+   "en": "The cows were restless last night, as if a shadow walked among the trees. Stay on the path, young one.",
+   "sa": "ह्यः रात्रौ धेनवः चञ्चलाः आसन्। वृक्षाणां मध्ये का अपि छाया अचलत् इव। {g:वत्स|वत्से}, मार्गे एव चल।",
+   "ctx": "ch1.cowherd · Cowherd"
+  },
+  {
+   "en": "I came with Narada and stayed to listen. What a night of words!",
+   "sa": "अहं नारदेन सह आगतवान्। श्रोतुं च अत्र स्थितवान्। अहो, शब्दानां रात्रिः!",
+   "ctx": "ch1.hut_guest · Guest"
+  },
+  {
+   "en": "Take some honey with you. A reciter needs a sweet voice.",
+   "sa": "किञ्चित् मधु स्वीकुरु। श्लोकान् पठितुं मधुरः कण्ठः आवश्यकः।",
+   "ctx": "ch1.hut_guest · Guest"
+  },
+  {
+   "en": "You received 1 honey.",
+   "sa": "एकं मधु लब्धम्।",
+   "ctx": "ch1.hut_guest · narration"
+  },
+  {
+   "en": "I am sweeping the teacher's hut. He says even sweeping can be done with a whole heart.",
+   "sa": "अहं मार्जन्या गुरोः गृहं स्वच्छं करोमि। गुरुः वदति, एतत् कार्यम् अपि पूर्णेन हृदयेन करणीयम्।",
+   "ctx": "ch1.hut_child · Young student"
+  },
+  {
+   "en": "Your word book, {n:ui.words}, keeps every word you have met. It shows how well you know each one: unseen, seen, known, and mastered.",
+   "sa": "शब्दानां पुस्तके सर्वे शब्दाः सन्ति, ये त्वया दृष्टाः। कः शब्दः कथं ज्ञातः, तत् अपि तत्र अस्ति: न दृष्टः, दृष्टः, ज्ञातः, सिद्धः।",
+   "ctx": "ch1.student · Student"
+  },
+  {
+   "en": "Tap a Sanskrit word in someone's speech to see what it means.",
+   "sa": "जनानां वाक्येषु शब्दं स्पृश। तदा तस्य अर्थं द्रक्ष्यसि।",
+   "ctx": "ch1.student · Student"
+  },
+  {
+   "en": "Did you hear the teacher's verse at the river? Let me say what it means, to check I have it right.",
+   "sa": "नद्याः तीरे गुरोः श्लोकः त्वया श्रुतः वा? अहं तस्य अर्थं वदामि। मम ज्ञानं सम्यक् वा, इति पश्यामि।",
+   "ctx": "ch1.young_student · Young student"
+  },
+  {
+   "en": "'Hunter, may you find no lasting place for endless years, because you killed one of the krauncha pair, lost in love.'",
+   "sa": "निषाद, शाश्वतं कालं त्वं स्थिरं स्थानं मा लभस्व। यतः त्वं स्नेहेन मुग्धयोः क्रौञ्चयोः एकं हतवान्।",
+   "ctx": "ch1.young_student · Young student"
+  },
+  {
+   "en": "The first word, {w:ma}, means \"may you not\". And {w:nishada} is the hunter. The whole verse is a wish, born of grief!",
+   "sa": "प्रथमः शब्दः {w:ma}। तस्य अर्थः, एवं मा भवतु। {w:nishada} इति वनस्य जनः, यः पक्षिणः हन्ति। अयं श्लोकः एका इच्छा, शोकात् जाता!",
+   "ctx": "ch1.young_student · Young student"
+  },
+  {
+   "en": "When I recite, I go quarter by quarter. Eight syllables, then the next eight. It is like climbing steps!",
+   "sa": "यदा अहं पठामि, तदा पादं पादं पठामि। अष्ट अक्षराणि, ततः अन्यानि अष्ट। अहं सोपानानि आरोहामि इव!",
+   "ctx": "ch1.young_student · Young student"
+  },
+  {
+   "en": "You step through the gate, and the world turns like a page.",
+   "sa": "त्वं द्वारं प्रविशसि। जगत् पुस्तकस्य पृष्ठम् इव परिवर्तते।",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "You stand on the bank of the Sarayu in the {w:sandhya} (twilight) before dawn. Two young men sleep on beds of leaves, and a sage in white sits beside them.",
+   "sa": "प्रभातात् पूर्वम् {w:sandhya} अस्ति। त्वं सरय्वाः नद्याः तीरे तिष्ठसि। द्वौ युवकौ पर्णानां शय्यासु स्वपितः। तयोः पार्श्वे एकः मुनिः उपविशति। तस्य वस्त्रं श्वेतम्।",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "Who are you, child? You have the look of a student from a poet's hermitage.",
+   "sa": "{g:वत्स|वत्से}, किं तव नाम? किं त्वं कवेः आश्रमात् आगच्छसि?",
+   "ctx": "ch1.road_dawn · person.vishvamitra"
+  },
+  {
+   "en": "You tell the sage of Valmiki, of the verse, and of the scattered words.",
+   "sa": "त्वं मुनये वाल्मीकेः, श्लोकस्य, विक्षिप्तानां शब्दानां च कथां कथयसि।",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "I am Vishvamitra. King Dasharatha has entrusted his sons to me, to guard my sacrifice from the night-wanderers. Watch, and listen.",
+   "sa": "अहं विश्वामित्रः। दशरथः राजा आत्मनः पुत्रौ मह्यं दत्तवान्। तौ निशाचरेभ्यः मम यज्ञं रक्षिष्यतः। पश्य, शृणु च।",
+   "ctx": "ch1.road_dawn · person.vishvamitra"
+  },
+  {
+   "en": "The sage rises and gently wakes the elder prince.",
+   "sa": "मुनिः उत्तिष्ठति। सः शनैः रामम् आह्वयति।",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "We are awake, revered teacher. First the morning prayers, and then the road.",
+   "sa": "भगवन्, आवां जागृवः। प्रथमं सन्ध्यां कुर्वः, ततः गच्छावः।",
+   "ctx": "ch1.road_dawn · person.rama"
+  },
+  {
+   "en": "And who is this? A friend from the forest?",
+   "sa": "एतत् नूतनं मित्रं किम्? वनात् आगतं वा?",
+   "ctx": "ch1.road_dawn · person.lakshmana"
+  },
+  {
+   "en": "A student of the poet who will one day sing of you. Let the child walk with us.",
+   "sa": "यः कविः युवयोः कथां गास्यति, तस्य आश्रमात् एतत् मित्रम् आगतम्। एतत् मित्रम् अपि अस्माभिः सह चलतु।",
+   "ctx": "ch1.road_dawn · person.vishvamitra"
+  },
+  {
+   "en": "Rama joins your party!",
+   "sa": "रामः त्वया सह आगच्छति!",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "Lakshmana joins your party!",
+   "sa": "लक्ष्मणः अपि त्वया सह आगच्छति!",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "Well said. My teacher will be pleased with you.",
+   "sa": "साधु उक्तम्। मम गुरुः त्वयि प्रसन्नः भविष्यति।",
+   "ctx": "ch1.road_dawn · person.rama"
+  },
+  {
+   "en": "Close! Look at the verse card again. Each word is explained there.",
+   "sa": "प्रायः समीचीनम्! श्लोकस्य पत्रं पुनः पश्य। तत्र सर्वेषां शब्दानाम् अर्थः अस्ति।",
+   "ctx": "ch1.road_dawn · person.lakshmana"
+  },
+  {
+   "en": "Sacred kusha grass grows tall along this road. Night-wanderers hide in it and may leap out as you walk through.",
+   "sa": "मार्गस्य पार्श्वे उन्नतं तृणं वर्धते। तत्र निशाचराः अपि सन्ति। यदा त्वं तत्र चलसि, तदा ते सहसा उत्पतन्ति।",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "In battle, choose a move and answer its question. A correct answer makes the move land. A swift and perfect answer lands it harder.",
+   "sa": "युद्धे एकं मन्त्रं चिनु। ततः तस्य प्रश्नस्य उत्तरं वद। उत्तरं समीचीनं चेत्, मन्त्रः सिध्यति। शीघ्रं सम्यक् च उत्तरं ददासि चेत्, मन्त्रस्य बलम् अधिकं भवति।",
+   "ctx": "ch1.road_dawn · narration"
+  },
+  {
+   "en": "Follow the road east toward the forest.",
+   "sa": "मार्गेण पूर्वां दिशं गच्छतु, वनं प्रति।",
+   "ctx": "ch1.road_dawn · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Come, the day has begun.",
+   "sa": "आगच्छत, दिनम् आरब्धम्।",
+   "ctx": "ch1.vishvamitra_road · person.vishvamitra"
+  },
+  {
+   "en": "The prince sleeps peacefully on a bed of leaves.",
+   "sa": "राजकुमारः पर्णानां शय्यायां शान्तः स्वपिति।",
+   "ctx": "ch1.sleeping · narration"
+  },
+  {
+   "en": "May the road be kind to you. Rest at Vishvamitra's hermitage when you reach it.",
+   "sa": "तव मार्गः शुभः भवतु। यदा विश्वामित्रस्य आश्रमं गच्छसि, तदा तत्र विश्राम्य।",
+   "ctx": "ch1.road_sage · Wandering sage"
+  },
+  {
+   "en": "So this is the prince the sage Narada sang of! I heard him once, by the Ganga.",
+   "sa": "अहो, एषः एव सः राजकुमारः, यस्य कथां नारदः मुनिः गीतवान्! अहम् एकदा गङ्गायाः तीरे नारदस्य गीतं श्रुतवान्।",
+   "ctx": "ch1.road_sage · Wandering sage"
+  },
+  {
+   "en": "Narada said Rama is like the {w:samudra} (ocean) in depth and like the {w:himavat} (Himalaya) in steadiness. Listen.",
+   "sa": "नारदः उक्तवान्, रामः गाम्भीर्ये समुद्रः इव, धैर्ये च हिमवान् इव। शृणु।",
+   "ctx": "ch1.road_sage · Wandering sage"
+  },
+  {
+   "en": "Just so! Words like these are the arrows of a reciter.",
+   "sa": "सत्यम्! यः श्लोकान् पठति, तस्य शब्दाः एव बाणाः।",
+   "ctx": "ch1.road_sage · Wandering sage"
+  },
+  {
+   "en": "Look again at the card in your verse book. Each word has its meaning beside it.",
+   "sa": "श्लोकानां पुस्तके श्लोकस्य पत्रं पुनः पश्य। सर्वेषां शब्दानां पार्श्वे तेषाम् अर्थः अस्ति।",
+   "ctx": "ch1.road_sage · Wandering sage"
+  },
+  {
+   "en": "The sage gives you 2 fruits.",
+   "sa": "मुनिः तुभ्यं द्वे फले ददाति।",
+   "ctx": "ch1.road_sage · narration"
+  },
+  {
+   "en": "If you get hurt in the tall grass, eat some fruit from your bag. And the hermitage shrines will always restore you.",
+   "sa": "उन्नते तृणे यदि तव वेदना भवति, तर्हि स्यूतात् फलं खाद। आश्रमाणां मन्दिरेषु अपि सदा पुनः बलं लभसे।",
+   "ctx": "ch1.road_cowherd · Cowherd"
+  },
+  {
+   "en": "In a fight, a tired hero can switch places with a fresh one. Every hero who takes part learns from the battle.",
+   "sa": "युद्धे श्रान्तः वीरः बहिः गन्तुं शक्नोति। तदा अन्यः वीरः तस्य स्थाने युध्यते। ये वीराः युध्यन्ते, ते सर्वे युद्धात् ज्ञानं लभन्ते।",
+   "ctx": "ch1.road_cowherd · Cowherd"
+  },
+  {
+   "en": "Go, Rama. Free this land of its fear.",
+   "sa": "राम, गच्छ। एतां भूमिं भयात् मुञ्च।",
+   "ctx": "ch1.tataka_story · person.vishvamitra"
+  },
+  {
+   "en": "Stop here, princes. Beyond these trees lies a forest that was once two rich countries. No one lives there now.",
+   "sa": "राजकुमारौ, अत्र तिष्ठतम्। एतेषां वृक्षाणां पृष्ठतः एकं वनम् अस्ति। पुरा तत्र द्वौ धनिकौ देशौ आस्ताम्। अधुना तत्र कः अपि न वसति।",
+   "ctx": "ch1.tataka_story · person.vishvamitra"
+  },
+  {
+   "en": "It is haunted by Tataka, a yakshi with the strength of a thousand elephants. The sage Agastya cursed her, and her son Maricha with her.",
+   "sa": "तत्र ताटका वसति। तस्याः शरीरे सहस्रस्य गजानां बलम् अस्ति। अगस्त्यस्य मुनेः क्रोधात् सा राक्षसी अभवत्। तस्याः पुत्रः मारीचः अपि राक्षसः अभवत्।",
+   "ctx": "ch1.tataka_story · person.vishvamitra"
+  },
+  {
+   "en": "Teacher, she is a woman. Must I raise my bow against her?",
+   "sa": "गुरो, सा तु स्त्री। किम् अहं तां प्रति बाणं क्षिपेयम्?",
+   "ctx": "ch1.tataka_story · person.rama"
+  },
+  {
+   "en": "A king's son protects those who cannot protect themselves, Rama. That is his {w:dharma} (duty). She has emptied this whole land of people.",
+   "sa": "राम, राज्ञः पुत्रः तान् जनान् रक्षति, ये आत्मानं रक्षितुं न शक्नुवन्ति। एषः तस्य धर्मः। तस्याः भयात् सर्वे जनाः इमां भूमिं त्यक्तवन्तः।",
+   "ctx": "ch1.tataka_story · person.vishvamitra"
+  },
+  {
+   "en": "My father told me to obey your word. For the sake of the people and the sages, I will do as you say.",
+   "sa": "मम पिता उक्तवान्, गुरोः वचनं पालय इति। जनानां मुनीनां च कृते भवान् यत् वदति, तत् अहं करिष्यामि।",
+   "ctx": "ch1.tataka_story · person.rama"
+  },
+  {
+   "en": "Then rest a moment first. That forest is dark even at noon.",
+   "sa": "तर्हि प्रथमं क्षणं विश्राम्यतम्। तस्मिन् वने मध्याह्ने अपि अन्धकारः अस्ति।",
+   "ctx": "ch1.tataka_story · person.vishvamitra"
+  },
+  {
+   "en": "Enter Tataka's forest to the east and face Tataka.",
+   "sa": "पूर्वां दिशं गत्वा ताटकायाः वनं प्रविशतु। ताटकया सह युध्यतां च।",
+   "ctx": "ch1.tataka_story · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Vishvamitra calls after you: \"Wait, princes! Hear what lies ahead before you go in.\"",
+   "sa": "विश्वामित्रः आह्वयति, \"राजकुमारौ, तिष्ठतम्! प्रथमं शृणुतम्, अग्रे किम् अस्ति। ततः प्रविशतम्।\"",
+   "ctx": "ch1.forest_locked · narration"
+  },
+  {
+   "en": "A roar shakes the trees. Dust and stones rain down from the darkness ahead.",
+   "sa": "अन्धकारे कः अपि गर्जति। वृक्षाः कम्पन्ते। अग्रे अन्धकारात् धूलिः पाषाणाः च पतन्ति।",
+   "ctx": "ch1.tataka_roar · narration"
+  },
+  {
+   "en": "Brother, she is coming!",
+   "sa": "भ्रातः, सा आगच्छति!",
+   "ctx": "ch1.tataka_roar · person.lakshmana"
+  },
+  {
+   "en": "Face Tataka at the far side of the clearing.",
+   "sa": "वनस्य अन्ते ताटकया सह युध्यताम्।",
+   "ctx": "ch1.tataka_roar · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "You go to face Tataka? Then take this {w:oshadhi} (healing herb). It can rouse a hero who is exhausted.",
+   "sa": "किं ताटकया सह योद्धुं गच्छसि? तर्हि एताम् ओषधिं स्वीकुरु। {w:oshadhi} इति तस्याः नाम। सा अतीव श्रान्तम् अपि वीरं पुनः बलवन्तं करोति।",
+   "ctx": "ch1.forest_hermit · Frightened hermit"
+  },
+  {
+   "en": "You received 1 healing herb.",
+   "sa": "एका ओषधिः लब्धा।",
+   "ctx": "ch1.forest_hermit · narration"
+  },
+  {
+   "en": "May the gods guard you.",
+   "sa": "देवाः त्वां रक्षन्तु।",
+   "ctx": "ch1.forest_hermit · Frightened hermit"
+  },
+  {
+   "en": "Tataka's forest is ours! Turn back, or fight!",
+   "sa": "ताटकायाः वनम् अस्माकम्! निवर्तस्व, अथवा युध्यस्व!",
+   "ctx": "ch1.forest_prowler · Night-wanderer"
+  },
+  {
+   "en": "A night-wanderer leaps out of the dark!",
+   "sa": "अन्धकारात् निशाचरः उत्पतति!",
+   "ctx": "ch1.forest_prowler · battle intro (narration)"
+  },
+  {
+   "en": "The night-wanderer melts back into the shadows.",
+   "sa": "निशाचरः पुनः अन्धकारं प्रविशति।",
+   "ctx": "ch1.forest_prowler · narration"
+  },
+  {
+   "en": "A shape as vast as a storm cloud bursts out of the darkness, hurling rocks and dust.",
+   "sa": "मेघः इव महती ताटका अन्धकारात् बहिः धावति। सा शिलाः धूलिं च क्षिपति।",
+   "ctx": "ch1.tataka · narration"
+  },
+  {
+   "en": "Now, Rama! For the sake of the people!",
+   "sa": "राम, अधुना! जनानां कृते!",
+   "ctx": "ch1.tataka · person.vishvamitra"
+  },
+  {
+   "en": "Rest and save before the battle?",
+   "sa": "युद्धात् पूर्वं विश्राम्यसि वा?",
+   "ctx": "ch1.tataka · choice prompt"
+  },
+  {
+   "en": "Rest and save, then fight",
+   "sa": "विश्राम्यामि, ततः युध्ये।",
+   "ctx": "ch1.tataka · choice option (player's reply/action)"
+  },
+  {
+   "en": "Fight now",
+   "sa": "अधुना एव युध्ये।",
+   "ctx": "ch1.tataka · choice option (player's reply/action)"
+  },
+  {
+   "en": "Tataka rises out of the darkness!",
+   "sa": "ताटका अन्धकारात् उत्तिष्ठति!",
+   "ctx": "ch1.tataka · battle intro (narration)"
+  },
+  {
+   "en": "Rama's arrow strikes true, and Tataka falls like a mountain.",
+   "sa": "रामस्य बाणः सम्यक् गच्छति। ताटका पर्वतः इव भूमौ पतति।",
+   "ctx": "ch1.tataka · narration"
+  },
+  {
+   "en": "Silence. Then birdsong, for the first time in years. The forest is free.",
+   "sa": "सर्वत्र शान्तिः। ततः बहूनां संवत्सराणाम् अनन्तरं पक्षिणः गायन्ति। वनं मुक्तम्।",
+   "ctx": "ch1.tataka · narration"
+  },
+  {
+   "en": "Well done, my son. I am pleased with you.",
+   "sa": "साधु, वत्स। अहं त्वयि प्रसन्नः।",
+   "ctx": "ch1.tataka · person.vishvamitra"
+  },
+  {
+   "en": "Take the divine weapons that I hold: the {n:move.agneyastra}, the {n:move.varunastra}, the {n:move.vayavyastra}, and many more.",
+   "sa": "देवानाम् अस्त्राणि मम हस्ते सन्ति। तानि स्वीकुरु: आग्नेयम्, वारुणम्, वायव्यम्, अन्यानि अपि।",
+   "ctx": "ch1.tataka · person.vishvamitra"
+  },
+  {
+   "en": "Vishvamitra teaches Rama the mantras of the divine weapons. They will answer Rama as he grows in strength.",
+   "sa": "विश्वामित्रः रामं देवानाम् अस्त्राणां मन्त्रान् पाठयति। यदा रामस्य बलं वर्धते, तदा तानि अस्त्राणि तस्य हस्ते आगमिष्यन्ति।",
+   "ctx": "ch1.tataka · narration"
+  },
+  {
+   "en": "Go east to Vishvamitra's hermitage, Siddhashrama.",
+   "sa": "पूर्वां दिशं गत्वा विश्वामित्रस्य आश्रमं गच्छतु। तस्य नाम सिद्धाश्रमः।",
+   "ctx": "ch1.tataka · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The land breathes again. Come, my hermitage lies just to the east.",
+   "sa": "भूमिः पुनः जीवति। आगच्छत, पूर्वां दिशं चलाम। मम आश्रमः न दूरे।",
+   "ctx": "ch1.vishvamitra_forest · person.vishvamitra"
+  },
+  {
+   "en": "Siddhashrama: the hermitage where Vishnu once performed his austerities, before he was born as the dwarf Vamana. Vishvamitra's disciples run to greet him.",
+   "sa": "सिद्धाश्रमः। पुरा अत्र विष्णुः तपः कृतवान्। ततः सः ह्रस्वः बालः अभवत्। विश्वामित्रस्य शिष्याः तं द्रष्टुं धावन्ति।",
+   "ctx": "ch1.siddha_arrive · narration"
+  },
+  {
+   "en": "Princes, today I begin my sacrifice. For six days and nights I will keep a vow of silence.",
+   "sa": "राजकुमारौ, अद्य अहं यज्ञम् आरभे। षट् दिनानि रात्रीः च अहं तूष्णीं स्थास्यामि।",
+   "ctx": "ch1.siddha_arrive · person.vishvamitra"
+  },
+  {
+   "en": "Guard the altar well. On the last night, the night-wanderers will come.",
+   "sa": "अग्निं यज्ञं च सम्यक् रक्षतम्। अन्तिमे दिने रात्रौ निशाचराः आगमिष्यन्ति।",
+   "ctx": "ch1.siddha_arrive · person.vishvamitra"
+  },
+  {
+   "en": "Vishvamitra takes his seat before the fire and speaks no more.",
+   "sa": "विश्वामित्रः अग्नेः पुरतः उपविशति। ततः सः तूष्णीं तिष्ठति।",
+   "ctx": "ch1.siddha_arrive · narration"
+  },
+  {
+   "en": "Prepare at the shrine, then speak to the disciple at the altar.",
+   "sa": "मन्दिरे विश्राम्यतु। ततः अग्नेः पार्श्वे शिष्येण सह वदतु।",
+   "ctx": "ch1.siddha_arrive · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The sacrifice is complete, thanks to you all.",
+   "sa": "युष्माभिः यज्ञः रक्षितः, अतः सः पूर्णः।",
+   "ctx": "ch1.vishvamitra_silent · person.vishvamitra"
+  },
+  {
+   "en": "Vishvamitra sits before the sacred fire, eyes closed, keeping his vow of silence.",
+   "sa": "विश्वामित्रः अग्नेः पुरतः उपविशति। सः ध्यायति, तूष्णीं च तिष्ठति।",
+   "ctx": "ch1.vishvamitra_silent · narration"
+  },
+  {
+   "en": "The fire burns peacefully now. Thank you, friends.",
+   "sa": "अधुना अग्निः शान्तः ज्वलति। मित्राणि, धन्यवादः।",
+   "ctx": "ch1.yajna · Disciple"
+  },
+  {
+   "en": "Five days have passed in peace. Tonight is the sixth night, the last. Are the princes ready?",
+   "sa": "पञ्च दिनानि शान्त्या गतानि। अद्य षष्ठी रात्रिः। अद्य रात्रौ यज्ञस्य अन्तः। किं राजकुमारौ सज्जौ?",
+   "ctx": "ch1.yajna · Disciple"
+  },
+  {
+   "en": "Stand guard on the last night?",
+   "sa": "अद्य रात्रौ यज्ञं रक्षसि वा?",
+   "ctx": "ch1.yajna · choice prompt"
+  },
+  {
+   "en": "Rest and save, then stand guard",
+   "sa": "विश्राम्यामि, ततः रक्षामि।",
+   "ctx": "ch1.yajna · choice option (player's reply/action)"
+  },
+  {
+   "en": "Stand guard now",
+   "sa": "अधुना एव रक्षामि।",
+   "ctx": "ch1.yajna · choice option (player's reply/action)"
+  },
+  {
+   "en": "The sacred fire leaps up. Then the sky darkens, and with a roar the night-wanderers come, led by Subahu and Maricha.",
+   "sa": "यज्ञस्य अग्निः उच्चैः ज्वलति। ततः आकाशः कृष्णः भवति। निशाचराः गर्जन्तः आगच्छन्ति। तेषां नेतारौ सुबाहुः मारीचः च।",
+   "ctx": "ch1.yajna · narration"
+  },
+  {
+   "en": "Lakshmana, stand with me. They shall not touch the altar.",
+   "sa": "लक्ष्मण, मया सह तिष्ठ। ते यज्ञं न स्प्रक्ष्यन्ति।",
+   "ctx": "ch1.yajna · person.rama"
+  },
+  {
+   "en": "Subahu and Maricha descend upon the sacrifice!",
+   "sa": "सुबाहुः मारीचः च आकाशात् यज्ञं प्रति अवतरतः!",
+   "ctx": "ch1.yajna · battle intro (narration)"
+  },
+  {
+   "en": "Rama looses the weapon of Manu at Maricha. It does not kill him: it carries him a hundred leagues away and drops him, stunned, into the ocean.",
+   "sa": "रामः मारीचं प्रति एकम् अस्त्रं क्षिपति। तत् अस्त्रं तं न हन्ति। तत् तं शतं योजनानि नीत्वा समुद्रे क्षिपति। मारीचः तत्र मूढः पतति।",
+   "ctx": "ch1.yajna · narration"
+  },
+  {
+   "en": "With the fire weapon Rama strikes down Subahu, and the other night-wanderers flee into the dark.",
+   "sa": "आग्नेयेन अस्त्रेण रामः सुबाहुं हन्ति। अन्ये निशाचराः अन्धकारं प्रति धावन्ति।",
+   "ctx": "ch1.yajna · narration"
+  },
+  {
+   "en": "At dawn the sacrifice is complete, and Vishvamitra breaks his silence.",
+   "sa": "प्रभाते यज्ञः पूर्णः भवति। विश्वामित्रः पुनः वदति।",
+   "ctx": "ch1.yajna · narration"
+  },
+  {
+   "en": "My purpose is fulfilled, Rama. You have honoured your father's word. Truly this is now the hermitage of fulfilment.",
+   "sa": "राम, मम प्रयोजनं सिद्धम्। त्वं पितुः वचनं पालितवान्। अधुना एषः सत्यं सिद्धाश्रमः।",
+   "ctx": "ch1.yajna · person.vishvamitra"
+  },
+  {
+   "en": "From Siddhashrama, Vishvamitra led the princes to Mithila. There Rama lifted the great bow of Shiva and broke it, and King Janaka gave him his daughter Sita in marriage.",
+   "sa": "सिद्धाश्रमात् विश्वामित्रः राजकुमारौ जनकस्य नगरं नीतवान्। तत्र शिवस्य महत् धनुः आसीत्। रामः तत् धनुः गृहीत्वा बलेन आकृष्टवान्। तदा धनुः नष्टम्। ततः जनकः राजा आत्मनः पुत्रीं सीतां रामाय दत्तवान्।",
+   "ctx": "ch1.yajna · narration"
+  },
+  {
+   "en": "Many happy years passed in Ayodhya. So ends the first book, the Book of Youth.",
+   "sa": "अयोध्यायां बहवः संवत्सराः सुखेन गताः। एवं बालकाण्डं पूर्णम्।",
+   "ctx": "ch1.yajna · narration"
+  },
+  {
+   "en": "From far away, you hear Valmiki's voice: \"Well done, {player}. Turn the page. The next book begins in Ayodhya.\"",
+   "sa": "दूरे वाल्मीकिः वदति, \"साधु, {player}! नूतनं पृष्ठं पठ। अधुना अयोध्याकाण्डस्य आरम्भः।\"",
+   "ctx": "ch1.yajna · narration"
+  },
+  {
+   "en": "Walk into Ayodhya to begin Book 2.",
+   "sa": "अयोध्यां प्रविशतु। तत्र अयोध्याकाण्डस्य आरम्भः।",
+   "ctx": "ch1.yajna · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Rest at the shrine and make ready. We will wait for you.",
+   "sa": "मन्दिरे विश्राम्यन्तु, सज्जाः भवन्तु। वयम् अत्र एव स्थास्यामः।",
+   "ctx": "ch1.yajna · Disciple"
+  },
+  {
+   "en": "Welcome, friends.",
+   "sa": "मित्राणि, स्वागतम्।",
+   "ctx": "ch1.yajna · Disciple"
+  },
+  {
+   "en": "Even hermits need supplies! Roots and herbs from the forest, gathered with care.",
+   "sa": "मुनीनाम् अपि वस्तूनि आवश्यकानि! वनात् मूलानि ओषधयः च। अहं तानि सम्यक् चितवान्।",
+   "ctx": "ch1.siddha_merchant · Merchant"
+  },
+  {
+   "en": "Long ago, Vishnu did his penance here before he was born as Vamana. This is a place where good efforts bear fruit.",
+   "sa": "पुरा अत्र विष्णुः तपः कृतवान्। ततः सः ह्रस्वः बालः अभवत्। अत्र उत्तमानि कार्याणि फलन्ति।",
+   "ctx": "ch1.siddha_sage · Sage"
+  },
+  {
+   "en": "Vishvamitra was once a king. He gave up his throne and won the rank of a great sage through long austerity.",
+   "sa": "विश्वामित्रः पुरा राजा आसीत्। सः राज्यं त्यक्तवान्। दीर्घेण तपसा सः महान् मुनिः अभवत्।",
+   "ctx": "ch1.siddha_elder · Elder sage"
+  },
+  {
+   "en": "If he trusts the princes to guard his sacrifice, they must be extraordinary.",
+   "sa": "यदि सः राजकुमारौ यज्ञं रक्षितुम् आनीतवान्, तर्हि तौ अवश्यं महान्तौ वीरौ।",
+   "ctx": "ch1.siddha_elder · Elder sage"
+  },
+  {
+   "en": "I memorise verses by saying them in quarters. A recited verse that is perfect turns gold in your verse book, {n:ui.verses}!",
+   "sa": "अहं पादं पादं वदन् श्लोकान् स्मरामि। यः श्लोकः सम्यक् पठितः, सः श्लोकानां पुस्तके स्वर्णम् इव शोभते!",
+   "ctx": "ch1.siddha_student · Young student"
+  },
+  {
+   "en": "Wild rice and roots from the forest. Simple food for the sacrifice days.",
+   "sa": "वनस्य तण्डुलाः मूलानि च। यज्ञस्य दिनेषु सरलः आहारः।",
+   "ctx": "ch1.siddha_cook · Hermit"
+  },
+  {
+   "en": "You received 1 bundle of roots. Roots restore more strength than fruit.",
+   "sa": "मूलानाम् एकः भारः लब्धः। मूलानि फलात् अधिकं बलं ददति।",
+   "ctx": "ch1.siddha_cook · narration"
+  },
+  {
+   "en": "When you restore a verse, a hero learns its power! I want to learn every verse in the poem.",
+   "sa": "यदा त्वं श्लोकं पूर्णं करोषि, तदा वीरः तस्य बलं लभते! अहं कथायाः सर्वान् श्लोकान् पठितुम् इच्छामि।",
+   "ctx": "ch1.siddha_child · Child"
+  },
+  {
+   "en": "A small chest is tucked between the trees. Some traveller left it for the next one.",
+   "sa": "वृक्षाणां मध्ये एका पेटिका अस्ति, सा न महती। कः अपि यात्रिकः ताम् अन्यस्य यात्रिकस्य कृते अत्र त्यक्तवान्।",
+   "ctx": "ch1.road_chest · narration"
+  },
+  {
+   "en": "You found 2 honey.",
+   "sa": "द्वे मधुनी लब्धे।",
+   "ctx": "ch1.road_chest · narration"
+  },
+  {
+   "en": "At the end of the grass trail sits an old chest, half hidden by roots.",
+   "sa": "तृणे मार्गस्य अन्ते एका पेटिका अस्ति। तस्याः उपरि वृक्षस्य मूलानि सन्ति।",
+   "ctx": "ch1.forest_chest · narration"
+  },
+  {
+   "en": "You found 1 healing herb.",
+   "sa": "एका ओषधिः लब्धा।",
+   "ctx": "ch1.forest_chest · narration"
+  },
+  {
+   "en": "Valmiki's hut. Guests are always welcome.",
+   "sa": "वाल्मीकेः गृहम्। अतिथीनां सदा स्वागतम्।",
+   "ctx": "tamasa_ashrama · sign"
+  },
+  {
+   "en": "East: the road beyond the hermitage. Those who walk it with a verse in their heart step into the story.",
+   "sa": "पूर्वा दिक्: आश्रमात् बहिः मार्गः। येषां हृदये श्लोकः अस्ति, ते अनेन मार्गेण कथां प्रविशन्ति।",
+   "ctx": "tamasa_ashrama · sign"
+  },
+  {
+   "en": "South: the ford of the Tamasa.",
+   "sa": "दक्षिणा दिक्: तमसायाः तीरम्।",
+   "ctx": "tamasa_ashrama · sign"
+  },
+  {
+   "en": "The ford of the Tamasa. Bathe in peace.",
+   "sa": "तमसायाः तीरम्। शान्त्या स्नातु।",
+   "ctx": "tamasa_bank · sign"
+  },
+  {
+   "en": "West: back to the hermitage of Valmiki, outside the story.",
+   "sa": "पश्चिमा दिक्: वाल्मीकेः आश्रमः, कथायाः बहिः।",
+   "ctx": "siddhashrama_road · sign"
+  },
+  {
+   "en": "East: the forest of Tataka. Travellers, turn back!",
+   "sa": "पूर्वा दिक्: ताटकायाः वनम्। यात्रिकाः, निवर्तध्वम्!",
+   "ctx": "siddhashrama_road · sign"
+  },
+  {
+   "en": "Siddhashrama, the hermitage of Vishvamitra.",
+   "sa": "सिद्धाश्रमः, विश्वामित्रस्य आश्रमः।",
+   "ctx": "siddhashrama · sign"
+  },
+  {
+   "en": "Ayodhya, city of the Ikshvaku kings. Twelve happy years have passed since Rama and Sita were married.",
+   "sa": "अयोध्या, इक्ष्वाकूणां राज्ञां नगरम्। रामः सीता च द्वादश वर्षाणि सुखेन सह वसतः।",
+   "ctx": "ch2.intro · narration"
+  },
+  {
+   "en": "King Dasharatha has grown old. With the joyful consent of his people, he has chosen Rama as his heir. The coronation is tomorrow.",
+   "sa": "दशरथः राजा अधुना वृद्धः। सः रामं राजानं कर्तुम् इच्छति। सर्वे जनाः अपि प्रसन्नाः। श्वः रामः राजा भविष्यति।",
+   "ctx": "ch2.intro · narration"
+  },
+  {
+   "en": "Banners fly from every roof. The streets are sprinkled with water and strewn with flowers.",
+   "sa": "सर्वेषां गृहाणाम् उपरि वस्त्राणि वायौ चलन्ति। वीथिषु जलं सिक्तम्, पुष्पाणि च क्षिप्तानि।",
+   "ctx": "ch2.intro · narration"
+  },
+  {
+   "en": "{player}, look at the city! Everyone is singing my brother's name.",
+   "sa": "{player}, नगरं पश्य! सर्वे जनाः मम भ्रातुः नाम गायन्ति।",
+   "ctx": "ch2.intro · person.lakshmana"
+  },
+  {
+   "en": "Go to the palace at the north end of the city.",
+   "sa": "नगरस्य उत्तरां दिशं गत्वा प्रासादं गच्छतु।",
+   "ctx": "ch2.intro · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The gate is open. May the gods go with the princes.",
+   "sa": "द्वारम् उद्घाटितम्। देवाः राजकुमाराभ्यां सह गच्छन्तु।",
+   "ctx": "ch2.guard_gate · Guard"
+  },
+  {
+   "en": "Rama is to leave the city. But first he will take leave of his teacher Vasishtha, at the school in the west.",
+   "sa": "रामः नगरात् निर्गमिष्यति। परन्तु प्रथमं सः गुरुं वसिष्ठं नमस्कृत्य गमिष्यति। नगरस्य पश्चिमायां दिशि वसिष्ठस्य पाठशाला अस्ति।",
+   "ctx": "ch2.guard_gate · Guard"
+  },
+  {
+   "en": "Welcome to Ayodhya! The coronation is tomorrow. The whole city is celebrating.",
+   "sa": "अयोध्यायां स्वागतम्! श्वः रामः राजा भविष्यति। सर्वं नगरम् उत्सवं करोति।",
+   "ctx": "ch2.guard_gate · Guard"
+  },
+  {
+   "en": "Not yet, friend. Rama will take leave of his teacher Vasishtha first. The school is in the west of the city.",
+   "sa": "मित्र, अधुना न। प्रथमं रामः गुरुं वसिष्ठं नमस्करिष्यति। पाठशाला नगरस्य पश्चिमायां दिशि अस्ति।",
+   "ctx": "ch2.gate_locked · Guard"
+  },
+  {
+   "en": "Go to Vasishtha's school in the west of the city.",
+   "sa": "नगरस्य पश्चिमायां दिशि वसिष्ठस्य पाठशालां गच्छतु।",
+   "ctx": "ch2.gate_locked · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Leave the city now? The coronation is tomorrow! Go and see the palace.",
+   "sa": "किम् अधुना नगरात् गच्छसि? श्वः रामः राजा भविष्यति! प्रासादं गत्वा पश्य।",
+   "ctx": "ch2.gate_locked · Guard"
+  },
+  {
+   "en": "I am to drive the princes and Sita to the edge of the kingdom. Never has a charioteer had a sadder task.",
+   "sa": "अहं राजकुमारौ सीतां च रथेन राज्यस्य अन्तं नेष्यामि। मम कृते एतत् कार्यं महत् दुःखम्।",
+   "ctx": "ch2.sumantra · person.sumantra"
+  },
+  {
+   "en": "I am Sumantra, the king's charioteer and minister. The king has summoned Rama to the palace.",
+   "sa": "अहं सुमन्त्रः, राज्ञः रथस्य चालकः मन्त्री च। राजा रामं प्रासादम् आहूतवान्।",
+   "ctx": "ch2.sumantra · person.sumantra"
+  },
+  {
+   "en": "Rama has come to take leave of his teacher. Go in.",
+   "sa": "रामः गुरुं नमस्कर्तुम् आगतवान्। अन्तः गच्छ।",
+   "ctx": "ch2.school_guard · Guard"
+  },
+  {
+   "en": "The scholars are busy composing hymns for the coronation.",
+   "sa": "पण्डिताः रामस्य उत्सवाय गीतानि रचयन्ति।",
+   "ctx": "ch2.school_guard · Guard"
+  },
+  {
+   "en": "Rama will come here to take leave of his teacher. But Lakshmana has not yet taken leave of his mother, Queen Sumitra. Visit her in the palace first.",
+   "sa": "रामः गुरुं नमस्कर्तुम् अत्र आगमिष्यति। परन्तु लक्ष्मणः अद्य अपि मातरं राज्ञीं सुमित्रां न नमस्कृतवान्। प्रथमं प्रासादे तां पश्यतु।",
+   "ctx": "ch2.school_locked · Guard"
+  },
+  {
+   "en": "Speak with Queen Sumitra in the palace.",
+   "sa": "प्रासादे राज्ञ्या सुमित्रया सह वदतु।",
+   "ctx": "ch2.school_locked · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The school is closed today, friend. The scholars are preparing hymns for the coronation.",
+   "sa": "मित्र, अद्य पाठशालायाः द्वारं न उद्घाटितम्। पण्डिताः उत्सवाय गीतानि रचयन्ति।",
+   "ctx": "ch2.school_locked · Guard"
+  },
+  {
+   "en": "There is weeping in the palace today.",
+   "sa": "अद्य प्रासादे जनाः रुदन्ति।",
+   "ctx": "ch2.palace_guard · Guard"
+  },
+  {
+   "en": "Go in. The king is expecting the princes.",
+   "sa": "अन्तः गच्छ। राजा राजकुमारौ प्रतीक्षते।",
+   "ctx": "ch2.palace_guard · Guard"
+  },
+  {
+   "en": "The royal hall of the Ikshvakus. Walk softly.",
+   "sa": "इक्ष्वाकूणां राज्ञां शाला। शनैः चल।",
+   "ctx": "ch2.palace_inner_guard · Guard"
+  },
+  {
+   "en": "This shrine is open to all. Rest here, save your journey, or recite the verses you have heard.",
+   "sa": "एतत् मन्दिरं सर्वेभ्यः उद्घाटितम्। अत्र विश्राम्यतु, यात्रां रक्षतु, श्रुतान् श्लोकान् वा पठतु।",
+   "ctx": "ch2.priest · Temple priest"
+  },
+  {
+   "en": "Beautiful. Let it be known: Rama is Dasharatha, Sita is the mother, and the forest is Ayodhya.",
+   "sa": "सुन्दरम्। सर्वे जानन्तु: रामः दशरथः, सीता माता, वनम् अयोध्या।",
+   "ctx": "ch2.priest · Temple priest"
+  },
+  {
+   "en": "The blessing is whole. May it guard the princes in the forest.",
+   "sa": "आशिषः शब्दाः पुनः पूर्णाः। सा आशीः वने राजकुमारौ रक्षतु।",
+   "ctx": "ch2.priest · Temple priest"
+  },
+  {
+   "en": "You carry Queen Sumitra's blessing to her son. Will you recite it here, so that it is whole again?",
+   "sa": "त्वं राज्ञ्याः सुमित्रायाः आशिषं तस्याः पुत्राय नयसि। किम् अत्र तां पठसि? तदा तस्याः शब्दाः पुनः पूर्णाः भविष्यन्ति।",
+   "ctx": "ch2.priest · Temple priest"
+  },
+  {
+   "en": "Almost. Some words are still out of place. Try again when you are ready.",
+   "sa": "प्रायः समीचीनम्। के अपि शब्दाः अद्य अपि उचिते स्थाने न सन्ति। यदा इच्छसि, तदा पुनः यतस्व।",
+   "ctx": "ch2.priest · Temple priest"
+  },
+  {
+   "en": "As you wish.",
+   "sa": "यथा इच्छसि।",
+   "ctx": "ch2.priest · Temple priest"
+  },
+  {
+   "en": "Fruit and roots, fresh from the royal gardens! Stock up, traveller.",
+   "sa": "राज्ञः उद्यानेभ्यः नूतनानि फलानि मूलानि च! यात्रिकाः, क्रीणन्तु!",
+   "ctx": "ch2.merchant · Merchant"
+  },
+  {
+   "en": "Healing herbs from the Himalaya, and honey from the forests of the south.",
+   "sa": "पर्वतेभ्यः ओषधयः, वनेभ्यः मधु च।",
+   "ctx": "ch2.merchant_herbs · Herb seller"
+  },
+  {
+   "en": "Rama to the forest for fourteen years? The city is like a night without a moon.",
+   "sa": "रामः चतुर्दश वर्षाणि वनं गच्छति? नगरं चन्द्रेण विना रात्रिः इव।",
+   "ctx": "ch2.citizen_a · Citizen"
+  },
+  {
+   "en": "Rama will be crowned! He greets every one of us by name, you know, even a poor man like me.",
+   "sa": "रामः राजा भविष्यति! सः अस्मान् सर्वान् नाम्ना अभिनन्दति, मां दरिद्रम् अपि!",
+   "ctx": "ch2.citizen_a · Citizen"
+  },
+  {
+   "en": "Even the elephants will not eat today. Everyone weeps for Rama.",
+   "sa": "अद्य गजाः अपि न खादन्ति। सर्वे रामस्य कृते रुदन्ति।",
+   "ctx": "ch2.citizen_b · Citizen"
+  },
+  {
+   "en": "I have made a garland of jasmine for the coronation. Is it not lovely?",
+   "sa": "उत्सवाय मया पुष्पाणां माला रचिता। सा शोभते, न वा?",
+   "ctx": "ch2.citizen_b · Citizen"
+  },
+  {
+   "en": "The market of Ayodhya has everything. If your heroes are weary, buy fruit. If their mantras run dry, buy honey.",
+   "sa": "अयोध्यायाः आपणे सर्वम् अस्ति। भवतः वीराः श्रान्ताः चेत्, फलानि क्रीणातु। मन्त्राणां बलं नष्टं चेत्, मधु क्रीणातु।",
+   "ctx": "ch2.citizen_c · Citizen"
+  },
+  {
+   "en": "Why is everyone crying? Mother says Rama is going away.",
+   "sa": "सर्वे किमर्थं रुदन्ति? अम्बा वदति, रामः अस्मान् त्यक्त्वा गच्छति इति।",
+   "ctx": "ch2.child · Child"
+  },
+  {
+   "en": "I climbed the wall to see the decorations! There are lamps all along the royal road.",
+   "sa": "अलङ्कारान् द्रष्टुम् अहं भित्तेः उपरि अस्मि! राजमार्गे सर्वत्र दीपाः सन्ति!",
+   "ctx": "ch2.child · Child"
+  },
+  {
+   "en": "I have put my loom away. How could anyone weave for a feast today?",
+   "sa": "अद्य अहं कार्यं न करोमि। अद्य कः उत्सवाय वस्त्रं करिष्यति?",
+   "ctx": "ch2.weaver · Citizen"
+  },
+  {
+   "en": "My neighbour serves in the palace. She says Rama told Queen Kaikeyi: 'Tell me what the king wishes, and I will do it. Rama does not speak twice.'",
+   "sa": "मम गृहस्य पार्श्वे एका महिला वसति। सा प्रासादे कार्यं करोति। सा वदति, रामः कैकेयीम् उक्तवान्, 'राजा किम् इच्छति, तत् वदतु। अहं तत् करिष्यामि। रामः द्विः न वदति।'",
+   "ctx": "ch2.weaver · Citizen"
+  },
+  {
+   "en": "{w:dvis} means \"twice\". Rama gives his word once, and keeps it, whatever it costs him.",
+   "sa": "{w:dvis} इति शब्दस्य अर्थः: सकृत्, पुनः च सकृत्। रामः वचनं सकृत् एव ददाति। तत् वचनं सः सदा पालयति, दुःखे अपि।",
+   "ctx": "ch2.weaver · Citizen"
+  },
+  {
+   "en": "I am weaving cloth for the coronation feast. Have you ever seen silk so fine?",
+   "sa": "अहम् उत्सवाय वस्त्रं करोमि। किं त्वया कदा अपि एवं सुन्दरं कौशेयं दृष्टम्?",
+   "ctx": "ch2.weaver · Citizen"
+  },
+  {
+   "en": "In my youth I saw King Dasharatha ride out to help the gods in battle. Queen Kaikeyi drove his chariot and saved his life that day.",
+   "sa": "यदा अहं युवा आसम्, तदा दशरथं राजानं दृष्टवान्। सः देवानाम् उपकर्तुं युद्धं गतवान्। राज्ञी कैकेयी तस्य रथम् अनयत्। तस्मिन् दिने सा तस्य जीवनं रक्षितवती।",
+   "ctx": "ch2.grandpa · Citizen"
+  },
+  {
+   "en": "He promised her two boons for it. She never asked for them. I wonder if she ever will.",
+   "sa": "अतः सः तस्यै उक्तवान्, द्वौ वरौ दास्यामि इति। सा तौ कदा अपि न याचितवती। किं सा कदा अपि याचिष्यते? इति अहं चिन्तयामि।",
+   "ctx": "ch2.grandpa · Citizen"
+  },
+  {
+   "en": "Every pot I make, I give one to the hermitages. A small gift, given gladly, is a great gift.",
+   "sa": "अहं यान् घटान् करोमि, तेषु एकम् आश्रमेभ्यः ददामि। आनन्देन दत्तम् अल्पम् अपि महत् भवति।",
+   "ctx": "ch2.potter · Citizen"
+  },
+  {
+   "en": "The potter gives you 2 fruits.",
+   "sa": "कुम्भकारः तुभ्यं द्वे फले ददाति।",
+   "ctx": "ch2.potter · narration"
+  },
+  {
+   "en": "But in the night, everything changed.",
+   "sa": "परन्तु रात्रौ सर्वं भिन्नम् अभवत्।",
+   "ctx": "ch2.palace_scene · narration"
+  },
+  {
+   "en": "Queen Kaikeyi, stirred up by her maid Manthara, reminded the king of the two boons he had promised her long ago, when she saved his life in battle.",
+   "sa": "कैकेय्याः एका परिचारिका आसीत्। सा कैकेय्याः मनः दुष्टं कृतवती। ततः कैकेयी राज्ञे उक्तवती, \"पुरा भवान् मह्यं द्वौ वरौ दत्तवान्। तदा अहं युद्धे भवतः जीवनं रक्षितवती।\"",
+   "ctx": "ch2.palace_scene · narration"
+  },
+  {
+   "en": "She asked that her son Bharata be crowned instead, and that Rama live in the forest for fourteen years.",
+   "sa": "सा याचितवती, \"मम पुत्रः भरतः राजा भवतु। रामः चतुर्दश वर्षाणि वने वसतु।\"",
+   "ctx": "ch2.palace_scene · narration"
+  },
+  {
+   "en": "Bound by his word, the old king wept. When Rama came to him in the morning, he could not bring himself to speak.",
+   "sa": "वृद्धः राजा आत्मनः वचनेन बद्धः। सः रुदितवान्। प्रातः रामः तं गतवान्। परन्तु राजा वक्तुं न शक्तवान्।",
+   "ctx": "ch2.palace_scene · narration"
+  },
+  {
+   "en": "Rama...",
+   "sa": "हा राम।",
+   "ctx": "ch2.palace_scene · person.dasharatha"
+  },
+  {
+   "en": "Rama, the king once promised me two boons. He cannot bear to tell you himself. Will you do what he wishes?",
+   "sa": "राम, राजा पुरा मह्यं द्वौ वरौ दत्तवान्। सः स्वयं त्वां वक्तुं न शक्नोति। सः यत् इच्छति, तत् त्वं करिष्यसि वा?",
+   "ctx": "ch2.palace_scene · person.kaikeyi"
+  },
+  {
+   "en": "Mother, tell me what the king desires, and I will do it. I give you my word.",
+   "sa": "मातः, राजा किम् इच्छति, तत् वदतु। अहं तत् करिष्यामि। एतत् मम वचनम्।",
+   "ctx": "ch2.palace_scene · person.rama"
+  },
+  {
+   "en": "Kaikeyi tells him of the boons: Bharata will be crowned, and Rama must live in the forest for fourteen years.",
+   "sa": "कैकेयी रामाय वरौ कथयति: भरतः राजा भविष्यति, रामः चतुर्दश वर्षाणि वने वसतु।",
+   "ctx": "ch2.palace_scene · narration"
+  },
+  {
+   "en": "So be it. I will go to the forest this very day. I do not care for the kingdom.",
+   "sa": "अस्तु। अद्य एव अहं वनं गमिष्यामि। मम राज्ये इच्छा न अस्ति।",
+   "ctx": "ch2.palace_scene · person.rama"
+  },
+  {
+   "en": "Yes. My brother never speaks {w:dvis} (twice). He never takes back his word.",
+   "sa": "आम्। मम भ्राता द्विः न वदति। सः आत्मनः वचनं कदा अपि न त्यजति।",
+   "ctx": "ch2.palace_scene · person.lakshmana"
+  },
+  {
+   "en": "Not quite. The verse card shows each word. My brother never takes back his word.",
+   "sa": "न सम्यक्। श्लोकस्य पत्रे सर्वे शब्दाः सन्ति। मम भ्राता आत्मनः वचनं कदा अपि न त्यजति।",
+   "ctx": "ch2.palace_scene · person.lakshmana"
+  },
+  {
+   "en": "Brother, this is unjust! How can you accept it?",
+   "sa": "भ्रातः, एतत् न उचितम्! भवान् कथम् एतत् स्वीकरोति?",
+   "ctx": "ch2.palace_scene · person.lakshmana"
+  },
+  {
+   "en": "Lakshmana, it is our father's word. Do not be angry with anyone. Help me keep it.",
+   "sa": "लक्ष्मण, एतत् पितुः वचनम्। कस्मै अपि न कुप्येः। तत् पालयितुं मम उपकुरु।",
+   "ctx": "ch2.palace_scene · person.rama"
+  },
+  {
+   "en": "Sita will not stay behind. \"Where you go, I go,\" she says. \"With you, the forest will be my palace.\" Lakshmana, too, will follow his brother.",
+   "sa": "सीता अत्र न स्थास्यति। सा वदति, \"यत्र भवान् गच्छति, तत्र अहम् अपि गच्छामि। भवता सह वनम् एव मम प्रासादः भविष्यति।\" लक्ष्मणः अपि भ्रातरम् अनुगमिष्यति।",
+   "ctx": "ch2.palace_scene · narration"
+  },
+  {
+   "en": "Speak with Queen Sumitra, Lakshmana's mother, in the east chamber.",
+   "sa": "पूर्वस्मिन् प्रकोष्ठे लक्ष्मणस्य मात्रा राज्ञ्या सुमित्रया सह वदतु।",
+   "ctx": "ch2.palace_scene · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Rama... my son...",
+   "sa": "हा राम, हा पुत्र।",
+   "ctx": "ch2.dasharatha · person.dasharatha"
+  },
+  {
+   "en": "The old king cannot say more. He holds to his word, though it breaks his heart.",
+   "sa": "वृद्धः राजा अधिकं वक्तुं न शक्नोति। तस्य हृदयं दुःखेन पूर्णम्। परन्तु सः वचनं पालयति।",
+   "ctx": "ch2.dasharatha · narration"
+  },
+  {
+   "en": "Tomorrow my Rama will be crowned.",
+   "sa": "श्वः मम रामः राजा भविष्यति।",
+   "ctx": "ch2.dasharatha · person.dasharatha"
+  },
+  {
+   "en": "Queen Kaikeyi stands apart, silent, her face turned away.",
+   "sa": "राज्ञी कैकेयी दूरे तूष्णीं तिष्ठति। तस्याः मुखम् अन्यत्र।",
+   "ctx": "ch2.kaikeyi · narration"
+  },
+  {
+   "en": "Welcome, children.",
+   "sa": "बालाः, स्वागतम्।",
+   "ctx": "ch2.kaikeyi · person.kaikeyi"
+  },
+  {
+   "en": "My son is going to the forest. I asked to go with him, but he told me my place is beside the king.",
+   "sa": "मम पुत्रः वनं गच्छति। अहं तेन सह गन्तुं याचितवती। परन्तु सः उक्तवान्, 'भवत्याः स्थानं राज्ञः पार्श्वे' इति।",
+   "ctx": "ch2.kausalya · person.kausalya"
+  },
+  {
+   "en": "May the forest, the rivers and the mountains protect him. May every god and sage keep him safe.",
+   "sa": "वनम्, नद्यः, पर्वताः च तं रक्षन्तु। सर्वे देवाः मुनयः च तं पालयन्तु।",
+   "ctx": "ch2.kausalya · person.kausalya"
+  },
+  {
+   "en": "I have spent the night in prayer for my son.",
+   "sa": "अहं मम पुत्रस्य कृते सर्वां रात्रिं देवान् पूजितवती।",
+   "ctx": "ch2.kausalya · person.kausalya"
+  },
+  {
+   "en": "A wife walks with her husband, in the palace or the forest. I am not afraid of the forest. With Rama it will be like a garden.",
+   "sa": "पत्नी पत्या सह चलति, प्रासादे वा वने वा। अहं वनात् न बिभेमि। रामेण सह वनम् उद्यानम् इव भविष्यति।",
+   "ctx": "ch2.sita · person.sita"
+  },
+  {
+   "en": "Welcome, {player}.",
+   "sa": "{player}, स्वागतम्।",
+   "ctx": "ch2.sita · person.sita"
+  },
+  {
+   "en": "Go with my blessing, my son. And you, child, keep these words safe.",
+   "sa": "पुत्र, मम आशिषा सह गच्छ। {g:वत्स|वत्से}, त्वम् अपि एतान् शब्दान् सम्यक् रक्ष।",
+   "ctx": "ch2.sumitra · person.sumitra"
+  },
+  {
+   "en": "Lakshmana kneels before his mother, Queen Sumitra.",
+   "sa": "लक्ष्मणः मातुः राज्ञ्याः सुमित्रायाः पुरतः नमति।",
+   "ctx": "ch2.sumitra · narration"
+  },
+  {
+   "en": "My son, you were born to stand beside Rama. In good fortune or in hardship, never neglect him.",
+   "sa": "पुत्र, त्वं रामस्य पार्श्वे स्थातुं जातः। सुखे वा दुःखे वा, तं कदा अपि न त्यजेः।",
+   "ctx": "ch2.sumitra · person.sumitra"
+  },
+  {
+   "en": "I will, mother. Rama will be my father, and Sita my mother. The forest will be my {w:ayodhya}.",
+   "sa": "मातः, तथा करिष्यामि। रामः मम पिता भविष्यति, सीता मम माता। वनं मम {w:ayodhya} भविष्यति।",
+   "ctx": "ch2.sumitra · person.lakshmana"
+  },
+  {
+   "en": "You understand it well, child.",
+   "sa": "{g:वत्स|वत्से}, त्वं सम्यक् अवगच्छसि।",
+   "ctx": "ch2.sumitra · person.sumitra"
+  },
+  {
+   "en": "Look at the verse card again, child. Each word is a gift.",
+   "sa": "{g:वत्स|वत्से}, श्लोकस्य पत्रं पुनः पश्य। तत्र सर्वे शब्दाः रत्नानि इव।",
+   "ctx": "ch2.sumitra · person.sumitra"
+  },
+  {
+   "en": "Child, this is the blessing I most want the world to keep. Recite it at a shrine to make it whole: the temple priest near the market will hear you.",
+   "sa": "{g:वत्स|वत्से}, एषा मम आशीः। लोकः एताम् आशिषं सदा स्मरतु इति मम इच्छा। मन्दिरे तां पठ, तदा तस्याः शब्दाः पुनः पूर्णाः भविष्यन्ति। आपणस्य पार्श्वे मन्दिरस्य पण्डितः त्वां श्रोष्यति।",
+   "ctx": "ch2.sumitra · person.sumitra"
+  },
+  {
+   "en": "Go with Rama to Vasishtha's school, in the west of the city.",
+   "sa": "रामेण सह नगरस्य पश्चिमायां दिशि वसिष्ठस्य पाठशालां गच्छतु।",
+   "ctx": "ch2.sumitra · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "My sons Lakshmana and Shatrughna love their brothers more than themselves.",
+   "sa": "मम पुत्रौ, लक्ष्मणः शत्रुघ्नः च, भ्रातृषु आत्मनः अपि अधिकं स्निह्यतः।",
+   "ctx": "ch2.sumitra · person.sumitra"
+  },
+  {
+   "en": "A student of Valmiki? Then answer me this: why should a prince give up a kingdom for a promise someone else made? Defend your view!",
+   "sa": "किं त्वं वाल्मीकेः आश्रमात् आगच्छसि? तर्हि वद। अन्यः जनः यत् वचनं दत्तवान्, तस्य कृते राजकुमारः राज्यं किमर्थं त्यजेत्? तव मतं रक्ष!",
+   "ctx": "ch2.pandita_1 · Scholar"
+  },
+  {
+   "en": "A scholar of Vasishtha's school challenges you to a debate!",
+   "sa": "वसिष्ठस्य पाठशालायाः पण्डितः त्वां वादाय आह्वयति!",
+   "ctx": "ch2.pandita_1 · battle intro (narration)"
+  },
+  {
+   "en": "I am persuaded. A promise kept is the root of all trust. Go on.",
+   "sa": "अहम् अङ्गीकरोमि। पालितं वचनं सर्वस्य विश्वासस्य मूलम्। अग्रे गच्छ।",
+   "ctx": "ch2.pandita_1 · Scholar"
+  },
+  {
+   "en": "Debate the next scholar, further into the hall.",
+   "sa": "शालायाः अन्तः अग्रे गत्वा अन्येन पण्डितेन सह वादं करोतु।",
+   "ctx": "ch2.pandita_1 · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Anger at injustice is natural. Should Lakshmana not be angry today? Prove me wrong!",
+   "sa": "यदा कार्यं न उचितम्, तदा क्रोधः भवति एव। अद्य लक्ष्मणः किं न कुप्येत्? मां जय!",
+   "ctx": "ch2.pandita_2 · Scholar"
+  },
+  {
+   "en": "Persuaded. Rama's calm is a greater strength than anger. The teacher waits beyond.",
+   "sa": "अङ्गीकरोमि। क्रोधात् रामस्य शान्तिः अधिकं बलम्। गुरुः अग्रे प्रतीक्षते।",
+   "ctx": "ch2.pandita_2 · Scholar"
+  },
+  {
+   "en": "Debate the last scholar, near the head of the hall.",
+   "sa": "शालायाः अन्ते अन्तिमेन पण्डितेन सह वादं करोतु।",
+   "ctx": "ch2.pandita_2 · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "I am the last of Vasishtha's students. Tell me: what dharma is greater than serving one's father?",
+   "sa": "अहं वसिष्ठस्य अन्तिमः शिष्यः। वद, पितुः शुश्रूषायाः अधिकः कः धर्मः?",
+   "ctx": "ch2.pandita_3 · Scholar"
+  },
+  {
+   "en": "None, as Rama himself said. You have heard the verses well. Go to our teacher.",
+   "sa": "कः अपि न, यथा रामः स्वयम् उक्तवान्। त्वया श्लोकाः सम्यक् श्रुताः। अस्माकं गुरुं गच्छ।",
+   "ctx": "ch2.pandita_3 · Scholar"
+  },
+  {
+   "en": "Speak with the sage Vasishtha at the head of the hall.",
+   "sa": "शालायाः अन्ते वसिष्ठेन मुनिना सह वदतु।",
+   "ctx": "ch2.pandita_3 · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "{w:dharma} (righteousness) protects those who protect it. Go well, children.",
+   "sa": "यः धर्मं रक्षति, तं धर्मः रक्षति। {w:dharma} इति शब्दं स्मरत। बालाः, सुखेन गच्छत।",
+   "ctx": "ch2.vasishtha · person.vasishtha"
+  },
+  {
+   "en": "My students are persuaded, and so am I. You understand what Rama is doing: holding to truth, even at a terrible cost.",
+   "sa": "मम शिष्याः अङ्गीकृतवन्तः, अहम् अपि। रामः किं करोति, तत् त्वम् अवगच्छसि। सः सत्यं पालयति, महति दुःखे अपि।",
+   "ctx": "ch2.vasishtha · person.vasishtha"
+  },
+  {
+   "en": "Rama, go with my blessing. Fourteen years will pass, and you will come home.",
+   "sa": "राम, मम आशिषा सह गच्छ। चतुर्दश वर्षाणि गमिष्यन्ति। ततः त्वं गृहं प्रत्यागमिष्यसि।",
+   "ctx": "ch2.vasishtha · person.vasishtha"
+  },
+  {
+   "en": "Teacher, look after my father and my mothers.",
+   "sa": "गुरो, मम पितरं मातॄः च पालयतु।",
+   "ctx": "ch2.vasishtha · person.rama"
+  },
+  {
+   "en": "Vasishtha gives you 2 healing herbs.",
+   "sa": "वसिष्ठः तुभ्यं द्वे ओषधी ददाति।",
+   "ctx": "ch2.vasishtha · narration"
+  },
+  {
+   "en": "Leave Ayodhya by the south gate.",
+   "sa": "दक्षिणां दिशं प्रति द्वारेण अयोध्यायाः निर्गच्छतु।",
+   "ctx": "ch2.vasishtha · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "So you are the student of Valmiki. Rama has come to take leave of me, and you have come to learn.",
+   "sa": "अहो, त्वं वाल्मीकेः आश्रमात् आगच्छसि। रामः मां नमस्कर्तुम् आगतवान्। त्वं पठितुम् आगच्छसि।",
+   "ctx": "ch2.vasishtha · person.vasishtha"
+  },
+  {
+   "en": "Debate my three students. Each has a question about what you heard today. Persuade them all, then come to me.",
+   "sa": "मम त्रिभिः शिष्यैः सह वादं कुरु। तेषां प्रश्नाः अद्य श्रुतेभ्यः श्लोकेभ्यः आगच्छन्ति। तान् सर्वान् जय, ततः मां प्रति आगच्छ।",
+   "ctx": "ch2.vasishtha · person.vasishtha"
+  },
+  {
+   "en": "Persuade the three scholars of Vasishtha's school.",
+   "sa": "वसिष्ठस्य पाठशालायाः त्रीन् पण्डितान् जयतु।",
+   "ctx": "ch2.vasishtha · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "In a debate, your conviction is your strength. Answer well and you shake the other side's conviction. Persuade them, and the debate is won!",
+   "sa": "वादे तव विश्वासः एव तव बलम्। सम्यक् उत्तरं वद, तदा अन्यस्य विश्वासः कम्पते। तं जय, तदा त्वं वादं जयसि!",
+   "ctx": "ch2.shala_student · Young student"
+  },
+  {
+   "en": "If the questions come too fast, turn on Relaxed in the menu's Settings. Then there is no time limit at all.",
+   "sa": "यदि प्रश्नाः अतीव शीघ्रम् आगच्छन्ति, तर्हि स्यूते इच्छासु शान्तं मार्गं चिनु। तदा यावत् इच्छसि, तावत् चिन्तयितुं शक्नोषि।",
+   "ctx": "ch2.shala_student · Young student"
+  },
+  {
+   "en": "Dressed in bark, Rama, Sita and Lakshmana leave Ayodhya in Sumantra's chariot. The whole city weeps and runs after them.",
+   "sa": "रामः, सीता, लक्ष्मणः च मुनीनां वस्त्राणि परिदधति। ते सुमन्त्रस्य रथेन अयोध्यायाः निर्गच्छन्ति। सर्वं नगरं रोदिति, तान् अनुधावति च।",
+   "ctx": "ch2.enter_shringaverapura · narration"
+  },
+  {
+   "en": "On the first night they rest on the bank of the Tamasa, and before dawn they slip away, so that the people will go home.",
+   "sa": "प्रथमायां रात्रौ ते तमसायाः तीरे विश्राम्यन्ति। जनाः गृहं प्रत्यागच्छन्तु इति ते प्रभातात् पूर्वं तूष्णीं गच्छन्ति।",
+   "ctx": "ch2.enter_shringaverapura · narration"
+  },
+  {
+   "en": "The Tamasa! The very river where the first verse was born. You feel the poem folding back on itself.",
+   "sa": "तमसा! अत्र एव प्रथमः श्लोकः जातः। कथा पुनः आरम्भं गच्छति इव।",
+   "ctx": "ch2.enter_shringaverapura · narration"
+  },
+  {
+   "en": "At last they reach the Ganga, at Shringaverapura, the town of Guha, king of the Nishadas.",
+   "sa": "अन्ते ते शृङ्गवेरपुरे गङ्गां गच्छन्ति। तत् निषादानां राज्ञः गुहस्य नगरम्।",
+   "ctx": "ch2.enter_shringaverapura · narration"
+  },
+  {
+   "en": "Find Guha, king of the Nishadas, at the river.",
+   "sa": "नद्याः तीरे निषादानां राजानं गुहं पश्यतु।",
+   "ctx": "ch2.enter_shringaverapura · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "My boat is yours whenever you wish to cross, friends. Just walk down to the steps.",
+   "sa": "मित्राणि, यदा तरितुम् इच्छथ, तदा मम नौका युष्माकम्। सोपानानि अवतरत।",
+   "ctx": "ch2.guha · person.guha"
+  },
+  {
+   "en": "Rama, my dear friend! This land is yours. Stay and rule here, and let me serve you.",
+   "sa": "राम, भवान् मम प्रियं मित्रम्! एषा भूमिः भवतः। अत्र तिष्ठतु, राज्यं करोतु। अहं भवन्तं सेविष्ये।",
+   "ctx": "ch2.guha · person.guha"
+  },
+  {
+   "en": "Guha, I have vowed to live as a hermit in the forest. Your love is gift enough.",
+   "sa": "गुह, अहं वने मुनिः इव वत्स्यामि इति व्रतं कृतवान्। तव स्नेहेन एव अहं प्रसन्नः।",
+   "ctx": "ch2.guha · person.rama"
+  },
+  {
+   "en": "That night Guha and Lakshmana keep watch together, speaking of Rama until dawn.",
+   "sa": "तस्यां रात्रौ गुहः लक्ष्मणः च सह जागृतः। तौ प्रभातं यावत् रामस्य कथां वदतः।",
+   "ctx": "ch2.guha · narration"
+  },
+  {
+   "en": "In the morning Rama sends Sumantra home with gentle words for the king.",
+   "sa": "प्रातः रामः सुमन्त्रं गृहं प्रेषयति, राज्ञे मधुरैः वचनैः सह।",
+   "ctx": "ch2.guha · narration"
+  },
+  {
+   "en": "My boat is ready. Let me take you across the Ganga.",
+   "sa": "मम नौका अत्र अस्ति। आगच्छत, गङ्गां तराम।",
+   "ctx": "ch2.guha · person.guha"
+  },
+  {
+   "en": "Guha's boatmen row them across the wide, shining Ganga.",
+   "sa": "गुहस्य नाविकाः तान् नौकया अन्यत् तीरं नयन्ति। गङ्गायाः जलम् अतीव विशालम् अस्ति, तत् शोभते च।",
+   "ctx": "ch2.guha · narration"
+  },
+  {
+   "en": "On the far bank, the sage Bharadvaja of Prayaga welcomes them and shows them the way to the hill of Chitrakuta.",
+   "sa": "अन्यस्मिन् तीरे महान् भरद्वाजः मुनिः तान् अभिनन्दति। सः तेभ्यः चित्रकूटस्य पर्वतस्य मार्गं दर्शयति।",
+   "ctx": "ch2.guha · narration"
+  },
+  {
+   "en": "Welcome, traveller.",
+   "sa": "मित्र, स्वागतम्।",
+   "ctx": "ch2.guha · person.guha"
+  },
+  {
+   "en": "The ferry is Guha's to command, friend. Speak with him first.",
+   "sa": "मित्र, नौकाः गुहस्य। प्रथमं तेन सह वद।",
+   "ctx": "ch2.ferry_locked · Boatman"
+  },
+  {
+   "en": "The Ganga is wide here, but our boats are strong. Guha's people know every current.",
+   "sa": "अत्र गङ्गायाः जलं विशालम्, परन्तु अस्माकं नाविकाः बलवन्तः। गुहस्य जनाः नद्याः सर्वान् मार्गान् जानन्ति।",
+   "ctx": "ch2.boatman · Boatman"
+  },
+  {
+   "en": "Honey from the hives, roots from the hills. Trade with the Nishadas!",
+   "sa": "भ्रमराणां मधु, पर्वतानां मूलानि। निषादेभ्यः क्रीणन्तु!",
+   "ctx": "ch2.nishada_merchant · Nishada trader"
+  },
+  {
+   "en": "Our king Guha loves Rama like a brother. When he heard Rama was coming, he ran all the way to the river.",
+   "sa": "अस्माकं राजा गुहः रामे भ्रातरि इव स्निह्यति। रामः आगच्छति इति श्रुत्वा सः नदीं प्रति अधावत्।",
+   "ctx": "ch2.nishada_woman · Nishada woman"
+  },
+  {
+   "en": "Wolves come out of the tall grass at dusk. Mother says to walk on the path!",
+   "sa": "सायङ्काले उन्नतात् तृणात् वृकाः आगच्छन्ति। अम्बा वदति, मार्गे एव चल इति!",
+   "ctx": "ch2.nishada_child · Child"
+  },
+  {
+   "en": "Chitrakuta: a green hill of flowering trees above the Mandakini river. Lakshmana builds a hut of leaves, and for a while the three live happily.",
+   "sa": "चित्रकूटे हरिताः वृक्षाः पुष्पैः शोभन्ते। पर्वतस्य अधः मन्दाकिनी नदी वहति। लक्ष्मणः पर्णैः गृहं करोति। किञ्चित् कालं ते त्रयः तत्र सुखेन वसन्ति।",
+   "ctx": "ch2.enter_chitrakuta · narration"
+  },
+  {
+   "en": "Sita, see the Mandakini, bright with lotuses. Living here with you and Lakshmana, I do not miss the kingdom at all.",
+   "sa": "सीते, मन्दाकिनीं पश्य। सा कमलैः शोभते। त्वया लक्ष्मणेन च सह अत्र वसन् अहं राज्यं किञ्चित् अपि न स्मरामि।",
+   "ctx": "ch2.enter_chitrakuta · person.rama"
+  },
+  {
+   "en": "Nor do I. The forest has been kind to us.",
+   "sa": "अहम् अपि न। वनम् अस्मान् सुखेन पालयति।",
+   "ctx": "ch2.enter_chitrakuta · person.sita"
+  },
+  {
+   "en": "Go to the leaf hut by the river.",
+   "sa": "नद्याः पार्श्वे पर्णानां गृहं गच्छतु।",
+   "ctx": "ch2.enter_chitrakuta · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Bharata is a good brother. It hurt Rama to send him away.",
+   "sa": "भरतः उत्तमः भ्राता। यदा भरतः गतवान्, तदा रामस्य हृदये दुःखम् अभवत्।",
+   "ctx": "ch2.sita_chitrakuta · person.sita"
+  },
+  {
+   "en": "Someone is coming up the hill. Look, there by the hut!",
+   "sa": "कः अपि पर्वतम् आरोहति। पश्य, तत्र गृहस्य पार्श्वे!",
+   "ctx": "ch2.sita_chitrakuta · person.sita"
+  },
+  {
+   "en": "I will keep the sandals safe, brother.",
+   "sa": "भ्रातः, अहं पादुके रक्षिष्यामि।",
+   "ctx": "ch2.bharata · person.bharata"
+  },
+  {
+   "en": "A great host approaches. Lakshmana fears an attack, but it is Bharata, on foot, in bark cloth, weeping.",
+   "sa": "बहवः जनाः आगच्छन्ति। लक्ष्मणः युद्धं शङ्कते। परन्तु सः भरतः। सः पादाभ्यां चलति, मुनेः वस्त्रं परिदधाति, रोदिति च।",
+   "ctx": "ch2.bharata · narration"
+  },
+  {
+   "en": "King Dasharatha has died of grief. Bharata has refused the throne and has come to bring his brother home.",
+   "sa": "दशरथः राजा शोकेन मृतः। भरतः राज्यं न स्वीकृतवान्। सः भ्रातरं गृहं नेतुम् आगतवान्।",
+   "ctx": "ch2.bharata · narration"
+  },
+  {
+   "en": "Brother, the kingdom is yours. I will never take it. Come back to Ayodhya!",
+   "sa": "भ्रातः, राज्यं भवतः। अहं तत् कदा अपि न स्वीकरिष्यामि। अयोध्यां प्रत्यागच्छतु!",
+   "ctx": "ch2.bharata · person.bharata"
+  },
+  {
+   "en": "Bharata, our father's word must stand. I will return when the fourteen years are over. Rule for the people until then.",
+   "sa": "भरत, पितुः वचनं पालनीयम्। चतुर्दश वर्षाणाम् अनन्तरम् अहं प्रत्यागमिष्यामि। तावत् जनानां कृते राज्यं कुरु।",
+   "ctx": "ch2.bharata · person.rama"
+  },
+  {
+   "en": "At last Bharata asks for Rama's sandals. \"I will set them on the throne,\" he says, \"and rule as their servant, living as a hermit until you return.\"",
+   "sa": "अन्ते भरतः रामस्य पादुके याचते। सः वदति, \"अहम् एते राज्ञः आसने निक्षेप्स्यामि। तयोः सेवकः भूत्वा राज्यं पालयिष्यामि। भवान् यावत् न प्रत्यागच्छति, तावत् अहं मुनिः इव वत्स्यामि।\"",
+   "ctx": "ch2.bharata · narration"
+  },
+  {
+   "en": "Bharata places the sandals on his head and goes back to Ayodhya.",
+   "sa": "भरतः पादुके शिरसि निधाय अयोध्यां प्रत्यागच्छति।",
+   "ctx": "ch2.bharata · narration"
+  },
+  {
+   "en": "Meet the challenger at the south path.",
+   "sa": "दक्षिणां दिशं गच्छतु। तत्र कः अपि वादाय प्रतीक्षते।",
+   "ctx": "ch2.bharata · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Restore Sumitra's verse with Valmiki at the shrine, then go to the south path.",
+   "sa": "मन्दिरे वाल्मीकिना सह सुमित्रायाः श्लोकं पूर्णं करोतु। ततः दक्षिणां दिशं गच्छतु।",
+   "ctx": "ch2.bharata · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "{player}! Yes, this is my own hermitage, inside my own poem. Rama comes here in the story, just as you have.",
+   "sa": "{player}! आम्, एषः मम एव आश्रमः, मम एव कथायाम्। कथायां रामः अपि अत्र आगच्छति, यथा त्वम् अत्र आगच्छसि।",
+   "ctx": "ch2.valmiki_chitrakuta · person.valmiki"
+  },
+  {
+   "en": "Whole again. Lakshmana's new mantra comes from it: the word that means \"know this!\"",
+   "sa": "पुनः पूर्णः। अस्मात् श्लोकात् लक्ष्मणस्य नूतनः मन्त्रः आगच्छति: विद्धि इति शब्दः। तस्य अर्थः, जानीहि!",
+   "ctx": "ch2.valmiki_chitrakuta · person.valmiki"
+  },
+  {
+   "en": "Meet Bharadvaja on the south path.",
+   "sa": "दक्षिणां दिशं प्रति मार्गे भरद्वाजेन सह मिलतु।",
+   "ctx": "ch2.valmiki_chitrakuta · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Go on, {player}. Bharadvaja is waiting on the south path.",
+   "sa": "{player}, गच्छ। भरद्वाजः दक्षिणां दिशं प्रति मार्गे त्वां प्रतीक्षते।",
+   "ctx": "ch2.valmiki_chitrakuta · person.valmiki"
+  },
+  {
+   "en": "You heard Queen Sumitra's blessing. Recite it for me here, by the shrine, and make it whole.",
+   "sa": "त्वया राज्ञ्याः सुमित्रायाः आशीः श्रुता। अत्र मन्दिरस्य पार्श्वे मम कृते तां पठ। तस्याः शब्दान् पुनः पूर्णान् कुरु।",
+   "ctx": "ch2.valmiki_chitrakuta · person.valmiki"
+  },
+  {
+   "en": "Not quite whole yet. Look at the verse card again, then recite it for me once more.",
+   "sa": "श्लोकः अद्य अपि पूर्णः न। श्लोकस्य पत्रं पुनः पश्य, ततः मम कृते पुनः पठ।",
+   "ctx": "ch2.valmiki_chitrakuta · person.valmiki"
+  },
+  {
+   "en": "When you are ready, then.",
+   "sa": "यदा इच्छसि, तदा।",
+   "ctx": "ch2.valmiki_chitrakuta · person.valmiki"
+  },
+  {
+   "en": "Rest here whenever you need to.",
+   "sa": "यदा आवश्यकम्, तदा अत्र विश्राम्य।",
+   "ctx": "ch2.valmiki_chitrakuta · person.valmiki"
+  },
+  {
+   "en": "{player}! The teacher sent me to see how you are doing. But look: a great crowd is coming up the hill. Go and see; we can debate later.",
+   "sa": "{player}! तव कुशलं ज्ञातुं गुरोः वचनेन अहम् अत्र आगतवान्। परन्तु पश्य, बहवः जनाः पर्वतम् आरोहन्ति। गत्वा पश्य। वादं पश्चात् करिष्यावः।",
+   "ctx": "ch2.bharadvaja · person.bharadvaja"
+  },
+  {
+   "en": "Not so fast! Queen Sumitra's blessing is still scattered. Restore it first, with the teacher at the shrine by his hut, in the west.",
+   "sa": "तिष्ठ! राज्ञ्याः सुमित्रायाः आशीः अद्य अपि विक्षिप्ता। प्रथमं तस्याः शब्दान् पूर्णान् कुरु। गुरोः गृहस्य पार्श्वे मन्दिरम् अस्ति, पश्चिमायां दिशि। तत्र गुरुणा सह वद।",
+   "ctx": "ch2.bharadvaja · person.bharadvaja"
+  },
+  {
+   "en": "Restore Sumitra's verse with Valmiki at the shrine.",
+   "sa": "मन्दिरे वाल्मीकिना सह सुमित्रायाः श्लोकं पूर्णं करोतु।",
+   "ctx": "ch2.bharadvaja · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "A great sage of Prayaga shares my name, so I must live up to it! The teacher sent me to test you once more.",
+   "sa": "एकस्य महतः मुनेः नाम अपि भरद्वाजः। अतः अहम् अपि उत्तमः भवेयम्! गुरोः वचनेन अहं पुनः तव परीक्षां कर्तुम् आगतवान्।",
+   "ctx": "ch2.bharadvaja · person.bharadvaja"
+  },
+  {
+   "en": "Our first debate was practice. This time I will not hold back!",
+   "sa": "अस्माकं प्रथमः वादः अभ्यासः आसीत्। अधुना अहं पूर्णेन बलेन वदिष्यामि!",
+   "ctx": "ch2.bharadvaja · person.bharadvaja"
+  },
+  {
+   "en": "Bharadvaja challenges you to a verse-debate!",
+   "sa": "भरद्वाजः श्लोकानां वादाय त्वाम् आह्वयति!",
+   "ctx": "ch2.bharadvaja · battle intro (narration)"
+  },
+  {
+   "en": "Persuaded again! You know these verses better than I do.",
+   "sa": "पुनः अङ्गीकरोमि! त्वम् एतान् श्लोकान् मत् अपि अधिकं सम्यक् जानासि।",
+   "ctx": "ch2.bharadvaja · person.bharadvaja"
+  },
+  {
+   "en": "Rama is leaving Chitrakuta. Too many people from Ayodhya come here now, and the memories hurt. He will go south, into the Dandaka forest.",
+   "sa": "रामः चित्रकूटं त्यजति। अधुना अयोध्यायाः बहवः जनाः अत्र आगच्छन्ति। तान् दृष्ट्वा सः अयोध्यां स्मरति, दुःखितः च भवति। सः दक्षिणां दिशं प्रति दण्डकारण्यं गमिष्यति।",
+   "ctx": "ch2.bharadvaja · person.bharadvaja"
+  },
+  {
+   "en": "The teacher says the next book is a dark one. Be brave, {player}.",
+   "sa": "अग्रे कथायां बहु दुःखम् अस्ति इति गुरुः वदति। {player}, धैर्येण चल।",
+   "ctx": "ch2.bharadvaja · person.bharadvaja"
+  },
+  {
+   "en": "So ends the second book, the Book of Ayodhya.",
+   "sa": "एवम् अयोध्याकाण्डं पूर्णम्।",
+   "ctx": "ch2.bharadvaja · narration"
+  },
+  {
+   "en": "Step into the Dandaka forest to begin Book 3.",
+   "sa": "दण्डकारण्यं प्रविशतु। तत्र अरण्यकाण्डस्य आरम्भः।",
+   "ctx": "ch2.bharadvaja · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Wait, {player}! Before you go on, talk to me.",
+   "sa": "{player}, तिष्ठ! प्रथमं मया सह वद, ततः अग्रे गच्छ।",
+   "ctx": "ch2.south_locked · person.bharadvaja"
+  },
+  {
+   "en": "The shrine by the teacher's hut is open to all travellers. Face it and press A to rest or recite.",
+   "sa": "गुरोः गृहस्य पार्श्वे मन्दिरं सर्वेभ्यः यात्रिकेभ्यः उद्घाटितम्। तस्य पुरतः स्थित्वा विश्राम्यतु, श्लोकं वा पठतु।",
+   "ctx": "ch2.hermit_chitrakuta · Hermit"
+  },
+  {
+   "en": "Pilgrims come to Chitrakuta from far away. I sell them what the forest gives.",
+   "sa": "यात्रिकाः दूरे स्थितेभ्यः देशेभ्यः चित्रकूटम् आगच्छन्ति। वनं यत् ददाति, तत् अहं तेभ्यः विक्रीणे।",
+   "ctx": "ch2.forest_merchant · Forest trader"
+  },
+  {
+   "en": "Behind the tall grass, a chest of forest roots has been left for travellers.",
+   "sa": "उन्नतस्य तृणस्य पृष्ठतः एका पेटिका अस्ति। तस्यां वनस्य मूलानि सन्ति। कः अपि तां यात्रिकाणां कृते त्यक्तवान्।",
+   "ctx": "ch2.hill_chest · narration"
+  },
+  {
+   "en": "You found 2 bundles of roots.",
+   "sa": "मूलानां द्वौ भारौ लब्धौ।",
+   "ctx": "ch2.hill_chest · narration"
+  },
+  {
+   "en": "Ayodhya, the unconquerable city of the Ikshvaku kings.",
+   "sa": "अयोध्या, इक्ष्वाकूणां राज्ञां नगरम्। शत्रवः तां जेतुं न शक्नुवन्ति।",
+   "ctx": "ayodhya_city · sign"
+  },
+  {
+   "en": "The school of the sage Vasishtha, family priest of the Ikshvakus.",
+   "sa": "वसिष्ठस्य मुनेः पाठशाला। सः इक्ष्वाकूणां गुरुः।",
+   "ctx": "ayodhya_city · sign"
+  },
+  {
+   "en": "Shringaverapura, town of Guha, king of the Nishadas. The ford of the Ganga.",
+   "sa": "शृङ्गवेरपुरम्, निषादानां राज्ञः गुहस्य नगरम्। अत्र गङ्गायाः तीरम्।",
+   "ctx": "shringaverapura · sign"
+  },
+  {
+   "en": "South: the great forest of Dandaka.",
+   "sa": "दक्षिणा दिक्: महत् दण्डकारण्यम्।",
+   "ctx": "chitrakuta · sign"
+  }
+ ]
+}

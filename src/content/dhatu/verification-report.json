@@ -1,0 +1,3185 @@
+{
+ "generated": "tools/content/verbal/gen-dhatu.ts",
+ "totals": {
+  "dhatus": 199,
+  "cells": 11739,
+  "forms": 12385,
+  "sanskritverb": 11926,
+  "heritage": 11496,
+  "both": 11037,
+  "onlySanskritverb": 889,
+  "onlyHeritage": 459
+ },
+ "krdanta": {
+  "forms": 1340,
+  "heritage": 1302,
+  "dcs": 459,
+  "both": 421
+ },
+ "lyap": 96,
+ "prefixed": {
+  "accepted": 155,
+  "rejected": [
+   "upa-a-gam: उपागच्छति not attested (dcs=0, vidyut-tests=false, mw=true, plain=false)",
+   "avis-kr: आविष्करोति not attested (dcs=0, vidyut-tests=false, mw=false, plain=false)",
+   "pra-rabh: प्ररभते not attested (dcs=0, vidyut-tests=false, mw=false, plain=true)",
+   "pari-sram: परिश्राम्यति not attested (dcs=0, vidyut-tests=false, mw=false, plain=true)",
+   "ut-likh: उल्लिखति not attested (dcs=0, vidyut-tests=false, mw=true, plain=false)"
+  ]
+ },
+ "notShipped": [],
+ "perDhatu": [
+  {
+   "id": "bhu-1p",
+   "sanskritverbRoot": "01|BU",
+   "heritageRoots": [
+    "csl:BU:1",
+    "BU#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "path-1p",
+   "sanskritverbRoot": "01|paWa!",
+   "heritageRoots": [
+    "csl:paW:1",
+    "paW"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "gam-1p",
+   "sanskritverbRoot": "01|gamx!",
+   "heritageRoots": [
+    "csl:gam:1",
+    "gam"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "vad-1p",
+   "sanskritverbRoot": "01|vada!",
+   "heritageRoots": [
+    "csl:vad:1",
+    "vad"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "khad-1p",
+   "sanskritverbRoot": "01|KAdf!",
+   "heritageRoots": [
+    "csl:KAd:1",
+    "KAd"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "pa-1p",
+   "sanskritverbRoot": "01|pA",
+   "heritageRoots": [
+    "csl:pA:1",
+    "pA#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "drs-1p",
+   "sanskritverbRoot": "01|dfSi!r",
+   "heritageRoots": [
+    "csl:paS:4",
+    "paS"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 36
+  },
+  {
+   "id": "stha-1p",
+   "sanskritverbRoot": "01|zWA",
+   "heritageRoots": [
+    "csl:sTA:1",
+    "sTA#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "ni-1u",
+   "sanskritverbRoot": "01|RIY",
+   "heritageRoots": [
+    "csl:nI:1",
+    "nI#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "hr-1u",
+   "sanskritverbRoot": "01|hfY",
+   "heritageRoots": [
+    "csl:hf:1",
+    "hf#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "smr-1p",
+   "sanskritverbRoot": "01|smf",
+   "heritageRoots": [
+    "csl:smf:1",
+    "smf"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "ji-1p",
+   "sanskritverbRoot": "01|ji",
+   "heritageRoots": [
+    "csl:ji:1",
+    "ji"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "cal-1p",
+   "sanskritverbRoot": "01|cala!",
+   "heritageRoots": [
+    "csl:cal:1",
+    "cal"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "dhav-1p",
+   "sanskritverbRoot": "01|DAvu!",
+   "heritageRoots": [
+    "csl:DAv:1",
+    "DAv#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "krid-1p",
+   "sanskritverbRoot": "01|krIqf!",
+   "heritageRoots": [
+    "csl:krIq:1",
+    "krIq"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "has-1p",
+   "sanskritverbRoot": "01|hase!",
+   "heritageRoots": [
+    "csl:has:1",
+    "has"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "khel-1p",
+   "sanskritverbRoot": "01|Kelf!",
+   "heritageRoots": [
+    "csl:Kel:1",
+    "Kel"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "pat-1p",
+   "sanskritverbRoot": "01|patx!",
+   "heritageRoots": [
+    "csl:pat:1",
+    "pat#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "raks-1p",
+   "sanskritverbRoot": "01|rakza!",
+   "heritageRoots": [
+    "csl:rakz:1",
+    "rakz"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "nam-1p",
+   "sanskritverbRoot": "01|Rama!",
+   "heritageRoots": [
+    "csl:nam:1",
+    "nam"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "tyaj-1p",
+   "sanskritverbRoot": "01|tyaja!",
+   "heritageRoots": [
+    "csl:tyaj:1",
+    "tyaj#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "vas-1p",
+   "sanskritverbRoot": "01|vasa!",
+   "heritageRoots": [
+    "csl:vas:1",
+    "vas#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "pac-1u",
+   "sanskritverbRoot": "01|qupaca!z",
+   "heritageRoots": [
+    "csl:pac:1",
+    "pac"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "yaj-1u",
+   "sanskritverbRoot": "01|yaja!",
+   "heritageRoots": [
+    "csl:yaj:1",
+    "yaj#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "sev-1a",
+   "sanskritverbRoot": "01|zevf!",
+   "heritageRoots": [
+    "csl:sev:1",
+    "sev"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "labh-1a",
+   "sanskritverbRoot": "01|qulaBa!z",
+   "heritageRoots": [
+    "csl:laB:1",
+    "laB"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "vrt-1a",
+   "sanskritverbRoot": "01|vftu!",
+   "heritageRoots": [
+    "csl:vft:1",
+    "vft#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 36,
+   "heritage": 45
+  },
+  {
+   "id": "vrdh-1a",
+   "sanskritverbRoot": "01|vfDu!",
+   "heritageRoots": [
+    "csl:vfD:1",
+    "vfD#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 36,
+   "heritage": 45
+  },
+  {
+   "id": "bhas-1a",
+   "sanskritverbRoot": "01|BAza!",
+   "heritageRoots": [
+    "csl:BAz:1",
+    "BAz"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "iks-1a",
+   "sanskritverbRoot": "01|Ikza!",
+   "heritageRoots": [
+    "csl:Ikz:1",
+    "Ikz"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "mud-1a",
+   "sanskritverbRoot": "01|muda!",
+   "heritageRoots": [
+    "csl:mud:1",
+    "mud#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "subh-1a",
+   "sanskritverbRoot": "01|SuBa!",
+   "heritageRoots": [
+    "csl:SuB:1",
+    "SuB#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "ram-1a",
+   "sanskritverbRoot": "01|ramu!",
+   "heritageRoots": [
+    "csl:ram:1",
+    "ram"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "yat-1a",
+   "sanskritverbRoot": "01|yatI!",
+   "heritageRoots": [
+    "csl:yat:1",
+    "yat#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "kamp-1a",
+   "sanskritverbRoot": "01|kapi!",
+   "heritageRoots": [
+    "csl:kamp:1",
+    "kamp"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "sah-1a",
+   "sanskritverbRoot": "01|zaha!",
+   "heritageRoots": [
+    "csl:sah:1",
+    "sah#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "vand-1a",
+   "sanskritverbRoot": "01|vadi!",
+   "heritageRoots": [
+    "csl:vand:1",
+    "vand"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "yac-1u",
+   "sanskritverbRoot": "01|wuyAcf!",
+   "heritageRoots": [
+    "csl:yAc:1",
+    "yAc"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "siks-1a",
+   "sanskritverbRoot": "01|Sikza!",
+   "heritageRoots": [],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 0
+  },
+  {
+   "id": "jiv-1p",
+   "sanskritverbRoot": "01|jIva!",
+   "heritageRoots": [
+    "csl:jIv:1",
+    "jIv"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "gai-1p",
+   "sanskritverbRoot": "01|gE",
+   "heritageRoots": [
+    "csl:gA:1",
+    "gA#2"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "dhyai-1p",
+   "sanskritverbRoot": "01|DyE",
+   "heritageRoots": [
+    "csl:DyA:1",
+    "DyA"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "ghra-1p",
+   "sanskritverbRoot": "01|GrA",
+   "heritageRoots": [
+    "csl:GrA:1",
+    "GrA"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "dah-1p",
+   "sanskritverbRoot": "01|daha!",
+   "heritageRoots": [
+    "csl:dah:1",
+    "dah#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "arh-1p",
+   "sanskritverbRoot": "01|arha!",
+   "heritageRoots": [
+    "csl:arh:1",
+    "arh"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "ruh-1p",
+   "sanskritverbRoot": "01|ruha!",
+   "heritageRoots": [
+    "csl:ruh:1",
+    "ruh#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "tr-1p",
+   "sanskritverbRoot": "01|tF",
+   "heritageRoots": [
+    "csl:tF:1",
+    "tF"
+   ],
+   "forms": 56,
+   "sanskritverb": 56,
+   "heritage": 54
+  },
+  {
+   "id": "nand-1p",
+   "sanskritverbRoot": "01|wunadi!",
+   "heritageRoots": [
+    "csl:nand:1",
+    "nand"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "nind-1p",
+   "sanskritverbRoot": "01|Ridi!",
+   "heritageRoots": [
+    "csl:nind:1",
+    "nind"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "krand-1p",
+   "sanskritverbRoot": "01|kradi!",
+   "heritageRoots": [
+    "csl:krand:1",
+    "krand"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "garj-1p",
+   "sanskritverbRoot": "01|garja!",
+   "heritageRoots": [
+    "csl:garj:1",
+    "garj"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "at-1p",
+   "sanskritverbRoot": "01|awa!",
+   "heritageRoots": [
+    "csl:aw:1",
+    "aw"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "arc-1p",
+   "sanskritverbRoot": "01|arca!",
+   "heritageRoots": [
+    "csl:fc:1",
+    "fc#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "vah-1u",
+   "sanskritverbRoot": "01|vaha!",
+   "heritageRoots": [
+    "csl:vah:1",
+    "vah#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "bhaj-1u",
+   "sanskritverbRoot": "01|Baja!",
+   "heritageRoots": [
+    "csl:Baj:1",
+    "Baj"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "sri-1u",
+   "sanskritverbRoot": "01|SriY",
+   "heritageRoots": [
+    "csl:Sri:1",
+    "Sri"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "dhr-1u",
+   "sanskritverbRoot": "01|DfY",
+   "heritageRoots": [
+    "csl:Df:1",
+    "Df"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "hve-1u",
+   "sanskritverbRoot": "01|hveY",
+   "heritageRoots": [
+    "csl:hU:1",
+    "hU"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 81
+  },
+  {
+   "id": "sad-1p",
+   "sanskritverbRoot": "01|zadx!",
+   "heritageRoots": [
+    "csl:sad:1",
+    "sad#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "ruc-1a",
+   "sanskritverbRoot": "01|ruca!",
+   "heritageRoots": [
+    "csl:ruc:1",
+    "ruc#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "ksam-1a",
+   "sanskritverbRoot": "01|kzamU!z",
+   "heritageRoots": [
+    "csl:kzam:1",
+    "kzam"
+   ],
+   "forms": 54,
+   "sanskritverb": 54,
+   "heritage": 54
+  },
+  {
+   "id": "sank-1a",
+   "sanskritverbRoot": "01|Saki!",
+   "heritageRoots": [
+    "csl:SaNk:1",
+    "SaNk"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "kurd-1a",
+   "sanskritverbRoot": "01|kurda!",
+   "heritageRoots": [],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 0
+  },
+  {
+   "id": "tvar-1a",
+   "sanskritverbRoot": "01|YitvarA!",
+   "heritageRoots": [
+    "csl:tvar:1",
+    "tvar"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "dams-1p",
+   "sanskritverbRoot": "01|daMSa!",
+   "heritageRoots": [
+    "csl:daMS:1",
+    "daMS"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 36
+  },
+  {
+   "id": "suc-1p",
+   "sanskritverbRoot": "01|Suca!",
+   "heritageRoots": [
+    "csl:Suc:1",
+    "Suc#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "vap-1u",
+   "sanskritverbRoot": "01|quvapa!",
+   "heritageRoots": [
+    "csl:vap:1",
+    "vap#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "bhram-1p",
+   "sanskritverbRoot": "01|Bramu!",
+   "heritageRoots": [
+    "csl:Bram:1",
+    "Bram"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "phal-1p",
+   "sanskritverbRoot": "01|Pala!",
+   "heritageRoots": [
+    "csl:Pal:1",
+    "Pal"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "car-1p",
+   "sanskritverbRoot": "01|cara!",
+   "heritageRoots": [
+    "csl:car:1",
+    "car"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "tap-1p",
+   "sanskritverbRoot": "01|tapa!",
+   "heritageRoots": [
+    "csl:tap:1",
+    "tap"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "jap-1p",
+   "sanskritverbRoot": "01|japa!",
+   "heritageRoots": [
+    "csl:jap:1",
+    "jap"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "jval-1p",
+   "sanskritverbRoot": "01|jvala!",
+   "heritageRoots": [
+    "csl:jval:1",
+    "jval"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "vanch-1p",
+   "sanskritverbRoot": "01|vACi!",
+   "heritageRoots": [
+    "csl:vAYC:1",
+    "vAYC"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "kanks-1p",
+   "sanskritverbRoot": "01|kAkzi!",
+   "heritageRoots": [
+    "csl:kANkz:1",
+    "kANkz"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "budh-1p",
+   "sanskritverbRoot": "01|buDa!",
+   "heritageRoots": [
+    "csl:buD:1",
+    "buD#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sru-1p",
+   "sanskritverbRoot": "01|Sru",
+   "heritageRoots": [
+    "csl:Sru:5",
+    "Sru"
+   ],
+   "forms": 51,
+   "sanskritverb": 51,
+   "heritage": 49
+  },
+  {
+   "id": "krs-1p",
+   "sanskritverbRoot": "01|kfza!",
+   "heritageRoots": [
+    "csl:kfz:1",
+    "kfz"
+   ],
+   "forms": 56,
+   "sanskritverb": 47,
+   "heritage": 54
+  },
+  {
+   "id": "kuj-1p",
+   "sanskritverbRoot": "01|kUja!",
+   "heritageRoots": [
+    "csl:kUj:1",
+    "kUj"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "yam-1p",
+   "sanskritverbRoot": "01|yama!",
+   "heritageRoots": [
+    "csl:yam:1",
+    "yam"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "lamb-1a",
+   "sanskritverbRoot": "01|labi!",
+   "heritageRoots": [
+    "csl:lamb:1",
+    "lamb"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "cest-1a",
+   "sanskritverbRoot": "01|cezwa!",
+   "heritageRoots": [
+    "csl:cezw:1",
+    "cezw"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "rabh-1a",
+   "sanskritverbRoot": "01|raBa!",
+   "heritageRoots": [
+    "csl:raB:1",
+    "raB"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "kas-1a",
+   "sanskritverbRoot": "01|kASf!",
+   "heritageRoots": [
+    "csl:kAS:1",
+    "kAS"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "sams-1p",
+   "sanskritverbRoot": "01|SaMsu!",
+   "heritageRoots": [
+    "csl:SaMs:1",
+    "SaMs"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "kram-1p",
+   "sanskritverbRoot": "01|kramu!",
+   "heritageRoots": [
+    "csl:kram:1",
+    "kram"
+   ],
+   "forms": 85,
+   "sanskritverb": 85,
+   "heritage": 45
+  },
+  {
+   "id": "edh-1a",
+   "sanskritverbRoot": "01|eDa!",
+   "heritageRoots": [
+    "csl:eD:1",
+    "eD"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "as-2p",
+   "sanskritverbRoot": "02|asa!",
+   "heritageRoots": [
+    "csl:as:2",
+    "as#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 36
+  },
+  {
+   "id": "ad-2p",
+   "sanskritverbRoot": "02|ada!",
+   "heritageRoots": [
+    "csl:ad:2",
+    "ad#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "han-2p",
+   "sanskritverbRoot": "02|hana!",
+   "heritageRoots": [
+    "csl:han:2",
+    "han#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "ya-2p",
+   "sanskritverbRoot": "02|yA",
+   "heritageRoots": [
+    "csl:yA:2",
+    "yA#1"
+   ],
+   "forms": 48,
+   "sanskritverb": 48,
+   "heritage": 46
+  },
+  {
+   "id": "sna-2p",
+   "sanskritverbRoot": "02|zRA",
+   "heritageRoots": [
+    "csl:snA:2",
+    "snA"
+   ],
+   "forms": 48,
+   "sanskritverb": 48,
+   "heritage": 46
+  },
+  {
+   "id": "bru-2u",
+   "sanskritverbRoot": "02|brUY",
+   "heritageRoots": [
+    "csl:brU:2",
+    "brU"
+   ],
+   "forms": 96,
+   "sanskritverb": 96,
+   "heritage": 72
+  },
+  {
+   "id": "aas-2a",
+   "sanskritverbRoot": "02|Asa!",
+   "heritageRoots": [
+    "csl:As:2",
+    "As#2"
+   ],
+   "forms": 45,
+   "sanskritverb": 44,
+   "heritage": 45
+  },
+  {
+   "id": "si-2a",
+   "sanskritverbRoot": "02|SIN",
+   "heritageRoots": [
+    "csl:SI:2",
+    "SI#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 44,
+   "heritage": 45
+  },
+  {
+   "id": "i-2p",
+   "sanskritverbRoot": "02|iR",
+   "heritageRoots": [
+    "csl:i:2",
+    "i"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "vid-2p",
+   "sanskritverbRoot": null,
+   "heritageRoots": [
+    "vid#1",
+    "csl:vid:2"
+   ],
+   "forms": 44,
+   "sanskritverb": 0,
+   "heritage": 44
+  },
+  {
+   "id": "rud-2p",
+   "sanskritverbRoot": "02|rudi!r",
+   "heritageRoots": [
+    "csl:rud:2",
+    "rud#1"
+   ],
+   "forms": 49,
+   "sanskritverb": 49,
+   "heritage": 47
+  },
+  {
+   "id": "svap-2p",
+   "sanskritverbRoot": "02|Yizvapa!",
+   "heritageRoots": [
+    "csl:svap:2",
+    "svap"
+   ],
+   "forms": 49,
+   "sanskritverb": 49,
+   "heritage": 47
+  },
+  {
+   "id": "jagr-2p",
+   "sanskritverbRoot": "02|jAgf",
+   "heritageRoots": [
+    "csl:jAgf:2",
+    "jAgf"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 44
+  },
+  {
+   "id": "sas-2p",
+   "sanskritverbRoot": "02|SAsu!",
+   "heritageRoots": [
+    "csl:SAs:2",
+    "SAs"
+   ],
+   "forms": 48,
+   "sanskritverb": 44,
+   "heritage": 45
+  },
+  {
+   "id": "stu-2u",
+   "sanskritverbRoot": "02|zwuY",
+   "heritageRoots": [
+    "csl:stu:2",
+    "stu"
+   ],
+   "forms": 98,
+   "sanskritverb": 97,
+   "heritage": 91
+  },
+  {
+   "id": "duh-2u",
+   "sanskritverbRoot": "02|duha!",
+   "heritageRoots": [
+    "csl:duh:2",
+    "duh#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 87
+  },
+  {
+   "id": "dvis-2u",
+   "sanskritverbRoot": "02|dviza!",
+   "heritageRoots": [
+    "csl:dviz:2",
+    "dviz#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 90
+  },
+  {
+   "id": "da-3u",
+   "sanskritverbRoot": "03|qudAY",
+   "heritageRoots": [
+    "csl:dA:3",
+    "dA#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 90
+  },
+  {
+   "id": "dha-3u",
+   "sanskritverbRoot": "03|quDAY",
+   "heritageRoots": [
+    "csl:DA:3",
+    "DA#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 90
+  },
+  {
+   "id": "hu-3p",
+   "sanskritverbRoot": "03|hu",
+   "heritageRoots": [
+    "csl:hu:3",
+    "hu"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "bhi-3p",
+   "sanskritverbRoot": "03|YiBI",
+   "heritageRoots": [
+    "csl:BI:3",
+    "BI#1"
+   ],
+   "forms": 71,
+   "sanskritverb": 71,
+   "heritage": 45
+  },
+  {
+   "id": "ha-3p",
+   "sanskritverbRoot": "03|o!hAk",
+   "heritageRoots": [
+    "csl:hA:3",
+    "hA#1"
+   ],
+   "forms": 64,
+   "sanskritverb": 62,
+   "heritage": 60
+  },
+  {
+   "id": "bhr-3u",
+   "sanskritverbRoot": "03|quBfY",
+   "heritageRoots": [
+    "csl:Bf:3",
+    "Bf"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 90
+  },
+  {
+   "id": "ma-3a",
+   "sanskritverbRoot": "03|mAN",
+   "heritageRoots": [
+    "csl:mA:3",
+    "mA#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 44,
+   "heritage": 45
+  },
+  {
+   "id": "div-4p",
+   "sanskritverbRoot": "04|divu!",
+   "heritageRoots": [
+    "csl:dIv:4",
+    "dIv#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 36
+  },
+  {
+   "id": "nrt-4p",
+   "sanskritverbRoot": "04|nftI!",
+   "heritageRoots": [
+    "csl:nft:4",
+    "nft"
+   ],
+   "forms": 56,
+   "sanskritverb": 56,
+   "heritage": 54
+  },
+  {
+   "id": "nas-4p",
+   "sanskritverbRoot": "04|RaSa!",
+   "heritageRoots": [
+    "csl:naS:4",
+    "naS#1"
+   ],
+   "forms": 56,
+   "sanskritverb": 56,
+   "heritage": 45
+  },
+  {
+   "id": "tus-4p",
+   "sanskritverbRoot": "04|tuza!",
+   "heritageRoots": [
+    "csl:tuz:4",
+    "tuz"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "kup-4p",
+   "sanskritverbRoot": "04|kupa!",
+   "heritageRoots": [
+    "csl:kup:4",
+    "kup"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "jan-4a",
+   "sanskritverbRoot": "04|janI!",
+   "heritageRoots": [
+    "csl:jan:4",
+    "jan"
+   ],
+   "forms": 45,
+   "sanskritverb": 39,
+   "heritage": 45
+  },
+  {
+   "id": "man-4a",
+   "sanskritverbRoot": null,
+   "heritageRoots": [
+    "csl:man:4",
+    "man"
+   ],
+   "forms": 45,
+   "sanskritverb": 0,
+   "heritage": 45
+  },
+  {
+   "id": "yudh-4a",
+   "sanskritverbRoot": "04|yuDa!",
+   "heritageRoots": [
+    "csl:yuD:4",
+    "yuD#1!pass"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "vid-4a",
+   "sanskritverbRoot": "04|vida!",
+   "heritageRoots": [
+    "csl:vid:Q!pass",
+    "vid#1!pass"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "krudh-4p",
+   "sanskritverbRoot": "04|kruDa!",
+   "heritageRoots": [
+    "csl:kruD:4",
+    "kruD#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sidh-4p",
+   "sanskritverbRoot": "04|ziDu!",
+   "heritageRoots": [
+    "csl:siD:4",
+    "siD#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sus-4p",
+   "sanskritverbRoot": "04|Suza!",
+   "heritageRoots": [
+    "csl:Suz:1",
+    "Suz"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "trp-4p",
+   "sanskritverbRoot": null,
+   "heritageRoots": [
+    "csl:tfp:4",
+    "tfp#1"
+   ],
+   "forms": 45,
+   "sanskritverb": 0,
+   "heritage": 45
+  },
+  {
+   "id": "hrs-4p",
+   "sanskritverbRoot": "04|hfza!",
+   "heritageRoots": [
+    "csl:hfz:4",
+    "hfz"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "muh-4p",
+   "sanskritverbRoot": "04|muha!",
+   "heritageRoots": [
+    "csl:muh:4",
+    "muh"
+   ],
+   "forms": 56,
+   "sanskritverb": 56,
+   "heritage": 45
+  },
+  {
+   "id": "snih-4p",
+   "sanskritverbRoot": "04|zRiha!",
+   "heritageRoots": [
+    "csl:snih:4",
+    "snih#1"
+   ],
+   "forms": 56,
+   "sanskritverb": 56,
+   "heritage": 45
+  },
+  {
+   "id": "sam-4p",
+   "sanskritverbRoot": "04|Samu!",
+   "heritageRoots": [
+    "csl:Sam:4",
+    "Sam#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sram-4p",
+   "sanskritverbRoot": "04|Sramu!",
+   "heritageRoots": [
+    "csl:Sram:4",
+    "Sram"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "pus-4p",
+   "sanskritverbRoot": "04|puza!",
+   "heritageRoots": [
+    "csl:puz:4",
+    "puz#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 38,
+   "heritage": 45
+  },
+  {
+   "id": "lubh-4p",
+   "sanskritverbRoot": "04|luBa!",
+   "heritageRoots": [
+    "csl:luB:4",
+    "luB"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sudh-4p",
+   "sanskritverbRoot": "04|SuDa!",
+   "heritageRoots": [
+    "csl:SuD:4",
+    "SuD"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "budh-4a",
+   "sanskritverbRoot": "04|buDa!",
+   "heritageRoots": [
+    "csl:buD:4",
+    "buD#1!pass"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "dip-4a",
+   "sanskritverbRoot": "04|dIpI!",
+   "heritageRoots": [
+    "csl:dIp:4",
+    "dIp!pass"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "pad-4a",
+   "sanskritverbRoot": "04|pada!",
+   "heritageRoots": [
+    "csl:pad:4",
+    "pad#1!pass"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "khid-4a",
+   "sanskritverbRoot": "04|Kida!",
+   "heritageRoots": [
+    "csl:Kid:Q!pass",
+    "Kid!pass"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 36
+  },
+  {
+   "id": "as-4p",
+   "sanskritverbRoot": "04|asu!",
+   "heritageRoots": [
+    "csl:as:4",
+    "as#2"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "su-5u",
+   "sanskritverbRoot": "05|zuY",
+   "heritageRoots": [
+    "csl:su:5",
+    "su#2"
+   ],
+   "forms": 100,
+   "sanskritverb": 100,
+   "heritage": 98
+  },
+  {
+   "id": "ap-5p",
+   "sanskritverbRoot": "05|Apx!",
+   "heritageRoots": [
+    "csl:Ap:5",
+    "Ap"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sak-5p",
+   "sanskritverbRoot": "05|Sakx!",
+   "heritageRoots": [
+    "csl:Sak:5",
+    "Sak"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "ci-5u",
+   "sanskritverbRoot": "05|ciY",
+   "heritageRoots": [
+    "csl:ci:5",
+    "ci"
+   ],
+   "forms": 100,
+   "sanskritverb": 100,
+   "heritage": 98
+  },
+  {
+   "id": "vr-5u",
+   "sanskritverbRoot": "05|vfY",
+   "heritageRoots": [
+    "csl:vf:5",
+    "vf#1"
+   ],
+   "forms": 118,
+   "sanskritverb": 118,
+   "heritage": 116
+  },
+  {
+   "id": "tud-6u",
+   "sanskritverbRoot": "06|tuda!",
+   "heritageRoots": [
+    "csl:tud:6",
+    "tud#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 72
+  },
+  {
+   "id": "likh-6p",
+   "sanskritverbRoot": "06|liKa!",
+   "heritageRoots": [
+    "csl:liK:6",
+    "liK"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sprs-6p",
+   "sanskritverbRoot": "06|spfSa!",
+   "heritageRoots": [
+    "csl:spfS:6",
+    "spfS#1"
+   ],
+   "forms": 56,
+   "sanskritverb": 47,
+   "heritage": 54
+  },
+  {
+   "id": "prach-6p",
+   "sanskritverbRoot": "06|praCa!",
+   "heritageRoots": [
+    "csl:praS:6",
+    "praS"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "is-6p",
+   "sanskritverbRoot": "06|iza!",
+   "heritageRoots": [
+    "csl:iz:6",
+    "iz#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "mil-6p",
+   "sanskritverbRoot": "06|mila!",
+   "heritageRoots": [
+    "csl:mil:6",
+    "mil"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "muc-6u",
+   "sanskritverbRoot": "06|mucx!",
+   "heritageRoots": [
+    "csl:muc:6",
+    "muc#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "ksip-6u",
+   "sanskritverbRoot": "06|kzipa!",
+   "heritageRoots": [
+    "csl:kzip:6",
+    "kzip"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "vis-6p",
+   "sanskritverbRoot": "06|viSa!",
+   "heritageRoots": [
+    "csl:viS:6",
+    "viS#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "sic-6u",
+   "sanskritverbRoot": "06|zica!",
+   "heritageRoots": [
+    "csl:sic:6",
+    "sic"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "mr-6a",
+   "sanskritverbRoot": "06|mfN",
+   "heritageRoots": [
+    "csl:mf:6",
+    "mf!pass"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "krs-6u",
+   "sanskritverbRoot": "06|kfza!",
+   "heritageRoots": [
+    "csl:kfz:6",
+    "kfz"
+   ],
+   "forms": 110,
+   "sanskritverb": 92,
+   "heritage": 108
+  },
+  {
+   "id": "srj-6p",
+   "sanskritverbRoot": "06|sfja!",
+   "heritageRoots": [
+    "csl:sfj:6",
+    "sfj#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "dis-6u",
+   "sanskritverbRoot": "06|diSa!",
+   "heritageRoots": [
+    "csl:diS:6",
+    "diS#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "lip-6u",
+   "sanskritverbRoot": "06|lipa!",
+   "heritageRoots": [
+    "csl:lip:6",
+    "lip"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "krt-6p",
+   "sanskritverbRoot": "06|kftI!",
+   "heritageRoots": [
+    "csl:kft:6",
+    "kft#1"
+   ],
+   "forms": 56,
+   "sanskritverb": 56,
+   "heritage": 54
+  },
+  {
+   "id": "lajj-6a",
+   "sanskritverbRoot": "06|o!lasjI!",
+   "heritageRoots": [
+    "csl:lajj:6",
+    "lajj"
+   ],
+   "forms": 45,
+   "sanskritverb": 45,
+   "heritage": 45
+  },
+  {
+   "id": "vid-6u",
+   "sanskritverbRoot": null,
+   "heritageRoots": [
+    "csl:vid:6",
+    "vid#2"
+   ],
+   "forms": 99,
+   "sanskritverb": 0,
+   "heritage": 99
+  },
+  {
+   "id": "kr-6p",
+   "sanskritverbRoot": "06|kF",
+   "heritageRoots": [
+    "csl:kF:6",
+    "kF"
+   ],
+   "forms": 56,
+   "sanskritverb": 56,
+   "heritage": 54
+  },
+  {
+   "id": "rudh-7u",
+   "sanskritverbRoot": "07|ruDi!r",
+   "heritageRoots": [
+    "csl:ruD:7",
+    "ruD#2"
+   ],
+   "forms": 112,
+   "sanskritverb": 110,
+   "heritage": 91
+  },
+  {
+   "id": "bhuj-7u",
+   "sanskritverbRoot": "07|Buja!",
+   "heritageRoots": [
+    "csl:Buj:7",
+    "Buj#2"
+   ],
+   "forms": 92,
+   "sanskritverb": 47,
+   "heritage": 90
+  },
+  {
+   "id": "yuj-7u",
+   "sanskritverbRoot": "07|yuji!r",
+   "heritageRoots": [
+    "csl:yuj:7",
+    "yuj#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 90
+  },
+  {
+   "id": "bhid-7u",
+   "sanskritverbRoot": "07|Bidi!r",
+   "heritageRoots": [
+    "csl:Bid:7",
+    "Bid#1"
+   ],
+   "forms": 112,
+   "sanskritverb": 110,
+   "heritage": 91
+  },
+  {
+   "id": "chid-7u",
+   "sanskritverbRoot": "07|Cidi!r",
+   "heritageRoots": [
+    "csl:Cid:7",
+    "Cid#1"
+   ],
+   "forms": 112,
+   "sanskritverb": 110,
+   "heritage": 91
+  },
+  {
+   "id": "pis-7p",
+   "sanskritverbRoot": "07|pizx!",
+   "heritageRoots": [
+    "csl:piz:7",
+    "piz"
+   ],
+   "forms": 48,
+   "sanskritverb": 48,
+   "heritage": 45
+  },
+  {
+   "id": "hims-7p",
+   "sanskritverbRoot": "07|hisi!",
+   "heritageRoots": [
+    "csl:hiMs:7",
+    "hiMs"
+   ],
+   "forms": 48,
+   "sanskritverb": 47,
+   "heritage": 30
+  },
+  {
+   "id": "tan-8u",
+   "sanskritverbRoot": "08|tanu!",
+   "heritageRoots": [
+    "csl:tan:8",
+    "tan#1"
+   ],
+   "forms": 100,
+   "sanskritverb": 100,
+   "heritage": 98
+  },
+  {
+   "id": "kr-8u",
+   "sanskritverbRoot": "08|qukfY",
+   "heritageRoots": [
+    "csl:kf:8",
+    "kf#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "kri-9u",
+   "sanskritverbRoot": "09|qukrIY",
+   "heritageRoots": [
+    "csl:krI:9",
+    "krI"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 90
+  },
+  {
+   "id": "grah-9u",
+   "sanskritverbRoot": "09|graha!",
+   "heritageRoots": [
+    "csl:grah:9",
+    "grah"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 89
+  },
+  {
+   "id": "jna-9p",
+   "sanskritverbRoot": "09|jYA",
+   "heritageRoots": [
+    "csl:jYA:9",
+    "jYA#1"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "bandh-9p",
+   "sanskritverbRoot": "09|baMDa!",
+   "heritageRoots": [
+    "csl:banD:9",
+    "banD"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "pu-9u",
+   "sanskritverbRoot": "09|pUY",
+   "heritageRoots": [
+    "csl:pU:9",
+    "pU#1"
+   ],
+   "forms": 92,
+   "sanskritverb": 91,
+   "heritage": 90
+  },
+  {
+   "id": "as-9p",
+   "sanskritverbRoot": "09|aSa!",
+   "heritageRoots": [
+    "csl:aS:9",
+    "aS#2"
+   ],
+   "forms": 47,
+   "sanskritverb": 47,
+   "heritage": 45
+  },
+  {
+   "id": "cur-10u",
+   "sanskritverbRoot": "10|cura!",
+   "heritageRoots": [
+    "csl:cur:10",
+    "cur"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "cint-10u",
+   "sanskritverbRoot": "10|citi!",
+   "heritageRoots": [
+    "csl:cint:10",
+    "cint"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "kath-10u",
+   "sanskritverbRoot": "10|kaTa",
+   "heritageRoots": [
+    "csl:kaT:10",
+    "kaT"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "gan-10u",
+   "sanskritverbRoot": "10|gaRa",
+   "heritageRoots": [
+    "csl:gaR:10",
+    "gaR"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "puj-10u",
+   "sanskritverbRoot": "10|pUja!",
+   "heritageRoots": [
+    "csl:pUj:10",
+    "pUj"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "rac-10u",
+   "sanskritverbRoot": "10|raca",
+   "heritageRoots": [
+    "csl:rac:10",
+    "rac"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "bhaks-10u",
+   "sanskritverbRoot": "10|Bakza!",
+   "heritageRoots": [
+    "Bakz!caus"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 86
+  },
+  {
+   "id": "tad-10u",
+   "sanskritverbRoot": "10|taqa!",
+   "heritageRoots": [
+    "taq!caus"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 86
+  },
+  {
+   "id": "pal-10u",
+   "sanskritverbRoot": "10|pala!",
+   "heritageRoots": [
+    "pA#2!caus"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 86
+  },
+  {
+   "id": "ksal-10u",
+   "sanskritverbRoot": "10|kzala!",
+   "heritageRoots": [
+    "csl:kzal:10",
+    "kzal!caus"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "sprh-10u",
+   "sanskritverbRoot": "10|spfha",
+   "heritageRoots": [
+    "csl:spfh:10",
+    "spfh"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "dand-10u",
+   "sanskritverbRoot": "10|daMqa",
+   "heritageRoots": [
+    "csl:daRqa:11",
+    "daRqa"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 54
+  },
+  {
+   "id": "ghus-10u",
+   "sanskritverbRoot": "10|Guzi!r",
+   "heritageRoots": [
+    "csl:Guz:1",
+    "Guz!caus"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 86
+  },
+  {
+   "id": "pid-10u",
+   "sanskritverbRoot": "10|pIqa!",
+   "heritageRoots": [
+    "csl:pIq:10",
+    "pIq"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "varn-10u",
+   "sanskritverbRoot": "10|varRa",
+   "heritageRoots": [
+    "csl:varR:11",
+    "varRa"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 54
+  },
+  {
+   "id": "bhus-10u",
+   "sanskritverbRoot": "10|BUza!",
+   "heritageRoots": [
+    "BUz!caus"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 86
+  },
+  {
+   "id": "tul-10u",
+   "sanskritverbRoot": "10|tula!",
+   "heritageRoots": [
+    "csl:tul:10",
+    "tul"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "santv-10u",
+   "sanskritverbRoot": "10|zAMtva!",
+   "heritageRoots": [
+    "csl:sAntva:11",
+    "sAntva"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 54
+  },
+  {
+   "id": "suc-10u",
+   "sanskritverbRoot": "10|sUca",
+   "heritageRoots": [
+    "csl:sUc:10",
+    "sUc"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 90
+  },
+  {
+   "id": "lok-10u",
+   "sanskritverbRoot": "10|lokf!",
+   "heritageRoots": [
+    "csl:lok:10",
+    "lok"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 54
+  },
+  {
+   "id": "marg-10u",
+   "sanskritverbRoot": "10|mArga!",
+   "heritageRoots": [
+    "csl:mArg:10",
+    "mArg"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 45
+  },
+  {
+   "id": "ghat-10u",
+   "sanskritverbRoot": "10|Gawa!",
+   "heritageRoots": [
+    "Gaw!caus"
+   ],
+   "forms": 86,
+   "sanskritverb": 0,
+   "heritage": 86
+  },
+  {
+   "id": "arj-10u",
+   "sanskritverbRoot": "10|arja!",
+   "heritageRoots": [
+    "fj!caus"
+   ],
+   "forms": 92,
+   "sanskritverb": 92,
+   "heritage": 86
+  }
+ ],
+ "singleEngine": [
+  {
+   "id": "siks-1a",
+   "confirmedOnlyBy": "sanskritverb"
+  },
+  {
+   "id": "kurd-1a",
+   "confirmedOnlyBy": "sanskritverb"
+  },
+  {
+   "id": "vid-2p",
+   "confirmedOnlyBy": "sanskrit-heritage"
+  },
+  {
+   "id": "man-4a",
+   "confirmedOnlyBy": "sanskrit-heritage"
+  },
+  {
+   "id": "trp-4p",
+   "confirmedOnlyBy": "sanskrit-heritage"
+  },
+  {
+   "id": "vid-6u",
+   "confirmedOnlyBy": "sanskrit-heritage"
+  },
+  {
+   "id": "ghat-10u",
+   "confirmedOnlyBy": "sanskrit-heritage"
+  }
+ ],
+ "droppedCells": [
+  "bru-2u lrt.A.1.3 [A: वक्ष्यन्ते]",
+  "vid-2p lan.P.1.3 [A: अविदुः]",
+  "ghat-10u lan.P.2.3 [A: अघाटयत]",
+  "ghat-10u lot.P.1.2 [A: घाटयताम्]",
+  "ghat-10u vidhilin.P.1.2 [A: घाटयेताम्]",
+  "ghat-10u vidhilin.P.2.3 [A: घाटयेत]"
+ ],
+ "droppedForms": [
+  "hr-1u shanac हरमाणः (neither in Heritage nor attested in DCS)",
+  "dhav-1p ktva धौत्वा (neither in Heritage nor attested in DCS)",
+  "dhav-1p kta धौतः (neither in Heritage nor attested in DCS)",
+  "dhav-1p ktavatu धौतवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "krid-1p aniyar क्रीडनीयः (neither in Heritage nor attested in DCS)",
+  "khel-1p ktva खेलित्वा (neither in Heritage nor attested in DCS)",
+  "khel-1p kta खेलितः (neither in Heritage nor attested in DCS)",
+  "khel-1p ktavatu खेलितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "pat-1p tavya पतितव्यः (neither in Heritage nor attested in DCS)",
+  "labh-1a aniyar लम्भनीयः (neither in Heritage nor attested in DCS)",
+  "vrt-1a ktva वर्तित्वा (neither in Heritage nor attested in DCS)",
+  "vrdh-1a tavya वर्धितव्यः (neither in Heritage nor attested in DCS)",
+  "bhas-1a tavya भाषितव्यः (neither in Heritage nor attested in DCS)",
+  "iks-1a aniyar ईक्षणीयः (neither in Heritage nor attested in DCS)",
+  "mud-1a tavya मोदितव्यः (neither in Heritage nor attested in DCS)",
+  "subh-1a ktva शुभित्वा (neither in Heritage nor attested in DCS)",
+  "subh-1a ktva शोभित्वा (neither in Heritage nor attested in DCS)",
+  "subh-1a kta शुभितः (neither in Heritage nor attested in DCS)",
+  "subh-1a ktavatu शुभितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "subh-1a tavya शोभितव्यः (neither in Heritage nor attested in DCS)",
+  "kamp-1a tavya कम्पितव्यः (neither in Heritage nor attested in DCS)",
+  "sah-1a kta सहितः (neither in Heritage nor attested in DCS)",
+  "sah-1a ktavatu सहितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "vand-1a tumun वन्दितुम् (neither in Heritage nor attested in DCS)",
+  "vand-1a tavya वन्दितव्यः (neither in Heritage nor attested in DCS)",
+  "siks-1a ktva शिक्षित्वा (neither in Heritage nor attested in DCS)",
+  "siks-1a tumun शिक्षितुम् (neither in Heritage nor attested in DCS)",
+  "siks-1a kta शिक्षितः (neither in Heritage nor attested in DCS)",
+  "siks-1a ktavatu शिक्षितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "siks-1a shanac शिक्षमाणः (neither in Heritage nor attested in DCS)",
+  "siks-1a tavya शिक्षितव्यः (neither in Heritage nor attested in DCS)",
+  "siks-1a aniyar शिक्षणीयः (neither in Heritage nor attested in DCS)",
+  "jiv-1p aniyar जीवनीयः (neither in Heritage nor attested in DCS)",
+  "ghra-1p kta घ्राणः (neither in Heritage nor attested in DCS)",
+  "ghra-1p ktavatu घ्राणवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "arh-1p tavya अर्हितव्यः (neither in Heritage nor attested in DCS)",
+  "nand-1p tavya नन्दितव्यः (neither in Heritage nor attested in DCS)",
+  "nind-1p tavya निन्दितव्यः (neither in Heritage nor attested in DCS)",
+  "nind-1p aniyar निन्दनीयः (neither in Heritage nor attested in DCS)",
+  "garj-1p kta गर्जितः (neither in Heritage nor attested in DCS)",
+  "garj-1p ktavatu गर्जितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "garj-1p tavya गर्जितव्यः (neither in Heritage nor attested in DCS)",
+  "garj-1p aniyar गर्जनीयः (neither in Heritage nor attested in DCS)",
+  "at-1p tavya अटितव्यः (neither in Heritage nor attested in DCS)",
+  "sri-1u shanac श्रयमाणः (neither in Heritage nor attested in DCS)",
+  "dhr-1u shanac धरमाणः (neither in Heritage nor attested in DCS)",
+  "hve-1u tavya ह्वातव्यः (neither in Heritage nor attested in DCS)",
+  "hve-1u aniyar ह्वानीयः (neither in Heritage nor attested in DCS)",
+  "ruc-1a tavya रोचितव्यः (neither in Heritage nor attested in DCS)",
+  "ruc-1a aniyar रोचनीयः (neither in Heritage nor attested in DCS)",
+  "ksam-1a ktavatu क्षान्तवान् (neither in Heritage nor attested in DCS)",
+  "ksam-1a shanac क्षममाणः (neither in Heritage nor attested in DCS)",
+  "sank-1a tavya शङ्कितव्यः (neither in Heritage nor attested in DCS)",
+  "kurd-1a ktva कूर्दित्वा (neither in Heritage nor attested in DCS)",
+  "kurd-1a tumun कूर्दितुम् (neither in Heritage nor attested in DCS)",
+  "kurd-1a kta कूर्दितः (neither in Heritage nor attested in DCS)",
+  "kurd-1a ktavatu कूर्दितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "kurd-1a shanac कूर्दमानः (neither in Heritage nor attested in DCS)",
+  "kurd-1a tavya कूर्दितव्यः (neither in Heritage nor attested in DCS)",
+  "kurd-1a aniyar कूर्दनीयः (neither in Heritage nor attested in DCS)",
+  "dams-1p tumun दंष्टुम् (neither in Heritage nor attested in DCS)",
+  "suc-1p ktva शुचित्वा (neither in Heritage nor attested in DCS)",
+  "suc-1p ktva शोचित्वा (neither in Heritage nor attested in DCS)",
+  "suc-1p kta शुचितः (neither in Heritage nor attested in DCS)",
+  "suc-1p ktavatu शुचितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "suc-1p tavya शोचितव्यः (neither in Heritage nor attested in DCS)",
+  "suc-1p aniyar शोचनीयः (neither in Heritage nor attested in DCS)",
+  "bhram-1p lat.P.1.1 भ्रम्यति (only in A)",
+  "bhram-1p lat.P.1.2 भ्रम्यतः (only in A)",
+  "bhram-1p lat.P.1.3 भ्रम्यन्ति (only in A)",
+  "bhram-1p lat.P.2.1 भ्रम्यसि (only in A)",
+  "bhram-1p lat.P.2.2 भ्रम्यथः (only in A)",
+  "bhram-1p lat.P.2.3 भ्रम्यथ (only in A)",
+  "bhram-1p lat.P.3.1 भ्रम्यामि (only in A)",
+  "bhram-1p lat.P.3.2 भ्रम्यावः (only in A)",
+  "bhram-1p lat.P.3.3 भ्रम्यामः (only in A)",
+  "bhram-1p lan.P.1.1 अभ्रम्यत् (only in A)",
+  "bhram-1p lan.P.1.2 अभ्रम्यताम् (only in A)",
+  "bhram-1p lan.P.1.3 अभ्रम्यन् (only in A)",
+  "bhram-1p lan.P.2.1 अभ्रम्यः (only in A)",
+  "bhram-1p lan.P.2.2 अभ्रम्यतम् (only in A)",
+  "bhram-1p lan.P.2.3 अभ्रम्यत (only in A)",
+  "bhram-1p lan.P.3.1 अभ्रम्यम् (only in A)",
+  "bhram-1p lan.P.3.2 अभ्रम्याव (only in A)",
+  "bhram-1p lan.P.3.3 अभ्रम्याम (only in A)",
+  "bhram-1p lot.P.1.1 भ्रम्यतात् (only in A)",
+  "bhram-1p lot.P.1.1 भ्रम्यतु (only in A)",
+  "bhram-1p lot.P.1.2 भ्रम्यताम् (only in A)",
+  "bhram-1p lot.P.1.3 भ्रम्यन्तु (only in A)",
+  "bhram-1p lot.P.2.1 भ्रम्य (only in A)",
+  "bhram-1p lot.P.2.1 भ्रम्यतात् (only in A)",
+  "bhram-1p lot.P.2.2 भ्रम्यतम् (only in A)",
+  "bhram-1p lot.P.2.3 भ्रम्यत (only in A)",
+  "bhram-1p lot.P.3.1 भ्रम्याणि (only in A)",
+  "bhram-1p lot.P.3.2 भ्रम्याव (only in A)",
+  "bhram-1p lot.P.3.3 भ्रम्याम (only in A)",
+  "bhram-1p vidhilin.P.1.1 भ्रम्येत् (only in A)",
+  "bhram-1p vidhilin.P.1.2 भ्रम्येताम् (only in A)",
+  "bhram-1p vidhilin.P.1.3 भ्रम्येयुः (only in A)",
+  "bhram-1p vidhilin.P.2.1 भ्रम्येः (only in A)",
+  "bhram-1p vidhilin.P.2.2 भ्रम्येतम् (only in A)",
+  "bhram-1p vidhilin.P.2.3 भ्रम्येत (only in A)",
+  "bhram-1p vidhilin.P.3.1 भ्रम्येयम् (only in A)",
+  "bhram-1p vidhilin.P.3.2 भ्रम्येव (only in A)",
+  "bhram-1p vidhilin.P.3.3 भ्रम्येम (only in A)",
+  "bhram-1p shatr भ्रम्यन् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "bhram-1p tavya भ्रमितव्यः (neither in Heritage nor attested in DCS)",
+  "jap-1p kta जपितः (neither in Heritage nor attested in DCS)",
+  "jap-1p ktavatu जपितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "vanch-1p tavya वाञ्छितव्यः (neither in Heritage nor attested in DCS)",
+  "kanks-1p tavya काङ्क्षितव्यः (neither in Heritage nor attested in DCS)",
+  "budh-1p ktva बुधित्वा (neither in Heritage nor attested in DCS)",
+  "budh-1p ktva बोधित्वा (neither in Heritage nor attested in DCS)",
+  "budh-1p tumun बोधितुम् (neither in Heritage nor attested in DCS)",
+  "budh-1p kta बुधितः (neither in Heritage nor attested in DCS)",
+  "budh-1p ktavatu बुधितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "budh-1p tavya बोधितव्यः (neither in Heritage nor attested in DCS)",
+  "kuj-1p tavya कूजितव्यः (neither in Heritage nor attested in DCS)",
+  "kuj-1p aniyar कूजनीयः (neither in Heritage nor attested in DCS)",
+  "lamb-1a tavya लम्बितव्यः (neither in Heritage nor attested in DCS)",
+  "cest-1a tavya चेष्टितव्यः (neither in Heritage nor attested in DCS)",
+  "rabh-1a shanac रभमाणः (neither in Heritage nor attested in DCS)",
+  "rabh-1a aniyar रम्भणीयः (neither in Heritage nor attested in DCS)",
+  "kas-1a tavya काशितव्यः (neither in Heritage nor attested in DCS)",
+  "sams-1p tavya शंसितव्यः (neither in Heritage nor attested in DCS)",
+  "kram-1p ktva क्रन्त्वा (neither in Heritage nor attested in DCS)",
+  "kram-1p shatr क्रम्यन् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "kram-1p shatr क्रमन् ( stem / nominative rule mismatch)",
+  "edh-1a tavya एधितव्यः (neither in Heritage nor attested in DCS)",
+  "as-2p ktva भूत्वा (neither in Heritage nor attested in DCS)",
+  "as-2p tumun भवितुम् (neither in Heritage nor attested in DCS)",
+  "as-2p kta भूतः (neither in Heritage nor attested in DCS)",
+  "as-2p ktavatu भूतवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "as-2p tavya भवितव्यः (neither in Heritage nor attested in DCS)",
+  "as-2p aniyar भवनीयः (neither in Heritage nor attested in DCS)",
+  "ad-2p ktva जग्ध्वा (neither in Heritage nor attested in DCS)",
+  "ad-2p ktva जग्द्ध्वा (neither in Heritage nor attested in DCS)",
+  "ad-2p kta जग्धः (neither in Heritage nor attested in DCS)",
+  "ad-2p kta जग्द्धः (neither in Heritage nor attested in DCS)",
+  "ad-2p ktavatu जग्धवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "ad-2p ktavatu जग्द्धवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "ya-2p shatr यान् (neither in Heritage nor attested in DCS)",
+  "sna-2p shatr स्नान् (neither in Heritage nor attested in DCS)",
+  "bru-2u lrt.A.1.3 वक्ष्यन्ते (only in A)",
+  "si-2a ktavatu शयितवान् (neither in Heritage nor attested in DCS)",
+  "si-2a tavya शयितव्यः (neither in Heritage nor attested in DCS)",
+  "si-2a aniyar शयनीयः (neither in Heritage nor attested in DCS)",
+  "vid-2p lat.P.1.1 वेद (only in A)",
+  "vid-2p lat.P.1.2 विदतुः (only in A)",
+  "vid-2p lat.P.1.3 विदुः (only in A)",
+  "vid-2p lat.P.2.1 वेत्थ (only in A)",
+  "vid-2p lat.P.2.2 विदथुः (only in A)",
+  "vid-2p lat.P.2.3 विद (only in A)",
+  "vid-2p lat.P.3.1 वेद (only in A)",
+  "vid-2p lat.P.3.2 विद्व (only in A)",
+  "vid-2p lat.P.3.3 विद्म (only in A)",
+  "vid-2p lan.P.1.3 अविदुः (only in A)",
+  "vid-2p lan.P.2.1 अवेः (only in A)",
+  "vid-2p lot.P.1.1 वित्तात् (only in A)",
+  "vid-2p lot.P.1.1 विदाङ्करोतु (only in A)",
+  "vid-2p lot.P.1.1 विदाङ्कुरुतात् (only in A)",
+  "vid-2p lot.P.1.2 विदाङ्कुरुताम् (only in A)",
+  "vid-2p lot.P.1.3 विदाङ्कुर्वन्तु (only in A)",
+  "vid-2p lot.P.2.1 वित्तात् (only in A)",
+  "vid-2p lot.P.2.1 विदाङ्कुरु (only in A)",
+  "vid-2p lot.P.2.1 विदाङ्कुरुतात् (only in A)",
+  "vid-2p lot.P.2.2 विदाङ्कुरुतम् (only in A)",
+  "vid-2p lot.P.2.3 विदाङ्कुरुत (only in A)",
+  "vid-2p lot.P.3.1 विदाङ्करवाणि (only in A)",
+  "vid-2p lot.P.3.2 विदाङ्करवाव (only in A)",
+  "vid-2p lot.P.3.3 विदाङ्करवाम (only in A)",
+  "vid-2p shatr विद्वस् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "rud-2p tavya रोदितव्यः (neither in Heritage nor attested in DCS)",
+  "jagr-2p tumun जागरितुम् (neither in Heritage nor attested in DCS)",
+  "jagr-2p tavya जागरितव्यः (neither in Heritage nor attested in DCS)",
+  "stu-2u lat.P.1.2 स्तुवीतः (only in A)",
+  "stu-2u lat.P.2.2 स्तुवीथः (only in A)",
+  "stu-2u lat.P.2.3 स्तुवीथ (only in A)",
+  "stu-2u lat.P.3.2 स्तुवीवः (only in A)",
+  "stu-2u lat.P.3.3 स्तुवीमः (only in A)",
+  "stu-2u lat.A.1.1 स्तुवीते (only in A)",
+  "stu-2u lat.A.2.1 स्तुवीषे (only in A)",
+  "stu-2u lat.A.2.3 स्तुवीध्वे (only in A)",
+  "stu-2u lat.A.3.2 स्तुवीवहे (only in A)",
+  "stu-2u lat.A.3.3 स्तुवीमहे (only in A)",
+  "stu-2u lan.P.1.2 अस्तुवीताम् (only in A)",
+  "stu-2u lan.P.2.2 अस्तुवीतम् (only in A)",
+  "stu-2u lan.P.2.3 अस्तुवीत (only in A)",
+  "stu-2u lan.P.3.2 अस्तुवीव (only in A)",
+  "stu-2u lan.P.3.3 अस्तुवीम (only in A)",
+  "stu-2u lan.A.1.1 अस्तुवीत (only in A)",
+  "stu-2u lan.A.2.1 अस्तुवीथाः (only in A)",
+  "stu-2u lan.A.2.3 अस्तुवीध्वम् (only in A)",
+  "stu-2u lan.A.3.2 अस्तुवीवहि (only in A)",
+  "stu-2u lan.A.3.3 अस्तुवीमहि (only in A)",
+  "stu-2u lot.P.1.1 स्तुवीतात् (only in A)",
+  "stu-2u lot.P.1.2 स्तुवीताम् (only in A)",
+  "stu-2u lot.P.2.1 स्तुवीतात् (only in A)",
+  "stu-2u lot.P.2.1 स्तुवीहि (only in A)",
+  "stu-2u lot.P.2.2 स्तुवीतम् (only in A)",
+  "stu-2u lot.P.2.3 स्तुवीत (only in A)",
+  "stu-2u lot.A.1.1 स्तुवीताम् (only in A)",
+  "stu-2u lot.A.2.1 स्तुवीष्व (only in A)",
+  "stu-2u lot.A.2.3 स्तुवीध्वम् (only in A)",
+  "stu-2u vidhilin.P.1.1 स्तुवीयात् (only in A)",
+  "stu-2u vidhilin.P.1.2 स्तुवीयाताम् (only in A)",
+  "stu-2u vidhilin.P.1.3 स्तुवीयुः (only in A)",
+  "stu-2u vidhilin.P.2.1 स्तुवीयाः (only in A)",
+  "stu-2u vidhilin.P.2.2 स्तुवीयातम् (only in A)",
+  "stu-2u vidhilin.P.2.3 स्तुवीयात (only in A)",
+  "stu-2u vidhilin.P.3.1 स्तुवीयाम् (only in A)",
+  "stu-2u vidhilin.P.3.2 स्तुवीयाव (only in A)",
+  "stu-2u vidhilin.P.3.3 स्तुवीयाम (only in A)",
+  "dvis-2u lan.P.1.3 अद्विषुः (only in A)",
+  "bhi-3p vidhilin.P.3.1 बिभियाम् (only in A)",
+  "ma-3a ktva मीत्वा (neither in Heritage nor attested in DCS)",
+  "ma-3a kta मीतः (neither in Heritage nor attested in DCS)",
+  "ma-3a ktavatu मीतवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "ma-3a shanac मिमानः (neither in Heritage nor attested in DCS)",
+  "div-4p ktva देवित्वा (neither in Heritage nor attested in DCS)",
+  "div-4p kta द्यूनः (neither in Heritage nor attested in DCS)",
+  "div-4p ktavatu द्यूनवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "nrt-4p ktva नर्तित्वा (neither in Heritage nor attested in DCS)",
+  "nas-4p ktva नंष्ट्वा (neither in Heritage nor attested in DCS)",
+  "nas-4p tavya नशितव्यः (neither in Heritage nor attested in DCS)",
+  "nas-4p tavya नंष्टव्यः (neither in Heritage nor attested in DCS)",
+  "jan-4a ktva जनित्वा (neither in Heritage nor attested in DCS)",
+  "vid-4a ktva वित्त्वा (neither in Heritage nor attested in DCS)",
+  "vid-4a kta विन्नः (neither in Heritage nor attested in DCS)",
+  "vid-4a ktavatu विन्नवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "vid-4a shanac विद्यमानः (neither in Heritage nor attested in DCS)",
+  "sus-4p ktva शुष्ट्वा (neither in Heritage nor attested in DCS)",
+  "trp-4p lrt.P.1.1 तर्पिष्यति (only in A)",
+  "trp-4p lrt.P.1.1 त्रप्स्यति (only in A)",
+  "trp-4p lrt.P.1.2 तर्पिष्यतः (only in A)",
+  "trp-4p lrt.P.1.2 त्रप्स्यतः (only in A)",
+  "trp-4p lrt.P.1.3 तर्पिष्यन्ति (only in A)",
+  "trp-4p lrt.P.1.3 त्रप्स्यन्ति (only in A)",
+  "trp-4p lrt.P.2.1 तर्पिष्यसि (only in A)",
+  "trp-4p lrt.P.2.1 त्रप्स्यसि (only in A)",
+  "trp-4p lrt.P.2.2 तर्पिष्यथः (only in A)",
+  "trp-4p lrt.P.2.2 त्रप्स्यथः (only in A)",
+  "trp-4p lrt.P.2.3 तर्पिष्यथ (only in A)",
+  "trp-4p lrt.P.2.3 त्रप्स्यथ (only in A)",
+  "trp-4p lrt.P.3.1 तर्पिष्यामि (only in A)",
+  "trp-4p lrt.P.3.1 त्रप्स्यामि (only in A)",
+  "trp-4p lrt.P.3.2 तर्पिष्यावः (only in A)",
+  "trp-4p lrt.P.3.2 त्रप्स्यावः (only in A)",
+  "trp-4p lrt.P.3.3 तर्पिष्यामः (only in A)",
+  "trp-4p lrt.P.3.3 त्रप्स्यामः (only in A)",
+  "trp-4p lot.P.1.1 तृप्यतात् (only in A)",
+  "trp-4p lot.P.2.1 तृप्यतात् (only in A)",
+  "trp-4p ktva तर्पित्वा (neither in Heritage nor attested in DCS)",
+  "trp-4p tumun तर्पितुम् (neither in Heritage nor attested in DCS)",
+  "trp-4p tumun त्रप्तुम् (neither in Heritage nor attested in DCS)",
+  "trp-4p tavya तर्पितव्यः (neither in Heritage nor attested in DCS)",
+  "trp-4p tavya त्रप्तव्यः (neither in Heritage nor attested in DCS)",
+  "hrs-4p tavya हर्षितव्यः (neither in Heritage nor attested in DCS)",
+  "muh-4p tumun मोढुम् (neither in Heritage nor attested in DCS)",
+  "muh-4p tavya मोहितव्यः (neither in Heritage nor attested in DCS)",
+  "muh-4p tavya मोढव्यः (neither in Heritage nor attested in DCS)",
+  "snih-4p tumun स्नेढुम् (neither in Heritage nor attested in DCS)",
+  "snih-4p tavya स्नेहितव्यः (neither in Heritage nor attested in DCS)",
+  "snih-4p tavya स्नेढव्यः (neither in Heritage nor attested in DCS)",
+  "sam-4p ktva शान्त्वा (neither in Heritage nor attested in DCS)",
+  "sam-4p ktva शमित्वा (neither in Heritage nor attested in DCS)",
+  "sam-4p ktavatu शान्तवान् (neither in Heritage nor attested in DCS)",
+  "sam-4p tavya शमितव्यः (neither in Heritage nor attested in DCS)",
+  "sam-4p aniyar शमनीयः (neither in Heritage nor attested in DCS)",
+  "sram-4p tavya श्रमितव्यः (neither in Heritage nor attested in DCS)",
+  "lubh-4p kta लुभितः (neither in Heritage nor attested in DCS)",
+  "lubh-4p ktavatu लुभितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "lubh-4p tavya लोभितव्यः (neither in Heritage nor attested in DCS)",
+  "dip-4a ktva दीपित्वा (neither in Heritage nor attested in DCS)",
+  "dip-4a tavya दीपितव्यः (neither in Heritage nor attested in DCS)",
+  "dip-4a aniyar दीपनीयः (neither in Heritage nor attested in DCS)",
+  "khid-4a ktva खित्त्वा (neither in Heritage nor attested in DCS)",
+  "khid-4a shanac खिद्यमानः (neither in Heritage nor attested in DCS)",
+  "sprs-6p tavya स्प्रष्टव्यः (neither in Heritage nor attested in DCS)",
+  "prach-6p aniyar प्रच्छनीयः (neither in Heritage nor attested in DCS)",
+  "mil-6p tumun मेलितुम् (neither in Heritage nor attested in DCS)",
+  "mil-6p tavya मेलितव्यः (neither in Heritage nor attested in DCS)",
+  "ksip-6u shanac क्षिपमाणः (neither in Heritage nor attested in DCS)",
+  "krs-6u shanac कृषमाणः (neither in Heritage nor attested in DCS)",
+  "srj-6p tavya स्रष्टव्यः (neither in Heritage nor attested in DCS)",
+  "krt-6p ktva कर्तित्वा (neither in Heritage nor attested in DCS)",
+  "lajj-6a kta लग्नः (neither in Heritage nor attested in DCS)",
+  "lajj-6a ktavatu लग्नवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "lajj-6a tavya लज्जितव्यः (neither in Heritage nor attested in DCS)",
+  "vid-6u lrt.A.1.1 वेदिष्यते (only in A)",
+  "vid-6u lrt.A.1.2 वेदिष्येते (only in A)",
+  "vid-6u lrt.A.1.3 वेदिष्यन्ते (only in A)",
+  "vid-6u lrt.A.2.1 वेदिष्यसे (only in A)",
+  "vid-6u lrt.A.2.2 वेदिष्येथे (only in A)",
+  "vid-6u lrt.A.2.3 वेदिष्यध्वे (only in A)",
+  "vid-6u lrt.A.3.1 वेदिष्ये (only in A)",
+  "vid-6u lrt.A.3.2 वेदिष्यावहे (only in A)",
+  "vid-6u lrt.A.3.3 वेदिष्यामहे (only in A)",
+  "vid-6u lot.P.1.1 विन्दतात् (only in A)",
+  "vid-6u lot.P.2.1 विन्दतात् (only in A)",
+  "vid-6u ktavatu विदितवान् (neither in Heritage nor attested in DCS)",
+  "hims-7p aniyar हिंसनीयः (neither in Heritage nor attested in DCS)",
+  "bandh-9p tumun बन्धुम् (neither in Heritage nor attested in DCS)",
+  "bandh-9p tavya बन्धव्यः (neither in Heritage nor attested in DCS)",
+  "as-9p tavya अशितव्यः (neither in Heritage nor attested in DCS)",
+  "cur-10u kta चोरितः (neither in Heritage nor attested in DCS)",
+  "cur-10u ktavatu चोरितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "cur-10u shatr चोरयन् (neither in Heritage nor attested in DCS)",
+  "cur-10u shanac चोरयमाणः (neither in Heritage nor attested in DCS)",
+  "cur-10u tavya चोरयितव्यः (neither in Heritage nor attested in DCS)",
+  "cur-10u aniyar चोरणीयः (neither in Heritage nor attested in DCS)",
+  "cint-10u lat.P.1.1 चिन्तति (curādi form without ṇic)",
+  "cint-10u lat.P.1.2 चिन्ततः (curādi form without ṇic)",
+  "cint-10u lat.P.1.3 चिन्तन्ति (curādi form without ṇic)",
+  "cint-10u lat.P.2.1 चिन्तसि (curādi form without ṇic)",
+  "cint-10u lat.P.2.2 चिन्तथः (curādi form without ṇic)",
+  "cint-10u lat.P.2.3 चिन्तथ (curādi form without ṇic)",
+  "cint-10u lat.P.3.1 चिन्तामि (curādi form without ṇic)",
+  "cint-10u lat.P.3.2 चिन्तावः (curādi form without ṇic)",
+  "cint-10u lat.P.3.3 चिन्तामः (curādi form without ṇic)",
+  "cint-10u lan.P.1.1 अचिन्तत् (curādi form without ṇic)",
+  "cint-10u lan.P.1.2 अचिन्तताम् (curādi form without ṇic)",
+  "cint-10u lan.P.1.3 अचिन्तन् (curādi form without ṇic)",
+  "cint-10u lan.P.2.1 अचिन्तः (curādi form without ṇic)",
+  "cint-10u lan.P.2.2 अचिन्ततम् (curādi form without ṇic)",
+  "cint-10u lan.P.2.3 अचिन्तत (curādi form without ṇic)",
+  "cint-10u lan.P.3.1 अचिन्तम् (curādi form without ṇic)",
+  "cint-10u lan.P.3.2 अचिन्ताव (curādi form without ṇic)",
+  "cint-10u lan.P.3.3 अचिन्ताम (curādi form without ṇic)",
+  "cint-10u lrt.P.1.1 चिन्तिष्यति (curādi form without ṇic)",
+  "cint-10u lrt.P.1.2 चिन्तिष्यतः (curādi form without ṇic)",
+  "cint-10u lrt.P.1.3 चिन्तिष्यन्ति (curādi form without ṇic)",
+  "cint-10u lrt.P.2.1 चिन्तिष्यसि (curādi form without ṇic)",
+  "cint-10u lrt.P.2.2 चिन्तिष्यथः (curādi form without ṇic)",
+  "cint-10u lrt.P.2.3 चिन्तिष्यथ (curādi form without ṇic)",
+  "cint-10u lrt.P.3.1 चिन्तिष्यामि (curādi form without ṇic)",
+  "cint-10u lrt.P.3.2 चिन्तिष्यावः (curādi form without ṇic)",
+  "cint-10u lrt.P.3.3 चिन्तिष्यामः (curādi form without ṇic)",
+  "cint-10u lot.P.1.1 चिन्ततात् (curādi form without ṇic)",
+  "cint-10u lot.P.1.1 चिन्ततु (curādi form without ṇic)",
+  "cint-10u lot.P.1.2 चिन्तताम् (curādi form without ṇic)",
+  "cint-10u lot.P.1.3 चिन्तन्तु (curādi form without ṇic)",
+  "cint-10u lot.P.2.1 चिन्त (curādi form without ṇic)",
+  "cint-10u lot.P.2.1 चिन्ततात् (curādi form without ṇic)",
+  "cint-10u lot.P.2.2 चिन्ततम् (curādi form without ṇic)",
+  "cint-10u lot.P.2.3 चिन्तत (curādi form without ṇic)",
+  "cint-10u lot.P.3.1 चिन्तानि (curādi form without ṇic)",
+  "cint-10u lot.P.3.2 चिन्ताव (curādi form without ṇic)",
+  "cint-10u lot.P.3.3 चिन्ताम (curādi form without ṇic)",
+  "cint-10u vidhilin.P.1.1 चिन्तेत् (curādi form without ṇic)",
+  "cint-10u vidhilin.P.1.2 चिन्तेताम् (curādi form without ṇic)",
+  "cint-10u vidhilin.P.1.3 चिन्तेयुः (curādi form without ṇic)",
+  "cint-10u vidhilin.P.2.1 चिन्तेः (curādi form without ṇic)",
+  "cint-10u vidhilin.P.2.2 चिन्तेतम् (curādi form without ṇic)",
+  "cint-10u vidhilin.P.2.3 चिन्तेत (curādi form without ṇic)",
+  "cint-10u vidhilin.P.3.1 चिन्तेयम् (curādi form without ṇic)",
+  "cint-10u vidhilin.P.3.2 चिन्तेव (curādi form without ṇic)",
+  "cint-10u vidhilin.P.3.3 चिन्तेम (curādi form without ṇic)",
+  "cint-10u ktva चिन्तित्वा (neither in Heritage nor attested in DCS)",
+  "cint-10u tumun चिन्तितुम् (neither in Heritage nor attested in DCS)",
+  "cint-10u shatr चिन्तन् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "cint-10u shanac चिन्तयमानः (neither in Heritage nor attested in DCS)",
+  "cint-10u tavya चिन्तितव्यः (neither in Heritage nor attested in DCS)",
+  "tad-10u ktavatu ताडितवान् (neither in Heritage nor attested in DCS)",
+  "tad-10u shanac ताडयमानः (neither in Heritage nor attested in DCS)",
+  "tad-10u tavya ताडयितव्यः (neither in Heritage nor attested in DCS)",
+  "tad-10u aniyar ताडनीयः (neither in Heritage nor attested in DCS)",
+  "pal-10u tavya पालयितव्यः (neither in Heritage nor attested in DCS)",
+  "ksal-10u kta क्षालितः (neither in Heritage nor attested in DCS)",
+  "ksal-10u ktavatu क्षालितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "ksal-10u shatr क्षालयन् (neither in Heritage nor attested in DCS)",
+  "ksal-10u shanac क्षालयमानः (neither in Heritage nor attested in DCS)",
+  "ksal-10u tavya क्षालयितव्यः (neither in Heritage nor attested in DCS)",
+  "ksal-10u aniyar क्षालनीयः (neither in Heritage nor attested in DCS)",
+  "sprh-10u kta स्पृहितः (neither in Heritage nor attested in DCS)",
+  "sprh-10u ktavatu स्पृहितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "sprh-10u shanac स्पृहयमाणः (neither in Heritage nor attested in DCS)",
+  "dand-10u kta दण्डितः (neither in Heritage nor attested in DCS)",
+  "dand-10u ktavatu दण्डितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "dand-10u shatr दण्डयन् (neither in Heritage nor attested in DCS)",
+  "dand-10u shanac दण्डयमानः (neither in Heritage nor attested in DCS)",
+  "dand-10u tavya दण्डयितव्यः (neither in Heritage nor attested in DCS)",
+  "dand-10u aniyar दण्डनीयः (neither in Heritage nor attested in DCS)",
+  "ghus-10u lat.P.1.1 घोषति (curādi form without ṇic)",
+  "ghus-10u lat.P.1.2 घोषतः (curādi form without ṇic)",
+  "ghus-10u lat.P.1.3 घोषन्ति (curādi form without ṇic)",
+  "ghus-10u lat.P.2.1 घोषसि (curādi form without ṇic)",
+  "ghus-10u lat.P.2.2 घोषथः (curādi form without ṇic)",
+  "ghus-10u lat.P.2.3 घोषथ (curādi form without ṇic)",
+  "ghus-10u lat.P.3.1 घोषामि (curādi form without ṇic)",
+  "ghus-10u lat.P.3.2 घोषावः (curādi form without ṇic)",
+  "ghus-10u lat.P.3.3 घोषामः (curādi form without ṇic)",
+  "ghus-10u lan.P.1.1 अघोषत् (curādi form without ṇic)",
+  "ghus-10u lan.P.1.2 अघोषताम् (curādi form without ṇic)",
+  "ghus-10u lan.P.1.3 अघोषन् (curādi form without ṇic)",
+  "ghus-10u lan.P.2.1 अघोषः (curādi form without ṇic)",
+  "ghus-10u lan.P.2.2 अघोषतम् (curādi form without ṇic)",
+  "ghus-10u lan.P.2.3 अघोषत (curādi form without ṇic)",
+  "ghus-10u lan.P.3.1 अघोषम् (curādi form without ṇic)",
+  "ghus-10u lan.P.3.2 अघोषाव (curādi form without ṇic)",
+  "ghus-10u lan.P.3.3 अघोषाम (curādi form without ṇic)",
+  "ghus-10u lrt.P.1.1 घोषिष्यति (curādi form without ṇic)",
+  "ghus-10u lrt.P.1.2 घोषिष्यतः (curādi form without ṇic)",
+  "ghus-10u lrt.P.1.3 घोषिष्यन्ति (curādi form without ṇic)",
+  "ghus-10u lrt.P.2.1 घोषिष्यसि (curādi form without ṇic)",
+  "ghus-10u lrt.P.2.2 घोषिष्यथः (curādi form without ṇic)",
+  "ghus-10u lrt.P.2.3 घोषिष्यथ (curādi form without ṇic)",
+  "ghus-10u lrt.P.3.1 घोषिष्यामि (curādi form without ṇic)",
+  "ghus-10u lrt.P.3.2 घोषिष्यावः (curādi form without ṇic)",
+  "ghus-10u lrt.P.3.3 घोषिष्यामः (curādi form without ṇic)",
+  "ghus-10u lot.P.1.1 घोषतात् (curādi form without ṇic)",
+  "ghus-10u lot.P.1.1 घोषतु (curādi form without ṇic)",
+  "ghus-10u lot.P.1.2 घोषताम् (curādi form without ṇic)",
+  "ghus-10u lot.P.1.3 घोषन्तु (curādi form without ṇic)",
+  "ghus-10u lot.P.2.1 घोष (curādi form without ṇic)",
+  "ghus-10u lot.P.2.1 घोषतात् (curādi form without ṇic)",
+  "ghus-10u lot.P.2.2 घोषतम् (curādi form without ṇic)",
+  "ghus-10u lot.P.2.3 घोषत (curādi form without ṇic)",
+  "ghus-10u lot.P.3.1 घोषाणि (curādi form without ṇic)",
+  "ghus-10u lot.P.3.2 घोषाव (curādi form without ṇic)",
+  "ghus-10u lot.P.3.3 घोषाम (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.1.1 घोषेत् (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.1.2 घोषेताम् (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.1.3 घोषेयुः (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.2.1 घोषेः (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.2.2 घोषेतम् (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.2.3 घोषेत (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.3.1 घोषेयम् (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.3.2 घोषेव (curādi form without ṇic)",
+  "ghus-10u vidhilin.P.3.3 घोषेम (curādi form without ṇic)",
+  "ghus-10u ktva घुषित्वा (neither in Heritage nor attested in DCS)",
+  "ghus-10u ktva घोषित्वा (neither in Heritage nor attested in DCS)",
+  "ghus-10u tumun घोषितुम् (neither in Heritage nor attested in DCS)",
+  "ghus-10u kta घुष्टः (neither in Heritage nor attested in DCS)",
+  "ghus-10u kta घुषितः (neither in Heritage nor attested in DCS)",
+  "ghus-10u ktavatu घुष्टवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "ghus-10u ktavatu घुषितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "ghus-10u shatr घोषन् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "ghus-10u shanac घोषयमाणः (neither in Heritage nor attested in DCS)",
+  "ghus-10u tavya घोषितव्यः (neither in Heritage nor attested in DCS)",
+  "pid-10u aniyar पीडनीयः (neither in Heritage nor attested in DCS)",
+  "varn-10u ktavatu वर्णितवान् (neither in Heritage nor attested in DCS)",
+  "varn-10u shatr वर्णयन् (neither in Heritage nor attested in DCS)",
+  "varn-10u shanac वर्णयमानः (neither in Heritage nor attested in DCS)",
+  "varn-10u tavya वर्णयितव्यः (neither in Heritage nor attested in DCS)",
+  "varn-10u aniyar वर्णनीयः (neither in Heritage nor attested in DCS)",
+  "bhus-10u shanac भूषयमाणः (neither in Heritage nor attested in DCS)",
+  "tul-10u kta तोलितः (neither in Heritage nor attested in DCS)",
+  "tul-10u ktavatu तोलितवान् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "santv-10u ktavatu सान्त्वितवान् (neither in Heritage nor attested in DCS)",
+  "santv-10u shanac सान्त्वयमानः (neither in Heritage nor attested in DCS)",
+  "santv-10u tavya सान्त्वयितव्यः (neither in Heritage nor attested in DCS)",
+  "santv-10u aniyar सान्त्वनीयः (neither in Heritage nor attested in DCS)",
+  "suc-10u aniyar सूचनीयः (neither in Heritage nor attested in DCS)",
+  "lok-10u lat.P.1.1 लोकति (curādi form without ṇic)",
+  "lok-10u lat.P.1.2 लोकतः (curādi form without ṇic)",
+  "lok-10u lat.P.1.3 लोकन्ति (curādi form without ṇic)",
+  "lok-10u lat.P.2.1 लोकसि (curādi form without ṇic)",
+  "lok-10u lat.P.2.2 लोकथः (curādi form without ṇic)",
+  "lok-10u lat.P.2.3 लोकथ (curādi form without ṇic)",
+  "lok-10u lat.P.3.1 लोकामि (curādi form without ṇic)",
+  "lok-10u lat.P.3.2 लोकावः (curādi form without ṇic)",
+  "lok-10u lat.P.3.3 लोकामः (curādi form without ṇic)",
+  "lok-10u lan.P.1.1 अलोकत् (curādi form without ṇic)",
+  "lok-10u lan.P.1.2 अलोकताम् (curādi form without ṇic)",
+  "lok-10u lan.P.1.3 अलोकन् (curādi form without ṇic)",
+  "lok-10u lan.P.2.1 अलोकः (curādi form without ṇic)",
+  "lok-10u lan.P.2.2 अलोकतम् (curādi form without ṇic)",
+  "lok-10u lan.P.2.3 अलोकत (curādi form without ṇic)",
+  "lok-10u lan.P.3.1 अलोकम् (curādi form without ṇic)",
+  "lok-10u lan.P.3.2 अलोकाव (curādi form without ṇic)",
+  "lok-10u lan.P.3.3 अलोकाम (curādi form without ṇic)",
+  "lok-10u lrt.P.1.1 लोकिष्यति (curādi form without ṇic)",
+  "lok-10u lrt.P.1.2 लोकिष्यतः (curādi form without ṇic)",
+  "lok-10u lrt.P.1.3 लोकिष्यन्ति (curādi form without ṇic)",
+  "lok-10u lrt.P.2.1 लोकिष्यसि (curādi form without ṇic)",
+  "lok-10u lrt.P.2.2 लोकिष्यथः (curādi form without ṇic)",
+  "lok-10u lrt.P.2.3 लोकिष्यथ (curādi form without ṇic)",
+  "lok-10u lrt.P.3.1 लोकिष्यामि (curādi form without ṇic)",
+  "lok-10u lrt.P.3.2 लोकिष्यावः (curādi form without ṇic)",
+  "lok-10u lrt.P.3.3 लोकिष्यामः (curādi form without ṇic)",
+  "lok-10u lot.P.1.1 लोकतात् (curādi form without ṇic)",
+  "lok-10u lot.P.1.1 लोकतु (curādi form without ṇic)",
+  "lok-10u lot.P.1.2 लोकताम् (curādi form without ṇic)",
+  "lok-10u lot.P.1.3 लोकन्तु (curādi form without ṇic)",
+  "lok-10u lot.P.2.1 लोक (curādi form without ṇic)",
+  "lok-10u lot.P.2.1 लोकतात् (curādi form without ṇic)",
+  "lok-10u lot.P.2.2 लोकतम् (curādi form without ṇic)",
+  "lok-10u lot.P.2.3 लोकत (curādi form without ṇic)",
+  "lok-10u lot.P.3.1 लोकानि (curādi form without ṇic)",
+  "lok-10u lot.P.3.2 लोकाव (curādi form without ṇic)",
+  "lok-10u lot.P.3.3 लोकाम (curādi form without ṇic)",
+  "lok-10u vidhilin.P.1.1 लोकेत् (curādi form without ṇic)",
+  "lok-10u vidhilin.P.1.2 लोकेताम् (curādi form without ṇic)",
+  "lok-10u vidhilin.P.1.3 लोकेयुः (curādi form without ṇic)",
+  "lok-10u vidhilin.P.2.1 लोकेः (curādi form without ṇic)",
+  "lok-10u vidhilin.P.2.2 लोकेतम् (curādi form without ṇic)",
+  "lok-10u vidhilin.P.2.3 लोकेत (curādi form without ṇic)",
+  "lok-10u vidhilin.P.3.1 लोकेयम् (curādi form without ṇic)",
+  "lok-10u vidhilin.P.3.2 लोकेव (curādi form without ṇic)",
+  "lok-10u vidhilin.P.3.3 लोकेम (curādi form without ṇic)",
+  "lok-10u shatr लोकन् ( stem / nominative rule mismatch)",
+  "lok-10u shatr लोकयन् (neither in Heritage nor attested in DCS)",
+  "lok-10u shanac लोकयमानः (neither in Heritage nor attested in DCS)",
+  "lok-10u tavya लोकयितव्यः (neither in Heritage nor attested in DCS)",
+  "marg-10u lat.P.1.1 मार्गति (curādi form without ṇic)",
+  "marg-10u lat.P.1.2 मार्गतः (curādi form without ṇic)",
+  "marg-10u lat.P.1.3 मार्गन्ति (curādi form without ṇic)",
+  "marg-10u lat.P.2.1 मार्गसि (curādi form without ṇic)",
+  "marg-10u lat.P.2.2 मार्गथः (curādi form without ṇic)",
+  "marg-10u lat.P.2.3 मार्गथ (curādi form without ṇic)",
+  "marg-10u lat.P.3.1 मार्गामि (curādi form without ṇic)",
+  "marg-10u lat.P.3.2 मार्गावः (curādi form without ṇic)",
+  "marg-10u lat.P.3.3 मार्गामः (curādi form without ṇic)",
+  "marg-10u lan.P.1.1 अमार्गत् (curādi form without ṇic)",
+  "marg-10u lan.P.1.2 अमार्गताम् (curādi form without ṇic)",
+  "marg-10u lan.P.1.3 अमार्गन् (curādi form without ṇic)",
+  "marg-10u lan.P.2.1 अमार्गः (curādi form without ṇic)",
+  "marg-10u lan.P.2.2 अमार्गतम् (curādi form without ṇic)",
+  "marg-10u lan.P.2.3 अमार्गत (curādi form without ṇic)",
+  "marg-10u lan.P.3.1 अमार्गम् (curādi form without ṇic)",
+  "marg-10u lan.P.3.2 अमार्गाव (curādi form without ṇic)",
+  "marg-10u lan.P.3.3 अमार्गाम (curādi form without ṇic)",
+  "marg-10u lrt.P.1.1 मार्गिष्यति (curādi form without ṇic)",
+  "marg-10u lrt.P.1.2 मार्गिष्यतः (curādi form without ṇic)",
+  "marg-10u lrt.P.1.3 मार्गिष्यन्ति (curādi form without ṇic)",
+  "marg-10u lrt.P.2.1 मार्गिष्यसि (curādi form without ṇic)",
+  "marg-10u lrt.P.2.2 मार्गिष्यथः (curādi form without ṇic)",
+  "marg-10u lrt.P.2.3 मार्गिष्यथ (curādi form without ṇic)",
+  "marg-10u lrt.P.3.1 मार्गिष्यामि (curādi form without ṇic)",
+  "marg-10u lrt.P.3.2 मार्गिष्यावः (curādi form without ṇic)",
+  "marg-10u lrt.P.3.3 मार्गिष्यामः (curādi form without ṇic)",
+  "marg-10u lot.P.1.1 मार्गतात् (curādi form without ṇic)",
+  "marg-10u lot.P.1.1 मार्गतु (curādi form without ṇic)",
+  "marg-10u lot.P.1.2 मार्गताम् (curādi form without ṇic)",
+  "marg-10u lot.P.1.3 मार्गन्तु (curādi form without ṇic)",
+  "marg-10u lot.P.2.1 मार्ग (curādi form without ṇic)",
+  "marg-10u lot.P.2.1 मार्गतात् (curādi form without ṇic)",
+  "marg-10u lot.P.2.2 मार्गतम् (curādi form without ṇic)",
+  "marg-10u lot.P.2.3 मार्गत (curādi form without ṇic)",
+  "marg-10u lot.P.3.1 मार्गाणि (curādi form without ṇic)",
+  "marg-10u lot.P.3.2 मार्गाव (curādi form without ṇic)",
+  "marg-10u lot.P.3.3 मार्गाम (curādi form without ṇic)",
+  "marg-10u vidhilin.P.1.1 मार्गेत् (curādi form without ṇic)",
+  "marg-10u vidhilin.P.1.2 मार्गेताम् (curādi form without ṇic)",
+  "marg-10u vidhilin.P.1.3 मार्गेयुः (curādi form without ṇic)",
+  "marg-10u vidhilin.P.2.1 मार्गेः (curādi form without ṇic)",
+  "marg-10u vidhilin.P.2.2 मार्गेतम् (curādi form without ṇic)",
+  "marg-10u vidhilin.P.2.3 मार्गेत (curādi form without ṇic)",
+  "marg-10u vidhilin.P.3.1 मार्गेयम् (curādi form without ṇic)",
+  "marg-10u vidhilin.P.3.2 मार्गेव (curādi form without ṇic)",
+  "marg-10u vidhilin.P.3.3 मार्गेम (curādi form without ṇic)",
+  "marg-10u shatr मार्गन् (neither in Heritage nor attested in DCS stem / nominative rule mismatch)",
+  "marg-10u shanac मार्गयमाणः (neither in Heritage nor attested in DCS)",
+  "ghat-10u lan.P.2.3 अघाटयत (only in A)",
+  "ghat-10u lot.P.1.1 घाटयतात् (only in A)",
+  "ghat-10u lot.P.1.2 घाटयताम् (only in A)",
+  "ghat-10u lot.P.2.1 घाटयतात् (only in A)",
+  "ghat-10u vidhilin.P.1.2 घाटयेताम् (only in A)",
+  "ghat-10u vidhilin.P.2.3 घाटयेत (only in A)"
+ ],
+ "multiFormCells": [
+  "vrdh-1a ktva वर्धित्वाᶜ / वृद्ध्वाᶜ",
+  "mud-1a ktva मुदित्वाᶜ / मोदित्वाᶜ",
+  "sah-1a ktva सोढ्वाᶜ / सहित्वाᶜ",
+  "sah-1a tumun सहितुम्ᶜᵈ / सोढुम्ᵈ",
+  "sah-1a tavya सोढव्यःᶜ / सहितव्यःᶜ",
+  "tr-1p lrt.P.1.1 तरिष्यतिᴮᶜ / तरीष्यतिᴮᶜ",
+  "tr-1p lrt.P.1.2 तरिष्यतःᴮᶜ / तरीष्यतःᴮᶜ",
+  "tr-1p lrt.P.1.3 तरिष्यन्तिᴮᶜ / तरीष्यन्तिᴮᶜ",
+  "tr-1p lrt.P.2.1 तरिष्यसिᴮᶜ / तरीष्यसिᴮᶜ",
+  "tr-1p lrt.P.2.2 तरिष्यथःᴮᶜ / तरीष्यथःᴮᶜ",
+  "tr-1p lrt.P.2.3 तरिष्यथᴮᶜ / तरीष्यथᴮᶜ",
+  "tr-1p lrt.P.3.1 तरिष्यामिᴮᶜ / तरीष्यामिᴮᶜ",
+  "tr-1p lrt.P.3.2 तरिष्यावःᴮᶜ / तरीष्यावःᴮᶜ",
+  "tr-1p lrt.P.3.3 तरिष्यामःᴮᶜ / तरीष्यामःᴮᶜ",
+  "tr-1p tumun तरीतुम्ᶜ / तरितुम्ᶜ",
+  "tr-1p tavya तरीतव्यःᶜ / तरितव्यःᶜ",
+  "ruc-1a ktva रुचित्वाᶜ / रोचित्वाᶜ",
+  "ksam-1a lrt.A.1.1 क्षमिष्यतेᴮᶜ / क्षंस्यतेᴮᶜ",
+  "ksam-1a lrt.A.1.2 क्षमिष्येतेᴮᶜ / क्षंस्येतेᴮᶜ",
+  "ksam-1a lrt.A.1.3 क्षमिष्यन्तेᴮᶜ / क्षंस्यन्तेᴮᶜ",
+  "ksam-1a lrt.A.2.1 क्षमिष्यसेᴮᶜ / क्षंस्यसेᴮᶜ",
+  "ksam-1a lrt.A.2.2 क्षमिष्येथेᴮᶜ / क्षंस्येथेᴮᶜ",
+  "ksam-1a lrt.A.2.3 क्षमिष्यध्वेᴮᶜ / क्षंस्यध्वेᴮᶜ",
+  "ksam-1a lrt.A.3.1 क्षमिष्येᴮᶜ / क्षंस्येᴮᶜ",
+  "ksam-1a lrt.A.3.2 क्षमिष्यावहेᴮᶜ / क्षंस्यावहेᴮᶜ",
+  "ksam-1a lrt.A.3.3 क्षमिष्यामहेᴮᶜ / क्षंस्यामहेᴮᶜ",
+  "ksam-1a ktva क्षान्त्वाᶜ / क्षमित्वाᶜ",
+  "ksam-1a tumun क्षन्तुम्ᶜᵈ / क्षमितुम्ᶜ",
+  "ksam-1a tavya क्षन्तव्यःᶜ / क्षमितव्यःᶜ",
+  "tvar-1a kta त्वरितःᶜᵈ / तूर्णःᶜ",
+  "tvar-1a ktavatu त्वरितवान्ᶜ / तूर्णवान्ᶜ",
+  "bhram-1p ktva भ्रान्त्वाᶜ / भ्रमित्वाᶜ",
+  "sru-1p lat.P.3.2 शृणुवःᴮᶜ / शृण्वःᴮᶜ",
+  "sru-1p lat.P.3.3 शृणुमःᴮᶜ / शृण्मःᴮᶜ",
+  "sru-1p lan.P.3.2 अशृणुवᴮᶜ / अशृण्वᴮᶜ",
+  "sru-1p lan.P.3.3 अशृणुमᴮᶜ / अशृण्मᴮᶜ",
+  "krs-1p lrt.P.1.1 कर्क्ष्यतिᴮᶜ / क्रक्ष्यतिᶜ",
+  "krs-1p lrt.P.1.2 कर्क्ष्यतःᴮᶜ / क्रक्ष्यतःᶜ",
+  "krs-1p lrt.P.1.3 कर्क्ष्यन्तिᴮᶜ / क्रक्ष्यन्तिᶜ",
+  "krs-1p lrt.P.2.1 कर्क्ष्यसिᴮᶜ / क्रक्ष्यसिᶜ",
+  "krs-1p lrt.P.2.2 कर्क्ष्यथःᴮᶜ / क्रक्ष्यथःᶜ",
+  "krs-1p lrt.P.2.3 कर्क्ष्यथᴮᶜ / क्रक्ष्यथᶜ",
+  "krs-1p lrt.P.3.1 कर्क्ष्यामिᴮᶜ / क्रक्ष्यामिᶜ",
+  "krs-1p lrt.P.3.2 कर्क्ष्यावःᴮᶜ / क्रक्ष्यावःᶜ",
+  "krs-1p lrt.P.3.3 कर्क्ष्यामःᴮᶜ / क्रक्ष्यामःᶜ",
+  "krs-1p tumun क्रष्टुम्ᶜ / कर्ष्टुम्ᶜ",
+  "krs-1p tavya क्रष्टव्यःᶜ / कर्ष्टव्यःᶜ",
+  "sams-1p ktva शस्त्वाᶜ / शंसित्वाᶜ",
+  "kram-1p lat.P.1.1 क्रामतिᴮᶜ / क्राम्यतिᴮ",
+  "kram-1p lat.P.1.2 क्रामतःᴮᶜ / क्राम्यतःᴮ",
+  "kram-1p lat.P.1.3 क्रामन्तिᴮᶜ / क्राम्यन्तिᴮ",
+  "kram-1p lat.P.2.1 क्रामसिᴮᶜ / क्राम्यसिᴮ",
+  "kram-1p lat.P.2.2 क्रामथःᴮᶜ / क्राम्यथःᴮ",
+  "kram-1p lat.P.2.3 क्रामथᴮᶜ / क्राम्यथᴮ",
+  "kram-1p lat.P.3.1 क्रामामिᴮᶜ / क्राम्यामिᴮ",
+  "kram-1p lat.P.3.2 क्रामावःᴮᶜ / क्राम्यावःᴮ",
+  "kram-1p lat.P.3.3 क्रामामःᴮᶜ / क्राम्यामःᴮ",
+  "kram-1p lan.P.1.1 अक्रामत्ᴮᶜ / अक्राम्यत्ᴮ",
+  "kram-1p lan.P.1.2 अक्रामताम्ᴮᶜ / अक्राम्यताम्ᴮ",
+  "kram-1p lan.P.1.3 अक्रामन्ᴮᶜ / अक्राम्यन्ᴮ",
+  "kram-1p lan.P.2.1 अक्रामःᴮᶜ / अक्राम्यःᴮ",
+  "kram-1p lan.P.2.2 अक्रामतम्ᴮᶜ / अक्राम्यतम्ᴮ",
+  "kram-1p lan.P.2.3 अक्रामतᴮᶜ / अक्राम्यतᴮ",
+  "kram-1p lan.P.3.1 अक्रामम्ᴮᶜ / अक्राम्यम्ᴮ",
+  "kram-1p lan.P.3.2 अक्रामावᴮᶜ / अक्राम्यावᴮ",
+  "kram-1p lan.P.3.3 अक्रामामᴮᶜ / अक्राम्यामᴮ",
+  "kram-1p lot.P.1.1 क्रामतुᴮᶜ / क्राम्यतुᴮ",
+  "kram-1p lot.P.1.2 क्रामताम्ᴮᶜ / क्राम्यताम्ᴮ",
+  "kram-1p lot.P.1.3 क्रामन्तुᴮᶜ / क्राम्यन्तुᴮ",
+  "kram-1p lot.P.2.1 क्रामᴮᶜ / क्राम्यᴮ",
+  "kram-1p lot.P.2.2 क्रामतम्ᴮᶜ / क्राम्यतम्ᴮ",
+  "kram-1p lot.P.2.3 क्रामतᴮᶜ / क्राम्यतᴮ",
+  "kram-1p lot.P.3.1 क्रामाणिᴮᶜ / क्राम्याणिᴮ",
+  "kram-1p lot.P.3.2 क्रामावᴮᶜ / क्राम्यावᴮ",
+  "kram-1p lot.P.3.3 क्रामामᴮᶜ / क्राम्यामᴮ",
+  "kram-1p vidhilin.P.1.1 क्रामेत्ᴮᶜ / क्राम्येत्ᴮ",
+  "kram-1p vidhilin.P.1.2 क्रामेताम्ᴮᶜ / क्राम्येताम्ᴮ",
+  "kram-1p vidhilin.P.1.3 क्रामेयुःᴮᶜ / क्राम्येयुःᴮ",
+  "kram-1p vidhilin.P.2.1 क्रामेःᴮᶜ / क्राम्येःᴮ",
+  "kram-1p vidhilin.P.2.2 क्रामेतम्ᴮᶜ / क्राम्येतम्ᴮ",
+  "kram-1p vidhilin.P.2.3 क्रामेतᴮᶜ / क्राम्येतᴮ",
+  "kram-1p vidhilin.P.3.1 क्रामेयम्ᴮᶜ / क्राम्येयम्ᴮ",
+  "kram-1p vidhilin.P.3.2 क्रामेवᴮᶜ / क्राम्येवᴮ",
+  "kram-1p vidhilin.P.3.3 क्रामेमᴮᶜ / क्राम्येमᴮ",
+  "kram-1p ktva क्रान्त्वाᶜ / क्रमित्वाᶜ",
+  "ya-2p lan.P.1.3 अयान्ᴮᶜ / अयुःᴮᶜ",
+  "sna-2p lan.P.1.3 अस्नान्ᴮᶜ / अस्नुःᴮᶜ",
+  "bru-2u lat.P.1.1 ब्रवीतिᴮᶜ / आहᴮ",
+  "bru-2u lat.P.1.2 ब्रूतःᴮᶜ / आहतुःᴮ",
+  "bru-2u lat.P.1.3 ब्रुवन्तिᴮᶜ / आहुःᴮ",
+  "bru-2u lat.P.2.1 ब्रवीषिᴮᶜ / आत्थᴮ",
+  "bru-2u lat.P.2.2 ब्रूथःᴮᶜ / आहथुःᴮ",
+  "rud-2p lan.P.1.1 अरोदीत्ᴮᶜ / अरोदत्ᴮᶜ",
+  "rud-2p lan.P.2.1 अरोदीःᴮᶜ / अरोदःᴮᶜ",
+  "svap-2p lan.P.1.1 अस्वपीत्ᴮᶜ / अस्वपत्ᴮᶜ",
+  "svap-2p lan.P.2.1 अस्वपीःᴮᶜ / अस्वपःᴮᶜ",
+  "sas-2p lan.P.2.1 अशाःᴮᶜ / अशात्ᴮᶜ",
+  "sas-2p ktva शिष्ट्वाᶜ / शासित्वाᶜ",
+  "stu-2u lat.P.1.1 स्तौतिᴮᶜ / स्तवीतिᴮ",
+  "stu-2u lat.P.2.1 स्तौषिᴮᶜ / स्तवीषिᴮ",
+  "stu-2u lat.P.3.1 स्तौमिᴮᶜ / स्तवीमिᴮᶜ",
+  "stu-2u lan.P.1.1 अस्तौत्ᴮᶜ / अस्तवीत्ᴮ",
+  "stu-2u lan.P.2.1 अस्तौःᴮᶜ / अस्तवीःᴮ",
+  "stu-2u lot.P.1.1 स्तौतुᴮᶜ / स्तवीतुᴮ",
+  "bhi-3p lat.P.1.2 बिभीतःᴮᶜ / बिभितःᴮ",
+  "bhi-3p lat.P.2.2 बिभीथःᴮᶜ / बिभिथःᴮ",
+  "bhi-3p lat.P.2.3 बिभीथᴮᶜ / बिभिथᴮ",
+  "bhi-3p lat.P.3.2 बिभीवःᴮᶜ / बिभिवःᴮ",
+  "bhi-3p lat.P.3.3 बिभीमःᴮᶜ / बिभिमःᴮ",
+  "bhi-3p lan.P.1.2 अबिभीताम्ᴮᶜ / अबिभिताम्ᴮ",
+  "bhi-3p lan.P.2.2 अबिभीतम्ᴮᶜ / अबिभितम्ᴮ",
+  "bhi-3p lan.P.2.3 अबिभीतᴮᶜ / अबिभितᴮ",
+  "bhi-3p lan.P.3.2 अबिभीवᴮᶜ / अबिभिवᴮ",
+  "bhi-3p lan.P.3.3 अबिभीमᴮᶜ / अबिभिमᴮ",
+  "bhi-3p lot.P.1.2 बिभीताम्ᴮᶜ / बिभिताम्ᴮ",
+  "bhi-3p lot.P.2.1 बिभीहिᴮᶜ / बिभिहिᴮ",
+  "bhi-3p lot.P.2.2 बिभीतम्ᴮᶜ / बिभितम्ᴮ",
+  "bhi-3p lot.P.2.3 बिभीतᴮᶜ / बिभितᴮ",
+  "bhi-3p vidhilin.P.1.1 बिभीयात्ᴮᶜ / बिभियात्ᴮ",
+  "bhi-3p vidhilin.P.1.2 बिभीयाताम्ᴮᶜ / बिभियाताम्ᴮ",
+  "bhi-3p vidhilin.P.1.3 बिभीयुःᴮᶜ / बिभियुःᴮ",
+  "bhi-3p vidhilin.P.2.1 बिभीयाःᴮᶜ / बिभियाःᴮ",
+  "bhi-3p vidhilin.P.2.2 बिभीयातम्ᴮᶜ / बिभियातम्ᴮ",
+  "bhi-3p vidhilin.P.2.3 बिभीयातᴮᶜ / बिभियातᴮ",
+  "bhi-3p vidhilin.P.3.2 बिभीयावᴮᶜ / बिभियावᴮ",
+  "bhi-3p vidhilin.P.3.3 बिभीयामᴮᶜ / बिभियामᴮ",
+  "ha-3p lat.P.1.2 जहितःᴮᶜ / जहीतःᴮᶜ",
+  "ha-3p lat.P.2.2 जहिथःᴮᶜ / जहीथःᴮᶜ",
+  "ha-3p lat.P.2.3 जहिथᴮᶜ / जहीथᴮᶜ",
+  "ha-3p lat.P.3.2 जहिवःᴮᶜ / जहीवःᴮᶜ",
+  "ha-3p lat.P.3.3 जहिमःᴮᶜ / जहीमःᴮᶜ",
+  "ha-3p lan.P.1.2 अजहिताम्ᴮᶜ / अजहीताम्ᴮᶜ",
+  "ha-3p lan.P.2.2 अजहितम्ᴮᶜ / अजहीतम्ᴮᶜ",
+  "ha-3p lan.P.2.3 अजहितᴮᶜ / अजहीतᴮᶜ",
+  "ha-3p lan.P.3.2 अजहिवᴮᶜ / अजहीवᴮᶜ",
+  "ha-3p lan.P.3.3 अजहिमᴮᶜ / अजहीमᴮᶜ",
+  "ha-3p lot.P.1.2 जहिताम्ᴮᶜ / जहीताम्ᴮᶜ",
+  "ha-3p lot.P.2.1 जहिहिᴮᶜ / जहाहिᶜ / जहीहिᶜ",
+  "ha-3p lot.P.2.2 जहितम्ᴮᶜ / जहीतम्ᴮᶜ",
+  "ha-3p lot.P.2.3 जहितᴮᶜ / जहीतᴮᶜ",
+  "nrt-4p lrt.P.1.1 नर्तिष्यतिᴮᶜ / नर्त्स्यतिᴮᶜ",
+  "nrt-4p lrt.P.1.2 नर्तिष्यतःᴮᶜ / नर्त्स्यतःᴮᶜ",
+  "nrt-4p lrt.P.1.3 नर्तिष्यन्तिᴮᶜ / नर्त्स्यन्तिᴮᶜ",
+  "nrt-4p lrt.P.2.1 नर्तिष्यसिᴮᶜ / नर्त्स्यसिᴮᶜ",
+  "nrt-4p lrt.P.2.2 नर्तिष्यथःᴮᶜ / नर्त्स्यथःᴮᶜ",
+  "nrt-4p lrt.P.2.3 नर्तिष्यथᴮᶜ / नर्त्स्यथᴮᶜ",
+  "nrt-4p lrt.P.3.1 नर्तिष्यामिᴮᶜ / नर्त्स्यामिᴮᶜ",
+  "nrt-4p lrt.P.3.2 नर्तिष्यावःᴮᶜ / नर्त्स्यावःᴮᶜ",
+  "nrt-4p lrt.P.3.3 नर्तिष्यामःᴮᶜ / नर्त्स्यामःᴮᶜ",
+  "nas-4p lrt.P.1.1 नशिष्यतिᴮᶜ / नङ्क्ष्यतिᴮ",
+  "nas-4p lrt.P.1.2 नशिष्यतःᴮᶜ / नङ्क्ष्यतःᴮ",
+  "nas-4p lrt.P.1.3 नशिष्यन्तिᴮᶜ / नङ्क्ष्यन्तिᴮ",
+  "nas-4p lrt.P.2.1 नशिष्यसिᴮᶜ / नङ्क्ष्यसिᴮ",
+  "nas-4p lrt.P.2.2 नशिष्यथःᴮᶜ / नङ्क्ष्यथःᴮ",
+  "nas-4p lrt.P.2.3 नशिष्यथᴮᶜ / नङ्क्ष्यथᴮ",
+  "nas-4p lrt.P.3.1 नशिष्यामिᴮᶜ / नङ्क्ष्यामिᴮ",
+  "nas-4p lrt.P.3.2 नशिष्यावःᴮᶜ / नङ्क्ष्यावःᴮ",
+  "nas-4p lrt.P.3.3 नशिष्यामःᴮᶜ / नङ्क्ष्यामःᴮ",
+  "nas-4p ktva नशित्वाᶜ / नष्ट्वाᶜ",
+  "nas-4p tumun नशितुम्ᶜ / नंष्टुम्ᶜ",
+  "kup-4p ktva कुपित्वाᶜ / कोपित्वाᶜ",
+  "muh-4p lrt.P.1.1 मोहिष्यतिᴮᶜ / मोक्ष्यतिᴮ",
+  "muh-4p lrt.P.1.2 मोहिष्यतःᴮᶜ / मोक्ष्यतःᴮ",
+  "muh-4p lrt.P.1.3 मोहिष्यन्तिᴮᶜ / मोक्ष्यन्तिᴮ",
+  "muh-4p lrt.P.2.1 मोहिष्यसिᴮᶜ / मोक्ष्यसिᴮ",
+  "muh-4p lrt.P.2.2 मोहिष्यथःᴮᶜ / मोक्ष्यथःᴮ",
+  "muh-4p lrt.P.2.3 मोहिष्यथᴮᶜ / मोक्ष्यथᴮ",
+  "muh-4p lrt.P.3.1 मोहिष्यामिᴮᶜ / मोक्ष्यामिᴮ",
+  "muh-4p lrt.P.3.2 मोहिष्यावःᴮᶜ / मोक्ष्यावःᴮ",
+  "muh-4p lrt.P.3.3 मोहिष्यामःᴮᶜ / मोक्ष्यामःᴮ",
+  "muh-4p ktva मुहित्वाᶜ / मोहित्वाᶜ / मुग्ध्वाᶜ / मूढ्वाᶜ",
+  "muh-4p tumun मोहितुम्ᶜ / मोग्धुम्ᶜ",
+  "muh-4p kta मूढःᶜᵈ / मुग्धःᶜ",
+  "muh-4p ktavatu मुग्धवान्ᶜ / मूढवान्ᶜ",
+  "snih-4p lrt.P.1.1 स्नेहिष्यतिᴮᶜ / स्नेक्ष्यतिᴮ",
+  "snih-4p lrt.P.1.2 स्नेहिष्यतःᴮᶜ / स्नेक्ष्यतःᴮ",
+  "snih-4p lrt.P.1.3 स्नेहिष्यन्तिᴮᶜ / स्नेक्ष्यन्तिᴮ",
+  "snih-4p lrt.P.2.1 स्नेहिष्यसिᴮᶜ / स्नेक्ष्यसिᴮ",
+  "snih-4p lrt.P.2.2 स्नेहिष्यथःᴮᶜ / स्नेक्ष्यथःᴮ",
+  "snih-4p lrt.P.2.3 स्नेहिष्यथᴮᶜ / स्नेक्ष्यथᴮ",
+  "snih-4p lrt.P.3.1 स्नेहिष्यामिᴮᶜ / स्नेक्ष्यामिᴮ",
+  "snih-4p lrt.P.3.2 स्नेहिष्यावःᴮᶜ / स्नेक्ष्यावःᴮ",
+  "snih-4p lrt.P.3.3 स्नेहिष्यामःᴮᶜ / स्नेक्ष्यामःᴮ",
+  "snih-4p ktva स्निहित्वाᶜ / स्नेहित्वाᶜ / स्निग्ध्वाᶜ / स्नीढ्वाᶜ",
+  "snih-4p tumun स्नेहितुम्ᶜ / स्नेग्धुम्ᶜ",
+  "snih-4p kta स्निग्धःᶜ / स्नीढःᶜ",
+  "snih-4p ktavatu स्निग्धवान्ᶜ / स्नीढवान्ᶜ",
+  "sram-4p ktva श्रान्त्वाᶜ / श्रमित्वाᶜ",
+  "lubh-4p ktva लुभित्वाᶜ / लोभित्वाᶜ / लुब्ध्वाᶜ",
+  "lubh-4p tumun लोब्धुम्ᶜ / लोभितुम्ᶜ",
+  "as-4p ktva अस्त्वाᶜ / असित्वाᶜ",
+  "su-5u lat.P.3.2 सुनुवःᴮᶜ / सुन्वःᴮᶜ",
+  "su-5u lat.P.3.3 सुनुमःᴮᶜ / सुन्मःᴮᶜ",
+  "su-5u lat.A.3.2 सुनुवहेᴮᶜ / सुन्वहेᴮᶜ",
+  "su-5u lat.A.3.3 सुनुमहेᴮᶜ / सुन्महेᴮᶜ",
+  "su-5u lan.P.3.2 असुनुवᴮᶜ / असुन्वᴮᶜ",
+  "su-5u lan.P.3.3 असुनुमᴮᶜ / असुन्मᴮᶜ",
+  "su-5u lan.A.3.2 असुनुवहिᴮᶜ / असुन्वहिᴮᶜ",
+  "su-5u lan.A.3.3 असुनुमहिᴮᶜ / असुन्महिᴮᶜ",
+  "ci-5u lat.P.3.2 चिनुवःᴮᶜ / चिन्वःᴮᶜ",
+  "ci-5u lat.P.3.3 चिनुमःᴮᶜ / चिन्मःᴮᶜ",
+  "ci-5u lat.A.3.2 चिनुवहेᴮᶜ / चिन्वहेᴮᶜ",
+  "ci-5u lat.A.3.3 चिनुमहेᴮᶜ / चिन्महेᴮᶜ",
+  "ci-5u lan.P.3.2 अचिनुवᴮᶜ / अचिन्वᴮᶜ",
+  "ci-5u lan.P.3.3 अचिनुमᴮᶜ / अचिन्मᴮᶜ",
+  "ci-5u lan.A.3.2 अचिनुवहिᴮᶜ / अचिन्वहिᴮᶜ",
+  "ci-5u lan.A.3.3 अचिनुमहिᴮᶜ / अचिन्महिᴮᶜ",
+  "vr-5u lat.P.3.2 वृणुवःᴮᶜ / वृण्वःᴮᶜ",
+  "vr-5u lat.P.3.3 वृणुमःᴮᶜ / वृण्मःᴮᶜ",
+  "vr-5u lat.A.3.2 वृणुवहेᴮᶜ / वृण्वहेᴮᶜ",
+  "vr-5u lat.A.3.3 वृणुमहेᴮᶜ / वृण्महेᴮᶜ",
+  "vr-5u lan.P.3.2 अवृणुवᴮᶜ / अवृण्वᴮᶜ",
+  "vr-5u lan.P.3.3 अवृणुमᴮᶜ / अवृण्मᴮᶜ",
+  "vr-5u lan.A.3.2 अवृणुवहिᴮᶜ / अवृण्वहिᴮᶜ",
+  "vr-5u lan.A.3.3 अवृणुमहिᴮᶜ / अवृण्महिᴮᶜ",
+  "vr-5u lrt.P.1.1 वरिष्यतिᴮᶜ / वरीष्यतिᴮᶜ",
+  "vr-5u lrt.P.1.2 वरिष्यतःᴮᶜ / वरीष्यतःᴮᶜ",
+  "vr-5u lrt.P.1.3 वरिष्यन्तिᴮᶜ / वरीष्यन्तिᴮᶜ",
+  "vr-5u lrt.P.2.1 वरिष्यसिᴮᶜ / वरीष्यसिᴮᶜ",
+  "vr-5u lrt.P.2.2 वरिष्यथःᴮᶜ / वरीष्यथःᴮᶜ",
+  "vr-5u lrt.P.2.3 वरिष्यथᴮᶜ / वरीष्यथᴮᶜ",
+  "vr-5u lrt.P.3.1 वरिष्यामिᴮᶜ / वरीष्यामिᴮᶜ",
+  "vr-5u lrt.P.3.2 वरिष्यावःᴮᶜ / वरीष्यावःᴮᶜ",
+  "vr-5u lrt.P.3.3 वरिष्यामःᴮᶜ / वरीष्यामःᴮᶜ",
+  "vr-5u lrt.A.1.1 वरिष्यतेᴮᶜ / वरीष्यतेᴮᶜ",
+  "vr-5u lrt.A.1.2 वरिष्येतेᴮᶜ / वरीष्येतेᴮᶜ",
+  "vr-5u lrt.A.1.3 वरिष्यन्तेᴮᶜ / वरीष्यन्तेᴮᶜ",
+  "vr-5u lrt.A.2.1 वरिष्यसेᴮᶜ / वरीष्यसेᴮᶜ",
+  "vr-5u lrt.A.2.2 वरिष्येथेᴮᶜ / वरीष्येथेᴮᶜ",
+  "vr-5u lrt.A.2.3 वरिष्यध्वेᴮᶜ / वरीष्यध्वेᴮᶜ",
+  "vr-5u lrt.A.3.1 वरिष्येᴮᶜ / वरीष्येᴮᶜ",
+  "vr-5u lrt.A.3.2 वरिष्यावहेᴮᶜ / वरीष्यावहेᴮᶜ",
+  "vr-5u lrt.A.3.3 वरिष्यामहेᴮᶜ / वरीष्यामहेᴮᶜ",
+  "vr-5u tumun वरीतुम्ᶜ / वरितुम्ᶜ",
+  "vr-5u tavya वरीतव्यःᶜ / वरितव्यःᶜ",
+  "likh-6p ktva लिखित्वाᶜ / लेखित्वाᶜ",
+  "sprs-6p lrt.P.1.1 स्पर्क्ष्यतिᴮᶜ / स्प्रक्ष्यतिᶜ",
+  "sprs-6p lrt.P.1.2 स्पर्क्ष्यतःᴮᶜ / स्प्रक्ष्यतःᶜ",
+  "sprs-6p lrt.P.1.3 स्पर्क्ष्यन्तिᴮᶜ / स्प्रक्ष्यन्तिᶜ",
+  "sprs-6p lrt.P.2.1 स्पर्क्ष्यसिᴮᶜ / स्प्रक्ष्यसिᶜ",
+  "sprs-6p lrt.P.2.2 स्पर्क्ष्यथःᴮᶜ / स्प्रक्ष्यथःᶜ",
+  "sprs-6p lrt.P.2.3 स्पर्क्ष्यथᴮᶜ / स्प्रक्ष्यथᶜ",
+  "sprs-6p lrt.P.3.1 स्पर्क्ष्यामिᴮᶜ / स्प्रक्ष्यामिᶜ",
+  "sprs-6p lrt.P.3.2 स्पर्क्ष्यावःᴮᶜ / स्प्रक्ष्यावःᶜ",
+  "sprs-6p lrt.P.3.3 स्पर्क्ष्यामःᴮᶜ / स्प्रक्ष्यामःᶜ",
+  "sprs-6p tumun स्प्रष्टुम्ᵈ / स्पर्ष्टुम्ᶜ",
+  "is-6p ktva इष्ट्वाᶜᵈ / एषित्वाᶜ",
+  "is-6p tumun एष्टुम्ᶜ / एषितुम्ᶜ",
+  "is-6p tavya एष्टव्यःᵈ / एषितव्यःᶜ",
+  "mil-6p ktva मिलित्वाᶜ / मेलित्वाᶜ",
+  "krs-6u lrt.P.1.1 कर्क्ष्यतिᴮᶜ / क्रक्ष्यतिᶜ",
+  "krs-6u lrt.P.1.2 कर्क्ष्यतःᴮᶜ / क्रक्ष्यतःᶜ",
+  "krs-6u lrt.P.1.3 कर्क्ष्यन्तिᴮᶜ / क्रक्ष्यन्तिᶜ",
+  "krs-6u lrt.P.2.1 कर्क्ष्यसिᴮᶜ / क्रक्ष्यसिᶜ",
+  "krs-6u lrt.P.2.2 कर्क्ष्यथःᴮᶜ / क्रक्ष्यथःᶜ",
+  "krs-6u lrt.P.2.3 कर्क्ष्यथᴮᶜ / क्रक्ष्यथᶜ",
+  "krs-6u lrt.P.3.1 कर्क्ष्यामिᴮᶜ / क्रक्ष्यामिᶜ",
+  "krs-6u lrt.P.3.2 कर्क्ष्यावःᴮᶜ / क्रक्ष्यावःᶜ",
+  "krs-6u lrt.P.3.3 कर्क्ष्यामःᴮᶜ / क्रक्ष्यामःᶜ",
+  "krs-6u lrt.A.1.1 कर्क्ष्यतेᴮᶜ / क्रक्ष्यतेᶜ",
+  "krs-6u lrt.A.1.2 कर्क्ष्येतेᴮᶜ / क्रक्ष्येतेᶜ",
+  "krs-6u lrt.A.1.3 कर्क्ष्यन्तेᴮᶜ / क्रक्ष्यन्तेᶜ",
+  "krs-6u lrt.A.2.1 कर्क्ष्यसेᴮᶜ / क्रक्ष्यसेᶜ",
+  "krs-6u lrt.A.2.2 कर्क्ष्येथेᴮᶜ / क्रक्ष्येथेᶜ",
+  "krs-6u lrt.A.2.3 कर्क्ष्यध्वेᴮᶜ / क्रक्ष्यध्वेᶜ",
+  "krs-6u lrt.A.3.1 कर्क्ष्येᴮᶜ / क्रक्ष्येᶜ",
+  "krs-6u lrt.A.3.2 कर्क्ष्यावहेᴮᶜ / क्रक्ष्यावहेᶜ",
+  "krs-6u lrt.A.3.3 कर्क्ष्यामहेᴮᶜ / क्रक्ष्यामहेᶜ",
+  "krs-6u tumun क्रष्टुम्ᶜ / कर्ष्टुम्ᶜ",
+  "krs-6u tavya क्रष्टव्यःᶜ / कर्ष्टव्यःᶜ",
+  "krt-6p lrt.P.1.1 कर्तिष्यतिᴮᶜ / कर्त्स्यतिᴮᶜ",
+  "krt-6p lrt.P.1.2 कर्तिष्यतःᴮᶜ / कर्त्स्यतःᴮᶜ",
+  "krt-6p lrt.P.1.3 कर्तिष्यन्तिᴮᶜ / कर्त्स्यन्तिᴮᶜ",
+  "krt-6p lrt.P.2.1 कर्तिष्यसिᴮᶜ / कर्त्स्यसिᴮᶜ",
+  "krt-6p lrt.P.2.2 कर्तिष्यथःᴮᶜ / कर्त्स्यथःᴮᶜ",
+  "krt-6p lrt.P.2.3 कर्तिष्यथᴮᶜ / कर्त्स्यथᴮᶜ",
+  "krt-6p lrt.P.3.1 कर्तिष्यामिᴮᶜ / कर्त्स्यामिᴮᶜ",
+  "krt-6p lrt.P.3.2 कर्तिष्यावःᴮᶜ / कर्त्स्यावःᴮᶜ",
+  "krt-6p lrt.P.3.3 कर्तिष्यामःᴮᶜ / कर्त्स्यामःᴮᶜ",
+  "vid-6u lrt.P.1.1 वेत्स्यतिᶜ / वेदिष्यतिᶜ",
+  "vid-6u lrt.P.1.2 वेत्स्यतःᶜ / वेदिष्यतःᶜ",
+  "vid-6u lrt.P.1.3 वेत्स्यन्तिᶜ / वेदिष्यन्तिᶜ",
+  "vid-6u lrt.P.2.1 वेत्स्यसिᶜ / वेदिष्यसिᶜ",
+  "vid-6u lrt.P.2.2 वेत्स्यथःᶜ / वेदिष्यथःᶜ",
+  "vid-6u lrt.P.2.3 वेत्स्यथᶜ / वेदिष्यथᶜ",
+  "vid-6u lrt.P.3.1 वेत्स्यामिᶜ / वेदिष्यामिᶜ",
+  "vid-6u lrt.P.3.2 वेत्स्यावःᶜ / वेदिष्यावःᶜ",
+  "vid-6u lrt.P.3.3 वेत्स्यामःᶜ / वेदिष्यामःᶜ",
+  "vid-6u ktva विदित्वाᵈ / वित्त्वाᶜ",
+  "vid-6u tumun वेत्तुम्ᶜᵈ / वेदितुम्ᵈ",
+  "vid-6u kta विदितःᵈ / विन्नःᶜ",
+  "vid-6u tavya वेदितव्यःᵈ / वेत्तव्यःᶜ",
+  "kr-6p lrt.P.1.1 करिष्यतिᴮᶜ / करीष्यतिᴮᶜ",
+  "kr-6p lrt.P.1.2 करिष्यतःᴮᶜ / करीष्यतःᴮᶜ",
+  "kr-6p lrt.P.1.3 करिष्यन्तिᴮᶜ / करीष्यन्तिᴮᶜ",
+  "kr-6p lrt.P.2.1 करिष्यसिᴮᶜ / करीष्यसिᴮᶜ",
+  "kr-6p lrt.P.2.2 करिष्यथःᴮᶜ / करीष्यथःᴮᶜ",
+  "kr-6p lrt.P.2.3 करिष्यथᴮᶜ / करीष्यथᴮᶜ",
+  "kr-6p lrt.P.3.1 करिष्यामिᴮᶜ / करीष्यामिᴮᶜ",
+  "kr-6p lrt.P.3.2 करिष्यावःᴮᶜ / करीष्यावःᴮᶜ",
+  "kr-6p lrt.P.3.3 करिष्यामःᴮᶜ / करीष्यामःᴮᶜ",
+  "kr-6p tumun करीतुम्ᶜ / करितुम्ᶜ",
+  "kr-6p tavya करीतव्यःᶜ / करितव्यःᶜ",
+  "rudh-7u lat.P.1.2 रुन्द्धःᴮᶜ / रुन्धःᴮ",
+  "rudh-7u lat.P.2.2 रुन्द्धःᴮᶜ / रुन्धःᴮ",
+  "rudh-7u lat.P.2.3 रुन्द्धᴮᶜ / रुन्धᴮ",
+  "rudh-7u lat.A.1.1 रुन्द्धेᴮᶜ / रुन्धेᴮ",
+  "rudh-7u lat.A.2.3 रुन्द्ध्वेᴮᶜ / रुन्ध्वेᴮ",
+  "rudh-7u lan.P.1.2 अरुन्द्धाम्ᴮᶜ / अरुन्धाम्ᴮ",
+  "rudh-7u lan.P.2.1 अरुणत्ᴮᶜ / अरुणःᶜ",
+  "rudh-7u lan.P.2.2 अरुन्द्धम्ᴮᶜ / अरुन्धम्ᴮ",
+  "rudh-7u lan.P.2.3 अरुन्द्धᴮᶜ / अरुन्धᴮ",
+  "rudh-7u lan.A.1.1 अरुन्द्धᴮᶜ / अरुन्धᴮ",
+  "rudh-7u lan.A.2.1 अरुन्द्धाःᴮᶜ / अरुन्धाःᴮ",
+  "rudh-7u lan.A.2.3 अरुन्द्ध्वम्ᴮᶜ / अरुन्ध्वम्ᴮ",
+  "rudh-7u lot.P.1.2 रुन्द्धाम्ᴮᶜ / रुन्धाम्ᴮ",
+  "rudh-7u lot.P.2.1 रुन्द्धिᴮᶜ / रुन्धिᴮ",
+  "rudh-7u lot.P.2.2 रुन्द्धम्ᴮᶜ / रुन्धम्ᴮ",
+  "rudh-7u lot.P.2.3 रुन्द्धᴮᶜ / रुन्धᴮ",
+  "rudh-7u lot.A.1.1 रुन्द्धाम्ᴮᶜ / रुन्धाम्ᴮ",
+  "rudh-7u lot.A.2.3 रुन्द्ध्वम्ᴮᶜ / रुन्ध्वम्ᴮ",
+  "bhid-7u lat.P.1.2 भिन्त्तःᴮᶜ / भिन्तःᴮ",
+  "bhid-7u lat.P.2.2 भिन्त्थःᴮᶜ / भिन्थःᴮ",
+  "bhid-7u lat.P.2.3 भिन्त्थᴮᶜ / भिन्थᴮ",
+  "bhid-7u lat.A.1.1 भिन्त्तेᴮᶜ / भिन्तेᴮ",
+  "bhid-7u lat.A.2.3 भिन्द्ध्वेᴮᶜ / भिन्ध्वेᴮ",
+  "bhid-7u lan.P.1.2 अभिन्त्ताम्ᴮᶜ / अभिन्ताम्ᴮ",
+  "bhid-7u lan.P.2.1 अभिनत्ᴮᶜ / अभिनःᶜ",
+  "bhid-7u lan.P.2.2 अभिन्त्तम्ᴮᶜ / अभिन्तम्ᴮ",
+  "bhid-7u lan.P.2.3 अभिन्त्तᴮᶜ / अभिन्तᴮ",
+  "bhid-7u lan.A.1.1 अभिन्त्तᴮᶜ / अभिन्तᴮ",
+  "bhid-7u lan.A.2.1 अभिन्त्थाःᴮᶜ / अभिन्थाःᴮ",
+  "bhid-7u lan.A.2.3 अभिन्द्ध्वम्ᴮᶜ / अभिन्ध्वम्ᴮ",
+  "bhid-7u lot.P.1.2 भिन्त्ताम्ᴮᶜ / भिन्ताम्ᴮ",
+  "bhid-7u lot.P.2.1 भिन्द्धिᴮᶜ / भिन्धिᴮ",
+  "bhid-7u lot.P.2.2 भिन्त्तम्ᴮᶜ / भिन्तम्ᴮ",
+  "bhid-7u lot.P.2.3 भिन्त्तᴮᶜ / भिन्तᴮ",
+  "bhid-7u lot.A.1.1 भिन्त्ताम्ᴮᶜ / भिन्ताम्ᴮ",
+  "bhid-7u lot.A.2.3 भिन्द्ध्वम्ᴮᶜ / भिन्ध्वम्ᴮ",
+  "chid-7u lat.P.1.2 छिन्त्तःᴮᶜ / छिन्तःᴮ",
+  "chid-7u lat.P.2.2 छिन्त्थःᴮᶜ / छिन्थःᴮ",
+  "chid-7u lat.P.2.3 छिन्त्थᴮᶜ / छिन्थᴮ",
+  "chid-7u lat.A.1.1 छिन्त्तेᴮᶜ / छिन्तेᴮ",
+  "chid-7u lat.A.2.3 छिन्द्ध्वेᴮᶜ / छिन्ध्वेᴮ",
+  "chid-7u lan.P.1.2 अच्छिन्त्ताम्ᴮᶜ / अच्छिन्ताम्ᴮ",
+  "chid-7u lan.P.2.1 अच्छिनत्ᴮᶜ / अच्छिनःᶜ",
+  "chid-7u lan.P.2.2 अच्छिन्त्तम्ᴮᶜ / अच्छिन्तम्ᴮ",
+  "chid-7u lan.P.2.3 अच्छिन्त्तᴮᶜ / अच्छिन्तᴮ",
+  "chid-7u lan.A.1.1 अच्छिन्त्तᴮᶜ / अच्छिन्तᴮ",
+  "chid-7u lan.A.2.1 अच्छिन्त्थाःᴮᶜ / अच्छिन्थाःᴮ",
+  "chid-7u lan.A.2.3 अच्छिन्द्ध्वम्ᴮᶜ / अच्छिन्ध्वम्ᴮ",
+  "chid-7u lot.P.1.2 छिन्त्ताम्ᴮᶜ / छिन्ताम्ᴮ",
+  "chid-7u lot.P.2.1 छिन्द्धिᴮᶜ / छिन्धिᴮ",
+  "chid-7u lot.P.2.2 छिन्त्तम्ᴮᶜ / छिन्तम्ᴮ",
+  "chid-7u lot.P.2.3 छिन्त्तᴮᶜ / छिन्तᴮ",
+  "chid-7u lot.A.1.1 छिन्त्ताम्ᴮᶜ / छिन्ताम्ᴮ",
+  "chid-7u lot.A.2.3 छिन्द्ध्वम्ᴮᶜ / छिन्ध्वम्ᴮ",
+  "pis-7p lot.P.2.1 पिण्ड्ढिᴮᶜ / पिण्ढिᴮ",
+  "hims-7p lan.P.2.1 अहिनःᴮᶜ / अहिनत्ᴮ",
+  "tan-8u lat.P.3.2 तनुवःᴮᶜ / तन्वःᴮᶜ",
+  "tan-8u lat.P.3.3 तनुमःᴮᶜ / तन्मःᴮᶜ",
+  "tan-8u lat.A.3.2 तनुवहेᴮᶜ / तन्वहेᴮᶜ",
+  "tan-8u lat.A.3.3 तनुमहेᴮᶜ / तन्महेᴮᶜ",
+  "tan-8u lan.P.3.2 अतनुवᴮᶜ / अतन्वᴮᶜ",
+  "tan-8u lan.P.3.3 अतनुमᴮᶜ / अतन्मᴮᶜ",
+  "tan-8u lan.A.3.2 अतनुवहिᴮᶜ / अतन्वहिᴮᶜ",
+  "tan-8u lan.A.3.3 अतनुमहिᴮᶜ / अतन्महिᴮᶜ",
+  "tan-8u ktva तत्वाᶜ / तनित्वाᶜ",
+  "lok-10u ktva लोकित्वाᶜ / लोकयित्वाᶜ",
+  "lok-10u tumun लोकितुम्ᶜ / लोकयितुम्ᶜ",
+  "marg-10u ktva मार्गित्वाᵈ / मार्गयित्वाᶜ",
+  "marg-10u tumun मार्गितुम्ᵈ / मार्गयितुम्ᶜ",
+  "marg-10u tavya मार्गितव्यःᵈ / मार्गयितव्यःᶜ"
+ ]
+}

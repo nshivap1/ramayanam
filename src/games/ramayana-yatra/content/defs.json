@@ -1,0 +1,1871 @@
+{
+  "version": 1,
+  "moves": [
+    {
+      "id": "pada_bana",
+      "nameId": "move.pada_bana",
+      "element": "none",
+      "power": 35,
+      "pp": 30,
+      "challenge": "artha",
+      "description": "A strike of speech: name the word's meaning to loose it.",
+      "origin": "start"
+    },
+    {
+      "id": "lipi_raksha",
+      "nameId": "move.lipi_raksha",
+      "element": "none",
+      "power": 0,
+      "pp": 15,
+      "challenge": "lipi",
+      "effect": {
+        "kind": "buff-def",
+        "amount": 1,
+        "target": "party"
+      },
+      "description": "Protection: read the script truly and the heroes' defence rises one stage.",
+      "origin": "start"
+    },
+    {
+      "id": "shoka_shloka",
+      "nameId": "move.shoka_shloka",
+      "element": "divya",
+      "power": 60,
+      "pp": 15,
+      "challenge": "purana",
+      "unlockShloka": "s-ma-nishada",
+      "description": "Grief become verse: complete a line of a verse to strike. Strong against illusion.",
+      "origin": "Restore the first verse at a shrine"
+    },
+    {
+      "id": "suprabhata",
+      "nameId": "move.suprabhata",
+      "element": "divya",
+      "power": 0,
+      "pp": 8,
+      "challenge": "artha",
+      "effect": {
+        "kind": "heal",
+        "amount": 0.35,
+        "target": "party"
+      },
+      "unlockShloka": "s-kausalya-supraja",
+      "description": "Auspicious dawn: every hero recovers a third of their strength.",
+      "origin": "Restore the dawn verse of {n:person.vishvamitra}"
+    },
+    {
+      "id": "shuddha_vak",
+      "nameId": "move.shuddha_vak",
+      "element": "divya",
+      "power": 0,
+      "pp": 10,
+      "challenge": "viccheda",
+      "effect": {
+        "kind": "buff-atk",
+        "amount": 1,
+        "target": "party"
+      },
+      "unlockShloka": "s-vyakaranam",
+      "description": "Grammar: split the joined words cleanly and the heroes' attack rises one stage.",
+      "origin": "Restore the verse praising flawless speech"
+    },
+    {
+      "id": "bana",
+      "nameId": "move.bana",
+      "element": "none",
+      "power": 40,
+      "pp": 30,
+      "challenge": "artha",
+      "description": "A plain arrow, loosed by knowing a word's meaning.",
+      "origin": "start"
+    },
+    {
+      "id": "agneyastra",
+      "nameId": "move.agneyastra",
+      "element": "agni",
+      "power": 75,
+      "pp": 12,
+      "challenge": "lipi",
+      "description": "The fire missile. Strong against wind.",
+      "origin": "Granted by {n:person.vishvamitra}"
+    },
+    {
+      "id": "varunastra",
+      "nameId": "move.varunastra",
+      "element": "jala",
+      "power": 75,
+      "pp": 12,
+      "challenge": "lipi",
+      "description": "The water missile. Strong against fire.",
+      "origin": "Granted by {n:person.vishvamitra}"
+    },
+    {
+      "id": "vayavyastra",
+      "nameId": "move.vayavyastra",
+      "element": "vayu",
+      "power": 75,
+      "pp": 12,
+      "challenge": "purana",
+      "description": "The wind missile. Strong against earth.",
+      "origin": "Granted by {n:person.vishvamitra}"
+    },
+    {
+      "id": "dharma_vigraha",
+      "nameId": "move.dharma_vigraha",
+      "element": "divya",
+      "power": 95,
+      "pp": 10,
+      "challenge": "krama",
+      "unlockShloka": "s-ramo-vigrahavan",
+      "description": "Righteousness embodied: order the words of a verse line to strike. Strong against illusion.",
+      "origin": "Restore the verse of {n:person.rama} as dharma embodied"
+    },
+    {
+      "id": "abhaya",
+      "nameId": "move.abhaya",
+      "element": "divya",
+      "power": 0,
+      "pp": 8,
+      "challenge": "krama",
+      "effect": {
+        "kind": "buff-def",
+        "amount": 2,
+        "target": "party"
+      },
+      "unlockShloka": "s-sakrdeva",
+      "description": "Fearlessness: the heroes' defence rises two stages.",
+      "origin": "Restore the verse of refuge"
+    },
+    {
+      "id": "aditya_hrdaya",
+      "nameId": "move.aditya_hrdaya",
+      "element": "divya",
+      "power": 0,
+      "pp": 5,
+      "challenge": "vibhakti",
+      "effect": {
+        "kind": "heal",
+        "amount": 0.5,
+        "target": "party"
+      },
+      "extraEffects": [
+        {
+          "kind": "buff-atk",
+          "amount": 1,
+          "target": "party"
+        }
+      ],
+      "unlockShloka": "s-aditya-hrdayam",
+      "description": "The hymn to the sun: every hero recovers half their strength, and attack rises one stage.",
+      "origin": "Restore the hymn taught by {n:person.agastya}"
+    },
+    {
+      "id": "brahmastra",
+      "nameId": "move.brahmastra",
+      "element": "divya",
+      "power": 130,
+      "pp": 5,
+      "challenge": "krama",
+      "unlockShloka": "s-aditya-hrdayam",
+      "description": "The supreme missile. Strong against illusion.",
+      "origin": "Taught by {n:person.agastya} with the hymn to the sun"
+    },
+    {
+      "id": "khadga",
+      "nameId": "move.khadga",
+      "element": "none",
+      "power": 50,
+      "pp": 25,
+      "challenge": "artha",
+      "description": "A sword stroke.",
+      "origin": "start"
+    },
+    {
+      "id": "viddhi",
+      "nameId": "move.viddhi",
+      "element": "none",
+      "power": 0,
+      "pp": 10,
+      "challenge": "purana",
+      "effect": {
+        "kind": "debuff-def",
+        "amount": 2,
+        "target": "enemy"
+      },
+      "unlockShloka": "s-ramam-dasharatham",
+      "description": "\"Know this!\": the foe's defence falls two stages.",
+      "origin": "Restore the blessing of {n:person.sumitra}"
+    },
+    {
+      "id": "agni_bana",
+      "nameId": "move.agni_bana",
+      "element": "agni",
+      "power": 70,
+      "pp": 15,
+      "challenge": "lipi",
+      "description": "A fire arrow. Strong against wind.",
+      "origin": "Learned at level 8"
+    },
+    {
+      "id": "vayu_vega",
+      "nameId": "move.vayu_vega",
+      "element": "vayu",
+      "power": 70,
+      "pp": 20,
+      "challenge": "artha",
+      "description": "A rush of wind. Strong against earth.",
+      "origin": "start"
+    },
+    {
+      "id": "gada",
+      "nameId": "move.gada",
+      "element": "bhumi",
+      "power": 65,
+      "pp": 20,
+      "challenge": "artha",
+      "description": "A blow of the mace. Strong against water.",
+      "origin": "start"
+    },
+    {
+      "id": "jaya_ghosha",
+      "nameId": "move.jaya_ghosha",
+      "element": "divya",
+      "power": 0,
+      "pp": 8,
+      "challenge": "krama",
+      "effect": {
+        "kind": "buff-atk",
+        "amount": 2,
+        "target": "party"
+      },
+      "unlockShloka": "s-jayatyatibalo",
+      "description": "Victory cry: the heroes' attack rises two stages.",
+      "origin": "Restore the victory verse of {n:person.hanuman}"
+    },
+    {
+      "id": "anirveda",
+      "nameId": "move.anirveda",
+      "element": "none",
+      "power": 0,
+      "pp": 8,
+      "challenge": "purana",
+      "effect": {
+        "kind": "heal",
+        "amount": 0.5,
+        "target": "self"
+      },
+      "unlockShloka": "s-anirvedah",
+      "description": "Undaunted: recover half of one's strength.",
+      "origin": "Restore the verse on perseverance"
+    },
+    {
+      "id": "shaila",
+      "nameId": "move.shaila",
+      "element": "bhumi",
+      "power": 80,
+      "pp": 12,
+      "challenge": "purana",
+      "description": "A hurled mountain crag. Strong against water.",
+      "origin": "Learned by level"
+    },
+    {
+      "id": "vriksha",
+      "nameId": "move.vriksha",
+      "element": "bhumi",
+      "power": 60,
+      "pp": 20,
+      "challenge": "artha",
+      "description": "An uprooted tree, swung hard. Strong against water.",
+      "origin": "start"
+    },
+    {
+      "id": "prajna",
+      "nameId": "move.prajna",
+      "element": "none",
+      "power": 0,
+      "pp": 10,
+      "challenge": "vibhakti",
+      "effect": {
+        "kind": "heal",
+        "amount": 0.3,
+        "target": "party"
+      },
+      "description": "Wisdom: every hero recovers almost a third of their strength.",
+      "origin": "start"
+    },
+    {
+      "id": "mantrana",
+      "nameId": "move.mantrana",
+      "element": "jala",
+      "power": 0,
+      "pp": 12,
+      "challenge": "viccheda",
+      "effect": {
+        "kind": "debuff-atk",
+        "amount": 2,
+        "target": "enemy"
+      },
+      "description": "Counsel: the foe's attack falls two stages.",
+      "origin": "start"
+    },
+    {
+      "id": "jala_dhara",
+      "nameId": "move.jala_dhara",
+      "element": "jala",
+      "power": 70,
+      "pp": 20,
+      "challenge": "artha",
+      "description": "A torrent of water. Strong against fire.",
+      "origin": "start"
+    },
+    {
+      "id": "nakha",
+      "nameId": "move.nakha",
+      "element": "none",
+      "power": 40,
+      "pp": 99,
+      "challenge": "artha",
+      "description": "Claws.",
+      "origin": "enemy"
+    },
+    {
+      "id": "maya_jala",
+      "nameId": "move.maya_jala",
+      "element": "maya",
+      "power": 55,
+      "pp": 99,
+      "challenge": "artha",
+      "effect": {
+        "kind": "debuff-def",
+        "amount": 1,
+        "target": "enemy"
+      },
+      "description": "A net of illusion; may lower defence.",
+      "origin": "enemy"
+    },
+    {
+      "id": "shula",
+      "nameId": "move.shula",
+      "element": "none",
+      "power": 60,
+      "pp": 99,
+      "challenge": "artha",
+      "description": "A spear thrust.",
+      "origin": "enemy"
+    },
+    {
+      "id": "garjana",
+      "nameId": "move.garjana",
+      "element": "none",
+      "power": 0,
+      "pp": 99,
+      "challenge": "artha",
+      "effect": {
+        "kind": "buff-atk",
+        "amount": 1,
+        "target": "self"
+      },
+      "description": "A roar that raises attack.",
+      "origin": "enemy"
+    },
+    {
+      "id": "andhakara",
+      "nameId": "move.andhakara",
+      "element": "maya",
+      "power": 65,
+      "pp": 99,
+      "challenge": "artha",
+      "description": "A cloud of darkness.",
+      "origin": "enemy"
+    },
+    {
+      "id": "parigha",
+      "nameId": "move.parigha",
+      "element": "bhumi",
+      "power": 80,
+      "pp": 99,
+      "challenge": "artha",
+      "description": "An iron club.",
+      "origin": "enemy"
+    },
+    {
+      "id": "agni_varsha",
+      "nameId": "move.agni_varsha",
+      "element": "agni",
+      "power": 85,
+      "pp": 99,
+      "challenge": "artha",
+      "description": "A rain of fire.",
+      "origin": "enemy"
+    },
+    {
+      "id": "naga_pasha",
+      "nameId": "move.naga_pasha",
+      "element": "maya",
+      "power": 90,
+      "pp": 99,
+      "challenge": "artha",
+      "effect": {
+        "kind": "stun",
+        "amount": 0.3,
+        "target": "enemy"
+      },
+      "description": "A serpent noose; may bind the target for a turn.",
+      "origin": "enemy"
+    },
+    {
+      "id": "chandrahasa",
+      "nameId": "move.chandrahasa",
+      "element": "maya",
+      "power": 110,
+      "pp": 99,
+      "challenge": "artha",
+      "description": "The moon-bright sword.",
+      "origin": "enemy"
+    },
+    {
+      "id": "tarka",
+      "nameId": "move.tarka",
+      "element": "none",
+      "power": 45,
+      "pp": 99,
+      "challenge": "artha",
+      "description": "A sharp argument.",
+      "origin": "duelist"
+    },
+    {
+      "id": "prashna",
+      "nameId": "move.prashna",
+      "element": "none",
+      "power": 0,
+      "pp": 99,
+      "challenge": "artha",
+      "effect": {
+        "kind": "debuff-atk",
+        "amount": 1,
+        "target": "enemy"
+      },
+      "description": "A probing question that lowers attack.",
+      "origin": "duelist"
+    }
+  ],
+  "allies": [
+    {
+      "id": "player",
+      "nameId": "ally.player",
+      "battler": "b_player_a",
+      "overworld": "player_a",
+      "element": "none",
+      "base": {
+        "hp": 26,
+        "atk": 10,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 3.6,
+        "atk": 1.9,
+        "def": 1.8,
+        "spd": 1.6
+      },
+      "moves": [
+        {
+          "moveId": "pada_bana",
+          "level": 1
+        },
+        {
+          "moveId": "lipi_raksha",
+          "level": 1
+        },
+        {
+          "moveId": "shoka_shloka",
+          "level": 1
+        },
+        {
+          "moveId": "suprabhata",
+          "level": 1
+        },
+        {
+          "moveId": "shuddha_vak",
+          "level": 1
+        }
+      ],
+      "description": "The student reciter: supports the heroes with protective and healing mantras."
+    },
+    {
+      "id": "rama",
+      "nameId": "ally.rama",
+      "battler": "b_rama",
+      "overworld": "rama",
+      "element": "divya",
+      "minLevel": 5,
+      "base": {
+        "hp": 26,
+        "atk": 12,
+        "def": 10,
+        "spd": 11
+      },
+      "growth": {
+        "hp": 4,
+        "atk": 2.3,
+        "def": 1.9,
+        "spd": 1.8
+      },
+      "moves": [
+        {
+          "moveId": "bana",
+          "level": 1
+        },
+        {
+          "moveId": "agneyastra",
+          "level": 1
+        },
+        {
+          "moveId": "varunastra",
+          "level": 4
+        },
+        {
+          "moveId": "vayavyastra",
+          "level": 9
+        },
+        {
+          "moveId": "dharma_vigraha",
+          "level": 1
+        },
+        {
+          "moveId": "abhaya",
+          "level": 1
+        },
+        {
+          "moveId": "aditya_hrdaya",
+          "level": 1
+        },
+        {
+          "moveId": "brahmastra",
+          "level": 1
+        }
+      ],
+      "description": "Prince of {n:place.ayodhya_city} and peerless archer; the strongest of the heroes."
+    },
+    {
+      "id": "lakshmana",
+      "nameId": "ally.lakshmana",
+      "battler": "b_lakshmana",
+      "overworld": "lakshmana",
+      "element": "agni",
+      "minLevel": 5,
+      "base": {
+        "hp": 24,
+        "atk": 11,
+        "def": 10,
+        "spd": 13
+      },
+      "growth": {
+        "hp": 3.7,
+        "atk": 2.1,
+        "def": 1.9,
+        "spd": 2.1
+      },
+      "moves": [
+        {
+          "moveId": "bana",
+          "level": 1
+        },
+        {
+          "moveId": "khadga",
+          "level": 1
+        },
+        {
+          "moveId": "agni_bana",
+          "level": 8
+        },
+        {
+          "moveId": "viddhi",
+          "level": 1
+        }
+      ],
+      "description": "Devoted younger brother of {n:person.rama}: fast, fierce and steadfast."
+    },
+    {
+      "id": "hanuman",
+      "nameId": "ally.hanuman",
+      "battler": "b_hanuman",
+      "overworld": "hanuman",
+      "element": "vayu",
+      "minLevel": 15,
+      "base": {
+        "hp": 30,
+        "atk": 13,
+        "def": 11,
+        "spd": 12
+      },
+      "growth": {
+        "hp": 4.6,
+        "atk": 2.4,
+        "def": 2,
+        "spd": 2
+      },
+      "moves": [
+        {
+          "moveId": "vayu_vega",
+          "level": 1
+        },
+        {
+          "moveId": "gada",
+          "level": 1
+        },
+        {
+          "moveId": "jaya_ghosha",
+          "level": 1
+        },
+        {
+          "moveId": "anirveda",
+          "level": 1
+        }
+      ],
+      "description": "Son of the wind: immense strength, learning and devotion."
+    },
+    {
+      "id": "sugriva",
+      "nameId": "ally.sugriva",
+      "battler": "b_sugriva",
+      "overworld": "sugriva",
+      "element": "bhumi",
+      "minLevel": 15,
+      "base": {
+        "hp": 28,
+        "atk": 12,
+        "def": 11,
+        "spd": 10
+      },
+      "growth": {
+        "hp": 4.3,
+        "atk": 2.2,
+        "def": 2,
+        "spd": 1.6
+      },
+      "moves": [
+        {
+          "moveId": "gada",
+          "level": 1
+        },
+        {
+          "moveId": "vriksha",
+          "level": 1
+        },
+        {
+          "moveId": "shaila",
+          "level": 18
+        }
+      ],
+      "description": "King of the monkey folk of {n:place.kishkindha_caves}, a mighty brawler."
+    },
+    {
+      "id": "jambavan",
+      "nameId": "ally.jambavan",
+      "battler": "b_jambavan",
+      "overworld": "jambavan",
+      "element": "bhumi",
+      "minLevel": 15,
+      "base": {
+        "hp": 32,
+        "atk": 10,
+        "def": 13,
+        "spd": 8
+      },
+      "growth": {
+        "hp": 4.8,
+        "atk": 1.8,
+        "def": 2.4,
+        "spd": 1.3
+      },
+      "moves": [
+        {
+          "moveId": "prajna",
+          "level": 1
+        },
+        {
+          "moveId": "shaila",
+          "level": 1
+        }
+      ],
+      "description": "The wise and ancient king of the bears; hardy and a healer."
+    },
+    {
+      "id": "vibhishana",
+      "nameId": "ally.vibhishana",
+      "battler": "b_vibhishana",
+      "overworld": "vibhishana",
+      "element": "jala",
+      "minLevel": 24,
+      "base": {
+        "hp": 26,
+        "atk": 10,
+        "def": 12,
+        "spd": 10
+      },
+      "growth": {
+        "hp": 4,
+        "atk": 2,
+        "def": 2.2,
+        "spd": 1.7
+      },
+      "moves": [
+        {
+          "moveId": "mantrana",
+          "level": 1
+        },
+        {
+          "moveId": "jala_dhara",
+          "level": 1
+        }
+      ],
+      "description": "Brother of {n:person.ravana} who chose the right path; a wise counsellor."
+    }
+  ],
+  "enemies": [
+    {
+      "id": "nishachara",
+      "nameId": "enemy.nishachara",
+      "battler": "b_nishachara",
+      "element": "maya",
+      "kind": "wild",
+      "base": {
+        "hp": 20,
+        "atk": 9,
+        "def": 8,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 3.2,
+        "atk": 1.9,
+        "def": 1.6,
+        "spd": 1.6
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 5
+        },
+        {
+          "moveId": "shula",
+          "level": 12
+        },
+        {
+          "moveId": "andhakara",
+          "level": 18
+        }
+      ],
+      "xp": 50,
+      "niska": 8,
+      "restoresWords": [],
+      "description": "A night-wanderer of the forest.",
+      "drops": [
+        {
+          "itemId": "phala",
+          "chance": 0.12
+        },
+        {
+          "itemId": "madhu",
+          "chance": 0.05
+        }
+      ]
+    },
+    {
+      "id": "yatudhana",
+      "nameId": "enemy.yatudhana",
+      "battler": "b_yatudhana",
+      "element": "maya",
+      "kind": "wild",
+      "base": {
+        "hp": 22,
+        "atk": 10,
+        "def": 8,
+        "spd": 8
+      },
+      "growth": {
+        "hp": 3.4,
+        "atk": 2,
+        "def": 1.6,
+        "spd": 1.5
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 8
+        },
+        {
+          "moveId": "andhakara",
+          "level": 14
+        },
+        {
+          "moveId": "parigha",
+          "level": 22
+        }
+      ],
+      "xp": 55,
+      "niska": 9,
+      "restoresWords": [],
+      "description": "A sorcerer-demon who haunts sacred places.",
+      "drops": [
+        {
+          "itemId": "phala",
+          "chance": 0.12
+        },
+        {
+          "itemId": "madhu",
+          "chance": 0.05
+        }
+      ]
+    },
+    {
+      "id": "rakshasi",
+      "nameId": "enemy.rakshasi",
+      "battler": "b_rakshasi",
+      "element": "maya",
+      "kind": "wild",
+      "base": {
+        "hp": 20,
+        "atk": 9,
+        "def": 9,
+        "spd": 10
+      },
+      "growth": {
+        "hp": 3.2,
+        "atk": 1.9,
+        "def": 1.7,
+        "spd": 1.7
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 12
+        },
+        {
+          "moveId": "naga_pasha",
+          "level": 24
+        }
+      ],
+      "xp": 55,
+      "niska": 9,
+      "restoresWords": [],
+      "description": "A demoness of illusions.",
+      "drops": [
+        {
+          "itemId": "phala",
+          "chance": 0.12
+        },
+        {
+          "itemId": "madhu",
+          "chance": 0.05
+        }
+      ]
+    },
+    {
+      "id": "maya_mriga",
+      "nameId": "enemy.maya_mriga",
+      "battler": "b_maya_mriga",
+      "element": "maya",
+      "kind": "wild",
+      "base": {
+        "hp": 18,
+        "atk": 9,
+        "def": 8,
+        "spd": 13
+      },
+      "growth": {
+        "hp": 3,
+        "atk": 1.9,
+        "def": 1.5,
+        "spd": 2.2
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 10
+        }
+      ],
+      "xp": 50,
+      "niska": 10,
+      "restoresWords": [],
+      "description": "An illusory deer that glitters and vanishes.",
+      "drops": [
+        {
+          "itemId": "phala",
+          "chance": 0.12
+        },
+        {
+          "itemId": "madhu",
+          "chance": 0.05
+        }
+      ]
+    },
+    {
+      "id": "vrka",
+      "nameId": "enemy.vrka",
+      "battler": "b_vrka",
+      "element": "bhumi",
+      "kind": "wild",
+      "base": {
+        "hp": 20,
+        "atk": 10,
+        "def": 8,
+        "spd": 11
+      },
+      "growth": {
+        "hp": 3.2,
+        "atk": 2,
+        "def": 1.5,
+        "spd": 1.9
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 4
+        }
+      ],
+      "xp": 45,
+      "niska": 6,
+      "restoresWords": [],
+      "description": "A forest wolf.",
+      "drops": [
+        {
+          "itemId": "phala",
+          "chance": 0.12
+        },
+        {
+          "itemId": "madhu",
+          "chance": 0.05
+        }
+      ]
+    },
+    {
+      "id": "simhika",
+      "nameId": "enemy.simhika",
+      "battler": "b_simhika",
+      "element": "jala",
+      "kind": "boss",
+      "base": {
+        "hp": 48,
+        "atk": 11,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 8.6,
+        "atk": 2.15,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 10
+        },
+        {
+          "moveId": "naga_pasha",
+          "level": 18
+        }
+      ],
+      "xp": 150,
+      "niska": 40,
+      "restoresWords": [
+        "shri",
+        "sukha"
+      ],
+      "description": "The sea-demoness who seizes flyers by their shadows.",
+      "intro": "{n:enemy.simhika} rises from the sea and seizes your shadow!",
+      "defeatLine": "Freed from her grip, you fly on over the ocean.",
+      "drops": [
+        {
+          "itemId": "kanda_mula",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "surasa_duel",
+      "nameId": "enemy.surasa_duel",
+      "battler": "b_surasa",
+      "element": "none",
+      "kind": "duelist",
+      "base": {
+        "hp": 20.4,
+        "atk": 7.2,
+        "def": 8,
+        "spd": 8
+      },
+      "growth": {
+        "hp": 7.14,
+        "atk": 2.16,
+        "def": 1.9,
+        "spd": 1.7
+      },
+      "moves": [
+        {
+          "moveId": "tarka",
+          "level": 1
+        },
+        {
+          "moveId": "prashna",
+          "level": 1
+        }
+      ],
+      "xp": 120,
+      "niska": 30,
+      "restoresWords": [
+        "anirveda",
+        "mula"
+      ],
+      "description": "Mother of serpents, who tests the wind-son's wit.",
+      "intro": "{n:enemy.surasa_duel} blocks the way across the sea and sets a test!",
+      "defeatLine": "Pleased, she blesses the journey.",
+      "drops": [
+        {
+          "itemId": "madhu",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "tataka",
+      "nameId": "enemy.tataka",
+      "battler": "b_tataka",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 48,
+        "atk": 11,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 8.6,
+        "atk": 2.15,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 4
+        }
+      ],
+      "xp": 150,
+      "niska": 40,
+      "restoresWords": [
+        "samudra",
+        "gambhirya",
+        "dhairya"
+      ],
+      "description": "A fearsome demoness who lays waste the forest.",
+      "intro": "{n:enemy.tataka} roars out of the dark forest!",
+      "defeatLine": "The forest is free of her terror.",
+      "drops": [
+        {
+          "itemId": "kanda_mula",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "subahu",
+      "nameId": "enemy.subahu",
+      "battler": "b_subahu",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 28.8,
+        "atk": 9.9,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 5.16,
+        "atk": 1.94,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        }
+      ],
+      "xp": 140,
+      "niska": 35,
+      "restoresWords": [
+        "sandhya",
+        "ahnika"
+      ],
+      "description": "A demon who defiles the sacrifice.",
+      "intro": "{n:enemy.subahu} swoops down upon the sacrifice!",
+      "defeatLine": "The sacrifice is safe from him.",
+      "drops": [
+        {
+          "itemId": "phala",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "maricha",
+      "nameId": "enemy.maricha",
+      "battler": "b_maricha",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 42.24,
+        "atk": 11,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 7.57,
+        "atk": 2.15,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        },
+        {
+          "moveId": "naga_pasha",
+          "level": 14
+        }
+      ],
+      "xp": 150,
+      "niska": 40,
+      "restoresWords": [
+        "mrga",
+        "abhirama"
+      ],
+      "description": "A master of illusion, son of {n:enemy.tataka}.",
+      "intro": "{n:enemy.maricha} appears in a swirl of illusion!",
+      "defeatLine": "The illusion breaks and he is driven far away.",
+      "drops": [
+        {
+          "itemId": "kanda_mula",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "khara",
+      "nameId": "enemy.khara",
+      "battler": "b_khara",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 36,
+        "atk": 10.12,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 6.45,
+        "atk": 1.98,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        },
+        {
+          "moveId": "parigha",
+          "level": 10
+        }
+      ],
+      "xp": 160,
+      "niska": 45,
+      "restoresWords": [
+        "vigrahavat",
+        "satyaparakrama"
+      ],
+      "description": "Commander of the demon army in the forest.",
+      "intro": "{n:enemy.khara} leads his army against the hermitage!",
+      "drops": [
+        {
+          "itemId": "oshadhi",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "dushana",
+      "nameId": "enemy.dushana",
+      "battler": "b_dushana",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 28.8,
+        "atk": 9.9,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 5.16,
+        "atk": 1.94,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        },
+        {
+          "moveId": "parigha",
+          "level": 10
+        }
+      ],
+      "xp": 160,
+      "niska": 45,
+      "restoresWords": [
+        "sadhu",
+        "dharma"
+      ],
+      "description": "General at the side of {n:enemy.khara}.",
+      "intro": "{n:enemy.dushana} charges in!",
+      "drops": [
+        {
+          "itemId": "kanda_mula",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "kabandha",
+      "nameId": "enemy.kabandha",
+      "battler": "b_kabandha",
+      "element": "bhumi",
+      "kind": "boss",
+      "base": {
+        "hp": 64.8,
+        "atk": 11.55,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 11.61,
+        "atk": 2.26,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        },
+        {
+          "moveId": "parigha",
+          "level": 1
+        }
+      ],
+      "xp": 170,
+      "niska": 50,
+      "restoresWords": [
+        "mahavana",
+        "oshadhi"
+      ],
+      "description": "A headless giant with long, grasping arms.",
+      "intro": "{n:enemy.kabandha} reaches out with enormous arms!",
+      "defeatLine": "Released from his curse, he points the way to the monkey king.",
+      "drops": [
+        {
+          "itemId": "oshadhi",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "lanka_devi",
+      "nameId": "enemy.lanka_devi",
+      "battler": "b_lanka_devi",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 48,
+        "atk": 11,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 8.6,
+        "atk": 2.15,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        },
+        {
+          "moveId": "parigha",
+          "level": 1
+        }
+      ],
+      "xp": 170,
+      "niska": 50,
+      "restoresWords": [
+        "atibala",
+        "mahabala"
+      ],
+      "description": "The guardian goddess of the city.",
+      "intro": "{n:enemy.lanka_devi} bars the city gate!",
+      "defeatLine": "The guardian yields and lets you pass.",
+      "drops": [
+        {
+          "itemId": "kanda_mula",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "aksha",
+      "nameId": "enemy.aksha",
+      "battler": "b_aksha",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 48,
+        "atk": 11,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 8.6,
+        "atk": 2.15,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        }
+      ],
+      "xp": 170,
+      "niska": 55,
+      "restoresWords": [
+        "shatrusainya",
+        "nihantr"
+      ],
+      "description": "A young prince of the island city, son of {n:person.ravana}.",
+      "intro": "{n:enemy.aksha} rides out at the head of the guard!",
+      "drops": [
+        {
+          "itemId": "oshadhi",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "dhumraksha",
+      "nameId": "enemy.dhumraksha",
+      "battler": "b_dhumraksha",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 105.6,
+        "atk": 13.75,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 18.92,
+        "atk": 2.69,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "parigha",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        },
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        }
+      ],
+      "xp": 240,
+      "niska": 55,
+      "restoresWords": [
+        "abhaya",
+        "sarvabhuta"
+      ],
+      "description": "A smoke-eyed general of the island city.",
+      "intro": "{n:enemy.dhumraksha} storms onto the battlefield!",
+      "drops": [
+        {
+          "itemId": "kanda_mula",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "kumbhakarna",
+      "nameId": "enemy.kumbhakarna",
+      "battler": "b_kumbhakarna",
+      "element": "bhumi",
+      "kind": "boss",
+      "base": {
+        "hp": 128.8,
+        "atk": 15,
+        "def": 10,
+        "spd": 7
+      },
+      "growth": {
+        "hp": 22.08,
+        "atk": 2.75,
+        "def": 1.85,
+        "spd": 1.3
+      },
+      "moves": [
+        {
+          "moveId": "nakha",
+          "level": 1
+        },
+        {
+          "moveId": "shula",
+          "level": 1
+        },
+        {
+          "moveId": "garjana",
+          "level": 1
+        },
+        {
+          "moveId": "parigha",
+          "level": 1
+        }
+      ],
+      "xp": 180,
+      "niska": 60,
+      "restoresWords": [
+        "vrata"
+      ],
+      "description": "The giant brother of {n:person.ravana}, woken from his long sleep.",
+      "intro": "{n:enemy.kumbhakarna} wakes and shakes the earth!",
+      "drops": [
+        {
+          "itemId": "oshadhi",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "indrajit",
+      "nameId": "enemy.indrajit",
+      "battler": "b_indrajit",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 115.2,
+        "atk": 14.3,
+        "def": 10,
+        "spd": 9
+      },
+      "growth": {
+        "hp": 20.64,
+        "atk": 2.79,
+        "def": 1.85,
+        "spd": 1.75
+      },
+      "moves": [
+        {
+          "moveId": "maya_jala",
+          "level": 1
+        },
+        {
+          "moveId": "andhakara",
+          "level": 1
+        },
+        {
+          "moveId": "agni_varsha",
+          "level": 1
+        },
+        {
+          "moveId": "naga_pasha",
+          "level": 1
+        }
+      ],
+      "xp": 180,
+      "niska": 60,
+      "restoresWords": [
+        "sarvashatruvinashana",
+        "jayavaha"
+      ],
+      "description": "Son of {n:person.ravana}, master of illusion who fights unseen.",
+      "intro": "{n:enemy.indrajit} fights from behind a veil of illusion!",
+      "drops": [
+        {
+          "itemId": "oshadhi",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "ravana",
+      "nameId": "enemy.ravana",
+      "battler": "b_ravana",
+      "element": "maya",
+      "kind": "boss",
+      "base": {
+        "hp": 103.6,
+        "atk": 13.2,
+        "def": 11,
+        "spd": 10
+      },
+      "growth": {
+        "hp": 18.13,
+        "atk": 2.48,
+        "def": 1.95,
+        "spd": 1.8
+      },
+      "moves": [
+        {
+          "moveId": "garjana",
+          "level": 1
+        },
+        {
+          "moveId": "agni_varsha",
+          "level": 1
+        },
+        {
+          "moveId": "naga_pasha",
+          "level": 1
+        },
+        {
+          "moveId": "chandrahasa",
+          "level": 1
+        }
+      ],
+      "xp": 220,
+      "niska": 100,
+      "restoresWords": [
+        "vaira",
+        "marananta"
+      ],
+      "description": "The ten-headed king of the island city.",
+      "intro": "{n:enemy.ravana} stands before you in his chariot!",
+      "drops": [
+        {
+          "itemId": "sanjivani",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "bharadvaja_duel",
+      "nameId": "enemy.bharadvaja_duel",
+      "battler": "b_bharadvaja",
+      "element": "none",
+      "kind": "duelist",
+      "base": {
+        "hp": 24,
+        "atk": 8,
+        "def": 8,
+        "spd": 8
+      },
+      "growth": {
+        "hp": 8.4,
+        "atk": 2.4,
+        "def": 1.9,
+        "spd": 1.7
+      },
+      "moves": [
+        {
+          "moveId": "tarka",
+          "level": 1
+        },
+        {
+          "moveId": "prashna",
+          "level": 1
+        }
+      ],
+      "xp": 120,
+      "niska": 25,
+      "restoresWords": [
+        "nishada",
+        "pratishtha",
+        "kraunchamithuna"
+      ],
+      "description": "Disciple of the sage, who was with him at the river. A friendly rival.",
+      "intro": "{n:enemy.bharadvaja_duel} smiles and challenges you to a debate of verses!",
+      "defeatLine": "He laughs and bows: a fair debate!",
+      "drops": [
+        {
+          "itemId": "phala",
+          "chance": 1
+        }
+      ]
+    },
+    {
+      "id": "pandita_duel",
+      "nameId": "enemy.pandita_duel",
+      "battler": "b_pandita",
+      "element": "none",
+      "kind": "duelist",
+      "base": {
+        "hp": 24,
+        "atk": 8,
+        "def": 8,
+        "spd": 8
+      },
+      "growth": {
+        "hp": 8.4,
+        "atk": 2.4,
+        "def": 1.9,
+        "spd": 1.7
+      },
+      "moves": [
+        {
+          "moveId": "tarka",
+          "level": 1
+        },
+        {
+          "moveId": "prashna",
+          "level": 1
+        }
+      ],
+      "xp": 120,
+      "niska": 30,
+      "restoresWords": [
+        "dharmacarana",
+        "shushrusha",
+        "mahattara"
+      ],
+      "description": "A learned scholar of the royal assembly.",
+      "intro": "{n:enemy.pandita_duel} rises in the assembly to test you!",
+      "defeatLine": "The scholar nods, convinced.",
+      "drops": [
+        {
+          "itemId": "madhu",
+          "chance": 0.5
+        }
+      ]
+    },
+    {
+      "id": "hanuman_duel",
+      "nameId": "enemy.hanuman_duel",
+      "battler": "b_hanuman_duel",
+      "element": "vayu",
+      "kind": "duelist",
+      "base": {
+        "hp": 31.2,
+        "atk": 11.6,
+        "def": 8,
+        "spd": 8
+      },
+      "growth": {
+        "hp": 10.92,
+        "atk": 3.48,
+        "def": 1.9,
+        "spd": 1.7
+      },
+      "moves": [
+        {
+          "moveId": "tarka",
+          "level": 1
+        },
+        {
+          "moveId": "prashna",
+          "level": 1
+        }
+      ],
+      "xp": 130,
+      "niska": 30,
+      "restoresWords": [
+        "vyakarana",
+        "apashabdita",
+        "krtsna"
+      ],
+      "description": "The wind-son in disguise, testing the strangers with eloquent speech.",
+      "intro": "{n:enemy.hanuman_duel} speaks with flawless eloquence and awaits your answer!",
+      "defeatLine": "Delighted, he reveals himself and offers his friendship."
+    }
+  ],
+  "items": [
+    {
+      "id": "phala",
+      "nameId": "item.phala",
+      "kind": "heal",
+      "amount": 0.4,
+      "price": 20,
+      "description": "A ripe forest fruit. Restores 40% of a hero's strength."
+    },
+    {
+      "id": "kanda_mula",
+      "nameId": "item.kanda_mula",
+      "kind": "heal",
+      "amount": 0.7,
+      "price": 45,
+      "description": "Roots and tubers, as eaten by hermits. Restores 70% of a hero's strength."
+    },
+    {
+      "id": "madhu",
+      "nameId": "item.madhu",
+      "kind": "pp",
+      "amount": 5,
+      "price": 30,
+      "description": "Wild honey. Restores 5 PP to each of the active hero's moves."
+    },
+    {
+      "id": "oshadhi",
+      "nameId": "item.oshadhi",
+      "kind": "revive",
+      "amount": 0.5,
+      "price": 80,
+      "description": "A healing herb. Revives an exhausted hero with half strength."
+    },
+    {
+      "id": "sanjivani",
+      "nameId": "item.sanjivani",
+      "kind": "revive",
+      "amount": 1,
+      "price": 0,
+      "description": "The life-restoring herb. Revives and fully restores every hero. Not sold."
+    },
+    {
+      "id": "kusha_mudrika",
+      "nameId": "item.kusha_mudrika",
+      "kind": "key",
+      "amount": 0,
+      "price": 0,
+      "description": "The ring of {n:person.rama}, carried by {n:person.hanuman} as a token for {n:person.sita}."
+    },
+    {
+      "id": "chudamani",
+      "nameId": "item.chudamani",
+      "kind": "key",
+      "amount": 0,
+      "price": 0,
+      "description": "The crest jewel of {n:person.sita}, given to {n:person.hanuman} as a token for {n:person.rama}."
+    }
+  ]
+}

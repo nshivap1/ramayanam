@@ -1,0 +1,1781 @@
+{
+ "version": 1,
+ "chapters": [
+  {
+   "kanda": 5,
+   "nameId": "kanda.5",
+   "summary": "Sundara: Hanuman leaps the ocean, passes Surasa and Simhika, overcomes Lanka's guardian, finds Sita in the Ashoka grove and proclaims Rama's victory.",
+   "startMap": "ocean_leap",
+   "startX": 2,
+   "startY": 8,
+   "shlokaIds": [
+    "s-anirvedah",
+    "s-kalyani-bata",
+    "s-jayatyatibalo",
+    "s-dasoham"
+   ],
+   "keyShloka": "s-jayatyatibalo"
+  }
+ ],
+ "maps": [
+  {
+   "id": "ocean_leap",
+   "nameId": "place.ocean_leap",
+   "kanda": 5,
+   "width": 40,
+   "height": 16,
+   "legend": {
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "<": "shore_w",
+    ">": "shore_e",
+    "M": "mountain",
+    "P": "tree_palm",
+    "S": "shrine",
+    "r": "rock",
+    "s": "sand",
+    "~": "ocean"
+   },
+   "ground": [
+    "MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PPPPPP",
+    "MMr.r<~~~~~~~~~~~~~~~~~~~~~~~~~~~>sssssP",
+    "MM...<~~~~~~sssMMMsss~~~~~~~~~~~~>sPsPsP",
+    "MM.,.<~~~~~~sr.MMM.rs~~~~~~~~~~~~>sssssP",
+    "MM...<~~~~~~s...S...s~~~~~~~~~~~~>sssPsP",
+    "MM...<~~~ssss..,....s~~~~~~~~~~~~>sssssP",
+    "MM...<~~~s~~s.,.....sssss~~~~~~~~>ss.ssP",
+    "MM...<~~~s~~s....,r.s~~~s~~~~~~~~>sssssP",
+    "M:...sssss~~sr.....rs~~~s~~~~~ssssssssss",
+    "MM...<~~~~~~sssssssss~~~s~~~~~s~~>sssssP",
+    "MM...<~~~~~~~~~~~~~~~~~~s~~~~~s~~>s.s.sP",
+    "MMr..<~~~~~~~~~~~~~~~~~~sssssss~~>ssssPP",
+    "MM,..<~~~~~~~~~~~~~~~~~~~~~~~~~~~>ssPssP",
+    "MM..r<~~~~~~~~~~~~~~~~~~~~~~~~~~~>sPsssP",
+    "MMr..<~~~~~~~~~~~~~~~~~~~~~~~~~~~>sssssP",
+    "MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PPPPPP"
+   ],
+   "music": "ocean",
+   "battleBg": "ocean",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "quartermaster",
+     "sprite": "merchant",
+     "x": 3,
+     "y": 4,
+     "facing": "down",
+     "event": "ch5.quartermaster"
+    },
+    {
+     "id": "vanara_cheer",
+     "sprite": "vanara",
+     "x": 3,
+     "y": 12,
+     "facing": "up",
+     "event": "ch5.vanara_cheer"
+    }
+   ],
+   "warps": [
+    {
+     "x": 39,
+     "y": 8,
+     "to": "lanka_gate",
+     "tx": 15,
+     "ty": 19,
+     "facing": "up",
+     "requires": "ch5.simhika_done",
+     "lockedEvent": "ch5.shore_locked"
+    },
+    {
+     "x": 1,
+     "y": 8,
+     "to": "mahendra_hill",
+     "tx": 23,
+     "ty": 2,
+     "facing": "down"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 4,
+     "y": 1,
+     "w": 1,
+     "h": 14,
+     "event": "ch5.leap_start",
+     "requires": "!ch5.started"
+    },
+    {
+     "x": 12,
+     "y": 5,
+     "w": 1,
+     "h": 1,
+     "event": "ch5.mainaka",
+     "requires": "!ch5.mainaka"
+    },
+    {
+     "x": 24,
+     "y": 8,
+     "w": 1,
+     "h": 1,
+     "event": "ch5.surasa",
+     "once": false,
+     "requires": "!ch5.surasa_done"
+    },
+    {
+     "x": 27,
+     "y": 11,
+     "w": 1,
+     "h": 1,
+     "event": "ch5.simhika",
+     "once": false,
+     "requires": "ch5.surasa_done&!ch5.simhika_done"
+    }
+   ]
+  },
+  {
+   "id": "lanka_gate",
+   "nameId": "place.lanka_gate",
+   "kanda": 5,
+   "width": 30,
+   "height": 22,
+   "legend": {
+    "!": "banner",
+    "\"": "kusha",
+    "*": "lamp",
+    "+": "palace_floor",
+    ".": "grass",
+    "A": "tree_ashoka",
+    "N": "lanka_wall",
+    "O": "boulder",
+    "P": "tree_palm",
+    "S": "shrine",
+    "T": "tree",
+    "b": "bush",
+    "f": "flowers_red",
+    "g": "gate",
+    "j": "lanka_roof",
+    "o": "ocean",
+    "q": "torch",
+    "r": "rock",
+    "s": "sand"
+   },
+   "ground": [
+    "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+    "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+    "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+    "NNNNNNNNN!NNNNN!NNNNN!NNNNNNNN",
+    "NNNNNqNNNNNNNqNgNqNNNNNNqNNNNN",
+    "T.........*+++++++++*........T",
+    "T.T........*+++++++*.....T...T",
+    "T..\"\"\"\"\"\"......+...........A.T",
+    "T..\"\"\"\"\"\".T....+.....\"\"\"\"\"\"..T",
+    "T..\"\"\"\"\"\".....q+q.T..\"\"\"\"\"\"..T",
+    "T..\"\"\"\"\"\"...T..+.....\"\"\"\"\"\"..T",
+    "T...f.f........+...r.\"\"\"\"\"\"..T",
+    "T..T.S..r....r.+.....\"\"\"\"\"\"..T",
+    "T...f.f..\"\"\"\".q+qO......f....T",
+    "T..f...T.\"\"\"\"..+....T........T",
+    "T.b.....A\"\"\"\"..+......r...fT.T",
+    "T.............q+q.O...A.T....T",
+    "T.....T........+.............T",
+    "T............................T",
+    "TssPssssssssssssssssssssssPssT",
+    "TsssssssPssssssssssssssssssssT",
+    "ooooooooooooooosoooooooooooooo"
+   ],
+   "music": "lanka",
+   "battleBg": "lanka",
+   "light": "night",
+   "npcs": [
+    {
+     "id": "lanka_devi",
+     "sprite": "lanka_devi",
+     "x": 15,
+     "y": 5,
+     "facing": "down",
+     "event": "ch5.lanka_devi",
+     "showIf": "!ch5.lanka_devi_yielded"
+    }
+   ],
+   "warps": [
+    {
+     "x": 15,
+     "y": 4,
+     "to": "lanka_city",
+     "tx": 17,
+     "ty": 24,
+     "facing": "up",
+     "requires": "ch5.lanka_devi_yielded",
+     "lockedEvent": "ch5.gate_locked"
+    },
+    {
+     "x": 15,
+     "y": 21,
+     "to": "ocean_leap",
+     "tx": 38,
+     "ty": 8,
+     "facing": "left"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 1,
+     "y": 18,
+     "w": 28,
+     "h": 1,
+     "event": "ch5.arrive_lanka",
+     "requires": "!ch5.arrived"
+    }
+   ],
+   "encounters": {
+    "rate": 0.1,
+    "table": [
+     {
+      "enemyId": "nishachara",
+      "weight": 3,
+      "minLevel": 19,
+      "maxLevel": 20
+     },
+     {
+      "enemyId": "yatudhana",
+      "weight": 2,
+      "minLevel": 19,
+      "maxLevel": 21
+     }
+    ]
+   }
+  },
+  {
+   "id": "lanka_city",
+   "nameId": "place.lanka_city",
+   "kanda": 5,
+   "width": 36,
+   "height": 26,
+   "legend": {
+    "!": "banner",
+    "&": "market_stall",
+    "*": "lamp",
+    "+": "palace_floor",
+    "-": "stone_road",
+    "?": "sign",
+    "A": "tree_ashoka",
+    "D": "lanka_door",
+    "L": "lotus",
+    "N": "lanka_wall",
+    "f": "flowers_red",
+    "g": "gate",
+    "j": "lanka_roof",
+    "q": "torch",
+    "x": "lanka_floor",
+    "~": "water"
+   },
+   "ground": [
+    "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+    "Nxxxxxxxx!xjjjjjjjjjjjjjjx!xxxxxxxxN",
+    "NxjjjjjjjxxjjjjjjjjjjjjjjxxjjjjjjjxN",
+    "NxjjjjjjjxxjjjjjjjjjjjjjjxxjjjjjjjxN",
+    "NxjjjjjjjxxjjjjjjjjjjjjjjxxjjjjjjjxN",
+    "NxNNqDqNNxxNN!NNqDDqNN!NNxxNNqDqNNxN",
+    "Nxx?xxxxxxx--------------xxxxxxx?xxN",
+    "Nxxxxxxxxxx-~L--------L~-xxxxxxxxxxN",
+    "Nxxxxxxxxxx-L~--------~L-xxxxxxxxxxN",
+    "Nxxxqxxxxxxxxxxx++++xxxxxxxxxxxqxxxN",
+    "Nxjjjjjjjxxxxxx*++++*xxxxxxjjjjjjjxN",
+    "Nxjjjjjjjxjjjjjx++++xjjjjjxjjjjjjjxN",
+    "Nxjjjjjjjxjjjjjq++++qjjjjjxjjjjjjjxN",
+    "NxNNqDqNNxjjjjjx++++xjjjjjxNNqDqNNxN",
+    "Nxx?xxxxxxNqDqNx++++xNqDqNxxxxxx?xxN",
+    "Nxxxxxxxxxxxxxx&&+++xxxxxxxxxxxxxxxN",
+    "NxAxfxAxfxxxfxxx++++xxxfxxxfxAxxxAxN",
+    "N++++++++++++++++++++++++++++++++++g",
+    "Nxxxxxxxxxxxxxx*++++*xxxxxxxxxxxxxxN",
+    "Nxjjjjjjjxjjjjjx++++xjjjjjxjjjjjjjxN",
+    "Nxjjjjjjjxjjjjjx++++xjjjjjxjjjjjjjxN",
+    "Nxjjjjjjjxjjjjjq++++qjjjjjxjjjjjjjxN",
+    "NxNNqDqNNxNqDqNx++++xNqDqNxNNqDqNNxN",
+    "Nxxxxxx?xxxxxxxx++++xxxxxxxxxxxxxxxN",
+    "NxxAxxfxxxxfxAxx++++xxAxfxxxxfxxAxxN",
+    "NNNNNNNNNNNNNNNNNgNNNNNNNNNNNNNNNNNN"
+   ],
+   "music": "lanka",
+   "battleBg": "lanka",
+   "light": "night",
+   "npcs": [
+    {
+     "id": "guard_a",
+     "sprite": "rakshasa",
+     "x": 21,
+     "y": 9,
+     "facing": "left",
+     "event": "ch5.patrol_a",
+     "showIf": "!ch5.patrol_a"
+    },
+    {
+     "id": "guard_b",
+     "sprite": "rakshasa",
+     "x": 9,
+     "y": 14,
+     "facing": "down",
+     "event": "ch5.patrol_b",
+     "showIf": "!ch5.patrol_b"
+    },
+    {
+     "id": "guard_c",
+     "sprite": "rakshasi",
+     "x": 34,
+     "y": 15,
+     "facing": "left",
+     "event": "ch5.patrol_c",
+     "showIf": "!ch5.patrol_c"
+    },
+    {
+     "id": "night_trader",
+     "sprite": "rakshasi",
+     "x": 17,
+     "y": 15,
+     "facing": "down",
+     "event": "ch5.night_market"
+    },
+    {
+     "id": "drunk_guard",
+     "sprite": "rakshasa",
+     "x": 26,
+     "y": 17,
+     "facing": "left",
+     "event": "ch5.sleepy_guard"
+    }
+   ],
+   "warps": [
+    {
+     "x": 17,
+     "y": 25,
+     "to": "lanka_gate",
+     "tx": 15,
+     "ty": 6,
+     "facing": "down"
+    },
+    {
+     "x": 35,
+     "y": 17,
+     "to": "ashoka_vatika",
+     "tx": 1,
+     "ty": 11,
+     "facing": "right",
+     "requires": "ch5.anirvedah",
+     "lockedEvent": "ch5.grove_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 15,
+     "y": 23,
+     "w": 6,
+     "h": 1,
+     "event": "ch5.city_enter",
+     "requires": "!ch5.city_entered"
+    },
+    {
+     "x": 15,
+     "y": 9,
+     "w": 6,
+     "h": 1,
+     "event": "ch5.patrol_a",
+     "once": false,
+     "requires": "!ch5.patrol_a"
+    },
+    {
+     "x": 9,
+     "y": 15,
+     "w": 1,
+     "h": 4,
+     "event": "ch5.patrol_b",
+     "once": false,
+     "requires": "!ch5.patrol_b"
+    },
+    {
+     "x": 31,
+     "y": 15,
+     "w": 1,
+     "h": 4,
+     "event": "ch5.patrol_c",
+     "once": false,
+     "requires": "!ch5.patrol_c"
+    },
+    {
+     "x": 17,
+     "y": 6,
+     "w": 2,
+     "h": 1,
+     "event": "ch5.despair",
+     "requires": "!ch5.anirvedah"
+    }
+   ],
+   "signs": [
+    {
+     "x": 3,
+     "y": 6,
+     "text": "The mansion of Kumbhakarna. His snoring shakes the golden walls; he sleeps for months at a time."
+    },
+    {
+     "x": 32,
+     "y": 6,
+     "text": "The house of Indrajit, Ravana's eldest son, who once defeated Indra himself."
+    },
+    {
+     "x": 3,
+     "y": 14,
+     "text": "The house of Prahasta, commander of Ravana's armies."
+    },
+    {
+     "x": 32,
+     "y": 14,
+     "text": "The hall of Pushpaka, the flying chariot Ravana took from his brother Kubera."
+    },
+    {
+     "x": 7,
+     "y": 23,
+     "text": "The house of Vibhishana, Ravana's younger brother. A quiet lamp burns inside, and someone is praying."
+    }
+   ]
+  },
+  {
+   "id": "ashoka_vatika",
+   "nameId": "place.ashoka_vatika",
+   "kanda": 5,
+   "width": 32,
+   "height": 22,
+   "legend": {
+    "!": "banner",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    ">": "stairs",
+    "A": "tree_ashoka",
+    "L": "lotus",
+    "N": "lanka_wall",
+    "R": "reeds",
+    "S": "shrine",
+    "e": "shore_e",
+    "f": "flowers_red",
+    "g": "gate",
+    "j": "lanka_roof",
+    "n": "shore_n",
+    "q": "torch",
+    "v": "shore_s",
+    "w": "shore_w",
+    "x": "lanka_floor",
+    "~": "water"
+   },
+   "ground": [
+    "jjjjjjjjjjjjjjjjjjjjjjjjNjjjjjjj",
+    "N...............jjjjjjj.NxxxxxxN",
+    "N..AA.A..A.A.A..jjjjjjj.Nxx!x!xN",
+    "N..A...A....A..fNNNNNNNfNqxxxxxN",
+    "N....,..A.......NNNSNNN.NxxxxxxN",
+    "N..........,..f.NqN>NqN.NxxxxxxN",
+    "N.A..A....f..A.....:..A.NxxxxxqN",
+    "N..f.A..f......A...:.A..NxxxxxxN",
+    "N................A.:....NqxxxxxN",
+    "N...f.f....AAA...f.:.f..NxxxxxxN",
+    "N...............,..:....NxxxxxxN",
+    "g:::::::::::...:::::::::gxxxxxxN",
+    "N.......:.............A.NxxxxxxN",
+    "N.....A.::::::::A.......NxxxxxxN",
+    "N..f.........,......f.A.NqxxxxxN",
+    "N..RnnnnR.A...,...A.....NxxxxxxN",
+    "N..w~L~~e.....A.....f.,.NxxxxxqN",
+    "N..w~~L~e..fA...A.......NxxxxxxN",
+    "N..wL~~~ef.....f....A...NxxxxxxN",
+    "N.ARvvvvR...A....A....A.NqxxxxxN",
+    "N.........f...A....f....Nxx!x!xN",
+    "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+   ],
+   "music": "sorrow",
+   "battleBg": "lanka",
+   "light": "dawn",
+   "npcs": [
+    {
+     "id": "sita",
+     "sprite": "sita",
+     "x": 12,
+     "y": 10,
+     "facing": "down",
+     "event": "ch5.sita"
+    },
+    {
+     "id": "trijata",
+     "sprite": "rakshasi",
+     "x": 9,
+     "y": 9,
+     "facing": "right",
+     "event": "ch5.trijata"
+    },
+    {
+     "id": "guard_r1",
+     "sprite": "rakshasi",
+     "x": 15,
+     "y": 12,
+     "facing": "left",
+     "event": "ch5.rakshasi_guard"
+    },
+    {
+     "id": "guard_r2",
+     "sprite": "rakshasi",
+     "x": 5,
+     "y": 12,
+     "facing": "right",
+     "event": "ch5.rakshasi_guard_2"
+    },
+    {
+     "id": "aksha",
+     "sprite": "rakshasa",
+     "x": 28,
+     "y": 11,
+     "facing": "left",
+     "event": "ch5.aksha",
+     "showIf": "!ch5.aksha_defeated"
+    }
+   ],
+   "warps": [
+    {
+     "x": 0,
+     "y": 11,
+     "to": "lanka_city",
+     "tx": 34,
+     "ty": 17,
+     "facing": "left"
+    },
+    {
+     "x": 24,
+     "y": 11,
+     "to": "ashoka_vatika",
+     "tx": 26,
+     "ty": 11,
+     "facing": "right",
+     "requires": "restored.s-jayatyatibalo",
+     "lockedEvent": "ch5.grove_gate_locked"
+    },
+    {
+     "x": 25,
+     "y": 11,
+     "to": "ashoka_vatika",
+     "tx": 23,
+     "ty": 11,
+     "facing": "left"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 2,
+     "y": 1,
+     "w": 1,
+     "h": 20,
+     "event": "ch5.vatika_enter",
+     "requires": "!ch5.vatika_entered"
+    },
+    {
+     "x": 19,
+     "y": 6,
+     "w": 1,
+     "h": 1,
+     "event": "ch5.proclaim",
+     "once": false,
+     "requires": "ch5.met_sita&!ch5.proclaimed"
+    },
+    {
+     "x": 19,
+     "y": 5,
+     "w": 1,
+     "h": 1,
+     "event": "ch5.restore_jaya",
+     "once": false,
+     "requires": "ch5.proclaimed&!ch5.restored_jaya"
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "id": "ch5.leap_start",
+   "cmds": [
+    {
+     "chapter": 5
+    },
+    {
+     "music": "ocean"
+    },
+    {
+     "say": "Hanuman stands on the summit of Mahendra. He presses down with his feet, and the whole mountain trembles."
+    },
+    {
+     "say": "Rama, Lakshmana and Sugriva return to Kishkindha to wait for news. Jambavan stays with the vanaras on the shore."
+    },
+    {
+     "leave": "rama"
+    },
+    {
+     "leave": "lakshmana"
+    },
+    {
+     "leave": "sugriva"
+    },
+    {
+     "leave": "jambavan"
+    },
+    {
+     "say": "Only Hanuman can make this crossing. You hold the verse book tight and go with him, a witness carried on the wind."
+    },
+    {
+     "say": "Hanuman springs into the sky, and the ocean opens beneath you, blue and endless."
+    },
+    {
+     "rest": true
+    },
+    {
+     "objective": "Fly east across the ocean to Lanka."
+    },
+    {
+     "set": "ch5.started"
+    }
+   ]
+  },
+  {
+   "id": "ch5.quartermaster",
+   "cmds": [
+    {
+     "say": "Provisions for the crossing! Fruit, roots, honey and herbs. Lanka will not sell you any.",
+     "who": "Vanara quartermaster",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.vanara_cheer",
+   "cmds": [
+    {
+     "say": "Go, Hanuman! The whole army is watching you!",
+     "who": "Vanara",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch5.mainaka",
+   "cmds": [
+    {
+     "say": "Midway across the {n:place.ocean_leap}, a golden mountain rises out of the waves: Mainaka."
+    },
+    {
+     "say": "Rest on my peak, son of the Wind. Your father once saved me, and I would honour you.",
+     "who": "Mainaka"
+    },
+    {
+     "say": "Hanuman touches the peak with his hand in thanks. 'I have promised not to stop,' he says gently."
+    },
+    {
+     "say": "While he speaks with the mountain, you kneel at an old shrine on its slope and catch your breath."
+    },
+    {
+     "rest": true
+    },
+    {
+     "say": "Your party is fully rested. The shrine on Mainaka will keep your place."
+    },
+    {
+     "objective": "Fly on east toward Lanka."
+    },
+    {
+     "set": "ch5.mainaka"
+    }
+   ]
+  },
+  {
+   "id": "ch5.surasa",
+   "cmds": [
+    {
+     "say": "A vast serpent-woman rises from the sea and blocks the way: Surasa, mother of serpents."
+    },
+    {
+     "say": "The gods have sent me to test you. None may pass me without entering my mouth.",
+     "who": "person.surasa",
+     "portrait": "surasa"
+    },
+    {
+     "say": "Then let wit go where strength cannot.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "label": "duel"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "surasa_duel",
+        "level": 19
+       }
+      ],
+      "kind": "duel",
+      "canRun": false,
+      "canLose": true,
+      "bg": "ocean",
+      "music": "duel",
+      "intro": "Surasa tests Hanuman's wit."
+     },
+     "onWin": [
+      {
+       "say": "Surasa opens her mouth wider and wider. Hanuman grows to match her, then suddenly shrinks to the size of a thumb."
+      },
+      {
+       "say": "He darts into her mouth and out again before she can close it, and bows to her."
+      },
+      {
+       "say": "Go, best of vanaras. Find Sita, and bring Rama joy.",
+       "who": "person.surasa",
+       "portrait": "surasa"
+      },
+      {
+       "set": "ch5.surasa_done"
+      },
+      {
+       "objective": "Fly on east toward Lanka."
+      }
+     ],
+     "onLose": [
+      {
+       "say": "Surasa waits, unmoved. Think again, son of the Wind.",
+       "who": "person.surasa",
+       "portrait": "surasa"
+      },
+      {
+       "choice": "Answer Surasa again?",
+       "options": [
+        {
+         "label": "Answer again",
+         "goto": "duel"
+        },
+        {
+         "label": "Fall back and rest",
+         "goto": "back"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goto": "done"
+    },
+    {
+     "label": "back"
+    },
+    {
+     "move": "player",
+     "path": [
+      "up"
+     ]
+    },
+    {
+     "say": "You fall back toward Mainaka. Its shrine will restore you."
+    },
+    {
+     "label": "done"
+    }
+   ]
+  },
+  {
+   "id": "ch5.simhika",
+   "cmds": [
+    {
+     "say": "Suddenly Hanuman slows, as if caught. Something beneath the waves has seized his shadow!"
+    },
+    {
+     "say": "It is Simhika, who drags down flying creatures by their shadows."
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "simhika",
+        "level": 19
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "ocean",
+      "music": "boss",
+      "intro": "Simhika rises from the deep!"
+     },
+     "onWin": [
+      {
+       "say": "Hanuman breaks free, and Simhika sinks beneath the waves, never to trouble travellers again."
+      },
+      {
+       "say": "Ahead, the shore of Lanka appears, green with forests and bright with golden towers."
+      },
+      {
+       "set": "ch5.simhika_done"
+      },
+      {
+       "objective": "Land on the shore of Lanka, to the east."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.shore_locked",
+   "cmds": [
+    {
+     "say": "The waves are wild here. Fly on carefully."
+    }
+   ]
+  },
+  {
+   "id": "ch5.arrive_lanka",
+   "cmds": [
+    {
+     "music": "lanka"
+    },
+    {
+     "say": "Hanuman lands softly on Lamba hill. Before him rises Lanka on Mount Trikuta, its golden walls shining like a city of the gods."
+    },
+    {
+     "say": "He waits for night. Then he makes himself as small as a cat, to slip inside unseen."
+    },
+    {
+     "say": "An old stone shrine stands on the hillside to the west, forgotten by the city. You may rest there."
+    },
+    {
+     "objective": "Enter the city gate to the north."
+    },
+    {
+     "set": "ch5.arrived"
+    }
+   ]
+  },
+  {
+   "id": "ch5.lanka_devi",
+   "cmds": [
+    {
+     "say": "A fearsome figure bars the gate: Lanka herself, the guardian goddess of the city."
+    },
+    {
+     "say": "Who are you, creeping into my city by night? Turn back, or I will destroy you.",
+     "who": "person.lanka_devi",
+     "portrait": "lanka_devi"
+    },
+    {
+     "say": "I only wish to see your city. Let me pass.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "choice": "Rest and save before the battle?",
+     "options": [
+      {
+       "label": "Rest and save, then fight",
+       "goto": "rest"
+      },
+      {
+       "label": "Fight now",
+       "goto": "fight"
+      }
+     ]
+    },
+    {
+     "label": "rest"
+    },
+    {
+     "rest": true
+    },
+    {
+     "save": true
+    },
+    {
+     "label": "fight"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "lanka_devi",
+        "level": 20
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "lanka",
+      "music": "boss",
+      "intro": "Lanka, guardian of the city, blocks the gate!"
+     },
+     "onWin": [
+      {
+       "say": "Hanuman strikes her with his left fist, holding back his strength, for she is a woman. Lanka sinks to her knees."
+      },
+      {
+       "say": "Long ago Brahma told me: when a vanara overcomes you, know that the end of the rakshasas is near. That time has come.",
+       "who": "person.lanka_devi",
+       "portrait": "lanka_devi"
+      },
+      {
+       "say": "Enter, and find what you seek.",
+       "who": "person.lanka_devi",
+       "portrait": "lanka_devi"
+      },
+      {
+       "set": "ch5.lanka_devi_yielded"
+      },
+      {
+       "objective": "Search the city of Lanka for Sita."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.gate_locked",
+   "cmds": [
+    {
+     "say": "The great gate of Lanka is shut, and its guardian stands before it."
+    }
+   ]
+  },
+  {
+   "id": "ch5.city_enter",
+   "cmds": [
+    {
+     "say": "{n:place.lanka_city} by night: golden mansions, crystal stairs, music and lamps in every window."
+    },
+    {
+     "say": "Small as a cat, Hanuman slips from house to house, searching every face for Sita."
+    },
+    {
+     "objective": "Search the city. Ravana's palace lies to the north."
+    },
+    {
+     "set": "ch5.city_entered"
+    }
+   ]
+  },
+  {
+   "id": "ch5.patrol_a",
+   "cmds": [
+    {
+     "if": "ch5.patrol_a",
+     "then": [
+      {
+       "say": "The patrol is gone. The street is quiet."
+      }
+     ],
+     "else": [
+      {
+       "say": "Night-wanderers on patrol spot a strange little monkey on the avenue!"
+      },
+      {
+       "battle": {
+        "enemies": [
+         {
+          "id": "nishachara",
+          "level": 20
+         },
+         {
+          "id": "yatudhana",
+          "level": 20
+         }
+        ],
+        "kind": "wild",
+        "canRun": false,
+        "canLose": false,
+        "bg": "lanka",
+        "music": "battle",
+        "intro": "A Lanka patrol attacks!"
+       },
+       "onWin": [
+        {
+         "say": "The patrol scatters into the dark lanes."
+        },
+        {
+         "set": "ch5.patrol_a"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.patrol_b",
+   "cmds": [
+    {
+     "if": "ch5.patrol_b",
+     "then": [
+      {
+       "say": "The patrol is gone. The street is quiet."
+      }
+     ],
+     "else": [
+      {
+       "say": "A yatudhana guarding the west lane sniffs the air. 'I smell a stranger!'"
+      },
+      {
+       "battle": {
+        "enemies": [
+         {
+          "id": "yatudhana",
+          "level": 21
+         }
+        ],
+        "kind": "wild",
+        "canRun": false,
+        "canLose": false,
+        "bg": "lanka",
+        "music": "battle",
+        "intro": "A Lanka patrol attacks!"
+       },
+       "onWin": [
+        {
+         "say": "The patrol scatters into the dark lanes."
+        },
+        {
+         "set": "ch5.patrol_b"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.patrol_c",
+   "cmds": [
+    {
+     "if": "ch5.patrol_c",
+     "then": [
+      {
+       "say": "The patrol is gone. The street is quiet."
+      }
+     ],
+     "else": [
+      {
+       "say": "Guards at the eastern gardens raise their spears!"
+      },
+      {
+       "battle": {
+        "enemies": [
+         {
+          "id": "rakshasi",
+          "level": 21
+         },
+         {
+          "id": "nishachara",
+          "level": 21
+         }
+        ],
+        "kind": "wild",
+        "canRun": false,
+        "canLose": false,
+        "bg": "lanka",
+        "music": "battle",
+        "intro": "A Lanka patrol attacks!"
+       },
+       "onWin": [
+        {
+         "say": "The patrol scatters into the dark lanes."
+        },
+        {
+         "set": "ch5.patrol_c"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.night_market",
+   "cmds": [
+    {
+     "say": "Pearls, silks, sandalwood! Lanka never sleeps.",
+     "who": "Night trader",
+     "portrait": "rakshasi"
+    },
+    {
+     "say": "She does not notice the small monkey slipping past her stall."
+    }
+   ]
+  },
+  {
+   "id": "ch5.sleepy_guard",
+   "cmds": [
+    {
+     "say": "The guard snores against the wall, his spear across his knees."
+    }
+   ]
+  },
+  {
+   "id": "ch5.despair",
+   "cmds": [
+    {
+     "say": "Hanuman searches Ravana's palace: the halls, the gardens, the flying chariot Pushpaka, every sleeping chamber. Sita is not there."
+    },
+    {
+     "say": "Have I failed? If I return without news, Rama will lose hope, and so will everyone who loves him.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "say": "Hanuman sits on the palace wall, his head bowed. Then he lifts it."
+    },
+    {
+     "say": "No. Despair is not the way. {w:anirveda} is the root of all {w:shri}.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "shloka": "s-anirvedah",
+     "mode": "hear"
+    },
+    {
+     "quiz": "vibhakti",
+     "shlokaId": "s-anirvedah",
+     "onCorrect": [
+      {
+       "say": "Well read! You can see how each word plays its part in the sentence."
+      }
+     ],
+     "onWrong": [
+      {
+       "say": "Not quite. Look at the word's ending; it tells you its role."
+      }
+     ]
+    },
+    {
+     "say": "There is one place I have not searched: the Ashoka grove beyond the palace, to the east.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "set": "ch5.anirvedah"
+    },
+    {
+     "objective": "Go east to the Ashoka grove."
+    }
+   ]
+  },
+  {
+   "id": "ch5.grove_locked",
+   "cmds": [
+    {
+     "say": "A high golden wall encloses a fragrant garden. Hanuman resolves to search Ravana's palace first."
+    }
+   ]
+  },
+  {
+   "id": "ch5.vatika_enter",
+   "cmds": [
+    {
+     "music": "sorrow"
+    },
+    {
+     "say": "In the Ashoka grove, under a shimshapa tree, sits a lady in a faded yellow garment, pale with grief, guarded by rakshasis."
+    },
+    {
+     "say": "Hanuman knows at once: this is Sita, just as Rama described her."
+    },
+    {
+     "say": "Hiding among the branches, he watches. At dawn Ravana comes with threats and promises."
+    },
+    {
+     "say": "Sita places a blade of grass between herself and Ravana and answers him with courage. She will not even look at him."
+    },
+    {
+     "say": "Ravana storms away. When the guards drift off to sleep, Hanuman begins to speak, softly, from the tree."
+    },
+    {
+     "objective": "Approach Sita quietly."
+    },
+    {
+     "set": "ch5.vatika_entered"
+    }
+   ]
+  },
+  {
+   "id": "ch5.sita",
+   "cmds": [
+    {
+     "if": "ch5.met_sita",
+     "then": [
+      {
+       "say": "Go safely, Hanuman. Tell Rama I am waiting for him.",
+       "who": "person.sita",
+       "portrait": "sita"
+      }
+     ],
+     "else": [
+      {
+       "say": "From the branches, Hanuman sings Rama's story softly: the princes of Ayodhya, the exile, the golden deer, Rama's grief, the friendship with Sugriva, the search."
+      },
+      {
+       "say": "Who speaks Rama's name in this place? Am I dreaming?",
+       "who": "person.sita",
+       "portrait": "sita"
+      },
+      {
+       "say": "Sita's heart lifts. An old saying comes to her mind, and now it seems true."
+      },
+      {
+       "shloka": "s-kalyani-bata",
+       "mode": "hear"
+      },
+      {
+       "quiz": "artha",
+       "shlokaId": "s-kalyani-bata",
+       "onCorrect": [
+        {
+         "say": "Yes! {w:ananda}, long awaited, reaches Sita at last."
+        }
+       ],
+       "onWrong": [
+        {
+         "say": "Not quite. Read the word card again; this verse is full of hope."
+        }
+       ]
+      },
+      {
+       "say": "Hanuman climbs down and bows low."
+      },
+      {
+       "say": "I am Hanuman, Rama's messenger. Here is his ring, engraved with his name.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "take": "kusha_mudrika"
+      },
+      {
+       "say": "Sita holds the ring, and her eyes fill with tears of joy, as if she had met Rama himself."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "label": "k_when"
+        },
+        {
+         "choice": "Sita asks you: \"When will Rama come?\"",
+         "options": [
+          {
+           "label": "From Kishkindha.",
+           "goto": "k_when_m0"
+          },
+          {
+           "label": "With Sugriva and all the vanaras.",
+           "goto": "k_when_m1"
+          },
+          {
+           "label": "Soon. Hanuman will take him the news, and then he will come."
+          }
+         ]
+        },
+        {
+         "goto": "k_when_end"
+        },
+        {
+         "label": "k_when_m0"
+        },
+        {
+         "say": "From Kishkindha... yes. But when, child? When?",
+         "who": "person.sita",
+         "portrait": "sita"
+        },
+        {
+         "goto": "k_when"
+        },
+        {
+         "label": "k_when_m1"
+        },
+        {
+         "say": "With an army of vanaras! But when will he come?",
+         "who": "person.sita",
+         "portrait": "sita"
+        },
+        {
+         "goto": "k_when"
+        },
+        {
+         "label": "k_when_end"
+        },
+        {
+         "say": "Soon... I will hold on to that word.",
+         "who": "person.sita",
+         "portrait": "sita"
+        }
+       ]
+      },
+      {
+       "say": "My lady, sit on my back. I will carry you across the ocean to Rama this very hour.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "say": "No, Hanuman. Rama himself must come and win me back, as befits his honour.",
+       "who": "person.sita",
+       "portrait": "sita"
+      },
+      {
+       "say": "Take this jewel from my hair. Rama will know it, and know that I live.",
+       "who": "person.sita",
+       "portrait": "sita"
+      },
+      {
+       "give": "chudamani"
+      },
+      {
+       "say": "Tell Rama I will wait only a little longer. Go safely.",
+       "who": "person.sita",
+       "portrait": "sita"
+      },
+      {
+       "set": "ch5.met_sita"
+      },
+      {
+       "objective": "Climb the temple steps in the north-east of the grove."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.trijata",
+   "cmds": [
+    {
+     "if": "ch5.met_sita",
+     "then": [
+      {
+       "say": "Something has changed. The lady smiles for the first time.",
+       "who": "Trijata",
+       "portrait": "rakshasi"
+      },
+      {
+       "say": "She keeps whispering an old saying: joy does come to one who stays alive, even if it takes a hundred years.",
+       "who": "Trijata",
+       "portrait": "rakshasi"
+      },
+      {
+       "say": "{w:ananda}, joy. I think it has found her at last.",
+       "who": "Trijata",
+       "portrait": "rakshasi"
+      }
+     ],
+     "else": [
+      {
+       "say": "I am Trijata. Last night I dreamt of Rama in white garlands and of Lanka sinking into the sea.",
+       "who": "Trijata",
+       "portrait": "rakshasi"
+      },
+      {
+       "say": "I told the others: do not threaten this lady. Ask her forgiveness instead.",
+       "who": "Trijata",
+       "portrait": "rakshasi"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.rakshasi_guard",
+   "cmds": [
+    {
+     "say": "The rakshasi guard is fast asleep."
+    }
+   ]
+  },
+  {
+   "id": "ch5.rakshasi_guard_2",
+   "cmds": [
+    {
+     "say": "The guard yawns, rubs her eyes, and dozes off again."
+    }
+   ]
+  },
+  {
+   "id": "ch5.proclaim",
+   "cmds": [
+    {
+     "say": "Before leaving, Hanuman decides to test the strength of Ravana's army."
+    },
+    {
+     "say": "He breaks the boughs of Ravana's pleasure grove, climbs the temple, and roars a challenge over the city."
+    },
+    {
+     "shloka": "s-jayatyatibalo",
+     "mode": "hear"
+    },
+    {
+     "say": "And he names himself Rama's {w:dasa}, so that all Lanka will know who has come."
+    },
+    {
+     "shloka": "s-dasoham",
+     "mode": "hear"
+    },
+    {
+     "say": "The mightiest warrior in Lanka tonight calls himself a {w:dasa}, a servant. That is how Hanuman serves Rama."
+    },
+    {
+     "say": "Rakshasa soldiers pour toward the grove! Hanuman waits on the temple steps."
+    },
+    {
+     "set": "ch5.proclaimed"
+    },
+    {
+     "objective": "Restore the victory verse on the temple steps."
+    }
+   ]
+  },
+  {
+   "id": "ch5.restore_jaya",
+   "cmds": [
+    {
+     "say": "On the temple steps you raise your voice with Hanuman's, so the victory verse rings out whole."
+    },
+    {
+     "shloka": "s-jayatyatibalo",
+     "mode": "restore"
+    },
+    {
+     "if": "restored.s-jayatyatibalo",
+     "then": [
+      {
+       "set": "ch5.restored_jaya"
+      },
+      {
+       "say": "The verse shines gold! Hanuman's victory cry, {n:move.jaya_ghosha}, is yours to call on in battle."
+      },
+      {
+       "say": "The temple shrine stands just above you. Rest there before the battle."
+      },
+      {
+       "objective": "Face Ravana's army beyond the east gate of the grove."
+      }
+     ],
+     "else": [
+      {
+       "say": "A few words slipped. Step away, gather yourself, and climb the steps to try again."
+      },
+      {
+       "objective": "Restore the victory verse on the temple steps."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.grove_gate_locked",
+   "cmds": [
+    {
+     "if": "ch5.proclaimed",
+     "then": [
+      {
+       "say": "Soldiers gather beyond the gate. Restore the victory verse on the temple steps first.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      }
+     ],
+     "else": [
+      {
+       "say": "The eastern gate of the grove is barred. Hanuman has not finished here."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch5.aksha",
+   "cmds": [
+    {
+     "say": "Ravana sent his servants against Hanuman, then his generals, then the sons of his ministers. All of them fell back."
+    },
+    {
+     "say": "Now Ravana's young son Aksha rides out in a golden chariot, bright as fire."
+    },
+    {
+     "say": "A monkey dares to break my father's garden? You will not leave Lanka.",
+     "who": "Aksha",
+     "portrait": "rakshasa"
+    },
+    {
+     "choice": "Rest and save before the battle?",
+     "options": [
+      {
+       "label": "Rest and save, then fight",
+       "goto": "rest"
+      },
+      {
+       "label": "Fight now",
+       "goto": "fight"
+      }
+     ]
+    },
+    {
+     "label": "rest"
+    },
+    {
+     "rest": true
+    },
+    {
+     "save": true
+    },
+    {
+     "label": "fight"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "aksha",
+        "level": 22
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "lanka",
+      "music": "boss",
+      "intro": "Prince Aksha rides into battle!"
+     },
+     "onWin": [
+      {
+       "say": "Aksha falls in battle, and all Lanka trembles."
+      },
+      {
+       "set": "ch5.aksha_defeated"
+      },
+      {
+       "say": "Then Indrajit, Ravana's eldest son, bound Hanuman with the weapon of Brahma. Out of respect for Brahma, Hanuman let himself be taken, to see Ravana face to face."
+      },
+      {
+       "say": "In Ravana's court Hanuman gave Rama's message: return Sita, and live. Ravana ordered his death, but Vibhishana reminded him that a messenger must never be killed."
+      },
+      {
+       "say": "So the rakshasas wrapped Hanuman's tail in cloth and set it on fire."
+      },
+      {
+       "fade": "out"
+      },
+      {
+       "say": "With his blazing tail Hanuman leapt from roof to roof, and Lanka burned. The fire did not hurt him, for Sita had prayed to Agni for his safety."
+      },
+      {
+       "say": "Afraid for Sita, he hurried back to the grove and found her unharmed. He bowed to her once more, and leapt for home."
+      },
+      {
+       "music": "victory"
+      },
+      {
+       "warp": "setu_shore",
+       "x": 2,
+       "y": 6,
+       "facing": "right"
+      },
+      {
+       "fade": "in"
+      },
+      {
+       "say": "At Kishkindha, Hanuman bowed to Rama. 'I have seen Sita.'"
+      },
+      {
+       "say": "He placed her jewel in Rama's hands."
+      },
+      {
+       "take": "chudamani"
+      },
+      {
+       "say": "It is as if I see her again. Hanuman, what can I ever give you in return?",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "say": "Sugriva ordered the whole army to march. Within days, the vanaras camped on the southern shore of the ocean."
+      },
+      {
+       "set": "ch5.complete"
+      },
+      {
+       "objective": "Rejoin Rama at the shore camp to begin Book 6."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "walkthrough": [
+  {
+   "chapter": 5,
+   "map": "ocean_leap",
+   "action": {
+    "reach": {
+     "x": 4,
+     "y": 8
+    }
+   },
+   "expectFlag": "ch5.started"
+  },
+  {
+   "chapter": 5,
+   "map": "ocean_leap",
+   "action": {
+    "reach": {
+     "x": 12,
+     "y": 5
+    }
+   },
+   "expectFlag": "ch5.mainaka"
+  },
+  {
+   "chapter": 5,
+   "map": "ocean_leap",
+   "action": {
+    "reach": {
+     "x": 24,
+     "y": 8
+    }
+   },
+   "expectFlag": "ch5.surasa_done"
+  },
+  {
+   "chapter": 5,
+   "map": "ocean_leap",
+   "action": {
+    "reach": {
+     "x": 27,
+     "y": 11
+    }
+   },
+   "expectFlag": "ch5.simhika_done"
+  },
+  {
+   "chapter": 5,
+   "map": "lanka_gate",
+   "action": {
+    "reach": {
+     "x": 15,
+     "y": 18
+    }
+   },
+   "expectFlag": "ch5.arrived"
+  },
+  {
+   "chapter": 5,
+   "map": "lanka_gate",
+   "action": {
+    "talk": "lanka_devi"
+   },
+   "expectFlag": "ch5.lanka_devi_yielded"
+  },
+  {
+   "chapter": 5,
+   "map": "lanka_city",
+   "action": {
+    "reach": {
+     "x": 17,
+     "y": 23
+    }
+   },
+   "expectFlag": "ch5.city_entered"
+  },
+  {
+   "chapter": 5,
+   "map": "lanka_city",
+   "action": {
+    "reach": {
+     "x": 17,
+     "y": 9
+    }
+   },
+   "expectFlag": "ch5.patrol_a"
+  },
+  {
+   "chapter": 5,
+   "map": "lanka_city",
+   "action": {
+    "reach": {
+     "x": 17,
+     "y": 6
+    }
+   },
+   "expectFlag": "ch5.anirvedah"
+  },
+  {
+   "chapter": 5,
+   "map": "lanka_city",
+   "action": {
+    "reach": {
+     "x": 31,
+     "y": 17
+    }
+   },
+   "expectFlag": "ch5.patrol_c"
+  },
+  {
+   "chapter": 5,
+   "map": "ashoka_vatika",
+   "action": {
+    "reach": {
+     "x": 2,
+     "y": 11
+    }
+   },
+   "expectFlag": "ch5.vatika_entered"
+  },
+  {
+   "chapter": 5,
+   "map": "ashoka_vatika",
+   "action": {
+    "talk": "sita"
+   },
+   "expectFlag": "ch5.met_sita"
+  },
+  {
+   "chapter": 5,
+   "map": "ashoka_vatika",
+   "action": {
+    "reach": {
+     "x": 19,
+     "y": 6
+    }
+   },
+   "expectFlag": "ch5.proclaimed"
+  },
+  {
+   "chapter": 5,
+   "map": "ashoka_vatika",
+   "action": {
+    "reach": {
+     "x": 19,
+     "y": 5
+    }
+   },
+   "expectFlag": "ch5.restored_jaya"
+  },
+  {
+   "chapter": 5,
+   "map": "ashoka_vatika",
+   "action": {
+    "talk": "aksha"
+   },
+   "expectFlag": "ch5.complete"
+  }
+ ]
+}

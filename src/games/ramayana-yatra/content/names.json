@@ -1,0 +1,4184 @@
+{
+ "version": 1,
+ "names": [
+  {
+   "id": "kanda.1",
+   "sa": "बालकाण्डम्",
+   "en": "Bāla Kāṇḍa · Book of Youth",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "sarga colophons: इति … श्रीमद्रामायणे … बालकाण्डे …; nominative title form as used by the Gita Press edition"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. काण्ड"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "kanda.2",
+   "sa": "अयोध्याकाण्डम्",
+   "en": "Ayodhyā Kāṇḍa · Book of Ayodhyā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "sarga colophons: इति … श्रीमद्रामायणे … अयोध्याकाण्डे …; nominative title form as used by the Gita Press edition"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. काण्ड"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "kanda.3",
+   "sa": "अरण्यकाण्डम्",
+   "en": "Araṇya Kāṇḍa · Book of the Forest",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "sarga colophons: इति … श्रीमद्रामायणे … अरण्यकाण्डे …; nominative title form as used by the Gita Press edition"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. काण्ड"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "kanda.4",
+   "sa": "किष्किन्धाकाण्डम्",
+   "en": "Kiṣkindhā Kāṇḍa · Book of Kiṣkindhā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "sarga colophons: इति … श्रीमद्रामायणे … किष्किन्धाकाण्डे …; nominative title form as used by the Gita Press edition"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. काण्ड"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "kanda.5",
+   "sa": "सुन्दरकाण्डम्",
+   "en": "Sundara Kāṇḍa · Book of Beauty",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "sarga colophons: इति … श्रीमद्रामायणे … सुन्दरकाण्डे …; nominative title form as used by the Gita Press edition"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. काण्ड"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "kanda.6",
+   "sa": "युद्धकाण्डम्",
+   "en": "Yuddha Kāṇḍa · Book of War",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "sarga colophons: इति … श्रीमद्रामायणे … युद्धकाण्डे …; nominative title form as used by the Gita Press edition"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. काण्ड"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.tamasa_ashrama",
+   "sa": "तमसा",
+   "en": "Vālmīki's āśrama by the Tamasā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.3: जगाम तमसातीरं जाह्नव्यास्त्वविदूरतः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. तमसा"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.valmiki_hut",
+   "sa": "आश्रम",
+   "en": "Vālmīki's hut",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2: Vālmīki's āśrama by the Tamasā"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. आश्रम"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Interior map: plain noun आश्रम (hermitage). Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.tamasa_bank",
+   "sa": "तमसा",
+   "en": "Bank of the Tamasā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.3: जगाम तमसातीरं जाह्नव्यास्त्वविदूरतः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. तमसा"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.siddhashrama_road",
+   "sa": "सिद्धाश्रम",
+   "en": "Road to Siddhāśrama",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.29: Viśvāmitra describes Siddhāśrama (सिद्धाश्रम)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/siddhashrama",
+      "accessed": "2026-11-10",
+      "note": "s.v. सिद्धाश्रम: \"m. 'hermitage of the Blest', N. of a hermitage\", cites R."
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Route map: reuses the destination name. Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "place.tataka_vana",
+   "sa": "वन",
+   "en": "Tāṭakā's forest",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.24–26: the dreadful forest haunted by Tāṭakā (वन)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वन"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "No single attested proper noun for the forest itself; plain noun वन used. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.siddhashrama",
+   "sa": "सिद्धाश्रम",
+   "en": "Siddhāśrama, hermitage of Viśvāmitra",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.29: Viśvāmitra describes Siddhāśrama (सिद्धाश्रम)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/siddhashrama",
+      "accessed": "2026-11-10",
+      "note": "s.v. सिद्धाश्रम: \"m. 'hermitage of the Blest', N. of a hermitage\", cites R."
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "place.ayodhya_city",
+   "sa": "अयोध्या",
+   "en": "Ayodhyā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.5.6: अयोध्या नाम नगरी तत्रासील्लोकविश्रुता"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अयोध्या"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.ayodhya_palace",
+   "sa": "अयोध्या",
+   "en": "Royal palace, Ayodhyā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.5.6: अयोध्या नाम नगरी तत्रासील्लोकविश्रुता"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अयोध्या"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Interior map: reuses the parent place name (CONTRACTS.md). Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.vasishtha_shala",
+   "sa": "अयोध्या",
+   "en": "Vasiṣṭha's school, Ayodhyā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.5.6: अयोध्या नाम नगरी तत्रासील्लोकविश्रुता"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अयोध्या"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Interior map: reuses the parent place name (CONTRACTS.md). Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.shringaverapura",
+   "sa": "शृङ्गवेरपुर",
+   "en": "Śṛṅgaverapura on the Gaṅgā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.50: Rāma reaches शृङ्गवेरपुर, the town of Guha"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. शृङ्गवेरपुर"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.chitrakuta",
+   "sa": "चित्रकूट",
+   "en": "Citrakūṭa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.54–56: the hill चित्रकूट"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. चित्रकूट"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.dandaka_vana",
+   "sa": "दण्डकारण्य",
+   "en": "Daṇḍaka forest",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.1.1: प्रविश्य तु महारण्यं दण्डकारण्यमात्मवान्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. दण्डकारण्य"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.panchavati",
+   "sa": "पञ्चवटी",
+   "en": "Pañcavaṭī",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.13–15: Agastya directs Rāma to पञ्चवटी"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. पञ्चवटी"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.khara_camp",
+   "sa": "जनस्थान",
+   "en": "Janasthāna, Khara's stronghold",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.19–30: Khara's base जनस्थान"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/janasthana",
+      "accessed": "2026-11-10",
+      "note": "s.v. जन-स्थान: \"n. 'resort of men', N. of part of the Daṇḍaka forest in Deccan, MBh.; R.; Ragh.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "place.mriga_vana",
+   "sa": "वन",
+   "en": "Forest of the golden deer",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.43–44: Rāma follows the deer deep into the forest (वन)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वन"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "No attested proper noun; plain noun वन used. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.jatayu_glade",
+   "sa": "दण्डकारण्य",
+   "en": "Jaṭāyu's glade in the Daṇḍaka forest",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.1.1: प्रविश्य तु महारण्यं दण्डकारण्यमात्मवान्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. दण्डकारण्य"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Reuses the region name. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.shabari_ashrama",
+   "sa": "पम्पा",
+   "en": "Śabarī's āśrama by Lake Pampā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.74–75: Śabarī's āśrama on the shore of पम्पा"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. पम्पा"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.rishyamuka",
+   "sa": "ऋश्यमूक",
+   "en": "Ṛśyamūka hills",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.73; Kiṣkindhā 4.1: the mountain ऋश्यमूक by Pampā"
+     },
+     {
+      "name": "Apte, Practical Sanskrit-English Dictionary, s.v. ऋश्य (compound -मूकः \"N. of a mountain\"), with MW s.v. ऋश्य (\"or (in later texts) ऋष्य\")",
+      "url": "https://kosha.sanskrit.today/word/sa/ऋश्य",
+      "accessed": "2026-11-10"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:apte",
+     "engine:validateDeva"
+    ],
+    "notes": "MW Cologne has no separate compound entry here; Apte lists ऋश्य-मूक. Later texts also write ऋष्यमूक. Read online 2026-11-10: source:apte. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "place.kishkindha_caves",
+   "sa": "किष्किन्धा",
+   "en": "Kiṣkindhā, city of the vānaras",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.14ff.: the cave-city किष्किन्धा"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. किष्किन्धा"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.vindhya_search",
+   "sa": "विन्ध्य",
+   "en": "Search in the Vindhya hills",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.48–50: Aṅgada's party searches the विन्ध्य"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विन्ध्य"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.mahendra_hill",
+   "sa": "महेन्द्र",
+   "en": "Mount Mahendra by the ocean",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.67; Sundara 5.1: Hanumān leaps from महेन्द्र"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. महेन्द्र"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.ocean_leap",
+   "sa": "समुद्र",
+   "en": "Leap over the ocean",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.1: Hanumān crosses the समुद्र"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. समुद्र"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.lanka_gate",
+   "sa": "लङ्का",
+   "en": "Gate of Laṅkā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.2–3: the city लङ्का"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लङ्का"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.lanka_city",
+   "sa": "लङ्का",
+   "en": "Laṅkā by night",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.2–3: the city लङ्का"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लङ्का"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.ashoka_vatika",
+   "sa": "अशोकवनिका",
+   "en": "Aśoka grove",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.14: Hanumān enters the अशोकवनिका"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/अशोकवनिका",
+      "accessed": "2026-11-10",
+      "note": "s.v. अ-शोक-वनिका (p. 114): \"f. a grove of Aśoka trees, R.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "place.setu_shore",
+   "sa": "समुद्र",
+   "en": "Ocean shore where the setu begins",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.22: Rāma at the shore of the समुद्र"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. समुद्र"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.setu",
+   "sa": "सेतु",
+   "en": "The setu across the ocean",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.22: Nala builds the सेतु"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सेतु"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.suvela_camp",
+   "sa": "सुवेल",
+   "en": "Camp on Mount Suvela",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.38: the army camps on सुवेल"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/सुवेल",
+      "accessed": "2026-11-10",
+      "note": "s.v. सु-वेल: \"m. N. of a mountain (= त्रि-कूट or चित्र-कूट), Mṛcch.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "place.lanka_battlefield",
+   "sa": "लङ्का",
+   "en": "Battlefield before Laṅkā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.2–3: the city लङ्का"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लङ्का"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.lanka_palace",
+   "sa": "लङ्का",
+   "en": "Rāvaṇa's palace, Laṅkā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.2–3: the city लङ्का"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लङ्का"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "place.ayodhya_return",
+   "sa": "अयोध्या",
+   "en": "Return to Ayodhyā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.5.6: अयोध्या नाम नगरी तत्रासील्लोकविश्रुता"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अयोध्या"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.valmiki",
+   "sa": "वाल्मीकि",
+   "en": "Vālmīki",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.1.1: नारदं परिपप्रच्छ वाल्मीकिर्मुनिपुङ्गवम्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वाल्मीकि"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.bharadvaja",
+   "sa": "भरद्वाज",
+   "en": "Bharadvāja, Vālmīki's disciple",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.4–6: शिष्य भरद्वाज accompanies Vālmīki to the Tamasā"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. भरद्वाज"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.narada",
+   "sa": "नारद",
+   "en": "Nārada",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.1.1: तपःस्वाध्यायनिरतं … नारदम्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. नारद"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.vishvamitra",
+   "sa": "विश्वामित्र",
+   "en": "Viśvāmitra",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.18–19: विश्वामित्र comes to Daśaratha"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विश्वामित्र"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.rama",
+   "sa": "राम",
+   "en": "Rāma",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.1.8: इक्ष्वाकुवंशप्रभवो रामो नाम जनैः श्रुतः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. राम"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.lakshmana",
+   "sa": "लक्ष्मण",
+   "en": "Lakṣmaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.1.28: लक्ष्मण follows Rāma"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लक्ष्मण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.sita",
+   "sa": "सीता",
+   "en": "Sītā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.1.25–27: सीता, Rāma’s wife"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सीता"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.dasharatha",
+   "sa": "दशरथ",
+   "en": "Daśaratha",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.6: king दशरथ of Ayodhyā"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. दशरथ"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.kaikeyi",
+   "sa": "कैकेयी",
+   "en": "Kaikeyī",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.9–12: queen कैकेयी asks her boons"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. कैकेयी"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.kausalya",
+   "sa": "कौसल्या",
+   "en": "Kausalyā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.23.2: कौसल्या सुप्रजा राम"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. कौसल्या"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.sumitra",
+   "sa": "सुमित्रा",
+   "en": "Sumitrā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.40.9: Sumitrā blesses Lakṣmaṇa"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सुमित्रा"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.bharata",
+   "sa": "भरत",
+   "en": "Bharata",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.100–112: भरत takes the pādukās"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. भरत"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.vasishtha",
+   "sa": "वसिष्ठ",
+   "en": "Vasiṣṭha",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.3ff.: the family priest वसिष्ठ"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वसिष्ठ"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.guha",
+   "sa": "गुह",
+   "en": "Guha, king of the Niṣādas",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.50: गुह welcomes Rāma at Śṛṅgaverapura"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. गुह"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.sumantra",
+   "sa": "सुमन्त्र",
+   "en": "Sumantra, the charioteer",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.14ff.: the charioteer सुमन्त्र"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सुमन्त्र"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.shabari",
+   "sa": "शबरी",
+   "en": "Śabarī",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.74: the ascetic शबरी"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. शबरी"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.jatayu",
+   "sa": "जटायु",
+   "en": "Jaṭāyu",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.14; 3.50–51; 3.67–68: the vulture-king जटायु"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जटायु"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.agastya",
+   "sa": "अगस्त्य",
+   "en": "Agastya",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.11–12; Yuddha 6.105: the sage अगस्त्य"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अगस्त्य"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.hanuman",
+   "sa": "हनुमान्",
+   "en": "Hanumān",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.3: हनुमान् approaches Rāma"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. हनुमत्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Stem हनुमत्; displayed in the nominative हनुमान् as everywhere in the text. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.sugriva",
+   "sa": "सुग्रीव",
+   "en": "Sugrīva",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.2–5: the vānara king सुग्रीव"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सुग्रीव"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.jambavan",
+   "sa": "जाम्बवान्",
+   "en": "Jāmbavān",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.66: जाम्बवान् rouses Hanumān"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जाम्बवत्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Stem जाम्बवत्; displayed in the nominative. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.angada",
+   "sa": "अङ्गद",
+   "en": "Aṅgada",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.48ff.: the prince अङ्गद leads the southern search"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अङ्गद"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.vibhishana",
+   "sa": "विभीषण",
+   "en": "Vibhīṣaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.17–19: विभीषण seeks refuge with Rāma"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विभीषण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.ravana",
+   "sa": "रावण",
+   "en": "Rāvaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.31ff.: रावण, king of Laṅkā"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. रावण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.kumbhakarna",
+   "sa": "कुम्भकर्ण",
+   "en": "Kumbhakarṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.60–67: कुम्भकर्ण is woken for battle"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. कुम्भकर्ण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.indrajit",
+   "sa": "इन्द्रजित्",
+   "en": "Indrajit",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.44–45; 6.80–91: इन्द्रजित्, son of Rāvaṇa"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. इन्द्रजित्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.lanka_devi",
+   "sa": "लङ्का",
+   "en": "Laṅkā, guardian goddess of the city",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.3: the city-goddess लङ्का challenges Hanumān"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लङ्का"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.surasa",
+   "sa": "सुरसा",
+   "en": "Surasā, mother of serpents",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.1: सुरसा tests Hanumān"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सुरसा"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.rishi",
+   "sa": "ऋषि",
+   "en": "Sage",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. ऋषि"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.merchant",
+   "sa": "वणिज्",
+   "en": "Merchant",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वणिज्"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.guard",
+   "sa": "द्वारपाल",
+   "en": "Gatekeeper",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. द्वारपाल"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.pandita",
+   "sa": "पण्डित",
+   "en": "Paṇḍita, learned scholar",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. पण्डित"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.hunter",
+   "sa": "निषाद",
+   "en": "Niṣāda hunter",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.15: मा निषाद प्रतिष्ठां त्वम्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. निषाद"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Bāla 1.2 calls the hunter निषाद. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.vanara",
+   "sa": "वानर",
+   "en": "Vānara",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वानर"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.rakshasa",
+   "sa": "राक्षस",
+   "en": "Rākṣasa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. राक्षस"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.rakshasi",
+   "sa": "राक्षसी",
+   "en": "Rākṣasī",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. राक्षसी"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.krauncha",
+   "sa": "क्रौञ्च",
+   "en": "Krauñca bird",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.9–10: क्रौञ्चमिथुनम् on the Tamasā bank"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. क्रौञ्च"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.golden_deer",
+   "sa": "मृग",
+   "en": "Golden deer",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.42: the golden मृग"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मृग"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "person.player_a",
+   "sa": "शिष्य",
+   "en": "Student (śiṣya)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.4–6: Vālmīki speaks to his शिष्य"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/shishya",
+      "accessed": "2026-11-10",
+      "note": "s.v. शिष्य: \"m. a pupil, scholar, disciple (f(ā). a female pupil)\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "person.player_b",
+   "sa": "शिष्या",
+   "en": "Student (śiṣyā)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/shishya",
+      "accessed": "2026-11-10",
+      "note": "s.v. शिष्य: \"m. a pupil, scholar, disciple (f(ā). a female pupil)\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Feminine of शिष्य (MW lists the adjective/noun as mf(ā)n.). Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.child",
+   "sa": "बाल",
+   "en": "Child",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. बाल"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "person.villager_m",
+   "sa": "ग्रामीण",
+   "en": "Villager",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/gramina",
+      "accessed": "2026-11-10",
+      "note": "s.v. ग्रामीण: \"m. a villager, peasant\" (the MW feminine forms mean the indigo plant, so no feminine is used)"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "ally.player",
+   "sa": "शिष्य",
+   "en": "Student (the reciter)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.4–6: Vālmīki speaks to his शिष्य"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/shishya",
+      "accessed": "2026-11-10",
+      "note": "s.v. शिष्य: \"m. a pupil, scholar, disciple (f(ā). a female pupil)\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "ally.rama",
+   "sa": "राम",
+   "en": "Rāma",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.1.8: इक्ष्वाकुवंशप्रभवो रामो नाम जनैः श्रुतः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. राम"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "ally.lakshmana",
+   "sa": "लक्ष्मण",
+   "en": "Lakṣmaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.1.28: लक्ष्मण follows Rāma"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लक्ष्मण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "ally.hanuman",
+   "sa": "हनुमान्",
+   "en": "Hanumān",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.3: हनुमान् approaches Rāma"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. हनुमत्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Stem हनुमत्; displayed in the nominative हनुमान् as everywhere in the text. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "ally.sugriva",
+   "sa": "सुग्रीव",
+   "en": "Sugrīva",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.2–5: the vānara king सुग्रीव"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सुग्रीव"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "ally.jambavan",
+   "sa": "जाम्बवान्",
+   "en": "Jāmbavān",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.66: जाम्बवान् rouses Hanumān"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जाम्बवत्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Stem जाम्बवत्; displayed in the nominative. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "ally.vibhishana",
+   "sa": "विभीषण",
+   "en": "Vibhīṣaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.17–19: विभीषण seeks refuge with Rāma"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विभीषण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.nishachara",
+   "sa": "निशाचर",
+   "en": "Night-prowler",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/nishacara",
+      "accessed": "2026-11-10",
+      "note": "s.v. निशा-चर: \"night-walking, R.\"; \"m. a fiend or Rākṣasa, MBh.; Kāv.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.yatudhana",
+   "sa": "यातुधान",
+   "en": "Yātudhāna demon",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/yatudhana",
+      "accessed": "2026-11-10",
+      "note": "s.v. यातु-धान: \"= yātu, a kind of evil spirit or demon\" (f. ई), RV. etc."
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.rakshasi",
+   "sa": "राक्षसी",
+   "en": "Rākṣasī",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. राक्षसी"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.maya_mriga",
+   "sa": "मायामृग",
+   "en": "Illusory deer",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net) (Araṇya 3.38.16, as on enjoylearningsanskrit.com)",
+      "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-38/verse-16",
+      "accessed": "2026-11-10",
+      "note": "त्वां तु मायामृगं दृष्ट्वा काञ्चनं जातविस्मया"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मायामृग"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Attested in Araṇya 3.38.16 (Rāvaṇa's plan for Mārīca). MW headword not fetched. Read online 2026-11-10: source:valmiki-ramayana. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.vrka",
+   "sa": "वृक",
+   "en": "Wolf",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वृक"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.simhika",
+   "sa": "सिंहिका",
+   "en": "Siṃhikā, the shadow-seizer",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.1: सिंहिका seizes Hanumān’s shadow"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/सिंहिका",
+      "accessed": "2026-11-10",
+      "note": "s.v. सिंहिका: \"N. of the mother of Rāhu … of a Rākṣasī, R.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "enemy.surasa_duel",
+   "sa": "सुरसा",
+   "en": "Surasā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.1: सुरसा tests Hanumān"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सुरसा"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.tataka",
+   "sa": "ताटका",
+   "en": "Tāṭakā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.24–26: the yakṣī ताटका"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. ताटका"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.subahu",
+   "sa": "सुबाहु",
+   "en": "Subāhu",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.30: सुबाहु attacks the yajña"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सुबाहु"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.maricha",
+   "sa": "मारीच",
+   "en": "Mārīca",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.30; Araṇya 3.36–44: मारीच"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मारीच"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.khara",
+   "sa": "खर",
+   "en": "Khara",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.19–30: खर, lord of Janasthāna"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. खर"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.dushana",
+   "sa": "दूषण",
+   "en": "Dūṣaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.22–26: दूषण, Khara’s general"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. दूषण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.kabandha",
+   "sa": "कबन्ध",
+   "en": "Kabandha",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.69–73: the headless कबन्ध"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. कबन्ध"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.lanka_devi",
+   "sa": "लङ्का",
+   "en": "Laṅkā, guardian of the city",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.3: the city-goddess लङ्का challenges Hanumān"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लङ्का"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.aksha",
+   "sa": "अक्ष",
+   "en": "Akṣa, son of Rāvaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.47: prince अक्ष fights Hanumān"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अक्ष"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.dhumraksha",
+   "sa": "धूम्राक्ष",
+   "en": "Dhūmrākṣa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.51–52: धूम्राक्ष leads a sortie"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/dh%C5%ABmr%C4%81k%E1%B9%A3a",
+      "accessed": "2026-11-10",
+      "note": "s.v. धूम्राक्ष: \"m. N. of a Rakṣas, MBh.; R.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "enemy.kumbhakarna",
+   "sa": "कुम्भकर्ण",
+   "en": "Kumbhakarṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.60–67: कुम्भकर्ण is woken for battle"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. कुम्भकर्ण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.indrajit",
+   "sa": "इन्द्रजित्",
+   "en": "Indrajit",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.44–45; 6.80–91: इन्द्रजित्, son of Rāvaṇa"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. इन्द्रजित्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.ravana",
+   "sa": "रावण",
+   "en": "Rāvaṇa",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.31ff.: रावण, king of Laṅkā"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. रावण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.bharadvaja_duel",
+   "sa": "भरद्वाज",
+   "en": "Bharadvāja (verse-debate)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.4–6: शिष्य भरद्वाज accompanies Vālmīki to the Tamasā"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. भरद्वाज"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.pandita_duel",
+   "sa": "पण्डित",
+   "en": "Paṇḍita (verse-debate)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. पण्डित"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "enemy.hanuman_duel",
+   "sa": "हनुमान्",
+   "en": "Hanumān (test of eloquence)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.3: हनुमान् approaches Rāma"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. हनुमत्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Stem हनुमत्; displayed in the nominative हनुमान् as everywhere in the text. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.pada_bana",
+   "sa": "वाक्",
+   "en": "Speech",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वाच्"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Stem वाच्, nominative वाक् (the usual citation form). Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.lipi_raksha",
+   "sa": "रक्षा",
+   "en": "Protection",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. रक्षा"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.shoka_shloka",
+   "sa": "श्लोक",
+   "en": "Verse",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Bāla 1.2.18: grief (शोक) became verse (श्लोक)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. श्लोक"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.suprabhata",
+   "sa": "सुप्रभात",
+   "en": "Auspicious dawn",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/suprabhata",
+      "accessed": "2026-11-10",
+      "note": "s.v. सु-प्रभात: \"n. a beautiful dawn or day break\"; mf(ā)n. \"beautifully illuminated by dawn, R.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.shuddha_vak",
+   "sa": "व्याकरण",
+   "en": "Grammar",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Kiṣkindhā 4.3.29: नूनं व्याकरणं कृत्स्नम्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. व्याकरण"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.bana",
+   "sa": "बाण",
+   "en": "Arrow",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. बाण"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.agneyastra",
+   "sa": "आग्नेय",
+   "en": "Agni's astra",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga27/balasans27.htm",
+      "accessed": "2026-11-10",
+      "note": "Bāla 1.27.10: आग्नेयमस्त्रं दयितं शिखरं नाम नामतः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. आग्नेय"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "The text names the weapon with the adjective (आग्नेयम् अस्त्रम्); the compound आग्नेयास्त्र was not confirmed in MW this session, so the attested adjective is used. Read online 2026-11-10: source:valmiki-ramayana. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.varunastra",
+   "sa": "वारुण",
+   "en": "Varuṇa's astra",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga27/balasans27.htm",
+      "accessed": "2026-11-10",
+      "note": "Bāla 1.27.8–9: वारुणं पाशमस्त्रं च ददाम्यहमनुत्तमम्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/वारुण",
+      "accessed": "2026-11-10",
+      "note": "s.v. वारुण: \"in MBh. & R. also said of partic. weapons\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "MW: वारुण \"in MBh. & R. also said of partic. weapons\". No MW headword वारुणास्त्र (checked). Read online 2026-11-10: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.vayavyastra",
+   "sa": "वायव्य",
+   "en": "Vāyu's astra",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga27/balasans27.htm",
+      "accessed": "2026-11-10",
+      "note": "Bāla 1.27.10–11: वायव्यं प्रथमं नाम ददामि तव चानघ"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वायव्य"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "The text names the weapon with the adjective; the compound वायव्यास्त्र was not confirmed in MW, so the attested adjective is used. Read online 2026-11-10: source:valmiki-ramayana. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.dharma_vigraha",
+   "sa": "धर्म",
+   "en": "Dharma",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Araṇya 3.37.13: रामो विग्रहवान् धर्मः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. धर्म"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.abhaya",
+   "sa": "अभय",
+   "en": "Fearlessness",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.18.33: अभयं सर्वभूतेभ्यो ददाम्येतद् व्रतं मम"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अभय"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.aditya_hrdaya",
+   "sa": "आदित्यहृदय",
+   "en": "Āditya-hṛdaya hymn",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Yuddha 6.105 (Āditya-hṛdaya): आदित्यहृदयं पुण्यं"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/adityahridaya",
+      "accessed": "2026-11-10",
+      "note": "s.v. आदित्य-हृदय: \"n. N. of a Stotra\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "move.brahmastra",
+   "sa": "ब्रह्मास्त्र",
+   "en": "Brahmāstra",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/ब्रह्मास्त्र",
+      "accessed": "2026-11-10",
+      "note": "s.v. ब्रह्मास्त्र: \"Brahmā's missile, N. of a mythical weapon … MBh. R.\""
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries (scan p. 740, col. 3)",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/scans/csl-apidev/servepdf.php?dict=MW&page=740,3",
+      "accessed": "2026-11-10"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "MW: \"Brahmā's missile, N. of a mythical weapon … MBh. R.\" Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.khadga",
+   "sa": "खड्ग",
+   "en": "Sword",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. खड्ग"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.viddhi",
+   "sa": "विद्धि",
+   "en": "Know!",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Ayodhyā 2.40.9: रामं दशरथं विद्धि"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विद्"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Imperative 2nd sg. of विद्, as it stands in the verse. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.agni_bana",
+   "sa": "अग्नि",
+   "en": "Fire",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अग्नि"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.vayu_vega",
+   "sa": "वेग",
+   "en": "Speed",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वेग"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.gada",
+   "sa": "गदा",
+   "en": "Mace",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. गदा"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.jaya_ghosha",
+   "sa": "जय",
+   "en": "Victory",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.42.33: जयत्यतिबलो रामो"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जय"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.anirveda",
+   "sa": "अनिर्वेद",
+   "en": "Undaunted spirit",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.12.10: अनिर्वेदः श्रियो मूलम्"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अनिर्वेद"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "move.shaila",
+   "sa": "शैल",
+   "en": "Mountain crag",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. शैल"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.vriksha",
+   "sa": "वृक्ष",
+   "en": "Tree",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वृक्ष"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.prajna",
+   "sa": "प्रज्ञा",
+   "en": "Wisdom",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. प्रज्ञा"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.mantrana",
+   "sa": "मन्त्रण",
+   "en": "Counsel",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/mantrana",
+      "accessed": "2026-11-10",
+      "note": "s.v. मन्त्रण: \"n. consultation, deliberation, MBh.; R.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.jala_dhara",
+   "sa": "जल",
+   "en": "Water",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जल"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.nakha",
+   "sa": "नख",
+   "en": "Claw",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. नख"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.maya_jala",
+   "sa": "माया",
+   "en": "Illusion",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. माया"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.shula",
+   "sa": "शूल",
+   "en": "Spear",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. शूल"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.garjana",
+   "sa": "गर्जन",
+   "en": "Roar",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/garjana",
+      "accessed": "2026-11-10",
+      "note": "s.v. गर्जन: \"n. crying, roaring, rumbling (of clouds), growl, R.; Hit.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.andhakara",
+   "sa": "अन्धकार",
+   "en": "Darkness",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अन्धकार"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.parigha",
+   "sa": "परिघ",
+   "en": "Iron club",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. परिघ"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.agni_varsha",
+   "sa": "अग्नि",
+   "en": "Fire",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अग्नि"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.naga_pasha",
+   "sa": "नागपाश",
+   "en": "Serpent-noose",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/नाग",
+      "accessed": "2026-11-10",
+      "note": "s.v. नाग-पाश (MW 1872 and Apte; the MW 1899 compound was not shown on the page): \"a sort of magical noose or lasso used in battle\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.chandrahasa",
+   "sa": "चन्द्रहास",
+   "en": "Candrahāsa, Rāvaṇa’s sword",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/चन्द्रहास",
+      "accessed": "2026-11-10",
+      "note": "s.v. चन्द्र-हास: \"a glittering scimitar … Rāvaṇa's sword, R. vii, 16, 43\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.tarka",
+   "sa": "तर्क",
+   "en": "Argument",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. तर्क"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "move.prashna",
+   "sa": "प्रश्न",
+   "en": "Question",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. प्रश्न"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "item.phala",
+   "sa": "फल",
+   "en": "Fruit",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. फल"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "item.kanda_mula",
+   "sa": "मूल",
+   "en": "Roots",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मूल"
+     },
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "passim: फलमूल \"fruits and roots\", the forest diet"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "source:valmiki-ramayana",
+     "engine:validateDeva"
+    ],
+    "notes": "कन्दमूल not confirmed as an MW headword with this sense; plain मूल used. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams, source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "item.madhu",
+   "sa": "मधु",
+   "en": "Honey",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मधु"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "item.oshadhi",
+   "sa": "ओषधि",
+   "en": "Healing herb",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. ओषधि"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "item.sanjivani",
+   "sa": "मृतसञ्जीवनी",
+   "en": "Mṛtasañjīvanī herb",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net) (Yuddha 6.74 vulgate = 6.61.33 critical edition, as on enjoylearningsanskrit.com)",
+      "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-6/chapter-61/verse-33",
+      "accessed": "2026-11-10",
+      "note": "मृतसंजीवनीं चैव विशल्यकरणीमपि (first of the four herbs Jāmbavān names)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://kosha.sanskrit.today/word/sa/मृतसञ्जीवनी",
+      "accessed": "2026-11-10",
+      "note": "s.v. मृत-संजीवनी (p. 827): \"f. revival of a dead person\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Class-nasal spelling सञ्जीवनी per the platform convention (MW and the e-text print संजीवनी with anusvāra). Read online 2026-11-10: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "item.kusha_mudrika",
+   "sa": "अङ्गुलीयक",
+   "en": "Rāma's ring",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.36: Hanumān gives Sītā Rāma’s अङ्गुलीयक"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अङ्गुलीयक"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana, source:monier-williams."
+   }
+  },
+  {
+   "id": "item.chudamani",
+   "sa": "चूडामणि",
+   "en": "Sītā's crest-jewel",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/",
+      "note": "Sundara 5.38: Sītā gives Hanumān her चूडामणि"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/cudamani",
+      "accessed": "2026-11-10",
+      "note": "s.v. चूडा-मणि: \"m. a jewel worn by men and women on the top of the head, MBh.; R.\""
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams. Asserted from reference knowledge by agent content-v, not fetched this session: source:valmiki-ramayana."
+   }
+  },
+  {
+   "id": "element.agni",
+   "sa": "अग्नि",
+   "en": "Fire",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अग्नि"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "element.jala",
+   "sa": "जल",
+   "en": "Water",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जल"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "element.vayu",
+   "sa": "वायु",
+   "en": "Wind",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. वायु"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "element.bhumi",
+   "sa": "भूमि",
+   "en": "Earth",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. भूमि"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "element.divya",
+   "sa": "दिव्य",
+   "en": "Divine",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. दिव्य"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "element.maya",
+   "sa": "माया",
+   "en": "Illusion",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. माया"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "element.none",
+   "sa": "सामान्य",
+   "en": "Ordinary (no element)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/samanya",
+      "accessed": "2026-11-10",
+      "note": "s.v. सामान्य: \"mf(ā)n. equal, alike, similar\"; later senses \"common, general, ordinary\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "kind.artha",
+   "sa": "अर्थ",
+   "en": "Meaning",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अर्थ"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "kind.lipi",
+   "sa": "लिपि",
+   "en": "Script",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लिपि"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "kind.purana",
+   "sa": "पूरण",
+   "en": "Fill in",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. पूरण"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "kind.krama",
+   "sa": "क्रम",
+   "en": "Word order",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. क्रम"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "kind.viccheda",
+   "sa": "विच्छेद",
+   "en": "Split the sandhi",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विच्छेद"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "kind.vibhakti",
+   "sa": "विभक्ति",
+   "en": "Case role",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विभक्ति"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "tier.unseen",
+   "sa": "अदृष्ट",
+   "en": "Unseen",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अदृष्ट"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "tier.seen",
+   "sa": "दृष्ट",
+   "en": "Seen",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. दृष्ट"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "tier.known",
+   "sa": "ज्ञात",
+   "en": "Known",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. ज्ञात"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "tier.mastered",
+   "sa": "सिद्ध",
+   "en": "Mastered",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सिद्ध"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.subject",
+   "sa": "प्रथमा",
+   "en": "nominative: the subject",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. प्रथमा"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.object",
+   "sa": "द्वितीया",
+   "en": "accusative: the object",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. द्वितीया"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.instrument",
+   "sa": "तृतीया",
+   "en": "instrumental: by / with",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. तृतीया"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.recipient",
+   "sa": "चतुर्थी",
+   "en": "dative: to / for",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. चतुर्थी"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.source",
+   "sa": "पञ्चमी",
+   "en": "ablative: from",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. पञ्चमी"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.possessor",
+   "sa": "षष्ठी",
+   "en": "genitive: of / 's",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. षष्ठी"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.location",
+   "sa": "सप्तमी",
+   "en": "locative: in / on / at",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सप्तमी"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.address",
+   "sa": "सम्बोधन",
+   "en": "vocative: calling someone",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सम्बोधन"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.verb",
+   "sa": "क्रियापद",
+   "en": "verb: the action",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.wisdomlib.org/definition/kriyapada",
+      "accessed": "2026-11-10",
+      "note": "s.v. क्रिया-पद: \"n. 'action-word', a verb\""
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Read online 2026-11-10: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.indeclinable",
+   "sa": "अव्यय",
+   "en": "indeclinable: never changes form",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अव्यय"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "role.modifier",
+   "sa": "विशेषण",
+   "en": "adjective: describes a noun",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. विशेषण"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Standard grammatical term. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "ui.words",
+   "sa": "पदानि",
+   "en": "Words",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. पद"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Nominative plural of पद. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "ui.verses",
+   "sa": "श्लोकाः",
+   "en": "Verses",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. श्लोक"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Nominative plural of श्लोक. Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "ui.ashrama",
+   "sa": "आश्रम",
+   "en": "Āśrama",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. आश्रम"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "ui.niska",
+   "sa": "निष्क",
+   "en": "Niṣka (gold coin)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. निष्क"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Asserted from reference knowledge by agent content-v, not fetched this session: source:monier-williams."
+   }
+  },
+  {
+   "id": "ui.samskritam",
+   "sa": "संस्कृतम्",
+   "en": "Sanskrit (the language)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Monier-Williams Sanskrit-English Dictionary (1899), saṃskṛta",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php",
+      "note": "saṃskṛta, n. \"the Sanskrit language\"; neuter nominative singular as the language name"
+     }
+    ],
+    "verifiedBy": [
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Label for the dialogue-language setting."
+   }
+  }
+ ]
+}

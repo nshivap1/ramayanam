@@ -1,0 +1,2408 @@
+{
+ "version": 1,
+ "chapters": [
+  {
+   "kanda": 6,
+   "nameId": "kanda.6",
+   "summary": "Yuddha: Vibhishana takes refuge with Rama, the vanaras build the setu, Agastya teaches the Aditya-hridaya, Ravana falls, and Rama is crowned in Ayodhya.",
+   "startMap": "setu_shore",
+   "startX": 2,
+   "startY": 6,
+   "shlokaIds": [
+    "s-sakrdeva",
+    "s-aditya-hrdayam",
+    "s-maranantani"
+   ],
+   "keyShloka": "s-aditya-hrdayam"
+  }
+ ],
+ "maps": [
+  {
+   "id": "setu_shore",
+   "nameId": "place.setu_shore",
+   "kanda": 6,
+   "width": 32,
+   "height": 20,
+   "legend": {
+    "&": "market_stall",
+    ",": "grass_flowers",
+    ".": "grass",
+    "O": "boulder",
+    "P": "tree_palm",
+    "X": "fire_altar",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "b": "bush",
+    "d": "hut_door",
+    "f": "flowers_red",
+    "i": "hut_window",
+    "l": "log",
+    "n": "shore_n",
+    "o": "ocean",
+    "r": "rock",
+    "s": "sand",
+    "u": "setu"
+   },
+   "ground": [
+    "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+    "P..P..........f..............P.P",
+    "P.....[^].[^].......[^].[^].P..P",
+    "P..b..idi.idi....,..idi.idi....P",
+    "P...............b..............P",
+    "P..,.,P........X.........X...P.P",
+    "P........,............,........P",
+    "P..P..&&...........O.......,...P",
+    "P.........r.P.....P...l....P...P",
+    "Prr..P...OO..........ll........P",
+    "PsssssssrssrssssssssssssssssPssP",
+    "PsrssrsssssOssssssssrssssrsssrsP",
+    "PsssslssrsssrssssssOssssssslsssP",
+    "onnnnnnnnnnnnnuuunnnnnnnnnnnnnno",
+    "oooooooooooooouuuooooooooooooooo",
+    "oooooooooooooouuuooooooooooooooo",
+    "oooooooooooooouuuooooooooooooooo",
+    "oooooooooooooouuuooooooooooooooo",
+    "oooooooooooooouuuooooooooooooooo",
+    "oooooooooooooouuuooooooooooooooo"
+   ],
+   "music": "kishkindha",
+   "battleBg": "ocean",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "merchant",
+     "sprite": "merchant",
+     "x": 8,
+     "y": 7,
+     "facing": "down",
+     "event": "ch6.shore_merchant"
+    },
+    {
+     "id": "vibhishana",
+     "sprite": "vibhishana",
+     "x": 24,
+     "y": 11,
+     "facing": "left",
+     "event": "ch6.vibhishana_refuge",
+     "showIf": "!ch6.vibhishana_joined"
+    },
+    {
+     "id": "nala",
+     "sprite": "vanara",
+     "x": 13,
+     "y": 11,
+     "facing": "right",
+     "event": "ch6.nala"
+    },
+    {
+     "id": "nila",
+     "sprite": "vanara",
+     "x": 16,
+     "y": 6,
+     "facing": "left",
+     "event": "ch6.nila"
+    },
+    {
+     "id": "worker",
+     "sprite": "vanara",
+     "x": 18,
+     "y": 11,
+     "facing": "left",
+     "event": "ch6.worker"
+    },
+    {
+     "id": "angada_s",
+     "sprite": "angada",
+     "x": 11,
+     "y": 5,
+     "facing": "down",
+     "event": "ch6.angada_shore"
+    }
+   ],
+   "warps": [
+    {
+     "x": 14,
+     "y": 19,
+     "to": "setu",
+     "tx": 11,
+     "ty": 1,
+     "facing": "down",
+     "requires": "ch6.setu_built",
+     "lockedEvent": "ch6.setu_locked"
+    },
+    {
+     "x": 15,
+     "y": 19,
+     "to": "setu",
+     "tx": 11,
+     "ty": 1,
+     "facing": "down",
+     "requires": "ch6.setu_built",
+     "lockedEvent": "ch6.setu_locked"
+    },
+    {
+     "x": 16,
+     "y": 19,
+     "to": "setu",
+     "tx": 11,
+     "ty": 1,
+     "facing": "down",
+     "requires": "ch6.setu_built",
+     "lockedEvent": "ch6.setu_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 4,
+     "y": 1,
+     "w": 1,
+     "h": 12,
+     "event": "ch6.shore_start",
+     "requires": "!ch6.started"
+    }
+   ]
+  },
+  {
+   "id": "setu",
+   "nameId": "place.setu",
+   "kanda": 6,
+   "width": 24,
+   "height": 30,
+   "legend": {
+    "\"": "kusha",
+    "O": "boulder",
+    "P": "tree_palm",
+    "X": "fire_altar",
+    "o": "ocean",
+    "r": "rock",
+    "s": "sand",
+    "u": "setu"
+   },
+   "ground": [
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "oooPrssssouuuooooooooooo",
+    "ooos\"\"\"ssouuuooooooooooo",
+    "ooos\"\"\"\"ssuuuooooooooooo",
+    "ooosr\"\"\"souuuooooooooooo",
+    "ooosssssPouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuossssssPooo",
+    "oooooooooouuuos\"\"\"\"ssooo",
+    "oooooooooouuuos\"\"\"\"\"sooo",
+    "oooooooooouuuss\"\"\"O\"sooo",
+    "oooooooooouuuoss\"\"\"\"sooo",
+    "oooooooooouuuoPssssrsooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "ooPssssssouuuooooooooooo",
+    "oos\"\"\"\"rsouuuooooooooooo",
+    "oos\"\"\"\"\"souuuooooooooooo",
+    "oos\"\"\"\"\"ssuuuossXsPooooo",
+    "ooss\"\"\"\"souuussssrsooooo",
+    "ooPsssssPouuuosssssooooo",
+    "oooooooooouuuossssPooooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo",
+    "oooooooooouuuooooooooooo"
+   ],
+   "music": "ocean",
+   "battleBg": "ocean",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "builder",
+     "sprite": "vanara",
+     "x": 16,
+     "y": 24,
+     "facing": "left",
+     "event": "ch6.setu_builder"
+    },
+    {
+     "id": "scout",
+     "sprite": "rakshasa",
+     "x": 5,
+     "y": 21,
+     "facing": "right",
+     "event": "ch6.setu_scout",
+     "showIf": "!ch6.scout_beaten"
+    }
+   ],
+   "warps": [
+    {
+     "x": 10,
+     "y": 0,
+     "to": "setu_shore",
+     "tx": 15,
+     "ty": 12,
+     "facing": "up"
+    },
+    {
+     "x": 11,
+     "y": 0,
+     "to": "setu_shore",
+     "tx": 15,
+     "ty": 12,
+     "facing": "up"
+    },
+    {
+     "x": 12,
+     "y": 0,
+     "to": "setu_shore",
+     "tx": 15,
+     "ty": 12,
+     "facing": "up"
+    },
+    {
+     "x": 10,
+     "y": 29,
+     "to": "suvela_camp",
+     "tx": 15,
+     "ty": 4,
+     "facing": "down"
+    },
+    {
+     "x": 11,
+     "y": 29,
+     "to": "suvela_camp",
+     "tx": 15,
+     "ty": 4,
+     "facing": "down"
+    },
+    {
+     "x": 12,
+     "y": 29,
+     "to": "suvela_camp",
+     "tx": 15,
+     "ty": 4,
+     "facing": "down"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 10,
+     "y": 2,
+     "w": 3,
+     "h": 1,
+     "event": "ch6.setu_walk",
+     "requires": "!ch6.setu_walked"
+    }
+   ],
+   "encounters": {
+    "rate": 0.12,
+    "table": [
+     {
+      "enemyId": "nishachara",
+      "weight": 3,
+      "minLevel": 23,
+      "maxLevel": 24
+     },
+     {
+      "enemyId": "yatudhana",
+      "weight": 2,
+      "minLevel": 23,
+      "maxLevel": 25
+     },
+     {
+      "enemyId": "rakshasi",
+      "weight": 2,
+      "minLevel": 23,
+      "maxLevel": 24
+     }
+    ]
+   }
+  },
+  {
+   "id": "suvela_camp",
+   "nameId": "place.suvela_camp",
+   "kanda": 6,
+   "width": 32,
+   "height": 22,
+   "legend": {
+    "!": "banner",
+    "&": "market_stall",
+    ",": "grass_flowers",
+    ".": "grass",
+    ":": "path",
+    "M": "mountain",
+    "O": "boulder",
+    "S": "shrine",
+    "T": "tree",
+    "X": "fire_altar",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "^": "hut_roof_m",
+    "b": "bush",
+    "d": "hut_door",
+    "f": "flowers_red",
+    "i": "hut_window",
+    "l": "log",
+    "o": "ocean",
+    "r": "rock",
+    "s": "sand",
+    "u": "setu",
+    "v": "shore_s"
+   },
+   "ground": [
+    "oooooooooooooouuuooooooooooooooo",
+    "oooooooooooooouuuooooooooooooooo",
+    "oooooooooooooouuuooooooooooooooo",
+    "TvvvvvvvvvvvvvuuuvvvvvvvvvMMMMMM",
+    "TrrrssssssssssssssssssssssMMMMMT",
+    "T..........!T..:...!..T...MMMMMT",
+    "T..............:..........MMMMMT",
+    "T...[^].[^]....:...[^]..f.MMMMMT",
+    "T.b.idi.idi....:...idi....MMMMMT",
+    "T..............:..........MMMMMT",
+    "T.T............X.......b..MMMMMT",
+    "T.....,......f.:...,......MMMMMT",
+    "T.......Xr.....:........MMMMMMMT",
+    "T...S........,.:..O..&&.MMMMMMMT",
+    "T..f.f.........:........MMMMMMMT",
+    "T.,........T...:........MMMMMMMT",
+    "T...[^]..[^]...:..r.....MMMMMMMT",
+    "T...idi..idi...:....X...MMMMMMMT",
+    "T......T.......:....T...MMMMMMMT",
+    "T..r..O...,.r..:........MMMMMMMT",
+    "T..............:.....l..MMMMMMMT",
+    "TTTTTTTTTTTTTTT:TTTTTTTTTTTTTTTT"
+   ],
+   "music": "kishkindha",
+   "battleBg": "battlefield",
+   "light": "dusk",
+   "npcs": [
+    {
+     "id": "angada",
+     "sprite": "angada",
+     "x": 14,
+     "y": 15,
+     "facing": "right",
+     "event": "ch6.angada_envoy"
+    },
+    {
+     "id": "merchant",
+     "sprite": "merchant",
+     "x": 23,
+     "y": 13,
+     "facing": "left",
+     "event": "ch6.camp_merchant"
+    },
+    {
+     "id": "keeper",
+     "sprite": "rishi",
+     "x": 6,
+     "y": 13,
+     "facing": "left",
+     "event": "ch6.camp_keeper"
+    },
+    {
+     "id": "sentry",
+     "sprite": "vanara",
+     "x": 17,
+     "y": 19,
+     "facing": "left",
+     "event": "ch6.camp_sentry"
+    },
+    {
+     "id": "vanara_a",
+     "sprite": "vanara",
+     "x": 11,
+     "y": 10,
+     "facing": "right",
+     "event": "ch6.camp_vanara"
+    },
+    {
+     "id": "jambavan_np",
+     "sprite": "jambavan",
+     "x": 18,
+     "y": 10,
+     "facing": "left",
+     "event": "ch6.camp_bear"
+    },
+    {
+     "id": "sugriva_c",
+     "sprite": "sugriva",
+     "x": 16,
+     "y": 12,
+     "facing": "down",
+     "event": "ch6.camp_sugriva"
+    }
+   ],
+   "warps": [
+    {
+     "x": 14,
+     "y": 0,
+     "to": "setu",
+     "tx": 11,
+     "ty": 28,
+     "facing": "up"
+    },
+    {
+     "x": 15,
+     "y": 0,
+     "to": "setu",
+     "tx": 11,
+     "ty": 28,
+     "facing": "up"
+    },
+    {
+     "x": 16,
+     "y": 0,
+     "to": "setu",
+     "tx": 11,
+     "ty": 28,
+     "facing": "up"
+    },
+    {
+     "x": 15,
+     "y": 21,
+     "to": "lanka_battlefield",
+     "tx": 16,
+     "ty": 1,
+     "facing": "down",
+     "requires": "ch6.envoy",
+     "lockedEvent": "ch6.battle_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 4,
+     "y": 5,
+     "w": 22,
+     "h": 1,
+     "event": "ch6.suvela_enter",
+     "requires": "!ch6.suvela_reached"
+    }
+   ]
+  },
+  {
+   "id": "lanka_battlefield",
+   "nameId": "place.lanka_battlefield",
+   "kanda": 6,
+   "width": 34,
+   "height": 30,
+   "legend": {
+    "!": "banner",
+    "\"": "kusha",
+    "$": "chest",
+    "C": "cliff",
+    "N": "lanka_wall",
+    "O": "boulder",
+    "X": "fire_altar",
+    "b": "bush",
+    "g": "gate",
+    "j": "lanka_roof",
+    "l": "log",
+    "q": "torch",
+    "r": "rock",
+    "t": "stump",
+    "x": "lanka_floor",
+    "z": "battle_ground"
+   },
+   "ground": [
+    "OOOOOOOOOOOOOOOzzzOOOOOOOOOOOOOOOO",
+    "Ozz!zzzzzzzzzzzzzzzzzzzzzzzzzz!zzO",
+    "Oz\"\"\"\"zzzzzzOzzzzzzzzrzzzzzz\"\"\"r$O",
+    "Oz\"\"\"\"\"zzzzzzrzzzzzzzzlzzzz\"\"\"\"\"zO",
+    "Oz\"\"\"\"\"zzzlzzzzzzzzzzzzzzzz\"\"\"\"\"zO",
+    "Ozz\"\"\"\"zzzzzzzzzzzzrzzzzzzz\"\"\"\"zzO",
+    "OzzzzzzztzXzzzzzzzzzzzzzXzzzzbzzzO",
+    "OzzzzzzzzzzzzzzzzzzzzzzzztzzzzzzzO",
+    "OrOOCCOrOOlOOrOOzOOrOOrOOrCCrOOrOO",
+    "OzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzO",
+    "Ozz\"\"\"\"\"zz!zzzzzzzzzztzzzz\"\"\"\"\"\"zO",
+    "Oz\"\"\"\"\"\"zzzzzzrzzzzzzzzzz\"\"\"\"\"\"\"zO",
+    "Oz\"\"\"\"\"\"zzzzlzzzXzzzzzzzz\"\"\"\"\"\"\"zO",
+    "Oz\"\"\"\"\"\"zzzzzzzzzzzzlzzzz\"\"\"\"\"\"\"zO",
+    "Oz\"\"\"\"\"zzzztzzzzzzrzzzzzz\"\"\"\"\"\"zzO",
+    "OzzzOzzzzzzzzzzzzzzzzzzzzzzzlzzzzO",
+    "OOrOOrOCCOOrOOrOzrOOrOOCCOrOOrOOrO",
+    "OzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzO",
+    "Ozzz\"\"\"\"\"zzzzzzzzzzzzz!zz\"\"\"\"\"\"zzO",
+    "Ozz\"\"\"\"\"\"zzztzzzzzrzzzzz\"\"\"\"\"\"\"zzO",
+    "Ozz\"\"\"\"\"\"lzzzzzzzzzzzzzz\"\"\"\"\"\"\"zzO",
+    "Ozz\"\"\"\"\"\"zzz!zrzzzzzzzzl\"\"\"\"\"\"\"zzO",
+    "Ozz\"\"\"\"\"zzzzzzzzzzztzzzz\"\"\"\"\"\"zzzO",
+    "OzzzzzzzzzzzzzzzzzzzzzzzzzzzOzzzzO",
+    "OOOrOOrOOrCCrOOrzOrOOCCOrOOrOOrOOO",
+    "Ozzzzz!zzzzzzzqxxxqzzzzzzzz!zzzzzO",
+    "OzzzOzzzlzzzzzzxzxzzzzzzlzzzzrzzzO",
+    "OzzzzzzzzzzzzzqxxxqzzzzzzzzzzzzzzO",
+    "NNNNNNNN!NNNNNqNgNqNNNNN!NNNNNNNNN",
+    "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"
+   ],
+   "music": "battle",
+   "battleBg": "battlefield",
+   "light": "dusk",
+   "npcs": [
+    {
+     "id": "dhumraksha",
+     "sprite": "rakshasa",
+     "x": 16,
+     "y": 8,
+     "facing": "up",
+     "event": "ch6.dhumraksha",
+     "showIf": "!ch6.dhumraksha_defeated"
+    },
+    {
+     "id": "kumbhakarna",
+     "sprite": "kumbhakarna",
+     "x": 16,
+     "y": 16,
+     "facing": "up",
+     "event": "ch6.kumbhakarna",
+     "showIf": "!ch6.kumbhakarna_defeated"
+    },
+    {
+     "id": "indrajit",
+     "sprite": "indrajit",
+     "x": 16,
+     "y": 24,
+     "facing": "up",
+     "event": "ch6.indrajit",
+     "showIf": "!ch6.indrajit_defeated"
+    },
+    {
+     "id": "sushena",
+     "sprite": "vanara",
+     "x": 9,
+     "y": 12,
+     "facing": "right",
+     "event": "ch6.sushena"
+    },
+    {
+     "id": "sushena_2",
+     "sprite": "vanara",
+     "x": 22,
+     "y": 20,
+     "facing": "left",
+     "event": "ch6.sushena"
+    },
+    {
+     "id": "agastya",
+     "sprite": "agastya",
+     "x": 13,
+     "y": 26,
+     "facing": "right",
+     "event": "ch6.agastya",
+     "showIf": "ch6.indrajit_defeated"
+    },
+    {
+     "id": "vanara_f",
+     "sprite": "vanara",
+     "x": 20,
+     "y": 4,
+     "facing": "left",
+     "event": "ch6.field_vanara"
+    }
+   ],
+   "warps": [
+    {
+     "x": 15,
+     "y": 0,
+     "to": "suvela_camp",
+     "tx": 15,
+     "ty": 20,
+     "facing": "up"
+    },
+    {
+     "x": 16,
+     "y": 0,
+     "to": "suvela_camp",
+     "tx": 15,
+     "ty": 20,
+     "facing": "up"
+    },
+    {
+     "x": 17,
+     "y": 0,
+     "to": "suvela_camp",
+     "tx": 15,
+     "ty": 20,
+     "facing": "up"
+    },
+    {
+     "x": 16,
+     "y": 28,
+     "to": "lanka_palace",
+     "tx": 11,
+     "ty": 16,
+     "facing": "up",
+     "requires": "restored.s-aditya-hrdayam",
+     "lockedEvent": "ch6.palace_locked"
+    }
+   ],
+   "triggers": [
+    {
+     "x": 15,
+     "y": 2,
+     "w": 3,
+     "h": 1,
+     "event": "ch6.battlefield_enter",
+     "requires": "!ch6.battlefield_entered"
+    },
+    {
+     "x": 32,
+     "y": 3,
+     "w": 1,
+     "h": 1,
+     "event": "ch6.field_chest",
+     "once": true
+    }
+   ],
+   "encounters": {
+    "rate": 0.1,
+    "table": [
+     {
+      "enemyId": "yatudhana",
+      "weight": 3,
+      "minLevel": 24,
+      "maxLevel": 26
+     },
+     {
+      "enemyId": "rakshasi",
+      "weight": 2,
+      "minLevel": 24,
+      "maxLevel": 26
+     },
+     {
+      "enemyId": "nishachara",
+      "weight": 2,
+      "minLevel": 25,
+      "maxLevel": 27
+     }
+    ]
+   }
+  },
+  {
+   "id": "lanka_palace",
+   "nameId": "place.lanka_palace",
+   "kanda": 6,
+   "width": 23,
+   "height": 18,
+   "legend": {
+    "!": "banner",
+    "*": "lamp",
+    "+": "palace_floor",
+    "D": "lanka_door",
+    "I": "pillar",
+    "K": "throne",
+    "N": "lanka_wall",
+    "c": "carpet",
+    "j": "lanka_roof",
+    "q": "torch",
+    "x": "lanka_floor"
+   },
+   "ground": [
+    "jjjjjjjjjjjjjjjjjjjjjjj",
+    "Nxxxxx!xxxx!xxxx!xxxxxN",
+    "Nxxxxxx!+q+K+q+!xxxxxxN",
+    "Nxx*xxx++++c++++xxx*xxN",
+    "NxxxxxIxxx+c+xxxIxxxxxN",
+    "qxxxxxxxxx+c+xxxxxxxxxq",
+    "NxxIxxxxxx+c+xxxxxxIxxN",
+    "NxxxxxIxxx+c+xxxIxxxxxN",
+    "Nxxxxxxxxx+c+xxxxxxxxxN",
+    "Nxx*xxxxxx+c+xxxxxx*xxN",
+    "NxxxxxIxxx+c+xxxIxxxxxN",
+    "qxxxxxxxxx+c+xxxxxxxxxq",
+    "NxxIxxxxxx+c+xxxxxxIxxN",
+    "NxxxxxIxxx+c+xxxIxxxxxN",
+    "Nxxxxxxxxx+c+xxxxxxxxxN",
+    "Nxx*xxxxxq+c+qxxxxx*xxN",
+    "Nxxxxxxxxx+c+xxxxxxxxxN",
+    "NNNNNNNNNNNDNNNNNNNNNNN"
+   ],
+   "music": "lanka",
+   "battleBg": "lanka",
+   "light": "night",
+   "npcs": [
+    {
+     "id": "ravana",
+     "sprite": "ravana",
+     "x": 11,
+     "y": 4,
+     "facing": "down",
+     "event": "ch6.ravana",
+     "showIf": "!ch6.ravana_defeated"
+    }
+   ],
+   "warps": [
+    {
+     "x": 11,
+     "y": 17,
+     "to": "lanka_battlefield",
+     "tx": 16,
+     "ty": 27,
+     "facing": "down"
+    }
+   ],
+   "triggers": []
+  },
+  {
+   "id": "ayodhya_return",
+   "nameId": "place.ayodhya_return",
+   "kanda": 6,
+   "width": 30,
+   "height": 22,
+   "legend": {
+    "!": "banner",
+    "$": "market_stall",
+    "+": "stone_road",
+    ",": "grass_flowers",
+    "-": "hut_roof_m",
+    ".": "grass",
+    "D": "hut_door",
+    "G": "gate",
+    "K": "palace_roof",
+    "Q": "palace_wall",
+    "T": "tree",
+    "U": "city_wall",
+    "Y": "well",
+    "Z": "throne",
+    "[": "hut_roof_l",
+    "]": "hut_roof_r",
+    "f": "flowers_red",
+    "h": "hut_window",
+    "i": "pillar",
+    "j": "lamp",
+    "k": "carpet",
+    "p": "palace_floor"
+   },
+   "ground": [
+    "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+    "UKKKKKKKKKKKKKKKKKKKKKKKKKKKKU",
+    "UKKKKKKKKKKKKKKKKKKKKKKKKKKKKU",
+    "UQQQQiQQQiQQQQQQQQQQiQQQiQQQQU",
+    "U...f..+jp!pppZZppp!pj+.....fU",
+    "U.T...f+ppppppkkpppppp+..T...U",
+    "U..f...+ppppppkkpppppp+f..f..U",
+    "U....T.+ppppppkkpppppp+....T.U",
+    "U..T...+jpppppkkpppppj+.T....U",
+    "U++++++++++++++++++++++++++++U",
+    "U....,.!+++j++++++j+++!.....TU",
+    "U.[-]..++++++++++++++++.[-]..U",
+    "U.hDh..++$$++++++++$$++.hDh..U",
+    "U.....T++++++++++++++++T.....U",
+    "UT.,...++++++++++++++++...,..U",
+    "U+++++++++++++Y++++++++++++++U",
+    "U..T..++++++++++++++++++.....U",
+    "U.f...+!+++j++++++j+++!+..f..U",
+    "U.....++++++++++++++++++.T...U",
+    "U...f.++j++++++++++++j++...f.U",
+    "U+++++++++++++GG+++++++++++++U",
+    "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
+   ],
+   "music": "ayodhya",
+   "battleBg": "palace",
+   "light": "day",
+   "npcs": [
+    {
+     "id": "rama_c",
+     "sprite": "rama",
+     "x": 14,
+     "y": 5,
+     "facing": "down",
+     "event": "ch6.rama_court"
+    },
+    {
+     "id": "sita_c",
+     "sprite": "sita",
+     "x": 15,
+     "y": 5,
+     "facing": "down",
+     "event": "ch6.sita_court"
+    },
+    {
+     "id": "vasishtha",
+     "sprite": "vasishtha",
+     "x": 12,
+     "y": 6,
+     "facing": "right",
+     "event": "ch6.coronation"
+    },
+    {
+     "id": "bharata",
+     "sprite": "bharata",
+     "x": 17,
+     "y": 6,
+     "facing": "left",
+     "event": "ch6.bharata"
+    },
+    {
+     "id": "kausalya",
+     "sprite": "kausalya",
+     "x": 10,
+     "y": 7,
+     "facing": "right",
+     "event": "ch6.kausalya"
+    },
+    {
+     "id": "hanuman_c",
+     "sprite": "hanuman",
+     "x": 18,
+     "y": 8,
+     "facing": "up",
+     "event": "ch6.hanuman_court"
+    },
+    {
+     "id": "lakshmana_c",
+     "sprite": "lakshmana",
+     "x": 13,
+     "y": 8,
+     "facing": "up",
+     "event": "ch6.lakshmana_court"
+    },
+    {
+     "id": "sugriva_c",
+     "sprite": "sugriva",
+     "x": 20,
+     "y": 7,
+     "facing": "left",
+     "event": "ch6.sugriva_court"
+    },
+    {
+     "id": "citizen_1",
+     "sprite": "villager_m",
+     "x": 8,
+     "y": 14,
+     "facing": "right",
+     "event": "ch6.citizen"
+    },
+    {
+     "id": "citizen_2",
+     "sprite": "villager_f",
+     "x": 21,
+     "y": 15,
+     "facing": "left",
+     "event": "ch6.citizen_2"
+    },
+    {
+     "id": "child_c",
+     "sprite": "child",
+     "x": 16,
+     "y": 17,
+     "facing": "up",
+     "event": "ch6.child_lamps"
+    },
+    {
+     "id": "vanara_c",
+     "sprite": "vanara",
+     "x": 25,
+     "y": 15,
+     "facing": "left",
+     "event": "ch6.vanara_city"
+    }
+   ],
+   "warps": [],
+   "triggers": []
+  }
+ ],
+ "events": [
+  {
+   "id": "ch6.shore_start",
+   "cmds": [
+    {
+     "chapter": 6
+    },
+    {
+     "music": "kishkindha"
+    },
+    {
+     "say": "The vanara army covers the southern shore like a second ocean. Hanuman and you stand again with your companions."
+    },
+    {
+     "join": "rama"
+    },
+    {
+     "join": "lakshmana"
+    },
+    {
+     "join": "sugriva"
+    },
+    {
+     "join": "jambavan"
+    },
+    {
+     "say": "Rama, Lakshmana, Sugriva and Jambavan rejoin your party!"
+    },
+    {
+     "rest": true
+    },
+    {
+     "say": "Lanka lies across the water. Now we must find a way over it.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "objective": "Speak with the stranger on the beach, to the east."
+    },
+    {
+     "set": "ch6.started"
+    }
+   ]
+  },
+  {
+   "id": "ch6.shore_merchant",
+   "cmds": [
+    {
+     "say": "Supplies for the army! Fruit, roots, honey and herbs.",
+     "who": "Merchant",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.nila",
+   "cmds": [
+    {
+     "say": "I am Nila, commander of the vanaras. Every soldier is ready, and every heart is with Rama.",
+     "who": "Nila",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch6.angada_shore",
+   "cmds": [
+    {
+     "if": "ch6.vibhishana_joined",
+     "then": [
+      {
+       "say": "A rakshasa among us! But if Rama trusts him, so do I.",
+       "who": "person.angada",
+       "portrait": "angada"
+      }
+     ],
+     "else": [
+      {
+       "say": "Hanuman, they say you set Lanka ablaze with your own tail! Tell me everything later.",
+       "who": "person.angada",
+       "portrait": "angada"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.worker",
+   "cmds": [
+    {
+     "if": "ch6.setu_built",
+     "then": [
+      {
+       "say": "We carried mountains! My arms will ache for a year.",
+       "who": "Vanara builder",
+       "portrait": "vanara"
+      }
+     ],
+     "else": [
+      {
+       "say": "Boulders, trees, whole hillsides! We are ready to carry anything Nala asks for.",
+       "who": "Vanara builder",
+       "portrait": "vanara"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.vibhishana_refuge",
+   "cmds": [
+    {
+     "say": "A rakshasa descends from the sky with four companions and stands in the air above the beach. The vanaras raise rocks and trees."
+    },
+    {
+     "say": "I am Vibhishana, Ravana's younger brother. I begged him to return Sita, and he shamed me before his whole court.",
+     "who": "person.vibhishana",
+     "portrait": "vibhishana"
+    },
+    {
+     "say": "I have left Lanka, my home and my family. I seek refuge with Rama.",
+     "who": "person.vibhishana",
+     "portrait": "vibhishana"
+    },
+    {
+     "say": "Do not trust him, friend! He is the enemy's own brother. He may be a spy.",
+     "who": "person.sugriva",
+     "portrait": "sugriva"
+    },
+    {
+     "say": "He spoke for Sita in Ravana's court. He saved my life when Ravana ordered my death.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "label": "k_ask"
+      },
+      {
+       "choice": "Rama turns to you: \"{player}, what does he ask of us?\"",
+       "options": [
+        {
+         "label": "He is Ravana's younger brother.",
+         "goto": "k_ask_m0"
+        },
+        {
+         "label": "He has come from Lanka.",
+         "goto": "k_ask_m1"
+        },
+        {
+         "label": "Refuge. He asks for your protection."
+        }
+       ]
+      },
+      {
+       "goto": "k_ask_end"
+      },
+      {
+       "label": "k_ask_m0"
+      },
+      {
+       "say": "I know who he is, child. I asked what he wants.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "goto": "k_ask"
+      },
+      {
+       "label": "k_ask_m1"
+      },
+      {
+       "say": "From Lanka, yes. But what does he ask for?",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "goto": "k_ask"
+      },
+      {
+       "label": "k_ask_end"
+      },
+      {
+       "say": "Yes. He asks for refuge.",
+       "who": "person.rama",
+       "portrait": "rama"
+      }
+     ]
+    },
+    {
+     "say": "Rama listens to every counsel. Then he speaks."
+    },
+    {
+     "shloka": "s-sakrdeva",
+     "mode": "hear"
+    },
+    {
+     "say": "Even if Ravana himself came seeking refuge, I would not turn him away. I give {w:abhaya} to all who come to me. That is my {w:vrata}.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "quiz": "artha",
+     "shlokaId": "s-sakrdeva",
+     "onCorrect": [
+      {
+       "say": "Right. This is Rama's vow of refuge, and the source of his fearlessness."
+      }
+     ],
+     "onWrong": [
+      {
+       "say": "Not quite. Tap the word card and read the gloss, then try it in battle."
+      }
+     ]
+    },
+    {
+     "say": "Vibhishana bows at Rama's feet. Rama sprinkles him with sea water and names him king of Lanka."
+    },
+    {
+     "say": "Sugriva embraces Vibhishana. 'Then you are my friend too. Walk at Rama's side; I will lead the vanara army from the front.'"
+    },
+    {
+     "leave": "sugriva"
+    },
+    {
+     "say": "Sugriva goes to command the army. He will fight beside you on the battlefield."
+    },
+    {
+     "join": "vibhishana"
+    },
+    {
+     "say": "Vibhishana joins your party!"
+    },
+    {
+     "set": "ch6.vibhishana_joined"
+    },
+    {
+     "objective": "Ask Nala, by the shore, how to cross the ocean."
+    }
+   ]
+  },
+  {
+   "id": "ch6.nala",
+   "cmds": [
+    {
+     "if": "ch6.setu_built",
+     "then": [
+      {
+       "say": "The setu is finished. Cross it, and may your feet be swift.",
+       "who": "Nala",
+       "portrait": "vanara"
+      }
+     ],
+     "else": [
+      {
+       "if": "ch6.vibhishana_joined",
+       "then": [
+        {
+         "say": "Rama prayed to the Ocean for three days. When the Ocean did not answer, Rama took up his bow in anger."
+        },
+        {
+         "say": "Then the Ocean rose in person and bowed. 'Nala, son of Vishvakarma, can build a bridge. I will hold up whatever he places on my waters.'"
+        },
+        {
+         "say": "I am Nala. Vanaras, bring me trees and boulders! Rama's name on every stone!",
+         "who": "Nala",
+         "portrait": "vanara"
+        },
+        {
+         "say": "For five days the vanaras uproot trees and carry rocks. Nala sets them in the sea, and they float."
+        },
+        {
+         "say": "On the fifth day the setu stretches all the way to Lanka. The gods watch from the sky in wonder."
+        },
+        {
+         "set": "ch6.setu_built"
+        },
+        {
+         "objective": "Cross the setu south to Lanka."
+        }
+       ],
+       "else": [
+        {
+         "say": "Rama will tell us when to begin. First, see who has come to the beach.",
+         "who": "Nala",
+         "portrait": "vanara"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.setu_locked",
+   "cmds": [
+    {
+     "say": "The ocean stretches endlessly. The bridge is not built yet."
+    }
+   ]
+  },
+  {
+   "id": "ch6.setu_walk",
+   "cmds": [
+    {
+     "say": "The bridge Nala built stretches a hundred yojanas across the waves. The vanara army pours across it, roaring Rama's name."
+    },
+    {
+     "say": "Small islets dot the way. Rakshasa scouts may lurk in their grass."
+    },
+    {
+     "objective": "Cross the setu south to Suvela hill."
+    },
+    {
+     "set": "ch6.setu_walked"
+    }
+   ]
+  },
+  {
+   "id": "ch6.setu_builder",
+   "cmds": [
+    {
+     "say": "Sit with us a while! We carried the stones for this bridge with our own hands.",
+     "who": "Vanara builder",
+     "portrait": "vanara"
+    },
+    {
+     "rest": true
+    },
+    {
+     "say": "Your party is fully rested."
+    }
+   ]
+  },
+  {
+   "id": "ch6.suvela_enter",
+   "cmds": [
+    {
+     "music": "kishkindha"
+    },
+    {
+     "say": "The army camps on {n:place.suvela_camp} hill. From its slopes you can see Lanka's golden walls, lit by a thousand torches."
+    },
+    {
+     "objective": "Prepare at the camp, then speak with Angada."
+    },
+    {
+     "set": "ch6.suvela_reached"
+    }
+   ]
+  },
+  {
+   "id": "ch6.angada_envoy",
+   "cmds": [
+    {
+     "if": "ch6.envoy",
+     "then": [
+      {
+       "say": "Ravana chose war. The army marches through the south pass whenever you are ready.",
+       "who": "person.angada",
+       "portrait": "angada"
+      }
+     ],
+     "else": [
+      {
+       "say": "Rama sent me to Ravana's court with one last offer: return Sita, and live in peace.",
+       "who": "person.angada",
+       "portrait": "angada"
+      },
+      {
+       "say": "Ravana laughed and called for my capture. I leapt up and broke the top of his palace tower as I left!",
+       "who": "person.angada",
+       "portrait": "angada"
+      },
+      {
+       "say": "There is no other way now. Lanka's gates open onto the battlefield, just south of here.",
+       "who": "person.angada",
+       "portrait": "angada"
+      },
+      {
+       "set": "ch6.envoy"
+      },
+      {
+       "objective": "March south to the battlefield before Lanka."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.camp_merchant",
+   "cmds": [
+    {
+     "say": "Even an army needs honey and herbs. Buy what you need.",
+     "who": "Merchant",
+     "portrait": "merchant"
+    },
+    {
+     "shop": [
+      "phala",
+      "kanda_mula",
+      "madhu",
+      "oshadhi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.camp_keeper",
+   "cmds": [
+    {
+     "say": "This shrine has stood on Suvela since before Lanka was built. Rest and recite here whenever you need.",
+     "who": "Hermit",
+     "portrait": "rishi"
+    },
+    {
+     "shrine": true
+    }
+   ]
+  },
+  {
+   "id": "ch6.camp_sentry",
+   "cmds": [
+    {
+     "if": "ch6.envoy",
+     "then": [
+      {
+       "say": "The battlefield lies south. Be careful out there.",
+       "who": "Vanara sentry",
+       "portrait": "vanara"
+      }
+     ],
+     "else": [
+      {
+       "say": "Nobody marches until Angada returns from Ravana's court.",
+       "who": "Vanara sentry",
+       "portrait": "vanara"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.camp_sugriva",
+   "cmds": [
+    {
+     "say": "Every vanara and every bear is ready. When the gates open, I will be at the front of the army.",
+     "who": "person.sugriva",
+     "portrait": "sugriva"
+    },
+    {
+     "say": "Rest at the shrine first, friend. The battle ahead will be long.",
+     "who": "person.sugriva",
+     "portrait": "sugriva"
+    }
+   ]
+  },
+  {
+   "id": "ch6.camp_vanara",
+   "cmds": [
+    {
+     "if": "heard.s-sakrdeva",
+     "then": [
+      {
+       "say": "I was on the beach when Rama made his vow. Whoever comes to him even once and says 'I am yours' is safe from every creature.",
+       "who": "Vanara",
+       "portrait": "vanara"
+      },
+      {
+       "say": "{w:abhaya}: freedom from fear. That is why a rakshasa walks in our camp now, and nobody minds.",
+       "who": "Vanara",
+       "portrait": "vanara"
+      }
+     ]
+    },
+    {
+     "say": "Look at Lanka's walls. Tomorrow we will be at its gates.",
+     "who": "Vanara",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch6.camp_bear",
+   "cmds": [
+    {
+     "say": "A bear warrior of Jambavan's clan. 'Our king is old, but he still fights like a mountain.'"
+    }
+   ]
+  },
+  {
+   "id": "ch6.battle_locked",
+   "cmds": [
+    {
+     "say": "Wait for Angada's word. He went as Rama's envoy to Ravana's court.",
+     "who": "Vanara sentry",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch6.battlefield_enter",
+   "cmds": [
+    {
+     "music": "battle"
+    },
+    {
+     "say": "The gates of Lanka open, and Ravana's armies pour out. The battle of Lanka begins."
+    },
+    {
+     "say": "The vanara physician Sushena tends the wounded behind the lines. Rest with him between battles."
+    },
+    {
+     "objective": "Break through Ravana's generals to the city gate in the south."
+    },
+    {
+     "set": "ch6.battlefield_entered"
+    }
+   ]
+  },
+  {
+   "id": "ch6.field_vanara",
+   "cmds": [
+    {
+     "say": "The rakshasas fight with illusions, but Rama's arrows cut through them all!",
+     "who": "Vanara",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch6.sushena",
+   "cmds": [
+    {
+     "say": "I am Sushena, physician of the vanaras. Lie down; these herbs will restore you.",
+     "who": "Sushena",
+     "portrait": "vanara"
+    },
+    {
+     "rest": true
+    },
+    {
+     "say": "Your party is fully rested."
+    },
+    {
+     "if": "ch6.sanjivani_given",
+     "then": [],
+     "else": [
+      {
+       "say": "When Lakshmana fell to Indrajit's weapon, Hanuman flew to the Himalaya and carried back a whole mountain of healing herbs.",
+       "who": "Sushena",
+       "portrait": "vanara"
+      },
+      {
+       "say": "One sprig of the life-giving herb is left. Keep it for the darkest hour.",
+       "who": "Sushena",
+       "portrait": "vanara"
+      },
+      {
+       "give": "sanjivani"
+      },
+      {
+       "set": "ch6.sanjivani_given"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.dhumraksha",
+   "cmds": [
+    {
+     "say": "Dhumraksha, Smoke-Eyed, one of Ravana's fiercest generals, blocks the way with a great iron club."
+    },
+    {
+     "say": "Monkeys and men against Lanka? I will scatter you like dust!",
+     "who": "Dhumraksha",
+     "portrait": "rakshasa"
+    },
+    {
+     "choice": "Rest and save before the battle?",
+     "options": [
+      {
+       "label": "Rest and save, then fight",
+       "goto": "rest"
+      },
+      {
+       "label": "Fight now",
+       "goto": "fight"
+      }
+     ]
+    },
+    {
+     "label": "rest"
+    },
+    {
+     "rest": true
+    },
+    {
+     "save": true
+    },
+    {
+     "label": "fight"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "dhumraksha",
+        "level": 24
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "battlefield",
+      "music": "boss",
+      "intro": "Dhumraksha charges!"
+     },
+     "onWin": [
+      {
+       "say": "Hanuman's blow ends Dhumraksha's charge. His army flees back toward the walls."
+      },
+      {
+       "set": "ch6.dhumraksha_defeated"
+      },
+      {
+       "objective": "Press on south toward the city gate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.kumbhakarna",
+   "cmds": [
+    {
+     "say": "The ground shakes. Kumbhakarna, Ravana's giant brother, has been woken from his long sleep."
+    },
+    {
+     "say": "Even he told Ravana that taking Sita was wrong. Yet he fights for his brother."
+    },
+    {
+     "say": "Brother, you did wrong. But I will not abandon you.",
+     "who": "person.kumbhakarna",
+     "portrait": "kumbhakarna"
+    },
+    {
+     "choice": "Rest and save before the battle?",
+     "options": [
+      {
+       "label": "Rest and save, then fight",
+       "goto": "rest"
+      },
+      {
+       "label": "Fight now",
+       "goto": "fight"
+      }
+     ]
+    },
+    {
+     "label": "rest"
+    },
+    {
+     "rest": true
+    },
+    {
+     "save": true
+    },
+    {
+     "label": "fight"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "kumbhakarna",
+        "level": 26
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "battlefield",
+      "music": "boss",
+      "intro": "Kumbhakarna strides onto the field!"
+     },
+     "onWin": [
+      {
+       "say": "Rama's arrows bring the giant down at last. Kumbhakarna falls like a mountain, and the earth trembles."
+      },
+      {
+       "say": "In Lanka, Ravana weeps for his brother."
+      },
+      {
+       "set": "ch6.kumbhakarna_defeated"
+      },
+      {
+       "objective": "Press on south toward the city gate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.indrajit",
+   "cmds": [
+    {
+     "say": "Indrajit, Ravana's son, who once defeated Indra himself, fights hidden inside clouds of illusion."
+    },
+    {
+     "say": "Fight me if you can. No one can strike what they cannot see!",
+     "who": "person.indrajit",
+     "portrait": "indrajit"
+    },
+    {
+     "choice": "Rest and save before the battle?",
+     "options": [
+      {
+       "label": "Rest and save, then fight",
+       "goto": "rest"
+      },
+      {
+       "label": "Fight now",
+       "goto": "fight"
+      }
+     ]
+    },
+    {
+     "label": "rest"
+    },
+    {
+     "rest": true
+    },
+    {
+     "save": true
+    },
+    {
+     "label": "fight"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "indrajit",
+        "level": 27
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "battlefield",
+      "music": "boss",
+      "intro": "Indrajit appears from the clouds!"
+     },
+     "onWin": [
+      {
+       "say": "Lakshmana looses a final arrow with a vow: 'If Rama is truthful and devoted to dharma, let this arrow strike.'"
+      },
+      {
+       "say": "The arrow flies true, and Indrajit's sorcery ends forever."
+      },
+      {
+       "say": "Before the gate of Lanka stands a small, radiant sage. He seems to have been waiting for you."
+      },
+      {
+       "set": "ch6.indrajit_defeated"
+      },
+      {
+       "objective": "Speak with the sage before the gate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.agastya",
+   "cmds": [
+    {
+     "if": "ch6.agastya_taught",
+     "then": [],
+     "else": [
+      {
+       "say": "Ravana himself is coming out to fight. Rama stands weary, thinking of the battle ahead."
+      },
+      {
+       "say": "The sage Agastya, who has come with the gods to watch the battle, approaches Rama."
+      },
+      {
+       "say": "Rama, mighty-armed, hear the eternal secret by which you will conquer every foe in battle.",
+       "who": "person.agastya",
+       "portrait": "agastya"
+      },
+      {
+       "shloka": "s-aditya-hrdayam",
+       "mode": "hear"
+      },
+      {
+       "say": "It is the {n:move.aditya_hrdaya}, the hymn to the heart of the Sun. It destroys all enemies and brings victory.",
+       "who": "person.agastya",
+       "portrait": "agastya"
+      },
+      {
+       "quiz": "vibhakti",
+       "shlokaId": "s-aditya-hrdayam",
+       "onCorrect": [
+        {
+         "say": "Well done. You read the hymn's grammar like a true student of Agastya."
+        }
+       ],
+       "onWrong": [
+        {
+         "say": "Not quite. Find the verb first; the other words arrange themselves around it."
+        }
+       ]
+      },
+      {
+       "say": "Agastya also blesses Rama's greatest weapon, the {n:move.brahmastra}, so that it will not fail."
+      },
+      {
+       "set": "ch6.agastya_taught"
+      }
+     ]
+    },
+    {
+     "if": "restored.s-aditya-hrdayam",
+     "then": [
+      {
+       "set": "ch6.restored_aditya"
+      },
+      {
+       "say": "The hymn shines gold in your verse book. Go, Rama. Victory is yours.",
+       "who": "person.agastya",
+       "portrait": "agastya"
+      }
+     ],
+     "else": [
+      {
+       "choice": "Recite the hymn with Agastya now?",
+       "options": [
+        {
+         "label": "Recite it now",
+         "goto": "recite"
+        },
+        {
+         "label": "Not yet",
+         "goto": "later"
+        }
+       ]
+      },
+      {
+       "label": "later"
+      },
+      {
+       "say": "Rest, and come back to me. Ravana's palace will not open until the hymn is whole.",
+       "who": "person.agastya",
+       "portrait": "agastya"
+      },
+      {
+       "goto": "done"
+      },
+      {
+       "label": "recite"
+      },
+      {
+       "say": "Recite it three times, and you will win.",
+       "who": "person.agastya",
+       "portrait": "agastya"
+      },
+      {
+       "shloka": "s-aditya-hrdayam",
+       "mode": "restore"
+      },
+      {
+       "if": "restored.s-aditya-hrdayam",
+       "then": [
+        {
+         "set": "ch6.restored_aditya"
+        },
+        {
+         "say": "The hymn blazes gold, bright as the rising sun. Rama's strength returns."
+        },
+        {
+         "say": "Agastya blesses Rama and departs as quietly as he came."
+        },
+        {
+         "objective": "Enter Ravana's palace through the city gate in the south."
+        }
+       ],
+       "else": [
+        {
+         "say": "Almost. Breathe, child, and recite with me again when you are ready.",
+         "who": "person.agastya",
+         "portrait": "agastya"
+        }
+       ]
+      },
+      {
+       "label": "done"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.palace_locked",
+   "cmds": [
+    {
+     "if": "ch6.indrajit_defeated",
+     "then": [
+      {
+       "say": "The gate will not yield. Agastya's hymn must be restored first. Speak with the sage.",
+       "who": "person.jambavan",
+       "portrait": "jambavan"
+      }
+     ],
+     "else": [
+      {
+       "say": "Ravana's generals still hold the field. Break through them first.",
+       "who": "person.jambavan",
+       "portrait": "jambavan"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.ravana",
+   "cmds": [
+    {
+     "music": "boss"
+    },
+    {
+     "say": "Ravana, ten-headed king of Lanka, rises from his throne. Indra's charioteer Matali brings a chariot from heaven for Rama."
+    },
+    {
+     "say": "You have killed my brother and my sons. Now you will face me.",
+     "who": "person.ravana",
+     "portrait": "ravana"
+    },
+    {
+     "say": "Return Sita, even now, and live.",
+     "who": "person.rama",
+     "portrait": "rama"
+    },
+    {
+     "say": "Never!",
+     "who": "person.ravana",
+     "portrait": "ravana"
+    },
+    {
+     "choice": "Rest and save before the battle?",
+     "options": [
+      {
+       "label": "Rest and save, then fight",
+       "goto": "rest"
+      },
+      {
+       "label": "Fight now",
+       "goto": "fight"
+      }
+     ]
+    },
+    {
+     "label": "rest"
+    },
+    {
+     "rest": true
+    },
+    {
+     "save": true
+    },
+    {
+     "label": "fight"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "ravana",
+        "level": 30
+       }
+      ],
+      "kind": "boss",
+      "canRun": false,
+      "canLose": false,
+      "bg": "lanka",
+      "music": "boss",
+      "intro": "Ravana, king of Lanka, attacks!"
+     },
+     "onWin": [
+      {
+       "say": "Rama looses the brahmastra that Agastya blessed. It strikes Ravana's heart, and the ten-headed king falls."
+      },
+      {
+       "say": "The gods rain flowers from the sky. Vibhishana kneels beside his brother and weeps."
+      },
+      {
+       "say": "Should I perform the rites for one who did such wrong?",
+       "who": "person.vibhishana",
+       "portrait": "vibhishana"
+      },
+      {
+       "say": "Rama answers him gently: all {w:vaira} ends with death."
+      },
+      {
+       "shloka": "s-maranantani",
+       "mode": "hear"
+      },
+      {
+       "say": "Then I will give my brother his last rites, with honour.",
+       "who": "person.vibhishana",
+       "portrait": "vibhishana"
+      },
+      {
+       "set": "ch6.ravana_defeated"
+      },
+      {
+       "say": "Vibhishana was crowned king of Lanka, and Sita and Rama were together again at last."
+      },
+      {
+       "say": "Then Rama, Sita, Lakshmana and all their friends boarded the flying chariot Pushpaka and rose into the sky, toward Ayodhya."
+      },
+      {
+       "fade": "out"
+      },
+      {
+       "warp": "ayodhya_return",
+       "x": 14,
+       "y": 19,
+       "facing": "up"
+      },
+      {
+       "music": "ayodhya"
+      },
+      {
+       "fade": "in"
+      },
+      {
+       "say": "Fourteen years have passed. In {n:place.ayodhya_return}, Bharata comes out to meet his brother, carrying the sandals he kept on the throne all this time."
+      },
+      {
+       "say": "Ayodhya is lit with lamps and garlands, and every street is full of joy."
+      },
+      {
+       "objective": "Go north to the coronation in the palace courtyard."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.coronation",
+   "cmds": [
+    {
+     "if": "ch6.crowned",
+     "then": [
+      {
+       "say": "The coronation is done. Go home, child; your teacher is waiting.",
+       "who": "person.vasishtha",
+       "portrait": "vasishtha"
+      }
+     ],
+     "else": [
+      {
+       "say": "The day has come. Let Rama be crowned king of Ayodhya.",
+       "who": "person.vasishtha",
+       "portrait": "vasishtha"
+      },
+      {
+       "music": "ending"
+      },
+      {
+       "say": "Vasishtha pours the sacred waters. Rama sits on the throne with Sita beside him."
+      },
+      {
+       "say": "Shatrughna holds the white royal umbrella, and Sugriva and Vibhishana wave the fans. Lakshmana and Bharata stand close by."
+      },
+      {
+       "say": "Sita takes a pearl necklace from her own neck and gives it to Hanuman, the friend who found her."
+      },
+      {
+       "say": "Rama ruled for many years, and in his kingdom no one knew fear, sickness or sorrow."
+      },
+      {
+       "set": "ch6.crowned"
+      },
+      {
+       "say": "The verse book glows in your hands. Its pages are full again. It is time to return to your teacher."
+      },
+      {
+       "fade": "out"
+      },
+      {
+       "warp": "tamasa_ashrama",
+       "x": 15,
+       "y": 8,
+       "facing": "up"
+      },
+      {
+       "music": "ashrama"
+      },
+      {
+       "fade": "in"
+      },
+      {
+       "say": "You are back on the banks of the Tamasa. Morning light falls on the ashrama."
+      },
+      {
+       "objective": "Return to Valmiki."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.rama_court",
+   "cmds": [
+    {
+     "say": "You walked the whole way with us, reciter. Thank you.",
+     "who": "person.rama",
+     "portrait": "rama"
+    }
+   ]
+  },
+  {
+   "id": "ch6.sita_court",
+   "cmds": [
+    {
+     "say": "Tell your teacher our story, child. Tell it truly.",
+     "who": "person.sita",
+     "portrait": "sita"
+    }
+   ]
+  },
+  {
+   "id": "ch6.bharata",
+   "cmds": [
+    {
+     "say": "I only kept the throne warm. These sandals ruled Ayodhya for fourteen years.",
+     "who": "person.bharata",
+     "portrait": "bharata"
+    }
+   ]
+  },
+  {
+   "id": "ch6.kausalya",
+   "cmds": [
+    {
+     "say": "My son is home. There is nothing more I could ask for.",
+     "who": "person.kausalya",
+     "portrait": "kausalya"
+    }
+   ]
+  },
+  {
+   "id": "ch6.hanuman_court",
+   "cmds": [
+    {
+     "say": "All I want is to serve Rama, for as long as his story is told.",
+     "who": "person.hanuman",
+     "portrait": "hanuman"
+    }
+   ]
+  },
+  {
+   "id": "ch6.lakshmana_court",
+   "cmds": [
+    {
+     "say": "Fourteen years in the forest, and every day of it by my brother's side.",
+     "who": "person.lakshmana",
+     "portrait": "lakshmana"
+    }
+   ]
+  },
+  {
+   "id": "ch6.sugriva_court",
+   "cmds": [
+    {
+     "say": "Who would have thought it, on that hill by Lake Pampa? A friend, a kingdom, and now this day.",
+     "who": "person.sugriva",
+     "portrait": "sugriva"
+    }
+   ]
+  },
+  {
+   "id": "ch6.citizen",
+   "cmds": [
+    {
+     "say": "The lamps! The whole city is lit for Rama's return!",
+     "who": "Citizen",
+     "portrait": "villager_m"
+    }
+   ]
+  },
+  {
+   "id": "ch6.citizen_2",
+   "cmds": [
+    {
+     "say": "Did you see the flying chariot land? It shone like the sun!",
+     "who": "Citizen",
+     "portrait": "villager_m"
+    }
+   ]
+  },
+  {
+   "id": "ch6.child_lamps",
+   "cmds": [
+    {
+     "say": "I lit twelve lamps all by myself!",
+     "who": "Child",
+     "portrait": "child"
+    }
+   ]
+  },
+  {
+   "id": "ch6.vanara_city",
+   "cmds": [
+    {
+     "say": "So this is Ayodhya! The fruit here is almost as sweet as in Kishkindha.",
+     "who": "Vanara",
+     "portrait": "vanara"
+    }
+   ]
+  },
+  {
+   "id": "ch6.epilogue_valmiki",
+   "cmds": [
+    {
+     "if": "ch6.complete",
+     "then": [
+      {
+       "say": "The story lives in you now. Recite it well, and recite it often.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      }
+     ],
+     "else": [
+      {
+       "say": "You have returned, {player}. And the verse book is whole again.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "label": "k_with"
+        },
+        {
+         "choice": "Valmiki asks: \"With whom did you walk, child?\"",
+         "options": [
+          {
+           "label": "To Lanka, and home again.",
+           "goto": "k_with_m0"
+          },
+          {
+           "label": "With Rama, Sita, Lakshmana and Hanuman."
+          }
+         ]
+        },
+        {
+         "goto": "k_with_end"
+        },
+        {
+         "label": "k_with_m0"
+        },
+        {
+         "say": "Lanka is so far! But with whom did you walk?",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        },
+        {
+         "goto": "k_with"
+        },
+        {
+         "label": "k_with_end"
+        }
+       ]
+      },
+      {
+       "say": "You walked beside Rama from the Tamasa to Lanka and home again. You heard the verses where they were first spoken."
+      },
+      {
+       "say": "When I first saw the krauncha bird fall, my grief became a verse. Now you have carried every verse home.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      },
+      {
+       "say": "Thank you, my student. Because of you, this story can be told for all time.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      },
+      {
+       "say": "Let us begin again, from the very first word. Teach it to the next student who comes."
+      },
+      {
+       "set": "ch6.complete"
+      },
+      {
+       "save": true
+      },
+      {
+       "end": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch6.field_chest",
+   "cmds": [
+    {
+     "say": "Behind the rocks lies a supply chest the rakshasas left behind. It holds healing herbs."
+    },
+    {
+     "give": "oshadhi",
+     "qty": 2
+    },
+    {
+     "say": "You found 2 healing herbs."
+    }
+   ]
+  },
+  {
+   "id": "ch6.setu_scout",
+   "cmds": [
+    {
+     "say": "Ravana's spies see everything! Not one of you will reach Suvela!",
+     "who": "Rakshasa scout",
+     "portrait": "rakshasa"
+    },
+    {
+     "battle": {
+      "enemies": [
+       {
+        "id": "yatudhana",
+        "level": 24
+       }
+      ],
+      "kind": "wild",
+      "canRun": false,
+      "canLose": false,
+      "bg": "ocean",
+      "music": "battle",
+      "intro": "A rakshasa scout leaps out of the islet grass!"
+     },
+     "onWin": [
+      {
+       "say": "The scout dives into the sea and swims for Lanka. He has left his honey behind."
+      },
+      {
+       "give": "madhu",
+       "qty": 1
+      },
+      {
+       "say": "You received 1 honey."
+      },
+      {
+       "set": "ch6.scout_beaten"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "walkthrough": [
+  {
+   "chapter": 6,
+   "map": "setu_shore",
+   "action": {
+    "reach": {
+     "x": 4,
+     "y": 6
+    }
+   },
+   "expectFlag": "ch6.started"
+  },
+  {
+   "chapter": 6,
+   "map": "setu_shore",
+   "action": {
+    "talk": "vibhishana"
+   },
+   "expectFlag": "ch6.vibhishana_joined"
+  },
+  {
+   "chapter": 6,
+   "map": "setu_shore",
+   "action": {
+    "talk": "nala"
+   },
+   "expectFlag": "ch6.setu_built"
+  },
+  {
+   "chapter": 6,
+   "map": "setu",
+   "action": {
+    "reach": {
+     "x": 11,
+     "y": 2
+    }
+   },
+   "expectFlag": "ch6.setu_walked"
+  },
+  {
+   "chapter": 6,
+   "map": "suvela_camp",
+   "action": {
+    "reach": {
+     "x": 15,
+     "y": 5
+    }
+   },
+   "expectFlag": "ch6.suvela_reached"
+  },
+  {
+   "chapter": 6,
+   "map": "suvela_camp",
+   "action": {
+    "talk": "angada"
+   },
+   "expectFlag": "ch6.envoy"
+  },
+  {
+   "chapter": 6,
+   "map": "lanka_battlefield",
+   "action": {
+    "reach": {
+     "x": 16,
+     "y": 2
+    }
+   },
+   "expectFlag": "ch6.battlefield_entered"
+  },
+  {
+   "chapter": 6,
+   "map": "lanka_battlefield",
+   "action": {
+    "talk": "dhumraksha"
+   },
+   "expectFlag": "ch6.dhumraksha_defeated"
+  },
+  {
+   "chapter": 6,
+   "map": "lanka_battlefield",
+   "action": {
+    "talk": "kumbhakarna"
+   },
+   "expectFlag": "ch6.kumbhakarna_defeated"
+  },
+  {
+   "chapter": 6,
+   "map": "lanka_battlefield",
+   "action": {
+    "talk": "indrajit"
+   },
+   "expectFlag": "ch6.indrajit_defeated"
+  },
+  {
+   "chapter": 6,
+   "map": "lanka_battlefield",
+   "action": {
+    "talk": "agastya"
+   },
+   "expectFlag": "ch6.restored_aditya"
+  },
+  {
+   "chapter": 6,
+   "map": "lanka_palace",
+   "action": {
+    "talk": "ravana"
+   },
+   "expectFlag": "ch6.ravana_defeated"
+  },
+  {
+   "chapter": 6,
+   "map": "ayodhya_return",
+   "action": {
+    "talk": "vasishtha"
+   },
+   "expectFlag": "ch6.crowned"
+  },
+  {
+   "chapter": 6,
+   "map": "tamasa_ashrama",
+   "action": {
+    "talk": "valmiki_epilogue"
+   },
+   "expectFlag": "ch6.complete"
+  }
+ ]
+}

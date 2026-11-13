@@ -1,0 +1,9 @@
+Gītā verses 68, other verses 67, dropped 0, with verified word lists 56
+metres: anustubh 105, upajati 12, indravajra 2, upendravajra 1, shardulavikridita 3, vasantatilaka 5, malini 1, mandakranta 1, sragdhara 1, vamshastha 1, shalini 1, drutavilambita 1, shikharini 1
+single-witness verses (20): vidya-dadati-vinayam, pustakastha-tu-ya-vidya, yatra-naryas-tu-pujyante, chayam-anyasya-kurvanti, yatha-hy-ekena-cakrena, sarpah-krurah-khalah-krurah, abhivadanashilasya, na-kashcit-kasyacin-mitram, ya-kundendu-tushara-hara-dhavala, na-corahaaryam-na-ca-rajaharyam, keyurani-na-bhushayanti, manasi-vacasi-kaye, papan-nivarayati, asty-uttarasyam-dishi, guna-gunajneshu-guna-bhavanti, bhavanti-namras-taravah, shrivallabheti-varadeti, vipadi-dhairyam-athabhyudaye-kshama, shrotram-shrutenaiva-na-kundalena, mahimnah-param-te
+
+NOTE bg-2-11: reading differs in gita/gita, DharmicData (agrees with GRETIL)
+NOTE bg-2-22: reading differs in GRETIL (agrees with gita/gita, DharmicData)
+NOTE bg-2-55: reading differs in gita/gita, DharmicData (agrees with GRETIL)
+NOTE bg-3-37: reading differs in gita/gita, DharmicData (agrees with GRETIL)
+NOTE bg-15-1: reading differs in gita/gita, DharmicData (agrees with GRETIL)

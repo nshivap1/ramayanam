@@ -1,0 +1,7 @@
+node_modules
+dist
+_archives
+.e2e
+.shots
+.claude-sync
+*.tgz

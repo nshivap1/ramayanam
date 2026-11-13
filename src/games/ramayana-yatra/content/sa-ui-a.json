@@ -1,0 +1,653 @@
+{
+ "version": 1,
+ "about": "Interface strings, area a (see notes/sa-ui.md). OWNER: ui-a.",
+ "models": [
+  {
+   "stem": "काण्ड",
+   "gender": "n",
+   "paradigm": "phala-n",
+   "en": "book (section) of an epic",
+   "source": "MW kANDa m. n. 'a section, chapter, division of a work (e.g. of the Rāmāyaṇa)'"
+  }
+ ],
+ "entries": {
+  "title.tagline": {
+   "en": "A retro RPG where Rāmāyaṇa ślokas power every move",
+   "sa": "अत्र श्लोकाः मन्त्रेभ्यः बलं ददति।",
+   "ctx": "title screen: tagline (manifest.tagline)"
+  },
+  "title.howto1": {
+   "en": "Walk with the arrow keys or the on-screen pad; press A (Z / Enter) to talk.",
+   "sa": "मार्गे चल। जनैः सह वद।",
+   "ctx": "title / new journey: how to play 1 (manifest.howToPlay[0])"
+  },
+  "title.howto2": {
+   "en": "Listen to each śloka in its story; tap any word to see its meaning.",
+   "sa": "कथायां श्लोकान् शृणु। अर्थं ज्ञातुं शब्दं स्पृश।",
+   "ctx": "how to play 2 (manifest.howToPlay[1])"
+  },
+  "title.howto3": {
+   "en": "In battle, astras draw on real ślokas: in a Story journey recite a line of the verse; in Practice answer a Sanskrit question.",
+   "sa": "युद्धे अस्त्राणि श्लोकेभ्यः बलं लभन्ते। कथायां श्लोकस्य पादं पठ। अभ्यासे प्रश्नस्य उत्तरं देहि।",
+   "ctx": "how to play 3 (manifest.howToPlay[2])"
+  },
+  "title.howto4": {
+   "en": "Rest at āśrama shrines to recite verses, restore them and unlock new astras.",
+   "sa": "आश्रमस्य मन्दिरे विश्राम्य। तत्र श्लोकान् पठ, पूर्णान् कुरु च। ततः नूतनानि अस्त्राणि लभस्व।",
+   "ctx": "how to play 4 (manifest.howToPlay[3])"
+  },
+  "title.firstVerse": {
+   "en": "the first verse",
+   "sa": "प्रथमः श्लोकः",
+   "label": true,
+   "ctx": "title screen: caption under the first verse, after its reference"
+  },
+  "title.continue": {
+   "en": "Continue",
+   "sa": "अग्रे गच्छ",
+   "label": true,
+   "ctx": "title screen: continue the saved journey (save slot heading)"
+  },
+  "title.playH": {
+   "en": "{$h}h {$m}m",
+   "sa": "होराः {$h} · निमेषाः {$m}",
+   "label": true,
+   "ctx": "save slot: play time, hours and minutes"
+  },
+  "title.playM": {
+   "en": "{$m}m",
+   "sa": "निमेषाः {$m}",
+   "label": true,
+   "ctx": "save slot: play time, minutes"
+  },
+  "title.restored": {
+   "en": "{$n} verses restored",
+   "sa": "पूर्णाः श्लोकाः {$n}",
+   "label": true,
+   "ctx": "save slot: how many verses are restored"
+  },
+  "title.replaceWarn": {
+   "en": "Starting again replaces your saved journey.",
+   "sa": "पुनः आरभसे चेत्, रक्षिता यात्रा नश्यति।",
+   "ctx": "title screen: confirm before a new journey replaces the save"
+  },
+  "title.keep": {
+   "en": "Keep it",
+   "sa": "तां रक्ष",
+   "label": true,
+   "ctx": "button: keep the saved journey"
+  },
+  "title.restart": {
+   "en": "Start again",
+   "sa": "पुनः आरभस्व",
+   "label": true,
+   "ctx": "button: start a new journey (replaces the save)"
+  },
+  "title.newJourney": {
+   "en": "New journey",
+   "sa": "यात्राम् आरभस्व",
+   "label": true,
+   "ctx": "button: new journey"
+  },
+  "title.keys": {
+   "en": "Keyboard: arrows move · Z / Enter confirm · X back · M menu",
+   "sa": "चल · आम् · पृष्ठतः · स्यूतः",
+   "label": true,
+   "ctx": "title screen keyboard hint (Sanskrit is shown with the key caps by the view)"
+  },
+  "newGame.name": {
+   "en": "Your name",
+   "sa": "तव नाम",
+   "label": true,
+   "ctx": "new journey: label of the name field"
+  },
+  "newGame.look": {
+   "en": "Choose your look",
+   "sa": "चित्रं चिनु",
+   "label": true,
+   "ctx": "new journey: choose the avatar"
+  },
+  "newGame.avatar": {
+   "en": "Avatar",
+   "sa": "चित्रम्",
+   "label": true,
+   "ctx": "aria: avatar radio group"
+  },
+  "newGame.lookN": {
+   "en": "Look {$n}",
+   "sa": "चित्रम् {$n}",
+   "label": true,
+   "ctx": "aria: avatar option 1 / 2"
+  },
+  "newGame.intro": {
+   "en": "You are a young student at the sage's hermitage by the river. The verses of the newly told epic have been scattered by an illusion: walk into the story, hear each verse where it was first spoken, and restore it.",
+   "sa": "त्वं नद्याः तीरे ऋषेः आश्रमे {g:शिष्यः|शिष्या} असि। मायया श्लोकाः विक्षिप्ताः। कथां प्रविश। यत्र श्लोकः उक्तः, तत्र तं शृणु। ततः तं पूर्णं कुरु।",
+   "ctx": "new journey: intro paragraph"
+  },
+  "newGame.back": {
+   "en": "Back",
+   "sa": "पृष्ठतः",
+   "label": true,
+   "ctx": "new journey: back to the title screen"
+  },
+  "newGame.notReady": {
+   "en": "The journey could not begin yet (content is still loading).",
+   "sa": "यात्रा अद्य अपि न आरब्धा। किञ्चित् तिष्ठ, पुनः प्रयतस्व।",
+   "ctx": "toast: new game failed"
+  },
+  "newGame.defaultName": {
+   "en": "Shishya",
+   "sa": "{g:शिष्यः|शिष्या}",
+   "label": true,
+   "ctx": "the default player name (kept as English 'Shishya' in the save; shown as शिष्यः / शिष्या)"
+  },
+  "lang.storyText": {
+   "en": "Story text",
+   "sa": "कथायाः भाषा",
+   "label": true,
+   "ctx": "label of the dialogue-language picker (new journey, settings)"
+  },
+  "lang.group": {
+   "en": "Story text language",
+   "sa": "कथायाः भाषा",
+   "label": true,
+   "ctx": "aria: dialogue-language radio group"
+  },
+  "lang.withEn": {
+   "en": "Sanskrit with {$lang}",
+   "sa": "संस्कृतम् {$lang} च",
+   "label": true,
+   "ctx": "aria: the Sanskrit + English option ({$lang} = 'English')"
+  },
+  "lang.saOnly": {
+   "en": "Sanskrit only",
+   "sa": "केवलं संस्कृतम्",
+   "label": true,
+   "ctx": "aria: the Sanskrit-only option"
+  },
+  "lang.note": {
+   "en": "Simple spoken Sanskrit (Level 1–3). Tap ▶ as usual.",
+   "sa": "सरलं संस्कृतम् (स्तरः १–३)। ▶ स्पृश।",
+   "ctx": "note under the dialogue-language picker"
+  },
+  "hud.explore": {
+   "en": "Explore",
+   "sa": "सर्वत्र गच्छतु",
+   "label": true,
+   "ctx": "objective line when there is no objective"
+  },
+  "hud.move": {
+   "en": "Move",
+   "sa": "चल",
+   "label": true,
+   "ctx": "aria: d-pad group"
+  },
+  "hud.up": {
+   "en": "Up",
+   "sa": "उपरि",
+   "label": true,
+   "ctx": "aria: d-pad up"
+  },
+  "hud.left": {
+   "en": "Left",
+   "sa": "वामतः",
+   "label": true,
+   "ctx": "aria: d-pad left"
+  },
+  "hud.right": {
+   "en": "Right",
+   "sa": "दक्षिणतः",
+   "label": true,
+   "ctx": "aria: d-pad right"
+  },
+  "hud.down": {
+   "en": "Down",
+   "sa": "अधः",
+   "label": true,
+   "ctx": "aria: d-pad down"
+  },
+  "hud.versesAria": {
+   "en": "Verses: {$r} restored of {$h} heard",
+   "sa": "श्लोकाः: {$h} श्रुताः, {$r} पूर्णाः",
+   "label": true,
+   "ctx": "aria: verse-book button with counts"
+  },
+  "hud.aAria": {
+   "en": "A: talk or examine",
+   "sa": "वद पश्य वा",
+   "label": true,
+   "ctx": "aria: A button"
+  },
+  "hud.bAria": {
+   "en": "B: hold to run",
+   "sa": "धाव",
+   "label": true,
+   "ctx": "aria: B button (hold to run)"
+  },
+  "hud.keys": {
+   "en": "Arrows / WASD move · hold X to run · Z or Enter talk · M menu",
+   "sa": "चल · धाव · वद · स्यूतः",
+   "label": true,
+   "ctx": "explore keyboard hint (Sanskrit is shown with the key caps by the view)"
+  },
+  "hud.kMove": {
+   "en": "move",
+   "sa": "चल",
+   "label": true,
+   "ctx": "keyboard hint part: arrows"
+  },
+  "hud.kRun": {
+   "en": "hold to run",
+   "sa": "धाव",
+   "label": true,
+   "ctx": "keyboard hint part: X"
+  },
+  "hud.kTalk": {
+   "en": "talk",
+   "sa": "वद",
+   "label": true,
+   "ctx": "keyboard hint part: Z / Enter"
+  },
+  "hud.kOk": {
+   "en": "confirm",
+   "sa": "आम्",
+   "label": true,
+   "ctx": "keyboard hint part: Z / Enter (title screen)"
+  },
+  "hud.kBack": {
+   "en": "back",
+   "sa": "पृष्ठतः",
+   "label": true,
+   "ctx": "keyboard hint part: X"
+  },
+  "hud.kMenu": {
+   "en": "menu",
+   "sa": "स्यूतः",
+   "label": true,
+   "ctx": "keyboard hint part: M"
+  },
+  "hud.purse": {
+   "en": "Purse",
+   "sa": "धनम्",
+   "label": true,
+   "ctx": "tooltip of the coin counter"
+  },
+  "hud.error": {
+   "en": "Something went wrong; please try again.",
+   "sa": "कार्यं सम्यक् न अभवत्। पुनः प्रयतस्व।",
+   "ctx": "toast: an action failed"
+  },
+  "hud.label": {
+   "en": "{$book} · {$n}/{$total} verses restored",
+   "sa": "{$book} · पूर्णाः श्लोकाः {$n}/{$total}",
+   "label": true,
+   "ctx": "platform top bar: book and verses restored"
+  },
+  "hud.resolve": {
+   "en": "Resolve",
+   "sa": "विश्वासः",
+   "label": true,
+   "ctx": "battle info box (debate): the conviction bar, like HP"
+  },
+  "hud.book": {
+   "en": "Book {$k}",
+   "sa": "काण्डम् {$k}",
+   "label": true,
+   "ctx": "a book (kāṇḍa) by number, when its name is missing"
+  },
+  "say.newWord": {
+   "en": "New word",
+   "sa": "नूतनः शब्दः",
+   "label": true,
+   "ctx": "heading over one new word card"
+  },
+  "say.newWords": {
+   "en": "New words",
+   "sa": "नूतनाः शब्दाः",
+   "label": true,
+   "ctx": "heading over new word cards"
+  },
+  "chapter.bookOf": {
+   "en": "Book {$n} of {$total}",
+   "sa": "काण्डम् {$n} / {$total}",
+   "label": true,
+   "ctx": "chapter card eyebrow"
+  },
+  "chapter.done": {
+   "en": "Book {$k} complete",
+   "sa": "काण्डम् {$k} पूर्णम्",
+   "label": true,
+   "ctx": "chapter complete card eyebrow"
+  },
+  "chapter.doneNote": {
+   "en": "Your journey is saved. Rest now; the next book awaits when you return.",
+   "sa": "तव यात्रा रक्षिता। अधुना विश्राम्य। यदा पुनः आगच्छसि, तदा नूतनं काण्डम् आरभस्व।",
+   "ctx": "chapter complete card note"
+  },
+  "chapter.results": {
+   "en": "See results ▶",
+   "sa": "फलं पश्य ▶",
+   "label": true,
+   "ctx": "button: end the session and see the results"
+  },
+  "shop.title": {
+   "en": "Market stall",
+   "sa": "आपणः",
+   "label": true,
+   "ctx": "shop heading"
+  },
+  "shop.owned": {
+   "en": "owned {$n}",
+   "sa": "तव पार्श्वे {$n}",
+   "label": true,
+   "ctx": "shop row: how many you carry"
+  },
+  "shrine.title": {
+   "en": "Hermitage shrine",
+   "sa": "आश्रमस्य मन्दिरम्",
+   "label": true,
+   "ctx": "shrine heading"
+  },
+  "shrine.rest": {
+   "en": "Rest",
+   "sa": "विश्राम्य",
+   "label": true,
+   "ctx": "shrine command: rest"
+  },
+  "shrine.restSub": {
+   "en": "Heal the whole party",
+   "sa": "सर्वे वीराः स्वस्थाः भवन्ति",
+   "label": true,
+   "ctx": "shrine command: what Rest does"
+  },
+  "shrine.recite": {
+   "en": "Recite",
+   "sa": "पठ",
+   "label": true,
+   "ctx": "shrine command: recite"
+  },
+  "shrine.reciteSub": {
+   "en": "Restore a verse you have heard",
+   "sa": "श्रुतं श्लोकं पूर्णं कुरु",
+   "label": true,
+   "ctx": "shrine command: what Recite does"
+  },
+  "shrine.saveSub": {
+   "en": "Record your journey",
+   "sa": "यात्रां रक्ष",
+   "label": true,
+   "ctx": "shrine command: what Save does"
+  },
+  "shrine.reciteHead": {
+   "en": "Recite a verse to restore it",
+   "sa": "श्लोकं पठ, पूर्णं कुरु",
+   "label": true,
+   "ctx": "shrine recital list heading"
+  },
+  "shrine.noneHeard": {
+   "en": "You have not heard any verses yet.",
+   "sa": "त्वया अद्य अपि श्लोकः न श्रुतः।",
+   "ctx": "shrine recital list: empty"
+  },
+  "end.title": {
+   "en": "The journey is complete",
+   "sa": "यात्रायाः अन्तः",
+   "label": true,
+   "ctx": "ending screen heading"
+  },
+  "end.thanks": {
+   "en": "Thank you, {player}. The verses you restored live again in the sage's book of verses.",
+   "sa": "धन्यवादः, {player}। त्वया पूर्णाः कृताः श्लोकाः पुनः ऋषेः ग्रन्थे जीवन्ति।",
+   "ctx": "ending screen: thanks"
+  },
+  "end.restored": {
+   "en": "Verses restored · {$n}",
+   "sa": "पूर्णाः श्लोकाः · {$n}",
+   "label": true,
+   "ctx": "ending screen: heading over the restored verses"
+  },
+  "end.credit1": {
+   "en": "Verses: Vālmīki Rāmāyaṇa (sources listed per verse in PRD.md and REVIEW.md)",
+   "sa": "श्लोकाः: वाल्मीकेः कथा",
+   "label": true,
+   "ctx": "ending credits line 1 (manifest.credits[0])"
+  },
+  "end.credit2": {
+   "en": "Pixel art and chiptune: original, made for Samskuru",
+   "sa": "चित्राणि गीतानि च: नूतनानि, अत्र एव कृतानि",
+   "label": true,
+   "ctx": "ending credits line 2 (manifest.credits[1])"
+  },
+  "end.finish": {
+   "en": "Complete the journey",
+   "sa": "यात्रायाः अन्तं गच्छ",
+   "label": true,
+   "ctx": "ending screen button"
+  },
+  "menu.title": {
+   "en": "Menu",
+   "sa": "स्यूतः",
+   "label": true,
+   "ctx": "menu button and menu sheet title (a bag, as in a retro RPG)"
+  },
+  "menu.party": {
+   "en": "Party",
+   "sa": "वीराः",
+   "label": true,
+   "ctx": "menu tab"
+  },
+  "menu.items": {
+   "en": "Items",
+   "sa": "वस्तूनि",
+   "label": true,
+   "ctx": "menu tab"
+  },
+  "menu.settings": {
+   "en": "Settings",
+   "sa": "इच्छाः",
+   "label": true,
+   "ctx": "menu tab: your preferences"
+  },
+  "menu.rest": {
+   "en": "Rest & end session",
+   "sa": "विश्राम्य · अद्य अलम्",
+   "label": true,
+   "ctx": "menu button: end the session"
+  },
+  "menu.restConfirm": {
+   "en": "Yes, end session",
+   "sa": "आम्, अद्य अलम्",
+   "label": true,
+   "ctx": "menu button: confirm end of session"
+  },
+  "menu.restNote": {
+   "en": "Your journey is saved; continue it next time from the title screen.",
+   "sa": "तव यात्रा रक्षिता। पुनः आगत्य अग्रे गच्छ।",
+   "ctx": "menu: note under the end-session button"
+  },
+  "menu.saved": {
+   "en": "Journey saved",
+   "sa": "यात्रा रक्षिता।",
+   "ctx": "toast / status: the journey was saved"
+  },
+  "party.full": {
+   "en": "All 4 slots are full: tap an equipped move to remove it first.",
+   "sa": "स्थानं न अस्ति। प्रथमम् एकं मन्त्रं त्यज।",
+   "ctx": "move editor: all slots full"
+  },
+  "party.choose": {
+   "en": "Choose up to {$max} moves ({$n}/{$max}).",
+   "sa": "मन्त्रान् चिनु ({$n}/{$max})।",
+   "ctx": "move editor hint"
+  },
+  "party.equip": {
+   "en": "Equip",
+   "sa": "स्वीकुरु",
+   "label": true,
+   "ctx": "move editor: confirm"
+  },
+  "party.change": {
+   "en": "Change moves ({$n} known)",
+   "sa": "मन्त्रान् चिनु (ज्ञाताः {$n})",
+   "label": true,
+   "ctx": "party: open the move editor"
+  },
+  "party.hpXp": {
+   "en": "{$hp}/{$max} HP · XP {$xp}/{$need}",
+   "sa": "बलम् {$hp}/{$max} · ज्ञानम् {$xp}/{$need}",
+   "label": true,
+   "ctx": "party: HP and experience"
+  },
+  "party.moveMeta": {
+   "en": "{$el} · {$kind} · PP {$pp}/{$max}",
+   "sa": "{$el} · {$kind} · उत्साहः {$pp}/{$max}",
+   "label": true,
+   "ctx": "party: a move's element, challenge kind and PP"
+  },
+  "words.filterTier": {
+   "en": "Filter by mastery",
+   "sa": "ज्ञानस्य स्तरः",
+   "label": true,
+   "ctx": "aria: word-book tier filter"
+  },
+  "words.filterBook": {
+   "en": "Filter by book",
+   "sa": "काण्डानि",
+   "label": true,
+   "ctx": "aria: word-book book filter"
+  },
+  "words.all": {
+   "en": "All {$n}",
+   "sa": "सर्वाणि {$n}",
+   "label": true,
+   "ctx": "word-book filter: all words"
+  },
+  "words.allBooks": {
+   "en": "All books",
+   "sa": "सर्वाणि काण्डानि",
+   "label": true,
+   "ctx": "word-book filter: all books"
+  },
+  "words.none": {
+   "en": "No words here yet.",
+   "sa": "अत्र अद्य अपि शब्दाः न सन्ति।",
+   "ctx": "word book: empty"
+  },
+  "words.unseen": {
+   "en": "Unseen word",
+   "sa": "अदृष्टम् पदम्",
+   "label": true,
+   "ctx": "aria: a word not seen yet"
+  },
+  "verses.restored": {
+   "en": "Restored",
+   "sa": "पूर्णः",
+   "label": true,
+   "ctx": "verse status chip"
+  },
+  "verses.book": {
+   "en": "Book {$k}",
+   "sa": "काण्डम् {$k}",
+   "label": true,
+   "ctx": "word-book filter chip / verse-book group"
+  },
+  "verses.none": {
+   "en": "No verses yet.",
+   "sa": "अद्य अपि श्लोकाः न सन्ति।",
+   "ctx": "verse book: empty"
+  },
+  "items.useOn": {
+   "en": "Use {$item} on whom?",
+   "sa": "{$item} कस्मै ददासि?",
+   "ctx": "items: pick a hero to use the item on"
+  },
+  "items.use": {
+   "en": "Use",
+   "sa": "देहि",
+   "label": true,
+   "ctx": "items: use button"
+  },
+  "items.purse": {
+   "en": "Purse: ◈ {$n}",
+   "sa": "धनम्: ◈ {$n}",
+   "label": true,
+   "ctx": "items: coins carried"
+  },
+  "items.none": {
+   "en": "No items yet. Market stalls sell fruit, honey and herbs.",
+   "sa": "अद्य अपि वस्तूनि न सन्ति। आपणे फलानि, मधु, ओषधयः च सन्ति।",
+   "ctx": "items: empty"
+  },
+  "settings.music": {
+   "en": "Music",
+   "sa": "गीतम्",
+   "label": true,
+   "ctx": "settings: music"
+  },
+  "settings.on": {
+   "en": "On",
+   "sa": "आम्",
+   "label": true,
+   "ctx": "settings toggle: on"
+  },
+  "settings.off": {
+   "en": "Off",
+   "sa": "न",
+   "label": true,
+   "ctx": "settings toggle: off"
+  },
+  "settings.soundOff": {
+   "en": "Sound is off in your Samskuru settings",
+   "sa": "अधुना गीतं न भवति",
+   "label": true,
+   "ctx": "settings: sound is off in the platform"
+  },
+  "settings.speed": {
+   "en": "Text speed",
+   "sa": "लेखस्य वेगः",
+   "label": true,
+   "ctx": "settings: typewriter speed"
+  },
+  "settings.slow": {
+   "en": "Slow",
+   "sa": "मन्दम्",
+   "label": true,
+   "ctx": "text speed"
+  },
+  "settings.normal": {
+   "en": "Normal",
+   "sa": "सामान्यम्",
+   "label": true,
+   "ctx": "text speed"
+  },
+  "settings.fast": {
+   "en": "Fast",
+   "sa": "शीघ्रम्",
+   "label": true,
+   "ctx": "text speed"
+  },
+  "settings.instant": {
+   "en": "Instant",
+   "sa": "झटिति",
+   "label": true,
+   "ctx": "text speed"
+  },
+  "settings.relaxed": {
+   "en": "Relaxed",
+   "sa": "शान्तः मार्गः",
+   "label": true,
+   "ctx": "settings: relaxed mode"
+  },
+  "settings.relaxedSub": {
+   "en": "no challenge timers",
+   "sa": "यावत् इच्छसि, तावत् चिन्तय",
+   "label": true,
+   "ctx": "settings: what relaxed mode does"
+  },
+  "settings.note": {
+   "en": "Script (Devanagari or Roman), sound and reduced motion follow your Samskuru profile settings.",
+   "sa": "अन्याः इच्छाः अन्यत्र सन्ति।",
+   "ctx": "settings: what is set in the platform profile"
+  }
+ }
+}

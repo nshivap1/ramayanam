@@ -1,0 +1,58 @@
+[
+  {
+    "area": "subhashita",
+    "id": "guna-gunajneshu-guna-bhavanti",
+    "field": "padas[3], text",
+    "found": "समुद्रमासाद्य भवन्त्युपेयाः",
+    "expected": "समुद्रमासाद्य भवन्त्यपेयाः",
+    "why": "The sense is 'undrinkable' (अपेय), as the pack's own translation says; उपेय means 'to be approached'. Typo copied from the single witness (GRETIL Hitopadeśa Hit_0.46 'bhavanty upeyāḥ'). Metre unaffected."
+  },
+  {
+    "area": "subhashita",
+    "id": "vidya-dadati-vinayam",
+    "field": "padas[2], text",
+    "found": "पात्रत्वात् धनमाप्नोति",
+    "expected": "पात्रत्वाद्धनमाप्नोति",
+    "why": "Sandhi is obligatory within a half-verse: त् + ध → द्ध (8.2.39 झलां जशोऽन्ते); the same line has धनाद्धर्मं. A second Hitopadeśa e-text under refs/data prints पात्रत्वाद्धन…. The words list is correct as it stands."
+  },
+  {
+    "area": "sandhi",
+    "id": "sandhi-visarga-satva-29",
+    "field": "first, ruleId",
+    "found": "हरिः + चन्द्रः = हरिश्चन्द्रः (compound, ruleId visarga-satva)",
+    "expected": "Remove from the pack, or move to pending.ts as हरि + चन्द्रः = हरिश्चन्द्रः under 6.1.153 प्रस्कण्वहरिश्चन्द्रावृषी",
+    "why": "Inside a compound the first member is the stem हरि with no visarga; the ś is the suṭ augment taught by nipātana in 6.1.153 for the ṛṣi's name only. It is not an instance of 8.3.34 विसर्जनीयस्य सः."
+  },
+  {
+    "area": "sandhi",
+    "id": "sandhi-anunasika-25",
+    "field": "alternatives",
+    "found": "यत् + मया = यन्मया with no alternative",
+    "expected": "alternatives: [\"यद्मया\"]",
+    "why": "8.4.45 यरोऽनुनासिकेऽनुनासिको वा is optional; the nasal is obligatory only before a suffix (vārttika प्रत्यये भाषायां नित्यम्: -मय, -मात्र). मया is the instrumental of अस्मद्, an independent word. The sibling sandhi-anunasika-26 (तत् + मे) lists तद्मे."
+  },
+  {
+    "area": "engine",
+    "id": "sandhi.ts:anunasika",
+    "field": "joinSandhi alternatives and note",
+    "found": "यत् + मया, तत् + मयि, तत् + मयूरः, तत् + मात्रा, तत् + मात्रे return only the nasal form, with the note that the nasal is obligatory before the suffix -maya / -mātra",
+    "expected": "Treat the nasal as obligatory only for real -मय / -मात्र derivatives; otherwise list the voiced-stop alternative (तद्मया, तद्मयि, तद्मयूरः, तद्मात्रा)",
+    "why": "The vārttika प्रत्यये भाषायां नित्यम् applies to suffixes; मया, मयि, मयूर, मात्रा are independent words. The engine matches any second word beginning with मय… or मात्र…."
+  },
+  {
+    "area": "engine",
+    "id": "sandhi.ts:r-lopa-dirgha",
+    "field": "joinSandhi result for अहः with { rFinal: true, compound: true }",
+    "found": "अहः + रात्रः → अहारात्रः; अहः + रूपम् → अहारूपम्; no special flag",
+    "expected": "अहोरात्रः, अहोरूपम् (or a special flag marking the pair as not handled)",
+    "why": "Vārttika रूपरात्रिरथन्तरेषु रुत्वं वाच्यम् on 8.2.69 रोऽसुपि: before रूप, रात्रि, रथन्तर the final of अहन् becomes ru, giving अहो-. अहारात्र is not a word."
+  },
+  {
+    "area": "engine",
+    "id": "sandhi.ts:jashtva",
+    "field": "joinSandhi result for षट् + दश with { compound: true }",
+    "found": "षड्दश, no special flag",
+    "expected": "षोडश (or a special flag marking the pair as not handled)",
+    "why": "6.3.109 पृषोदरादीनि यथोपदिष्टम् with the vārttika षष उत्वं दतृदशधासूत्तरपदादेः ष्टुत्वं च: षष् + दश = षोडश. numbers.ts itself gives षोडश for 16."
+  }
+]

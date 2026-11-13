@@ -1,0 +1,178 @@
+/*
+ * Samskuru design tokens. Every colour, size, radius and motion value used by the shell and
+ * by games comes from here. Games must not hard-code colours — use these variables
+ * (and the per-game accent --accent / --accent-ink / --accent-soft set by the shell).
+ */
+@font-face {
+  font-family: 'Samskuru Deva';
+  src: url('../fonts/NotoSansDevanagari-VF.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0900-097F, U+1CD0-1CFF, U+200C-200D, U+20B9, U+25CC, U+A8E0-A8FF;
+}
+@font-face {
+  font-family: 'Samskuru Shloka';
+  src: url('../fonts/TiroDevanagariSanskrit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0900-097F, U+1CD0-1CFF, U+200C-200D, U+25CC, U+A8E0-A8FF;
+}
+
+:root {
+  /* palette — parchment, maroon, saffron (from the Dhīmahi deck) */
+  --paper: #fff6ee;
+  --paper-2: #fbeadb;
+  --paper-3: #f3dcc8;
+  --surface: #ffffff;
+  --ink: #2a1a14;
+  --ink-2: #5b463c;
+  --ink-3: #8d776b;
+  --line: #ead8c8;
+  --line-strong: #d9bfa9;
+
+  --maroon: #7a1027;
+  --maroon-ink: #5a0b1c;
+  --maroon-soft: #f6dfe3;
+  --saffron: #e8743b;
+  --saffron-ink: #b9521f;
+  --saffron-soft: #fde4d3;
+  --indigo: #2f4f8f;
+  --indigo-ink: #213a6b;
+  --indigo-soft: #dfe7f6;
+  --teal: #1f8a83;
+  --teal-ink: #146560;
+  --teal-soft: #d6f0ed;
+  --gold: #c98a1b;
+  --gold-ink: #946310;
+  --gold-soft: #fbecc9;
+  --rose: #d6497a;
+  --rose-ink: #a32f58;
+  --rose-soft: #fbdde8;
+  --leaf: #4c9a2a;
+  --leaf-ink: #36721b;
+  --leaf-soft: #e0f3d5;
+  --plum: #7b4bb3;
+  --plum-ink: #5a3489;
+  --plum-soft: #eadffa;
+
+  /* semantic */
+  --ok: #3f9b2f;
+  --ok-ink: #2c741f;
+  --ok-soft: #dcf5d3;
+  --bad: #d8433b;
+  --bad-ink: #a52a24;
+  --bad-soft: #fde0dd;
+  --warn: #d79a12;
+  --warn-soft: #fdf0c8;
+  --mute: #b9a79b;
+  --mute-soft: #efe5dc;
+  /* text/icons drawn on top of --accent, --ok, --bad, --warn, --mute fills */
+  --on-accent: #ffffff;
+
+  /* default accent (shell); GameHost overrides per game hue */
+  --accent: var(--maroon);
+  --accent-ink: var(--maroon-ink);
+  --accent-soft: var(--maroon-soft);
+
+  /* type */
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Samskuru Deva', 'Noto Sans Devanagari', sans-serif;
+  --font-deva: 'Samskuru Deva', 'Noto Sans Devanagari', 'Kohinoor Devanagari', 'Nirmala UI', 'Mangal', sans-serif;
+  --font-shloka: 'Samskuru Shloka', 'Samskuru Deva', 'Noto Serif Devanagari', 'Noto Sans Devanagari', serif;
+  --font-iast: 'Gentium Plus', 'Charis SIL', 'Noto Serif', Georgia, 'Times New Roman', serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+  --fs-3xl: 2.75rem;
+
+  /* space & shape */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+  --edge: 4px; /* the chunky "pressable" bottom edge */
+  --shadow-1: 0 1px 2px rgba(60, 30, 10, 0.08), 0 2px 8px rgba(60, 30, 10, 0.06);
+  --shadow-2: 0 8px 28px rgba(60, 30, 10, 0.18);
+
+  /* motion */
+  --t-fast: 120ms;
+  --t-med: 220ms;
+  --t-slow: 420ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* layout */
+  --topbar-h: 56px;
+  --nav-h: 64px;
+  --content-max: 560px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+:root[data-theme='dark'] {
+  --paper: #1a1310;
+  --paper-2: #231a16;
+  --paper-3: #2f231d;
+  --surface: #261c18;
+  --ink: #f6ebe2;
+  --ink-2: #d2bfb2;
+  --ink-3: #a08c80;
+  --line: #3a2c25;
+  --line-strong: #524036;
+  --maroon: #e0607b;
+  --maroon-ink: #b84560;
+  --maroon-soft: #3d1c24;
+  --saffron: #f08a55;
+  --saffron-ink: #c56a39;
+  --saffron-soft: #40261a;
+  --indigo: #7ea0e6;
+  --indigo-ink: #5c7fc7;
+  --indigo-soft: #1f2a42;
+  --teal: #45b8b0;
+  --teal-ink: #2f928b;
+  --teal-soft: #173533;
+  --gold: #e3ac45;
+  --gold-ink: #b98a2e;
+  --gold-soft: #3b2e14;
+  --rose: #ee79a2;
+  --rose-ink: #c4577f;
+  --rose-soft: #40202d;
+  --leaf: #7cc55a;
+  --leaf-ink: #5c9f3e;
+  --leaf-soft: #22361a;
+  --plum: #a985dd;
+  --plum-ink: #8765bb;
+  --plum-soft: #2c2140;
+  --ok: #6cc25a;
+  --ok-ink: #4e9a3f;
+  --ok-soft: #1f3a1a;
+  --bad: #ef6b63;
+  --bad-ink: #c64a43;
+  --bad-soft: #421e1c;
+  --warn: #e8b63c;
+  --warn-soft: #3d3113;
+  --mute: #6f5f55;
+  --mute-soft: #2e2520;
+  --on-accent: #1a1310;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-2: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+.hue-saffron { --accent: var(--saffron); --accent-ink: var(--saffron-ink); --accent-soft: var(--saffron-soft); }
+.hue-maroon { --accent: var(--maroon); --accent-ink: var(--maroon-ink); --accent-soft: var(--maroon-soft); }
+.hue-indigo { --accent: var(--indigo); --accent-ink: var(--indigo-ink); --accent-soft: var(--indigo-soft); }
+.hue-teal { --accent: var(--teal); --accent-ink: var(--teal-ink); --accent-soft: var(--teal-soft); }
+.hue-gold { --accent: var(--gold); --accent-ink: var(--gold-ink); --accent-soft: var(--gold-soft); }
+.hue-rose { --accent: var(--rose); --accent-ink: var(--rose-ink); --accent-soft: var(--rose-soft); }
+.hue-leaf { --accent: var(--leaf); --accent-ink: var(--leaf-ink); --accent-soft: var(--leaf-soft); }
+.hue-plum { --accent: var(--plum); --accent-ink: var(--plum-ink); --accent-soft: var(--plum-soft); }

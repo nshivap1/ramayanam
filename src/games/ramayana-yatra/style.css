@@ -1,0 +1,623 @@
+/* Ramayana-yatra (view agent). Every selector is scoped under .g-ramayana-yatra; colours only via design tokens.
+   Layout: "two-screen" retro-modern column: the pixel canvas on top, the DOM context panel below. */
+
+.g-ramayana-yatra { padding: var(--s-2) var(--s-2) calc(var(--s-2) + var(--safe-bottom)); gap: 0; align-items: stretch; justify-content: flex-start; min-height: 0; }
+.g-ramayana-yatra__frame { display: flex; flex-direction: column; gap: var(--s-2); width: 100%; flex: 1; min-height: 0; }
+
+/* ── top screen ─────────────────────────────────────────── */
+.g-ramayana-yatra__screen { position: relative; flex: none; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--r-md); overflow: hidden; background: var(--ink); box-shadow: 0 0 0 2px var(--line-strong), 0 var(--edge) 0 2px var(--line-strong); user-select: none; -webkit-user-select: none; }
+.g-ramayana-yatra__canvas { display: block; width: 100%; height: 100%; image-rendering: crisp-edges; image-rendering: pixelated; }
+.g-ramayana-yatra__banner { position: absolute; left: var(--s-2); top: var(--s-2); display: grid; gap: 0; padding: var(--s-1) var(--s-3); border-radius: var(--r-sm); background: color-mix(in srgb, var(--ink) 82%, transparent); color: var(--paper); font-weight: 700; line-height: 1.25; box-shadow: 0 2px 0 color-mix(in srgb, var(--ink) 40%, transparent); animation: g-ramayana-yatra-banner 2.4s var(--ease) both; pointer-events: none; }
+.g-ramayana-yatra__banner .sk-sa { font-size: var(--fs-md); line-height: 1.35; }
+.g-ramayana-yatra__banner .g-ramayana-yatra__en { font-size: var(--fs-xs); opacity: 0.85; }
+.g-ramayana-yatra__toast { position: absolute; left: var(--s-2); right: var(--s-2); bottom: var(--s-2); width: fit-content; margin: 0 auto; padding: var(--s-1) var(--s-3); border-radius: var(--r-pill); background: color-mix(in srgb, var(--ink) 86%, transparent); color: var(--paper); font-weight: 700; font-size: var(--fs-sm); text-align: center; animation: g-ramayana-yatra-rise var(--t-med) var(--ease) both; pointer-events: none; }
+.g-ramayana-yatra__curtain { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--s-1); background: color-mix(in srgb, var(--ink) 88%, transparent); color: var(--paper); text-align: center; animation: g-ramayana-yatra-fade var(--t-slow) var(--ease) both; pointer-events: none; }
+.g-ramayana-yatra__curtain-sa { font-size: clamp(1.8rem, 9vw, 3rem); line-height: 1.3; }
+.g-ramayana-yatra__curtain-en { font-size: var(--fs-sm); font-weight: 700; letter-spacing: 0.06em; opacity: 0.85; }
+.g-ramayana-yatra__logo { position: absolute; right: 3%; bottom: 5%; display: grid; justify-items: end; gap: 0; pointer-events: none; }
+.g-ramayana-yatra__logo-sa { font-size: clamp(1.5rem, 7.5vw, 2.4rem); line-height: 1.3; padding: 0 var(--s-3); border-radius: var(--r-md); background: color-mix(in srgb, var(--ink) 55%, transparent); color: var(--paper); }
+.g-ramayana-yatra__logo-en { margin-top: var(--s-1); padding: 2px var(--s-2); border-radius: var(--r-sm); background: color-mix(in srgb, var(--ink) 55%, transparent); color: var(--paper); font-size: clamp(9px, 2.6vw, var(--fs-xs)); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* ── bottom screen ─────────────────────────────────────── */
+.g-ramayana-yatra__panel { position: relative; flex: 1; min-height: 300px; display: flex; flex-direction: column; padding: var(--s-3); background: var(--surface); color: var(--ink); border: 2px solid var(--line-strong); border-radius: var(--r-lg); box-shadow: 0 var(--edge) 0 var(--line-strong), inset 0 0 0 2px var(--paper-2); overflow: hidden; }
+.g-ramayana-yatra__panel > * { flex: 1; min-height: 0; }
+.g-ramayana-yatra__eyebrow { font-size: var(--fs-xs); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
+.g-ramayana-yatra__hint { color: var(--ink-3); font-size: var(--fs-sm); }
+.g-ramayana-yatra__en { color: var(--ink-3); font-size: 0.85em; font-weight: 600; }
+.g-ramayana-yatra__keys-hint { color: var(--ink-3); font-size: var(--fs-xs); text-align: center; }
+.g-ramayana-yatra__row2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
+.g-ramayana-yatra__key { flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px; border: 2px solid var(--line-strong); border-radius: 6px; font-size: var(--fs-xs); font-weight: 800; color: var(--ink-3); }
+.g-ramayana-yatra__link { display: inline-flex; align-items: center; gap: var(--s-1); min-height: 44px; padding: 0 var(--s-1); border: 0; background: none; color: var(--accent-ink); font: inherit; font-size: var(--fs-sm); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.g-ramayana-yatra__player { color: var(--accent-ink); }
+.g-ramayana-yatra__name { font-weight: 700; color: var(--accent-ink); }
+.g-ramayana-yatra__w { display: inline; margin: 0 1px; padding: 0 3px; border: 0; border-bottom: 2px dotted var(--accent); border-radius: 4px; background: var(--accent-soft); color: var(--accent-ink); font: inherit; font-weight: 700; line-height: inherit; cursor: pointer; }
+.g-ramayana-yatra button:focus-visible, .g-ramayana-yatra__w:focus-visible, .g-ramayana-yatra__vw:focus-visible, .g-ramayana-yatra__pad:focus-visible, .g-ramayana-yatra__btn-a:focus-visible, .g-ramayana-yatra__btn-b:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
+
+/* small inline targets get an invisible hit area of at least 44 px */
+.g-ramayana-yatra__w, .g-ramayana-yatra__vw, .g-ramayana-yatra__filter, .g-ramayana-yatra__link { position: relative; }
+.g-ramayana-yatra__w::after { content: ''; position: absolute; left: -2px; right: -2px; top: 50%; height: 44px; transform: translateY(-50%); }
+.g-ramayana-yatra__vw::after, .g-ramayana-yatra__filter::after, .g-ramayana-yatra__link::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+
+/* platform small buttons are 36 px: lift them to the 44 px touch minimum inside the game */
+.g-ramayana-yatra .sk-btn--sm { min-height: 44px; }
+
+/* next ▶ */
+.g-ramayana-yatra__next { position: absolute; right: 0; bottom: 0; display: grid; place-items: center; width: 48px; height: 48px; border: 0; border-radius: var(--r-pill); background: var(--accent); color: var(--on-accent); font-size: var(--fs-md); box-shadow: 0 3px 0 var(--accent-ink); cursor: pointer; }
+.g-ramayana-yatra__next span { animation: g-ramayana-yatra-nudge 1s var(--ease) infinite; }
+.g-ramayana-yatra__next:active { transform: translateY(3px); box-shadow: none; }
+
+/* ── explore ───────────────────────────────────────────── */
+.g-ramayana-yatra__explore { display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-2); }
+.g-ramayana-yatra__objective { display: flex; align-items: baseline; gap: var(--s-2); padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--paper-2); color: var(--ink-2); font-size: var(--fs-sm); font-weight: 700; line-height: 1.5; }
+.g-ramayana-yatra__objective-mark { color: var(--accent); }
+.g-ramayana-yatra__pad-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
+.g-ramayana-yatra__dpad { position: relative; display: grid; grid-template-columns: repeat(3, 46px); grid-template-rows: repeat(3, 46px); flex: none; }
+.g-ramayana-yatra__pad { display: grid; place-items: center; padding: 0; border: 0; background: var(--ink-2); color: var(--paper-2); font-size: 14px; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; box-shadow: 0 3px 0 var(--ink); }
+.g-ramayana-yatra__pad:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); background: var(--ink); }
+.g-ramayana-yatra__pad--up { grid-area: 1 / 2; border-radius: var(--r-sm) var(--r-sm) 0 0; }
+.g-ramayana-yatra__pad--left { grid-area: 2 / 1; border-radius: var(--r-sm) 0 0 var(--r-sm); }
+.g-ramayana-yatra__pad--right { grid-area: 2 / 3; border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.g-ramayana-yatra__pad--down { grid-area: 3 / 2; border-radius: 0 0 var(--r-sm) var(--r-sm); }
+.g-ramayana-yatra__pad-hub { grid-area: 2 / 2; background: var(--ink-2); box-shadow: 0 3px 0 var(--ink); }
+.g-ramayana-yatra__mid { display: grid; gap: var(--s-2); justify-items: stretch; min-width: 0; }
+.g-ramayana-yatra__pill-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-1); min-height: 44px; min-width: 76px; padding: 0 var(--s-2); border: 2px solid var(--line-strong); border-radius: var(--r-pill); background: var(--paper-2); color: var(--ink-2); font: inherit; font-size: var(--fs-sm); font-weight: 800; box-shadow: 0 3px 0 var(--line-strong); cursor: pointer; white-space: nowrap; }
+.g-ramayana-yatra__pill-btn:active { transform: translateY(3px); box-shadow: none; }
+.g-ramayana-yatra__pill-btn--stack { flex-direction: column; gap: 0; line-height: 1.15; }
+.g-ramayana-yatra__count { font-size: var(--fs-xs); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.g-ramayana-yatra__ab { position: relative; flex: none; width: 112px; height: 104px; }
+.g-ramayana-yatra__btn-a, .g-ramayana-yatra__btn-b { position: absolute; display: grid; place-items: center; width: 56px; height: 56px; border: 0; border-radius: var(--r-pill); font: inherit; font-size: var(--fs-lg); font-weight: 900; cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.g-ramayana-yatra__btn-a { right: 0; top: 0; background: var(--accent); color: var(--on-accent); box-shadow: 0 4px 0 var(--accent-ink); }
+.g-ramayana-yatra__btn-b { left: 0; bottom: 0; background: var(--paper-3); color: var(--ink-2); box-shadow: 0 4px 0 var(--line-strong); }
+.g-ramayana-yatra__btn-a:active, .g-ramayana-yatra__btn-b:active { transform: translateY(4px); box-shadow: none; }
+
+.g-ramayana-yatra__status { flex: 1; min-height: 0; display: grid; align-content: start; gap: var(--s-2); overflow-y: auto; overscroll-behavior: contain; }
+.g-ramayana-yatra__status-place { display: flex; align-items: baseline; gap: var(--s-2); flex-wrap: wrap; font-weight: 800; color: var(--ink); }
+.g-ramayana-yatra__status-place .sk-sa { font-size: var(--fs-lg); }
+.g-ramayana-yatra__purse { margin-left: auto; color: var(--gold-ink); font-variant-numeric: tabular-nums; }
+.g-ramayana-yatra__status-party { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--s-1) var(--s-2); }
+.g-ramayana-yatra__mini { display: flex; align-items: center; gap: var(--s-2); min-width: 0; }
+.g-ramayana-yatra__mini .g-ramayana-yatra__portrait { width: 36px; height: 36px; border-width: 2px; border-radius: var(--r-sm); box-shadow: none; font-size: var(--fs-sm); }
+.g-ramayana-yatra__mini-body { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0 var(--s-2); min-width: 0; flex: 1; }
+.g-ramayana-yatra__mini-name { grid-column: 1 / -1; font-size: var(--fs-sm); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-ramayana-yatra__mini .g-ramayana-yatra__hp { width: 100%; }
+.g-ramayana-yatra__mini-lv { font-size: var(--fs-xs); color: var(--ink-3); font-weight: 700; }
+
+/* ── dialogue ──────────────────────────────────────────── */
+.g-ramayana-yatra__say, .g-ramayana-yatra__beat { position: relative; display: flex; flex-direction: column; gap: var(--s-2); cursor: pointer; overflow-y: auto; }
+.g-ramayana-yatra__say-box { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: var(--s-3); padding: var(--s-3); border: 2px solid var(--line); border-radius: var(--r-md); background: var(--paper); }
+.g-ramayana-yatra__say-box:not(:has(.g-ramayana-yatra__portrait)) { grid-template-columns: 1fr; }
+.g-ramayana-yatra__say-next { display: flex; justify-content: flex-end; margin-top: var(--s-1); }
+.g-ramayana-yatra__next--inline { position: static; }
+.g-ramayana-yatra__say.is-echo { opacity: 0.6; cursor: default; }
+.g-ramayana-yatra__say-body { min-width: 0; display: grid; gap: var(--s-1); align-content: start; }
+.g-ramayana-yatra__portrait { width: 64px; height: 64px; display: grid; place-items: center; border: 2px solid var(--line-strong); border-radius: var(--r-md); background: var(--paper-2); overflow: hidden; box-shadow: 0 3px 0 var(--line-strong); font-weight: 900; color: var(--ink-3); }
+.g-ramayana-yatra__portrait img { width: 100%; height: 100%; image-rendering: pixelated; object-fit: cover; }
+.g-ramayana-yatra__speaker { font-weight: 800; color: var(--accent-ink); line-height: 1.4; }
+.g-ramayana-yatra__say-text { margin: 0; font-size: var(--fs-md); line-height: 1.6; }
+.g-ramayana-yatra__caret { display: inline-block; width: 0.5em; height: 1em; margin-left: 2px; vertical-align: -0.12em; background: var(--accent); animation: g-ramayana-yatra-blink 0.8s steps(2) infinite; }
+.g-ramayana-yatra__choice { display: flex; flex-direction: column; gap: var(--s-3); overflow-y: auto; }
+
+/* ── Sambhāṣaṇa story lines (dialogue language: संस्कृतम् / + English) ── */
+.g-ramayana-yatra__story { display: block; }
+/* inline by default (interface text from useUi(): labels, chips, buttons); a story line is its own block */
+.g-ramayana-yatra__sa-line { display: inline; overflow-wrap: normal; word-break: keep-all; hyphens: none; }
+.g-ramayana-yatra__story > .g-ramayana-yatra__sa-line { display: block; }
+.g-ramayana-yatra__sa-line.is-deva { line-height: 1.62; font-size: 1.06em; }
+.g-ramayana-yatra__sa-line.is-deva .sk-sa { line-height: inherit; }
+.g-ramayana-yatra__sa-line.is-iast { line-height: 1.55; }
+.g-ramayana-yatra__sa-line.is-iast .sk-sa { line-height: inherit; }
+.g-ramayana-yatra__sa-line .g-ramayana-yatra__player { font-family: inherit; }
+.g-ramayana-yatra__story-en { display: block; margin-top: 2px; padding-top: 3px; border-top: 1px dashed var(--line); color: var(--ink-3); font-size: 0.8em; font-weight: 600; line-height: 1.45; transition: opacity 160ms ease; }
+.g-ramayana-yatra__story-en.is-pending { visibility: hidden; opacity: 0; }
+.g-ramayana-yatra__story-en .g-ramayana-yatra__player { color: inherit; }
+.g-ramayana-yatra__ghost { visibility: hidden; }
+.g-ramayana-yatra__say-text .g-ramayana-yatra__story + .g-ramayana-yatra__caret, .g-ramayana-yatra__beat-text .g-ramayana-yatra__story + .g-ramayana-yatra__caret { display: none; }
+.g-ramayana-yatra__objective-text { min-width: 0; flex: 1; }
+.g-ramayana-yatra__objective .g-ramayana-yatra__sa-line.is-deva { font-size: 1.1em; line-height: 1.6; }
+.g-ramayana-yatra__objective .g-ramayana-yatra__story-en { border-top: 0; padding-top: 0; margin-top: 0; font-size: 0.9em; }
+.g-ramayana-yatra .sk-choice .g-ramayana-yatra__story-en { border-top: 0; padding-top: 0; }
+
+/* interface text (view-ui.tsx): the English gloss after Sanskrit in sa-en mode */
+.g-ramayana-yatra__ui-en { color: var(--ink-3); font-size: 0.78em; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.g-ramayana-yatra__ui-en.is-block { display: block; margin-top: 1px; }
+/* Sanskrit interface text (sa / sa-en): Devanagari needs no letter-spacing or capitals and a little more line height */
+.g-ramayana-yatra__eyebrow .sk-sa, .g-ramayana-yatra__logo-en .sk-sa, .g-ramayana-yatra .sk-btn .sk-sa, .g-ramayana-yatra__pill-btn .sk-sa { letter-spacing: 0; text-transform: none; }
+.g-ramayana-yatra__eyebrow .sk-sa--deva { font-size: 1.25em; line-height: 1.4; }
+.g-ramayana-yatra .sk-btn .g-ramayana-yatra__ui-en.is-block { font-size: 0.72em; line-height: 1.15; }
+.g-ramayana-yatra .sk-btn:has(.g-ramayana-yatra__ui-en.is-block) { flex-direction: column; gap: 0; line-height: 1.2; height: auto; min-height: 48px; padding-top: 4px; padding-bottom: 4px; }
+.g-ramayana-yatra__titlecard-en.is-gloss { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); }
+/* a chapter card with a long Sanskrit summary (and its English) scrolls instead of clipping */
+.g-ramayana-yatra__titlecard > * { flex: none; }
+.g-ramayana-yatra__titlecard .g-ramayana-yatra__ui-en.is-block { margin-top: var(--s-1); }
+.g-ramayana-yatra__movelist .g-ramayana-yatra__name { color: inherit; font-weight: 700; }
+.g-ramayana-yatra__credits .g-ramayana-yatra__player { color: inherit; }
+.g-ramayana-yatra__titlecard-summary .g-ramayana-yatra__sa-line.is-deva { line-height: 1.7; }
+.g-ramayana-yatra__input.is-sa { font-family: var(--font-sa, inherit); }
+.g-ramayana-yatra__kbd { display: inline-block; min-width: 1.6em; padding: 0 4px; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 4px; background: var(--paper-2); color: var(--ink-2); font: inherit; font-size: 0.92em; font-weight: 700; line-height: 1.35; text-align: center; white-space: nowrap; }
+.g-ramayana-yatra__tab .sk-sa--deva { font-size: 1.08em; line-height: 1.3; }
+.g-ramayana-yatra__pill-btn--stack .g-ramayana-yatra__ui-en.is-block { font-size: 10px; margin-top: 0; }
+
+/* battle info boxes in Sanskrit: DOM labels over the canvas boxes (canvas units → % of 320 × 180) */
+.g-ramayana-yatra__btags { position: absolute; inset: 0; container-type: size; pointer-events: none; animation: g-ramayana-yatra-fade 160ms 460ms both; }
+.g-ramayana-yatra__btag { position: absolute; display: flex; align-items: center; justify-content: space-between; gap: 2cqw; width: calc(114 / 320 * 100%); padding: 0; color: rgb(58 40 34); font-size: 6.4cqh; font-weight: 800; line-height: 1.25; white-space: nowrap; }
+.g-ramayana-yatra__btag .sk-sa { line-height: 1.25; }
+.g-ramayana-yatra__btag.is-foe { left: calc(11 / 320 * 100%); top: calc(10 / 180 * 100%); height: calc(12 / 180 * 100%); }
+.g-ramayana-yatra__btag.is-ally { left: calc(195 / 320 * 100%); top: calc(130 / 180 * 100%); height: calc(12 / 180 * 100%); }
+.g-ramayana-yatra__btag.is-ally-hp { left: calc(195 / 320 * 100%); top: calc(153 / 180 * 100%); height: calc(14 / 180 * 100%); justify-content: flex-end; font-size: 6cqh; }
+.g-ramayana-yatra__btag-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.g-ramayana-yatra__btag-lv { flex: none; color: rgb(110 70 40); font-size: 0.9em; }
+
+/* the dialogue-language picker (Settings, New journey) */
+.g-ramayana-yatra__dlang { display: grid; gap: var(--s-1); width: 100%; }
+.g-ramayana-yatra__seg { display: flex; gap: 0; padding: 3px; border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--paper-2); }
+.g-ramayana-yatra__seg-btn { flex: 1 1 auto; min-height: 44px; min-width: 44px; padding: 2px var(--s-2); border: 0; border-radius: calc(var(--r-md) - 3px); background: transparent; color: var(--ink-2); font: inherit; font-size: var(--fs-sm); font-weight: 700; line-height: 1.2; cursor: pointer; text-align: center; }
+.g-ramayana-yatra__seg-btn .sk-sa { font-size: 1.08em; line-height: 1.3; }
+.g-ramayana-yatra__seg-btn.is-on { background: var(--accent); color: var(--on-accent); box-shadow: 0 2px 0 var(--accent-ink); }
+.g-ramayana-yatra__seg-btn:focus-visible { outline: 3px solid var(--indigo); outline-offset: 1px; }
+.g-ramayana-yatra__seg-plus { white-space: nowrap; font-size: 0.92em; }
+.g-ramayana-yatra__dlang-note { margin: 0; color: var(--ink-3); font-size: var(--fs-xs); font-weight: 600; }
+.g-ramayana-yatra__setting--col { flex-direction: column; align-items: stretch; text-align: start; }
+.g-ramayana-yatra__auto { display: grid; place-items: center; }
+.g-ramayana-yatra__dots { display: inline-flex; gap: 6px; }
+.g-ramayana-yatra__dots i { width: 8px; height: 8px; border-radius: 2px; background: var(--line-strong); animation: g-ramayana-yatra-blink 0.9s steps(2) infinite; }
+.g-ramayana-yatra__dots i:nth-child(2) { animation-delay: 0.3s; }
+.g-ramayana-yatra__dots i:nth-child(3) { animation-delay: 0.6s; }
+.g-ramayana-yatra__saving { font-weight: 800; color: var(--ok-ink); }
+
+/* ── cards ─────────────────────────────────────────────── */
+.g-ramayana-yatra__card-panel { display: flex; flex-direction: column; gap: var(--s-2); }
+.g-ramayana-yatra__card-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-right: 2px;
+  background:
+    linear-gradient(var(--surface) 30%, transparent) top / 100% 28px no-repeat local,
+    linear-gradient(transparent, var(--surface) 70%) bottom / 100% 28px no-repeat local,
+    linear-gradient(color-mix(in srgb, var(--ink) 16%, transparent), transparent) top / 100% 10px no-repeat scroll,
+    linear-gradient(transparent, color-mix(in srgb, var(--ink) 22%, transparent)) bottom / 100% 14px no-repeat scroll; }
+.g-ramayana-yatra__verse { display: grid; gap: var(--s-2); }
+.g-ramayana-yatra__verse-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); flex-wrap: wrap; }
+.g-ramayana-yatra__verse-head-side { display: inline-flex; align-items: center; gap: var(--s-1); }
+.g-ramayana-yatra__ref { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.g-ramayana-yatra__padas { display: grid; gap: 2px; padding: var(--s-2); border-radius: var(--r-md); background: var(--paper-2); border: 2px solid var(--line); }
+.g-ramayana-yatra__verse.is-restored .g-ramayana-yatra__padas { background: var(--gold-soft); border-color: var(--gold); }
+.g-ramayana-yatra__pada-block { display: grid; gap: var(--s-1); }
+.g-ramayana-yatra__pada-btn { display: block; width: 100%; min-height: 44px; padding: 2px var(--s-2); border: 0; border-radius: var(--r-sm); background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.g-ramayana-yatra__pada-btn:hover, .g-ramayana-yatra__pada-block.is-open .g-ramayana-yatra__pada-btn { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.g-ramayana-yatra__translation-box { display: grid; gap: 2px; }
+.g-ramayana-yatra__verse-links { display: flex; flex-wrap: wrap; gap: 0 var(--s-3); }
+.g-ramayana-yatra__pada { font-size: var(--fs-xl); line-height: 1.4; color: var(--ink); }
+.g-ramayana-yatra__pada-words { display: flex; flex-wrap: wrap; gap: 4px; }
+.g-ramayana-yatra__vw { min-height: 44px; padding: 0 var(--s-2); border: 1px solid var(--line-strong); border-radius: var(--r-pill); background: var(--surface); color: var(--ink-2); font: inherit; font-size: var(--fs-sm); cursor: pointer; }
+.g-ramayana-yatra__vw.is-on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.g-ramayana-yatra__wordrow { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-2); padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--accent-soft); color: var(--accent-ink); animation: g-ramayana-yatra-rise var(--t-fast) var(--ease); }
+.g-ramayana-yatra__wordrow-form { font-size: var(--fs-lg); font-weight: 700; }
+.g-ramayana-yatra__wordrow-gram { font-size: var(--fs-sm); color: var(--ink-2); }
+.g-ramayana-yatra__wordrow-gloss { font-weight: 700; }
+.g-ramayana-yatra__wtable { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.g-ramayana-yatra__wtable td { padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.g-ramayana-yatra__sandhi { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-2); }
+.g-ramayana-yatra__sandhi li { display: grid; gap: 2px; padding: var(--s-2) var(--s-3); border-left: 3px solid var(--accent); background: var(--paper-2); border-radius: var(--r-sm); }
+.g-ramayana-yatra__sandhi-eq { font-size: var(--fs-lg); font-weight: 600; }
+.g-ramayana-yatra__translation { margin: 0; font-size: var(--fs-md); font-weight: 600; line-height: 1.5; font-style: italic; }
+.g-ramayana-yatra__context { margin: 0; color: var(--ink-2); font-size: var(--fs-sm); line-height: 1.5; }
+.g-ramayana-yatra__source { margin: 0; color: var(--ink-3); font-size: var(--fs-xs); }
+.g-ramayana-yatra__word { display: grid; gap: var(--s-2); padding: var(--s-3); border: 2px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+.g-ramayana-yatra__word-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); flex-wrap: wrap; }
+.g-ramayana-yatra__word-lemma { font-size: var(--fs-2xl); font-weight: 700; line-height: 1.3; }
+.g-ramayana-yatra__word-meaning { font-weight: 700; }
+.g-ramayana-yatra__forms li.is-on { margin-left: calc(-1 * var(--s-2)); padding: 2px var(--s-2); border-radius: var(--r-sm); background: var(--accent-soft); color: var(--accent-ink); font-weight: 700; }
+.g-ramayana-yatra__w--form { border-bottom-style: solid; }
+.g-ramayana-yatra__forms { margin: 0; padding-left: var(--s-4); display: grid; gap: 4px; font-size: var(--fs-sm); }
+.g-ramayana-yatra__tier { display: inline-flex; gap: 6px; align-items: baseline; padding: 2px var(--s-2); border-radius: var(--r-pill); background: var(--paper-2); color: var(--ink-2); font-size: var(--fs-sm); font-weight: 700; }
+.g-ramayana-yatra__tier.is-known { background: var(--indigo-soft); color: var(--indigo-ink); }
+.g-ramayana-yatra__tier.is-mastered { background: var(--gold-soft); color: var(--gold-ink); }
+.g-ramayana-yatra__titlecard { display: flex; flex-direction: column; align-items: center; justify-content: safe center; gap: var(--s-2); text-align: center; overflow-y: auto; animation: g-ramayana-yatra-rise var(--t-slow) var(--ease); }
+.g-ramayana-yatra__titlecard-sa { font-size: clamp(2rem, 10vw, 2.75rem); line-height: 1.3; color: var(--accent-ink); }
+.g-ramayana-yatra__titlecard-en { font-weight: 800; font-size: var(--fs-lg); color: var(--accent-ink); }
+.g-ramayana-yatra__titlecard-summary { margin: 0; max-width: 34em; color: var(--ink-2); line-height: 1.55; }
+
+/* ── challenge ─────────────────────────────────────────── */
+.g-ramayana-yatra__challenge { display: flex; flex-direction: column; gap: var(--s-2); overflow-y: auto; padding-bottom: calc(var(--edge) + var(--s-2)); }
+.g-ramayana-yatra__ctx { display: grid; gap: 2px; font-size: var(--fs-sm); color: var(--ink-2); }
+.g-ramayana-yatra__ctx-ref { font-size: var(--fs-xs); font-weight: 700; color: var(--ink-3); }
+.g-ramayana-yatra__ctx-words, .g-ramayana-yatra__ctx-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px var(--s-2); font-size: var(--fs-lg); }
+.g-ramayana-yatra__ctx-word.is-target, .g-ramayana-yatra__ctx-mark { padding: 0 4px; border-radius: var(--r-sm); background: var(--accent-soft); color: var(--accent-ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--accent); }
+.g-ramayana-yatra__both { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 0 4px; }
+.g-ramayana-yatra__challenge-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
+.g-ramayana-yatra__kind { display: inline-flex; align-items: baseline; gap: 6px; padding: 2px var(--s-2); border-radius: var(--r-pill); background: var(--accent-soft); color: var(--accent-ink); font-size: var(--fs-sm); font-weight: 800; }
+.g-ramayana-yatra__steps { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.g-ramayana-yatra__timer { height: 6px; border-radius: var(--r-pill); background: var(--paper-3); overflow: hidden; }
+.g-ramayana-yatra__timer-fill { height: 100%; background: var(--accent); border-radius: var(--r-pill); transition: width 100ms linear; }
+.g-ramayana-yatra__timer.is-low .g-ramayana-yatra__timer-fill { background: var(--bad); }
+.g-ramayana-yatra__hint-iast { font-size: var(--fs-sm); font-weight: 600; color: var(--ink-3); }
+.g-ramayana-yatra__prompt { font-weight: 800; font-size: var(--fs-md); }
+.g-ramayana-yatra__stimulus { padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--paper-2); text-align: center; font-size: var(--fs-xl); font-weight: 700; line-height: 1.4; }
+.g-ramayana-yatra__challenge .sk-choices { gap: var(--s-2); margin-top: auto; }
+.g-ramayana-yatra__challenge .g-ramayana-yatra__krama { margin-top: auto; }
+.g-ramayana-yatra__challenge .sk-choice { min-height: 48px; padding-top: var(--s-2); padding-bottom: var(--s-2); }
+.g-ramayana-yatra__krama { display: grid; gap: var(--s-2); }
+.g-ramayana-yatra__answerline { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1); min-height: 52px; padding: var(--s-2); border: 2px dashed var(--line-strong); border-radius: var(--r-md); background: var(--paper); }
+.g-ramayana-yatra__placed { padding: 2px var(--s-2); border-radius: var(--r-sm); background: var(--indigo-soft); color: var(--indigo-ink); font-weight: 700; animation: g-ramayana-yatra-pop var(--t-fast) var(--ease-pop); }
+.g-ramayana-yatra__feedback { display: flex; flex-direction: column; overflow-y: auto; }
+.g-ramayana-yatra__feedback .sk-feedback { position: static; margin: 0; flex: none; border-radius: var(--r-md); padding: var(--s-3); align-content: start; }
+.g-ramayana-yatra__fb-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2); font-weight: 700; }
+.g-ramayana-yatra__fb-line .sk-sa { font-size: var(--fs-lg); }
+.g-ramayana-yatra__fb-label { font-size: var(--fs-xs); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.8; }
+.g-ramayana-yatra__fb-expl { color: var(--ink-2); font-size: var(--fs-sm); line-height: 1.55; }
+
+/* ── battle ────────────────────────────────────────────── */
+.g-ramayana-yatra__battle { display: flex; flex-direction: column; gap: var(--s-2); }
+.g-ramayana-yatra__battle > :nth-child(2) { flex: 1; min-height: 0; }
+.g-ramayana-yatra__matchup .g-ramayana-yatra__el { padding: 0 0 0 4px; }
+.g-ramayana-yatra__matchup { display: none; margin: 0; padding-top: var(--s-2); line-height: 1.7; border-top: 2px solid var(--line); font-size: var(--fs-xs); color: var(--ink-3); font-weight: 600; }
+@media (min-height: 720px) { .g-ramayana-yatra__matchup { display: block; } }
+.g-ramayana-yatra__versus { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-2); padding-bottom: var(--s-1); border-bottom: 2px solid var(--line); font-size: var(--fs-sm); font-weight: 700; }
+.g-ramayana-yatra__versus-vs { color: var(--ink-3); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; }
+.g-ramayana-yatra__versus-foe { text-align: right; }
+.g-ramayana-yatra__beat-text { margin: 0; font-size: var(--fs-md); line-height: 1.6; }
+.g-ramayana-yatra__cmd { display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-2); }
+.g-ramayana-yatra__cmd-q { margin: 0; font-weight: 700; }
+.g-ramayana-yatra__cmd-grid, .g-ramayana-yatra__shrine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
+.g-ramayana-yatra__cmd-btn { display: flex; align-items: center; gap: var(--s-2); min-height: 52px; padding: var(--s-2) var(--s-3); border: 2px solid var(--line-strong); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font: inherit; font-weight: 800; text-align: left; box-shadow: 0 var(--edge) 0 var(--line-strong); cursor: pointer; }
+.g-ramayana-yatra__cmd-btn.is-primary { border-color: var(--accent); box-shadow: 0 var(--edge) 0 var(--accent-ink); background: var(--accent-soft); color: var(--accent-ink); }
+.g-ramayana-yatra__cmd-btn:active:not(:disabled) { transform: translateY(var(--edge)); box-shadow: none; }
+.g-ramayana-yatra__cmd-btn:disabled { opacity: 0.45; cursor: default; }
+.g-ramayana-yatra__cmd-grid.is-solo { grid-template-columns: 1fr; }
+.g-ramayana-yatra__shrine { display: flex; flex-direction: column; gap: var(--s-2); }
+.g-ramayana-yatra__shrine-label { display: grid; gap: 0; }
+.g-ramayana-yatra__list { display: flex; flex-direction: column; gap: var(--s-2); overflow-y: auto; }
+.g-ramayana-yatra__move, .g-ramayana-yatra__member, .g-ramayana-yatra__verse-btn, .g-ramayana-yatra__shop-row { display: flex; align-items: center; gap: var(--s-2); min-height: 48px; padding: var(--s-1) var(--s-3); border: 2px solid var(--line-strong); border-left-width: 6px; border-radius: var(--r-md); background: var(--surface); color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.g-ramayana-yatra__shop-row { cursor: default; border-left-width: 2px; }
+.g-ramayana-yatra__move:disabled, .g-ramayana-yatra__member:disabled { opacity: 0.45; cursor: default; }
+.g-ramayana-yatra__move:active:not(:disabled), .g-ramayana-yatra__member:active:not(:disabled), .g-ramayana-yatra__verse-btn:active { transform: translateY(2px); }
+.g-ramayana-yatra__move-name { flex: 1; min-width: 0; display: grid; gap: 0; font-weight: 700; line-height: 1.35; }
+.g-ramayana-yatra__move-meta { font-size: var(--fs-xs); font-weight: 600; color: var(--ink-3); }
+.g-ramayana-yatra__move-side { display: grid; justify-items: end; gap: 2px; font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); }
+.g-ramayana-yatra__move-kind { white-space: nowrap; }
+.g-ramayana-yatra__move-desc { font-size: var(--fs-xs); font-weight: 500; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.g-ramayana-yatra__member.is-out { opacity: 0.4; filter: grayscale(1); }
+.g-ramayana-yatra__hint.is-warn { color: var(--bad-ink); font-weight: 700; }
+.g-ramayana-yatra__pp { font-variant-numeric: tabular-nums; color: var(--ink-3); }
+.g-ramayana-yatra__back { align-self: flex-start; min-height: 44px; padding: 0 var(--s-3); border: 0; border-radius: var(--r-pill); background: var(--paper-2); color: var(--ink-2); font: inherit; font-weight: 800; cursor: pointer; }
+.g-ramayana-yatra__move.el-agni, .g-ramayana-yatra__el.el-agni { border-left-color: var(--saffron); }
+.g-ramayana-yatra__move.el-jala, .g-ramayana-yatra__el.el-jala { border-left-color: var(--indigo); }
+.g-ramayana-yatra__move.el-vayu, .g-ramayana-yatra__el.el-vayu { border-left-color: var(--teal); }
+.g-ramayana-yatra__move.el-bhumi, .g-ramayana-yatra__el.el-bhumi { border-left-color: var(--leaf); }
+.g-ramayana-yatra__move.el-divya, .g-ramayana-yatra__el.el-divya { border-left-color: var(--gold); }
+.g-ramayana-yatra__move.el-maya, .g-ramayana-yatra__el.el-maya { border-left-color: var(--plum); }
+.g-ramayana-yatra__move.el-none, .g-ramayana-yatra__el.el-none { border-left-color: var(--mute); }
+.g-ramayana-yatra__el { padding: 0 6px; border-left: 4px solid var(--mute); font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); }
+.g-ramayana-yatra__hp { position: relative; display: block; width: 72px; height: 8px; border-radius: var(--r-pill); background: var(--paper-3); overflow: hidden; }
+.g-ramayana-yatra__hp-fill { position: absolute; inset: 0 auto 0 0; background: var(--ok); border-radius: var(--r-pill); transition: width var(--t-slow) var(--ease); }
+.g-ramayana-yatra__hp-fill.is-mid { background: var(--warn); }
+.g-ramayana-yatra__hp-fill.is-low { background: var(--bad); }
+
+/* ── shop / verses ─────────────────────────────────────── */
+.g-ramayana-yatra__shop-head { display: flex; align-items: center; justify-content: space-between; flex: none; }
+.g-ramayana-yatra__verse-btn.is-restored { border-color: var(--gold); background: var(--gold-soft); }
+.g-ramayana-yatra__verse-btn.is-locked { opacity: 0.55; cursor: default; border-style: dashed; }
+.g-ramayana-yatra__credits { display: grid; gap: var(--s-2); align-content: start; }
+.g-ramayana-yatra__credit-list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-2); }
+.g-ramayana-yatra__credit-list li { display: grid; padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--gold-soft); color: var(--gold-ink); }
+
+/* ── menu sheet ────────────────────────────────────────── */
+.g-ramayana-yatra__menu { display: grid; gap: var(--s-3); }
+.g-ramayana-yatra__tabs { display: flex; flex-wrap: wrap; gap: var(--s-1); }
+.g-ramayana-yatra__tab { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-height: 44px; min-width: 56px; padding: 2px var(--s-2); border: 2px solid var(--line); border-radius: var(--r-md); background: var(--paper-2); color: var(--ink-2); font: inherit; font-size: var(--fs-sm); font-weight: 800; line-height: 1.2; cursor: pointer; }
+.g-ramayana-yatra__tab.is-on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-ink); }
+.g-ramayana-yatra__tab-en { font-size: 10px; font-weight: 700; opacity: 0.8; }
+.g-ramayana-yatra__tabpanel { min-height: 120px; }
+.g-ramayana-yatra__menu-foot { display: grid; grid-template-columns: 1fr 1.6fr; gap: var(--s-2); padding-top: var(--s-2); border-top: 2px solid var(--line); }
+.g-ramayana-yatra__menu-foot .sk-btn { text-transform: none; font-size: var(--fs-md); padding: 0 var(--s-2); }
+.g-ramayana-yatra__wordcell.is-unseen { min-height: 40px; }
+.g-ramayana-yatra__detail-back { justify-self: start; }
+.g-ramayana-yatra__member-card { display: grid; gap: var(--s-1); padding: var(--s-2) var(--s-3); border: 2px solid var(--line); border-radius: var(--r-md); }
+.g-ramayana-yatra__member-head { display: flex; align-items: baseline; gap: var(--s-2); flex-wrap: wrap; }
+.g-ramayana-yatra__member-name { flex: 1; min-width: 0; font-weight: 700; display: inline-flex; gap: var(--s-1); flex-wrap: wrap; }
+.g-ramayana-yatra__member-hp { display: flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; }
+.g-ramayana-yatra__movelist { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.g-ramayana-yatra__movelist li { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-2); flex-wrap: wrap; }
+.g-ramayana-yatra__filters { display: flex; flex-wrap: wrap; gap: 4px; }
+.g-ramayana-yatra__filter { min-height: 44px; padding: 0 var(--s-2); border: 1px solid var(--line-strong); border-radius: var(--r-pill); background: var(--surface); color: var(--ink-2); font: inherit; font-size: var(--fs-xs); font-weight: 700; cursor: pointer; }
+.g-ramayana-yatra__filter.is-on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.g-ramayana-yatra__wordgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: var(--s-1); }
+.g-ramayana-yatra__wordcell { display: grid; justify-items: center; align-content: center; gap: 0; min-height: 56px; padding: var(--s-1); border: 2px solid var(--line); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font: inherit; text-align: center; cursor: pointer; overflow: hidden; }
+.g-ramayana-yatra__wordcell .sk-sa { font-size: var(--fs-lg); font-weight: 700; max-width: 100%; }
+.g-ramayana-yatra__wordcell.is-long { grid-column: span 2; }
+.g-ramayana-yatra__wordcell.is-long .sk-sa { font-size: var(--fs-md); }
+.g-ramayana-yatra__wordcell-en { width: 100%; font-size: 10px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-ramayana-yatra__wordcell.is-unseen { color: var(--mute); border-style: dashed; cursor: default; font-weight: 800; }
+.g-ramayana-yatra__wordcell.is-known { border-color: var(--indigo); }
+.g-ramayana-yatra__wordcell.is-mastered { border-color: var(--gold); background: var(--gold-soft); }
+.g-ramayana-yatra__equip { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-sm); }
+.g-ramayana-yatra__equip.is-on .g-ramayana-yatra__move-meta { color: var(--on-accent); }
+.g-ramayana-yatra__setting { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); flex-wrap: wrap; font-weight: 700; }
+
+/* ── title / new journey ───────────────────────────────── */
+.g-ramayana-yatra__title-menu, .g-ramayana-yatra__newgame { display: flex; flex-direction: column; gap: var(--s-3); justify-content: center; }
+.g-ramayana-yatra__epigraph { margin: 0; display: grid; gap: 2px; justify-items: center; text-align: center; padding: var(--s-3); border-radius: var(--r-md); background: var(--paper-2); color: var(--ink-2); font-size: var(--fs-md); line-height: 1.5; }
+.g-ramayana-yatra__epigraph figcaption { margin-top: var(--s-1); font-size: var(--fs-xs); color: var(--ink-3); }
+.g-ramayana-yatra__howto { margin: 0; padding: 0 0 0 var(--s-5); display: none; gap: var(--s-1); color: var(--ink-2); font-size: var(--fs-sm); line-height: 1.45; }
+.g-ramayana-yatra__howto li::marker { color: var(--accent); font-weight: 800; }
+@media (min-height: 760px) { .g-ramayana-yatra__howto { display: grid; } }
+/* New journey: never cut off the top when it overflows (safe centring, own scroll); the title screen already shows the
+   how-to, so the repeat here only appears on very tall screens (room for the story-text picker) */
+.g-ramayana-yatra__newgame { justify-content: safe center; overflow-y: auto; }
+@media (max-height: 899px) { .g-ramayana-yatra__newgame .g-ramayana-yatra__howto { display: none; } }
+.g-ramayana-yatra__tagline { margin: 0; text-align: center; color: var(--ink-2); font-weight: 600; }
+.g-ramayana-yatra__save-slot { display: grid; gap: 2px; padding: var(--s-3); border: 2px solid var(--accent); border-radius: var(--r-md); background: var(--accent-soft); color: var(--ink); font: inherit; text-align: left; box-shadow: 0 var(--edge) 0 var(--accent-ink); cursor: pointer; }
+.g-ramayana-yatra__save-slot:active { transform: translateY(var(--edge)); box-shadow: none; }
+.g-ramayana-yatra__save-slot-top { display: flex; justify-content: space-between; align-items: baseline; color: var(--accent-ink); font-size: var(--fs-lg); }
+.g-ramayana-yatra__save-slot-sub { font-size: var(--fs-sm); color: var(--ink-2); }
+.g-ramayana-yatra__label { font-size: var(--fs-sm); font-weight: 800; color: var(--ink-2); }
+.g-ramayana-yatra__input { min-height: 48px; padding: 0 var(--s-3); border: 2px solid var(--line-strong); border-radius: var(--r-md); background: var(--paper); color: var(--ink); font: inherit; font-size: var(--fs-lg); font-weight: 700; }
+.g-ramayana-yatra__input:focus { outline: 3px solid var(--accent); outline-offset: 1px; }
+.g-ramayana-yatra__avatars { display: flex; gap: var(--s-3); }
+.g-ramayana-yatra__avatar { display: grid; place-items: center; width: 76px; height: 76px; padding: 4px; border: 3px solid var(--line-strong); border-radius: var(--r-md); background: var(--paper-2); color: var(--ink-3); font: inherit; font-size: var(--fs-xl); font-weight: 900; cursor: pointer; }
+.g-ramayana-yatra__avatar img { width: 100%; height: 100%; image-rendering: pixelated; }
+.g-ramayana-yatra__avatar.is-on { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+/* ── wider screens: keep the panel compact and centred ─── */
+@media (min-width: 600px) {
+  .g-ramayana-yatra { padding: var(--s-3); }
+  .g-ramayana-yatra__keys-hint { display: block; }
+}
+@media (max-width: 599px) {
+  .g-ramayana-yatra__keys-hint { display: none; }
+}
+@media (max-width: 370px) {
+  .g-ramayana-yatra__dpad { grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); }
+  .g-ramayana-yatra__ab { width: 104px; height: 100px; }
+  .g-ramayana-yatra__btn-a, .g-ramayana-yatra__btn-b { width: 52px; height: 52px; }
+  .g-ramayana-yatra__pill-btn { min-width: 64px; }
+  .g-ramayana-yatra__panel { padding: var(--s-2); }
+}
+/* QA 11 Nov: below 360 px the D-pad, Menu/verse buttons and A/B cluster do not fit in one row (the B button covered the
+   verse-book button). Put Menu and the verse book in their own row above the pad. */
+@media (max-width: 359px) {
+  .g-ramayana-yatra__pad-row { flex-wrap: wrap; row-gap: var(--s-2); }
+  .g-ramayana-yatra__mid { order: -1; flex: 1 1 100%; grid-template-columns: 1fr 1fr; }
+  .g-ramayana-yatra__pill-btn--stack { flex-direction: row; gap: var(--s-1); }
+}
+
+@media (min-height: 760px) {
+  .g-ramayana-yatra__say-text, .g-ramayana-yatra__beat-text { font-size: var(--fs-lg); }
+  .g-ramayana-yatra__portrait { width: 80px; height: 80px; }
+  .g-ramayana-yatra__mini .g-ramayana-yatra__portrait { width: 40px; height: 40px; }
+}
+
+/* short phones: tighter verse lines so the four padas and the translation fit above the fold */
+@media (max-height: 700px) {
+  .g-ramayana-yatra__pada { font-size: var(--fs-lg); }
+  .g-ramayana-yatra__translation { font-size: var(--fs-sm); }
+  .g-ramayana-yatra__verse { gap: var(--s-1); }
+  .g-ramayana-yatra__objective .g-ramayana-yatra__sa-line { line-height: 1.45; }
+  .g-ramayana-yatra__objective .g-ramayana-yatra__story-en { font-size: 0.85em; line-height: 1.3; }
+}
+
+/* landscape phones: a smaller canvas so the controls stay on screen */
+@media (orientation: landscape) and (max-height: 520px) {
+  .g-ramayana-yatra__screen { width: auto; height: 30dvh; align-self: center; }
+  .g-ramayana-yatra__panel { min-height: 0; overflow-y: auto; padding: var(--s-2); }
+  .g-ramayana-yatra__objective { flex: none; }
+  .g-ramayana-yatra__status { display: none; }
+  .g-ramayana-yatra__objective { padding: var(--s-1) var(--s-2); font-size: var(--fs-xs); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .g-ramayana-yatra__objective .g-ramayana-yatra__story-en { display: none; }
+  .g-ramayana-yatra__logo-sa { font-size: 1.4rem; }
+}
+/* mouse + keyboard devices: no on-screen pad (the arrow keys, Z and X do the job); the menu buttons stay */
+@media (hover: hover) and (pointer: fine) {
+  .g-ramayana-yatra__dpad, .g-ramayana-yatra__ab { display: none; }
+  .g-ramayana-yatra__pad-row { justify-content: center; }
+  .g-ramayana-yatra__mid { grid-auto-flow: column; }
+  .g-ramayana-yatra__keys-hint { display: block; }
+}
+
+/* ── motion ────────────────────────────────────────────── */
+.g-ramayana-yatra.is-reduced *, .g-ramayana-yatra.is-reduced *::before, .g-ramayana-yatra.is-reduced *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+@media (prefers-reduced-motion: reduce) {
+  .g-ramayana-yatra *, .g-ramayana-yatra *::before, .g-ramayana-yatra *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}
+@keyframes g-ramayana-yatra-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes g-ramayana-yatra-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes g-ramayana-yatra-pop { from { transform: scale(0.8); } to { transform: none; } }
+@keyframes g-ramayana-yatra-blink { 0% { opacity: 1; } 100% { opacity: 0.2; } }
+@keyframes g-ramayana-yatra-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
+@keyframes g-ramayana-yatra-banner { 0% { opacity: 0; transform: translateY(-8px); } 10% { opacity: 1; transform: none; } 85% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ui-b: battle menus, challenge / feedback and verse / word cards in the Sanskrit story-text modes */
+.g-ramayana-yatra__fb-label .sk-sa, .g-ramayana-yatra__fb-label .g-ramayana-yatra__sa-line.is-deva { font-size: var(--fs-sm); line-height: 1.4; }
+.g-ramayana-yatra__fb-label:has(.g-ramayana-yatra__sa-line) { letter-spacing: 0; opacity: 0.75; }
+.g-ramayana-yatra__fb-expl .g-ramayana-yatra__story-en { font-size: 0.92em; }
+.g-ramayana-yatra__opt-sa { display: inline-flex; flex-direction: column; align-items: center; }
+.g-ramayana-yatra__fb-line .g-ramayana-yatra__opt-sa { align-items: flex-start; }
+.g-ramayana-yatra__opt-sa .g-ramayana-yatra__ui-en.is-block { font-size: 0.72em; }
+.g-ramayana-yatra__qty { white-space: nowrap; }
+.g-ramayana-yatra__prompt .g-ramayana-yatra__story-en { font-weight: 600; }
+.g-ramayana-yatra__matchup-sa { display: block; }
+.g-ramayana-yatra__cmd-btn .g-ramayana-yatra__sa-line.is-deva { line-height: 1.3; }
+/* battle lists never squeeze a row below its content (short screens, taller Devanagari lines): the list scrolls */
+.g-ramayana-yatra__battle > .g-ramayana-yatra__list { min-height: 0; flex: 1 1 auto; }
+.g-ramayana-yatra__battle > .g-ramayana-yatra__list > * { flex-shrink: 0; }
+/* /ui-b */
+
+/* ── Kathā (kc-view, v0.4): journey picker, verse moment, recitation panel (audited: scratch/ux-audit) ── */
+.g-ramayana-yatra__seg-btn .g-ramayana-yatra__ui-en.is-block { font-size: 0.72em; line-height: 1.1; }
+.g-ramayana-yatra__seg-btn:disabled { opacity: 0.5; cursor: default; }
+.g-ramayana-yatra__auto-recite > span { flex: 1 1 12em; min-width: 0; display: grid; gap: 0; }
+.g-ramayana-yatra__book-progress { display: grid; gap: var(--s-1); }
+.g-ramayana-yatra__book-bar { display: block; height: 8px; border-radius: var(--r-pill); background: var(--paper-3); overflow: hidden; }
+.g-ramayana-yatra__book-bar i { display: block; height: 100%; border-radius: var(--r-pill); background: var(--accent); }
+.g-ramayana-yatra__astra-tag { justify-self: end; padding: 0 var(--s-2); border-radius: var(--r-pill); background: var(--gold-soft); color: var(--gold-ink); }
+
+/* verse moment: the printed verse, then the words glide into prose order and the सरलार्थः fades in */
+.g-ramayana-yatra__vm { display: flex; flex-direction: column; gap: var(--s-2); }
+.g-ramayana-yatra__vm-scroll { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.g-ramayana-yatra__vm-verse { margin: 0; flex: none; display: grid; gap: 0; justify-items: center; padding: var(--s-1) var(--s-2) 2px; border-radius: var(--r-md); background: var(--paper-2); border: 2px solid var(--line); text-align: center; font-size: clamp(1.15rem, 5.4vw, 1.75rem); line-height: 1.5; color: var(--ink); }
+.g-ramayana-yatra__vm-verse .sk-sa { line-height: 1.5; }
+.g-ramayana-yatra__vm-ref { font-size: var(--fs-xs); line-height: 1.4; color: var(--ink-3); }
+.g-ramayana-yatra__vm-ref .g-ramayana-yatra__ref { font-size: inherit; color: inherit; }
+.g-ramayana-yatra__vm-bar { flex: none; display: flex; align-items: center; gap: var(--s-2); }
+.g-ramayana-yatra__vm-tabs { flex: 1 1 auto; min-width: 0; display: flex; gap: 4px; transition: opacity 300ms ease; }
+.g-ramayana-yatra__vm-tabs.is-waiting { opacity: 0.4; }
+.g-ramayana-yatra__vm-tab { flex: 1 1 0; min-width: 0; min-height: 44px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 2px 3px; border: 2px solid var(--line); border-radius: var(--r-md); background: var(--paper-2); color: var(--ink-2); font: inherit; font-size: var(--fs-sm); font-weight: 800; line-height: 1.15; cursor: pointer; text-align: center; overflow-wrap: normal; hyphens: none; }
+.g-ramayana-yatra__vm.is-en .g-ramayana-yatra__vm-tab { font-size: var(--fs-xs); }
+.g-ramayana-yatra__vm-tab .sk-sa--deva { font-size: 1.04em; line-height: 1.3; }
+.g-ramayana-yatra__vm-tab.is-on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-ink); }
+.g-ramayana-yatra__vm-tab-en { font-size: 10px; font-weight: 700; opacity: 0.85; }
+.g-ramayana-yatra__vm-bar .g-ramayana-yatra__next { flex: none; }
+.g-ramayana-yatra__vm-body { display: grid; gap: var(--s-2); align-content: start; padding: 2px 0 var(--s-2); }
+.g-ramayana-yatra__vm-words { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 5px; padding: 2px 0; }
+.g-ramayana-yatra__vm-word { position: relative; display: inline-flex; align-items: center; min-height: 36px; padding: 0 10px; border: 2px solid var(--line-strong); border-radius: var(--r-pill); background: var(--surface); color: var(--ink); font: inherit; font-size: var(--fs-md); font-weight: 600; line-height: 1.3; cursor: pointer; box-shadow: 0 2px 0 var(--line-strong); }
+.g-ramayana-yatra__vm-word::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+.g-ramayana-yatra__vm-word .sk-sa--deva { font-size: 1.12em; }
+.g-ramayana-yatra__vm-word.is-plain { cursor: default; box-shadow: none; }
+.g-ramayana-yatra__vm-word.is-implied { border-style: dashed; color: var(--ink-3); background: transparent; }
+.g-ramayana-yatra__vm-word:active:not(.is-plain) { transform: translateY(2px); box-shadow: none; }
+.g-ramayana-yatra__vm-sarala { margin: 0; padding: var(--s-2) var(--s-3); border-left: 4px solid var(--gold); border-radius: var(--r-sm); background: var(--gold-soft); color: var(--ink); font-size: var(--fs-md); font-weight: 600; line-height: 1.6; animation: g-ramayana-yatra-rise 420ms var(--ease) both; }
+.g-ramayana-yatra__vm-sarala .sk-sa { line-height: 1.6; }
+.g-ramayana-yatra__vm-sarala.is-large { font-size: var(--fs-lg); }
+.g-ramayana-yatra__vm-hint { margin: 0; text-align: center; font-size: var(--fs-xs); }
+
+/* recitation panel (smarana): one auto-fitted row, akṣara by akṣara, one gap, three stacked chips */
+.g-ramayana-yatra__cast { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.g-ramayana-yatra__cast-head { flex: none; display: flex; align-items: center; gap: var(--s-2); min-height: 36px; padding-bottom: 6px; border-bottom: 2px solid var(--line); }
+.g-ramayana-yatra__astra { flex: none; padding: 0 10px; border-radius: var(--r-pill); background: var(--gold-soft); color: var(--gold-ink); font-weight: 800; font-size: var(--fs-md); line-height: 1.5; }
+.g-ramayana-yatra__astra.is-recital { background: var(--accent-soft); color: var(--accent-ink); }
+.g-ramayana-yatra__cast-ref { flex: 1 1 auto; min-width: 0; color: var(--ink-3); font-size: var(--fs-xs); font-weight: 700; }
+.g-ramayana-yatra__cast-ref .g-ramayana-yatra__ref { font-size: inherit; color: inherit; }
+.g-ramayana-yatra__cast-help { flex: none; position: relative; width: 32px; height: 32px; margin-left: auto; border: 2px solid var(--line-strong); border-radius: var(--r-pill); background: var(--paper-2); color: var(--ink-2); font: inherit; font-weight: 900; cursor: pointer; }
+.g-ramayana-yatra__cast-help::after { content: ''; position: absolute; inset: -6px; }
+.g-ramayana-yatra__cast-cap { margin: 0; text-align: center; color: var(--ink-3); font-size: var(--fs-xs); font-weight: 700; }
+.g-ramayana-yatra__cast-stage { position: relative; flex: 1 1 auto; min-height: 88px; display: grid; place-items: center; padding: 4px 0 0; cursor: pointer; overflow: hidden; }
+.g-ramayana-yatra__cast-stage.is-inshrine { flex: none; justify-self: stretch; width: 100%; min-height: 0; padding: 2px 0; }
+.g-ramayana-yatra__cast-line { display: flex; flex-wrap: nowrap; justify-content: center; align-items: flex-start; column-gap: 0.32em; row-gap: 2px; max-width: 100%; line-height: 1; white-space: nowrap; }
+.g-ramayana-yatra__cast-line.is-wrap { flex-wrap: wrap; }
+.g-ramayana-yatra__cast-measure { position: absolute; left: 0; top: 0; visibility: hidden; pointer-events: none; max-width: none; width: max-content; }
+/* the fit reads sizes synchronously: no property may transition here (reduced motion gives every element a 1 ms
+   transition on `all`, which would freeze font-size at its old value during the measuring loop) */
+.g-ramayana-yatra__cast-measure, .g-ramayana-yatra__cast-measure * { transition: none !important; }
+.g-ramayana-yatra__cast-line, .g-ramayana-yatra__cast-line * { transition-property: color, background-color, border-color, box-shadow, opacity; }
+.g-ramayana-yatra__cast-line .sk-sa--deva { font-family: var(--font-shloka); }
+.g-ramayana-yatra__cast-line .sk-sa--iast { font-family: var(--font-iast); font-style: italic; }
+.g-ramayana-yatra__cast-w { display: inline-flex; align-items: flex-start; white-space: nowrap; }
+.g-ramayana-yatra__cast-ak { display: inline-flex; flex-direction: column; align-items: center; }
+.g-ramayana-yatra__cast-g { display: block; line-height: 1.55 !important; color: var(--ink-3); transition: color 120ms; }
+.g-ramayana-yatra__cast-ak.is-lit .g-ramayana-yatra__cast-g { color: var(--ink); }
+.g-ramayana-yatra__cast-ak.is-now .g-ramayana-yatra__cast-g { color: var(--accent-ink); }
+.g-ramayana-yatra__cast-m, .g-ramayana-yatra__cast-marks i { display: block; height: 14px; margin-top: -4px; font-family: var(--font-ui); font-size: 15px; font-style: normal; font-weight: 800; line-height: 14px; color: transparent; transition: color 120ms; }
+.g-ramayana-yatra__cast-ak.is-lit .g-ramayana-yatra__cast-m { color: var(--ink-3); }
+.g-ramayana-yatra__cast-ak.is-now .g-ramayana-yatra__cast-m { color: var(--accent); }
+.g-ramayana-yatra__cast-cue { line-height: 1.55; color: var(--ink-3); font-family: var(--font-shloka); }
+.g-ramayana-yatra__cast-cue.is-iast { font-family: var(--font-iast); }
+.g-ramayana-yatra__cast-gap { display: inline-flex; flex-direction: column; align-items: center; }
+.g-ramayana-yatra__cast-box { display: grid; place-items: center; min-width: 3.4em; height: 1.36em; margin-top: 0.1em; padding: 0 0.2em; border: 2px dashed var(--ink-3); border-radius: 10px; color: var(--ink); line-height: 1; white-space: nowrap; }
+.g-ramayana-yatra__cast-box .sk-sa { line-height: 1.3; }
+.g-ramayana-yatra__cast-gap.is-open .g-ramayana-yatra__cast-box { border-color: var(--accent); background: var(--accent-soft); animation: g-ramayana-yatra-gap-pulse 1.2s ease-in-out infinite; }
+.g-ramayana-yatra__cast-gap.is-open .g-ramayana-yatra__cast-box::before { content: '…'; color: var(--accent-ink); }
+.g-ramayana-yatra__cast-gap.is-filled .g-ramayana-yatra__cast-box { border-style: solid; border-color: var(--accent); background: var(--accent-soft); animation: g-ramayana-yatra-pop var(--t-fast) var(--ease-pop); }
+.g-ramayana-yatra__cast-gap.is-given .g-ramayana-yatra__cast-box { border-style: solid; border-color: var(--gold-ink); background: linear-gradient(100deg, var(--gold-soft) 20%, var(--paper) 40%, var(--gold-soft) 60%) 0 0 / 250% 100%; animation: g-ramayana-yatra-shimmer 900ms ease-in-out 2; }
+.g-ramayana-yatra__cast-marks { display: flex; justify-content: space-around; align-self: stretch; min-height: 14px; margin-top: 3px; }
+.g-ramayana-yatra__cast-marks i { margin-top: 0; }
+.g-ramayana-yatra__cast-gap.is-filled .g-ramayana-yatra__cast-marks i, .g-ramayana-yatra__cast-gap.is-given .g-ramayana-yatra__cast-marks i { color: var(--ink-3); }
+.g-ramayana-yatra__cast-measure .g-ramayana-yatra__cast-box { animation: none; }
+.g-ramayana-yatra__cast-chips { flex: none; margin-top: auto; display: grid; grid-template-columns: 1fr; gap: 10px; padding-bottom: calc(var(--edge) + 2px); transition: opacity 180ms; outline: none; }
+.g-ramayana-yatra__cast-chips.is-hidden { visibility: hidden; opacity: 0; }
+.g-ramayana-yatra__cast-chips.is-arming { opacity: 0.35; pointer-events: none; }
+.g-ramayana-yatra__cast-chip { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 4px 14px; background: var(--surface); color: var(--ink); border: 2px solid var(--line-strong); border-radius: var(--r-lg); box-shadow: 0 var(--edge) 0 var(--line-strong); font: inherit; text-align: left; cursor: pointer; touch-action: manipulation; overflow: hidden; }
+.g-ramayana-yatra__cast-chip:active:not(:disabled) { transform: translateY(var(--edge)); box-shadow: none; }
+.g-ramayana-yatra__cast-chip:disabled { cursor: default; }
+.g-ramayana-yatra__cast-chip.is-picked { background: var(--accent-soft); border-color: var(--accent); box-shadow: 0 var(--edge) 0 var(--accent); }
+.g-ramayana-yatra__cast-chip.is-dim { opacity: 0.45; }
+.g-ramayana-yatra__cast-chip.is-right { background: var(--gold-soft); border-color: var(--gold-ink); box-shadow: 0 var(--edge) 0 var(--gold-ink); }
+.g-ramayana-yatra__cast-key { flex: none; display: inline-grid; place-items: center; width: 26px; height: 26px; border: 2px solid var(--line-strong); border-radius: 8px; font-family: var(--font-ui); font-size: var(--fs-xs); font-weight: 800; color: var(--ink-3); }
+.g-ramayana-yatra__cast-chip-t { font-size: 22px; font-weight: 600; line-height: 1.5; white-space: nowrap; }
+.g-ramayana-yatra__cast-chip-t.sk-sa--iast { font-size: 20px; }
+.g-ramayana-yatra__cast-verse { flex: 1 1 auto; min-height: 0; display: grid; align-content: center; justify-items: center; gap: 2px; }
+.g-ramayana-yatra__cast-dots { display: flex; justify-content: center; gap: 6px; padding: 2px 0 4px; }
+.g-ramayana-yatra__cast-dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--paper-3); }
+.g-ramayana-yatra__cast-dots i.is-done { background: var(--accent); }
+.g-ramayana-yatra__cast-dots i.is-cur { box-shadow: 0 0 0 2px var(--accent); }
+.g-ramayana-yatra__cast-done { font-size: 20px; line-height: 1.5; color: var(--ink); text-align: center; }
+.g-ramayana-yatra__cast-helpbox { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-1); background: var(--surface); overflow-y: auto; animation: g-ramayana-yatra-fade var(--t-fast) var(--ease) both; }
+.g-ramayana-yatra__cast-helplist { margin: 0; padding-left: var(--s-4); display: grid; gap: var(--s-1); color: var(--ink-2); font-size: var(--fs-sm); line-height: 1.5; }
+@keyframes g-ramayana-yatra-gap-pulse { 50% { box-shadow: 0 0 0 4px var(--accent-soft); } }
+@keyframes g-ramayana-yatra-shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+/* compact: short phones (≤ 700 px tall, e.g. 360×640): chips 46 px, tighter lines */
+@media (max-height: 700px) {
+  .g-ramayana-yatra__cast { gap: 2px; }
+  .g-ramayana-yatra__cast-head { min-height: 32px; padding-bottom: 4px; }
+  .g-ramayana-yatra__cast-stage { min-height: 0; }
+  .g-ramayana-yatra__cast-chips { gap: 8px; }
+  .g-ramayana-yatra__cast-chip { min-height: 46px; padding: 2px 12px; }
+  .g-ramayana-yatra__cast-chip-t { font-size: 20px; line-height: 1.4; }
+  .g-ramayana-yatra__cast-done { font-size: 17px; line-height: 1.45; }
+  .g-ramayana-yatra__vm { gap: var(--s-1); }
+  .g-ramayana-yatra__vm-verse { font-size: clamp(1.05rem, 4.9vw, 1.4rem); }
+  .g-ramayana-yatra__vm-word { min-height: 34px; font-size: var(--fs-sm); }
+  .g-ramayana-yatra__vm-sarala { padding: var(--s-1) var(--s-2); font-size: var(--fs-sm); }
+}
+
+/* ── Kathā v0.4.1 (fx-view): one-tap moves, sticky New-journey footer ── */
+/* the command panel IS the move list (one tap casts); switch / items / run are small secondary buttons */
+.g-ramayana-yatra__kcmd { justify-content: flex-start; min-height: 0; overflow-y: auto; }
+.g-ramayana-yatra__kcmd .g-ramayana-yatra__cmd-q { flex: none; }
+.g-ramayana-yatra__kcmd-moves { flex: none; display: grid; grid-template-columns: 1fr; gap: var(--s-2); }
+.g-ramayana-yatra__kmove { min-height: 52px; padding: var(--s-1) var(--s-3) var(--s-1) var(--s-2); box-shadow: 0 var(--edge) 0 var(--line-strong); touch-action: manipulation; }
+.g-ramayana-yatra__kmove:active:not(:disabled) { transform: translateY(var(--edge)); box-shadow: none; }
+.g-ramayana-yatra__kmove.is-astra { background: color-mix(in srgb, var(--gold-soft) 45%, var(--surface)); }
+.g-ramayana-yatra__kmove-top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-2); min-width: 0; }
+.g-ramayana-yatra__kmove-top .g-ramayana-yatra__astra-tag { flex: none; font-size: var(--fs-xs); font-weight: 800; }
+.g-ramayana-yatra__kmove .g-ramayana-yatra__move-meta .g-ramayana-yatra__pp { color: inherit; }
+.g-ramayana-yatra__kmove .g-ramayana-yatra__move-desc { -webkit-line-clamp: 1; line-clamp: 1; }
+.g-ramayana-yatra__kcmd-more { flex: none; margin-top: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-2); padding-bottom: 2px; }
+.g-ramayana-yatra__kcmd-btn { min-width: 0; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 0 var(--s-2); border: 2px solid var(--line); border-radius: var(--r-pill); background: var(--paper-2); color: var(--ink-2); font: inherit; font-size: var(--fs-sm); font-weight: 800; line-height: 1.2; cursor: pointer; touch-action: manipulation; white-space: nowrap; }
+.g-ramayana-yatra__kcmd-btn .g-ramayana-yatra__key { width: 20px; height: 20px; font-size: 11px; }
+.g-ramayana-yatra__kcmd-btn:disabled { opacity: 0.45; cursor: default; }
+.g-ramayana-yatra__kcmd-btn:active:not(:disabled) { transform: translateY(2px); }
+/* the panel's own height decides (it depends on the canvas above, i.e. on the width too): short → the four moves in
+   two columns and no prompt line (the names row says whose turn); short and narrow (360×640) → no description either */
+.g-ramayana-yatra__kcmd { container: kcmd / size; }
+@container kcmd (max-height: 439px) {
+  .g-ramayana-yatra__kcmd .g-ramayana-yatra__cmd-q { display: none; }
+  .g-ramayana-yatra__kcmd-moves { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .g-ramayana-yatra__kmove { padding: 2px 8px 2px 6px; gap: 6px; }
+}
+@container kcmd (max-height: 439px) and (max-width: 499px) {
+  .g-ramayana-yatra__kmove .g-ramayana-yatra__key { display: none; }
+  .g-ramayana-yatra__kmove-top { flex-wrap: wrap; row-gap: 0; }
+  .g-ramayana-yatra__kmove .g-ramayana-yatra__move-desc { display: none; }
+  .g-ramayana-yatra__kcmd-btn { min-height: 40px; font-size: var(--fs-xs); padding: 0 6px; }
+  .g-ramayana-yatra__kcmd-btn .g-ramayana-yatra__key { display: none; }
+}
+
+/* New journey: the form scrolls, Begin / Back stay in a footer that is always on screen (360×640 included) */
+.g-ramayana-yatra__newgame { display: flex; flex-direction: column; gap: 0; overflow: hidden; justify-content: flex-start; }
+.g-ramayana-yatra__newgame-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: var(--s-3); justify-content: safe center; padding: 2px 2px var(--s-2); }
+.g-ramayana-yatra__newgame-foot { flex: none; padding-top: var(--s-2); border-top: 2px solid var(--line); background: var(--surface); }
+@media (max-height: 700px) {
+  .g-ramayana-yatra__newgame-body { gap: var(--s-2); }
+  .g-ramayana-yatra__newgame .g-ramayana-yatra__avatar { width: 64px; height: 64px; }
+}
+/* party tab (Kathā): element · PP, the श्लोकः tag and the Kathā wording of each move */
+.g-ramayana-yatra__movelist li.g-ramayana-yatra__kmove-li { display: grid; gap: 0; padding: 2px 0; }
+.g-ramayana-yatra__kmove-li-top { display: flex; align-items: baseline; gap: var(--s-2); flex-wrap: wrap; }
+.g-ramayana-yatra__kmove-li-top > .sk-small { margin-left: auto; }
+.g-ramayana-yatra__kmove-li .g-ramayana-yatra__move-desc { -webkit-line-clamp: 2; line-clamp: 2; }
+
+/* ── Kathā v0.4.3 (fx-duel): the tutorial duel — a model line, a coached first recitation ── */
+/* the duelist's model beat: the pāda he says, printed in full in the verse font (no gap, no input) */
+.g-ramayana-yatra__model { margin: 2px 0 0; display: grid; justify-items: center; gap: 2px; padding: var(--s-2) var(--s-3); border: 2px solid var(--gold); border-radius: var(--r-md); background: var(--gold-soft); animation: g-ramayana-yatra-rise 360ms var(--ease) both; }
+.g-ramayana-yatra__model-line { font-family: var(--font-shloka); font-size: 26px; line-height: 1.5; color: var(--ink); text-align: center; }
+.g-ramayana-yatra__model-line.sk-sa--iast { font-family: var(--font-iast); font-style: italic; font-size: 22px; }
+.g-ramayana-yatra__model-ref { color: var(--gold-ink); font-size: var(--fs-xs); font-weight: 700; }
+.g-ramayana-yatra__model-ref .g-ramayana-yatra__ref { font-size: inherit; color: inherit; }
+/* the coach line above the first recitation */
+.g-ramayana-yatra__cast-coach { margin: 0; padding: 4px var(--s-2); border-radius: var(--r-sm); background: var(--accent-soft); color: var(--accent-ink); font-size: var(--fs-sm); font-weight: 700; line-height: 1.5; text-align: center; }
+/* coached turn: the gap and the chips pulse until the first tap; reduced motion keeps the static accent ring */
+.g-ramayana-yatra__cast.is-coach .g-ramayana-yatra__cast-box { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); animation: g-ramayana-yatra-gap-pulse 1.2s ease-in-out infinite; }
+.g-ramayana-yatra__cast.is-coach .g-ramayana-yatra__cast-chips:not(.is-arming) .g-ramayana-yatra__cast-chip { border-color: var(--accent); box-shadow: 0 var(--edge) 0 var(--accent), 0 0 0 3px var(--accent-soft); animation: g-ramayana-yatra-chip-pulse 1.2s ease-in-out infinite; }
+@keyframes g-ramayana-yatra-chip-pulse { 50% { box-shadow: 0 var(--edge) 0 var(--accent), 0 0 0 7px var(--accent-soft); } }
+@media (max-height: 700px) {
+  .g-ramayana-yatra__model { padding: var(--s-1) var(--s-2); }
+  .g-ramayana-yatra__model-line { font-size: 22px; }
+  .g-ramayana-yatra__cast-coach { padding: 2px var(--s-1); font-size: var(--fs-xs); }
+}

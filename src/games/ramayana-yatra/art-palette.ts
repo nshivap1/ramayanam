@@ -1,0 +1,60 @@
+/** Master palette: warm Indian GBA-style ramps (light → dark). OWNER: art. */
+
+export const INK = '#20142a'; // universal deep outline (indigo-black)
+export const INK_WARM = '#2e1a14';
+
+export const R = {
+  grass: ['#b4e070', '#86c654', '#5ea544', '#3d7d3a', '#285a30'],
+  kusha: ['#e8e88a', '#bfd35e', '#8fb446', '#5e8a36', '#3b6430'],
+  leaf: ['#8fd05a', '#5aa743', '#3a8038', '#255c30', '#163c24'],
+  leafDark: ['#5fa048', '#3c7c3c', '#285c34', '#183e28', '#0e2618'],
+  palm: ['#a8d860', '#6cb048', '#43873a', '#2a6030'],
+  earth: ['#f4dca4', '#e4c07e', '#cc9c5c', '#a07444', '#6e4c30'],
+  sand: ['#fbf0c4', '#f2dc9c', '#e0c07a', '#c09a5c'],
+  water: ['#c8f4f0', '#78d4e0', '#3caac8', '#2a82b0', '#1d5a8c'],
+  deep: ['#6cc0dc', '#3a8cc0', '#26609c', '#1a4278', '#122c58'],
+  ocean: ['#e8fcff', '#68b8e8', '#3a84cc', '#2856a8', '#1a3678', '#101f4c'],
+  stone: ['#f0ece0', '#d4cbb8', '#ada28c', '#80766a', '#544c48'],
+  rock: ['#e0d8c8', '#b8ac98', '#8c8070', '#625a54', '#3e3838'],
+  cliff: ['#e8c898', '#c89c6c', '#9c7050', '#6c4c3c', '#40302c'],
+  mountain: ['#e8d4c0', '#c0a088', '#94766a', '#6a5254', '#463440'],
+  wood: ['#e8b070', '#c88448', '#9a5e30', '#6c3e20', '#422414'],
+  thatch: ['#fae69a', '#e8c464', '#c89a44', '#9a6e30', '#644420'],
+  mud: ['#f6e4c0', '#e8cc98', '#d0a874', '#a87e54', '#74543c'],
+  sandstone: ['#fce0c0', '#f0bc8c', '#d8946a', '#b0684c', '#7a4434'],
+  palaceRoof: ['#ff9c5c', '#e8603c', '#b83c30', '#842830', '#541c28'],
+  marble: ['#ffffff', '#f2eee6', '#dcd4c8', '#bcb2a6', '#8c8480'],
+  gold: ['#fff6b0', '#ffd860', '#f0a830', '#b87420', '#704418'],
+  red: ['#ff8a70', '#e8463a', '#b42a32', '#7c1c2c', '#4c1424'],
+  saffron: ['#ffd27a', '#ffa83c', '#e87a24', '#b0521c', '#6e3418'],
+  turmeric: ['#fff08a', '#f8d040', '#e0a428', '#a8741c', '#6a4814'],
+  lotus: ['#ffe4f0', '#ffb0d0', '#f07ca8', '#c4507e', '#82305a'],
+  teal: ['#a8f0e0', '#4ccab8', '#24a094', '#18746e', '#0e4a4a'],
+  indigo: ['#a0a8f0', '#6c70d0', '#4848a8', '#30307c', '#1c1c50'],
+  lanka: ['#7a6890', '#56466e', '#3a2e50', '#261e38', '#161024'],
+  lankaFloor: ['#5a4a54', '#463840', '#342a32', '#241c24'],
+  cave: ['#a8907c', '#7c6858', '#584a42', '#3a302e', '#221c1e'],
+  fire: ['#fffbe0', '#fff080', '#ffc030', '#ff7a20', '#d8401c', '#8c2018'],
+  white: ['#ffffff', '#e8e4f0', '#c4bed4', '#9690aa'],
+  bark: ['#c08c5c', '#946440', '#6c4430', '#46281c'],
+  // skin tones (light → dark)
+  skinFair: ['#ffe2c4', '#f6c49a', '#dc9a72', '#a8684c'],
+  skinWarm: ['#fcd0a4', '#e8a878', '#c47c54', '#8c5038'],
+  skinTan: ['#eab488', '#cc8c5c', '#a4663e', '#6e4028'],
+  skinDeep: ['#c88c64', '#a46a44', '#7c4a30', '#502e20'],
+  skinRama: ['#8ab4dc', '#5e86c0', '#3e5e9c', '#283c6c'], // dark blue-ish complexion
+  vanara: ['#ffd890', '#f4b058', '#d8843c', '#a0582c', '#683820'],
+  vanaraFace: ['#ffe8c8', '#f6cca0', '#d8a07a', '#a8704c'],
+  bear: ['#a08070', '#7a5a4c', '#563c34', '#382420'],
+  rakshasaPurple: ['#c08cd0', '#9060ac', '#683e88', '#442462', '#2a1440'],
+  rakshasaGreen: ['#a8c870', '#78a050', '#527838', '#34522a', '#20341c'],
+  rakshasaRed: ['#e88c74', '#c05c50', '#8c3a3c', '#5c2430', '#381824'],
+  rakshasaBlue: ['#8c9ccc', '#5e6ca8', '#404a80', '#2a3058', '#181c38'],
+  deerGold: ['#fff6c0', '#ffe070', '#f0b838', '#c08424', '#7a5018'],
+  feather: ['#f4f0e8', '#d4ccc4', '#a49c98', '#706870', '#40384a'],
+  vulture: ['#d8b890', '#a4805c', '#76563c', '#4c3628', '#2c1e18'],
+  serpent: ['#b8e080', '#7cbc58', '#4c9048', '#2e6038', '#1a3a26'],
+  shadow: ['#6050a0', '#403078', '#281c54', '#160e30'],
+} as const;
+
+export type RampName = keyof typeof R;

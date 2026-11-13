@@ -1,0 +1,135 @@
+{
+ "version": 1,
+ "about": "Shared interface terms used by every screen (see notes/sa-ui.md). OWNER: orchestrator; other agents add keys only to their own file.",
+ "models": [
+  {
+   "stem": "स्तर",
+   "gender": "m",
+   "paradigm": "rama-m",
+   "en": "level, layer, grade",
+   "source": "MW stara m. 'a layer, stratum, bed'; modern spoken Sanskrit: level"
+  }
+ ],
+ "entries": {
+  "common.back": {
+   "en": "◀ Back",
+   "sa": "◀ पृष्ठतः",
+   "label": true,
+   "ctx": "button: go back one screen"
+  },
+  "common.next": {
+   "en": "Next",
+   "sa": "अग्रे",
+   "label": true,
+   "ctx": "button: next line / page"
+  },
+  "common.continue": {
+   "en": "Continue ▶",
+   "sa": "अग्रे गच्छ ▶",
+   "label": true,
+   "ctx": "button: continue"
+  },
+  "common.begin": {
+   "en": "Begin ▶",
+   "sa": "आरभस्व ▶",
+   "label": true,
+   "ctx": "button: begin (journey / book)"
+  },
+  "common.leave": {
+   "en": "Leave",
+   "sa": "निर्गच्छ",
+   "label": true,
+   "ctx": "button: leave a shop / shrine"
+  },
+  "common.cancel": {
+   "en": "Cancel",
+   "sa": "त्यज",
+   "label": true,
+   "ctx": "button: cancel"
+  },
+  "common.yes": {
+   "en": "Yes",
+   "sa": "आम्",
+   "label": true,
+   "ctx": "button"
+  },
+  "common.no": {
+   "en": "No",
+   "sa": "न",
+   "label": true,
+   "ctx": "button"
+  },
+  "common.save": {
+   "en": "Save",
+   "sa": "रक्ष",
+   "label": true,
+   "ctx": "button: save the journey"
+  },
+  "common.lv": {
+   "en": "Lv",
+   "sa": "स्तरः",
+   "label": true,
+   "ctx": "hero level label, before a number: Lv 5 / स्तरः ५"
+  },
+  "common.hp": {
+   "en": "HP",
+   "sa": "बलम्",
+   "label": true,
+   "ctx": "hit points label"
+  },
+  "common.verse": {
+   "en": "Verse",
+   "sa": "श्लोकः",
+   "label": true,
+   "ctx": "label"
+  },
+  "common.verses": {
+   "en": "Verses",
+   "sa": "श्लोकाः",
+   "label": true,
+   "ctx": "label / menu tab"
+  },
+  "common.word": {
+   "en": "Word",
+   "sa": "शब्दः",
+   "label": true,
+   "ctx": "label"
+  },
+  "common.words": {
+   "en": "Words",
+   "sa": "शब्दाः",
+   "label": true,
+   "ctx": "label / menu tab"
+  },
+  "common.heard": {
+   "en": "Heard",
+   "sa": "श्रुतः",
+   "label": true,
+   "ctx": "verse status chip: heard but not yet restored"
+  },
+  "common.journey": {
+   "en": "Journey",
+   "sa": "यात्रा",
+   "label": true,
+   "ctx": "label"
+  },
+  "common.question": {
+   "en": "Question",
+   "sa": "प्रश्नः",
+   "label": true,
+   "ctx": "label"
+  },
+  "common.answer": {
+   "en": "Answer",
+   "sa": "उत्तरम्",
+   "label": true,
+   "ctx": "label"
+  },
+  "common.pp": {
+   "en": "PP",
+   "sa": "उत्साहः",
+   "label": true,
+   "ctx": "a move's power points (uses left): PP 5/10 → उत्साहः ५/१०"
+  }
+ }
+}

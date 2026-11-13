@@ -1,0 +1,234 @@
+[
+ {
+  "pack": "sentences",
+  "id": "karta-karma-kriya-016",
+  "cell": "whole sentence",
+  "found": "रामाः मोदकम् खादन्ति — \"Rama eat the sweetmeat.\"",
+  "expected": "remove; or singular: रामः मोदकम् खादति — \"Rama eats the sweetmeat.\"",
+  "why": "The proper name राम is put in prathamā bahuvacana (tag 1.3.m) with a plural verb; a personal name has no plural in this sense, and the English (\"Rama eat\") is ungrammatical. The generator must exclude proper nouns from non-singular slots."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-001",
+  "cell": "words[2].en (गच्छति)",
+  "found": "does not go",
+  "expected": "goes",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; गच्छति alone means \"goes\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-002",
+  "cell": "words[2].en (आगच्छति)",
+  "found": "does not come",
+  "expected": "comes",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; आगच्छति alone means \"comes\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-003",
+  "cell": "words[2].en (रोदिति)",
+  "found": "does not cry",
+  "expected": "cries",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; रोदिति alone means \"cries\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-004",
+  "cell": "words[2].en (धावति)",
+  "found": "does not run",
+  "expected": "runs",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; धावति alone means \"runs\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-005",
+  "cell": "words[2].en (क्रीडति)",
+  "found": "does not play",
+  "expected": "plays",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; क्रीडति alone means \"plays\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-006",
+  "cell": "words[3].en (स्मरति)",
+  "found": "does not remember",
+  "expected": "remembers",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; स्मरति alone means \"remembers\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-007",
+  "cell": "words[2].en (पतति)",
+  "found": "does not fall",
+  "expected": "falls",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; पतति alone means \"falls\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-008",
+  "cell": "words[2].en (उपविशति)",
+  "found": "does not sit down",
+  "expected": "sits down",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; उपविशति alone means \"sits down\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-009",
+  "cell": "words[2].en (स्वपिति)",
+  "found": "does not sleep",
+  "expected": "sleeps",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; स्वपिति alone means \"sleeps\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-010",
+  "cell": "words[3].en (रक्षति)",
+  "found": "does not protect",
+  "expected": "protects",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; रक्षति alone means \"protects\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-011",
+  "cell": "words[2].en (खादति)",
+  "found": "does not eat",
+  "expected": "eats",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; खादति alone means \"eats\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-012",
+  "cell": "words[2].en (नृत्यति)",
+  "found": "does not dance",
+  "expected": "dances",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; नृत्यति alone means \"dances\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-013",
+  "cell": "words[2].en (पठति)",
+  "found": "does not read",
+  "expected": "reads",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; पठति alone means \"reads\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-014",
+  "cell": "words[3].en (पश्यति)",
+  "found": "does not see",
+  "expected": "sees",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; पश्यति alone means \"sees\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-015",
+  "cell": "words[2].en (मोदते)",
+  "found": "does not rejoice",
+  "expected": "rejoices",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; मोदते alone means \"rejoices\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "na-kriya-016",
+  "cell": "words[2].en (लिखति)",
+  "found": "does not write",
+  "expected": "writes",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; लिखति alone means \"writes\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-001",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-002",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-003",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-004",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-005",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-006",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-007",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-008",
+  "cell": "words[4].en (जीवति)",
+  "found": "does not live",
+  "expected": "lives",
+  "why": "Word-level gloss carries the negation although न is a separate word glossed \"not\"; जीवति alone means \"lives\". Sentence text and sentence translation are correct — fix the gloss only."
+ },
+ {
+  "pack": "sentences",
+  "id": "saha-001 … saha-016 (all 16)",
+  "cell": "words[1].role (tṛtīyā word before सह)",
+  "found": "karana",
+  "expected": "a non-kāraka role such as 'upapada' (upapada-vibhakti); keep the sentences, change only the role label",
+  "why": "The tṛtīyā with सह is an upapada-vibhakti (सहयुक्तेऽप्रधाने 2.3.19), marking the secondary companion; it is not the karaṇa-kāraka (साधकतमं करणम् 1.4.42). A \"find the karaṇa\" game would teach a wrong analysis."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-002, vina-003, vina-004, vina-005, vina-006",
+  "cell": "words[1].role (tṛtīyā word before विना)",
+  "found": "karana",
+  "expected": "a non-kāraka role such as 'upapada' (upapada-vibhakti); keep the sentences, change only the role label",
+  "why": "Case governed by विना (पृथग्विनानानाभिस्तृतीयान्यतरस्याम् 2.3.32) is an upapada-vibhakti, not karaṇa."
+ },
+ {
+  "pack": "sentences",
+  "id": "vina-001, vina-007, vina-008",
+  "cell": "words[1].role (dvitīyā word before विना)",
+  "found": "karma",
+  "expected": "a non-kāraka role such as 'upapada' (upapada-vibhakti); keep the sentences, change only the role label",
+  "why": "Case governed by विना (2.3.32) is an upapada-vibhakti; the word is not the karma of जीवति (an akarmaka verb)."
+ },
+ {
+  "pack": "sentences",
+  "id": "namah-001 … namah-007 (all 7)",
+  "cell": "words[0].role (caturthī word with नमः)",
+  "found": "sampradana",
+  "expected": "a non-kāraka role such as 'upapada' (upapada-vibhakti); keep the sentences, change only the role label",
+  "why": "Caturthī with नमः is an upapada-vibhakti (नमःस्वस्तिस्वाहास्वधालंवषड्योगाच्च 2.3.16); there is no act of giving and hence no sampradāna-kāraka (1.4.32)."
+ }
+]

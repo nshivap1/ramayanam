@@ -1,0 +1,1590 @@
+{
+ "version": 1,
+ "models": [
+  {
+   "stem": "इन्द्रजित्",
+   "gender": "m",
+   "paradigm": "marut-m",
+   "en": "Indrajit (name)",
+   "source": "MW indrajit m. 'conqueror of Indra', N. of a son of Rāvaṇa; consonant -t stem declined like marut (indrajitam, indrajitā)"
+  },
+  {
+   "stem": "ओषधि",
+   "gender": "f",
+   "paradigm": "mati-f",
+   "en": "healing herb",
+   "source": "MW oShadhi f. (herb, medicinal plant); i-stem like मति"
+  },
+  {
+   "stem": "पुष्पक",
+   "gender": "n",
+   "paradigm": "pushpa-n",
+   "en": "Puṣpaka, the flying chariot",
+   "source": "MW puSpaka n. 'N. of the self-moving aerial car of Kubera (carried off by Rāvaṇa)'; ṇatva after ṣ as in puṣpa: puṣpakeṇa"
+  },
+  {
+   "stem": "त्रिजटा",
+   "gender": "f",
+   "paradigm": "lata-f",
+   "en": "Trijaṭā (name of a rākṣasī)",
+   "source": "MW trijaTA f. 'N. of a Rākṣasī (friendly to Sītā)' (R. v)"
+  },
+  {
+   "stem": "नल",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "Nala (name of the vānara who built the bridge)",
+   "source": "MW nala m. 'N. of a monkey-chief (son of Viśvakarman, who built Rāma's bridge)'"
+  },
+  {
+   "stem": "सुषेण",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "Suṣeṇa (name of the vānara physician)",
+   "source": "MW suSeNa m. 'N. of a monkey (father-in-law of Vālin)'; R. vi; final ṇ blocks further ṇatva (suṣeṇena)"
+  },
+  {
+   "stem": "शत्रुघ्न",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "Śatrughna (name, Rāma's youngest brother)",
+   "source": "MW zatru-Gna m. 'N. of a son of Daśaratha and Sumitrā (twin brother of Lakṣmaṇa)'; dental n blocks ṇatva (śatrughnena)"
+  },
+  {
+   "stem": "तीर",
+   "gender": "n",
+   "paradigm": "mitra-n",
+   "en": "bank, shore (of a river)",
+   "source": "MW tIra n."
+  },
+  {
+   "stem": "योजन",
+   "gender": "n",
+   "paradigm": "vana-n",
+   "en": "yojana (a measure of distance)",
+   "source": "MW yojana n. (a measure of distance); no ṇatva, like वन"
+  },
+  {
+   "stem": "अस्त्र",
+   "gender": "n",
+   "paradigm": "mitra-n",
+   "en": "missile weapon (divine weapon)",
+   "source": "MW astra n."
+  },
+  {
+   "stem": "वाद",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "debate, discussion",
+   "source": "MW vAda m."
+  },
+  {
+   "stem": "यज्ञ",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "sacrifice, fire-ritual",
+   "source": "MW yajYa m."
+  },
+  {
+   "stem": "मैनाक",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "Maināka (name of a mountain in the ocean)",
+   "source": "MW mainAka m. 'N. of a mountain (son of Himavat and Menā)'; R. v (rises from the ocean to offer Hanumān rest)"
+  },
+  {
+   "stem": "प्रहस्त",
+   "gender": "m",
+   "paradigm": "deva-m",
+   "en": "Prahasta (name of Rāvaṇa's chief general)",
+   "source": "MW prahasta m. 'N. of a Rākṣasa (general of Rāvaṇa)'; dental s blocks ṇatva (prahastena)"
+  }
+ ],
+ "entries": [
+  {
+   "en": "Hanuman stands on the summit of Mahendra. He presses down with his feet, and the whole mountain trembles.",
+   "sa": "हनुमान् महेन्द्रस्य पर्वतस्य उपरि तिष्ठति। सः पादाभ्यां पर्वतं पीडयति। सर्वः पर्वतः कम्पते।",
+   "ctx": "ch5.leap_start · narration"
+  },
+  {
+   "en": "Rama, Lakshmana and Sugriva return to Kishkindha to wait for news. Jambavan stays with the vanaras on the shore.",
+   "sa": "रामः, लक्ष्मणः, सुग्रीवः च किष्किन्धां प्रत्यागच्छन्ति। ते तत्र वार्तां प्रतीक्षिष्यन्ते। जाम्बवान् वानरैः सह समुद्रस्य तीरे एव तिष्ठति।",
+   "ctx": "ch5.leap_start · narration"
+  },
+  {
+   "en": "Only Hanuman can make this crossing. You hold the verse book tight and go with him, a witness carried on the wind.",
+   "sa": "केवलं हनुमान् समुद्रं तरितुं शक्नोति। त्वं श्लोकानां पुस्तकं हस्ते सम्यक् धरसि। त्वम् अपि तेन सह गच्छसि। वायुः त्वां वहति, त्वं सर्वं पश्यसि।",
+   "ctx": "ch5.leap_start · narration"
+  },
+  {
+   "en": "Hanuman springs into the sky, and the ocean opens beneath you, blue and endless.",
+   "sa": "हनुमान् आकाशम् उत्पतति। त्वम् अधः नीलं समुद्रं पश्यसि। तस्य अन्तः न अस्ति।",
+   "ctx": "ch5.leap_start · narration"
+  },
+  {
+   "en": "Fly east across the ocean to Lanka.",
+   "sa": "पूर्वां दिशं गच्छतु। समुद्रस्य उपरि लङ्कां प्रति उत्पततु।",
+   "ctx": "ch5.leap_start · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Provisions for the crossing! Fruit, roots, honey and herbs. Lanka will not sell you any.",
+   "sa": "यात्रायै आहारः! फलानि, मूलानि, मधु, ओषधयः च। लङ्कायां कः अपि किम् अपि न दास्यति।",
+   "ctx": "ch5.quartermaster · Vanara quartermaster"
+  },
+  {
+   "en": "Go, Hanuman! The whole army is watching you!",
+   "sa": "गच्छतु, हनुमन्! सर्वे वानराः भवन्तं पश्यन्ति!",
+   "ctx": "ch5.vanara_cheer · Vanara"
+  },
+  {
+   "en": "Midway across the {n:place.ocean_leap}, a golden mountain rises out of the waves: Mainaka.",
+   "sa": "समुद्रस्य मध्ये तरङ्गेभ्यः एकः पर्वतः उद्गच्छति। सः मैनाकः, स्वर्णम् इव प्रकाशते।",
+   "ctx": "ch5.mainaka · narration"
+  },
+  {
+   "en": "Rest on my peak, son of the Wind. Your father once saved me, and I would honour you.",
+   "sa": "वायोः पुत्र, मम उपरि विश्राम्यतु। भवतः पिता पूर्वं मां रक्षितवान्। अहं भवन्तं सत्कर्तुम् इच्छामि।",
+   "ctx": "ch5.mainaka · Mainaka"
+  },
+  {
+   "en": "Hanuman touches the peak with his hand in thanks. 'I have promised not to stop,' he says gently.",
+   "sa": "हनुमान् हस्तेन पर्वतं स्पृशति, 'धन्यवादः' इति वदति च। सः मन्दं वदति, 'अहं वचनं दत्तवान्। अहं मध्ये न विश्राम्यामि।'",
+   "ctx": "ch5.mainaka · narration"
+  },
+  {
+   "en": "While he speaks with the mountain, you kneel at an old shrine on its slope and catch your breath.",
+   "sa": "यदा सः पर्वतेन सह वदति, तदा त्वं पर्वते एकं पुरातनं मन्दिरं गच्छसि। तत्र उपविश्य त्वं किञ्चित् विश्राम्यसि।",
+   "ctx": "ch5.mainaka · narration"
+  },
+  {
+   "en": "Your party is fully rested. The shrine on Mainaka will keep your place.",
+   "sa": "सर्वे सम्यक् विश्रान्ताः। मैनाकस्य मन्दिरं तव स्थानं रक्षिष्यति।",
+   "ctx": "ch5.mainaka · narration"
+  },
+  {
+   "en": "Fly on east toward Lanka.",
+   "sa": "पुनः पूर्वां दिशं गच्छतु। लङ्का तत्र अस्ति।",
+   "ctx": "ch5.mainaka · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "A vast serpent-woman rises from the sea and blocks the way: Surasa, mother of serpents.",
+   "sa": "समुद्रात् एका महती नारी उद्गच्छति। सा सर्पाणां माता सुरसा। सा मार्गे तिष्ठति।",
+   "ctx": "ch5.surasa · narration"
+  },
+  {
+   "en": "The gods have sent me to test you. None may pass me without entering my mouth.",
+   "sa": "देवानां वचनेन अहम् अत्र आगतवती। अहं भवतः परीक्षां करोमि। यः मम मुखं प्रविशति, सः एव अग्रे गच्छति।",
+   "ctx": "ch5.surasa · person.surasa"
+  },
+  {
+   "en": "Then let wit go where strength cannot.",
+   "sa": "तर्हि यत्र बलं न गच्छति, तत्र बुद्धिः गच्छतु।",
+   "ctx": "ch5.surasa · person.hanuman"
+  },
+  {
+   "en": "Surasa tests Hanuman's wit.",
+   "sa": "सुरसा हनुमतः बुद्धिं परीक्षते।",
+   "ctx": "ch5.surasa · battle intro (narration)"
+  },
+  {
+   "en": "Surasa opens her mouth wider and wider. Hanuman grows to match her, then suddenly shrinks to the size of a thumb.",
+   "sa": "सुरसा मुखं पुनः पुनः विशालं करोति। हनुमान् अपि तथा एव वर्धते। ततः सहसा सः अङ्गुष्ठः इव लघुः भवति।",
+   "ctx": "ch5.surasa · narration"
+  },
+  {
+   "en": "He darts into her mouth and out again before she can close it, and bows to her.",
+   "sa": "सः शीघ्रं तस्याः मुखं प्रविशति, पुनः बहिः आगच्छति च। सा किम् अपि कर्तुं न शक्नोति। ततः सः तां प्रणमति।",
+   "ctx": "ch5.surasa · narration"
+  },
+  {
+   "en": "Go, best of vanaras. Find Sita, and bring Rama joy.",
+   "sa": "वानरेषु उत्तम, गच्छतु। सीतां पश्यतु। रामाय आनन्दं ददातु।",
+   "ctx": "ch5.surasa · person.surasa"
+  },
+  {
+   "en": "Surasa waits, unmoved. Think again, son of the Wind.",
+   "sa": "सुरसा न चलति, सा प्रतीक्षते। वायोः पुत्र, पुनः चिन्तयतु।",
+   "ctx": "ch5.surasa · person.surasa"
+  },
+  {
+   "en": "Answer Surasa again?",
+   "sa": "पुनः सुरसायै उत्तरं ददातु वा?",
+   "ctx": "ch5.surasa · choice prompt"
+  },
+  {
+   "en": "Answer again",
+   "sa": "पुनः उत्तरं ददामि।",
+   "ctx": "ch5.surasa · choice option (player's reply/action)"
+  },
+  {
+   "en": "Fall back and rest",
+   "sa": "पृष्ठतः गत्वा विश्राम्यामि।",
+   "ctx": "ch5.surasa · choice option (player's reply/action)"
+  },
+  {
+   "en": "You fall back toward Mainaka. Its shrine will restore you.",
+   "sa": "त्वं पुनः मैनाकं प्रति गच्छसि। तस्य मन्दिरं तव बलं पुनः दास्यति।",
+   "ctx": "ch5.surasa · narration"
+  },
+  {
+   "en": "Suddenly Hanuman slows, as if caught. Something beneath the waves has seized his shadow!",
+   "sa": "सहसा हनुमान् मन्दं चलति, बद्धः इव। तरङ्गाणाम् अधः कः अपि तस्य छायां गृहीतवान्!",
+   "ctx": "ch5.simhika · narration"
+  },
+  {
+   "en": "It is Simhika, who drags down flying creatures by their shadows.",
+   "sa": "एषा सिंहिका। ये आकाशे चलन्ति, तान् सा छायया अधः कर्षति।",
+   "ctx": "ch5.simhika · narration"
+  },
+  {
+   "en": "Simhika rises from the deep!",
+   "sa": "सिंहिका समुद्रात् उद्गच्छति!",
+   "ctx": "ch5.simhika · battle intro (narration)"
+  },
+  {
+   "en": "Hanuman breaks free, and Simhika sinks beneath the waves, never to trouble travellers again.",
+   "sa": "हनुमान् मुक्तः भवति। सिंहिका तरङ्गाणाम् अधः गच्छति। सा पुनः यात्रिकान् कदा अपि न पीडयिष्यति।",
+   "ctx": "ch5.simhika · narration"
+  },
+  {
+   "en": "Ahead, the shore of Lanka appears, green with forests and bright with golden towers.",
+   "sa": "अग्रे लङ्कायाः तीरम् अस्ति। तत्र बहवः वृक्षाः सन्ति। स्वर्णस्य भवनानि प्रकाशन्ते।",
+   "ctx": "ch5.simhika · narration"
+  },
+  {
+   "en": "Land on the shore of Lanka, to the east.",
+   "sa": "पूर्वस्यां दिशि लङ्कायाः तीरे अवतरतु।",
+   "ctx": "ch5.simhika · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The waves are wild here. Fly on carefully.",
+   "sa": "अत्र तरङ्गाः बहु चञ्चलाः सन्ति। शनैः सम्यक् च अग्रे गच्छ।",
+   "ctx": "ch5.shore_locked · narration"
+  },
+  {
+   "en": "Hanuman lands softly on Lamba hill. Before him rises Lanka on Mount Trikuta, its golden walls shining like a city of the gods.",
+   "sa": "हनुमान् शनैः एकस्मिन् पर्वते अवतरति। तस्य पुरतः लङ्का अस्ति। तस्याः स्वर्णस्य भित्तयः प्रकाशन्ते। सा देवानां नगरम् इव शोभते।",
+   "ctx": "ch5.arrive_lanka · narration"
+  },
+  {
+   "en": "He waits for night. Then he makes himself as small as a cat, to slip inside unseen.",
+   "sa": "सः रात्रिं प्रतीक्षते। ततः सः मार्जारः इव लघुः भवति। एवं कः अपि तं न पश्यति।",
+   "ctx": "ch5.arrive_lanka · narration"
+  },
+  {
+   "en": "An old stone shrine stands on the hillside to the west, forgotten by the city. You may rest there.",
+   "sa": "पश्चिमायां दिशि पर्वते शिलायाः पुरातनं मन्दिरम् अस्ति। नगरस्य जनाः तत् विस्मृतवन्तः। त्वं तत्र विश्रमितुं शक्नोषि।",
+   "ctx": "ch5.arrive_lanka · narration"
+  },
+  {
+   "en": "Enter the city gate to the north.",
+   "sa": "उत्तरस्यां दिशि नगरस्य द्वारं प्रविशतु।",
+   "ctx": "ch5.arrive_lanka · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "A fearsome figure bars the gate: Lanka herself, the guardian goddess of the city.",
+   "sa": "द्वारे एका नारी तिष्ठति। तां दृष्ट्वा सर्वे भीताः भवन्ति। सा लङ्का एव, नगरस्य देवी। सा नगरं रक्षति।",
+   "ctx": "ch5.lanka_devi · narration"
+  },
+  {
+   "en": "Who are you, creeping into my city by night? Turn back, or I will destroy you.",
+   "sa": "त्वं कः? रात्रौ मम नगरं किमर्थं प्रविशसि? निवर्तस्व। न निवर्तसे चेत्, अहं त्वां हनिष्यामि।",
+   "ctx": "ch5.lanka_devi · person.lanka_devi"
+  },
+  {
+   "en": "I only wish to see your city. Let me pass.",
+   "sa": "अहं केवलं भवत्याः नगरं द्रष्टुम् इच्छामि। कृपया मार्गं ददातु।",
+   "ctx": "ch5.lanka_devi · person.hanuman"
+  },
+  {
+   "en": "Lanka, guardian of the city, blocks the gate!",
+   "sa": "नगरस्य देवी लङ्का द्वारे तिष्ठति, मार्गं न ददाति!",
+   "ctx": "ch5.lanka_devi · battle intro (narration)"
+  },
+  {
+   "en": "Hanuman strikes her with his left fist, holding back his strength, for she is a woman. Lanka sinks to her knees.",
+   "sa": "हनुमान् वामेन हस्तेन तां ताडयति। सा नारी, अतः सः पूर्णेन बलेन न ताडयति। लङ्का भूमौ पतति।",
+   "ctx": "ch5.lanka_devi · narration"
+  },
+  {
+   "en": "Long ago Brahma told me: when a vanara overcomes you, know that the end of the rakshasas is near. That time has come.",
+   "sa": "पुरा ब्रह्मा माम् उक्तवान्, 'यदा कः अपि वानरः त्वां जेष्यति, तदा राक्षसानाम् अन्तः शीघ्रम् आगमिष्यति।' सः समयः अधुना आगतः।",
+   "ctx": "ch5.lanka_devi · person.lanka_devi"
+  },
+  {
+   "en": "Enter, and find what you seek.",
+   "sa": "प्रविशतु। भवान् यत् मार्गयति, तत् लभताम्।",
+   "ctx": "ch5.lanka_devi · person.lanka_devi"
+  },
+  {
+   "en": "Search the city of Lanka for Sita.",
+   "sa": "लङ्कायां सीतां मार्गयतु।",
+   "ctx": "ch5.lanka_devi · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The great gate of Lanka is shut, and its guardian stands before it.",
+   "sa": "लङ्कायाः महत् द्वारं न उद्घाटितम्। द्वारस्य पुरतः नगरस्य देवी तिष्ठति।",
+   "ctx": "ch5.gate_locked · narration"
+  },
+  {
+   "en": "{n:place.lanka_city} by night: golden mansions, crystal stairs, music and lamps in every window.",
+   "sa": "रात्रौ लङ्का बहु शोभते। स्वर्णस्य भवनानि, रत्नानां सोपानानि च सन्ति। सर्वत्र जनाः गायन्ति। सर्वेषु वातायनेषु दीपाः सन्ति।",
+   "ctx": "ch5.city_enter · narration"
+  },
+  {
+   "en": "Small as a cat, Hanuman slips from house to house, searching every face for Sita.",
+   "sa": "हनुमान् मार्जारः इव लघुः अस्ति। सः गृहात् गृहं गच्छति। सः सर्वेषां मुखानि पश्यति, सीतां मार्गयति च।",
+   "ctx": "ch5.city_enter · narration"
+  },
+  {
+   "en": "Search the city. Ravana's palace lies to the north.",
+   "sa": "नगरे सीतां मार्गयतु। रावणस्य प्रासादः उत्तरस्यां दिशि अस्ति।",
+   "ctx": "ch5.city_enter · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The patrol is gone. The street is quiet.",
+   "sa": "राक्षसाः गतवन्तः। वीथ्यां शान्तिः अस्ति।",
+   "ctx": "ch5.patrol_a · narration"
+  },
+  {
+   "en": "Night-wanderers on patrol spot a strange little monkey on the avenue!",
+   "sa": "रात्रौ अटन्तः निशाचराः राजमार्गे एकं विचित्रं लघुं वानरं पश्यन्ति!",
+   "ctx": "ch5.patrol_a · narration"
+  },
+  {
+   "en": "A Lanka patrol attacks!",
+   "sa": "लङ्कायाः निशाचराः आक्रामन्ति!",
+   "ctx": "ch5.patrol_a · battle intro (narration)"
+  },
+  {
+   "en": "The patrol scatters into the dark lanes.",
+   "sa": "निशाचराः अन्धकारे वीथिषु धावन्ति।",
+   "ctx": "ch5.patrol_a · narration"
+  },
+  {
+   "en": "A yatudhana guarding the west lane sniffs the air. 'I smell a stranger!'",
+   "sa": "पश्चिमायां वीथ्याम् एकः यातुधानः तिष्ठति। सः वायुं जिघ्रति। 'अत्र कः अपि अन्यः जनः अस्ति!'",
+   "ctx": "ch5.patrol_b · narration"
+  },
+  {
+   "en": "Guards at the eastern gardens raise their spears!",
+   "sa": "पूर्वस्यां दिशि उद्याने सैनिकाः युद्धाय सज्जाः सन्ति!",
+   "ctx": "ch5.patrol_c · narration"
+  },
+  {
+   "en": "Pearls, silks, sandalwood! Lanka never sleeps.",
+   "sa": "रत्नानि, कौशेयानि वस्त्राणि! लङ्का कदा अपि न स्वपिति!",
+   "ctx": "ch5.night_market · Night trader"
+  },
+  {
+   "en": "She does not notice the small monkey slipping past her stall.",
+   "sa": "तस्याः आपणस्य पार्श्वे लघुः वानरः गच्छति। सा तं न पश्यति।",
+   "ctx": "ch5.night_market · narration"
+  },
+  {
+   "en": "The guard snores against the wall, his spear across his knees.",
+   "sa": "सैनिकः भित्तेः पार्श्वे स्वपिति। तस्य शूलं जानुनोः उपरि अस्ति।",
+   "ctx": "ch5.sleepy_guard · narration"
+  },
+  {
+   "en": "Hanuman searches Ravana's palace: the halls, the gardens, the flying chariot Pushpaka, every sleeping chamber. Sita is not there.",
+   "sa": "हनुमान् रावणस्य प्रासादे मार्गयति। सः शालाः, उद्यानानि, पुष्पकं विमानम्, सर्वान् प्रकोष्ठान् च पश्यति। परन्तु तत्र सीता न अस्ति।",
+   "ctx": "ch5.despair · narration"
+  },
+  {
+   "en": "Have I failed? If I return without news, Rama will lose hope, and so will everyone who loves him.",
+   "sa": "किं मम कार्यं वृथा अभवत्? यदि अहं वार्तां विना प्रत्यागच्छामि, तर्हि रामः आशां त्यक्ष्यति। ये तस्मिन् स्निह्यन्ति, ते अपि आशां त्यक्ष्यन्ति।",
+   "ctx": "ch5.despair · person.hanuman"
+  },
+  {
+   "en": "Hanuman sits on the palace wall, his head bowed. Then he lifts it.",
+   "sa": "हनुमान् प्रासादस्य भित्तौ उपविशति। तस्य शिरः नतम् अस्ति। ततः सः पुनः उपरि पश्यति।",
+   "ctx": "ch5.despair · narration"
+  },
+  {
+   "en": "No. Despair is not the way. {w:anirveda} is the root of all {w:shri}.",
+   "sa": "न, दुःखेन किम् अपि न सिध्यति। अनिर्वेदः एव श्रियः मूलम्।",
+   "ctx": "ch5.despair · person.hanuman"
+  },
+  {
+   "en": "Well read! You can see how each word plays its part in the sentence.",
+   "sa": "साधु साधु! सम्यक् पठितम्! वाक्ये सर्वस्य शब्दस्य कार्यम् अस्ति। त्वं तत् अवगच्छसि।",
+   "ctx": "ch5.despair · narration"
+  },
+  {
+   "en": "Not quite. Look at the word's ending; it tells you its role.",
+   "sa": "न सम्यक्। शब्दस्य अन्तं पश्य। अन्तः एव तस्य कार्यं कथयति।",
+   "ctx": "ch5.despair · narration"
+  },
+  {
+   "en": "There is one place I have not searched: the Ashoka grove beyond the palace, to the east.",
+   "sa": "एकं स्थानम् अहं न मार्गितवान्। प्रासादस्य पूर्वस्यां दिशि अशोकवनिका अस्ति।",
+   "ctx": "ch5.despair · person.hanuman"
+  },
+  {
+   "en": "Go east to the Ashoka grove.",
+   "sa": "पूर्वस्यां दिशि अशोकवनिका अस्ति। तत्र गच्छतु।",
+   "ctx": "ch5.despair · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "A high golden wall encloses a fragrant garden. Hanuman resolves to search Ravana's palace first.",
+   "sa": "उद्यानं परितः स्वर्णस्य महती भित्तिः अस्ति। हनुमान् चिन्तयति, 'प्रथमं रावणस्य प्रासादे मार्गयामि।'",
+   "ctx": "ch5.grove_locked · narration"
+  },
+  {
+   "en": "In the Ashoka grove, under a shimshapa tree, sits a lady in a faded yellow garment, pale with grief, guarded by rakshasis.",
+   "sa": "अशोकवनिकायाम् एकस्य वृक्षस्य अधः एका नारी उपविष्टा अस्ति। तस्याः वस्त्रं पीतं जीर्णं च। तस्याः मुखे शोकः अस्ति। राक्षस्यः तां परितः तिष्ठन्ति।",
+   "ctx": "ch5.vatika_enter · narration"
+  },
+  {
+   "en": "Hanuman knows at once: this is Sita, just as Rama described her.",
+   "sa": "हनुमान् झटिति जानाति, 'एषा सीता एव। रामः यथा कथितवान्, तथा एव।'",
+   "ctx": "ch5.vatika_enter · narration"
+  },
+  {
+   "en": "Hiding among the branches, he watches. At dawn Ravana comes with threats and promises.",
+   "sa": "सः शाखानां मध्ये तिष्ठति, सर्वं पश्यति च। प्रभाते रावणः आगच्छति। सः भयं लोभं च दर्शयति।",
+   "ctx": "ch5.vatika_enter · narration"
+  },
+  {
+   "en": "Sita places a blade of grass between herself and Ravana and answers him with courage. She will not even look at him.",
+   "sa": "सीता तयोः मध्ये तृणं स्थापयति। सा धैर्येण रावणाय उत्तरं ददाति। सा तं द्रष्टुम् अपि न इच्छति।",
+   "ctx": "ch5.vatika_enter · narration"
+  },
+  {
+   "en": "Ravana storms away. When the guards drift off to sleep, Hanuman begins to speak, softly, from the tree.",
+   "sa": "रावणः क्रुद्धः गच्छति। यदा राक्षस्यः स्वपन्ति, तदा हनुमान् वृक्षात् मन्दं वदितुम् आरभते।",
+   "ctx": "ch5.vatika_enter · narration"
+  },
+  {
+   "en": "Approach Sita quietly.",
+   "sa": "शनैः तूष्णीं सीताम् उपगच्छतु।",
+   "ctx": "ch5.vatika_enter · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Go safely, Hanuman. Tell Rama I am waiting for him.",
+   "sa": "हनुमन्, सुखेन गच्छतु। रामाय कथयतु, 'अहं भवन्तं प्रतीक्षे।'",
+   "ctx": "ch5.sita · person.sita"
+  },
+  {
+   "en": "From the branches, Hanuman sings Rama's story softly: the princes of Ayodhya, the exile, the golden deer, Rama's grief, the friendship with Sugriva, the search.",
+   "sa": "हनुमान् शाखाभ्यः मन्दं रामस्य कथां गायति। अयोध्यायाः राजकुमारौ वनं गतवन्तौ। स्वर्णस्य मृगः आगतवान्। रामः शोकेन पीडितः। सुग्रीवः तस्य मित्रम् अभवत्। अधुना सर्वे सीतां मार्गयन्ति।",
+   "ctx": "ch5.sita · narration"
+  },
+  {
+   "en": "Who speaks Rama's name in this place? Am I dreaming?",
+   "sa": "अत्र कः रामस्य नाम वदति? किम् अहं स्वप्नं पश्यामि?",
+   "ctx": "ch5.sita · person.sita"
+  },
+  {
+   "en": "Sita's heart lifts. An old saying comes to her mind, and now it seems true.",
+   "sa": "सीतायाः मनः प्रसीदति। तस्याः मनसि एकं पुरातनं वचनम् आगच्छति। अधुना तत् सत्यम् इव अस्ति।",
+   "ctx": "ch5.sita · narration"
+  },
+  {
+   "en": "Yes! {w:ananda}, long awaited, reaches Sita at last.",
+   "sa": "आम्! सीता बहु कालं प्रतीक्षितवती। अन्ते आनन्दः तां प्राप्नोति।",
+   "ctx": "ch5.sita · narration"
+  },
+  {
+   "en": "Not quite. Read the word card again; this verse is full of hope.",
+   "sa": "न सम्यक्। शब्दस्य पत्रं पुनः पठ। अयं श्लोकः आशया पूर्णः अस्ति।",
+   "ctx": "ch5.sita · narration"
+  },
+  {
+   "en": "Hanuman climbs down and bows low.",
+   "sa": "हनुमान् वृक्षात् अवरोहति, सीतां प्रणमति च।",
+   "ctx": "ch5.sita · narration"
+  },
+  {
+   "en": "I am Hanuman, Rama's messenger. Here is his ring, engraved with his name.",
+   "sa": "अहं हनुमान्, रामस्य दूतः। इदं तस्य अङ्गुलीयकम्। तस्मिन् रामस्य नाम लिखितम् अस्ति।",
+   "ctx": "ch5.sita · person.hanuman"
+  },
+  {
+   "en": "Sita holds the ring, and her eyes fill with tears of joy, as if she had met Rama himself.",
+   "sa": "सीता अङ्गुलीयकं हस्ते धरति। तस्याः नेत्रयोः आनन्दस्य अश्रूणि आगच्छन्ति। सा रामं साक्षात् पश्यति इव।",
+   "ctx": "ch5.sita · narration"
+  },
+  {
+   "en": "My lady, sit on my back. I will carry you across the ocean to Rama this very hour.",
+   "sa": "देवि, मम पृष्ठे उपविशतु। अहम् अधुना एव समुद्रं तीर्त्वा भवतीं रामस्य पार्श्वं नेष्यामि।",
+   "ctx": "ch5.sita · person.hanuman"
+  },
+  {
+   "en": "No, Hanuman. Rama himself must come and win me back, as befits his honour.",
+   "sa": "न, हनुमन्। रामः स्वयम् आगच्छतु। सः रावणं जित्वा मां नयतु। एतत् एव रामस्य उचितम्।",
+   "ctx": "ch5.sita · person.sita"
+  },
+  {
+   "en": "Take this jewel from my hair. Rama will know it, and know that I live.",
+   "sa": "मम केशेभ्यः इदं रत्नं गृह्णातु। रामः एतत् ज्ञास्यति। 'सीता जीवति' इति अपि सः ज्ञास्यति।",
+   "ctx": "ch5.sita · person.sita"
+  },
+  {
+   "en": "Tell Rama I will wait only a little longer. Go safely.",
+   "sa": "रामाय कथयतु, 'अहं केवलम् अल्पं कालं प्रतीक्षिष्ये।' सुखेन गच्छतु।",
+   "ctx": "ch5.sita · person.sita"
+  },
+  {
+   "en": "Climb the temple steps in the north-east of the grove.",
+   "sa": "अशोकवनिकायाम् उत्तरस्याः पूर्वस्याः च दिशोः मध्ये मन्दिरम् अस्ति। तस्य सोपानानि आरोहतु।",
+   "ctx": "ch5.sita · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Something has changed. The lady smiles for the first time.",
+   "sa": "अद्य किञ्चित् नूतनम् अस्ति। सा देवी अद्य प्रथमं मन्दं हसति।",
+   "ctx": "ch5.trijata · Trijata"
+  },
+  {
+   "en": "She keeps whispering an old saying: joy does come to one who stays alive, even if it takes a hundred years.",
+   "sa": "सा पुनः पुनः मन्दम् एकं पुरातनं वचनं वदति। 'यः जीवति, तम् आनन्दः अवश्यं प्राप्नोति, वर्षशतात् अपि।'",
+   "ctx": "ch5.trijata · Trijata"
+  },
+  {
+   "en": "{w:ananda}, joy. I think it has found her at last.",
+   "sa": "{w:ananda} इति शब्दस्य अर्थः हर्षः। अन्ते आनन्दः तां प्राप्तवान् इति अहं मन्ये।",
+   "ctx": "ch5.trijata · Trijata"
+  },
+  {
+   "en": "I am Trijata. Last night I dreamt of Rama in white garlands and of Lanka sinking into the sea.",
+   "sa": "अहं त्रिजटा। ह्यः रात्रौ अहं स्वप्ने रामं दृष्टवती। तस्य कण्ठे श्वेतानां पुष्पाणां मालाः आसन्। स्वप्ने लङ्का अपि समुद्रे अपतत्।",
+   "ctx": "ch5.trijata · Trijata"
+  },
+  {
+   "en": "I told the others: do not threaten this lady. Ask her forgiveness instead.",
+   "sa": "अहम् अन्याः राक्षसीः उक्तवती, 'एतां देवीं मा पीडयत। तस्याः क्षमां याचत।'",
+   "ctx": "ch5.trijata · Trijata"
+  },
+  {
+   "en": "The rakshasi guard is fast asleep.",
+   "sa": "राक्षसी स्वपिति। सा किम् अपि न जानाति।",
+   "ctx": "ch5.rakshasi_guard · narration"
+  },
+  {
+   "en": "The guard yawns, rubs her eyes, and dozes off again.",
+   "sa": "राक्षसी किञ्चित् जागर्ति, हस्तेन नेत्रे स्पृशति, पुनः स्वपिति च।",
+   "ctx": "ch5.rakshasi_guard_2 · narration"
+  },
+  {
+   "en": "Before leaving, Hanuman decides to test the strength of Ravana's army.",
+   "sa": "हनुमान् चिन्तयति, 'अहं प्रत्यागच्छामि, किन्तु प्रथमं रावणस्य सैनिकानां बलं पश्यामि।'",
+   "ctx": "ch5.proclaim · narration"
+  },
+  {
+   "en": "He breaks the boughs of Ravana's pleasure grove, climbs the temple, and roars a challenge over the city.",
+   "sa": "सः रावणस्य उद्याने वृक्षाणां शाखाः कृन्तति। सः मन्दिरम् आरोहति। सः उच्चैः गर्जति, राक्षसान् युद्धाय आह्वयति च।",
+   "ctx": "ch5.proclaim · narration"
+  },
+  {
+   "en": "And he names himself Rama's {w:dasa}, so that all Lanka will know who has come.",
+   "sa": "सः वदति, 'अहं रामस्य दासः।' एवं सर्वा लङ्का ज्ञास्यति, कः आगतः इति।",
+   "ctx": "ch5.proclaim · narration"
+  },
+  {
+   "en": "The mightiest warrior in Lanka tonight calls himself a {w:dasa}, a servant. That is how Hanuman serves Rama.",
+   "sa": "अद्य लङ्कायां हनुमता समानः वीरः न अस्ति। परन्तु सः आत्मानं {w:dasa} इति वदति। {w:dasa} इति शब्दस्य अर्थः सेवकः। एवं हनुमान् रामं सेवते।",
+   "ctx": "ch5.proclaim · narration"
+  },
+  {
+   "en": "Rakshasa soldiers pour toward the grove! Hanuman waits on the temple steps.",
+   "sa": "राक्षसाः सैनिकाः उद्यानं प्रति धावन्ति! हनुमान् मन्दिरस्य सोपानेषु तान् प्रतीक्षते।",
+   "ctx": "ch5.proclaim · narration"
+  },
+  {
+   "en": "Restore the victory verse on the temple steps.",
+   "sa": "मन्दिरस्य सोपानेषु जयस्य श्लोकं पुनः पूर्णं करोतु।",
+   "ctx": "ch5.proclaim · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "On the temple steps you raise your voice with Hanuman's, so the victory verse rings out whole.",
+   "sa": "मन्दिरस्य सोपानेषु त्वं हनुमता सह उच्चैः पठसि। जयस्य श्लोकः पुनः पूर्णः भवति।",
+   "ctx": "ch5.restore_jaya · narration"
+  },
+  {
+   "en": "The verse shines gold! Hanuman's victory cry, {n:move.jaya_ghosha}, is yours to call on in battle.",
+   "sa": "श्लोकः स्वर्णम् इव प्रकाशते! अधुना युद्धे त्वम् अपि हनुमान् इव 'जय' इति वदितुं शक्नोषि।",
+   "ctx": "ch5.restore_jaya · narration"
+  },
+  {
+   "en": "The temple shrine stands just above you. Rest there before the battle.",
+   "sa": "मन्दिरं तव उपरि एव अस्ति। युद्धात् पूर्वं तत्र विश्राम्य।",
+   "ctx": "ch5.restore_jaya · narration"
+  },
+  {
+   "en": "Face Ravana's army beyond the east gate of the grove.",
+   "sa": "उद्यानस्य पूर्वस्यां दिशि द्वारम् अस्ति। ततः बहिः गत्वा रावणस्य सैनिकैः सह युध्यताम्।",
+   "ctx": "ch5.restore_jaya · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "A few words slipped. Step away, gather yourself, and climb the steps to try again.",
+   "sa": "के अपि शब्दाः सम्यक् न आगताः। किञ्चित् पृष्ठतः गच्छ, मनः शान्तं कुरु। ततः पुनः सोपानानि आरुह्य प्रयतस्व।",
+   "ctx": "ch5.restore_jaya · narration"
+  },
+  {
+   "en": "Soldiers gather beyond the gate. Restore the victory verse on the temple steps first.",
+   "sa": "द्वारात् बहिः सैनिकाः समागच्छन्ति। प्रथमं मन्दिरस्य सोपानेषु जयस्य श्लोकं पुनः पूर्णं कुरु।",
+   "ctx": "ch5.grove_gate_locked · person.hanuman"
+  },
+  {
+   "en": "The eastern gate of the grove is barred. Hanuman has not finished here.",
+   "sa": "उद्यानस्य पूर्वस्यां दिशि द्वारं न उद्घाटितम्। अधुना अपि अत्र हनुमतः कार्यं पूर्णं न अस्ति।",
+   "ctx": "ch5.grove_gate_locked · narration"
+  },
+  {
+   "en": "Ravana sent his servants against Hanuman, then his generals, then the sons of his ministers. All of them fell back.",
+   "sa": "रावणः प्रथमं सेवकान् हनुमता सह योद्धुम् आदिष्टवान्। ततः वीरान्, ततः मन्त्रिणां पुत्रान्। सर्वे भीताः प्रत्यागतवन्तः।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "Now Ravana's young son Aksha rides out in a golden chariot, bright as fire.",
+   "sa": "अधुना रावणस्य तरुणः पुत्रः अक्षः स्वर्णस्य रथेन आगच्छति। सः अग्निः इव प्रकाशते।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "A monkey dares to break my father's garden? You will not leave Lanka.",
+   "sa": "एकः वानरः मम पितुः उद्यानं नष्टं करोति? त्वं लङ्कायाः बहिः न गमिष्यसि।",
+   "ctx": "ch5.aksha · Aksha"
+  },
+  {
+   "en": "Prince Aksha rides into battle!",
+   "sa": "राजकुमारः अक्षः युद्धाय आगच्छति!",
+   "ctx": "ch5.aksha · battle intro (narration)"
+  },
+  {
+   "en": "Aksha falls in battle, and all Lanka trembles.",
+   "sa": "अक्षः युद्धे पतति। सर्वा लङ्का कम्पते।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "Then Indrajit, Ravana's eldest son, bound Hanuman with the weapon of Brahma. Out of respect for Brahma, Hanuman let himself be taken, to see Ravana face to face.",
+   "sa": "ततः रावणस्य प्रथमः पुत्रः इन्द्रजित् ब्रह्मणः अस्त्रेण हनुमन्तं बद्धवान्। ब्रह्मणि श्रद्धया, रावणं साक्षात् द्रष्टुं च, हनुमान् तूष्णीं स्थितवान्।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "In Ravana's court Hanuman gave Rama's message: return Sita, and live. Ravana ordered his death, but Vibhishana reminded him that a messenger must never be killed.",
+   "sa": "रावणस्य प्रासादे हनुमान् रामस्य वचनम् उक्तवान्, 'सीतां रामाय देहि, जीव च।' रावणः 'तं हत' इति आदिष्टवान्। परन्तु विभीषणः उक्तवान्, 'दूतः कदा अपि न हन्तव्यः।'",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "So the rakshasas wrapped Hanuman's tail in cloth and set it on fire.",
+   "sa": "अतः राक्षसाः हनुमतः पुच्छं वस्त्रेण बद्धवन्तः। ततः ते तस्मिन् अग्निं दत्तवन्तः।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "With his blazing tail Hanuman leapt from roof to roof, and Lanka burned. The fire did not hurt him, for Sita had prayed to Agni for his safety.",
+   "sa": "ज्वलता पुच्छेन हनुमान् गृहात् गृहम् उत्पतितवान्। सर्वा लङ्का ज्वलितवती। परन्तु अग्निः तं न पीडितवान्। यतः सीता अग्निं याचितवती, 'हनुमन्तं रक्ष' इति।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "Afraid for Sita, he hurried back to the grove and found her unharmed. He bowed to her once more, and leapt for home.",
+   "sa": "सीतायाः कृते भीतः सः शीघ्रम् उद्यानं प्रत्यागतवान्। सीता कुशलेन आसीत्। ततः सः पुनः तां नमस्कृतवान्, गृहं प्रति उत्पतितवान् च।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "At Kishkindha, Hanuman bowed to Rama. 'I have seen Sita.'",
+   "sa": "किष्किन्धायां हनुमान् रामं नमस्कृतवान्। 'अहं सीतां दृष्टवान्।'",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "He placed her jewel in Rama's hands.",
+   "sa": "सः सीतायाः रत्नं रामस्य हस्तयोः दत्तवान्।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "It is as if I see her again. Hanuman, what can I ever give you in return?",
+   "sa": "अहं तां पुनः पश्यामि इव। हनुमन्, अहं भवते किं दातुं शक्नोमि?",
+   "ctx": "ch5.aksha · person.rama"
+  },
+  {
+   "en": "Sugriva ordered the whole army to march. Within days, the vanaras camped on the southern shore of the ocean.",
+   "sa": "सुग्रीवः सर्वान् वानरान् 'चलत' इति आदिष्टवान्। अल्पैः दिनैः वानराः दक्षिणस्य समुद्रस्य तीरे स्थितवन्तः।",
+   "ctx": "ch5.aksha · narration"
+  },
+  {
+   "en": "Rejoin Rama at the shore camp to begin Book 6.",
+   "sa": "समुद्रस्य तीरे रामेण सह मिलतु। ततः युद्धकाण्डस्य आरम्भः।",
+   "ctx": "ch5.aksha · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The mansion of Kumbhakarna. His snoring shakes the golden walls; he sleeps for months at a time.",
+   "sa": "कुम्भकर्णस्य भवनम्। तस्य निद्रायाः शब्देन स्वर्णस्य भित्तयः कम्पन्ते। सः बहून् मासान् स्वपिति।",
+   "ctx": "lanka_city · sign"
+  },
+  {
+   "en": "The house of Indrajit, Ravana's eldest son, who once defeated Indra himself.",
+   "sa": "इन्द्रजितः गृहम्। सः रावणस्य प्रथमः पुत्रः। पुरा सः देवानां राजानम् अपि जितवान्।",
+   "ctx": "lanka_city · sign"
+  },
+  {
+   "en": "The house of Prahasta, commander of Ravana's armies.",
+   "sa": "प्रहस्तस्य गृहम्। सः रावणस्य सैनिकानां नेता।",
+   "ctx": "lanka_city · sign"
+  },
+  {
+   "en": "The hall of Pushpaka, the flying chariot Ravana took from his brother Kubera.",
+   "sa": "पुष्पकस्य शाला। पुष्पकं विमानम् आकाशे उत्पतति। रावणः तत् भ्रातुः अपहृतवान्।",
+   "ctx": "lanka_city · sign"
+  },
+  {
+   "en": "The house of Vibhishana, Ravana's younger brother. A quiet lamp burns inside, and someone is praying.",
+   "sa": "विभीषणस्य गृहम्। सः रावणस्य अनुजः। अन्तः एकः दीपः शान्तं ज्वलति। कः अपि ईश्वरं पूजयति।",
+   "ctx": "lanka_city · sign"
+  },
+  {
+   "en": "The vanara army covers the southern shore like a second ocean. Hanuman and you stand again with your companions.",
+   "sa": "वानराः दक्षिणस्य समुद्रस्य तीरे सर्वत्र सन्ति, अन्यः समुद्रः इव। हनुमान् त्वं च पुनः मित्रैः सह तिष्ठथः।",
+   "ctx": "ch6.shore_start · narration"
+  },
+  {
+   "en": "Rama, Lakshmana, Sugriva and Jambavan rejoin your party!",
+   "sa": "रामः, लक्ष्मणः, सुग्रीवः, जाम्बवान् च पुनः त्वया सह आगच्छन्ति!",
+   "ctx": "ch6.shore_start · narration"
+  },
+  {
+   "en": "Lanka lies across the water. Now we must find a way over it.",
+   "sa": "जलस्य अन्यस्मिन् पार्श्वे लङ्का अस्ति। अधुना समुद्रं तरितुं मार्गः आवश्यकः।",
+   "ctx": "ch6.shore_start · person.rama"
+  },
+  {
+   "en": "Speak with the stranger on the beach, to the east.",
+   "sa": "पूर्वस्यां दिशि समुद्रस्य तीरे एकः नूतनः जनः अस्ति। तेन सह वदतु।",
+   "ctx": "ch6.shore_start · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Supplies for the army! Fruit, roots, honey and herbs.",
+   "sa": "सैनिकेभ्यः आहारः! फलानि, मूलानि, मधु, ओषधयः च।",
+   "ctx": "ch6.shore_merchant · Merchant"
+  },
+  {
+   "en": "I am Nila, commander of the vanaras. Every soldier is ready, and every heart is with Rama.",
+   "sa": "अहं नीलः, वानराणां नेता। सर्वे सैनिकाः सज्जाः सन्ति। सर्वेषां हृदयानि रामेण सह सन्ति।",
+   "ctx": "ch6.nila · Nila"
+  },
+  {
+   "en": "A rakshasa among us! But if Rama trusts him, so do I.",
+   "sa": "अस्माकं मध्ये राक्षसः! परन्तु यदि रामः तस्मिन् विश्वासं करोति, तर्हि अहम् अपि करोमि।",
+   "ctx": "ch6.angada_shore · person.angada"
+  },
+  {
+   "en": "Hanuman, they say you set Lanka ablaze with your own tail! Tell me everything later.",
+   "sa": "हनुमन्, 'भवान् पुच्छेन लङ्कां दग्धवान्' इति जनाः वदन्ति! पश्चात् मह्यं सर्वं कथयतु।",
+   "ctx": "ch6.angada_shore · person.angada"
+  },
+  {
+   "en": "We carried mountains! My arms will ache for a year.",
+   "sa": "वयं पर्वतान् ऊढवन्तः! मम बाह्वोः एकं वर्षं वेदना भविष्यति।",
+   "ctx": "ch6.worker · Vanara builder"
+  },
+  {
+   "en": "Boulders, trees, whole hillsides! We are ready to carry anything Nala asks for.",
+   "sa": "शिलाः, वृक्षाः, पर्वताः अपि! नलः यत् इच्छति, तत् सर्वं वोढुं वयं सज्जाः स्मः।",
+   "ctx": "ch6.worker · Vanara builder"
+  },
+  {
+   "en": "A rakshasa descends from the sky with four companions and stands in the air above the beach. The vanaras raise rocks and trees.",
+   "sa": "एकः राक्षसः चतुर्भिः मित्रैः सह आकाशात् अवतरति। सः तीरस्य उपरि आकाशे एव तिष्ठति। वानराः शिलाः वृक्षान् च हस्तेषु गृह्णन्ति।",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "I am Vibhishana, Ravana's younger brother. I begged him to return Sita, and he shamed me before his whole court.",
+   "sa": "अहं विभीषणः, रावणस्य अनुजः। अहं तं बहु याचितवान्, 'सीतां रामाय देहि' इति। परन्तु सः सर्वेषां पुरतः मां तिरस्कृतवान्।",
+   "ctx": "ch6.vibhishana_refuge · person.vibhishana"
+  },
+  {
+   "en": "I have left Lanka, my home and my family. I seek refuge with Rama.",
+   "sa": "अहं लङ्काम्, मम गृहम्, मम कुटुम्बं च त्यक्तवान्। अधुना अहं रामस्य रक्षाम् इच्छामि।",
+   "ctx": "ch6.vibhishana_refuge · person.vibhishana"
+  },
+  {
+   "en": "Do not trust him, friend! He is the enemy's own brother. He may be a spy.",
+   "sa": "सखे, तस्मिन् विश्वासः मास्तु! सः शत्रोः भ्राता एव। सः रावणस्य दूतः भवेत्।",
+   "ctx": "ch6.vibhishana_refuge · person.sugriva"
+  },
+  {
+   "en": "He spoke for Sita in Ravana's court. He saved my life when Ravana ordered my death.",
+   "sa": "रावणस्य प्रासादे सः सीतायाः कृते उक्तवान्। यदा रावणः 'तं हत' इति आदिष्टवान्, तदा सः मम प्राणान् रक्षितवान्।",
+   "ctx": "ch6.vibhishana_refuge · person.hanuman"
+  },
+  {
+   "en": "Rama listens to every counsel. Then he speaks.",
+   "sa": "रामः सर्वेषां वचनानि शृणोति। ततः सः वदति।",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "Even if Ravana himself came seeking refuge, I would not turn him away. I give {w:abhaya} to all who come to me. That is my {w:vrata}.",
+   "sa": "यदि रावणः स्वयम् अपि रक्षाम् इच्छन् आगच्छेत्, तर्हि अपि अहं तं न त्यजेयम्। ये मां प्रति आगच्छन्ति, तेभ्यः सर्वेभ्यः अहम् अभयं ददामि। एतत् मम व्रतम्।",
+   "ctx": "ch6.vibhishana_refuge · person.rama"
+  },
+  {
+   "en": "Right. This is Rama's vow of refuge, and the source of his fearlessness.",
+   "sa": "समीचीनम्! एतत् रामस्य रक्षायाः व्रतम्। अस्मात् व्रतात् एव अभयं जायते।",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "Not quite. Tap the word card and read the gloss, then try it in battle.",
+   "sa": "न सम्यक्। शब्दस्य पत्रं पश्य, तस्य अर्थं पठ। ततः युद्धे प्रयतस्व।",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "Vibhishana bows at Rama's feet. Rama sprinkles him with sea water and names him king of Lanka.",
+   "sa": "विभीषणः रामस्य पादयोः नमति। रामः समुद्रस्य जलेन तं सिञ्चति। ततः सः वदति, 'भवान् लङ्कायाः राजा।'",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "Sugriva embraces Vibhishana. 'Then you are my friend too. Walk at Rama's side; I will lead the vanara army from the front.'",
+   "sa": "सुग्रीवः विभीषणं बाहुभ्यां गृह्णाति। 'तर्हि भवान् मम अपि मित्रम्। भवान् रामस्य पार्श्वे चलतु। अहं वानराणाम् अग्रे चलिष्यामि।'",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "Sugriva goes to command the army. He will fight beside you on the battlefield.",
+   "sa": "सुग्रीवः वानरान् नेतुं गच्छति। सः युद्धे तव पार्श्वे योत्स्यते।",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "Vibhishana joins your party!",
+   "sa": "विभीषणः त्वया सह आगच्छति!",
+   "ctx": "ch6.vibhishana_refuge · narration"
+  },
+  {
+   "en": "Ask Nala, by the shore, how to cross the ocean.",
+   "sa": "समुद्रस्य तीरे नलं पृच्छतु, 'समुद्रं कथं तरामः?' इति।",
+   "ctx": "ch6.vibhishana_refuge · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The setu is finished. Cross it, and may your feet be swift.",
+   "sa": "सेतुः पूर्णः अभवत्। तेन समुद्रं तरतु। शीघ्रं गच्छतु, शुभं भवतु।",
+   "ctx": "ch6.nala · Nala"
+  },
+  {
+   "en": "Rama prayed to the Ocean for three days. When the Ocean did not answer, Rama took up his bow in anger.",
+   "sa": "रामः त्रीणि दिनानि समुद्रं याचितवान्। यदा समुद्रः उत्तरं न दत्तवान्, तदा रामः क्रुद्धः धनुः गृहीतवान्।",
+   "ctx": "ch6.nala · narration"
+  },
+  {
+   "en": "Then the Ocean rose in person and bowed. 'Nala, son of Vishvakarma, can build a bridge. I will hold up whatever he places on my waters.'",
+   "sa": "ततः समुद्रः स्वयम् उद्गतवान्, रामं नमस्कृतवान् च। 'नलः, देवानां तक्षकस्य पुत्रः, सेतुं कर्तुं शक्नोति। सः मम जले यत् स्थापयति, तत् सर्वम् अहं धरिष्यामि।'",
+   "ctx": "ch6.nala · narration"
+  },
+  {
+   "en": "I am Nala. Vanaras, bring me trees and boulders! Rama's name on every stone!",
+   "sa": "अहं नलः। वानराः, वृक्षान् शिलाः च आनयत! सर्वासु शिलासु रामस्य नाम लिखत!",
+   "ctx": "ch6.nala · Nala"
+  },
+  {
+   "en": "For five days the vanaras uproot trees and carry rocks. Nala sets them in the sea, and they float.",
+   "sa": "पञ्च दिनानि वानराः वृक्षान् शिलाः च आनयन्ति। नलः तत् सर्वं समुद्रे स्थापयति। तत् सर्वं जले तरति।",
+   "ctx": "ch6.nala · narration"
+  },
+  {
+   "en": "On the fifth day the setu stretches all the way to Lanka. The gods watch from the sky in wonder.",
+   "sa": "अन्ते सेतुः लङ्कां प्राप्नोति। देवाः आकाशात् आश्चर्येण पश्यन्ति।",
+   "ctx": "ch6.nala · narration"
+  },
+  {
+   "en": "Cross the setu south to Lanka.",
+   "sa": "दक्षिणां दिशं गत्वा सेतुना लङ्कां गच्छतु।",
+   "ctx": "ch6.nala · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Rama will tell us when to begin. First, see who has come to the beach.",
+   "sa": "कदा आरभामहे इति रामः वदिष्यति। प्रथमं तीरे कः आगतः इति पश्यतु।",
+   "ctx": "ch6.nala · Nala"
+  },
+  {
+   "en": "The ocean stretches endlessly. The bridge is not built yet.",
+   "sa": "समुद्रस्य अन्तः न अस्ति। अधुना अपि सेतुः न अस्ति।",
+   "ctx": "ch6.setu_locked · narration"
+  },
+  {
+   "en": "The bridge Nala built stretches a hundred yojanas across the waves. The vanara army pours across it, roaring Rama's name.",
+   "sa": "नलस्य सेतुः तरङ्गाणाम् उपरि शतं योजनानि दीर्घः। वानराः 'राम राम' इति गर्जन्तः तेन धावन्ति।",
+   "ctx": "ch6.setu_walk · narration"
+  },
+  {
+   "en": "Small islets dot the way. Rakshasa scouts may lurk in their grass.",
+   "sa": "मार्गे लघवः द्वीपाः सन्ति। तेषां तृणेषु राक्षसाः तिष्ठेयुः।",
+   "ctx": "ch6.setu_walk · narration"
+  },
+  {
+   "en": "Cross the setu south to Suvela hill.",
+   "sa": "दक्षिणां दिशं गत्वा सेतुना सुवेलं पर्वतं गच्छतु।",
+   "ctx": "ch6.setu_walk · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Sit with us a while! We carried the stones for this bridge with our own hands.",
+   "sa": "अस्माभिः सह किञ्चित् उपविशतु! वयम् एव अस्माकं हस्तैः अस्य सेतोः शिलाः ऊढवन्तः।",
+   "ctx": "ch6.setu_builder · Vanara builder"
+  },
+  {
+   "en": "The army camps on {n:place.suvela_camp} hill. From its slopes you can see Lanka's golden walls, lit by a thousand torches.",
+   "sa": "वानराः सुवेले पर्वते निवसन्ति। ततः त्वं लङ्कायाः स्वर्णस्य भित्तीः पश्यसि। तत्र दीपानां सहस्रं ज्वलति।",
+   "ctx": "ch6.suvela_enter · narration"
+  },
+  {
+   "en": "Prepare at the camp, then speak with Angada.",
+   "sa": "अत्र सर्वं सज्जं करोतु। ततः अङ्गदेन सह वदतु।",
+   "ctx": "ch6.suvela_enter · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Ravana chose war. The army marches through the south pass whenever you are ready.",
+   "sa": "रावणः युद्धम् इच्छति। यदा भवन्तः सज्जाः, तदा वानराः दक्षिणस्यां दिशि मार्गेण चलिष्यन्ति।",
+   "ctx": "ch6.angada_envoy · person.angada"
+  },
+  {
+   "en": "Rama sent me to Ravana's court with one last offer: return Sita, and live in peace.",
+   "sa": "रामः मां रावणं प्रति दूतं कृतवान्। अहं रामस्य अन्तिमं वचनम् उक्तवान्, 'सीतां देहि, शान्त्या जीव च।'",
+   "ctx": "ch6.angada_envoy · person.angada"
+  },
+  {
+   "en": "Ravana laughed and called for my capture. I leapt up and broke the top of his palace tower as I left!",
+   "sa": "रावणः हसितवान्, 'तं बध्नीत' इति आदिष्टवान् च। अहम् उत्पतितवान्। प्रासादस्य उपरि यत् आसीत्, तत् अहं पादेन नष्टं कृतवान्!",
+   "ctx": "ch6.angada_envoy · person.angada"
+  },
+  {
+   "en": "There is no other way now. Lanka's gates open onto the battlefield, just south of here.",
+   "sa": "अधुना अन्यः मार्गः न अस्ति। इतः दक्षिणस्यां दिशि युद्धस्य क्षेत्रम् अस्ति। लङ्कायाः द्वाराणि तत्र एव सन्ति।",
+   "ctx": "ch6.angada_envoy · person.angada"
+  },
+  {
+   "en": "March south to the battlefield before Lanka.",
+   "sa": "दक्षिणां दिशं गत्वा लङ्कायाः पुरतः युद्धस्य क्षेत्रं गच्छतु।",
+   "ctx": "ch6.angada_envoy · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Even an army needs honey and herbs. Buy what you need.",
+   "sa": "सैनिकानाम् अपि मधु ओषधयः च आवश्यकानि। यत् आवश्यकम्, तत् क्रीणातु।",
+   "ctx": "ch6.camp_merchant · Merchant"
+  },
+  {
+   "en": "This shrine has stood on Suvela since before Lanka was built. Rest and recite here whenever you need.",
+   "sa": "यदा लङ्का न आसीत्, तदा अपि इदं मन्दिरं सुवेले आसीत्। यदा इच्छसि, तदा अत्र विश्राम्य, श्लोकान् च पठ।",
+   "ctx": "ch6.camp_keeper · Hermit"
+  },
+  {
+   "en": "The battlefield lies south. Be careful out there.",
+   "sa": "युद्धस्य क्षेत्रं दक्षिणस्यां दिशि अस्ति। तत्र शनैः सम्यक् च चलतु।",
+   "ctx": "ch6.camp_sentry · Vanara sentry"
+  },
+  {
+   "en": "Nobody marches until Angada returns from Ravana's court.",
+   "sa": "यावत् अङ्गदः रावणस्य प्रासादात् न प्रत्यागच्छति, तावत् कः अपि न चलति।",
+   "ctx": "ch6.camp_sentry · Vanara sentry"
+  },
+  {
+   "en": "Every vanara and every bear is ready. When the gates open, I will be at the front of the army.",
+   "sa": "सर्वे वानराः, सर्वे भल्लूकाः च सज्जाः सन्ति। यदा द्वाराणि उद्घाटितानि भविष्यन्ति, तदा अहं सैनिकानाम् अग्रे भविष्यामि।",
+   "ctx": "ch6.camp_sugriva · person.sugriva"
+  },
+  {
+   "en": "Rest at the shrine first, friend. The battle ahead will be long.",
+   "sa": "मित्र, प्रथमं मन्दिरे विश्राम्यतु। अग्रे युद्धं दीर्घं भविष्यति।",
+   "ctx": "ch6.camp_sugriva · person.sugriva"
+  },
+  {
+   "en": "I was on the beach when Rama made his vow. Whoever comes to him even once and says 'I am yours' is safe from every creature.",
+   "sa": "यदा रामः व्रतं कृतवान्, तदा अहं समुद्रस्य तीरे आसम्। यः सकृत् अपि आगत्य वदति, 'अहं तव अस्मि', तस्मै रामः सर्वेभ्यः अभयं ददाति।",
+   "ctx": "ch6.camp_vanara · Vanara"
+  },
+  {
+   "en": "{w:abhaya}: freedom from fear. That is why a rakshasa walks in our camp now, and nobody minds.",
+   "sa": "{w:abhaya} इति शब्दस्य अर्थः, 'भयं न अस्ति' इति। अतः एव अधुना एकः राक्षसः अस्माकं मध्ये चलति। कस्य अपि चिन्ता न अस्ति।",
+   "ctx": "ch6.camp_vanara · Vanara"
+  },
+  {
+   "en": "Look at Lanka's walls. Tomorrow we will be at its gates.",
+   "sa": "लङ्कायाः भित्तीः पश्यतु। श्वः वयं तस्याः द्वारेषु भविष्यामः।",
+   "ctx": "ch6.camp_vanara · Vanara"
+  },
+  {
+   "en": "A bear warrior of Jambavan's clan. 'Our king is old, but he still fights like a mountain.'",
+   "sa": "एषः जाम्बवतः वंशस्य भल्लूकः वीरः। 'अस्माकं राजा वृद्धः, परन्तु अधुना अपि सः पर्वतः इव युध्यते।'",
+   "ctx": "ch6.camp_bear · narration"
+  },
+  {
+   "en": "Wait for Angada's word. He went as Rama's envoy to Ravana's court.",
+   "sa": "अङ्गदस्य वचनं प्रतीक्षताम्। सः रामस्य दूतः भूत्वा रावणस्य प्रासादं गतवान्।",
+   "ctx": "ch6.battle_locked · Vanara sentry"
+  },
+  {
+   "en": "The gates of Lanka open, and Ravana's armies pour out. The battle of Lanka begins.",
+   "sa": "लङ्कायाः द्वाराणि उद्घाटितानि भवन्ति। रावणस्य सैनिकाः बहिः धावन्ति। लङ्कायाः युद्धम् आरब्धम्।",
+   "ctx": "ch6.battlefield_enter · narration"
+  },
+  {
+   "en": "The vanara physician Sushena tends the wounded behind the lines. Rest with him between battles.",
+   "sa": "वानराणां वैद्यः सुषेणः पृष्ठतः पीडितान् सैनिकान् पालयति। युद्धानां मध्ये तत्र विश्राम्य।",
+   "ctx": "ch6.battlefield_enter · narration"
+  },
+  {
+   "en": "Break through Ravana's generals to the city gate in the south.",
+   "sa": "रावणस्य वीरान् जित्वा दक्षिणस्यां दिशि नगरस्य द्वारं गच्छतु।",
+   "ctx": "ch6.battlefield_enter · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The rakshasas fight with illusions, but Rama's arrows cut through them all!",
+   "sa": "राक्षसाः मायया युध्यन्ते, परन्तु रामस्य बाणाः सर्वां मायां कृन्तन्ति!",
+   "ctx": "ch6.field_vanara · Vanara"
+  },
+  {
+   "en": "I am Sushena, physician of the vanaras. Lie down; these herbs will restore you.",
+   "sa": "अहं सुषेणः, वानराणां वैद्यः। अत्र शेष्व। एताः ओषधयः तव बलं पुनः दास्यन्ति।",
+   "ctx": "ch6.sushena · Sushena"
+  },
+  {
+   "en": "When Lakshmana fell to Indrajit's weapon, Hanuman flew to the Himalaya and carried back a whole mountain of healing herbs.",
+   "sa": "यदा इन्द्रजितः अस्त्रेण लक्ष्मणः पतितवान्, तदा हिमवान् यत्र अस्ति, तत्र हनुमान् उत्पतितवान्। सः ओषधीनां पर्वतम् एव आनीतवान्!",
+   "ctx": "ch6.sushena · Sushena"
+  },
+  {
+   "en": "One sprig of the life-giving herb is left. Keep it for the darkest hour.",
+   "sa": "मृतसञ्जीवन्याः एका एव शाखा अस्ति। तां कठिनाय समयाय रक्ष।",
+   "ctx": "ch6.sushena · Sushena"
+  },
+  {
+   "en": "Dhumraksha, Smoke-Eyed, one of Ravana's fiercest generals, blocks the way with a great iron club.",
+   "sa": "धूम्राक्षः रावणस्य एकः बलवान् वीरः। तस्य नेत्रे धूमः इव स्तः। सः महत्या गदया मार्गे तिष्ठति।",
+   "ctx": "ch6.dhumraksha · narration"
+  },
+  {
+   "en": "Monkeys and men against Lanka? I will scatter you like dust!",
+   "sa": "वानराः मनुष्याः च लङ्कया सह युध्यन्ते? अहं युष्मान् धूलिम् इव विक्षेप्स्यामि!",
+   "ctx": "ch6.dhumraksha · Dhumraksha"
+  },
+  {
+   "en": "Dhumraksha charges!",
+   "sa": "धूम्राक्षः आक्रामति!",
+   "ctx": "ch6.dhumraksha · battle intro (narration)"
+  },
+  {
+   "en": "Hanuman's blow ends Dhumraksha's charge. His army flees back toward the walls.",
+   "sa": "हनुमान् धूम्राक्षं ताडयति, धूम्राक्षः पतति। तस्य सैनिकाः भीताः भित्तीः प्रति धावन्ति।",
+   "ctx": "ch6.dhumraksha · narration"
+  },
+  {
+   "en": "Press on south toward the city gate.",
+   "sa": "दक्षिणस्यां दिशि नगरस्य द्वारं प्रति अग्रे गच्छतु।",
+   "ctx": "ch6.dhumraksha · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The ground shakes. Kumbhakarna, Ravana's giant brother, has been woken from his long sleep.",
+   "sa": "भूमिः कम्पते। रावणस्य महान् भ्राता कुम्भकर्णः बहु कालं सुप्तः आसीत्। अधुना सः प्रबुद्धः।",
+   "ctx": "ch6.kumbhakarna · narration"
+  },
+  {
+   "en": "Even he told Ravana that taking Sita was wrong. Yet he fights for his brother.",
+   "sa": "सः अपि रावणम् उक्तवान्, 'त्वं सीतां हृतवान्, तत् न उचितम्।' परन्तु सः भ्रातुः कृते युध्यते।",
+   "ctx": "ch6.kumbhakarna · narration"
+  },
+  {
+   "en": "Brother, you did wrong. But I will not abandon you.",
+   "sa": "भ्रातः, त्वं दुष्टं कर्म कृतवान्। परन्तु अहं त्वां न त्यक्ष्यामि।",
+   "ctx": "ch6.kumbhakarna · person.kumbhakarna"
+  },
+  {
+   "en": "Kumbhakarna strides onto the field!",
+   "sa": "कुम्भकर्णः युद्धस्य क्षेत्रम् आगच्छति!",
+   "ctx": "ch6.kumbhakarna · battle intro (narration)"
+  },
+  {
+   "en": "Rama's arrows bring the giant down at last. Kumbhakarna falls like a mountain, and the earth trembles.",
+   "sa": "अन्ते रामस्य बाणैः कुम्भकर्णः पतति, पर्वतः इव। भूमिः कम्पते।",
+   "ctx": "ch6.kumbhakarna · narration"
+  },
+  {
+   "en": "In Lanka, Ravana weeps for his brother.",
+   "sa": "लङ्कायां रावणः भ्रातुः कृते रोदिति।",
+   "ctx": "ch6.kumbhakarna · narration"
+  },
+  {
+   "en": "Indrajit, Ravana's son, who once defeated Indra himself, fights hidden inside clouds of illusion.",
+   "sa": "रावणस्य पुत्रः इन्द्रजित् पुरा देवानां राजानम् अपि जितवान्। अधुना सः मायायाः मेघानां मध्ये तिष्ठन् युध्यते।",
+   "ctx": "ch6.indrajit · narration"
+  },
+  {
+   "en": "Fight me if you can. No one can strike what they cannot see!",
+   "sa": "यदि शक्नुथ, मया सह युध्यध्वम्। मां कः अपि न पश्यति, अतः मां कः अपि ताडयितुं न शक्नोति!",
+   "ctx": "ch6.indrajit · person.indrajit"
+  },
+  {
+   "en": "Indrajit appears from the clouds!",
+   "sa": "इन्द्रजित् मेघेभ्यः बहिः आगच्छति!",
+   "ctx": "ch6.indrajit · battle intro (narration)"
+  },
+  {
+   "en": "Lakshmana looses a final arrow with a vow: 'If Rama is truthful and devoted to dharma, let this arrow strike.'",
+   "sa": "लक्ष्मणः अन्तिमं बाणं क्षिपति, वदति च, 'यदि रामः सत्यं वदति, धर्मं च पालयति, तर्हि अयं बाणः शत्रुं ताडयतु।'",
+   "ctx": "ch6.indrajit · narration"
+  },
+  {
+   "en": "The arrow flies true, and Indrajit's sorcery ends forever.",
+   "sa": "बाणः सम्यक् गच्छति। इन्द्रजितः माया सदा नष्टा।",
+   "ctx": "ch6.indrajit · narration"
+  },
+  {
+   "en": "Before the gate of Lanka stands a small, radiant sage. He seems to have been waiting for you.",
+   "sa": "लङ्कायाः द्वारस्य पुरतः एकः लघुः मुनिः तिष्ठति। सः तेजसा प्रकाशते। सः त्वां प्रतीक्षते इव।",
+   "ctx": "ch6.indrajit · narration"
+  },
+  {
+   "en": "Speak with the sage before the gate.",
+   "sa": "द्वारस्य पुरतः मुनिना सह वदतु।",
+   "ctx": "ch6.indrajit · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Ravana himself is coming out to fight. Rama stands weary, thinking of the battle ahead.",
+   "sa": "रावणः स्वयं योद्धुं बहिः आगच्छति। रामः श्रान्तः तिष्ठति। सः युद्धं चिन्तयति।",
+   "ctx": "ch6.agastya · narration"
+  },
+  {
+   "en": "The sage Agastya, who has come with the gods to watch the battle, approaches Rama.",
+   "sa": "अगस्त्यः मुनिः देवैः सह युद्धं द्रष्टुम् आगतवान्। सः रामम् उपगच्छति।",
+   "ctx": "ch6.agastya · narration"
+  },
+  {
+   "en": "Rama, mighty-armed, hear the eternal secret by which you will conquer every foe in battle.",
+   "sa": "राम, महाबाहो, शृणु। अहं तुभ्यं पुरातनं ज्ञानं कथयामि। अनेन त्वं युद्धे सर्वान् शत्रून् जेष्यसि।",
+   "ctx": "ch6.agastya · person.agastya"
+  },
+  {
+   "en": "It is the {n:move.aditya_hrdaya}, the hymn to the heart of the Sun. It destroys all enemies and brings victory.",
+   "sa": "एतत् आदित्यहृदयम्, सूर्यस्य श्लोकाः। अनेन सर्वे शत्रवः नश्यन्ति, त्वं च जेष्यसि।",
+   "ctx": "ch6.agastya · person.agastya"
+  },
+  {
+   "en": "Well done. You read the hymn's grammar like a true student of Agastya.",
+   "sa": "साधु साधु! त्वं श्लोकस्य व्याकरणं सम्यक् अवगच्छसि। अगस्त्यः अपि प्रसन्नः।",
+   "ctx": "ch6.agastya · narration"
+  },
+  {
+   "en": "Not quite. Find the verb first; the other words arrange themselves around it.",
+   "sa": "न सम्यक्। प्रथमं क्रियापदं पश्य। ततः अन्ये शब्दाः सरलाः भवन्ति।",
+   "ctx": "ch6.agastya · narration"
+  },
+  {
+   "en": "Agastya also blesses Rama's greatest weapon, the {n:move.brahmastra}, so that it will not fail.",
+   "sa": "अगस्त्यः रामस्य ब्रह्मास्त्रम् अपि स्पृशति, वदति च, 'एतत् कदा अपि वृथा न भविष्यति।'",
+   "ctx": "ch6.agastya · narration"
+  },
+  {
+   "en": "The hymn shines gold in your verse book. Go, Rama. Victory is yours.",
+   "sa": "तव श्लोकानां पुस्तके एषः श्लोकः स्वर्णम् इव प्रकाशते। राम, गच्छ, त्वं जेष्यसि।",
+   "ctx": "ch6.agastya · person.agastya"
+  },
+  {
+   "en": "Recite the hymn with Agastya now?",
+   "sa": "अधुना अगस्त्येन सह श्लोकान् पठतु वा?",
+   "ctx": "ch6.agastya · choice prompt"
+  },
+  {
+   "en": "Recite it now",
+   "sa": "अधुना पठामि।",
+   "ctx": "ch6.agastya · choice option (player's reply/action)"
+  },
+  {
+   "en": "Rest, and come back to me. Ravana's palace will not open until the hymn is whole.",
+   "sa": "विश्राम्य, पुनः मां प्रति आगच्छ। यावत् श्लोकाः पूर्णाः न भवन्ति, तावत् रावणस्य प्रासादं कः अपि न प्रवेक्ष्यति।",
+   "ctx": "ch6.agastya · person.agastya"
+  },
+  {
+   "en": "Recite it three times, and you will win.",
+   "sa": "पठ, पुनः पठ, पुनः अपि पठ। ततः त्वं जेष्यसि।",
+   "ctx": "ch6.agastya · person.agastya"
+  },
+  {
+   "en": "The hymn blazes gold, bright as the rising sun. Rama's strength returns.",
+   "sa": "श्लोकाः उद्गच्छन् सूर्यः इव प्रकाशन्ते। रामस्य बलं पुनः आगच्छति।",
+   "ctx": "ch6.agastya · narration"
+  },
+  {
+   "en": "Agastya blesses Rama and departs as quietly as he came.",
+   "sa": "अगस्त्यः रामाय 'शुभं भवतु' इति वदति। यथा शान्तं सः आगतवान्, तथा एव शान्तं गच्छति।",
+   "ctx": "ch6.agastya · narration"
+  },
+  {
+   "en": "Enter Ravana's palace through the city gate in the south.",
+   "sa": "दक्षिणस्यां दिशि नगरस्य द्वारेण रावणस्य प्रासादं प्रविशतु।",
+   "ctx": "ch6.agastya · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "Almost. Breathe, child, and recite with me again when you are ready.",
+   "sa": "प्रायः सम्यक्। {g:वत्स|वत्से}, मनः शान्तं कुरु। यदा इच्छसि, तदा पुनः मया सह पठ।",
+   "ctx": "ch6.agastya · person.agastya"
+  },
+  {
+   "en": "The gate will not yield. Agastya's hymn must be restored first. Speak with the sage.",
+   "sa": "द्वारं न उद्घाटितं भवति। प्रथमम् अगस्त्यस्य श्लोकाः पुनः पूर्णाः कर्तव्याः। मुनिना सह वद।",
+   "ctx": "ch6.palace_locked · person.jambavan"
+  },
+  {
+   "en": "Ravana's generals still hold the field. Break through them first.",
+   "sa": "रावणस्य वीराः अधुना अपि युद्धस्य क्षेत्रे सन्ति। प्रथमं तान् जित्वा अग्रे गच्छ।",
+   "ctx": "ch6.palace_locked · person.jambavan"
+  },
+  {
+   "en": "Ravana, ten-headed king of Lanka, rises from his throne. Indra's charioteer Matali brings a chariot from heaven for Rama.",
+   "sa": "लङ्कायाः राजा रावणः आसनात् उत्तिष्ठति। तस्य दश शिरांसि सन्ति। देवानां राज्ञः चालकः आकाशात् रामाय रथम् आनयति।",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "You have killed my brother and my sons. Now you will face me.",
+   "sa": "त्वं मम भ्रातरं पुत्रान् च हतवान्। अधुना त्वं मया सह योत्स्यसे।",
+   "ctx": "ch6.ravana · person.ravana"
+  },
+  {
+   "en": "Return Sita, even now, and live.",
+   "sa": "अधुना अपि सीतां देहि, जीव च।",
+   "ctx": "ch6.ravana · person.rama"
+  },
+  {
+   "en": "Never!",
+   "sa": "कदा अपि न!",
+   "ctx": "ch6.ravana · person.ravana"
+  },
+  {
+   "en": "Ravana, king of Lanka, attacks!",
+   "sa": "लङ्कायाः राजा रावणः आक्रामति!",
+   "ctx": "ch6.ravana · battle intro (narration)"
+  },
+  {
+   "en": "Rama looses the brahmastra that Agastya blessed. It strikes Ravana's heart, and the ten-headed king falls.",
+   "sa": "अगस्त्यः यत् ब्रह्मास्त्रं स्पृष्टवान्, तत् रामः क्षिपति। तत् रावणस्य हृदयं ताडयति। रावणः भूमौ पतति।",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "The gods rain flowers from the sky. Vibhishana kneels beside his brother and weeps.",
+   "sa": "देवाः आकाशात् पुष्पाणि क्षिपन्ति। विभीषणः भ्रातुः पार्श्वे उपविश्य रोदिति।",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "Should I perform the rites for one who did such wrong?",
+   "sa": "यः एवं दुष्टं कर्म कृतवान्, तस्य संस्कारं किम् अहं कुर्याम्?",
+   "ctx": "ch6.ravana · person.vibhishana"
+  },
+  {
+   "en": "Rama answers him gently: all {w:vaira} ends with death.",
+   "sa": "रामः शान्तं वदति, 'मृत्युना सह सर्वं वैरं नश्यति।'",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "Then I will give my brother his last rites, with honour.",
+   "sa": "तर्हि अहं भ्रातुः अन्तिमं संस्कारं श्रद्धया करिष्यामि।",
+   "ctx": "ch6.ravana · person.vibhishana"
+  },
+  {
+   "en": "Vibhishana was crowned king of Lanka, and Sita and Rama were together again at last.",
+   "sa": "विभीषणः लङ्कायाः राजा अभवत्। अन्ते सीता रामः च पुनः मिलितवन्तौ।",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "Then Rama, Sita, Lakshmana and all their friends boarded the flying chariot Pushpaka and rose into the sky, toward Ayodhya.",
+   "sa": "ततः रामः, सीता, लक्ष्मणः, सर्वाणि मित्राणि च पुष्पकं विमानम् आरूढवन्तः। ते अयोध्यां प्रति आकाशम् उत्पतितवन्तः।",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "Fourteen years have passed. In {n:place.ayodhya_return}, Bharata comes out to meet his brother, carrying the sandals he kept on the throne all this time.",
+   "sa": "चतुर्दश वर्षाणि गतानि। अयोध्यायां भरतः भ्रातरं द्रष्टुं बहिः आगच्छति। सः रामस्य पादुके धरति। सर्वं कालं ते पादुके राज्यस्य आसने आस्ताम्।",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "Ayodhya is lit with lamps and garlands, and every street is full of joy.",
+   "sa": "अयोध्यायां सर्वत्र दीपाः मालाः च सन्ति। सर्वासु वीथिषु आनन्दः अस्ति।",
+   "ctx": "ch6.ravana · narration"
+  },
+  {
+   "en": "Go north to the coronation in the palace courtyard.",
+   "sa": "उत्तरां दिशं गत्वा प्रासादस्य अङ्गणं गच्छतु। तत्र रामः राजा भविष्यति।",
+   "ctx": "ch6.ravana · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "The coronation is done. Go home, child; your teacher is waiting.",
+   "sa": "रामः राजा अभवत्। {g:वत्स|वत्से}, गृहं गच्छ। तव गुरुः त्वां प्रतीक्षते।",
+   "ctx": "ch6.coronation · person.vasishtha"
+  },
+  {
+   "en": "The day has come. Let Rama be crowned king of Ayodhya.",
+   "sa": "सः दिवसः आगतः। रामः अयोध्यायाः राजा भवतु।",
+   "ctx": "ch6.coronation · person.vasishtha"
+  },
+  {
+   "en": "Vasishtha pours the sacred waters. Rama sits on the throne with Sita beside him.",
+   "sa": "वसिष्ठः रामस्य शिरसि शुद्धं जलं सिञ्चति। रामः राज्यस्य आसने उपविशति। सीता तस्य पार्श्वे उपविशति।",
+   "ctx": "ch6.coronation · narration"
+  },
+  {
+   "en": "Shatrughna holds the white royal umbrella, and Sugriva and Vibhishana wave the fans. Lakshmana and Bharata stand close by.",
+   "sa": "शत्रुघ्नः श्वेतं छत्रं धरति। सुग्रीवः विभीषणः च व्यजने धरतः। लक्ष्मणः भरतः च पार्श्वे तिष्ठतः।",
+   "ctx": "ch6.coronation · narration"
+  },
+  {
+   "en": "Sita takes a pearl necklace from her own neck and gives it to Hanuman, the friend who found her.",
+   "sa": "सीता कण्ठात् रत्नानां हारं गृहीत्वा हनुमते ददाति। हनुमान् तस्याः मित्रम्। सः एव लङ्कायां तां दृष्टवान्।",
+   "ctx": "ch6.coronation · narration"
+  },
+  {
+   "en": "Rama ruled for many years, and in his kingdom no one knew fear, sickness or sorrow.",
+   "sa": "रामः बहु कालं राज्यं पालितवान्। तस्य राज्ये कस्य अपि भयम्, रोगः, दुःखं वा न आसीत्।",
+   "ctx": "ch6.coronation · narration"
+  },
+  {
+   "en": "The verse book glows in your hands. Its pages are full again. It is time to return to your teacher.",
+   "sa": "श्लोकानां पुस्तकं तव हस्तयोः प्रकाशते। तस्य पृष्ठानि पुनः पूर्णानि। अधुना गुरुं प्रति प्रत्यागन्तुं समयः।",
+   "ctx": "ch6.coronation · narration"
+  },
+  {
+   "en": "You are back on the banks of the Tamasa. Morning light falls on the ashrama.",
+   "sa": "त्वं पुनः तमसायाः तीरे असि। प्रभातस्य प्रकाशः आश्रमे पतति।",
+   "ctx": "ch6.coronation · narration"
+  },
+  {
+   "en": "Return to Valmiki.",
+   "sa": "वाल्मीकिं प्रति प्रत्यागच्छतु।",
+   "ctx": "ch6.coronation · objective (quest-log line, imperative to the player)"
+  },
+  {
+   "en": "You walked the whole way with us, reciter. Thank you.",
+   "sa": "{g:वत्स|वत्से}, सर्वस्मिन् मार्गे त्वम् अस्माभिः सह आसीः। धन्यवादः।",
+   "ctx": "ch6.rama_court · person.rama"
+  },
+  {
+   "en": "Tell your teacher our story, child. Tell it truly.",
+   "sa": "{g:वत्स|वत्से}, तव गुरवे अस्माकं कथां कथय। सत्यं कथय।",
+   "ctx": "ch6.sita_court · person.sita"
+  },
+  {
+   "en": "I only kept the throne warm. These sandals ruled Ayodhya for fourteen years.",
+   "sa": "अहं केवलम् आसनं रक्षितवान्। एते पादुके एव चतुर्दश वर्षाणि अयोध्यायाः राजानौ आस्ताम्।",
+   "ctx": "ch6.bharata · person.bharata"
+  },
+  {
+   "en": "My son is home. There is nothing more I could ask for.",
+   "sa": "मम पुत्रः गृहम् आगतवान्। अधुना अहं किम् अपि अन्यत् न इच्छामि।",
+   "ctx": "ch6.kausalya · person.kausalya"
+  },
+  {
+   "en": "All I want is to serve Rama, for as long as his story is told.",
+   "sa": "अहं केवलं रामं सेवितुम् इच्छामि, यावत् जनाः तस्य कथां कथयन्ति।",
+   "ctx": "ch6.hanuman_court · person.hanuman"
+  },
+  {
+   "en": "Fourteen years in the forest, and every day of it by my brother's side.",
+   "sa": "चतुर्दश वर्षाणि अहं वने आसम्। सर्वेषु दिनेषु अहं भ्रातुः पार्श्वे एव आसम्।",
+   "ctx": "ch6.lakshmana_court · person.lakshmana"
+  },
+  {
+   "en": "Who would have thought it, on that hill by Lake Pampa? A friend, a kingdom, and now this day.",
+   "sa": "पम्पायाः पार्श्वे तस्मिन् पर्वते कः एतत् चिन्तितवान्? एकं मित्रम्, एकं राज्यम्, अधुना च अयं दिवसः।",
+   "ctx": "ch6.sugriva_court · person.sugriva"
+  },
+  {
+   "en": "The lamps! The whole city is lit for Rama's return!",
+   "sa": "पश्यतु, दीपाः! रामः प्रत्यागतः, अतः सर्वस्मिन् नगरे दीपाः ज्वलन्ति!",
+   "ctx": "ch6.citizen · Citizen"
+  },
+  {
+   "en": "Did you see the flying chariot land? It shone like the sun!",
+   "sa": "विमानम् आकाशात् अवतीर्णम्! किं त्वया दृष्टम्? तत् सूर्यः इव प्रकाशते!",
+   "ctx": "ch6.citizen_2 · Citizen"
+  },
+  {
+   "en": "I lit twelve lamps all by myself!",
+   "sa": "अहं स्वयं द्वादश दीपेषु अग्निं दत्तवान्!",
+   "ctx": "ch6.child_lamps · Child"
+  },
+  {
+   "en": "So this is Ayodhya! The fruit here is almost as sweet as in Kishkindha.",
+   "sa": "एषा एव अयोध्या! अत्र फलानि किष्किन्धायाः फलानि इव प्रायः मधुराणि।",
+   "ctx": "ch6.vanara_city · Vanara"
+  },
+  {
+   "en": "The story lives in you now. Recite it well, and recite it often.",
+   "sa": "अधुना एषा कथा त्वयि जीवति। तां सम्यक् पठ, पुनः पुनः पठ च।",
+   "ctx": "ch6.epilogue_valmiki · person.valmiki"
+  },
+  {
+   "en": "You have returned, {player}. And the verse book is whole again.",
+   "sa": "{player}, त्वं पुनः अत्र असि। श्लोकानां पुस्तकम् अपि पुनः पूर्णम्।",
+   "ctx": "ch6.epilogue_valmiki · person.valmiki"
+  },
+  {
+   "en": "You walked beside Rama from the Tamasa to Lanka and home again. You heard the verses where they were first spoken.",
+   "sa": "तमसायाः लङ्कां यावत्, ततः पुनः गृहं यावत्, त्वं रामस्य पार्श्वे आसीः। यत्र श्लोकाः प्रथमम् उक्ताः, तत्र एव त्वं तान् अशृणोः।",
+   "ctx": "ch6.epilogue_valmiki · narration"
+  },
+  {
+   "en": "When I first saw the krauncha bird fall, my grief became a verse. Now you have carried every verse home.",
+   "sa": "यदा अहं प्रथमं क्रौञ्चं पतन्तं दृष्टवान्, तदा मम शोकः श्लोकः अभवत्। अधुना सर्वे श्लोकाः त्वया सह गृहम् आगताः।",
+   "ctx": "ch6.epilogue_valmiki · person.valmiki"
+  },
+  {
+   "en": "Thank you, my student. Because of you, this story can be told for all time.",
+   "sa": "धन्यवादः, मम {g:शिष्य|शिष्ये}। त्वया एव जनाः एतां कथां सर्वदा कथयिष्यन्ति।",
+   "ctx": "ch6.epilogue_valmiki · person.valmiki"
+  },
+  {
+   "en": "Let us begin again, from the very first word. Teach it to the next student who comes.",
+   "sa": "पुनः आरभामहै, प्रथमात् शब्दात्। यः नूतनः छात्रः आगच्छति, तस्मै एतत् उपदिश।",
+   "ctx": "ch6.epilogue_valmiki · narration"
+  },
+  {
+   "en": "Behind the rocks lies a supply chest the rakshasas left behind. It holds healing herbs.",
+   "sa": "शिलानां पृष्ठतः एका पेटिका अस्ति। राक्षसाः तां त्यक्तवन्तः। तस्याम् ओषधयः सन्ति।",
+   "ctx": "ch6.field_chest · narration"
+  },
+  {
+   "en": "You found 2 healing herbs.",
+   "sa": "त्वं द्वे ओषधी लभसे।",
+   "ctx": "ch6.field_chest · narration"
+  },
+  {
+   "en": "Ravana's spies see everything! Not one of you will reach Suvela!",
+   "sa": "रावणस्य दूताः सर्वं पश्यन्ति! युष्मासु एकः अपि सुवेलं न गमिष्यति!",
+   "ctx": "ch6.setu_scout · Rakshasa scout"
+  },
+  {
+   "en": "A rakshasa scout leaps out of the islet grass!",
+   "sa": "द्वीपस्य तृणात् एकः राक्षसः उत्पतति!",
+   "ctx": "ch6.setu_scout · battle intro (narration)"
+  },
+  {
+   "en": "The scout dives into the sea and swims for Lanka. He has left his honey behind.",
+   "sa": "राक्षसः समुद्रे पतति, लङ्कां प्रति तरति च। तस्य मधु अत्र एव अस्ति।",
+   "ctx": "ch6.setu_scout · narration"
+  },
+  {
+   "en": "{n:enemy.simhika} rises from the sea and seizes your shadow!",
+   "sa": "सिंहिका समुद्रात् उद्गच्छति, तव छायां गृह्णाति च!",
+   "ctx": "enemy simhika · intro"
+  },
+  {
+   "en": "Freed from her grip, you fly on over the ocean.",
+   "sa": "सिंहिका त्वां मुञ्चति। त्वं समुद्रस्य उपरि अग्रे गच्छसि।",
+   "ctx": "enemy simhika · defeatLine"
+  },
+  {
+   "en": "{n:enemy.surasa_duel} blocks the way across the sea and sets a test!",
+   "sa": "सुरसा समुद्रस्य मार्गे तिष्ठति, परीक्षां च करोति!",
+   "ctx": "enemy surasa_duel · intro"
+  },
+  {
+   "en": "Pleased, she blesses the journey.",
+   "sa": "सा तुष्टा भवति, 'शुभं भवतु' इति वदति च।",
+   "ctx": "enemy surasa_duel · defeatLine"
+  },
+  {
+   "en": "{n:enemy.tataka} roars out of the dark forest!",
+   "sa": "ताटका अन्धकारस्य वनात् आगत्य गर्जति!",
+   "ctx": "enemy tataka · intro"
+  },
+  {
+   "en": "The forest is free of her terror.",
+   "sa": "अधुना वने तस्याः भयं न अस्ति।",
+   "ctx": "enemy tataka · defeatLine"
+  },
+  {
+   "en": "{n:enemy.subahu} swoops down upon the sacrifice!",
+   "sa": "सुबाहुः यज्ञं प्रति आकाशात् अवतरति!",
+   "ctx": "enemy subahu · intro"
+  },
+  {
+   "en": "The sacrifice is safe from him.",
+   "sa": "अधुना सः यज्ञं पीडयितुं न शक्नोति।",
+   "ctx": "enemy subahu · defeatLine"
+  },
+  {
+   "en": "{n:enemy.maricha} appears in a swirl of illusion!",
+   "sa": "मारीचः मायया सह सहसा आगच्छति!",
+   "ctx": "enemy maricha · intro"
+  },
+  {
+   "en": "The illusion breaks and he is driven far away.",
+   "sa": "माया नश्यति। सः दूरे पतति।",
+   "ctx": "enemy maricha · defeatLine"
+  },
+  {
+   "en": "{n:enemy.khara} leads his army against the hermitage!",
+   "sa": "खरः सैनिकैः सह आश्रमम् आक्रामति!",
+   "ctx": "enemy khara · intro"
+  },
+  {
+   "en": "{n:enemy.dushana} charges in!",
+   "sa": "दूषणः आक्रामति!",
+   "ctx": "enemy dushana · intro"
+  },
+  {
+   "en": "{n:enemy.kabandha} reaches out with enormous arms!",
+   "sa": "कबन्धः दीर्घाभ्यां बाहुभ्यां त्वां गृह्णाति!",
+   "ctx": "enemy kabandha · intro"
+  },
+  {
+   "en": "Released from his curse, he points the way to the monkey king.",
+   "sa": "सः मुक्तः भवति। सः वानराणां राज्ञः मार्गं दर्शयति।",
+   "ctx": "enemy kabandha · defeatLine"
+  },
+  {
+   "en": "{n:enemy.lanka_devi} bars the city gate!",
+   "sa": "लङ्का नगरस्य द्वारे तिष्ठति, मार्गं न ददाति!",
+   "ctx": "enemy lanka_devi · intro"
+  },
+  {
+   "en": "The guardian yields and lets you pass.",
+   "sa": "नगरस्य देवी मार्गं ददाति।",
+   "ctx": "enemy lanka_devi · defeatLine"
+  },
+  {
+   "en": "{n:enemy.aksha} rides out at the head of the guard!",
+   "sa": "अक्षः सैनिकानाम् अग्रे रथेन आगच्छति!",
+   "ctx": "enemy aksha · intro"
+  },
+  {
+   "en": "{n:enemy.dhumraksha} storms onto the battlefield!",
+   "sa": "धूम्राक्षः युद्धस्य क्षेत्रं प्रति वेगेन धावति!",
+   "ctx": "enemy dhumraksha · intro"
+  },
+  {
+   "en": "{n:enemy.kumbhakarna} wakes and shakes the earth!",
+   "sa": "कुम्भकर्णः प्रबुध्यते, भूमिः कम्पते च!",
+   "ctx": "enemy kumbhakarna · intro"
+  },
+  {
+   "en": "{n:enemy.indrajit} fights from behind a veil of illusion!",
+   "sa": "इन्द्रजित् मायायाः पृष्ठतः युध्यते!",
+   "ctx": "enemy indrajit · intro"
+  },
+  {
+   "en": "{n:enemy.ravana} stands before you in his chariot!",
+   "sa": "रावणः रथे तव पुरतः तिष्ठति!",
+   "ctx": "enemy ravana · intro"
+  },
+  {
+   "en": "{n:enemy.bharadvaja_duel} smiles and challenges you to a debate of verses!",
+   "sa": "भरद्वाजः मन्दं हसति। सः श्लोकानां वादाय त्वाम् आह्वयति!",
+   "ctx": "enemy bharadvaja_duel · intro"
+  },
+  {
+   "en": "He laughs and bows: a fair debate!",
+   "sa": "सः हसति, नमति च, 'साधु साधु!' इति वदति।",
+   "ctx": "enemy bharadvaja_duel · defeatLine"
+  },
+  {
+   "en": "{n:enemy.pandita_duel} rises in the assembly to test you!",
+   "sa": "पण्डितः जनानां मध्ये उत्तिष्ठति, तव परीक्षां करोति!",
+   "ctx": "enemy pandita_duel · intro"
+  },
+  {
+   "en": "The scholar nods, convinced.",
+   "sa": "पण्डितः तुष्टः भवति, 'आम्' इति वदति।",
+   "ctx": "enemy pandita_duel · defeatLine"
+  },
+  {
+   "en": "{n:enemy.hanuman_duel} speaks with flawless eloquence and awaits your answer!",
+   "sa": "हनुमान् शुद्धया वाचा वदति, तव उत्तरं प्रतीक्षते!",
+   "ctx": "enemy hanuman_duel · intro"
+  },
+  {
+   "en": "Delighted, he reveals himself and offers his friendship.",
+   "sa": "सः प्रसन्नः भवति, आत्मानं दर्शयति च। 'अहं तव मित्रम्' इति वदति।",
+   "ctx": "enemy hanuman_duel · defeatLine"
+  }
+ ]
+}

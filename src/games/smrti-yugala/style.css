@@ -1,0 +1,11 @@
+/* All selectors are scoped under .g-smrti-yugala; colours come from design tokens only. */
+.g-smrti-yugala { justify-content: center; }
+.g-smrti-yugala__board { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-3); width: 100%; max-width: 420px; }
+.g-smrti-yugala__card { aspect-ratio: 3 / 4; display: grid; place-items: center; padding: 0; border: 2px solid var(--accent-ink); border-radius: var(--r-lg); background: var(--accent); color: var(--accent-soft); font-size: var(--fs-xl); box-shadow: 0 var(--edge) 0 var(--accent-ink); cursor: pointer; touch-action: manipulation; transition: transform var(--t-fast) var(--ease), background var(--t-med), box-shadow var(--t-fast); }
+.g-smrti-yugala__card:active { transform: translateY(var(--edge)); box-shadow: none; }
+.g-smrti-yugala__card.is-up { background: var(--surface); color: var(--ink); border-color: var(--line-strong); box-shadow: 0 var(--edge) 0 var(--line-strong); animation: g-smrti-yugala-flip var(--t-med) var(--ease); }
+.g-smrti-yugala__card.is-matched { background: var(--ok-soft); border-color: var(--ok); color: var(--ok-ink); box-shadow: none; }
+.g-smrti-yugala__card.is-miss { background: var(--bad-soft); border-color: var(--bad); color: var(--bad-ink); }
+.g-smrti-yugala__face { font-size: var(--fs-2xl); font-weight: 700; line-height: 1; }
+.g-smrti-yugala__sound { font-family: var(--font-iast); font-size: var(--fs-xl); }
+@keyframes g-smrti-yugala-flip { from { transform: rotateY(90deg); } to { transform: rotateY(0); } }
