@@ -843,6 +843,21 @@
      "portrait": "hanuman"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Let us play a game of verses, friend: a chain of lines.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      },
+      {
+       "say": "I say a line. You answer with a line that begins with my line's last sound.",
+       "who": "person.hanuman",
+       "portrait": "hanuman"
+      }
+     ]
+    },
+    {
      "label": "duel"
     },
     {
@@ -861,6 +876,16 @@
       "intro": "Hanuman invites you to a friendly contest of verses."
      },
      "onWin": [
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "A fine chain! You know the verses line by line.",
+         "who": "person.hanuman",
+         "portrait": "hanuman"
+        }
+       ]
+      },
       {
        "say": "Your words ring true, and your heart is honest. I am persuaded.",
        "who": "person.hanuman",
@@ -1642,7 +1667,17 @@
      "say": "Who can leap a hundred yojanas? One by one, the vanaras say how far they could jump."
     },
     {
-     "objective": "Climb to Angada on the clifftop."
+     "if": "style.katha",
+     "then": [
+      {
+       "objective": "Ask each vanara how far he can leap."
+      }
+     ],
+     "else": [
+      {
+       "objective": "Climb to Angada on the clifftop."
+      }
+     ]
     },
     {
      "set": "ch4.mahendra_reached"
@@ -1656,6 +1691,28 @@
      "say": "I can leap ten yojanas. Not one more!",
      "who": "Gaja",
      "portrait": "vanara"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "set": "ch4.roll_gaja"
+      },
+      {
+       "if": "ch4.roll_gaja&ch4.roll_gavaksha&ch4.roll_sharabha&ch4.roll_mainda&!ch4.roll_call",
+       "then": [
+        {
+         "say": "Every vanara has spoken. None can leap a hundred yojanas."
+        },
+        {
+         "objective": "Climb to Angada on the clifftop."
+        },
+        {
+         "set": "ch4.roll_call"
+        }
+       ]
+      }
+     ]
     }
    ]
   },
@@ -1666,6 +1723,28 @@
      "say": "Twenty yojanas, perhaps. The ocean is so wide...",
      "who": "Gavaksha",
      "portrait": "vanara"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "set": "ch4.roll_gavaksha"
+      },
+      {
+       "if": "ch4.roll_gaja&ch4.roll_gavaksha&ch4.roll_sharabha&ch4.roll_mainda&!ch4.roll_call",
+       "then": [
+        {
+         "say": "Every vanara has spoken. None can leap a hundred yojanas."
+        },
+        {
+         "objective": "Climb to Angada on the clifftop."
+        },
+        {
+         "set": "ch4.roll_call"
+        }
+       ]
+      }
+     ]
     }
    ]
   },
@@ -1676,6 +1755,28 @@
      "say": "Thirty yojanas for me. Still not enough.",
      "who": "Sharabha",
      "portrait": "vanara"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "set": "ch4.roll_sharabha"
+      },
+      {
+       "if": "ch4.roll_gaja&ch4.roll_gavaksha&ch4.roll_sharabha&ch4.roll_mainda&!ch4.roll_call",
+       "then": [
+        {
+         "say": "Every vanara has spoken. None can leap a hundred yojanas."
+        },
+        {
+         "objective": "Climb to Angada on the clifftop."
+        },
+        {
+         "set": "ch4.roll_call"
+        }
+       ]
+      }
+     ]
     }
    ]
   },
@@ -1723,6 +1824,28 @@
      "say": "Sixty yojanas, if the wind is kind. But Lanka is a hundred away.",
      "who": "Mainda",
      "portrait": "vanara"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "set": "ch4.roll_mainda"
+      },
+      {
+       "if": "ch4.roll_gaja&ch4.roll_gavaksha&ch4.roll_sharabha&ch4.roll_mainda&!ch4.roll_call",
+       "then": [
+        {
+         "say": "Every vanara has spoken. None can leap a hundred yojanas."
+        },
+        {
+         "objective": "Climb to Angada on the clifftop."
+        },
+        {
+         "set": "ch4.roll_call"
+        }
+       ]
+      }
+     ]
     }
    ]
   },
@@ -1740,59 +1863,71 @@
      ],
      "else": [
       {
-       "say": "I could leap a hundred yojanas, but I am not sure I could come back. Who among us can do it?",
-       "who": "person.angada",
-       "portrait": "angada"
-      },
-      {
-       "say": "In my youth I could have crossed it. Now I am old.",
-       "who": "person.jambavan",
-       "portrait": "jambavan"
-      },
-      {
-       "say": "Jambavan turns to Hanuman, who sits apart, silent."
-      },
-      {
-       "say": "Why are you silent, Hanuman? You are the son of the Wind, as swift as Garuda.",
-       "who": "person.jambavan",
-       "portrait": "jambavan"
-      },
-      {
-       "say": "As a child you leapt toward the rising sun, thinking it was a fruit. Because of a sage's curse you forgot your strength, until someone reminds you.",
-       "who": "person.jambavan",
-       "portrait": "jambavan"
-      },
-      {
-       "say": "I remind you now. Rise, Hanuman! Cross the ocean and find Sita!",
-       "who": "person.jambavan",
-       "portrait": "jambavan"
-      },
-      {
-       "say": "Hanuman rises. He grows and grows, as vast as a mountain, and the vanaras roar with joy."
-      },
-      {
-       "leave": "hanuman"
-      },
-      {
-       "join": "hanuman",
-       "level": 19
-      },
-      {
-       "say": "Hanuman remembers his true strength! He returns to your side stronger than ever."
-      },
-      {
-       "say": "I will leap from the peak of Mahendra. I will find Sita, or I will not return without news.",
-       "who": "person.hanuman",
-       "portrait": "hanuman"
-      },
-      {
-       "heal": true
-      },
-      {
-       "set": "ch4.complete"
-      },
-      {
-       "objective": "Climb to the summit of Mahendra and leap: Book 5 begins there."
+       "if": "style.katha&!ch4.roll_call",
+       "then": [
+        {
+         "say": "First hear every vanara: how far can each one leap?",
+         "who": "person.angada",
+         "portrait": "angada"
+        }
+       ],
+       "else": [
+        {
+         "say": "I could leap a hundred yojanas, but I am not sure I could come back. Who among us can do it?",
+         "who": "person.angada",
+         "portrait": "angada"
+        },
+        {
+         "say": "In my youth I could have crossed it. Now I am old.",
+         "who": "person.jambavan",
+         "portrait": "jambavan"
+        },
+        {
+         "say": "Jambavan turns to Hanuman, who sits apart, silent."
+        },
+        {
+         "say": "Why are you silent, Hanuman? You are the son of the Wind, as swift as Garuda.",
+         "who": "person.jambavan",
+         "portrait": "jambavan"
+        },
+        {
+         "say": "As a child you leapt toward the rising sun, thinking it was a fruit. Because of a sage's curse you forgot your strength, until someone reminds you.",
+         "who": "person.jambavan",
+         "portrait": "jambavan"
+        },
+        {
+         "say": "I remind you now. Rise, Hanuman! Cross the ocean and find Sita!",
+         "who": "person.jambavan",
+         "portrait": "jambavan"
+        },
+        {
+         "say": "Hanuman rises. He grows and grows, as vast as a mountain, and the vanaras roar with joy."
+        },
+        {
+         "leave": "hanuman"
+        },
+        {
+         "join": "hanuman",
+         "level": 19
+        },
+        {
+         "say": "Hanuman remembers his true strength! He returns to your side stronger than ever."
+        },
+        {
+         "say": "I will leap from the peak of Mahendra. I will find Sita, or I will not return without news.",
+         "who": "person.hanuman",
+         "portrait": "hanuman"
+        },
+        {
+         "heal": true
+        },
+        {
+         "set": "ch4.complete"
+        },
+        {
+         "objective": "Climb to the summit of Mahendra and leap: Book 5 begins there."
+        }
+       ]
       }
      ]
     }
@@ -1947,6 +2082,42 @@
     }
    },
    "expectFlag": "ch4.mahendra_reached"
+  },
+  {
+   "chapter": 4,
+   "map": "mahendra_hill",
+   "action": {
+    "talk": "gaja"
+   },
+   "expectFlag": "ch4.roll_gaja",
+   "style": "katha"
+  },
+  {
+   "chapter": 4,
+   "map": "mahendra_hill",
+   "action": {
+    "talk": "gavaksha"
+   },
+   "expectFlag": "ch4.roll_gavaksha",
+   "style": "katha"
+  },
+  {
+   "chapter": 4,
+   "map": "mahendra_hill",
+   "action": {
+    "talk": "sharabha"
+   },
+   "expectFlag": "ch4.roll_sharabha",
+   "style": "katha"
+  },
+  {
+   "chapter": 4,
+   "map": "mahendra_hill",
+   "action": {
+    "talk": "mainda"
+   },
+   "expectFlag": "ch4.roll_mainda",
+   "style": "katha"
   },
   {
    "chapter": 4,

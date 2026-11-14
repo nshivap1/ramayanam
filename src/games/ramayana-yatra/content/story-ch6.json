@@ -816,7 +816,8 @@
      "x": 15,
      "y": 5,
      "facing": "down",
-     "event": "ch6.sita_court"
+     "event": "ch6.sita_court",
+     "showIf": "!ch6.recital"
     },
     {
      "id": "vasishtha",
@@ -840,7 +841,8 @@
      "x": 10,
      "y": 7,
      "facing": "right",
-     "event": "ch6.kausalya"
+     "event": "ch6.kausalya",
+     "showIf": "!ch6.recital"
     },
     {
      "id": "hanuman_c",
@@ -848,7 +850,8 @@
      "x": 18,
      "y": 8,
      "facing": "up",
-     "event": "ch6.hanuman_court"
+     "event": "ch6.hanuman_court",
+     "showIf": "!ch6.recital"
     },
     {
      "id": "lakshmana_c",
@@ -864,7 +867,8 @@
      "x": 20,
      "y": 7,
      "facing": "left",
-     "event": "ch6.sugriva_court"
+     "event": "ch6.sugriva_court",
+     "showIf": "!ch6.recital"
     },
     {
      "id": "citizen_1",
@@ -896,7 +900,26 @@
      "x": 25,
      "y": 15,
      "facing": "left",
-     "event": "ch6.vanara_city"
+     "event": "ch6.vanara_city",
+     "showIf": "!ch6.recital"
+    },
+    {
+     "id": "kusha",
+     "sprite": "kusha",
+     "x": 14,
+     "y": 7,
+     "facing": "up",
+     "event": "ch6.twins",
+     "showIf": "ch6.recital"
+    },
+    {
+     "id": "lava",
+     "sprite": "lava",
+     "x": 15,
+     "y": 7,
+     "facing": "up",
+     "event": "ch6.twins",
+     "showIf": "ch6.recital"
     }
    ],
    "warps": [],
@@ -909,6 +932,14 @@
    "cmds": [
     {
      "chapter": 6
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "unset": "katha.hanuman"
+      }
+     ]
     },
     {
      "music": "kishkindha"
@@ -979,6 +1010,25 @@
    "id": "ch6.angada_shore",
    "cmds": [
     {
+     "if": "style.katha&ch6.council&!ch6.council_angada",
+     "then": [
+      {
+       "say": "He has come from our enemy. Let Rama test him first.",
+       "who": "person.angada",
+       "portrait": "angada"
+      },
+      {
+       "objective": "Return to Vibhishana and hear what Rama decides."
+      },
+      {
+       "set": "ch6.council_angada"
+      },
+      {
+       "goto": "k_angada_out"
+      }
+     ]
+    },
+    {
      "if": "ch6.vibhishana_joined",
      "then": [
       {
@@ -994,6 +1044,9 @@
        "portrait": "angada"
       }
      ]
+    },
+    {
+     "label": "k_angada_out"
     }
    ]
   },
@@ -1023,6 +1076,25 @@
    "id": "ch6.vibhishana_refuge",
    "cmds": [
     {
+     "if": "style.katha&ch6.council&!ch6.council_angada",
+     "then": [
+      {
+       "say": "Vibhishana waits. First ask Angada for his counsel."
+      },
+      {
+       "goto": "k_council_out"
+      }
+     ]
+    },
+    {
+     "if": "style.katha&ch6.council_angada",
+     "then": [
+      {
+       "goto": "k_council_hear"
+      }
+     ]
+    },
+    {
      "say": "A rakshasa descends from the sky with four companions and stands in the air above the beach. The vanaras raise rocks and trees."
     },
     {
@@ -1039,6 +1111,26 @@
      "say": "Do not trust him, friend! He is the enemy's own brother. He may be a spy.",
      "who": "person.sugriva",
      "portrait": "sugriva"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Rama turns to his counsellors: \"What do you say?\""
+      },
+      {
+       "objective": "Ask Angada for his counsel."
+      },
+      {
+       "set": "ch6.council"
+      },
+      {
+       "goto": "k_council_out"
+      }
+     ]
+    },
+    {
+     "label": "k_council_hear"
     },
     {
      "say": "He spoke for Sita in Ravana's court. He saved my life when Ravana ordered my death.",
@@ -1129,6 +1221,23 @@
      ]
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Go, bring him to me. Say my vow to him.",
+       "who": "person.rama",
+       "portrait": "rama"
+      },
+      {
+       "smarana": "s-sakrdeva",
+       "pada": 2
+      },
+      {
+       "say": "Vibhishana hears the vow and comes down from the sky."
+      }
+     ]
+    },
+    {
      "say": "Vibhishana bows at Rama's feet. Rama sprinkles him with sea water and names him king of Lanka."
     },
     {
@@ -1151,6 +1260,9 @@
     },
     {
      "objective": "Ask Nala, by the shore, how to cross the ocean."
+    },
+    {
+     "label": "k_council_out"
     }
    ]
   },
@@ -1183,6 +1295,22 @@
         },
         {
          "say": "For five days the vanaras uproot trees and carry rocks. Nala sets them in the sea, and they float."
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "say": "Let every stone sit true. Then the bridge will reach Lanka.",
+           "who": "Nala",
+           "portrait": "vanara"
+          },
+          {
+           "setu": "6.22"
+          },
+          {
+           "say": "Fourteen yojanas on the first day; then twenty, twenty-one, twenty-two and twenty-three. A hundred yojanas in all."
+          }
+         ]
         },
         {
          "say": "On the fifth day the setu stretches all the way to Lanka. The gods watch from the sky in wonder."
@@ -1696,7 +1824,13 @@
      "then": [],
      "else": [
       {
-       "say": "Ravana himself is coming out to fight. Rama stands weary, thinking of the battle ahead."
+       "if": "style.katha",
+       "then": [],
+       "else": [
+        {
+         "say": "Ravana himself is coming out to fight. Rama stands weary, thinking of the battle ahead."
+        }
+       ]
       },
       {
        "say": "The sage Agastya, who has come with the gods to watch the battle, approaches Rama."
@@ -1904,6 +2038,7 @@
         "level": 30
        }
       ],
+      "lead": "rama",
       "kind": "boss",
       "canRun": false,
       "canLose": false,
@@ -1943,6 +2078,214 @@
       },
       {
        "say": "Then Rama, Sita, Lakshmana and all their friends boarded the flying chariot Pushpaka and rose into the sky, toward Ayodhya."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "From the Pushpaka, Rama shows Sita the places of their story."
+        },
+        {
+         "shloka": "s-anirvedah",
+         "mode": "hear"
+        },
+        {
+         "label": "k_p1"
+        },
+        {
+         "choice": "Rama asks you: \"Where did we hear this verse?\"",
+         "options": [
+          {
+           "label": "In Kishkindha.",
+           "goto": "k_p1_m"
+          },
+          {
+           "label": "In Lanka."
+          },
+          {
+           "label": "In Ayodhya.",
+           "goto": "k_p1_m"
+          }
+         ]
+        },
+        {
+         "goto": "k_p1_end"
+        },
+        {
+         "label": "k_p1_m"
+        },
+        {
+         "say": "Not there. Look down again.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "goto": "k_p1"
+        },
+        {
+         "label": "k_p1_end"
+        },
+        {
+         "shloka": "s-sakrdeva",
+         "mode": "hear"
+        },
+        {
+         "label": "k_p2"
+        },
+        {
+         "choice": "Rama asks you: \"Where did we hear this verse?\"",
+         "options": [
+          {
+           "label": "On the ocean shore."
+          },
+          {
+           "label": "By Lake Pampa.",
+           "goto": "k_p2_m"
+          },
+          {
+           "label": "On Chitrakuta.",
+           "goto": "k_p2_m"
+          }
+         ]
+        },
+        {
+         "goto": "k_p2_end"
+        },
+        {
+         "label": "k_p2_m"
+        },
+        {
+         "say": "Not there. Look down again.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "goto": "k_p2"
+        },
+        {
+         "label": "k_p2_end"
+        },
+        {
+         "shloka": "s-naham-janami",
+         "mode": "hear"
+        },
+        {
+         "label": "k_p3"
+        },
+        {
+         "choice": "Rama asks you: \"Where did we hear this verse?\"",
+         "options": [
+          {
+           "label": "At Panchavati.",
+           "goto": "k_p3_m"
+          },
+          {
+           "label": "In Lanka.",
+           "goto": "k_p3_m"
+          },
+          {
+           "label": "On Rishyamuka hill."
+          }
+         ]
+        },
+        {
+         "goto": "k_p3_end"
+        },
+        {
+         "label": "k_p3_m"
+        },
+        {
+         "say": "Not there. Look down again.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "goto": "k_p3"
+        },
+        {
+         "label": "k_p3_end"
+        },
+        {
+         "shloka": "s-golden-deer",
+         "mode": "hear"
+        },
+        {
+         "label": "k_p4"
+        },
+        {
+         "choice": "Rama asks you: \"Where did we hear this verse?\"",
+         "options": [
+          {
+           "label": "On Rishyamuka hill.",
+           "goto": "k_p4_m"
+          },
+          {
+           "label": "At Panchavati."
+          },
+          {
+           "label": "On the ocean shore.",
+           "goto": "k_p4_m"
+          }
+         ]
+        },
+        {
+         "goto": "k_p4_end"
+        },
+        {
+         "label": "k_p4_m"
+        },
+        {
+         "say": "Not there. Look down again.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "goto": "k_p4"
+        },
+        {
+         "label": "k_p4_end"
+        },
+        {
+         "shloka": "s-ramo-dvir",
+         "mode": "hear"
+        },
+        {
+         "label": "k_p5"
+        },
+        {
+         "choice": "Rama asks you: \"Where did we hear this verse?\"",
+         "options": [
+          {
+           "label": "In Kishkindha.",
+           "goto": "k_p5_m"
+          },
+          {
+           "label": "In Lanka.",
+           "goto": "k_p5_m"
+          },
+          {
+           "label": "In Ayodhya."
+          }
+         ]
+        },
+        {
+         "goto": "k_p5_end"
+        },
+        {
+         "label": "k_p5_m"
+        },
+        {
+         "say": "Not there. Look down again.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "goto": "k_p5"
+        },
+        {
+         "label": "k_p5_end"
+        }
+       ]
       },
       {
        "fade": "out"
@@ -2215,6 +2558,163 @@
        "portrait": "valmiki"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Kusha and Lava, two boys of this ashrama, have learned my whole story.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        },
+        {
+         "say": "Go with them to Ayodhya, and sing it before Rama.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "set": "ch6.recital"
+        },
+        {
+         "warp": "ayodhya_return",
+         "x": 14,
+         "y": 9,
+         "facing": "up"
+        },
+        {
+         "music": "ayodhya"
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "say": "The twins sing in the streets of Ayodhya. Rama hears them and brings them into his palace."
+        },
+        {
+         "say": "Rama sits on his throne. His brothers and ministers are with him."
+        },
+        {
+         "say": "Brothers, listen. These two sing a great story.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "say": "{player}, sing with them: say one line in every book."
+        },
+        {
+         "say": "Kusha and Lava sing."
+        },
+        {
+         "shloka": "s-ma-nishada",
+         "mode": "hear"
+        },
+        {
+         "smarana": "s-ma-nishada",
+         "pada": "least"
+        },
+        {
+         "book": 1
+        },
+        {
+         "say": "Kusha and Lava sing."
+        },
+        {
+         "shloka": "s-ramam-dasharatham",
+         "mode": "hear"
+        },
+        {
+         "smarana": "s-ramam-dasharatham",
+         "pada": "least"
+        },
+        {
+         "book": 2
+        },
+        {
+         "say": "Kusha and Lava sing."
+        },
+        {
+         "shloka": "s-ramo-vigrahavan",
+         "mode": "hear"
+        },
+        {
+         "smarana": "s-ramo-vigrahavan",
+         "pada": "least"
+        },
+        {
+         "book": 3
+        },
+        {
+         "say": "Kusha and Lava sing."
+        },
+        {
+         "shloka": "s-vyakaranam",
+         "mode": "hear"
+        },
+        {
+         "smarana": "s-vyakaranam",
+         "pada": "least"
+        },
+        {
+         "book": 4
+        },
+        {
+         "say": "Kusha and Lava sing."
+        },
+        {
+         "shloka": "s-jayatyatibalo",
+         "mode": "hear"
+        },
+        {
+         "smarana": "s-jayatyatibalo",
+         "pada": "least"
+        },
+        {
+         "book": 5
+        },
+        {
+         "say": "Kusha and Lava sing."
+        },
+        {
+         "shloka": "s-aditya-hrdayam",
+         "mode": "hear"
+        },
+        {
+         "smarana": "s-aditya-hrdayam",
+         "pada": "least"
+        },
+        {
+         "book": 6
+        },
+        {
+         "say": "Rama listens with his brothers. His whole mind is on the story."
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "unset": "ch6.recital"
+        },
+        {
+         "warp": "tamasa_ashrama",
+         "x": 15,
+         "y": 8,
+         "facing": "up"
+        },
+        {
+         "music": "ashrama"
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "say": "As long as there are mountains and rivers, Rama's story will live.",
+         "who": "person.valmiki",
+         "portrait": "valmiki"
+        }
+       ]
+      },
+      {
        "say": "Let us begin again, from the very first word. Teach it to the next student who comes."
       },
       {
@@ -2285,6 +2785,19 @@
      ]
     }
    ]
+  },
+  {
+   "id": "ch6.twins",
+   "cmds": [
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Kusha and Lava sing."
+      }
+     ]
+    }
+   ]
   }
  ],
  "walkthrough": [
@@ -2298,6 +2811,24 @@
     }
    },
    "expectFlag": "ch6.started"
+  },
+  {
+   "chapter": 6,
+   "map": "setu_shore",
+   "action": {
+    "talk": "vibhishana"
+   },
+   "expectFlag": "ch6.council",
+   "style": "katha"
+  },
+  {
+   "chapter": 6,
+   "map": "setu_shore",
+   "action": {
+    "talk": "angada_s"
+   },
+   "expectFlag": "ch6.council_angada",
+   "style": "katha"
   },
   {
    "chapter": 6,

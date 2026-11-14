@@ -1251,7 +1251,7 @@ test('story bots play Kathā to the ending for every seed × level — strategic
             if (beat.fx?.kind === 'swift' || /swift|The words falter/.test(beat.text)) bad = `practice beat in Kathā: ${beat.text}`;
             if (/falters/.test(beat.text) && beat.textSa && spellingKey(beat.textSa).includes(ANSWER_WORD.slice(0, -2))) bad = `"answer" wording in Kathā: ${beat.textSa}`;
           }
-          if (n.pending?.kind === 'challenge' && n.pending.context === 'battle' && n.pending.challenge.kind !== 'smarana') bad = `a classic challenge in a Kathā battle (${n.pending.challenge.kind})`;
+          if (n.pending?.kind === 'challenge' && n.pending.context === 'battle' && n.pending.challenge.kind !== 'smarana' && n.pending.challenge.kind !== 'antya') bad = `a classic challenge in a Kathā battle (${n.pending.challenge.kind})`;
           if (n.pending?.kind === 'feedback') bad = 'a feedback panel in a Kathā battle';
           if (n.battle.spec.kind === 'duel' && (n.battle.phase === 'command' || n.battle.phase === 'pick-move') && Object.values(n.save.shlokas).some((x) => x.heard)) bad = 'a move menu in a Kathā duel';
           if (b.mode === 'explore' && n.battle.spec.kind === 'wild' && !b.script) bad = 'a random encounter in Kathā';

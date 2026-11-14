@@ -3,6 +3,8 @@
  * OWNER: core. Story/battle agents: run `node tools/test.mjs unit games/ramayana-yatra/world.test`.
  * Checks skip gracefully while files are empty; reference checks against verses/lexicon/names/defs
  * switch on as soon as those files have content.
+ * v0.5b (WP0): the Kathā-only commands {smarana} {book} {setu} must sit inside a Kathā block; avoid-triggers must
+ * require style.katha; a walkthrough step's `style` is 'katha' or absent.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -22,6 +24,7 @@ import namesJson from './content/names.json';
 import { ALLY_IDS, BATTLE_BG_IDS, BATTLER_IDS, ENEMY_IDS, SPRITE_IDS, TILE_IDS, TRACK_IDS } from './catalog';
 import type { AllyDef, ChapterDef, EnemyDef, EventCmd, EventDef, ItemDef, MapDef, MoveDef, WalkStep } from './types';
 import { isSolidTile, tileAt } from './logic-world';
+import { isKathaCond, isPracticeCond } from './sa-verify';
 
 // ───────────────────────── inputs ─────────────────────────
 
@@ -85,7 +88,11 @@ const ELEMENTS = new Set(['agni', 'jala', 'vayu', 'bhumi', 'divya', 'maya', 'non
 const CMD_KEYS = [
   'say', 'shloka', 'choice', 'label', 'goto', 'if', 'set', 'unset', 'give', 'take', 'niska', 'learn', 'quiz', 'battle', 'join', 'leave', 'heal', 'rest',
   'shrine', 'warp', 'move', 'face', 'wait', 'fade', 'music', 'sfx', 'shop', 'save', 'chapter', 'objective', 'end',
+  // v0.5b (notes/v05b-plan.md §1): Kathā-only commands — P1 story recitation, P2 book review, P5 Nala's bridge
+  'smarana', 'book', 'setu',
 ] as const;
+/** v0.5b: commands that may only run inside a Kathā block (`then` of `if: style.katha…`, `else` of `if: !style.katha…`). */
+const KATHA_ONLY_CMDS = new Set(['smarana', 'book', 'setu']);
 /** Devanagari (incl. extended) and IAST/romanisation diacritics, including combining marks. */
 const DEVA = /[\u0900-\u097F\uA8E0-\uA8FF\u1CD0-\u1CFF]/;
 const IAST = /[\u0101\u012B\u016B\u1E5B\u1E5D\u1E37\u1E39\u1E45\u00F1\u1E6D\u1E0D\u1E47\u015B\u1E63\u1E25\u1E43\u1E41\u0100\u012A\u016A\u1E5A\u1E5C\u1E36\u1E38\u1E44\u00D1\u1E6C\u1E0C\u1E46\u015A\u1E62\u1E24\u1E42\u1E40\u0300-\u036F]/;
@@ -102,26 +109,29 @@ function cmdKey(c: EventCmd): string | undefined {
   return CMD_KEYS.find((k) => k in (c as object));
 }
 
-/** Walk every command (depth-first) with its path and the label sets of all enclosing blocks. */
-function walkCmds(cmds: EventCmd[] | undefined, path: string, labels: Set<string>[], visit: (c: EventCmd, path: string, labels: Set<string>[]) => void): void {
+/**
+ * Walk every command (depth-first) with its path, the label sets of all enclosing blocks and whether it runs only in
+ * the Kathā journey (v0.5b: inside the `then` of `{ "if": "style.katha…" }` or the `else` of `{ "if": "!style.katha…" }`).
+ */
+function walkCmds(cmds: EventCmd[] | undefined, path: string, labels: Set<string>[], visit: (c: EventCmd, path: string, labels: Set<string>[], katha: boolean) => void, katha = false): void {
   if (!Array.isArray(cmds)) return;
   const here = new Set(cmds.filter((c) => c && typeof c === 'object' && 'label' in c).map((c) => (c as { label: string }).label));
   const stack = [...labels, here];
   cmds.forEach((c, i) => {
     const p = `${path}[${i}]`;
-    if (!c || typeof c !== 'object') return visit(c, p, stack);
-    visit(c, p, stack);
+    if (!c || typeof c !== 'object') return visit(c, p, stack, katha);
+    visit(c, p, stack, katha);
     if ('if' in c) {
-      walkCmds(c.then, `${p}.then`, stack, visit);
-      walkCmds(c.else, `${p}.else`, stack, visit);
+      walkCmds(c.then, `${p}.then`, stack, visit, katha || isKathaCond(c.if));
+      walkCmds(c.else, `${p}.else`, stack, visit, katha || isPracticeCond(c.if));
     }
     if ('quiz' in c) {
-      walkCmds(c.onCorrect, `${p}.onCorrect`, stack, visit);
-      walkCmds(c.onWrong, `${p}.onWrong`, stack, visit);
+      walkCmds(c.onCorrect, `${p}.onCorrect`, stack, visit, katha);
+      walkCmds(c.onWrong, `${p}.onWrong`, stack, visit, katha);
     }
     if ('battle' in c) {
-      walkCmds(c.onWin, `${p}.onWin`, stack, visit);
-      walkCmds(c.onLose, `${p}.onLose`, stack, visit);
+      walkCmds(c.onWin, `${p}.onWin`, stack, visit, katha);
+      walkCmds(c.onLose, `${p}.onLose`, stack, visit, katha);
     }
   });
 }
@@ -252,6 +262,9 @@ export function checkPlacement(files: StoryFile[], refs: Refs): string[] {
         const w = `${where} trigger ${tr.event} at (${tr.x},${tr.y}) ${tr.w}x${tr.h}`;
         if (!isInt(tr.w) || !isInt(tr.h) || tr.w < 1 || tr.h < 1) out.push(`${w}: w and h must be integers ≥ 1`);
         else if (!inb(tr.x, tr.y) || !inb(tr.x + tr.w - 1, tr.y + tr.h - 1)) out.push(`${w} is out of bounds (${m.width}x${m.height})`);
+        // v0.5b P3: a guard's line of sight is Kathā only (the practice journey must not change)
+        if (tr.avoid !== undefined && typeof tr.avoid !== 'boolean') out.push(`${w}: avoid must be true or false`);
+        if (tr.avoid === true && !isKathaCond(tr.requires)) out.push(`${w}: an avoid-trigger (a guard's line of sight) is Kathā only — its requires must include style.katha`);
       }
       for (const s of m.signs ?? []) if (!inb(s.x, s.y)) out.push(`${where} sign at (${s.x},${s.y}) is out of bounds`);
     }
@@ -297,10 +310,12 @@ export function checkEvents(files: StoryFile[], refs: Refs): string[] {
         out.push(`${f.file} event ${e.id}: cmds must be an array`);
         continue;
       }
-      walkCmds(e.cmds, `${f.file} event ${e.id} cmds`, [], (c, where, labels) => {
+      walkCmds(e.cmds, `${f.file} event ${e.id} cmds`, [], (c, where, labels, katha) => {
         if (!c || typeof c !== 'object') return void out.push(`${where}: not a command object`);
         const key = cmdKey(c);
         if (!key) return void out.push(`${where}: unknown command ${JSON.stringify(c).slice(0, 60)}`);
+        // v0.5b: P1 / P2 / P5 run in the Kathā journey only (the practice journey is unchanged)
+        if (KATHA_ONLY_CMDS.has(key) && !katha) out.push(`${where}: {${key}} is Kathā only — put it inside { "if": "style.katha", "then": [...] }`);
         const hasLabel = (l: string): boolean => labels.some((s) => s.has(l));
         if ('say' in c && typeof c.say !== 'string') out.push(`${where}: say must be a string`);
         if ('objective' in c && typeof c.objective !== 'string') out.push(`${where}: objective must be a string`);
@@ -381,6 +396,14 @@ export function checkEvents(files: StoryFile[], refs: Refs): string[] {
         if ('fade' in c && c.fade !== 'in' && c.fade !== 'out') out.push(`${where}: fade must be in/out`);
         if ('wait' in c && !(typeof c.wait === 'number' && c.wait >= 0 && c.wait <= 10000)) out.push(`${where}: wait must be 0..10000 ms`);
         if ('niska' in c && !isInt(c.niska)) out.push(`${where}: niska must be an integer`);
+        // ── v0.5b (notes/v05b-plan.md §1) ──
+        if ('smarana' in c) {
+          if (typeof c.smarana !== 'string' || !c.smarana) out.push(`${where}: smarana needs a verse id`);
+          else if (refs.shlokaIds.size > 0 && !refs.shlokaIds.has(c.smarana)) out.push(`${PENDING}${where}: smarana "${c.smarana}" is not in shlokas-*.json`);
+          if (c.pada !== 'least' && !(isInt(c.pada) && c.pada >= 0 && c.pada <= 3)) out.push(`${where}: smarana pada must be 0..3 or "least"`);
+        }
+        if ('book' in c && !(isInt(c.book) && c.book >= 1 && c.book <= 6)) out.push(`${where}: book must be 1..6`);
+        if ('setu' in c && (typeof c.setu !== 'string' || !c.setu.trim())) out.push(`${where}: setu needs a tag (a non-empty string)`);
       });
       // duplicate labels in one block
       const dupLabels = (cmds: EventCmd[], where: string): void => {
@@ -464,6 +487,7 @@ export function checkWalkthrough(files: StoryFile[], refs: Refs): string[] {
         if (refs.shlokaIds.size > 0 && !refs.shlokaIds.has(String(a['recite']))) out.push(`${PENDING}${where}: recite "${String(a['recite'])}" is not in shlokas-*.json`);
         if (!hasShrine(m)) out.push(`${where}: map ${w.map} has no shrine tile to recite at`);
       } else out.push(`${where}: action must be {talk}, {reach} or {recite}`);
+      if (w.style !== undefined && w.style !== 'katha') out.push(`${where}: style must be "katha" (a Kathā-only step) or absent (both journeys)`);
       if (typeof w.expectFlag !== 'string' || !w.expectFlag) out.push(`${where}: expectFlag is required`);
       else if (!settable.has(w.expectFlag)) out.push(`${where}: expectFlag "${w.expectFlag}" is never set by any {set}, choice option or once-trigger`);
       if (![1, 2, 3, 4, 5, 6].includes(w.chapter)) out.push(`${where}: chapter must be 1..6`);
@@ -582,6 +606,51 @@ test('story text: English only (no Devanagari / IAST; Sanskrit only via markup)'
 test('defs.json: ids, moves, battlers, items, names', (t) => {
   if (DEFS.moves.length + DEFS.allies.length + DEFS.enemies.length + DEFS.items.length === 0) return void t.skip('defs.json is empty');
   report(t, checkDefs(DEFS, REFS));
+});
+
+test('validator self-test (v0.5b): P1/P2/P5 commands outside a Kathā block, bad arguments, open avoid-triggers and step styles are reported', () => {
+  const map: MapDef = {
+    id: 'm1', nameId: 'place.m1', kanda: 1, width: 4, height: 3, legend: { '.': 'grass', S: 'shrine' }, ground: ['S...', '....', '....'], music: 'ashrama', battleBg: 'ashrama',
+    npcs: [], warps: [],
+    triggers: [
+      { x: 1, y: 1, w: 1, h: 1, event: 'ch1.e', once: false, avoid: true },
+      { x: 2, y: 1, w: 1, h: 1, event: 'ch1.e', once: false, avoid: true, requires: 'style.katha&!ch1.done' },
+    ],
+  };
+  const cmds = [
+    { smarana: 's-x', pada: 0 },
+    { book: 1 },
+    { setu: 'nala' },
+    { if: 'style.katha', then: [{ smarana: 's-x', pada: 'least' }, { book: 2 }, { setu: '6.22' }, { smarana: 's-x', pada: 7 }, { book: 9 }, { setu: '' }] },
+    { if: '!style.katha', then: [{ book: 3 }], else: [{ book: 4 }] },
+    { if: 'style.katha&ch1.x', then: [{ if: 'ch1.y', then: [{ setu: 'deep' }] }] },
+    { shop: ['phala'] },
+  ] as unknown as EventCmd[];
+  const f: StoryFile = {
+    file: 'story-v05b.json',
+    chapters: [],
+    maps: [map],
+    events: [{ id: 'ch1.e', cmds }],
+    walkthrough: [
+      { chapter: 1, map: 'm1', action: { reach: { x: 3, y: 2 } }, expectFlag: 'trig.m1.ch1.e', style: 'katha' },
+      { chapter: 1, map: 'm1', action: { reach: { x: 3, y: 2 } }, expectFlag: 'trig.m1.ch1.e', style: 'practice' as never },
+    ],
+  };
+  const refs: Refs = { defs: { moves: [], allies: [], enemies: [], items: [] }, shlokaIds: new Set(['s-x']), lexIds: new Set(), nameIds: new Set() };
+  const all = [...checkPlacement([f], refs), ...checkEvents([f], refs), ...checkWalkthrough([f], refs)];
+  const at = (path: string, what: string): boolean => all.some((p) => p.includes(path) && p.includes(what));
+  for (const [i, k] of [[0, 'smarana'], [1, 'book'], [2, 'setu']] as const) assert.ok(at(`cmds[${i}]:`, `{${k}} is Kathā only`), `cmds[${i}] {${k}} outside a Kathā block: ${all.join('\n')}`);
+  assert.ok(at('cmds[4].then[0]', '{book} is Kathā only'), 'the then of a practice-only block is the practice journey');
+  assert.ok(!at('cmds[4].else[0]', 'Kathā only'), 'the else of a practice-only block is Kathā');
+  for (const i of [0, 1, 2]) assert.ok(!at(`cmds[3].then[${i}]`, ''), `a well-formed Kathā command is fine (then[${i}])`);
+  assert.ok(!at('cmds[5].then[0].then[0]', ''), 'a Kathā block nested in another if is still Kathā');
+  assert.ok(at('cmds[3].then[3]', 'smarana pada must be 0..3 or "least"'));
+  assert.ok(at('cmds[3].then[4]', 'book must be 1..6'));
+  assert.ok(at('cmds[3].then[5]', 'setu needs a tag'));
+  assert.ok(at('trigger ch1.e at (1,1)', 'its requires must include style.katha'), 'an avoid-trigger outside Kathā');
+  assert.ok(!at('trigger ch1.e at (2,1)', 'style.katha'), 'a Kathā avoid-trigger is fine');
+  assert.ok(at('walkthrough[1]', 'style must be "katha"'));
+  assert.ok(!at('walkthrough[0]', 'style'), 'style: katha is a valid step');
 });
 
 test('validator self-test: a broken fixture yields precise messages', () => {

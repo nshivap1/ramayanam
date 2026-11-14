@@ -7,7 +7,7 @@ import { indexOf } from './logic-util';
 import { newMember } from './logic-progress';
 import { startEvent } from './logic-events';
 import { isDir, isSolidTile, mapById } from './logic-world';
-import { ARMED_FLAG, KATHA_FLAG, MASTERED, applyKathaFloor, kathaSave } from './logic-katha';
+import { ARMED_FLAG, KATHA_FLAG, MASTERED, applyKathaFloor, journeySteps, kathaSave } from './logic-katha';
 import { armKatha } from './logic-learning';
 import { toReader } from './logic-reader';
 
@@ -319,10 +319,10 @@ export function sessionResult(state: GameState, content: GameContent): SessionRe
   };
 }
 
-/** 0..1 story progress for ctx.hud: share of walkthrough flags set (or completed chapters / 6). */
+/** 0..1 story progress for ctx.hud: share of walkthrough flags set (or completed chapters / 6). v0.5b: the steps of the save's journey (Kathā-only steps count in Kathā only). */
 export function storyProgress(state: GameState, content: GameContent): number {
   if (state.save.flags['ch6.complete']) return 1;
-  const steps = content.walkthrough;
+  const steps = journeySteps(content, state.save);
   if (steps.length > 0) return Math.min(1, steps.filter((w) => state.save.flags[w.expectFlag]).length / steps.length);
   return Math.min(1, state.save.completedChapters.length / 6);
 }

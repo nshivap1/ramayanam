@@ -11,12 +11,12 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { UI_FILES, uiMap } from './content';
+import { UI_FILES, UI_FILE_NAMES, uiMap } from './content';
 import { getOracle } from './sa-verify';
 import { fillSlots, slotNames } from './sa-ui';
 
 const STRICT = process.env.RY_SA_LENIENT !== '1';
-const NAMES = ['sa-ui-common.json', 'sa-ui-a.json', 'sa-ui-b.json', 'sa-ui-katha.json'];
+const NAMES: readonly string[] = UI_FILE_NAMES;
 const DIR = new URL('.', import.meta.url).pathname;
 const short = (s: string, n = 60): string => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
 
@@ -39,6 +39,25 @@ test('sa-ui: keys are unique across files and every entry is complete', () => {
   });
   assert.deepEqual(problems, [], problems.join('\n'));
   if (STRICT) assert.equal(empty, 0, `${empty} interface strings have no Sanskrit yet (or set RY_SA_LENIENT=1 while translating)`);
+});
+
+test('sa-ui (v0.5b): every interface file is bundled under its name; the package files keep to their key prefix', () => {
+  assert.equal(UI_FILES.length, NAMES.length, 'UI_FILES and UI_FILE_NAMES line up');
+  for (const [i, name] of NAMES.entries()) {
+    const disk = JSON.parse(readFileSync(join(DIR, 'content', name), 'utf8')) as { entries: Record<string, unknown> };
+    assert.deepEqual(Object.keys(UI_FILES[i]!.entries), Object.keys(disk.entries), `${name} is the bundled file #${i}`);
+  }
+  // v0.5b (notes/v05b-ownership.md): each package adds keys only to its own file, with its own prefix
+  const PREFIX: Record<string, string> = { 'sa-ui-scene.json': 'scene.', 'sa-ui-setu.json': 'setu.', 'sa-ui-chain.json': 'chain.' };
+  const problems: string[] = [];
+  for (const [i, name] of NAMES.entries()) {
+    const own = PREFIX[name];
+    for (const k of Object.keys(UI_FILES[i]!.entries)) {
+      if (own && !k.startsWith(own)) problems.push(`${name}: key "${k}" must start with "${own}"`);
+      for (const [f, pre] of Object.entries(PREFIX)) if (f !== name && k.startsWith(pre)) problems.push(`${name}: key "${k}" belongs in ${f}`);
+    }
+  }
+  assert.deepEqual(problems, []);
 });
 
 test('sa-ui: every Sanskrit word verifies with the oracle', () => {

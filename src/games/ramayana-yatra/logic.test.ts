@@ -1013,6 +1013,28 @@ test('story-bot on the REAL content: follow content.walkthrough to the ending (l
   assert.deepEqual(failures, []);
 });
 
+/**
+ * v0.5b guard (notes/v05b-plan.md §0.3): the practice journey on the REAL content does not drift while the Kathā set
+ * pieces land. The story bot (`runWalkthrough(REAL)`, seeds 1–3 × levels 2–4) is hashed after every walkthrough step and
+ * at the end, projected like V03_SNAPSHOT (Sanskrit text fields excluded). Computed on the v0.5a HEAD (v0.4.5, 4d59bb0)
+ * before any v0.5b change. A Kathā-only block (`if: style.katha`), a Kathā-only walkthrough step (`style: 'katha'`) or a
+ * new Sanskrit line leaves it unchanged; anything a practice save would see changes it.
+ */
+const V05A_PRACTICE = '9c766bd8c21a0c909c7c0070';
+test('v0.5b guard: the practice journey on the real content equals v0.5a (walkthrough hash, seeds 1–3 × levels 2–4)', () => {
+  const h = createHash('sha256');
+  const proj = (s: GameState): string => JSON.stringify({ save: s.save, session: s.session, battle: s.battle, pending: s.pending, mode: s.mode, tick: s.tick, recital: s.recital, fx: s.fx, script: s.script }, NO_SANSKRIT_TEXT);
+  for (const level of [2, 3, 4] as Level[]) {
+    for (const seed of [1, 2, 3]) {
+      const r = runWalkthrough(REAL, seed, level, { onStep: (_i, s) => h.update(proj(s)) });
+      h.update(proj(r.state));
+      h.update(`${r.actions}/${r.battles}/${r.defeats}/${r.losses}/${r.retries}/${r.failedAt}/${r.error ?? ''}`);
+    }
+  }
+  const got = h.digest('hex').slice(0, 24);
+  assert.equal(got, V05A_PRACTICE, `practice journey hash ${got}`);
+});
+
 // ───────────────────────── Sambhāṣaṇa toasts (ui-b) ─────────────────────────
 
 test('sa-ui: every logic toast carries a Sanskrit textSa that verifies, with the English unchanged (gifts, shop, item refusals, well, chest)', () => {

@@ -15,6 +15,12 @@
  * Kathā-only block beside it; Kathā never meets a practice-only block and the practice game never meets a Kathā one
  * (also checked on the story bot's walkthrough in both styles); no line the player can meet in Kathā, and no move
  * description shown in Kathā (`katha.json → moveText`), describes practice mechanics (PRACTICE_WORDING).
+ * v0.5b (WP-C, for every package's set pieces; notes/v05b-plan.md §0): a Kathā block may hold any story command that
+ * world.test validates (flags, warps, battles, P1 `smarana`, P2 `book`, P5 `setu` …) — the v0.4 "nothing changes the
+ * game" rule now binds the choice conversations only (the replies set no flag, a misread changes nothing and returns to
+ * the question); a Kathā line's Sanskrit lives where collectStoryStrings puts it (file 5 for the lines it held at
+ * v0.5a, files 6–9 for new ones), or with the practice line it shares. Rāvaṇa waits for package E's Āditya-hṛdayam
+ * cutscene (`seen.aditya`): until logic-cutscene.ts exists the story bots here play with that gate lifted.
  * This file holds no Sanskrit beyond the checkers' self-test inputs (all deliberately broken copies of real content).
  */
 import { test } from 'node:test';
@@ -24,10 +30,19 @@ import { reduce } from './logic';
 import { startScript } from './logic-events';
 import { newGame } from './logic-state';
 import { runWalkthrough } from './logic-sim';
+import { existsSync } from 'node:fs';
 import { anvayaToken, checkKathaAstras, checkKathaVerses, collectStoryStrings, getOracle, isKathaCond, isPracticeCond, padaChunks, sentencesOf, type KathaCheckInput } from './sa-verify';
+import { autoplay } from './logic-sim';
 import type { EventCmd, GameContent, GameState, KathaContent } from './types';
 
 const REAL: GameContent = loadContent();
+/**
+ * The content the story bots play: REAL, or — until package E's cutscene module (logic-cutscene.ts, which sets
+ * seen.aditya in the Rāvaṇa fight, and its bot hook) exists — REAL with the boss phases' story-flag gate lifted.
+ */
+const STORY: GameContent = existsSync(new URL('./logic-cutscene.ts', import.meta.url))
+  ? REAL
+  : { ...REAL, katha: { ...(REAL.katha as KathaContent), tactics: { ...REAL.katha!.tactics!, phases: (REAL.katha!.tactics!.phases ?? []).map((p) => Object.fromEntries(Object.entries(p).filter(([k]) => k !== 'requires')) as typeof p) } } };
 const KATHA = REAL.katha as KathaContent;
 const input = (katha: KathaContent | undefined = KATHA): KathaCheckInput => ({ katha, shlokas: REAL.shlokas, moves: REAL.moves, names: REAL.names });
 const clone = (): KathaContent => JSON.parse(JSON.stringify(KATHA)) as KathaContent;
@@ -153,22 +168,46 @@ function practiceBlocks(): PBlock[] {
 const BLOCKS = kathaBlocks();
 const CHOICE_BLOCKS = BLOCKS.filter((b) => b.then.some((c) => 'choice' in c));
 
+/** Story lines (say, choice prompts and replies) outside every Kathā-only branch: the lines the practice game shares. */
+function sharedLines(): Set<string> {
+  const out = new Set<string>();
+  const walk = (cmds: EventCmd[] | undefined): void => {
+    for (const c of cmds ?? []) {
+      if ('say' in c) out.add(c.say);
+      if ('choice' in c) [c.choice, ...c.options.map((o) => o.label)].forEach((x) => out.add(x));
+      const o = c as unknown as Record<string, EventCmd[] | undefined>;
+      const katha = 'if' in c && isKathaCond(c.if);
+      const practice = 'if' in c && isPracticeCond(c.if);
+      for (const k of ['then', 'else', 'onCorrect', 'onWrong', 'onWin', 'onLose'] as const) {
+        if ((k === 'then' && katha) || (k === 'else' && practice)) continue;
+        walk(o[k]);
+      }
+    }
+  };
+  for (const e of REAL.events) walk(e.cmds);
+  return out;
+}
+const SHARED = sharedLines();
+
+/** Every command kind of the story language (types.ts EventCmd; world.test validates each one's references). */
+const EVENT_KINDS = new Set(['say', 'shloka', 'choice', 'label', 'goto', 'if', 'set', 'unset', 'give', 'take', 'niska', 'learn', 'quiz', 'battle', 'join', 'leave', 'heal', 'rest', 'shrine', 'warp', 'move', 'face', 'wait', 'fade', 'music', 'sfx', 'shop', 'save', 'chapter', 'objective', 'end', 'smarana', 'book', 'setu']);
+
 test('katha: about ten scenes carry a Sambhāṣaṇa choice in a Kathā-only block', () => {
   console.log(`# Kathā choices in: ${CHOICE_BLOCKS.map((b) => b.event).join(', ')}`);
   assert.ok(CHOICE_BLOCKS.length >= 8, `${CHOICE_BLOCKS.length} Kathā choice scenes (want about 10)`);
   assert.equal(new Set(CHOICE_BLOCKS.map((b) => b.event)).size, CHOICE_BLOCKS.length, 'one choice block per scene');
 });
 
-test('katha: choice blocks are well formed — 2–3 replies, one continues, misreads answer and return; nothing changes the game', () => {
-  // v0.4.3: `objective` too (quest-log wording only, e.g. the tutorial duel's "learn the new verse by heart"; the same
-  // goal in both journeys, so the story, flags and battles stay the practice game's)
-  const ALLOWED = new Set(['say', 'choice', 'label', 'goto', 'objective']);
+test('katha: choice blocks are well formed — 2–3 replies, one continues, misreads answer and return; a reply changes nothing; Kathā blocks hold story commands only', () => {
+  // v0.4: say / choice / label / goto (+ objective, v0.4.3). v0.5b: the set pieces of every package put any story command
+  // in a Kathā block (flags, warps, battles, smarana, book, setu …; world.test validates each); the choice
+  // conversations keep their form, and a reply never sets a flag (checked below and in "each choice block plays")
   const problems: string[] = [];
   for (const b of BLOCKS) {
     const where = `${b.event} (Kathā block)`;
     for (const c of b.then) {
-      const key = Object.keys(c).find((k) => ALLOWED.has(k)) ?? Object.keys(c)[0];
-      if (!key || !ALLOWED.has(key)) problems.push(`${where}: command ${JSON.stringify(c).slice(0, 60)} is not allowed (a Kathā choice must not change flags, items, battles or the epic)`);
+      const key = Object.keys(c).find((k) => EVENT_KINDS.has(k));
+      if (!key) problems.push(`${where}: command ${JSON.stringify(c).slice(0, 60)} is not a story command`);
       if ('say' in c && /\b(wrong|incorrect)\b/i.test(c.say)) problems.push(`${where}: "${c.say}" sounds like a verdict (no "wrong" stamp)`);
     }
     const labelAt = new Map<string, number>();
@@ -218,8 +257,9 @@ test('katha: each choice block plays — misreads loop back to the question, the
   for (const b of CHOICE_BLOCKS) {
     const block: EventCmd = { if: 'style.katha', then: b.then };
     const choice = b.then.find((c): c is Extract<EventCmd, { choice: string }> => 'choice' in c)!;
-    const start = (): GameState => startScript(fresh(true), REAL, `test.${b.event}`, [block]);
-    const s0 = start();
+    // (v0.5b set pieces may tell a few lines, or show a verse, before the question)
+    let s0 = startScript(fresh(true), REAL, `test.${b.event}`, [block]);
+    for (let k = 0; k < 20 && s0.pending && ['say', 'shloka', 'words', 'title'].includes(s0.pending.kind); k++) s0 = reduce(s0, REAL, { type: 'advance' });
     assert.deepEqual(s0.pending, { kind: 'choice', prompt: choice.choice, options: choice.options.map((o) => o.label) }, `${b.event}: the question is asked`);
     choice.options.forEach((o, i) => {
       if (!o.goto) return;
@@ -231,7 +271,8 @@ test('katha: each choice block plays — misreads loop back to the question, the
     });
     const right = choice.options.findIndex((o) => !o.goto);
     let s = reduce(s0, REAL, { type: 'choose', index: right });
-    for (let k = 0; k < 5 && s.pending?.kind === 'say'; k++) s = reduce(s, REAL, { type: 'advance' });
+    // (v0.5b: a set piece may go on after the reply — a recitation, a book review, a warp …: the bot plays it out)
+    s = autoplay(s, STORY);
     assert.equal(s.pending, null, `${b.event}: the block ends after the story reply`);
     assert.equal(s.mode, 'explore', `${b.event}: control returns to the player`);
   }
@@ -379,11 +420,12 @@ test('katha: moveText gives Kathā wording to every move description that names 
 });
 
 test('katha: the story bot meets only its own journey’s wording — practice: no Kathā line; Kathā: no practice-only line', () => {
-  const kathaOnly = new Set(BLOCKS.flatMap((b) => sayLines(b.then)));
+  // (v0.5b: a set piece may repeat a line the practice game shares, e.g. an objective: that line is no Kathā wording)
+  const kathaOnly = new Set(BLOCKS.flatMap((b) => sayLines(b.then)).filter((en) => !SHARED.has(en)));
   const practiceOnly = new Set(PBLOCKS.flatMap((b) => sayLines(b.then)));
   for (const style of ['abhyasa', 'katha'] as const) {
     const met = new Set<string>();
-    const r = runWalkthrough(REAL, 11, 3, {
+    const r = runWalkthrough(STORY, 11, 3, {
       style,
       attempts: 12,
       ...(style === 'katha' ? { accuracy: 1 } : {}),
@@ -401,7 +443,7 @@ test('katha: the story bot meets only its own journey’s wording — practice: 
   }
 });
 
-test('katha: every line of a Kathā block is a file-5 story string (Sanskrit in sa-dialogue-5.json) and is unique to Kathā', () => {
+test('katha: every line of a Kathā block has its Sanskrit where collectStoryStrings puts it — file 5 (held at v0.5a) or 6–9 (new in v0.5b), or with the practice line it shares', () => {
   const story = collectStoryStrings();
   const file = new Map(story.map((s) => [s.en, s.file]));
   const problems: string[] = [];
@@ -411,7 +453,11 @@ test('katha: every line of a Kathā block is a file-5 story string (Sanskrit in 
       if ('say' in c) lines.push(c.say);
       if ('choice' in c) lines.push(c.choice, ...c.options.map((o) => o.label));
     }
-  for (const en of lines) if (file.get(en) !== 5) problems.push(`"${en}" is owned by file ${file.get(en) ?? '(none)'}, not file 5 (a Kathā line must not repeat a practice-game line)`);
+  for (const en of lines) {
+    const f = file.get(en);
+    if (f === undefined) problems.push(`"${en}" is not a story string`);
+    else if (f < 5 && !SHARED.has(en)) problems.push(`"${en}" is owned by file ${f}, not a Kathā file (5–9), yet the practice game never says it`);
+  }
   const sa = new Map(REAL.dialogueSa ? Object.entries(REAL.dialogueSa) : []);
   for (const en of lines) if (!sa.get(en)) problems.push(`"${en}" has no Sanskrit`);
   // the Sanskrit of the choices verifies (sambhashana.test.ts checks the whole file; this keeps the gate local too)

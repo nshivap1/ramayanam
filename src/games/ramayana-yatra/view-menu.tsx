@@ -12,6 +12,7 @@ import { UiText, useUi } from './view-ui';
 import { uiItemSlot } from './logic-learning';
 import { AutoReciteToggle, JourneyPicker, astraBinding, isKatha, storyOrder } from './view-katha';
 import type { Action, GameState, MasteryTier } from './types';
+import { CutsceneEntry } from './view-cutscene'; // v0.5b WP-E
 
 export type MenuTab = 'party' | 'words' | 'verses' | 'items' | 'settings';
 export type Detail = { kind: 'word'; id: string; form?: string } | { kind: 'shloka'; id: string } | null;
@@ -31,6 +32,8 @@ export interface MenuProps {
   onSave: () => void;
   onRest: () => void;
   canUseItems: boolean;
+  /** v0.5b WP-E: replay a cutscene that has been seen (the verse book's "आदित्यहृदयम् ▶") */
+  onCutscene?: (id: string) => void;
 }
 
 export function Menu(props: MenuProps): ReactElement | null {
@@ -72,6 +75,7 @@ export function Menu(props: MenuProps): ReactElement | null {
           <div className="g-ramayana-yatra__tabpanel" role="tabpanel">
             {tab === 'party' ? <PartyTab state={state} dispatch={props.dispatch} canEdit={props.canUseItems} /> : null}
             {tab === 'words' ? <WordsTab state={state} open={(id) => setDetail({ kind: 'word', id })} /> : null}
+            {tab === 'verses' ? <CutsceneEntry save={state.save} onPlay={props.onCutscene} /> : null /* v0.5b WP-E: the replay, once seen */}
             {tab === 'verses' ? <VersesTab state={state} open={(id) => setDetail({ kind: 'shloka', id })} /> : null}
             {tab === 'items' ? <ItemsTab {...props} /> : null}
             {tab === 'settings' ? <SettingsTab {...props} /> : null}

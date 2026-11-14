@@ -169,6 +169,11 @@
     "kathaShield": { "en": "{x} recites a line of verse: the heroes stand ready!", "sa": "{x.nom} श्लोकस्य पादं पठति। वीराः सज्जाः!" },
     "kathaFitManava": { "en": "{n:ally.rama} looses the {n:move.manavastra} at {n:enemy.maricha}'s chest. It hurls him a hundred leagues away into the ocean: stunned, but alive!", "sa": "रामः मारीचस्य वक्षसि मानवम् अस्त्रं क्षिपति। मारीचः दूरे सागरे पतति, किन्तु जीवति!" },
     "kathaFitAgneya": { "en": "{n:ally.rama} looses the {n:move.agneyastra} at {n:enemy.subahu}'s chest. Pierced, {n:enemy.subahu} falls to the earth!", "sa": "रामः सुबाहोः वक्षसि आग्नेयम् अस्त्रं क्षिपति। सुबाहुः भुवि पतति!" },
-    "kathaFitBrahma": { "en": "{n:ally.rama} looses the {n:move.brahmastra}: it pierces {n:enemy.ravana}'s heart!", "sa": "रामः ब्रह्मास्त्रं क्षिपति। तत् रावणस्य हृदयं भिनत्ति!" }
+    "kathaFitBrahma": { "en": "{n:ally.rama} looses the {n:move.brahmastra}: it pierces {n:enemy.ravana}'s heart!", "sa": "रामः ब्रह्मास्त्रं क्षिपति। तत् रावणस्य हृदयं भिनत्ति!" },
+    "kathaChainRule": { "en": "{x} says a line of verse. Answer with a line that begins with its last sound!", "sa": "{x.nom} श्लोकस्य पादं वदति। तस्य अन्तिमेन वर्णेन त्वं पादम् आरभस्व!" },
+    "kathaChainSays": { "en": "{x} says a line of verse.", "sa": "{x.nom} श्लोकस्य पादं वदति।" },
+    "kathaChainStumped": { "en": "{x} thinks, but no line begins with that sound! The link lands with extra force.", "sa": "{x.nom} चिन्तयति। किन्तु सः वर्णः कस्य अपि पादस्य आरम्भे न अस्ति! अतः फलम् अधिकम्।" },
+    "kathaHeads": { "en": "A head of {n:enemy.ravana} falls, but a new head rises in its place!", "sa": "रावणस्य एकं शिरः पतति। किन्तु तस्य स्थाने नूतनं शिरः उद्भवति!" },
+    "kathaMatali": { "en": "Matali calls to {n:ally.rama}: why wait? Loose Brahma's weapon now!", "sa": "मातलिः रामं वदति — हे राम, किमर्थं प्रतीक्षसे? अधुना ब्रह्मास्त्रं क्षिप!" }
   }
 }

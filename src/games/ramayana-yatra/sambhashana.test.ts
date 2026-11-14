@@ -8,13 +8,14 @@
  * as labels (no final ।); only label story strings may carry it. File 5 holds the lines inside Kathā-only blocks
  * (`{ "if": "style.katha", … }`, OWNER: kc-content) and the Kathā move descriptions (`katha.json → moveText`, v0.4.1);
  * the practice wording beside them (`{ "if": "!style.katha", … }`) keeps its file. katha.json itself is checked by
- * katha-content.test.ts.
+ * katha-content.test.ts. v0.5b: file 5 is frozen at v0.5a (FILE5_V05A); new Kathā text goes to 6 (ch1–3), 7 (ch4 and new
+ * moveText), 8 (ch5), 9 (ch6) — one file per package (notes/v05b-ownership.md).
  * This file holds no Sanskrit beyond the oracle's self-test lines.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { BUNDLED_FILES, collectStoryStrings, createOracle, easiest, getOracle, isKathaCond, isPracticeCond, type DialogueFile, type SaModel } from './sa-verify';
+import { BUNDLED_FILES, FILE5_V05A, LABELS4_V05A, collectStoryStrings, createOracle, easiest, enKey, getOracle, isKathaCond, isPracticeCond, type DialogueFile, type SaModel, type StoryLike } from './sa-verify';
 import kathaJson from './content/katha.json';
 
 // Coverage is complete (919/919 at v0.2.0), so it is enforced by default. Set RY_SA_LENIENT=1 while a
@@ -120,14 +121,79 @@ test('sambhashana: file 5 holds exactly the story lines of Kathā-only blocks ({
   // Kathā choices: every choice prompt and option of a Kathā block is covered (the walker found them)
   const kinds = new Set(f5.map((s) => s.ctx.replace(/^\S+ · /, '').replace(/ \(.*$/, '')));
   if (f5.length > 0) for (const k of ['choice prompt', 'choice option']) if (![...kinds].some((x) => x.startsWith(k))) problems.push(`file 5 has no "${k}" strings`);
-  // v0.4.1: katha.json moveText (the Kathā wording of move descriptions) is file 5, one entry per move
+  // v0.4.1: katha.json moveText (the Kathā wording of move descriptions) is file 5, one entry per move (v0.5b: those
+  // file 5 held at v0.5a; a new one is file 7, WP-C's)
   const moveText = (kathaJson as { moveText?: Record<string, string> }).moveText ?? {};
   for (const [id, en] of Object.entries(moveText)) {
     const s = story.find((x) => x.en === en);
-    if (s?.file !== 5 || s.ctx !== `move ${id} · description (Kathā: katha.json moveText)`) problems.push(`moveText.${id}: "${short(en)}" is ${s ? `file ${s.file} (${s.ctx})` : 'not collected'}, not file 5 as its Kathā description`);
+    const want = FILE5_V05A.has(enKey(en)) ? 5 : 7;
+    if (s?.file !== want || s.ctx !== `move ${id} · description (Kathā: katha.json moveText)`) problems.push(`moveText.${id}: "${short(en)}" is ${s ? `file ${s.file} (${s.ctx})` : 'not collected'}, not file ${want} as its Kathā description`);
   }
   console.log(`# file 5 (Kathā): ${f5.length} strings (${Object.keys(moveText).length} move descriptions)`);
   assert.deepEqual(problems, [], report(problems));
+});
+
+test('sambhashana (v0.5b): file 5 is frozen at v0.5a (it may only lose entries); files 6–9 hold exactly the new Kathā strings of their chapters', () => {
+  assert.equal(BUNDLED_FILES.length, 9, 'sa-dialogue-1 … 9 are bundled');
+  const story = collectStoryStrings();
+  const problems: string[] = [];
+  for (const e of FILES[4]!.data.entries) if (!FILE5_V05A.has(enKey(e.en))) problems.push(`sa-dialogue-5.json: "${short(e.en)}" is new since v0.5a — new Kathā text goes to file 6–9 of its chapter (notes/v05b-ownership.md)`);
+  for (const n of [6, 7, 8, 9] as const) {
+    const f = FILES[n - 1]!;
+    assert.equal(f.name, `sa-dialogue-${n}.json`);
+    const mine = new Set(story.filter((x) => x.file === n).map((x) => x.en));
+    for (const e of f.data.entries) if (!mine.has(e.en)) problems.push(`${f.name}: "${short(e.en)}" is ${story.find((x) => x.en === e.en) ? `a string of file ${story.find((x) => x.en === e.en)!.file}` : 'stale'}`);
+    for (const x of story) if (x.file === n && !f.data.entries.some((e) => e.en === x.en)) problems.push(`${f.name}: no entry for "${short(x.en)}" (${x.ctx})`);
+    console.log(`# file ${n}: ${mine.size} strings`);
+  }
+  assert.deepEqual(problems, [], report(problems));
+});
+
+test('sambhashana (v0.5b): collectStoryStrings — Kathā text held by file 5 stays there; new Kathā text goes to 6 (ch1–3), 7 (ch4, new moveText), 8 (ch5), 9 (ch6)', () => {
+  const k = (ev: string, cmds: unknown[]): StoryLike => ({ events: [{ id: ev, cmds: cmds as Record<string, unknown>[] }] });
+  const kblock = (...lines: unknown[]): unknown => ({ if: 'style.katha', then: lines, else: [{ say: `practice ${lines.length}` }] });
+  const stories: [StoryLike, 1 | 2 | 3, 6 | 7 | 8 | 9][] = [
+    [k('common.x', [kblock({ say: 'new common' })]), 1, 6],
+    [k('ch1.x', [kblock({ say: 'old kept line' }, { say: 'new ch1', who: 'Hunter' }, { say: 'titled', who: 'Old title' })]), 1, 6],
+    [k('ch2.x', [{ say: 'Hunter' }, kblock({ choice: 'new ch2 prompt', options: [{ label: 'new ch2 reply' }] })]), 1, 6],
+    [k('ch3.x', [{ if: '!style.katha', then: [{ say: 'practice wording' }], else: [{ objective: 'new ch3 objective' }] }]), 2, 6],
+    [k('ch4.x', [kblock({ battle: { intro: 'new ch4 intro' } })]), 2, 7],
+    [k('ch5.x', [{ if: 'ch5.flag', then: [kblock({ say: 'new ch5 nested' })] }]), 3, 8],
+    [k('ch6.x', [kblock({ say: 'new ch6', who: 'Herald' }), { say: 'plain ch6', who: 'Crier' }]), 3, 9],
+  ];
+  const got = collectStoryStrings({
+    stories,
+    defs: {},
+    nameIds: [],
+    moveText: { a: 'old move text', b: 'new move text' },
+    file5: new Set(['old kept line', 'old move text'].map(enKey)),
+    labels4: new Set([enKey('Old title')]),
+  });
+  const fileOf = (en: string): number | undefined => got.find((x) => x.en === en)?.file;
+  const labelOf = (en: string): boolean => !!got.find((x) => x.en === en)?.label;
+  assert.equal(fileOf('new common'), 6, 'story-common → 6');
+  assert.equal(fileOf('old kept line'), 5, 'a line file 5 held at v0.5a stays in file 5');
+  assert.equal(fileOf('new ch1'), 6);
+  assert.equal(fileOf('new ch2 prompt'), 6);
+  assert.equal(fileOf('new ch2 reply'), 6, 'a Kathā reply → the chapter file');
+  assert.equal(fileOf('new ch3 objective'), 6, "the else of a practice-only block is Kathā text");
+  assert.equal(fileOf('practice wording'), 2, 'the practice-only then keeps its file');
+  assert.equal(fileOf('new ch4 intro'), 7);
+  assert.equal(fileOf('new ch5 nested'), 8, 'a Kathā block nested in another if');
+  assert.equal(fileOf('new ch6'), 9);
+  assert.equal(fileOf('plain ch6'), 3, 'non-Kathā lines keep files 1–3');
+  assert.equal(fileOf('practice 1'), 1, "the else of a Kathā block is the practice game's (file 1–3)");
+  assert.equal(fileOf('old move text'), 5);
+  assert.equal(fileOf('new move text'), 7, 'a new Kathā move description → file 7 (WP-C)');
+  // speaker titles: a new one first used inside a Kathā block → its chapter's file, as a label; others → file 4
+  assert.equal(fileOf('Herald'), 9);
+  assert.ok(labelOf('Herald'));
+  assert.equal(fileOf('Old title'), 4, 'a title file 4 held at v0.5a stays in file 4');
+  assert.equal(fileOf('Crier'), 4, 'a title used outside Kathā blocks → file 4');
+  assert.equal(fileOf('Hunter'), 1, 'first occurrence wins (here a story line of ch2 before the title is walked)');
+  // the frozen sets hold what files 4 and 5 held at v0.5a
+  assert.equal(FILE5_V05A.size, 90);
+  assert.equal(LABELS4_V05A.size, 59);
 });
 
 test('sambhashana: models — valid paradigm, matching gender and ṇatva, source present, one model per stem', () => {

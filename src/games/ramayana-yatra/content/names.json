@@ -1925,6 +1925,56 @@
    }
   },
   {
+   "id": "person.kusha",
+   "sa": "कुश",
+   "en": "Kuśa, son of Rāma, Vālmīki's pupil",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga4/balaroman4.htm",
+      "note": "Bāla 1.4.4–6 (कुशीलवौ, the twins taught the poem by Vālmīki), 1.4.27–36 (they sing it in Rāma's court)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. कुश"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Added by agent v05-D (v0.5b WP-D). Bāla 1.4 fetched this session (valmikiramayan.net: 1.4.4–6 the twins learn the poem from Vālmīki; 1.4.27–36 they sing it before Rāma); MW asserted from reference knowledge, not fetched. A regular -a stem (m.), like राम."
+   }
+  },
+  {
+   "id": "person.lava",
+   "sa": "लव",
+   "en": "Lava, son of Rāma, Vālmīki's pupil",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga4/balaroman4.htm",
+      "note": "Bāla 1.4.4–6 (कुशीलवौ, the twins taught the poem by Vālmīki), 1.4.27–36 (they sing it in Rāma's court)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. लव"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Added by agent v05-D (v0.5b WP-D). Bāla 1.4 fetched this session (valmikiramayan.net: 1.4.4–6 the twins learn the poem from Vālmīki; 1.4.27–36 they sing it before Rāma); MW asserted from reference knowledge, not fetched. A regular -a stem (m.), like राम."
+   }
+  },
+  {
    "id": "ally.player",
    "sa": "शिष्य",
    "en": "Student (the reciter)",

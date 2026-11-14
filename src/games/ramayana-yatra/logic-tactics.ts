@@ -22,10 +22,19 @@
  *  5. **The verse shield.** With a blow readied, the hero may answer by reciting a line of any heard verse (the least
  *     practised pāda first, so the whole verse book comes round): recited, the blow is blunted and the foe left open; a
  *     faltering line protects half as well (the Kathā rule: a miss = half effect).
+ *  6. **Boss phases** (v0.5b P7, OWNER: WP-C; `tactics.phases`). A phase begins once the boss is at or below `below` × its
+ *     HP and shows its beat (each time it begins; `once`: one time per battle). A phase with a `floor` holds while the
+ *     hero in front holds its fitting move (`fit`, equipped): a hit that does not fit cannot take the boss below
+ *     `floor` × its HP — the beat shows again ("a head falls, and a new one rises") and, if the fitting astra is spent, it
+ *     comes back to hand (1 PP), so the fight can always end. A hero without it is never held back. A phase may wait for
+ *     a story flag (`requires`): until it is set the phase does not begin, its floor holds every blow — its fit too, from
+ *     any hero — and its fit is not decisive, so the boss cannot be finished. Rāvaṇa (owner, 14 Nov): the Āditya-hṛdayam
+ *     (Yuddha 6.105; package E's cutscene sets `seen.aditya` at ≤ 60 %) → his heads grow back (6.107.55–58) → Mātali's
+ *     reminder (6.108.1–2) → the brahmāstra (6.108.16–18).
  */
-import type { BattleSpec, BattleState, Element, Fighter, GameContent, GameState, KathaTactics, MoveDef, MoveEffect, PartyMember } from './types';
+import type { BattleSpec, BattleState, Element, Fighter, GameContent, GameState, KathaPhase, KathaTactics, MoveDef, MoveEffect, PartyMember } from './types';
 import { type PadaRef, MIN_BOUND_CHUNKS, kathaIndex, padaKey, smrtiOf } from './logic-katha';
-import { indexOf } from './logic-util';
+import { indexOf, testFlag } from './logic-util';
 import { ELEMENT_CHART } from './catalog';
 import { MAX_EQUIPPED } from './logic-progress';
 import { isKatha, tiresMove } from './logic-katha';
@@ -89,9 +98,11 @@ export function fitFor(content: GameContent, chapter: number, foeId: string): Fi
 }
 
 /** The fitting astra lands decisively now: it is the foe's fit, and the foe is worn down to `below` (if set). */
-export function isDecisive(content: GameContent, chapter: number, foe: Pick<Fighter, 'id' | 'hp' | 'maxHp'>, moveId: string): boolean {
+export function isDecisive(content: GameContent, chapter: number, foe: Pick<Fighter, 'id' | 'hp' | 'maxHp'>, moveId: string, flags?: Flags): boolean {
   const f = fitFor(content, chapter, foe.id);
   if (!f || f.move !== moveId) return false;
+  // v0.5b: a boss phase this move fits that waits for a story flag (`requires`) keeps it from being decisive until then
+  if (phasesOf(content, chapter, foe.id).some((p) => p.fit === moveId && !phaseOpen(p, flags))) return false;
   return f.below === undefined || foe.hp <= Math.ceil(foe.maxHp * f.below);
 }
 
@@ -143,6 +154,17 @@ export function warnPlan(content: GameContent, chapter: number, spec: Pick<Battl
   const e = tacticsOf(content).warnings.find((w) => w.foe === foe.id && (w.chapter === undefined || w.chapter === chapter));
   const first = e?.first ?? KATHA_WARN_FIRST;
   return { moveId: mv.id, ready: e?.ready ?? WARN_TEMPLATE, ...(e?.strike ? { strike: e.strike } : {}), counter: e?.counter ?? [], start: first - 1, every: KATHA_WARN_EVERY };
+}
+
+/**
+ * v0.5b (WP-C): a warned blow that does not fall on the heroes themselves lands at this share of a great blow
+ * (`strikeScale` on a content/katha.json warning; default 1) — Subāhu's and Mārīca's rain of blood drenches the altar
+ * (Bāla 1.30.12), so it costs the heroes half. (types.ts lists no such field yet: requested in notes/v05b-c.md.)
+ */
+export function strikeScale(content: GameContent, chapter: number, foeId: string): number {
+  const e = tacticsOf(content).warnings.find((w) => w.foe === foeId && (w.chapter === undefined || w.chapter === chapter)) as { strikeScale?: number } | undefined;
+  const k = e?.strikeScale;
+  return typeof k === 'number' && k > 0 && k <= 1 ? k : 1;
 }
 
 /** Does the foe ready its blow on action number `acts` (0-based; −1 = the opening)? */
@@ -284,4 +306,61 @@ export function shieldPada(state: GameState, content: GameContent): PadaRef | nu
 export function canShield(state: GameState, content: GameContent): boolean {
   const b = state.battle;
   return !!b && !!b.warn && isKatha(state) && b.spec.kind !== 'duel' && shieldPada(state, content) !== null;
+}
+
+// ───────────────────────── boss phases (v0.5b P7, WP-C) ─────────────────────────
+
+/** Story flags as the save holds them (`undefined`: the caller does not know them — no phase waits). */
+type Flags = Readonly<Record<string, true | undefined>>;
+
+/**
+ * A phase as content/katha.json writes it: `requires` (a FlagCond, e.g. "seen.aditya") is the story flag the phase
+ * waits for. (types.ts KathaPhase does not list the field yet: requested in notes/v05b-c.md.)
+ */
+export type PhaseDef = KathaPhase & { requires?: string };
+
+/** The boss phases of this foe in this book (content order). */
+export function phasesOf(content: GameContent, chapter: number, foeId: string): PhaseDef[] {
+  return (tacticsOf(content).phases ?? []).filter((p) => p.foe === foeId && (p.chapter === undefined || p.chapter === chapter));
+}
+
+/** The phase's story flag is set (or it waits for none; or the caller passed no flags). */
+export function phaseOpen(p: PhaseDef, flags: Flags | undefined): boolean {
+  return !p.requires || flags === undefined || testFlag(flags as Record<string, true | undefined>, p.requires);
+}
+
+/** HP at or below which a share of the foe's HP is reached (as isDecisive: ceil of the share). */
+const shareHp = (maxHp: number, share: number): number => Math.ceil(maxHp * share);
+
+/**
+ * The HP a hit with `moveId` cannot take the foe below, from the phases with a floor that hold now: a move that is not
+ * the phase's fit, while the hero in front holds that fit (equipped) — or, while the phase waits for its story flag,
+ * every move from any hero (the boss cannot be finished yet). null: nothing holds the foe. `fit` names the move that
+ * ends the floor (the brahmāstra), `phase` the phase whose beat shows when the floor holds.
+ */
+export function phaseFloor(content: GameContent, chapter: number, foe: Pick<Fighter, 'id' | 'maxHp'>, ally: Pick<Fighter, 'moves'>, moveId: string, flags?: Flags): { hp: number; fit?: string; phase: PhaseDef } | null {
+  let out: { hp: number; fit?: string; phase: PhaseDef } | null = null;
+  for (const p of phasesOf(content, chapter, foe.id)) {
+    if (p.floor === undefined) continue;
+    if (phaseOpen(p, flags) && p.fit !== undefined && (moveId === p.fit || !ally.moves.includes(p.fit))) continue;
+    const hp = shareHp(foe.maxHp, p.floor);
+    if (!out || hp > out.hp) out = { hp, ...(p.fit !== undefined ? { fit: p.fit } : {}), phase: p };
+  }
+  return out;
+}
+
+/**
+ * The phases begun after a change of the foe's HP: `begun` (BattleState.bossPhases) keeps a `once` phase for good and
+ * drops any other phase the foe has climbed back above (it may begin again); `now` are the phases that begin with this
+ * HP (at or below their share, their story flag set, not begun; never for a fallen foe), in content order.
+ */
+export function phasesBegun(content: GameContent, chapter: number, foe: Pick<Fighter, 'id' | 'hp' | 'maxHp'>, begun: readonly string[] = [], flags?: Flags): { begun: string[]; now: PhaseDef[] } {
+  const list = phasesOf(content, chapter, foe.id);
+  const below = (p: KathaPhase): boolean => foe.hp <= shareHp(foe.maxHp, p.below);
+  const kept = begun.filter((id) => {
+    const p = list.find((x) => x.id === id);
+    return !p || p.once === true || below(p);
+  });
+  const now = foe.hp > 0 ? list.filter((p) => !kept.includes(p.id) && below(p) && phaseOpen(p, flags)) : [];
+  return { begun: [...kept, ...now.map((p) => p.id)], now };
 }

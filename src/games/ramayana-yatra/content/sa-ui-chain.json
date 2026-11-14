@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "about": "v0.5b interface strings (OWNER: WP-C): the verse-chain duel and boss phases (view-chain.tsx); keys chain.*. Rules: notes/sa-ui.md.",
+  "models": [],
+  "entries": {
+    "chain.badge": {
+      "en": "Verse chain",
+      "sa": "पादानां क्रीडा",
+      "label": true,
+      "ctx": "verse-chain duel (Kathā, Hanumān): the badge at the top of the player's pick"
+    },
+    "chain.last": {
+      "en": "last sound",
+      "sa": "अन्तिमः वर्णः",
+      "label": true,
+      "ctx": "verse-chain duel: the label before the key sound (the last consonant of the opponent's line)"
+    },
+    "chain.prompt": {
+      "en": "Which line begins with this sound?",
+      "sa": "कस्य पादस्य आरम्भे अयं वर्णः अस्ति?",
+      "ctx": "verse-chain duel: the question above the three lines"
+    },
+    "chain.any": {
+      "en": "No line begins with this sound. Say any line!",
+      "sa": "अयं वर्णः कस्य अपि पादस्य आरम्भे न अस्ति। कम् अपि पादं वद!",
+      "ctx": "verse-chain duel: the chain resets (no heard line opens with the key), every line may follow"
+    },
+    "chain.chips": {
+      "en": "three lines",
+      "sa": "त्रयः पादाः",
+      "label": true,
+      "ctx": "verse-chain duel: screen-reader name of the group of three line chips"
+    },
+    "chain.srTurn": {
+      "en": "{$who} says: {$line}. The last sound: {$key}. Which line begins with it?",
+      "sa": "{$who} वदति — {$line}। अन्तिमः वर्णः — {$key}। कस्य पादस्य आरम्भे अयं वर्णः अस्ति?",
+      "ctx": "verse-chain duel: screen-reader announcement of a turn ({$who} the opponent, {$line} its pāda, {$key} the key sound)"
+    },
+    "chain.srAny": {
+      "en": "{$who} says: {$line}. No line begins with its last sound: say any line!",
+      "sa": "{$who} वदति — {$line}। तस्य अन्तिमः वर्णः कस्य अपि पादस्य आरम्भे न अस्ति। कम् अपि पादं वद!",
+      "ctx": "verse-chain duel: screen-reader announcement when the chain resets"
+    },
+    "chain.srRight": {
+      "en": "The right line: {$line}.",
+      "sa": "उचितः पादः — {$line}।",
+      "ctx": "verse-chain duel: screen reader after a miss (the right line is said)"
+    }
+  }
+}

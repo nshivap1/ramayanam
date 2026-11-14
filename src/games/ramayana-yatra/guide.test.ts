@@ -8,13 +8,15 @@
  *  - the pointer-following bot (logic-sim runGuide): from a new journey it only ever walks to the pointer and acts there,
  *    and reaches the ending of the whole game in both styles (practice, Kathā perfect and 70 % reciters) over several
  *    seeds × levels. RY_GUIDE_SEEDS=25 runs the full matrix (default 3 seeds per level).
+ *  - v0.5b: the REAL-story check counts each journey's own steps (a Kathā-only step is skipped in the practice game);
+ *    P3 (WP-B): in Kathā book 5 the pointer never stands in a guard's light and its route never crosses it.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { type Level, testMatrix } from '@sdk';
 import { loadContent } from './content';
 import { manifest } from './manifest';
-import { type GameContent, type GameState, type MapDef, guideStep, guideTarget, mapById, newGame, testFlag, toSave } from './logic';
+import { type GameContent, type GameState, type MapDef, guideStep, guideTarget, inSight, isWalkable, mapById, newGame, sightTiles, stepInJourney, testFlag, toSave } from './logic';
 import { findPath, spot, talkSpots } from './logic-guide';
 import { runGuide, runWalkthrough } from './logic-sim';
 
@@ -143,14 +145,20 @@ function reachable(s: GameState, content: GameContent, g: NonNullable<ReturnType
 test('guide on the REAL story: at the start of every walkthrough step the target is non-null, serves that step and is reachable; null after the ending (both journey styles)', () => {
   const problems: string[] = [];
   let checked = 0;
+  let expected = 0;
   for (const style of ['abhyasa', 'katha'] as const) {
     for (const seed of [5, 23]) {
       const starts: GameState[] = [];
       const r = runWalkthrough(REAL, seed, 3, { style, ...(style === 'katha' ? { accuracy: 1, attempts: 12 } : {}), onStep: (_i, s) => starts.push(s) });
       assert.equal(r.error, null, `${style} seed ${seed}: ${r.error}`);
-      // the first step starts after the intro; step i + 1 starts where step i ended
+      // v0.5b: the journey's own steps (a Kathā-only step is skipped in the practice game); `order[k]` is the walkthrough
+      // index of the k-th one. The first step starts after the intro; step order[k + 1] starts where order[k] ended.
+      const order = REAL.walkthrough.flatMap((w, i) => (stepInJourney(w, { style }) ? [i] : []));
+      expected += order.length;
+      assert.equal(starts.length, order.length, `${style} seed ${seed}: one start per step of the journey`);
       const intro = runWalkthrough(REAL, seed, 3, { style, steps: [] }).state;
-      for (const [i, s] of [intro, ...starts.slice(0, -1)].entries()) {
+      for (const [k, s] of [intro, ...starts.slice(0, -1)].entries()) {
+        const i = order[k]!;
         const g = guideTarget(s, REAL);
         const tag = `${style} seed ${seed} step ${i} ${JSON.stringify(REAL.walkthrough[i]?.action)} on ${REAL.walkthrough[i]?.map} (player on ${s.save.mapId} ${s.save.x},${s.save.y}, mode ${s.mode})`;
         checked++;
@@ -159,7 +167,7 @@ test('guide on the REAL story: at the start of every walkthrough step the target
           continue;
         }
         if (g.step !== guideStep(s.save, REAL)) problems.push(`${tag}: serves step ${g.step}, not the first open one`);
-        if (g.step < i) problems.push(`${tag}: points back at step ${g.step}`);
+        if (g.step !== i) problems.push(`${tag}: points at step ${g.step}, not at the journey's next step ${i}`);
         if (g.map !== s.save.mapId) problems.push(`${tag}: the pointer is on ${g.map}`);
         if (g.goal.map !== REAL.walkthrough[g.step]?.map) problems.push(`${tag}: goal on ${g.goal.map}`);
         if (g.distance < 0 || !reachable(s, REAL, g)) problems.push(`${tag}: ${g.kind} (${g.x},${g.y}) is not reachable`);
@@ -170,7 +178,7 @@ test('guide on the REAL story: at the start of every walkthrough step the target
     }
   }
   assert.deepEqual(problems.slice(0, 20), [], `${problems.length} problem(s) in ${checked} step starts`);
-  assert.ok(checked >= 4 * REAL.walkthrough.length - 8, `checked ${checked} step starts`);
+  assert.equal(checked, expected, `checked ${checked} step starts`);
 });
 
 // ───────────────────────── the pointer-following bot ─────────────────────────
@@ -207,4 +215,43 @@ test('pointer-following bot stops cleanly where asked (chapter 1 in both styles)
     assert.equal(off, 0);
     assert.ok(r.targets > 5 && r.exits > 0, `${style}: people, places and exits (${r.targets} targets, ${r.exits} exits)`);
   }
+});
+
+// ───────────────────────── v0.5b P3: the guards' light (WP-B) ─────────────────────────
+
+test('P3 (v0.5b): in Kathā Laṅkā by night, from anywhere in the city the pointer never stands in a guard\'s light, and its route never crosses it', () => {
+  const map = mapById(REAL, 'lanka_city')!;
+  const k = REAL.walkthrough.findIndex((w) => w.expectFlag === 'ch5.patrol_a');
+  const base: Record<string, true> = { 'style.katha': true, 'katha.hanuman': true };
+  for (const w of REAL.walkthrough.slice(0, k)) if (stepInJourney(w, { style: 'katha' })) base[w.expectFlag] = true;
+  const stages: Record<string, true>[] = [{}, { 'ch5.patrol_a': true }, { 'ch5.patrol_a': true, 'ch5.anirvedah': true }, { 'ch5.patrol_a': true, 'ch5.anirvedah': true, 'ch5.patrol_c': true }];
+  const problems: string[] = [];
+  let checked = 0;
+  for (const extra of stages) {
+    const flags = { ...base, ...extra };
+    assert.ok(sightTiles(map, flags).length > 0, 'the guards watch');
+    for (let y = 0; y < map.height; y += 1)
+      for (let x = (y % 3); x < map.width; x += 3) {
+        const s = at(REAL, 'lanka_city', x, y, { style: 'katha', flags, chapter: 5 });
+        if (!isWalkable({ ...s, save: { ...s.save, x: -1, y: -1 } }, REAL, x, y) || inSight(map, flags, x, y) || map.warps.some((w) => w.x === x && w.y === y)) continue;
+        const g = guideTarget(s, REAL);
+        checked++;
+        if (!g) {
+          problems.push(`(${x},${y}) ${JSON.stringify(extra)}: no pointer`);
+          continue;
+        }
+        if (inSight(map, flags, g.x, g.y)) problems.push(`(${x},${y}): the pointer at (${g.x},${g.y}) is in the light`);
+        if (g.distance < 0) problems.push(`(${x},${y}) ${JSON.stringify(extra)}: no route to the pointer (${g.x},${g.y})`);
+        const path = findPath(s, REAL, (m, tx, ty) => m === 'lanka_city' && tx === g.x && ty === g.y) ?? [];
+        let px = x;
+        let py = y;
+        for (const d of path) {
+          px += d === 'left' ? -1 : d === 'right' ? 1 : 0;
+          py += d === 'up' ? -1 : d === 'down' ? 1 : 0;
+          if (inSight(map, flags, px, py)) problems.push(`(${x},${y}): the route to (${g.x},${g.y}) crosses the light at (${px},${py})`);
+        }
+      }
+  }
+  assert.ok(checked > 300, `${checked} places checked`);
+  assert.deepEqual(problems.slice(0, 10), [], `${problems.length} problem(s)`);
 });

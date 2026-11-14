@@ -726,6 +726,36 @@
      "y": 8,
      "facing": "down",
      "event": "ch2.nishada_child"
+    },
+    {
+     "id": "lakshmana_boat",
+     "sprite": "lakshmana",
+     "x": 15,
+     "y": 14,
+     "facing": "down",
+     "event": "ch2.boatman",
+     "showIf": "ch2.ferry_boat",
+     "solid": false
+    },
+    {
+     "id": "sita_boat",
+     "sprite": "sita",
+     "x": 16,
+     "y": 14,
+     "facing": "down",
+     "event": "ch2.boatman",
+     "showIf": "ch2.ferry_boat",
+     "solid": false
+    },
+    {
+     "id": "rama_boat",
+     "sprite": "rama",
+     "x": 17,
+     "y": 14,
+     "facing": "down",
+     "event": "ch2.boatman",
+     "showIf": "ch2.ferry_boat",
+     "solid": false
     }
    ],
    "warps": [
@@ -2177,7 +2207,119 @@
          "fade": "out"
         },
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "warp": "shringaverapura",
+           "x": 18,
+           "y": 14,
+           "facing": "down"
+          },
+          {
+           "set": "ch2.ferry_boat"
+          },
+          {
+           "fade": "in"
+          },
+          {
+           "move": "sita_boat",
+           "path": [
+            "down",
+            "down"
+           ]
+          },
+          {
+           "move": "rama_boat",
+           "path": [
+            "down",
+            "down"
+           ]
+          },
+          {
+           "move": "lakshmana_boat",
+           "path": [
+            "down",
+            "down"
+           ]
+          },
+          {
+           "move": "player",
+           "path": [
+            "down",
+            "down"
+           ]
+          }
+         ]
+        },
+        {
          "say": "Guha's boatmen row them across the wide, shining Ganga."
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "move": "sita_boat",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "move": "rama_boat",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "move": "lakshmana_boat",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "move": "player",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "say": "In mid-stream Sita bows to the Ganga and prays."
+          },
+          {
+           "say": "Mother Ganga, guard Rama. Fourteen years we will live in the forest. Bring us home again, and I will worship you.",
+           "who": "person.sita",
+           "portrait": "sita"
+          },
+          {
+           "move": "sita_boat",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "move": "rama_boat",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "move": "lakshmana_boat",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "move": "player",
+           "path": [
+            "down"
+           ]
+          },
+          {
+           "fade": "out"
+          },
+          {
+           "unset": "ch2.ferry_boat"
+          }
+         ]
         },
         {
          "say": "On the far bank, the sage Bharadvaja of Prayaga welcomes them and shows them the way to the hill of Chitrakuta."

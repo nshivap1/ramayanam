@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "about": "v0.5b interface strings (OWNER: WP-D): Nala's bridge and the court-recital finale (view-setu.tsx, view-bookend.tsx); keys setu.*. Rules: notes/sa-ui.md.",
+  "models": [],
+  "entries": {
+    "setu.title": { "en": "Nala's bridge", "sa": "नलस्य सेतुः", "label": true, "ctx": "Nala's bridge puzzle (Yuddha 6.22): heading" },
+    "setu.help": { "en": "Tap a stone to turn it. Make the bridge whole.", "sa": "शिलां स्पृश, सा परिवर्तते। सेतुं पूर्णं कुरु।", "ctx": "Nala's bridge: how to play (परि+वृत् परिवर्तते: it turns round; a stone that sits true stays put)" },
+    "setu.hintSay": { "en": "Nala points at a stone.", "sa": "नलः एकां शिलां दर्शयति।", "ctx": "Nala's bridge: after 'Ask Nala' — the stone he points at is marked (the first one, in day order, not yet true)" },
+    "setu.whole": { "en": "The bridge is whole! It reaches Laṅkā.", "sa": "सेतुः पूर्णः! सः लङ्कां प्राप्तवान्।", "ctx": "Nala's bridge: every stone sits true (the shore meets Laṅkā); ▶ continues the story" },
+    "setu.ask": { "en": "Ask Nala", "sa": "नलं पृच्छ", "label": true, "ctx": "Nala's bridge: hint button (A) — Nala points at a stone" },
+    "setu.stone": { "en": "Stone {$n}: {$y} yojanas", "sa": "शिला {$n}: {$y} योजनानि", "label": true, "ctx": "Nala's bridge: a stone's screen-reader name — stone n is day n's span ({$y} = 14, 20, 21, 22, 23 yojanas, Yuddha 6.22.66–70)" },
+    "setu.set": { "en": "set true", "sa": "सम्यक् स्थिता", "label": true, "ctx": "Nala's bridge: a stone's state when it sits true (screen reader; feminine, agrees with शिला)" },
+    "setu.yojanas": { "en": "{$n} yojanas", "sa": "{$n} योजनानि", "label": true, "ctx": "Nala's bridge: under each stone, the yojanas built that day (Yuddha 6.22.66–70)" },
+    "setu.days": { "en": "Five days", "sa": "पञ्च दिनानि", "label": true, "ctx": "Nala's bridge: caption over the five stones — one stone for each day of building" },
+    "setu.built": { "en": "Bridge: {$n} / {$t} yojanas", "sa": "सेतुः: {$n} / {$t} योजनानि", "label": true, "ctx": "Nala's bridge: yojanas standing so far (the days whose stone sits true) of the hundred (Yuddha 6.22.74)" },
+    "setu.shore": { "en": "Shore", "sa": "तीरम्", "label": true, "ctx": "Nala's bridge: the left end, the shore the army stands on" },
+    "setu.lanka": { "en": "Laṅkā", "sa": "लङ्का", "label": true, "ctx": "Nala's bridge: the right end, the far shore (Laṅkā)" },
+    "setu.endAll": { "en": "Every verse of the journey", "sa": "यात्रायाः सर्वे श्लोकाः", "label": true, "ctx": "Kathā ending screen (finale): heading over all 21 verses with their state" }
+  }
+}

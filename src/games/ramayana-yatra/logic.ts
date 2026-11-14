@@ -8,6 +8,8 @@
  *     battle  → battleAction (logic-battle); when the battle is over → endBattle + resume
  *     ended   → tick only
  *   In every mode: tick, set-reader (v0.4.3: the story-text language mirrored into save.reader).
+ *   v0.5b: new script pendings (story recitation 'scene', book review 'book', Nala's bridge 'setu') resume in
+ *   logic-events resumeScript; their modules (logic-scene / -setu / -chain / -sundara) are re-exported here.
  *   Invalid actions return the SAME state object and never throw.
  */
 import type { Action, Dir, GameContent, GameState, PartyMember } from './types';
@@ -20,6 +22,7 @@ import { armKatha, saToast, uiAllySlot, uiItemSlot } from './logic-learning';
 import { type UiSlot, uiSa } from './sa-ui';
 import { applyKathaFloor, kathaSave } from './logic-katha';
 import { setReader } from './logic-reader';
+import { cutsceneDone } from './logic-cutscene';
 
 export { newGame, loadGame, toSave, sessionResult, storyProgress, emptySession, INTRO_EVENT, START_LEVEL, START_NISKA } from './logic-state';
 export {
@@ -38,6 +41,9 @@ export {
   signAt,
   triggerCovers,
   triggerFlag,
+  avoidActive,
+  avoidTriggers,
+  inSight,
   npcKey,
   DIRS,
   DELTA,
@@ -57,6 +63,12 @@ export * from './logic-progress';
 export * from './logic-katha';
 export * from './logic-tactics';
 export * from './logic-reader';
+// v0.5b (notes/v05b-plan.md §1): one module per package — scene (A: P1/P2), sundara (B: P4), chain (C: P6), setu (D: P5)
+export * from './logic-scene';
+export * from './logic-sundara';
+export * from './logic-chain';
+export * from './logic-setu';
+export * from './logic-cutscene'; // v0.5b WP-E: the Āditya-hṛdayam cutscene (cutsceneDue / cutsceneDone)
 export * from './types';
 export * from './catalog';
 
@@ -219,6 +231,8 @@ export function reduce(state: GameState, content: GameContent, action: Action): 
   let next: GameState;
   if (action.type === 'tick') next = tick(base, action['ms']);
   else if (action.type === 'set-reader') next = setReader(base, action['reader']);
+  // v0.5b WP-E: a due cutscene was played → its save flag (only while due; otherwise the same state)
+  else if (action.type === 'cutscene-done') next = cutsceneDone(base, content, action['id']);
   else if (base.mode === 'explore') next = reduceExplore(base, content, action);
   else if (base.mode === 'script') next = resumeScript(base, content, action);
   else if (base.mode === 'battle') next = reduceBattle(base, content, action);

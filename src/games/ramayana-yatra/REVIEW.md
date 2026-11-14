@@ -612,3 +612,245 @@ Interface strings (`content/sa-ui-katha.json`):
 - [ ] **katha.cover** (label) — {$who}: {$move} (slots only, e.g. लक्ष्मणः: रक्षा)
 
 Constructions to confirm first: प्रयोक्ष्यते (future ātmanepada of प्र+युज्) as "is about to use"; वृष्टिं करोति / करिष्यति for "rains"; क्षिप् with the locative (वक्षसि … क्षिपति, सागरे क्षेप्स्यति) for "looses at / hurls into"; मानवम् अस्त्रम् as the weapon's name; मातलि (i-stem like मुनि).
+
+## Kathā story set pieces (v0.5b WP-A–D): model-written, machine-verified, two model reviews, awaiting human review
+
+Fifteen scenes that were narrated are now played in the Kathā journey (PRD → "Story set pieces"; plan `notes/v05b-plan.md`, each package's design and sources in `notes/v05b-a.md` … `v05b-d.md`). Every Sanskrit word verifies with the oracle (`sambhashana.test.ts`, `sa-ui.test.ts`, `sa-battle.test.ts`, `katha-content.test.ts`). Two independent model reviews: **rev1** (`notes/v05b-rev1.md`: 109 strings, 18 changed — 13 accuracy / meaning, 5 ease / consistency) and **rev2** (`notes/v05b-rev2.md`: the same 109 re-read with fresh eyes, no further error; it agrees with all of rev1's changes). One wording both reviewers discussed was applied by the integrator: Mārīca "dies" is ततः मारीचः प्राणान् त्यजति (rev2: प्राणाः is already the chapter's word, जटायोः प्राणाः अल्पाः), not जीवनं त्यजति.
+
+Facts of the story checked against Vālmīki (vulgate numbering, valmikiramayan.net unless said):
+- Araṇya 3.68.10 — Jaṭāyu: सीतामादाय वैदेहीं प्रयातो दक्षिणां दिशम् → his gasped answer "to the south" (दक्षिणां दिशं गतवान्). (rev1 first doubted it, citing only 3.67.20; corrected.)
+- Sundara 5.1 (Surasā: grow, then thumb-sized), 5.47.23 (Hanumān darts between Akṣa's arrows like the wind, शरान्तरे मारुतवद्विनिष्पतन् → his rush of wind answers Akṣa's warned blow, game data in `katha.json → tactics.warnings`), 5.53 (Sītā prays to Agni: the fire does not burn him), 5.54 (the roofs: Prahasta's house first, Rāvaṇa's last, Vibhīṣaṇa's spared; sanskritdocuments.org prose summary).
+- Yuddha 6.17–18 (Aṅgada's counsel, the vow अभयं सर्वभूतेभ्यो), 6.22.66–70, 74 (the bridge: 14 · 20 · 21 · 22 · 23 yojanas, a hundred in all; re-fetched by rev2), 6.104–105 (the charioteer drives Rāvaṇa back; Agastya comes), 6.107–108 (the heads, Mātali), 6.123 (the Puṣpaka return, the places in order).
+- Bāla 1.4 (Kuśa and Lava sing the poem in Rāma's court; Vālmīki is not said to be there, so he stays at the āśrama in the game).
+- Not from 6.22 (shared text from before v0.5, both journeys): Nala's "Rāma's name on every stone" is a later tradition.
+
+For the human teacher (both reviewers' open items, merged):
+1. **आ+रभ् in the verse chain** — transitive "…वर्णेन पादम् आरभस्व" and "पादस्य आरम्भे … अस्ति" (rev1; rev2 agrees) vs the intransitive आरभते of spoken Sanskrit. And वर्णः (not अक्षरम्) for the key, a bare consonant with virāma.
+2. **मारीचः, रामस्य वाचा** (speaker label) and "सः शब्दः रामस्य शब्दः इव" — वाक् / शब्द for Vālmīki's स्वर (3.44), which the packs lack.
+3. **आकाशेन** ("through the sky", instrumental of route) at Level 3, or आकाशमार्गेण?
+4. **लघुः for "tiny" / "small as a thumb / a cat"** — Vālmīki's अङ्गुष्ठमात्रः / पृषदंशकमात्रः (5.2.49) are not in the packs.
+5. **अहं प्रविशामि** (present for the near future, 3.3.131) vs प्रवेक्ष्यामि.
+6. **यावत् … सन्ति, तावत् … जीविष्यति** — or echo Vālmīki's स्थास्यन्ति … प्रचरिष्यति (प्रचरिष्यति is not in the packs)?
+7. **Mātali to Rāma in the 2nd person** (क्षिप, प्रतीक्षसे, as Vālmīki's त्वम् / प्रभो, 6.108) — or the house's respectful भवान् … क्षिपतु?
+8. **"सर्वेषु काण्डेषु एकं पादं पठ"** ("one line in every book") — the distributive is only implied; एकैकम् / प्रत्येकम् are not in the packs.
+9. **"रामः आसने उपविशति"** for "throne" — सिंहासन is not in the packs.
+10. **Direct quotes without इति** (file 8 चिन्तयति, '…?'; file 9 रामः मन्त्रिणः पृच्छति, '…') follow the file-5 choice-prompt precedent; the v0.4.2 convention closes every quote with इति. One rule for both, please.
+11. **Digits in Nala's line** (प्रथमे दिने १४ योजनानि। ततः २०, २१, २२, २३ च।) mirror the puzzle's stone labels; files 1–5 write numbers as words.
+12. **The genitive of material** (स्वर्णस्य मृगः, and भवनानि / रथः in files 2, 3, 5, 8; rev2) — स्वर्णमय or a compound would be classical; neither is in the packs.
+13. **Outside v0.5b, pre-existing** (rev1): sa-dialogue-2 "एकः एकः वानरः आत्मनः बलं वदति" — the doubled एक should be एकैकः (8.1.9).
+
+Story lines, books 1–3 (WP-A; `content/sa-dialogue-6.json`):
+- [ ] **ch1.krauncha · person.valmiki (Kathā)** — Say the first quarter with me, {player}. → {player}, मया सह प्रथमं पादं वद।
+- [ ] **ch2.guha · narration (Kathā)** — In mid-stream Sita bows to the Ganga and prays. → नद्याः मध्ये सीता गङ्गां नमस्कृत्य वदति।
+- [ ] **ch2.guha · person.sita (Kathā)** — Mother Ganga, guard Rama. Fourteen years we will live in the forest. Bring us home again, and I will worship you. → हे गङ्गे मातः, रामं रक्ष। वयं चतुर्दश वर्षाणि वने वत्स्यामः। ततः अस्मान् पुनः गृहं नय। तदा अहं त्वां पूजयिष्यामि।
+- [ ] **ch3.maricha_deer · narration (Kathā)** — Struck by Rama's arrow, the deer falls. There lies Maricha, in his true form. → रामस्य बाणेन मृगः पतति। सः मृगः न, सः मारीचः एव।
+- [ ] **ch3.maricha_deer · speaker title (label) (Kathā)** — Maricha, in Rama's voice → मारीचः, रामस्य वाचा
+- [ ] **ch3.maricha_deer · Maricha, in Rama's voice (Kathā)** — "Ha Sita! Ha Lakshmana!" → हा सीते! हा लक्ष्मण!
+- [ ] **ch3.maricha_deer · narration (Kathā)** — Then Maricha dies. But his cry, in Rama's own voice, rings on through the forest. → ततः मारीचः प्राणान् त्यजति। परन्तु तस्य शब्दः वने सर्वत्र गच्छति। सः शब्दः रामस्य शब्दः इव।
+- [ ] **ch3.jatayu · choice prompt (Kathā)** — Jatayu has breath for only a few words. What will you ask him? → जटायोः प्राणाः अल्पाः। त्वं किं पृच्छसि?
+- [ ] **ch3.jatayu · choice option (player's reply, Kathā)** — Who took Sita? → सीतां कः हृतवान्?
+- [ ] **ch3.jatayu · choice option (player's reply, Kathā)** — Which way did he take her? → सः तां कुत्र नीतवान्?
+- [ ] **ch3.jatayu · choice option (player's reply, Kathā)** — Who are you? → भवान् कः?
+- [ ] **ch3.jatayu · person.jatayu (Kathā)** — Ravana. The king of the rakshasas. → रावणः। राक्षसानां राजा।
+- [ ] **ch3.jatayu · person.jatayu (Kathā)** — Through the sky... to the south. → आकाशेन… दक्षिणां दिशं गतवान्।
+- [ ] **ch3.jatayu · narration (Kathā)** — Jatayu only gasps. His breath is almost gone. → जटायुः किम् अपि न वदति। तस्य प्राणाः अल्पाः।
+
+Story lines, book 4 (WP-C; `content/sa-dialogue-7.json`):
+- [ ] **ch4.mendicant · person.hanuman (Kathā)** — Let us play a game of verses, friend: a chain of lines. → मित्र, आवां पादानां क्रीडां करवाव।
+- [ ] **ch4.mendicant · person.hanuman (Kathā)** — I say a line. You answer with a line that begins with my line's last sound. → अहं पादं वदामि। मम पादस्य अन्तिमेन वर्णेन त्वं पादम् आरभस्व।
+- [ ] **ch4.mendicant · person.hanuman (Kathā)** — A fine chain! You know the verses line by line. → साधु! त्वं श्लोकानां पादान् सम्यक् जानासि।
+- [ ] **ch4.mahendra_enter · objective (Kathā)** — Ask each vanara how far he can leap. → सर्वान् वानरान् पृच्छतु। कः कति योजनानि उत्पतितुं शक्नोति?
+- [ ] **ch4.vanara_gaja · narration (Kathā)** — Every vanara has spoken. None can leap a hundred yojanas. → सर्वे वानराः उक्तवन्तः। तेषु कः अपि शतं योजनानि उत्पतितुं न शक्नोति।
+- [ ] **ch4.jambavan_speech · person.angada (Kathā)** — First hear every vanara: how far can each one leap? → प्रथमं सर्वेषां वानराणां वचनं शृणु। कः कति योजनानि उत्पतितुं शक्नोति?
+
+Story lines, book 5 (WP-B; `content/sa-dialogue-8.json`):
+- [ ] **ch5.leap_start · narration (Kathā)** — Only Hanuman can make this crossing. You ride on his shoulder and guide his steps. → केवलं हनुमान् समुद्रं तरितुं शक्नोति। त्वं तस्य स्कन्धे उपविशसि। त्वं तस्मै मार्गं कथयसि।
+- [ ] **ch5.surasa · person.hanuman (Kathā)** — Then open your mouth wide, and I will enter. → तर्हि भवती मुखं विशालं करोतु। अहं प्रविशामि।
+- [ ] **ch5.surasa · narration (Kathā)** — Surasa opens her mouth wide, and Hanuman grows. She opens it wider, and he grows again. → सुरसा मुखं विशालं करोति। हनुमान् वर्धते। सा मुखं पुनः विशालं करोति। सः पुनः वर्धते।
+- [ ] **ch5.surasa · choice prompt (Kathā)** — Her mouth is vast now. What should Hanuman do? → अधुना तस्याः मुखं बहु विशालम् अस्ति। हनुमान् किं करोतु?
+- [ ] **ch5.surasa · choice option (player's reply, Kathā)** — Grow larger again! → पुनः वर्धताम्!
+- [ ] **ch5.surasa · choice option (player's reply, Kathā)** — Become tiny! → अतीव लघुः भवतु!
+- [ ] **ch5.surasa · narration (Kathā)** — Hanuman grows once more, and Surasa only opens her mouth wider. She waits. → हनुमान् पुनः वर्धते। सुरसा अपि मुखं पुनः विशालं करोति। सा प्रतीक्षते।
+- [ ] **ch5.surasa · narration (Kathā)** — Suddenly Hanuman becomes as small as a thumb. → सहसा हनुमान् अङ्गुष्ठः इव लघुः भवति।
+- [ ] **ch5.city_enter · narration (Kathā)** — Lamps light the streets, and guards watch the light. Lead Hanuman through the dark. → वीथिषु दीपाः प्रकाशन्ते। सैनिकाः प्रकाशं पश्यन्ति। त्वं हनुमन्तम् अन्धकारे एव नय।
+- [ ] **ch5.patrol_a · narration (Kathā)** — A patrol marches past the palace gate. Small as a cat, Hanuman waits in the dark, and they never see him. → निशाचराः प्रासादस्य द्वारस्य पुरतः गच्छन्ति। हनुमान् मार्जारः इव लघुः अन्धकारे तिष्ठति। ते तं न पश्यन्ति।
+- [ ] **ch5.patrol_b · narration (Kathā)** — The guard peers into the dark, but sees nothing. → सैनिकः अन्धकारं पश्यति, परन्तु किम् अपि न पश्यति।
+- [ ] **ch5.patrol_c · narration (Kathā)** — The guards at the garden wall look the other way. Hanuman slips past them. → उद्यानस्य भित्तेः पार्श्वे सैनिकाः अन्यां दिशं पश्यन्ति। हनुमान् शनैः अग्रे गच्छति।
+- [ ] **ch5.sita · narration (Kathā)** — The fire has not touched the grove. Sita is unharmed. → अशोकवनिकायाम् अग्निः न आगतवान्। सीतायाः किम् अपि न अभवत्।
+- [ ] **ch5.sita · person.sita (Kathā)** — Hanuman, you are unhurt! Go now, and bring Rama soon. → हनुमन्, भवान् कुशलः अस्ति! अधुना गच्छतु। रामं शीघ्रम् आनयतु।
+- [ ] **ch5.sita · narration (Kathā)** — Hanuman bows to her once more. Then he climbs a hill by the sea and leaps for home. → हनुमान् पुनः सीतां प्रणमति। ततः सः समुद्रस्य तीरे पर्वतम् आरोहति। सः पुनः समुद्रं तरितुम् उत्पतति।
+- [ ] **ch5.sita · narration (Kathā)** — From the branches, Hanuman sings Rama's story softly, and you sing it with him. → हनुमान् शाखासु स्थित्वा मन्दं रामस्य कथां गायति। त्वम् अपि तेन सह गायसि।
+- [ ] **ch5.sita · narration (Kathā)** — The princes of Ayodhya go to the forest. → अयोध्यायाः राजकुमारौ वनं गच्छतः।
+- [ ] **ch5.sita · narration (Kathā)** — A golden deer appears in the forest. → वने स्वर्णस्य मृगः आगच्छति।
+- [ ] **ch5.sita · narration (Kathā)** — Ravana carries Sita away, and Rama searches for her. → रावणः सीतां हरति। रामः तां मार्गयति।
+- [ ] **ch5.sita · narration (Kathā)** — Rama finds a friend in Sugriva, and the search begins. → सुग्रीवः रामस्य मित्रम् अभवत्। ततः सर्वे सीतां मार्गयन्ति।
+- [ ] **ch5.aksha · narration (Kathā)** — But the fire does not burn him, for Sita has prayed to Agni for his safety. Hanuman breaks free and springs onto the roofs. → परन्तु अग्निः तं न दहति, यतः सीता अग्निं तस्य कुशलं याचितवती। हनुमान् मुक्तः भवति, भवनानाम् उपरि उत्पतति च।
+- [ ] **ch5.aksha · objective (Kathā)** — Leap from roof to roof with Hanuman's blazing tail. → हनुमतः पुच्छं ज्वलति। भवनात् भवनम् उत्पततु।
+- [ ] **ch5.seen_s_n · narration (Kathā)** — A guard turns toward the light! Hanuman slips back into the shadows. → एकः सैनिकः प्रकाशं प्रति परिवर्तते! हनुमान् शीघ्रं पुनः अन्धकारं गच्छति।
+- [ ] **ch5.roof_1 · narration (Kathā)** — Prahasta's house catches fire! → प्रहस्तस्य गृहं ज्वलति!
+- [ ] **ch5.roof_1 · narration (Kathā)** — Only Vibhishana's house is spared. → केवलं विभीषणस्य गृहं न ज्वलति।
+- [ ] **ch5.roof_1 · narration (Kathā)** — Hanuman dips his tail in the sea, and the fire goes out. Then fear grips him: is Sita safe? → हनुमान् पुच्छं समुद्रे स्थापयति। अग्निः शाम्यति। ततः सः भीतः चिन्तयति, 'सीतायाः कुशलं वा?'
+- [ ] **ch5.roof_1 · objective (Kathā)** — Go to Sita in the Ashoka grove. → अशोकवनिकायां सीतां पश्यतु।
+- [ ] **ch5.roof_2 · narration (Kathā)** — Kumbhakarna's mansion catches fire! → कुम्भकर्णस्य भवनं ज्वलति!
+- [ ] **ch5.roof_3 · narration (Kathā)** — Mansion after mansion goes up in flames. → अग्निः भवनात् भवनं गच्छति।
+- [ ] **ch5.roof_4 · narration (Kathā)** — Last of all, Ravana's own palace catches fire! → अन्ते रावणस्य प्रासादः अपि ज्वलति!
+
+Story lines, book 6 (WP-D; `content/sa-dialogue-9.json`):
+- [ ] **ch6.angada_shore · person.angada (Kathā) — Yuddha 6.17: Aṅgada's counsel — one who comes from the enemy must be tested first** — He has come from our enemy. Let Rama test him first. → सः अस्माकं शत्रोः पक्षात् आगतवान्। प्रथमं रामः तं परीक्षताम्।
+- [ ] **ch6.angada_shore · objective (Kathā)** — Return to Vibhishana and hear what Rama decides. → विभीषणं प्रति गच्छतु। रामस्य वचनं शृणोतु।
+- [ ] **ch6.vibhishana_refuge · narration (Kathā)** — Vibhishana waits. First ask Angada for his counsel. → विभीषणः प्रतीक्षते। प्रथमम् अङ्गदस्य मतं पृच्छ।
+- [ ] **ch6.vibhishana_refuge · narration (Kathā)** — Rama turns to his counsellors: "What do you say?" → रामः मन्त्रिणः पृच्छति, 'भवन्तः किं वदन्ति?'
+- [ ] **ch6.vibhishana_refuge · objective (Kathā)** — Ask Angada for his counsel. → अङ्गदस्य मतं पृच्छतु।
+- [ ] **ch6.vibhishana_refuge · person.rama (Kathā) — Yuddha 6.18.34: आनयैनं … दत्तमस्याभयं मया (Rāma: bring him; I have given him fearlessness)** — Go, bring him to me. Say my vow to him. → गच्छ, तम् अत्र आनय। मम व्रतं तस्मै वद।
+- [ ] **ch6.vibhishana_refuge · narration (Kathā)** — Vibhishana hears the vow and comes down from the sky. → विभीषणः व्रतं श्रुत्वा आकाशात् अवतरति।
+- [ ] **ch6.nala · Nala (Kathā)** — Let every stone sit true. Then the bridge will reach Lanka. → सर्वाः शिलाः सम्यक् तिष्ठन्तु। तदा सेतुः लङ्कां प्राप्स्यति।
+- [ ] **ch6.nala · narration (Kathā) — Yuddha 6.22.66–70 (14, 20, 21, 22, 23 yojanas a day), 6.22.74 (a hundred long); valmikiramayan.net** — Fourteen yojanas on the first day; then twenty, twenty-one, twenty-two and twenty-three. A hundred yojanas in all. → प्रथमे दिने १४ योजनानि। ततः २०, २१, २२, २३ च। एवं सेतुः शतं योजनानि दीर्घः।
+- [ ] **ch6.ravana · narration (Kathā) — Yuddha 6.123 (Rāma shows Sītā Laṅkā, the setu, Kiṣkindhā, Ṛśyamūka, Pampā, Janasthāna, Pañcavaṭī … Ayodhyā)** — From the Pushpaka, Rama shows Sita the places of their story. → पुष्पकात् रामः सीतायै कथायाः स्थानानि दर्शयति।
+- [ ] **ch6.ravana · choice prompt (Kathā)** — Rama asks you: "Where did we hear this verse?" → रामः त्वां पृच्छति, 'एतं श्लोकं वयं कुत्र श्रुतवन्तः?'
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — In Kishkindha. → किष्किन्धायाम्।
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — In Lanka. → लङ्कायाम्।
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — In Ayodhya. → अयोध्यायाम्।
+- [ ] **ch6.ravana · person.rama (Kathā)** — Not there. Look down again. → तत्र न। पुनः अधः पश्य।
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — On the ocean shore. → समुद्रस्य तीरे।
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — By Lake Pampa. → पम्पायाः तीरे।
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — On Chitrakuta. → चित्रकूटे।
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — At Panchavati. → पञ्चवट्याम्।
+- [ ] **ch6.ravana · choice option (player's reply, Kathā)** — On Rishyamuka hill. → ऋश्यमूके।
+- [ ] **ch6.epilogue_valmiki · person.valmiki (Kathā) — Bāla 1.4.3–6, 12** — Kusha and Lava, two boys of this ashrama, have learned my whole story. → कुशः लवः च अस्य आश्रमस्य बालकौ। तौ मम सर्वां कथां पठितवन्तौ।
+- [ ] **ch6.epilogue_valmiki · person.valmiki (Kathā)** — Go with them to Ayodhya, and sing it before Rama. → ताभ्यां सह अयोध्यां गच्छ। रामस्य पुरतः तां गाय।
+- [ ] **ch6.epilogue_valmiki · narration (Kathā) — Bāla 1.4.27–30** — The twins sing in the streets of Ayodhya. Rama hears them and brings them into his palace. → कुशः लवः च अयोध्यायाः मार्गेषु गायतः। रामः तौ श्रुत्वा प्रासादं नयति।
+- [ ] **ch6.epilogue_valmiki · narration (Kathā) — Bāla 1.4.30–31** — Rama sits on his throne. His brothers and ministers are with him. → रामः आसने उपविशति। तेन सह भ्रातरः मन्त्रिणः च सन्ति।
+- [ ] **ch6.epilogue_valmiki · person.rama (Kathā) — Bāla 1.4.32–35 (Rāma to Lakṣmaṇa, Śatrughna and Bharata)** — Brothers, listen. These two sing a great story. → हे भ्रातरः, शृणुत। एतौ महतीं कथां गायतः।
+- [ ] **ch6.epilogue_valmiki · narration (Kathā)** — {player}, sing with them: say one line in every book. → {player}, ताभ्यां सह गाय। सर्वेषु काण्डेषु एकं पादं पठ।
+- [ ] **ch6.epilogue_valmiki · narration (Kathā)** — Kusha and Lava sing. → कुशः लवः च गायतः।
+- [ ] **ch6.epilogue_valmiki · narration (Kathā) — Bāla 1.4.36** — Rama listens with his brothers. His whole mind is on the story. → रामः भ्रातृभिः सह शृणोति। तस्य मनः कथायाम् एव अस्ति।
+- [ ] **ch6.epilogue_valmiki · person.valmiki (Kathā) — Bāla 2.36–37 (Brahmā's blessing to Vālmīki: यावत् स्थास्यन्ति गिरयः सरितश्च महीतले …), recalled by Vālmīki** — As long as there are mountains and rivers, Rama's story will live. → यावत् पर्वताः नद्यः च सन्ति, तावत् रामस्य कथा जीविष्यति।
+
+Interface strings (`content/sa-ui-scene.json`, story recitations):
+- [ ] **scene.your** (label) — Your line → तव पादः
+- [ ] **scene.syllables** (label) — {$n} syllables → {$n} अक्षराणि
+
+Interface strings (`content/sa-ui-chain.json`, the verse chain):
+- [ ] **chain.badge** (label) — Verse chain → पादानां क्रीडा
+- [ ] **chain.last** (label) — last sound → अन्तिमः वर्णः
+- [ ] **chain.prompt** — Which line begins with this sound? → कस्य पादस्य आरम्भे अयं वर्णः अस्ति?
+- [ ] **chain.any** — No line begins with this sound. Say any line! → अयं वर्णः कस्य अपि पादस्य आरम्भे न अस्ति। कम् अपि पादं वद!
+- [ ] **chain.chips** (label) — three lines → त्रयः पादाः
+- [ ] **chain.srTurn** — {$who} says: {$line}. The last sound: {$key}. Which line begins with it? → {$who} वदति — {$line}। अन्तिमः वर्णः — {$key}। कस्य पादस्य आरम्भे अयं वर्णः अस्ति?
+- [ ] **chain.srAny** — {$who} says: {$line}. No line begins with its last sound: say any line! → {$who} वदति — {$line}। तस्य अन्तिमः वर्णः कस्य अपि पादस्य आरम्भे न अस्ति। कम् अपि पादं वद!
+- [ ] **chain.srRight** — The right line: {$line}. → उचितः पादः — {$line}।
+
+Interface strings (`content/sa-ui-setu.json`, Nala's bridge):
+- [ ] **setu.title** (label) — Nala's bridge → नलस्य सेतुः
+- [ ] **setu.help** — Tap a stone to turn it. Make the bridge whole. → शिलां स्पृश, सा परिवर्तते। सेतुं पूर्णं कुरु।
+- [ ] **setu.hintSay** — Nala points at a stone. → नलः एकां शिलां दर्शयति।
+- [ ] **setu.whole** — The bridge is whole! It reaches Laṅkā. → सेतुः पूर्णः! सः लङ्कां प्राप्तवान्।
+- [ ] **setu.ask** (label) — Ask Nala → नलं पृच्छ
+- [ ] **setu.stone** (label) — Stone {$n}: {$y} yojanas → शिला {$n}: {$y} योजनानि
+- [ ] **setu.set** (label) — set true → सम्यक् स्थिता
+- [ ] **setu.yojanas** (label) — {$n} yojanas → {$n} योजनानि
+- [ ] **setu.days** (label) — Five days → पञ्च दिनानि
+- [ ] **setu.built** (label) — Bridge: {$n} / {$t} yojanas → सेतुः: {$n} / {$t} योजनानि
+- [ ] **setu.shore** (label) — Shore → तीरम्
+- [ ] **setu.lanka** (label) — Laṅkā → लङ्का
+- [ ] **setu.endAll** (label) — Every verse of the journey → यात्रायाः सर्वे श्लोकाः
+
+Battle lines (`content/sa-battle.json` templates, WP-C):
+- [ ] **kathaChainRule** — {x} says a line of verse. Answer with a line that begins with its last sound! → {x.nom} श्लोकस्य पादं वदति। तस्य अन्तिमेन वर्णेन त्वं पादम् आरभस्व!
+- [ ] **kathaChainSays** — {x} says a line of verse. → {x.nom} श्लोकस्य पादं वदति।
+- [ ] **kathaChainStumped** — {x} thinks, but no line begins with that sound! The link lands with extra force. → {x.nom} चिन्तयति। किन्तु सः वर्णः कस्य अपि पादस्य आरम्भे न अस्ति! अतः फलम् अधिकम्।
+- [ ] **kathaHeads** — A head of {n:enemy.ravana} falls, but a new head rises in its place! → रावणस्य एकं शिरः पतति। किन्तु तस्य स्थाने नूतनं शिरः उद्भवति!
+- [ ] **kathaMatali** — Matali calls to {n:ally.rama}: why wait? Loose Brahma's weapon now! → मातलिः रामं वदति — हे राम, किमर्थं प्रतीक्षसे? अधुना ब्रह्मास्त्रं क्षिप!
+
+Names (`content/names.json`, WP-D):
+- [ ] **person.kusha** — Kuśa, son of Rāma, Vālmīki's pupil → कुश
+- [ ] **person.lava** — Lava, son of Rāma, Vālmīki's pupil → लव
+
+## Āditya-hṛdayam cutscene (v0.5b WP-E): text chosen from four witnesses, English and narration model-written, awaiting human review
+
+The owner's homage to Rāma learning the hymn from Agastya in the battle with Rāvaṇa (Yuddha 6.105.1–31, vulgate / Gita Press numbering; 6.107 in the IIT Kanpur text). A non-interactive 3D cutscene recites all 31 verses with an English line each (`content/aditya-hridayam.json`, `view-cutscene.tsx`, `notes/v05b-e.md`). Machine checks (`cutscene.test.ts`): every pāda scans (checkAnustubh; verse 31 puṣpitāgrā), every half-verse rebuilds from its padaccheda with joinSandhi (three printed pāda-break hiatuses noted), every difference of every witness is listed and explained, verse 4 equals the game verse `s-aditya-hrdayam`, every narration and interface word verifies with the oracle. Nothing here has been reviewed by a human.
+
+Second review (v05b-rev2, `notes/v05b-rev2.md`): all 31 verses re-fetched from valmikiramayan.net and, in full, from the sanskritdocuments.org stotra, and compared pāda by pāda: the chosen text and every padaccheda stand. Applied after it: verse 1's English (the one who sees Rāma and Rāvaṇa is Agastya — दृष्ट्वा shares the agent of अब्रवीत् in verse 2), verse 7 "protects" (पाति), seven more stotra differences listed (two readings, 23 and 27, below), and narration 1 (भवति for चलति).
+
+Text decisions to confirm (witnesses: vr = valmikiramayan.net, iitk = IIT Kanpur text via vedapath.app, sd = sanskritdocuments.org stotra, gm = greenmesg.org stotra; the rule is in the JSON `choice`):
+- [ ] **6.105.2** — chosen उपागम्याब्रवीद् (against vr: उपगम्याब्रवीद्). उपागम्य in IITK, the sanskritdocuments.org stotra and greenmesg.org; valmikiramayan.net alone has उपगम्य (both scan). Majority reading.
+- [ ] **6.105.3** — chosen विजयिष्यसे (against gm: विजयिष्यसि, sd: विजयिष्यसि). Both Rāmāyaṇa texts (valmikiramayan.net, IITK) read the middle ending -से (vi + √ji takes the middle voice); the stotra prints read विजयिष्यसि. Rāmāyaṇa reading kept.
+- [ ] **6.105.4** — chosen अक्षय्यं (against sd: अक्षयं). Same choice as the game verse s-aditya-hrdayam (shlokas-2.json): अक्षय्यं in valmikiramayan.net, IITK, greenmesg.org and hindunet; the sanskritdocuments.org stotra file reads अक्षयं (checked 2026-11-11).
+- [ ] **6.105.5** — chosen सर्वमङ्गलमङ्गल्यं (against gm: सर्वमङ्गलमाङ्गल्यं, sd: सर्वमङ्गलमाङ्गल्यं). मङ्गल्य (auspicious) in both Rāmāyaṇa texts; the stotra prints have the synonym माङ्गल्य. Both scan.
+- [ ] **6.105.8** — chosen महेन्द्रो (against gm: माहेन्द्रो). महेन्द्र in valmikiramayan.net, IITK and the sanskritdocuments.org stotra; greenmesg.org alone has माहेन्द्रो.
+- [ ] **6.105.9** — chosen वसवः साध्या अश्विनौ (against gm: वसवस्साध्याः ह्यश्विनौ, sd: वसवः साध्या ह्यश्विनौ). the stotra prints add हि (ह्यश्विनौ): greenmesg.org (which also keeps the visarga of साध्याः) and sanskritdocuments.org; both Rāmāyaṇa texts have no हि. Both scan.
+- [ ] **6.105.9** — chosen प्रजाः प्राण (against gm: प्रजाप्राणा, sd: प्रजाप्राण). the stotra prints make one compound: greenmesg.org प्रजाप्राणा, sanskritdocuments.org प्रजाप्राण; both Rāmāyaṇa texts: प्रजाः प्राण (from प्राणः before ऋ).
+- [ ] **6.105.10** — chosen हिरण्यरेता (against gm: हिरण्यरेतो). हिरण्यरेताः (nom. of हिरण्यरेतस्, visarga dropped before द) in valmikiramayan.net, IITK and the sanskritdocuments.org stotra; greenmesg.org: हिरण्यरेतो.
+- [ ] **6.105.11** — chosen मार्तण्डकोऽंशुमान् (against gm: मार्ताण्ड अंशुमान्, sd: मार्ताण्ड). Both Rāmāyaṇa texts: मार्तण्डकः + अंशुमान् → मार्तण्डकोऽंशुमान्; the stotra prints read मार्ताण्ड अंशुमान् (with a hiatus).
+- [ ] **6.105.12** — chosen तपनो भास्करो (against vr: तपनोऽहस्करो). तपनो भास्करो in IITK and both stotra prints; valmikiramayan.net alone has तपनोऽहस्करो (“maker of day”). Both scan; the two Rāmāyaṇa texts differ, so the reading of the other witnesses decides.
+- [ ] **6.105.17** — chosen हर्यश्वाय (against vr: हर्याश्वाय). हर्यश्व (हरि + अश्व) in IITK and both stotra prints; valmikiramayan.net: हर्याश्वाय.
+- [ ] **6.105.18** — chosen मार्ताण्डाय (against vr: प्रचण्डाय). मार्ताण्डाय in IITK and both stotra prints (greenmesg.org spells मार्तण्डाय); valmikiramayan.net: प्रचण्डाय (“the fierce”). The two Rāmāyaṇa texts differ, so the other witnesses decide. The sanskritdocuments.org stotra prints मार्ताण्डाय and notes “or मार्तण्डाय, प्रचण्डाय” in its margin.
+- [ ] **6.105.18** — chosen मार्ताण्डाय नमोऽस्तु ते (against gm: मार्तण्डाय नमो नमः, sd: मार्ताण्डाय नमो नमः). Both Rāmāyaṇa texts end the verse नमोऽस्तु ते; the stotra prints have नमो नमः (and greenmesg.org spells मार्तण्ड).
+- [ ] **6.105.19** — chosen सूर्यायादित्यवर्चसे (against gm: सूर्यादित्यवर्चसे). greenmesg.org: सूर्यादित्यवर्चसे, one syllable short of the pāda; valmikiramayan.net, IITK and the sanskritdocuments.org stotra have सूर्याय.
+- [ ] **6.105.21** — chosen हरये (against gm: वह्नये, sd: वह्नये). Both Rāmāyaṇa texts: हरये; the stotra prints: वह्नये (“to fire”). The sanskritdocuments.org stotra itself notes “or हरये विश्वकर्मणे”.
+- [ ] **6.105.23** — chosen एष चैवाग्निहोत्रं (against sd: एष एवाग्निहोत्रं). the sanskritdocuments.org stotra alone: एष एवाग्निहोत्रं (एव for च एव; both scan); valmikiramayan.net, IITK and greenmesg.org: एष चैवाग्निहोत्रं. Rāmāyaṇa reading kept.
+- [ ] **6.105.24** — chosen वेदाश्च (against vr: देवाश्च). वेदाश्च in both stotra prints and (spelled वेदश्च) in IITK; valmikiramayan.net: देवाश्च (“the gods”). The two Rāmāyaṇa texts differ, so the other witnesses decide.
+- [ ] **6.105.24** — chosen सर्वेषु परमप्रभुः (against gm: सर्व एष रविः प्रभुः, sd: एष रविः प्रभुः). Both Rāmāyaṇa texts: सर्वेषु परमप्रभुः; the stotra prints: सर्व एष रविः प्रभुः.
+- [ ] **6.105.27** — chosen जगाम स (against gm: जगाम च, sd: जगाम च). Both Rāmāyaṇa texts: स (“he”); the stotra prints: च (“and”).
+- [ ] **6.105.27** — chosen ततोऽगस्त्यो (against sd: तदाऽगस्त्यो). the sanskritdocuments.org stotra: तदाऽगस्त्यो (“then”, same sense); valmikiramayan.net, IITK and greenmesg.org: ततोऽगस्त्यो. Rāmāyaṇa reading kept.
+- [ ] **6.105.30** — chosen युद्धार्थं (against gm: युद्धाय, sd: युद्धाय). Both Rāmāyaṇa texts: युद्धार्थं (“for battle”); the stotra prints: युद्धाय (same sense).
+- [ ] **6.105.11** — मार्तण्डकोऽंशुमान् is printed with the anusvāra after the avagraha (as vr and joinSandhiDeva write it); many prints write कोंऽशुमान्.
+- [ ] **Metre** — vipulās: 5.3, 7.3, 16.1, 30.3 (na), 12.1, 16.3 (bha); 10.4 हिरण्यरेता दिवाकरः has 9 syllables in every source (not emended). The sanskritdocuments.org stotra's margin offers “or भानुर्विश्वरेता”, which would scan (विश्वरेता दिवाकरः); no main text reads it.
+- [ ] **Pāda-break hiatus** — 7 (…गणान् | लोकान्), 13 (…भेदी | ऋग्यजुः…), 17 (सहस्रांशो | आदित्याय): printed without sandhi in both Rāmāyaṇa texts and greenmesg.org, so left as printed; the sanskritdocuments.org stotra alone joins 7 as …गणाँल्लोकान् (second review, v05b-rev2).
+- [ ] **Critical edition** — NOT VERIFIED: the Baroda edition is reported to keep the hymn out of the constituted text (Yuddhakāṇḍa appendix); please confirm with the printed volume.
+
+English (original, one or two plain lines per verse; verse 4 is the game verse’s English):
+- [ ] **6.105.1** — ततो युद्धपरिश्रान्तं · समरे चिन्तया स्थितम् · रावणं चाग्रतो दृष्ट्वा · युद्धाय समुपस्थितम् → Then the sage saw Rāma standing on the battlefield, worn out by the fighting and deep in thought, and Rāvaṇa before him, ready to fight.
+- [ ] **6.105.2** — दैवतैश्च समागम्य · द्रष्टुमभ्यागतो रणम् · उपागम्याब्रवीद्रामम् · अगस्त्यो भगवान् ऋषिः → The holy sage Agastya, who had come with the gods to watch the battle, went up to Rāma and said:
+- [ ] **6.105.3** — राम राम महाबाहो · शृणु गुह्यं सनातनम् · येन सर्वानरीन्वत्स · समरे विजयिष्यसे → “Rāma, Rāma, mighty-armed, listen to this eternal secret, my child, by which you will defeat all your enemies in battle.
+- [ ] **6.105.4** — आदित्यहृदयं पुण्यं · सर्वशत्रुविनाशनम् · जयावहं जपेन्नित्यम् · अक्षय्यं परमं शिवम् → One should always recite the holy Āditya-hṛdaya, which destroys every enemy and brings victory: it is imperishable, supreme and auspicious.
+- [ ] **6.105.5** — सर्वमङ्गलमङ्गल्यं · सर्वपापप्रणाशनम् · चिन्ताशोकप्रशमनम् · आयुर्वर्धनमुत्तमम् → It is the most auspicious of all blessings and destroys every sin; it calms worry and grief, and it is the best way to long life.
+- [ ] **6.105.6** — रश्मिमन्तं समुद्यन्तं · देवासुरनमस्कृतम् · पूजयस्व विवस्वन्तं · भास्करं भुवनेश्वरम् → Worship the Sun, crowned with rays, as he rises, honoured by gods and asuras alike: Vivasvān, the maker of light, the lord of the worlds.
+- [ ] **6.105.7** — सर्वदेवात्मको ह्येष · तेजस्वी रश्मिभावनः · एष देवासुरगणान् · लोकान् पाति गभस्तिभिः → He is the self of all the gods, radiant, the source of rays. With his rays he protects the hosts of gods and asuras, and all the worlds.
+- [ ] **6.105.8** — एष ब्रह्मा च विष्णुश्च · शिवः स्कन्दः प्रजापतिः · महेन्द्रो धनदः कालो · यमः सोमो ह्यपांपतिः → He is Brahmā and Viṣṇu, Śiva, Skanda and Prajāpati; he is great Indra, Kubera the giver of wealth, Time, Yama, Soma and the lord of the waters.
+- [ ] **6.105.9** — पितरो वसवः साध्या · अश्विनौ मरुतो मनुः · वायुर्वह्निः प्रजाः प्राण · ऋतुकर्ता प्रभाकरः → He is the ancestors, the Vasus, the Sādhyas, the two Aśvins, the Maruts and Manu; he is wind and fire, all creatures and their breath, the maker of the seasons, the maker of light.
+- [ ] **6.105.10** — आदित्यः सविता सूर्यः · खगः पूषा गभस्तिमान् · सुवर्णसदृशो भानुर् · हिरण्यरेता दिवाकरः → He is Āditya, Savitṛ, Sūrya, the traveller of the sky, Pūṣan, the lord of rays; golden, the shining one, whose seed is gold, the maker of day.
+- [ ] **6.105.11** — हरिदश्वः सहस्रार्चिः · सप्तसप्तिर्मरीचिमान् · तिमिरोन्मथनः शम्भुस् · त्वष्टा मार्तण्डकोऽंशुमान् → He has green horses and a thousand flames, seven steeds and countless rays; he scatters the darkness; he is Śambhu, Tvaṣṭṛ, Mārtaṇḍa, the radiant one.
+- [ ] **6.105.12** — हिरण्यगर्भः शिशिरस् · तपनो भास्करो रविः · अग्निगर्भोऽदितेः पुत्रः · शङ्खः शिशिरनाशनः → He is the golden womb, the gentle one and the burning one, the maker of light, Ravi; he carries fire within; he is Aditi’s son, Śaṅkha, who ends the cold.
+- [ ] **6.105.13** — व्योमनाथस्तमोभेदी · ऋग्यजुःसामपारगः · घनवृष्टिरपां मित्रो · विन्ध्यवीथीप्लवङ्गमः → Lord of the sky, he pierces the darkness; he has mastered the Ṛg, Yajus and Sāma; he sends the heavy rain, he is the friend of the waters, and he speeds along the Vindhya’s path.
+- [ ] **6.105.14** — आतपी मण्डली मृत्युः · पिङ्गलः सर्वतापनः · कविर्विश्वो महातेजा · रक्तः सर्वभवोद्भवः → He is the blazing heat, the shining disc, death itself, the tawny one who scorches all; he is the seer, the universe, of great splendour, the red one, the source of all that comes to be.
+- [ ] **6.105.15** — नक्षत्रग्रहताराणाम् · अधिपो विश्वभावनः · तेजसामपि तेजस्वी · द्वादशात्मन्नमोऽस्तु ते → Lord of the stars, the planets and the constellations, origin of all things, brightest of all that shines: you of twelve forms, salutations to you!
+- [ ] **6.105.16** — नमः पूर्वाय गिरये · पश्चिमायाद्रये नमः · ज्योतिर्गणानां पतये · दिनाधिपतये नमः → Salutations to the eastern mountain, salutations to the western mountain; salutations to the lord of the hosts of light, the lord of the day.
+- [ ] **6.105.17** — जयाय जयभद्राय · हर्यश्वाय नमो नमः · नमो नमः सहस्रांशो · आदित्याय नमो नमः → Salutations again and again to the victorious one, to the blessing of victory, to the lord of the green horses; salutations, O thousand-rayed one, salutations again and again to Āditya.
+- [ ] **6.105.18** — नम उग्राय वीराय · सारङ्गाय नमो नमः · नमः पद्मप्रबोधाय · मार्ताण्डाय नमोऽस्तु ते → Salutations to the fierce one, the hero, the swift one; salutations to him who wakes the lotuses, to Mārtaṇḍa: salutations to you.
+- [ ] **6.105.19** — ब्रह्मेशानाच्युतेशाय · सूर्यायादित्यवर्चसे · भास्वते सर्वभक्षाय · रौद्राय वपुषे नमः → To the lord of Brahmā, Īśāna and Acyuta, to Sūrya, with the splendour of Āditya, to the shining one who consumes all, to the one of fierce form: salutations.
+- [ ] **6.105.20** — तमोघ्नाय हिमघ्नाय · शत्रुघ्नायामितात्मने · कृतघ्नघ्नाय देवाय · ज्योतिषां पतये नमः → To the destroyer of darkness, of cold and of enemies, to the boundless self; to the destroyer of the ungrateful, to the god, the lord of the lights: salutations.
+- [ ] **6.105.21** — तप्तचामीकराभाय · हरये विश्वकर्मणे · नमस्तमोभिनिघ्नाय · रुचये लोकसाक्षिणे → To him who shines like molten gold, to Hari, the maker of all; salutations to the slayer of darkness, the radiance, the witness of the world.
+- [ ] **6.105.22** — नाशयत्येष वै भूतं · तदेव सृजति प्रभुः · पायत्येष तपत्येष · वर्षत्येष गभस्तिभिः → This lord destroys all that has come to be, and creates it again; with his rays he dries, he burns and he sends the rain.
+- [ ] **6.105.23** — एष सुप्तेषु जागर्ति · भूतेषु परिनिष्ठितः · एष चैवाग्निहोत्रं च · फलं चैवाग्निहोत्रिणाम् → He stays awake in those who sleep, dwelling within every being; he is the fire offering, and also the fruit of those who offer it.
+- [ ] **6.105.24** — वेदाश्च क्रतवश्चैव · क्रतूनां फलमेव च · यानि कृत्यानि लोकेषु · सर्वेषु परमप्रभुः → He is the Vedas, the sacrifices and the fruit of the sacrifices; of every deed done in all the worlds he is the supreme lord.
+- [ ] **6.105.25** — एनमापत्सु कृच्छ्रेषु · कान्तारेषु भयेषु च · कीर्तयन् पुरुषः कश्चिन् · नावसीदति राघव → Whoever sings his praise in disaster, in hardship, in the wilderness or in danger, O Rāghava, does not lose heart.
+- [ ] **6.105.26** — पूजयस्वैनमेकाग्रो · देवदेवं जगत्पतिम् · एतत्त्रिगुणितं जप्त्वा · युद्धेषु विजयिष्यसि → Worship him with a single mind, the god of gods, the lord of the world. Recite this three times, and you will win your battles.
+- [ ] **6.105.27** — अस्मिन् क्षणे महाबाहो · रावणं त्वं वधिष्यसि · एवमुक्त्वा ततोऽगस्त्यो · जगाम स यथागतम् → In this very hour, mighty-armed one, you will slay Rāvaṇa.” With these words Agastya went away, just as he had come.
+- [ ] **6.105.28** — एतच्छ्रुत्वा महातेजा · नष्टशोकोऽभवत्तदा · धारयामास सुप्रीतो · राघवः प्रयतात्मवान् → When he heard this, the radiant Rāma was freed from his grief. Glad at heart and self-controlled, Rāghava held the hymn in his mind.
+- [ ] **6.105.29** — आदित्यं प्रेक्ष्य जप्त्वा तु · परं हर्षमवाप्तवान् · त्रिराचम्य शुचिर्भूत्वा · धनुरादाय वीर्यवान् → Gazing at the Sun, he recited the hymn and was filled with the highest joy. Three times he sipped water and was purified; then the mighty one took up his bow.
+- [ ] **6.105.30** — रावणं प्रेक्ष्य हृष्टात्मा · युद्धार्थं समुपागमत् · सर्वयत्नेन महता · वधे तस्य धृतोऽभवत् → Seeing Rāvaṇa, he came forward to battle with a joyful heart, resolved with all his great strength to slay him.
+- [ ] **6.105.31** — अथ रविरवदन्निरीक्ष्य रामं · मुदितमनाः परमं प्रहृष्यमाणः · निशिचरपतिसंक्षयं विदित्वा · सुरगणमध्यगतो वचस्त्वरेति → Then the Sun, glad at heart and full of joy, standing among the hosts of the gods, looked at Rāma; knowing that the end of the lord of the night-wanderers had come, he said: “Make haste!”
+
+Narration before verse 1 (Sanskrit + English, shown in every language):
+- [ ] **narration 1** — Before Lanka, the battle has gone on for a long time. → लङ्कायाः पुरतः बहु कालं युद्धं भवति।
+- [ ] **narration 2** — Ravana comes back to fight, his strength renewed. → रावणः पुनः युद्धाय आगच्छति। तस्य बलं नवम्।
+- [ ] **narration 3** — Rama stands weary, deep in thought. → रामः श्रान्तः तिष्ठति। सः चिन्तयति।
+- [ ] **narration 4** — The gods watch from the sky. → देवाः आकाशात् पश्यन्ति।
+- [ ] **narration 5** — The sage Agastya comes to Rama. → अगस्त्यः मुनिः रामम् उपगच्छति।
+- [ ] **narration 6** — He teaches Rama the Aditya-hridaya. → सः रामाय आदित्यहृदयम् उपदिशति।
+- [ ] **narration 7** — Listen, and recite with Agastya. → शृणु। अगस्त्येन सह पठ।
+
+Interface strings (`content/aditya-hridayam.json → ui`; labels need no ।):
+- [ ] **title** (label) — Aditya-hridayam → आदित्यहृदयम्
+- [ ] **speaker** (label) — Agastya → अगस्त्यः
+- [ ] **pause** (label) — Pause → तिष्ठ
+- [ ] **resume** (label) — Resume ▶ → अग्रे गच्छ ▶
+- [ ] **skip** (label) — Skip ▶▶ → अलम् ▶▶
+- [ ] **skipAsk** — Skip the hymn? → आदित्यहृदयं त्यजसि?
+- [ ] **yes** (label) — Yes → आम्
+- [ ] **no** (label) — No → न
+- [ ] **verse** (label) — Verse → श्लोकः
+- [ ] **replay** (label) — Aditya-hridayam ▶ → आदित्यहृदयम् ▶
+
+Constructions to confirm first: बहु कालं युद्धं भवति for "the battle has gone on for a long time" (v05b-rev2: चलति, the modern idiom, replaced: the packs use it only for motion); तस्य बलं नवम् for "his strength renewed"; अगस्त्येन सह पठ ("recite with Agastya"); तिष्ठ for "pause" and अलम् for "skip"; आदित्यहृदयं त्यजसि? for "Skip the hymn?".

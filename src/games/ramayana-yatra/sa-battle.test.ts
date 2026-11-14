@@ -46,6 +46,8 @@ const DOMAIN: Record<string, Kind[]> = {
   kathaEchoIntro: ['enemy'], kathaEchoModel: ['enemy'], kathaEchoDown: ['enemy'], kathaEchoSay: ['ally'],
   // v0.5a Kathā tactics (logic-tactics): a boss's warned blow and its strike lines name the foe; the verse shield the hero
   kathaWarn: ['enemy'], kathaWarnStones: ['enemy'], kathaStrikeStones: ['enemy'], kathaWarnBlood: ['enemy'], kathaStrikeBlood: ['enemy'], kathaShield: ['ally'],
+  // v0.5b (WP-C) the verse-chain duel: the opponent's rule, line and stumped lines name the foe
+  kathaChainRule: ['enemy'], kathaChainSays: ['enemy'], kathaChainStumped: ['enemy'],
   go: ['ally'], duelStepForward: ['ally'], comeBack: ['ally'], kathaRecite: ['ally'], kathaDuelRecite: ['ally'], weary: ['ally'], allyDown: ['ally'], duelAllyDown: ['ally'], levelUp: ['ally'], learned: ['ally'], xp: ['ally'], revived: ['ally'], ppFull: ['ally'], ppRecharged: ['ally'],
   uses: ['ally', 'enemy'], duelAnswers: ['ally', 'enemy'], duelCounters: ['ally', 'enemy'], takes: ['ally', 'enemy'], duelTakes: ['ally', 'enemy'], recovers: ['ally', 'enemy'], fullStrength: ['ally', 'enemy'], stun: ['ally', 'enemy'], bound: ['ally', 'enemy'],
   statRise: ['ally', 'enemy', 'group'], statRiseSharp: ['ally', 'enemy', 'group'], statMax: ['ally', 'enemy', 'group'], statFall: ['ally', 'enemy'], statFallSharp: ['ally', 'enemy'], statMin: ['ally', 'enemy'],
@@ -101,6 +103,8 @@ test('sa-battle: the templates the battle logic uses all exist, none is stale, a
   const tactics = C.katha?.tactics;
   for (const f of tactics?.fits ?? []) used.add(f.beat);
   for (const w of tactics?.warnings ?? []) for (const k of [w.ready, w.strike]) if (k) used.add(k);
+  // v0.5b P7 (WP-C): boss phases name their beats in content/katha.json `tactics.phases`
+  for (const p of tactics?.phases ?? []) if (p.beat) used.add(p.beat);
   used.add(WARN_TEMPLATE);
   ['super', 'weak'].forEach((k) => used.add(k)); // via saEffect(d.effective)
   const problems: string[] = [];
@@ -365,7 +369,8 @@ test('sa-battle: Kathā battles (recital line, half-effect outcome folded into t
       const lvl = Math.max(...sp.enemies.map((e) => e.level));
       const ids = sp.kind === 'duel' ? ['player', 'rama', 'hanuman'] : ['player', 'rama', 'lakshmana', 'hanuman'];
       const base = mkState(buildParty(ids, bot === 'weak' ? Math.max(2, lvl - 2) : lvl + 4, si), 77 + si, 3, {}, si % 2 ? 'a' : 'b');
-      const s0: GameState = { ...base, save: { ...base.save, style: 'katha', flags: { ...base.save.flags, 'style.katha': true }, smrti } };
+      // (v0.5b: Rāvaṇa's phases wait for the Āditya-hṛdayam — package E's cutscene sets seen.aditya at ≤ 60 %)
+      const s0: GameState = { ...base, save: { ...base.save, style: 'katha', flags: { ...base.save.flags, 'style.katha': true, 'seen.aditya': true }, smrti } };
       const out = play(s0, sp, bot, createRng(si * 131 + bot.length), `Kathā ${sp.kind}:${sp.enemies.map((e) => e.id).join('+')} · ${bot}`, problems, seen);
       outcomes[out ?? 'unfinished'] = (outcomes[out ?? 'unfinished'] ?? 0) + 1;
     }
@@ -374,6 +379,8 @@ test('sa-battle: Kathā battles (recital line, half-effect outcome folded into t
   assert.equal(problems.length, 0, report(problems));
   const shapes = [...seen].join('\n');
   for (const re of [/recites the line and invokes/, /answers with a line of verse/, /^The line falters: only half the power lands\. .*takes/m, /^The line falters: only half the power lands\. .*(rises|falls|recovers|refreshed)/m]) assert.match(shapes, re, `a Kathā beat of shape ${re} was met and verified`);
+  // v0.5b (WP-C): the verse-chain duel (the rule, the opponent's lines, a link) and Rāvaṇa's phases
+  for (const re of [/^_ says a line of verse\. Answer with a line/m, /^_ says a line of verse\.$/m, /^_ answers with a line of verse! _'s conviction wavers/m, /^A head of _ falls, but a new head rises/m]) assert.match(shapes, re, `a v0.5b beat of shape ${re} was met and verified`);
 });
 
 test('sa-battle: story-text beats keep textSa unset (the view looks them up in dialogueSa)', () => {

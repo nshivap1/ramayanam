@@ -1,0 +1,1927 @@
+{
+ "version": 1,
+ "id": "aditya-hridayam",
+ "flag": "seen.aditya",
+ "trigger": {
+  "foe": "ravana",
+  "chapter": 6,
+  "below": 0.6,
+  "source": "Yuddha 6.105.1–2 (vulgate numbering): Agastya comes in the middle of the fight, when Rāma stands weary and Rāvaṇa has come back ready to fight again (6.104: his charioteer had driven him off the field). The game marks that point as the first time Rāvaṇa is worn down to 60 %, before the heads grow back (6.107) and the brahmāstra (6.108)."
+ },
+ "reference": {
+  "kanda": 6,
+  "sarga": 105,
+  "verses": [
+   1,
+   31
+  ],
+  "edition": "Vulgate (Gita Press-based) numbering as on valmikiramayan.net: Yuddha-kāṇḍa 6.105.1–31, the same numbering as the game verse s-aditya-hrdayam (6.105.4). The IIT Kanpur text and some southern editions number the sarga 107.",
+  "criticalEdition": "NOT VERIFIED: the Baroda critical edition (Oriental Institute, Baroda, 1960–75) is generally reported to leave the hymn out of its constituted text and to print it among the appendix passages of the Yuddhakāṇḍa (Appendix I). Neither the printed volume nor its appendix could be reached from here (the searches and pages tried are listed in notes/v05b-e.md), so this is recorded as unconfirmed; a reviewer with the edition should check it.",
+  "review": "Sanskrit text, variants and the English translation await a human Sanskrit reviewer (REVIEW.md, v0.5b WP-E)."
+ },
+ "sources": [
+  {
+   "id": "vr",
+   "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate), Yuddha-kāṇḍa sarga 105, Devanagari page",
+   "url": "https://valmikiramayan.net/utf8/yuddha/sarga105/yuddhasans105.htm",
+   "accessed": "2026-11-14",
+   "numbering": "6.105.1–31",
+   "coverage": "full text of all 31 verses (fetched; the base text)"
+  },
+  {
+   "id": "iitk",
+   "name": "Vālmīki Rāmāyaṇa, IIT Kanpur text as shown by vedapath.app (Yuddha-kāṇḍa sarga 107)",
+   "url": "https://vedapath.app/en/ramayana/yuddha-kanda/107",
+   "accessed": "2026-11-14",
+   "numbering": "6.107.1–31",
+   "coverage": "verses 1–30 compared letter by letter with the base text through the fetch tool (the page prints the words run together; verse 31 only in English). The stored text is the base text with the differences it reported. Several are plain typing errors of the e-text."
+  },
+  {
+   "id": "sd",
+   "name": "Ādityahṛdayam, sanskritdocuments.org stotra file (encoded by M. Giridhar; the page cites Gita Press, 1995)",
+   "url": "https://sanskritdocuments.org/doc_z_misc_navagraha/adityahriday.html",
+   "accessed": "2026-11-14",
+   "numbering": "stotra 1–31 (the page gives sarga 105 and 107 in different places)",
+   "coverage": "checked at every place where the other witnesses differ (the fetch tool quotes only short passages of this page; it would not return the whole text) Second review (v05b-rev2, 2026-11-14): all 31 verses fetched in chunks and compared pāda by pāda; every difference is listed in `variants` (spacing aside)."
+  },
+  {
+   "id": "gm",
+   "name": "Āditya Hṛdayam, greenmesg.org (Green Message) stotra page",
+   "url": "https://greenmesg.org/stotras/surya/aditya_hridayam.php",
+   "accessed": "2026-11-14",
+   "numbering": "stotra 1–31 (no edition named)",
+   "coverage": "full text of all 31 verses (fetched)"
+  }
+ ],
+ "choice": "Rule for every difference: (1) where the two Rāmāyaṇa texts (vr, iitk) agree, their reading stands; (2) where they differ, the reading of the majority of all witnesses (with the stotra prints sd, gm) is taken; (3) plain typing errors of one witness (a wrong letter, a lost virāma, a full stop for the avagraha) are corrected from the others; (4) spelling-only differences (visarga or sibilant before a sibilant, anusvāra or class nasal, spacing) follow the base text vr unless it is the odd one out. Every difference is listed in `variants`.",
+ "narration": [
+  {
+   "sa": "लङ्कायाः पुरतः बहु कालं युद्धं भवति।",
+   "en": "Before Lanka, the battle has gone on for a long time."
+  },
+  {
+   "sa": "रावणः पुनः युद्धाय आगच्छति। तस्य बलं नवम्।",
+   "en": "Ravana comes back to fight, his strength renewed."
+  },
+  {
+   "sa": "रामः श्रान्तः तिष्ठति। सः चिन्तयति।",
+   "en": "Rama stands weary, deep in thought."
+  },
+  {
+   "sa": "देवाः आकाशात् पश्यन्ति।",
+   "en": "The gods watch from the sky."
+  },
+  {
+   "sa": "अगस्त्यः मुनिः रामम् उपगच्छति।",
+   "en": "The sage Agastya comes to Rama."
+  },
+  {
+   "sa": "सः रामाय आदित्यहृदयम् उपदिशति।",
+   "en": "He teaches Rama the Aditya-hridaya."
+  },
+  {
+   "sa": "शृणु। अगस्त्येन सह पठ।",
+   "en": "Listen, and recite with Agastya."
+  }
+ ],
+ "ui": {
+  "title": {
+   "sa": "आदित्यहृदयम्",
+   "en": "Aditya-hridayam",
+   "label": true,
+   "ctx": "the cutscene title and its aria-label"
+  },
+  "speaker": {
+   "sa": "अगस्त्यः",
+   "en": "Agastya",
+   "label": true,
+   "ctx": "speaker tag over verses 3–27"
+  },
+  "pause": {
+   "sa": "तिष्ठ",
+   "en": "Pause",
+   "label": true,
+   "ctx": "button: pause the scene"
+  },
+  "resume": {
+   "sa": "अग्रे गच्छ ▶",
+   "en": "Resume ▶",
+   "label": true,
+   "ctx": "button: resume the scene"
+  },
+  "skip": {
+   "sa": "अलम् ▶▶",
+   "en": "Skip ▶▶",
+   "label": true,
+   "ctx": "button: skip the scene (asks to confirm)"
+  },
+  "skipAsk": {
+   "sa": "आदित्यहृदयं त्यजसि?",
+   "en": "Skip the hymn?",
+   "ctx": "confirm question before skipping"
+  },
+  "yes": {
+   "sa": "आम्",
+   "en": "Yes",
+   "label": true,
+   "ctx": "confirm skip"
+  },
+  "no": {
+   "sa": "न",
+   "en": "No",
+   "label": true,
+   "ctx": "cancel skip"
+  },
+  "verse": {
+   "sa": "श्लोकः",
+   "en": "Verse",
+   "label": true,
+   "ctx": "verse counter label (then n / 31)"
+  },
+  "replay": {
+   "sa": "आदित्यहृदयम् ▶",
+   "en": "Aditya-hridayam ▶",
+   "label": true,
+   "ctx": "verse book entry that replays the scene"
+  }
+ },
+ "verses": [
+  {
+   "n": 1,
+   "ref": "6.105.1",
+   "speaker": "narrator",
+   "meter": "anustubh",
+   "padas": [
+    "ततो युद्धपरिश्रान्तं",
+    "समरे चिन्तया स्थितम्",
+    "रावणं चाग्रतो दृष्ट्वा",
+    "युद्धाय समुपस्थितम्"
+   ],
+   "words": [
+    [
+     "ततः",
+     "युद्धपरिश्रान्तम्"
+    ],
+    [
+     "समरे",
+     "चिन्तया",
+     "स्थितम्"
+    ],
+    [
+     "रावणम्",
+     "च",
+     "अग्रतः",
+     "दृष्ट्वा"
+    ],
+    [
+     "युद्धाय",
+     "समुपस्थितम्"
+    ]
+   ],
+   "en": "Then the sage saw Rāma standing on the battlefield, worn out by the fighting and deep in thought, and Rāvaṇa before him, ready to fight.",
+   "readings": {
+    "vr": "ततो युद्धपरिश्रान्तं समरे चिन्तया स्थितम् | रावणं चाग्रतो दृष्ट्वा युद्धाय समुपस्थितम्",
+    "gm": "ततो युद्धपरिश्रान्तं समरे चिन्तया स्थितम् | रावणं चाग्रतो दृष्ट्वा युद्धाय समुपस्थितम्",
+    "iitk": "ततो युद्धपरिश्रान्तं समरे चिन्तया स्थितम् | रावणं चाग्रतो दृष्टवा युद्धाय समुपस्थितम्"
+   },
+   "variants": [
+    {
+     "chosen": "दृष्ट्वा",
+     "kind": "typo",
+     "note": "IITK e-text drops the virāma (दृष्टवा)",
+     "in": {
+      "iitk": "दृष्टवा"
+     }
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ref": "6.105.2",
+   "speaker": "narrator",
+   "meter": "anustubh",
+   "padas": [
+    "दैवतैश्च समागम्य",
+    "द्रष्टुमभ्यागतो रणम्",
+    "उपागम्याब्रवीद्रामम्",
+    "अगस्त्यो भगवान् ऋषिः"
+   ],
+   "words": [
+    [
+     "दैवतैः",
+     "च",
+     "समागम्य"
+    ],
+    [
+     "द्रष्टुम्",
+     "अभ्यागतः",
+     "रणम्"
+    ],
+    [
+     "उपागम्य",
+     "अब्रवीत्",
+     "रामम्"
+    ],
+    [
+     "अगस्त्यः",
+     "भगवान्",
+     "ऋषिः"
+    ]
+   ],
+   "en": "The holy sage Agastya, who had come with the gods to watch the battle, went up to Rāma and said:",
+   "readings": {
+    "vr": "दैवतैश्च समागम्य द्रष्टुमभ्यागतो रणम् | उपगम्याब्रवीद्राममगस्त्यो भगवान् ऋषिः",
+    "gm": "दैवतैश्च समागम्य द्रष्टुमभ्यागतो रणम् | उपागम्याब्रवीद्राममगस्त्यो भगवानृषिः",
+    "iitk": "दैवतैश्च समागम्य द्रष्टुमभ्यागतो रणम् | उपागम्याब्रवीद्राममगस्त्यो भगवान् ऋषिः"
+   },
+   "sd": [
+    "उपागम्याब्रवीद्राम"
+   ],
+   "variants": [
+    {
+     "chosen": "उपागम्याब्रवीद्",
+     "kind": "reading",
+     "note": "उपागम्य in IITK, the sanskritdocuments.org stotra and greenmesg.org; valmikiramayan.net alone has उपगम्य (both scan). Majority reading.",
+     "in": {
+      "vr": "उपगम्याब्रवीद्"
+     }
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ref": "6.105.3",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "राम राम महाबाहो",
+    "शृणु गुह्यं सनातनम्",
+    "येन सर्वानरीन्वत्स",
+    "समरे विजयिष्यसे"
+   ],
+   "words": [
+    [
+     "राम",
+     "राम",
+     "महाबाहो"
+    ],
+    [
+     "शृणु",
+     "गुह्यम्",
+     "सनातनम्"
+    ],
+    [
+     "येन",
+     "सर्वान्",
+     "अरीन्",
+     "वत्स"
+    ],
+    [
+     "समरे",
+     "विजयिष्यसे"
+    ]
+   ],
+   "en": "“Rāma, Rāma, mighty-armed, listen to this eternal secret, my child, by which you will defeat all your enemies in battle.",
+   "readings": {
+    "vr": "राम राम महाबाहो शृणु गुह्यं सनातनम् | येन सर्वानरीन्वत्स समरे विजयिष्यसे",
+    "gm": "राम राम महाबाहो शृणु गुह्यं सनातनम् | येन सर्वानरीन्वत्स समरे विजयिष्यसि",
+    "iitk": "राम राम महाबाहो शृणु गुह्यं सनातनम् | येन सर्वानरीस्वत्स समरे विजयिष्यसे"
+   },
+   "sd": [
+    "विजयिष्यसि"
+   ],
+   "variants": [
+    {
+     "chosen": "विजयिष्यसे",
+     "kind": "reading",
+     "note": "Both Rāmāyaṇa texts (valmikiramayan.net, IITK) read the middle ending -से (vi + √ji takes the middle voice); the stotra prints read विजयिष्यसि. Rāmāyaṇa reading kept.",
+     "in": {
+      "gm": "विजयिष्यसि",
+      "sd": "विजयिष्यसि"
+     }
+    },
+    {
+     "chosen": "सर्वानरीन्वत्स",
+     "kind": "typo",
+     "note": "IITK e-text: स for न (सर्वानरीस्वत्स)",
+     "in": {
+      "iitk": "सर्वानरीस्वत्स"
+     }
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ref": "6.105.4",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "आदित्यहृदयं पुण्यं",
+    "सर्वशत्रुविनाशनम्",
+    "जयावहं जपेन्नित्यम्",
+    "अक्षय्यं परमं शिवम्"
+   ],
+   "wordsFrom": "s-aditya-hrdayam",
+   "en": "One should always recite the holy Āditya-hṛdaya, which destroys every enemy and brings victory: it is imperishable, supreme and auspicious.",
+   "readings": {
+    "vr": "आदित्यहृदयं पुण्यं सर्वशत्रुविनाशनम् | जयावहं जपेन्नित्यमक्षय्यं परमं शिवम्",
+    "gm": "आदित्यहृदयं पुण्यं सर्वशत्रुविनाशनम् | जयावहं जपेन्नित्यमक्षय्यं परमं शिवम्",
+    "iitk": "आदित्यहृदयं पुण्यं सर्वशत्रुविनाशनम् | जयावहं जपेन्नित्यमक्षय्यं परमं शिवम्"
+   },
+   "sd": [
+    "जपेन्नित्यमक्षयं"
+   ],
+   "variants": [
+    {
+     "chosen": "अक्षय्यं",
+     "kind": "reading",
+     "note": "Same choice as the game verse s-aditya-hrdayam (shlokas-2.json): अक्षय्यं in valmikiramayan.net, IITK, greenmesg.org and hindunet; the sanskritdocuments.org stotra file reads अक्षयं (checked 2026-11-11).",
+     "in": {
+      "sd": "अक्षयं"
+     }
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ref": "6.105.5",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "सर्वमङ्गलमङ्गल्यं",
+    "सर्वपापप्रणाशनम्",
+    "चिन्ताशोकप्रशमनम्",
+    "आयुर्वर्धनमुत्तमम्"
+   ],
+   "words": [
+    [
+     "सर्वमङ्गलमङ्गल्यम्"
+    ],
+    [
+     "सर्वपापप्रणाशनम्"
+    ],
+    [
+     "चिन्ताशोकप्रशमनम्"
+    ],
+    [
+     "आयुर्वर्धनम्",
+     "उत्तमम्"
+    ]
+   ],
+   "en": "It is the most auspicious of all blessings and destroys every sin; it calms worry and grief, and it is the best way to long life.",
+   "meterNote": "pāda 3 (चिन्ताशोकप्रशमनम्): na-vipulā (syllables 5–7 LLL, 4th guru), a recognised variant of the odd pāda.",
+   "readings": {
+    "vr": "सर्वमङ्गलमङ्गल्यं सर्वपापप्रणाशनम् | चिन्ताशोकप्रशमनमायुर्वर्धनमुत्तमम्",
+    "gm": "सर्वमङ्गलमाङ्गल्यं सर्वपापप्रणाशनम् | चिन्ताशोकप्रशमनमायुर्वर्धनमुत्तमम्",
+    "iitk": "सर्वमङ्गलमङ्गल्यं सर्वपापप्रणाशनम् | चिन्ताशोकप्रशमनमायुर्वर्धनमुत्तमम्"
+   },
+   "sd": [
+    "सर्वमङ्गलमाङ्गल्यं",
+    "चिन्ताशोकप्रशमनं आयुर्"
+   ],
+   "variants": [
+    {
+     "chosen": "सर्वमङ्गलमङ्गल्यं",
+     "kind": "reading",
+     "note": "मङ्गल्य (auspicious) in both Rāmāyaṇa texts; the stotra prints have the synonym माङ्गल्य. Both scan.",
+     "in": {
+      "gm": "सर्वमङ्गलमाङ्गल्यं",
+      "sd": "सर्वमङ्गलमाङ्गल्यं"
+     }
+    },
+    {
+     "chosen": "चिन्ताशोकप्रशमनमायुर्",
+     "kind": "typo",
+     "note": "the sanskritdocuments.org stotra writes an anusvāra before the vowel (प्रशमनं आयुर्…); the final म् joins the vowel",
+     "in": {
+      "sd": "चिन्ताशोकप्रशमनं आयुर्"
+     }
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "ref": "6.105.6",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "रश्मिमन्तं समुद्यन्तं",
+    "देवासुरनमस्कृतम्",
+    "पूजयस्व विवस्वन्तं",
+    "भास्करं भुवनेश्वरम्"
+   ],
+   "words": [
+    [
+     "रश्मिमन्तम्",
+     "समुद्यन्तम्"
+    ],
+    [
+     "देवासुरनमस्कृतम्"
+    ],
+    [
+     "पूजयस्व",
+     "विवस्वन्तम्"
+    ],
+    [
+     "भास्करम्",
+     "भुवनेश्वरम्"
+    ]
+   ],
+   "en": "Worship the Sun, crowned with rays, as he rises, honoured by gods and asuras alike: Vivasvān, the maker of light, the lord of the worlds.",
+   "readings": {
+    "vr": "रश्मिमन्तं समुद्यन्तं देवासुरनमस्कृतम् | पूजयस्व विवस्वन्तं भास्करं भुवनेश्वरम्",
+    "gm": "रश्मिमन्तं समुद्यन्तं देवासुरनमस्कृतम् | पूजयस्व विवस्वन्तं भास्करं भुवनेश्वरम्",
+    "iitk": "रस्मीमन्तं समुद्यन्तं देवासुरनमस्कृतम् | पूजयस्व विवस्त्वन्तं भास्करं भुवनेश्वरम्"
+   },
+   "variants": [
+    {
+     "chosen": "रश्मिमन्तं",
+     "kind": "typo",
+     "note": "IITK e-text: रस्मीमन्तं",
+     "in": {
+      "iitk": "रस्मीमन्तं"
+     }
+    },
+    {
+     "chosen": "विवस्वन्तं",
+     "kind": "typo",
+     "note": "IITK e-text: विवस्त्वन्तं",
+     "in": {
+      "iitk": "विवस्त्वन्तं"
+     }
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "ref": "6.105.7",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "सर्वदेवात्मको ह्येष",
+    "तेजस्वी रश्मिभावनः",
+    "एष देवासुरगणान्",
+    "लोकान् पाति गभस्तिभिः"
+   ],
+   "words": [
+    [
+     "सर्वदेवात्मकः",
+     "हि",
+     "एषः"
+    ],
+    [
+     "तेजस्वी",
+     "रश्मिभावनः"
+    ],
+    [
+     "एषः",
+     "देवासुरगणान्"
+    ],
+    [
+     "लोकान्",
+     "पाति",
+     "गभस्तिभिः"
+    ]
+   ],
+   "en": "He is the self of all the gods, radiant, the source of rays. With his rays he protects the hosts of gods and asuras, and all the worlds.",
+   "meterNote": "pāda 3 (एष देवासुरगणान्): na-vipulā (syllables 5–7 LLL, 4th guru), a recognised variant of the odd pāda.",
+   "pausa": {
+    "after": 2,
+    "note": "देवासुरगणान् | लोकान्: valmikiramayan.net, IITK and greenmesg.org print the pāda break without the n + l assimilation (…गणाँल्लोकान्) the sandhi engine applies; the sanskritdocuments.org stotra prints it (see variants). The text is left as the Rāmāyaṇa texts print it."
+   },
+   "readings": {
+    "vr": "सर्वदेवात्मको ह्येष तेजस्वी रश्मिभावनः | एष देवासुरगणान् लोकान् पाति गभस्तिभिः",
+    "gm": "सर्वदेवात्मको ह्येषः तेजस्वी रश्मिभावनः | एष देवासुरगणान् लोकान् पाति गभस्तिभिः",
+    "iitk": "सर्वदेवात्मको ह्येष तेजस्वी रस्मीभावनः | एष देवासुरगणान् लोकान् पाति गभस्तिभिः"
+   },
+   "variants": [
+    {
+     "chosen": "ह्येष",
+     "kind": "orthography",
+     "note": "greenmesg.org keeps the visarga of एषः before त (no sandhi); एषः drops it before a consonant (एष तेजस्वी).",
+     "in": {
+      "gm": "ह्येषः"
+     }
+    },
+    {
+     "chosen": "रश्मिभावनः",
+     "kind": "typo",
+     "note": "IITK e-text: रस्मीभावनः",
+     "in": {
+      "iitk": "रस्मीभावनः"
+     }
+    },
+    {
+     "chosen": "देवासुरगणान् लोकान्",
+     "kind": "orthography",
+     "note": "the sanskritdocuments.org stotra joins across the pāda break with the n + l assimilation (…गणाँल्लोकान्); the Rāmāyaṇa texts and greenmesg.org leave the break unjoined. Same words.",
+     "in": {
+      "sd": "देवासुरगणाँल्लोकान्"
+     }
+    }
+   ],
+   "sd": [
+    "देवासुरगणाँल्लोकान्"
+   ]
+  },
+  {
+   "n": 8,
+   "ref": "6.105.8",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "एष ब्रह्मा च विष्णुश्च",
+    "शिवः स्कन्दः प्रजापतिः",
+    "महेन्द्रो धनदः कालो",
+    "यमः सोमो ह्यपांपतिः"
+   ],
+   "words": [
+    [
+     "एषः",
+     "ब्रह्मा",
+     "च",
+     "विष्णुः",
+     "च"
+    ],
+    [
+     "शिवः",
+     "स्कन्दः",
+     "प्रजापतिः"
+    ],
+    [
+     "महेन्द्रः",
+     "धनदः",
+     "कालः"
+    ],
+    [
+     "यमः",
+     "सोमः",
+     "हि",
+     "अपाम्",
+     "पतिः"
+    ]
+   ],
+   "en": "He is Brahmā and Viṣṇu, Śiva, Skanda and Prajāpati; he is great Indra, Kubera the giver of wealth, Time, Yama, Soma and the lord of the waters.",
+   "readings": {
+    "vr": "एष ब्रह्मा च विष्णुश्च शिवः स्कन्दः प्रजापतिः | महेन्द्रो धनदः कालो यमः सोमो ह्यपांपतिः",
+    "gm": "एष ब्रह्मा च विष्णुश्च शिवः स्कन्दः प्रजापतिः | माहेन्द्रो धनदः कालो यमस्सोमो ह्यपां पतिः",
+    "iitk": "एष ब्रह्मा च विष्णुश्च शिवः स्कन्दः प्रजापतिः | महेन्द्रो धनदः कालो यमः सोमो ह्यपांपतिः"
+   },
+   "sd": [
+    "महेन्द्रो"
+   ],
+   "variants": [
+    {
+     "chosen": "महेन्द्रो",
+     "kind": "reading",
+     "note": "महेन्द्र in valmikiramayan.net, IITK and the sanskritdocuments.org stotra; greenmesg.org alone has माहेन्द्रो.",
+     "in": {
+      "gm": "माहेन्द्रो"
+     }
+    },
+    {
+     "chosen": "यमः सोमो",
+     "kind": "orthography",
+     "note": "visarga before a sibilant may stay or become that sibilant (वा शरि, 8.3.36); both spellings are correct",
+     "in": {
+      "gm": "यमस्सोमो"
+     }
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "ref": "6.105.9",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "पितरो वसवः साध्या",
+    "अश्विनौ मरुतो मनुः",
+    "वायुर्वह्निः प्रजाः प्राण",
+    "ऋतुकर्ता प्रभाकरः"
+   ],
+   "words": [
+    [
+     "पितरः",
+     "वसवः",
+     "साध्याः"
+    ],
+    [
+     "अश्विनौ",
+     "मरुतः",
+     "मनुः"
+    ],
+    [
+     "वायुः",
+     "वह्निः",
+     "प्रजाः",
+     "प्राणः"
+    ],
+    [
+     "ऋतुकर्ता",
+     "प्रभाकरः"
+    ]
+   ],
+   "en": "He is the ancestors, the Vasus, the Sādhyas, the two Aśvins, the Maruts and Manu; he is wind and fire, all creatures and their breath, the maker of the seasons, the maker of light.",
+   "readings": {
+    "vr": "पितरो वसवः साध्या अश्विनौ मरुतो मनुः | वायुर्वह्निः प्रजाः प्राण ऋतुकर्ता प्रभाकरः",
+    "gm": "पितरो वसवस्साध्याः ह्यश्विनौ मरुतो मनुः | वायुर्वह्निः प्रजाप्राणा ऋतुकर्ता प्रभाकरः",
+    "iitk": "पितरो वसवस्साध्या अश्विनौ मरुतो मनुः | वायुर्वह्निः प्रजाः प्राण ऋतुकर्ता प्रभाकरः"
+   },
+   "sd": [
+    "वायुर्वह्निः",
+    "वसवः साध्या ह्यश्विनौ",
+    "प्रजाप्राण"
+   ],
+   "variants": [
+    {
+     "chosen": "वसवः साध्या अश्विनौ",
+     "kind": "reading",
+     "note": "the stotra prints add हि (ह्यश्विनौ): greenmesg.org (which also keeps the visarga of साध्याः) and sanskritdocuments.org; both Rāmāyaṇa texts have no हि. Both scan.",
+     "in": {
+      "gm": "वसवस्साध्याः ह्यश्विनौ",
+      "sd": "वसवः साध्या ह्यश्विनौ"
+     }
+    },
+    {
+     "chosen": "वसवः साध्या",
+     "kind": "orthography",
+     "note": "visarga or sibilant before स (8.3.36)",
+     "in": {
+      "iitk": "वसवस्साध्या"
+     }
+    },
+    {
+     "chosen": "प्रजाः प्राण",
+     "kind": "reading",
+     "note": "the stotra prints make one compound: greenmesg.org प्रजाप्राणा, sanskritdocuments.org प्रजाप्राण; both Rāmāyaṇa texts: प्रजाः प्राण (from प्राणः before ऋ).",
+     "in": {
+      "gm": "प्रजाप्राणा",
+      "sd": "प्रजाप्राण"
+     }
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "ref": "6.105.10",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "आदित्यः सविता सूर्यः",
+    "खगः पूषा गभस्तिमान्",
+    "सुवर्णसदृशो भानुर्",
+    "हिरण्यरेता दिवाकरः"
+   ],
+   "words": [
+    [
+     "आदित्यः",
+     "सविता",
+     "सूर्यः"
+    ],
+    [
+     "खगः",
+     "पूषा",
+     "गभस्तिमान्"
+    ],
+    [
+     "सुवर्णसदृशः",
+     "भानुः"
+    ],
+    [
+     "हिरण्यरेताः",
+     "दिवाकरः"
+    ]
+   ],
+   "en": "He is Āditya, Savitṛ, Sūrya, the traveller of the sky, Pūṣan, the lord of rays; golden, the shining one, whose seed is gold, the maker of day.",
+   "meterNote": "pāda 4 (हिरण्यरेता दिवाकरः): 9 syllables in every source checked (valmikiramayan.net, IITK, both stotra prints). Not emended: an irregular (hypermetric) pāda of the transmitted text. The sanskritdocuments.org stotra adds a marginal alternative “or भानुर्विश्वरेता”, which would give an 8-syllable pāda (विश्वरेता दिवाकरः); no main text reads it, so it is not taken.",
+   "readings": {
+    "vr": "आदित्यः सविता सूर्यः खगः पूषा गभस्तिमान् | सुवर्णसदृशो भानुर्हिरण्यरेता दिवाकरः",
+    "gm": "आदित्यः सविता सूर्यः खगः पूषा गभस्तिमान् | सुवर्णसदृशो भानुर्हिरण्यरेतो दिवाकरः",
+    "iitk": "आदित्यः सविता सूर्यः खगः पूषा गभस्तिमान् | सुवर्णसदृशो भानुर्हिरण्यरेता दिवाकरः"
+   },
+   "sd": [
+    "हिरण्यरेता"
+   ],
+   "variants": [
+    {
+     "chosen": "हिरण्यरेता",
+     "kind": "reading",
+     "note": "हिरण्यरेताः (nom. of हिरण्यरेतस्, visarga dropped before द) in valmikiramayan.net, IITK and the sanskritdocuments.org stotra; greenmesg.org: हिरण्यरेतो.",
+     "in": {
+      "gm": "हिरण्यरेतो"
+     }
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "ref": "6.105.11",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "हरिदश्वः सहस्रार्चिः",
+    "सप्तसप्तिर्मरीचिमान्",
+    "तिमिरोन्मथनः शम्भुस्",
+    "त्वष्टा मार्तण्डकोऽंशुमान्"
+   ],
+   "words": [
+    [
+     "हरिदश्वः",
+     "सहस्रार्चिः"
+    ],
+    [
+     "सप्तसप्तिः",
+     "मरीचिमान्"
+    ],
+    [
+     "तिमिरोन्मथनः",
+     "शम्भुः"
+    ],
+    [
+     "त्वष्टा",
+     "मार्तण्डकः",
+     "अंशुमान्"
+    ]
+   ],
+   "en": "He has green horses and a thousand flames, seven steeds and countless rays; he scatters the darkness; he is Śambhu, Tvaṣṭṛ, Mārtaṇḍa, the radiant one.",
+   "readings": {
+    "vr": "हरिदश्वः सहस्रार्चिः सप्तसप्तिर्मरीचिमान् | तिमिरोन्मधनः शम्भुस्त्वष्टा मार्तण्डकोऽंशुमान्",
+    "gm": "हरिदश्वस्सहस्रार्चिस्सप्तसप्तिर्मरीचिमान् | तिमिरोन्मथनश्शम्भुस्त्वष्टा मार्ताण्ड अंशुमान्",
+    "iitk": "हरिदश्वस्सहस्रार्चिस्सप्तसप्तिर्मरीचिमान् | तिमिरोन्मथनश्शम्भुस्त्वष्टा मार्तण्डकोऽंशुमान्"
+   },
+   "sd": [
+    "मार्ताण्ड"
+   ],
+   "variants": [
+    {
+     "chosen": "तिमिरोन्मथनः",
+     "kind": "typo",
+     "note": "valmikiramayan.net: ध for थ (उन्मथन, from √मथ्, “churning away” the dark); IITK and greenmesg.org have थ.",
+     "in": {
+      "vr": "तिमिरोन्मधनः"
+     }
+    },
+    {
+     "chosen": "हरिदश्वः सहस्रार्चिः सप्तसप्तिर्",
+     "kind": "orthography",
+     "note": "visarga or sibilant before स (8.3.36)",
+     "in": {
+      "gm": "हरिदश्वस्सहस्रार्चिस्सप्तसप्तिर्",
+      "iitk": "हरिदश्वस्सहस्रार्चिस्सप्तसप्तिर्"
+     }
+    },
+    {
+     "chosen": "तिमिरोन्मथनः शम्भुस्",
+     "kind": "orthography",
+     "note": "visarga or sibilant before श (8.3.36)",
+     "in": {
+      "gm": "तिमिरोन्मथनश्शम्भुस्",
+      "iitk": "तिमिरोन्मथनश्शम्भुस्"
+     }
+    },
+    {
+     "chosen": "मार्तण्डकोऽंशुमान्",
+     "kind": "reading",
+     "note": "Both Rāmāyaṇa texts: मार्तण्डकः + अंशुमान् → मार्तण्डकोऽंशुमान्; the stotra prints read मार्ताण्ड अंशुमान् (with a hiatus).",
+     "in": {
+      "gm": "मार्ताण्ड अंशुमान्",
+      "sd": "मार्ताण्ड"
+     }
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "ref": "6.105.12",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "हिरण्यगर्भः शिशिरस्",
+    "तपनो भास्करो रविः",
+    "अग्निगर्भोऽदितेः पुत्रः",
+    "शङ्खः शिशिरनाशनः"
+   ],
+   "words": [
+    [
+     "हिरण्यगर्भः",
+     "शिशिरः"
+    ],
+    [
+     "तपनः",
+     "भास्करः",
+     "रविः"
+    ],
+    [
+     "अग्निगर्भः",
+     "अदितेः",
+     "पुत्रः"
+    ],
+    [
+     "शङ्खः",
+     "शिशिरनाशनः"
+    ]
+   ],
+   "en": "He is the golden womb, the gentle one and the burning one, the maker of light, Ravi; he carries fire within; he is Aditi’s son, Śaṅkha, who ends the cold.",
+   "meterNote": "pāda 1 (हिरण्यगर्भः शिशिरस्): bha-vipulā (syllables 5–7 GLL), a recognised variant of the odd pāda.",
+   "readings": {
+    "vr": "हिरण्यगर्भः शिशिरस्तपनोऽहस्करो रविः | अग्निगर्भोऽदितेः पुत्रः शङ्खः शिशिरनाशनः",
+    "gm": "हिरण्यगर्भश्शिशिरस्तपनो भास्करो रविः | अग्निगर्भोऽदितेः पुत्रः शङ्खश्शिशिरनाशनः",
+    "iitk": "हिरण्यगर्भश्शिशिरस्तपनो भास्करो रविः | अग्निगर्भोऽदितेः पुत्रः शङ्घश्शिशिरनाशनः"
+   },
+   "sd": [
+    "भास्करो"
+   ],
+   "variants": [
+    {
+     "chosen": "तपनो भास्करो",
+     "kind": "reading",
+     "note": "तपनो भास्करो in IITK and both stotra prints; valmikiramayan.net alone has तपनोऽहस्करो (“maker of day”). Both scan; the two Rāmāyaṇa texts differ, so the reading of the other witnesses decides.",
+     "in": {
+      "vr": "तपनोऽहस्करो"
+     }
+    },
+    {
+     "chosen": "हिरण्यगर्भः शिशिरस्",
+     "kind": "orthography",
+     "note": "visarga or sibilant before श (8.3.36)",
+     "in": {
+      "gm": "हिरण्यगर्भश्शिशिरस्",
+      "iitk": "हिरण्यगर्भश्शिशिरस्"
+     }
+    },
+    {
+     "chosen": "शङ्खः शिशिरनाशनः",
+     "kind": "orthography",
+     "note": "visarga or sibilant before श (8.3.36)",
+     "in": {
+      "gm": "शङ्खश्शिशिरनाशनः"
+     }
+    },
+    {
+     "chosen": "शङ्खः शिशिरनाशनः",
+     "kind": "typo",
+     "note": "IITK e-text: घ for ख (शङ्घ), with the sibilant spelling",
+     "in": {
+      "iitk": "शङ्घश्शिशिरनाशनः"
+     }
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "ref": "6.105.13",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "व्योमनाथस्तमोभेदी",
+    "ऋग्यजुःसामपारगः",
+    "घनवृष्टिरपां मित्रो",
+    "विन्ध्यवीथीप्लवङ्गमः"
+   ],
+   "words": [
+    [
+     "व्योमनाथः",
+     "तमोभेदी"
+    ],
+    [
+     "ऋग्यजुःसामपारगः"
+    ],
+    [
+     "घनवृष्टिः",
+     "अपाम्",
+     "मित्रः"
+    ],
+    [
+     "विन्ध्यवीथीप्लवङ्गमः"
+    ]
+   ],
+   "en": "Lord of the sky, he pierces the darkness; he has mastered the Ṛg, Yajus and Sāma; he sends the heavy rain, he is the friend of the waters, and he speeds along the Vindhya’s path.",
+   "pausa": {
+    "after": 0,
+    "note": "तमोभेदी | ऋग्यजुः…: every source keeps the hiatus at the pāda break (the engine would join ई + ऋ as …भेद्यृग्यजुः…); the text is left as printed."
+   },
+   "readings": {
+    "vr": "व्योमनाथस्तमोभेदी बुग्यजुः सामपारगः | घनवृष्टिरपां मित्रो विन्ध्यवीथीप्लवंगमः",
+    "gm": "व्योमनाथस्तमोभेदी ऋग्यजुस्सामपारगः | घनवृष्टिरपां मित्रो विन्ध्यवीथीप्लवङ्गमः",
+    "iitk": "व्योमनाथस्तमोभेदी ऋग्यजुस्सामपारगः | घनवृष्टिरपां मित्रो विन्ध्यवीथीप्लवङ्गमः"
+   },
+   "sd": [
+    "ऋग्यजुःसामपारगः"
+   ],
+   "variants": [
+    {
+     "chosen": "ऋग्यजुःसामपारगः",
+     "kind": "typo",
+     "note": "valmikiramayan.net: बुग्यजुः सामपारगः (ब for ऋ, and a space inside the compound); the sanskritdocuments.org stotra prints ऋग्यजुःसामपारगः.",
+     "in": {
+      "vr": "बुग्यजुः सामपारगः"
+     }
+    },
+    {
+     "chosen": "ऋग्यजुःसामपारगः",
+     "kind": "orthography",
+     "note": "visarga or sibilant before स (8.3.36)",
+     "in": {
+      "gm": "ऋग्यजुस्सामपारगः",
+      "iitk": "ऋग्यजुस्सामपारगः"
+     }
+    },
+    {
+     "chosen": "प्लवङ्गमः",
+     "kind": "orthography",
+     "note": "anusvāra for the class nasal (प्लवंगमः) in valmikiramayan.net; same sound",
+     "in": {
+      "vr": "प्लवंगमः"
+     }
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "ref": "6.105.14",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "आतपी मण्डली मृत्युः",
+    "पिङ्गलः सर्वतापनः",
+    "कविर्विश्वो महातेजा",
+    "रक्तः सर्वभवोद्भवः"
+   ],
+   "words": [
+    [
+     "आतपी",
+     "मण्डली",
+     "मृत्युः"
+    ],
+    [
+     "पिङ्गलः",
+     "सर्वतापनः"
+    ],
+    [
+     "कविः",
+     "विश्वः",
+     "महातेजाः"
+    ],
+    [
+     "रक्तः",
+     "सर्वभवोद्भवः"
+    ]
+   ],
+   "en": "He is the blazing heat, the shining disc, death itself, the tawny one who scorches all; he is the seer, the universe, of great splendour, the red one, the source of all that comes to be.",
+   "readings": {
+    "vr": "आतपी मण्डली मृत्युः पिङ्गलः सर्वतापनः | कविर्विश्वो महातेजा रक्तः सर्वभवोद्भवः",
+    "gm": "आतपी मण्डली मृत्युः पिङ्गलस्सर्वतापनः | कविर्विश्वो महातेजाः रक्तस्सर्वभवोद्भवः",
+    "iitk": "आतपी मण्डले मृत्युः पिङ्गलस्सर्वतापनः | कविर्विश्वो महातेजा रक्तस्सर्वभवोद्भव:"
+   },
+   "variants": [
+    {
+     "chosen": "पिङ्गलः सर्वतापनः",
+     "kind": "orthography",
+     "note": "visarga or sibilant before स (8.3.36)",
+     "in": {
+      "gm": "पिङ्गलस्सर्वतापनः",
+      "iitk": "पिङ्गलस्सर्वतापनः"
+     }
+    },
+    {
+     "chosen": "महातेजा रक्तः सर्वभवोद्भवः",
+     "kind": "orthography",
+     "note": "greenmesg.org keeps the visarga of महातेजाः before र (no sandhi; it drops after ā before a voiced sound) and spells रक्तस्स…",
+     "in": {
+      "gm": "महातेजाः रक्तस्सर्वभवोद्भवः"
+     }
+    },
+    {
+     "chosen": "रक्तः सर्वभवोद्भवः",
+     "kind": "typo",
+     "note": "IITK e-text: sibilant spelling (रक्तस्स…) and an ASCII colon for the final visarga",
+     "in": {
+      "iitk": "रक्तस्सर्वभवोद्भव:"
+     }
+    },
+    {
+     "chosen": "मण्डली",
+     "kind": "typo",
+     "note": "IITK e-text: मण्डले",
+     "in": {
+      "iitk": "मण्डले"
+     }
+    },
+    {
+     "chosen": "महातेजा रक्तः",
+     "kind": "orthography",
+     "note": "the sanskritdocuments.org stotra, like greenmesg.org, keeps the visarga of महातेजाः before र (it drops after ā before a voiced sound)",
+     "in": {
+      "sd": "महातेजाः रक्तः"
+     }
+    }
+   ],
+   "sd": [
+    "महातेजाः रक्तः"
+   ]
+  },
+  {
+   "n": 15,
+   "ref": "6.105.15",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "नक्षत्रग्रहताराणाम्",
+    "अधिपो विश्वभावनः",
+    "तेजसामपि तेजस्वी",
+    "द्वादशात्मन्नमोऽस्तु ते"
+   ],
+   "words": [
+    [
+     "नक्षत्रग्रहताराणाम्"
+    ],
+    [
+     "अधिपः",
+     "विश्वभावनः"
+    ],
+    [
+     "तेजसाम्",
+     "अपि",
+     "तेजस्वी"
+    ],
+    [
+     "द्वादशात्मन्",
+     "नमः",
+     "अस्तु",
+     "ते"
+    ]
+   ],
+   "en": "Lord of the stars, the planets and the constellations, origin of all things, brightest of all that shines: you of twelve forms, salutations to you!",
+   "readings": {
+    "vr": "नक्षत्रग्रहताराणामधिपो विश्वभावनः | तेजसामपि तेजस्वी द्वादशात्मन्नमो.स्तु ते",
+    "gm": "नक्षत्रग्रहताराणामधिपो विश्वभावनः | तेजसामपि तेजस्वी द्वादशात्मन्नमोऽस्तु ते",
+    "iitk": "नक्षत्रग्रहताराणामधिपो विश्वभावनः | तेजसामपि तेजस्वी द्वादशात्मन्नमोऽस्तु ते"
+   },
+   "variants": [
+    {
+     "chosen": "नमोऽस्तु",
+     "kind": "typo",
+     "note": "valmikiramayan.net prints a full stop for the avagraha (नमो.स्तु)",
+     "in": {
+      "vr": "नमो.स्तु"
+     }
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "ref": "6.105.16",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "नमः पूर्वाय गिरये",
+    "पश्चिमायाद्रये नमः",
+    "ज्योतिर्गणानां पतये",
+    "दिनाधिपतये नमः"
+   ],
+   "words": [
+    [
+     "नमः",
+     "पूर्वाय",
+     "गिरये"
+    ],
+    [
+     "पश्चिमाय",
+     "अद्रये",
+     "नमः"
+    ],
+    [
+     "ज्योतिर्गणानाम्",
+     "पतये"
+    ],
+    [
+     "दिनाधिपतये",
+     "नमः"
+    ]
+   ],
+   "en": "Salutations to the eastern mountain, salutations to the western mountain; salutations to the lord of the hosts of light, the lord of the day.",
+   "meterNote": "pāda 1 (नमः पूर्वाय गिरये): na-vipulā (syllables 5–7 LLL, 4th guru); pāda 3 (ज्योतिर्गणानां पतये): bha-vipulā (syllables 5–7 GLL). Both recognised variants of the odd pāda.",
+   "readings": {
+    "vr": "नमः पूर्वाय गिरये पश्चिमायाद्रये नमः | ज्योतिर्गणानां पतये दिनाधिपतये नमः",
+    "gm": "नमः पूर्वाय गिरये पश्चिमायाद्रये नमः | ज्योतिर्गणानां पतये दिनाधिपतये नमः",
+    "iitk": "नमः पूर्वाय गिरये पश्चिमायाद्रये नमः | ज्योतिर्गणानां पतये दिनाधिपतये नमः"
+   },
+   "variants": []
+  },
+  {
+   "n": 17,
+   "ref": "6.105.17",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "जयाय जयभद्राय",
+    "हर्यश्वाय नमो नमः",
+    "नमो नमः सहस्रांशो",
+    "आदित्याय नमो नमः"
+   ],
+   "words": [
+    [
+     "जयाय",
+     "जयभद्राय"
+    ],
+    [
+     "हर्यश्वाय",
+     "नमः",
+     "नमः"
+    ],
+    [
+     "नमः",
+     "नमः",
+     "सहस्रांशो"
+    ],
+    [
+     "आदित्याय",
+     "नमः",
+     "नमः"
+    ]
+   ],
+   "en": "Salutations again and again to the victorious one, to the blessing of victory, to the lord of the green horses; salutations, O thousand-rayed one, salutations again and again to Āditya.",
+   "pausa": {
+    "after": 2,
+    "note": "सहस्रांशो | आदित्याय: the vocative stands before the vowel at the pāda break without sandhi in every source (the engine would give सहस्रांश आदित्याय / सहस्रांशवादित्याय); the text is left as printed."
+   },
+   "readings": {
+    "vr": "जयाय जयभद्राय हर्याश्वाय नमो नमः | नमो नमः सहस्रांशो आदित्याय नमो नमः",
+    "gm": "जयाय जयभद्राय हर्यश्वाय नमो नमः | नमो नमस्सहस्रांशो आदित्याय नमो नमः",
+    "iitk": "जयाय जयभद्राय हर्यश्वाय नमो नमः | नमो नमस्सहस्रांशो आदित्याय नमो नमः"
+   },
+   "sd": [
+    "हर्यश्वाय"
+   ],
+   "variants": [
+    {
+     "chosen": "हर्यश्वाय",
+     "kind": "reading",
+     "note": "हर्यश्व (हरि + अश्व) in IITK and both stotra prints; valmikiramayan.net: हर्याश्वाय.",
+     "in": {
+      "vr": "हर्याश्वाय"
+     }
+    },
+    {
+     "chosen": "नमः सहस्रांशो",
+     "kind": "orthography",
+     "note": "visarga or sibilant before स (8.3.36)",
+     "in": {
+      "gm": "नमस्सहस्रांशो",
+      "iitk": "नमस्सहस्रांशो"
+     }
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "ref": "6.105.18",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "नम उग्राय वीराय",
+    "सारङ्गाय नमो नमः",
+    "नमः पद्मप्रबोधाय",
+    "मार्ताण्डाय नमोऽस्तु ते"
+   ],
+   "words": [
+    [
+     "नमः",
+     "उग्राय",
+     "वीराय"
+    ],
+    [
+     "सारङ्गाय",
+     "नमः",
+     "नमः"
+    ],
+    [
+     "नमः",
+     "पद्मप्रबोधाय"
+    ],
+    [
+     "मार्ताण्डाय",
+     "नमः",
+     "अस्तु",
+     "ते"
+    ]
+   ],
+   "en": "Salutations to the fierce one, the hero, the swift one; salutations to him who wakes the lotuses, to Mārtaṇḍa: salutations to you.",
+   "readings": {
+    "vr": "नम उग्राय वीराय सारङ्गाय नमो नमः | नमः पद्मप्रबोधाय प्रचण्डाय नमोऽस्तु ते",
+    "gm": "नम उग्राय वीराय सारङ्गाय नमो नमः | नमः पद्मप्रबोधाय मार्तण्डाय नमो नमः",
+    "iitk": "नम उग्राय वीराय सारङ्गाय नमो नमः | नमः पद्मप्रबोधाय मार्ताण्डाय नमोऽस्तु ते"
+   },
+   "sd": [
+    "पद्मप्रबोधाय मार्ताण्डाय नमो नमः"
+   ],
+   "variants": [
+    {
+     "chosen": "मार्ताण्डाय",
+     "kind": "reading",
+     "note": "मार्ताण्डाय in IITK and both stotra prints (greenmesg.org spells मार्तण्डाय); valmikiramayan.net: प्रचण्डाय (“the fierce”). The two Rāmāyaṇa texts differ, so the other witnesses decide. The sanskritdocuments.org stotra prints मार्ताण्डाय and notes “or मार्तण्डाय, प्रचण्डाय” in its margin.",
+     "in": {
+      "vr": "प्रचण्डाय"
+     }
+    },
+    {
+     "chosen": "मार्ताण्डाय नमोऽस्तु ते",
+     "kind": "reading",
+     "note": "Both Rāmāyaṇa texts end the verse नमोऽस्तु ते; the stotra prints have नमो नमः (and greenmesg.org spells मार्तण्ड).",
+     "in": {
+      "gm": "मार्तण्डाय नमो नमः",
+      "sd": "मार्ताण्डाय नमो नमः"
+     }
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "ref": "6.105.19",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "ब्रह्मेशानाच्युतेशाय",
+    "सूर्यायादित्यवर्चसे",
+    "भास्वते सर्वभक्षाय",
+    "रौद्राय वपुषे नमः"
+   ],
+   "words": [
+    [
+     "ब्रह्मेशानाच्युतेशाय"
+    ],
+    [
+     "सूर्याय",
+     "आदित्यवर्चसे"
+    ],
+    [
+     "भास्वते",
+     "सर्वभक्षाय"
+    ],
+    [
+     "रौद्राय",
+     "वपुषे",
+     "नमः"
+    ]
+   ],
+   "en": "To the lord of Brahmā, Īśāna and Acyuta, to Sūrya, with the splendour of Āditya, to the shining one who consumes all, to the one of fierce form: salutations.",
+   "readings": {
+    "vr": "ब्रह्मेशानाच्युतेशाय सूर्यायादित्यवर्चसे | भास्वते सर्वभक्षाय रौद्राय वपुषे नमः",
+    "gm": "ब्रह्मेशानाच्युतेशाय सूर्यादित्यवर्चसे | भास्वते सर्वभक्षाय रौद्राय वपुषे नमः",
+    "iitk": "ब्रह्मेशानाच्युतेशाय सूर्यायादित्यवर्चसे | भास्वते सर्वभक्षाय रौद्राय वपुषे नमः"
+   },
+   "sd": [
+    "सूर्यायादित्यवर्चसे"
+   ],
+   "variants": [
+    {
+     "chosen": "सूर्यायादित्यवर्चसे",
+     "kind": "reading",
+     "note": "greenmesg.org: सूर्यादित्यवर्चसे, one syllable short of the pāda; valmikiramayan.net, IITK and the sanskritdocuments.org stotra have सूर्याय.",
+     "in": {
+      "gm": "सूर्यादित्यवर्चसे"
+     }
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "ref": "6.105.20",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "तमोघ्नाय हिमघ्नाय",
+    "शत्रुघ्नायामितात्मने",
+    "कृतघ्नघ्नाय देवाय",
+    "ज्योतिषां पतये नमः"
+   ],
+   "words": [
+    [
+     "तमोघ्नाय",
+     "हिमघ्नाय"
+    ],
+    [
+     "शत्रुघ्नाय",
+     "अमितात्मने"
+    ],
+    [
+     "कृतघ्नघ्नाय",
+     "देवाय"
+    ],
+    [
+     "ज्योतिषाम्",
+     "पतये",
+     "नमः"
+    ]
+   ],
+   "en": "To the destroyer of darkness, of cold and of enemies, to the boundless self; to the destroyer of the ungrateful, to the god, the lord of the lights: salutations.",
+   "readings": {
+    "vr": "तमोघ्नाय हिमग्नाय शत्रुघ्नायामितात्मने | कृतघ्नघ्नाय देवाय ज्योतिषां पतये नमः",
+    "gm": "तमोघ्नाय हिमघ्नाय शत्रुघ्नायामितात्मने | कृतघ्नघ्नाय देवाय ज्योतिषां पतये नमः",
+    "iitk": "तमोघ्नाय हिमघ्नाय शत्रुघ्नायामितात्मने | कृतघ्नघ्नाय देवाय ज्योतिषां पतये नमः"
+   },
+   "variants": [
+    {
+     "chosen": "हिमघ्नाय",
+     "kind": "typo",
+     "note": "valmikiramayan.net: ग for घ (हिमग्नाय); IITK and greenmesg.org: हिमघ्नाय",
+     "in": {
+      "vr": "हिमग्नाय"
+     }
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "ref": "6.105.21",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "तप्तचामीकराभाय",
+    "हरये विश्वकर्मणे",
+    "नमस्तमोभिनिघ्नाय",
+    "रुचये लोकसाक्षिणे"
+   ],
+   "words": [
+    [
+     "तप्तचामीकराभाय"
+    ],
+    [
+     "हरये",
+     "विश्वकर्मणे"
+    ],
+    [
+     "नमः",
+     "तमोभिनिघ्नाय"
+    ],
+    [
+     "रुचये",
+     "लोकसाक्षिणे"
+    ]
+   ],
+   "en": "To him who shines like molten gold, to Hari, the maker of all; salutations to the slayer of darkness, the radiance, the witness of the world.",
+   "readings": {
+    "vr": "तप्तचामीकराभाय हरये विश्वकर्मणे | नमस्तमोभिनिघ्नाय रुचये लोकसाक्षिणे",
+    "gm": "तप्तचामीकराभाय वह्नये विश्वकर्मणे | नमस्तमोऽभिनिघ्नाय रुचये लोकसाक्षिणे",
+    "iitk": "तप्तचामीकराभाय हरये विश्मकर्मणे | नमस्तमोभिनिघ्नाय रुचये लोकसाक्षिणे"
+   },
+   "sd": [
+    "वह्नये",
+    "तमोऽभिनिघ्नाय"
+   ],
+   "variants": [
+    {
+     "chosen": "हरये",
+     "kind": "reading",
+     "note": "Both Rāmāyaṇa texts: हरये; the stotra prints: वह्नये (“to fire”). The sanskritdocuments.org stotra itself notes “or हरये विश्वकर्मणे”.",
+     "in": {
+      "gm": "वह्नये",
+      "sd": "वह्नये"
+     }
+    },
+    {
+     "chosen": "तमोभिनिघ्नाय",
+     "kind": "orthography",
+     "note": "the stotra prints mark the elided a of अभि with an avagraha (तमोऽभि…); the Rāmāyaṇa texts write the compound without it. Same sounds.",
+     "in": {
+      "gm": "तमोऽभिनिघ्नाय",
+      "sd": "तमोऽभिनिघ्नाय"
+     }
+    },
+    {
+     "chosen": "विश्वकर्मणे",
+     "kind": "typo",
+     "note": "IITK e-text: विश्मकर्मणे",
+     "in": {
+      "iitk": "विश्मकर्मणे"
+     }
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "ref": "6.105.22",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "नाशयत्येष वै भूतं",
+    "तदेव सृजति प्रभुः",
+    "पायत्येष तपत्येष",
+    "वर्षत्येष गभस्तिभिः"
+   ],
+   "words": [
+    [
+     "नाशयति",
+     "एषः",
+     "वै",
+     "भूतम्"
+    ],
+    [
+     "तत्",
+     "एव",
+     "सृजति",
+     "प्रभुः"
+    ],
+    [
+     "पायति",
+     "एषः",
+     "तपति",
+     "एषः"
+    ],
+    [
+     "वर्षति",
+     "एषः",
+     "गभस्तिभिः"
+    ]
+   ],
+   "en": "This lord destroys all that has come to be, and creates it again; with his rays he dries, he burns and he sends the rain.",
+   "readings": {
+    "vr": "नाशयत्येष वै भूतं तदेव सृजति प्रभुः | पायत्येष तपत्येष वर्षत्येष गभस्तिभिः",
+    "gm": "नाशयत्येष वै भूतं तदेव सृजति प्रभुः | पायत्येष तपत्येष वर्षत्येष गभस्तिभिः",
+    "iitk": "नाशयत्येष वै भूतं तदेव सृजति प्रभुः | पायत्येष तपत्येष वर्षत्येष गभस्तिभिः"
+   },
+   "variants": []
+  },
+  {
+   "n": 23,
+   "ref": "6.105.23",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "एष सुप्तेषु जागर्ति",
+    "भूतेषु परिनिष्ठितः",
+    "एष चैवाग्निहोत्रं च",
+    "फलं चैवाग्निहोत्रिणाम्"
+   ],
+   "words": [
+    [
+     "एषः",
+     "सुप्तेषु",
+     "जागर्ति"
+    ],
+    [
+     "भूतेषु",
+     "परिनिष्ठितः"
+    ],
+    [
+     "एषः",
+     "च",
+     "एव",
+     "अग्निहोत्रम्",
+     "च"
+    ],
+    [
+     "फलम्",
+     "च",
+     "एव",
+     "अग्निहोत्रिणाम्"
+    ]
+   ],
+   "en": "He stays awake in those who sleep, dwelling within every being; he is the fire offering, and also the fruit of those who offer it.",
+   "readings": {
+    "vr": "एष सुप्तेषु जागर्ति भूतेषु परिनिष्ठितः | एष चैवाग्निहोत्रं च फलं चैवाग्निहोत्रिणाम्",
+    "gm": "एष सुप्तेषु जागर्ति भूतेषु परिनिष्ठितः | एष चैवाग्निहोत्रं च फलं चैवाग्निहोत्रिणाम्",
+    "iitk": "एष सुप्तेषु जागर्ति भूतेषु परिनिष्ठितः | एष चैवाग्निहोत्रं च फलं चैवाग्निहोत्रिणाम्"
+   },
+   "variants": [
+    {
+     "chosen": "एष चैवाग्निहोत्रं",
+     "kind": "reading",
+     "note": "the sanskritdocuments.org stotra alone: एष एवाग्निहोत्रं (एव for च एव; both scan); valmikiramayan.net, IITK and greenmesg.org: एष चैवाग्निहोत्रं. Rāmāyaṇa reading kept.",
+     "in": {
+      "sd": "एष एवाग्निहोत्रं"
+     }
+    }
+   ],
+   "sd": [
+    "एष एवाग्निहोत्रं"
+   ]
+  },
+  {
+   "n": 24,
+   "ref": "6.105.24",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "वेदाश्च क्रतवश्चैव",
+    "क्रतूनां फलमेव च",
+    "यानि कृत्यानि लोकेषु",
+    "सर्वेषु परमप्रभुः"
+   ],
+   "words": [
+    [
+     "वेदाः",
+     "च",
+     "क्रतवः",
+     "च",
+     "एव"
+    ],
+    [
+     "क्रतूनाम्",
+     "फलम्",
+     "एव",
+     "च"
+    ],
+    [
+     "यानि",
+     "कृत्यानि",
+     "लोकेषु"
+    ],
+    [
+     "सर्वेषु",
+     "परमप्रभुः"
+    ]
+   ],
+   "en": "He is the Vedas, the sacrifices and the fruit of the sacrifices; of every deed done in all the worlds he is the supreme lord.",
+   "readings": {
+    "vr": "देवाश्च क्रतवश्चैव क्रतूनां फलमेव च | यानि कृत्यानि लोकेषु सर्वेषु परमप्रभुः",
+    "gm": "वेदाश्च क्रतवश्चैव क्रतूनां फलमेव च | यानि कृत्यानि लोकेषु सर्व एष रविः प्रभुः",
+    "iitk": "वेदश्च क्रतवश्चैव क्रतूनां फलमेव च | यानि कृत्यानि लोकेषु सर्वेषु परमप्रभुः"
+   },
+   "sd": [
+    "वेदाश्च",
+    "एष रविः प्रभुः"
+   ],
+   "variants": [
+    {
+     "chosen": "वेदाश्च",
+     "kind": "reading",
+     "note": "वेदाश्च in both stotra prints and (spelled वेदश्च) in IITK; valmikiramayan.net: देवाश्च (“the gods”). The two Rāmāyaṇa texts differ, so the other witnesses decide.",
+     "in": {
+      "vr": "देवाश्च"
+     }
+    },
+    {
+     "chosen": "वेदाश्च",
+     "kind": "typo",
+     "note": "IITK e-text: वेदश्च (the long ā of वेदाः missing)",
+     "in": {
+      "iitk": "वेदश्च"
+     }
+    },
+    {
+     "chosen": "सर्वेषु परमप्रभुः",
+     "kind": "reading",
+     "note": "Both Rāmāyaṇa texts: सर्वेषु परमप्रभुः; the stotra prints: सर्व एष रविः प्रभुः.",
+     "in": {
+      "gm": "सर्व एष रविः प्रभुः",
+      "sd": "एष रविः प्रभुः"
+     }
+    }
+   ]
+  },
+  {
+   "n": 25,
+   "ref": "6.105.25",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "एनमापत्सु कृच्छ्रेषु",
+    "कान्तारेषु भयेषु च",
+    "कीर्तयन् पुरुषः कश्चिन्",
+    "नावसीदति राघव"
+   ],
+   "words": [
+    [
+     "एनम्",
+     "आपत्सु",
+     "कृच्छ्रेषु"
+    ],
+    [
+     "कान्तारेषु",
+     "भयेषु",
+     "च"
+    ],
+    [
+     "कीर्तयन्",
+     "पुरुषः",
+     "कश्चित्"
+    ],
+    [
+     "न",
+     "अवसीदति",
+     "राघव"
+    ]
+   ],
+   "en": "Whoever sings his praise in disaster, in hardship, in the wilderness or in danger, O Rāghava, does not lose heart.",
+   "readings": {
+    "vr": "एनमापत्सु कृच्छ्रेषु कान्तारेषु भयेषु च | कीर्तयन् पुरुषः कश्चिन्नावसीदति राघव",
+    "gm": "एनमापत्सु कृच्छ्रेषु कान्तारेषु भयेषु च | कीर्तयन् पुरुषः कश्चिन्नावसीदति राघव",
+    "iitk": "एनमापत्सु कृच्छ्रेषु कान्तारेषु भयेषु च | कीर्तयन् पुरुषः कश्चिनावसीदति राघव"
+   },
+   "variants": [
+    {
+     "chosen": "कश्चिन्नावसीदति",
+     "kind": "typo",
+     "note": "IITK e-text: कश्चिनावसीदति (one न for the doubled न्न)",
+     "in": {
+      "iitk": "कश्चिनावसीदति"
+     }
+    }
+   ]
+  },
+  {
+   "n": 26,
+   "ref": "6.105.26",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "पूजयस्वैनमेकाग्रो",
+    "देवदेवं जगत्पतिम्",
+    "एतत्त्रिगुणितं जप्त्वा",
+    "युद्धेषु विजयिष्यसि"
+   ],
+   "words": [
+    [
+     "पूजयस्व",
+     "एनम्",
+     "एकाग्रः"
+    ],
+    [
+     "देवदेवम्",
+     "जगत्पतिम्"
+    ],
+    [
+     "एतत्",
+     "त्रिगुणितम्",
+     "जप्त्वा"
+    ],
+    [
+     "युद्धेषु",
+     "विजयिष्यसि"
+    ]
+   ],
+   "en": "Worship him with a single mind, the god of gods, the lord of the world. Recite this three times, and you will win your battles.",
+   "readings": {
+    "vr": "पूजयस्वैनमेकाग्रो देवदेवं जगत्पतिम् | एतत्त्रिगुणितं जप्त्वा युद्धेषु विजयिष्यसि",
+    "gm": "पूजयस्वैनमेकाग्रो देवदेवं जगत्पतिम् | एतत्त्रिगुणितं जप्त्वा युद्धेषु विजयिष्यसि",
+    "iitk": "पूजयस्वैनमेकाग्रो देवदेवं जगत्पतिम् | एतत्त्रिगुणितं जप्त्वा युद्धेषु विजयिष्यसि"
+   },
+   "variants": []
+  },
+  {
+   "n": 27,
+   "ref": "6.105.27",
+   "speaker": "agastya",
+   "meter": "anustubh",
+   "padas": [
+    "अस्मिन् क्षणे महाबाहो",
+    "रावणं त्वं वधिष्यसि",
+    "एवमुक्त्वा ततोऽगस्त्यो",
+    "जगाम स यथागतम्"
+   ],
+   "words": [
+    [
+     "अस्मिन्",
+     "क्षणे",
+     "महाबाहो"
+    ],
+    [
+     "रावणम्",
+     "त्वम्",
+     "वधिष्यसि"
+    ],
+    [
+     "एवम्",
+     "उक्त्वा",
+     "ततः",
+     "अगस्त्यः"
+    ],
+    [
+     "जगाम",
+     "सः",
+     "यथागतम्"
+    ]
+   ],
+   "en": "In this very hour, mighty-armed one, you will slay Rāvaṇa.” With these words Agastya went away, just as he had come.",
+   "readings": {
+    "vr": "अस्मिन् क्षणे महाबाहो रावणं त्वं वधिष्यसि | एवमुक्त्वा ततोऽगस्त्यो जगाम स यथागतम्",
+    "gm": "अस्मिन् क्षणे महाबाहो रावणं त्वं वधिष्यसि | एवमुक्त्वा ततोऽगस्त्यो जगाम च यथागतम्",
+    "iitk": "अस्मिन् क्षणे महाबाहो रावणं त्वं वधिष्यसि | एवमुक्त्वा ततोऽगस्त्यो जगाम स यथागतम्"
+   },
+   "sd": [
+    "जगाम च",
+    "तदाऽगस्त्यो"
+   ],
+   "variants": [
+    {
+     "chosen": "जगाम स",
+     "kind": "reading",
+     "note": "Both Rāmāyaṇa texts: स (“he”); the stotra prints: च (“and”).",
+     "in": {
+      "gm": "जगाम च",
+      "sd": "जगाम च"
+     }
+    },
+    {
+     "chosen": "ततोऽगस्त्यो",
+     "kind": "reading",
+     "note": "the sanskritdocuments.org stotra: तदाऽगस्त्यो (“then”, same sense); valmikiramayan.net, IITK and greenmesg.org: ततोऽगस्त्यो. Rāmāyaṇa reading kept.",
+     "in": {
+      "sd": "तदाऽगस्त्यो"
+     }
+    }
+   ]
+  },
+  {
+   "n": 28,
+   "ref": "6.105.28",
+   "speaker": "narrator",
+   "meter": "anustubh",
+   "padas": [
+    "एतच्छ्रुत्वा महातेजा",
+    "नष्टशोकोऽभवत्तदा",
+    "धारयामास सुप्रीतो",
+    "राघवः प्रयतात्मवान्"
+   ],
+   "words": [
+    [
+     "एतत्",
+     "श्रुत्वा",
+     "महातेजाः"
+    ],
+    [
+     "नष्टशोकः",
+     "अभवत्",
+     "तदा"
+    ],
+    [
+     "धारयामास",
+     "सुप्रीतः"
+    ],
+    [
+     "राघवः",
+     "प्रयतात्मवान्"
+    ]
+   ],
+   "en": "When he heard this, the radiant Rāma was freed from his grief. Glad at heart and self-controlled, Rāghava held the hymn in his mind.",
+   "readings": {
+    "vr": "एतच्छ्रुत्वा महातेजा नष्टशोकोऽभवत्तदा | धारयामास सुप्रीतो राघवः प्रयतात्मवान्",
+    "gm": "एतच्छ्रुत्वा महातेजाः नष्टशोकोऽभवत्तदा | धारयामास सुप्रीतो राघवः प्रयतात्मवान्",
+    "iitk": "एतच्छ्रुत्वा महातेजा नष्टशोकोऽभवत्तदा | धारयामास सुप्रीतो राघवः प्रयतात्मवान्"
+   },
+   "variants": [
+    {
+     "chosen": "महातेजा",
+     "kind": "orthography",
+     "note": "greenmesg.org keeps the visarga of महातेजाः before न (it drops after ā before a voiced sound)",
+     "in": {
+      "gm": "महातेजाः"
+     }
+    }
+   ]
+  },
+  {
+   "n": 29,
+   "ref": "6.105.29",
+   "speaker": "narrator",
+   "meter": "anustubh",
+   "padas": [
+    "आदित्यं प्रेक्ष्य जप्त्वा तु",
+    "परं हर्षमवाप्तवान्",
+    "त्रिराचम्य शुचिर्भूत्वा",
+    "धनुरादाय वीर्यवान्"
+   ],
+   "words": [
+    [
+     "आदित्यम्",
+     "प्रेक्ष्य",
+     "जप्त्वा",
+     "तु"
+    ],
+    [
+     "परम्",
+     "हर्षम्",
+     "अवाप्तवान्"
+    ],
+    [
+     "त्रिः",
+     "आचम्य",
+     "शुचिः",
+     "भूत्वा"
+    ],
+    [
+     "धनुः",
+     "आदाय",
+     "वीर्यवान्"
+    ]
+   ],
+   "en": "Gazing at the Sun, he recited the hymn and was filled with the highest joy. Three times he sipped water and was purified; then the mighty one took up his bow.",
+   "readings": {
+    "vr": "आदित्यं प्रेक्ष्य जप्त्वा तु परं हर्षमवाप्तवान् | त्रिराचम्य शुचिर्भूत्वा धनुरादाय वीर्यवान्",
+    "gm": "आदित्यं प्रेक्ष्य जप्त्वा तु परं हर्षमवाप्तवान् | त्रिराचम्य शुचिर्भूत्वा धनुरादाय वीर्यवान्",
+    "iitk": "आदित्यं प्रेक्ष्य जप्त्वा तु परं हर्षमवाप्तवान् | त्रिराचम्य शुचिर्भूत्वा धनुरादाय वीर्यवान्"
+   },
+   "variants": []
+  },
+  {
+   "n": 30,
+   "ref": "6.105.30",
+   "speaker": "narrator",
+   "meter": "anustubh",
+   "padas": [
+    "रावणं प्रेक्ष्य हृष्टात्मा",
+    "युद्धार्थं समुपागमत्",
+    "सर्वयत्नेन महता",
+    "वधे तस्य धृतोऽभवत्"
+   ],
+   "words": [
+    [
+     "रावणम्",
+     "प्रेक्ष्य",
+     "हृष्टात्मा"
+    ],
+    [
+     "युद्धार्थम्",
+     "समुपागमत्"
+    ],
+    [
+     "सर्वयत्नेन",
+     "महता"
+    ],
+    [
+     "वधे",
+     "तस्य",
+     "धृतः",
+     "अभवत्"
+    ]
+   ],
+   "en": "Seeing Rāvaṇa, he came forward to battle with a joyful heart, resolved with all his great strength to slay him.",
+   "meterNote": "pāda 3 (सर्वयत्नेन महता): na-vipulā (syllables 5–7 LLL, 4th guru), a recognised variant of the odd pāda.",
+   "readings": {
+    "vr": "रावणं प्रेक्ष्य हृष्टात्मा युद्धार्थं समुपागमत् | सर्वयत्नेन महता वधे तस्य धृतोऽभवत्",
+    "gm": "रावणं प्रेक्ष्य हृष्टात्मा युद्धाय समुपागमत् | सर्वयत्नेन महता वधे तस्य धृतोऽभवत्",
+    "iitk": "रावणं प्रेक्ष्य हृष्टात्मा युद्धार्थं समुपागमत् | सर्वयत्नेन महता वधे तस्य धृतोऽभवत्"
+   },
+   "sd": [
+    "युद्धाय"
+   ],
+   "variants": [
+    {
+     "chosen": "युद्धार्थं",
+     "kind": "reading",
+     "note": "Both Rāmāyaṇa texts: युद्धार्थं (“for battle”); the stotra prints: युद्धाय (same sense).",
+     "in": {
+      "gm": "युद्धाय",
+      "sd": "युद्धाय"
+     }
+    }
+   ]
+  },
+  {
+   "n": 31,
+   "ref": "6.105.31",
+   "speaker": "narrator",
+   "meter": "puspitagra",
+   "padas": [
+    "अथ रविरवदन्निरीक्ष्य रामं",
+    "मुदितमनाः परमं प्रहृष्यमाणः",
+    "निशिचरपतिसंक्षयं विदित्वा",
+    "सुरगणमध्यगतो वचस्त्वरेति"
+   ],
+   "words": [
+    [
+     "अथ",
+     "रविः",
+     "अवदत्",
+     "निरीक्ष्य",
+     "रामम्"
+    ],
+    [
+     "मुदितमनाः",
+     "परमम्",
+     "प्रहृष्यमाणः"
+    ],
+    [
+     "निशिचरपतिसंक्षयम्",
+     "विदित्वा"
+    ],
+    [
+     "सुरगणमध्यगतः",
+     "वचः",
+     "त्वर",
+     "इति"
+    ]
+   ],
+   "en": "Then the Sun, glad at heart and full of joy, standing among the hosts of the gods, looked at Rāma; knowing that the end of the lord of the night-wanderers had come, he said: “Make haste!”",
+   "readings": {
+    "vr": "अथ रविरवदन्निरीक्ष्य रामं मुदितमनाः परमं प्रहृष्यमाणः | निशिचरपतिसंक्षयं विदित्वा सुरगणमध्यगतो वचस्त्वरेति",
+    "gm": "अथ रविरवदन्निरीक्ष्य रामं मुदितमनाः परमं प्रहृष्यमाणः | निशिचरपतिसंक्षयं विदित्वा सुरगणमध्यगतो वचस्त्वरेति"
+   },
+   "variants": [
+    {
+     "chosen": "संक्षयं",
+     "kind": "orthography",
+     "note": "the sanskritdocuments.org stotra writes the class nasal (सङ्क्षयं); same sound",
+     "in": {
+      "sd": "सङ्क्षयं"
+     }
+    }
+   ],
+   "sd": [
+    "निशिचरपतिसङ्क्षयं"
+   ]
+  }
+ ]
+}

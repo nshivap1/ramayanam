@@ -8,12 +8,13 @@ import { type ReactElement, type ReactNode, type RefObject, useEffect, useRef } 
 import { type Rng, createRng } from '@sdk';
 import { useRafLoop, useSwipe } from '@ui';
 import { toDevaDigits } from '@sanskrit';
-import type { BattleBgId, BattlerId, SpriteId } from './catalog';
+import type { BattleBgId, BattlerId, SpriteId, TileId } from './catalog';
 import { DELTA } from './input';
-import { type GuideTarget, affinityOf, currentMap, isKatha, tileAt, visibleNpcs } from './logic';
+import { type GuideTarget, affinityOf, burningBlocks, currentMap, isKatha, playerSprite, roofBlock, roofFires, sightTiles, tileAt, visibleNpcs } from './logic';
+import { INK, R } from './art-palette';
 import { ELEMENT_COLOR, MOVE_STEP_MS, STEP_MS, Name, PlayerName, type ViewEnv, asciiLabel, englishName, useEnv } from './view-common';
 import { useUi } from './view-ui';
-import { type BattleBeat, type Dir, type Element, type GameState, TILE, VIEW_H, VIEW_W } from './types';
+import { type BattleBeat, type Dir, type Element, type GameState, type MapDef, TILE, VIEW_H, VIEW_W } from './types';
 
 /** Cosmetic triggers written by Game (from state.fx) and read by the canvas. Times are performance.now(). */
 export interface Anim {
@@ -93,6 +94,13 @@ interface Vis {
   rng: Rng;
   /** what the map pointer drew this frame ('' | 'mark:x,y' | 'edge:x,y', canvas px of a marker pixel), mirrored on data-guide */
   guideMark: string;
+  /** v0.5b (WP-B) Laṅkā ablaze: the map and how many roof blocks burnt last frame (a new one flashes), its time, the embers */
+  fireMap: string | null;
+  fireLit: number;
+  fireFlashAt: number;
+  embers: Particle[];
+  /** figures drawn in a boat this frame (Guha's ferry), mirrored on data-boats for tests */
+  boats: number;
 }
 
 const ease = (k: number): number => 1 - (1 - k) * (1 - k);
@@ -216,6 +224,11 @@ export function Screen({ stateRef, env, anim, onSwipe, overlay, title, guideRef 
     popups: [],
     rng: createRng(0x5eed),
     guideMark: '',
+    fireMap: null,
+    fireLit: 0,
+    fireFlashAt: -1e9,
+    embers: [],
+    boats: 0,
   });
 
   useSwipe(wrapRef, (d) => onSwipe?.(d), { keys: false, threshold: 28 });
@@ -243,6 +256,7 @@ export function Screen({ stateRef, env, anim, onSwipe, overlay, title, guideRef 
         const inBattle = s.mode === 'battle' && !!s.battle;
         const encK = now - anim.encounterAt;
         v.guideMark = '';
+        v.boats = 0;
         if (inBattle && encK > 420) drawBattle(ctx, s, e, v, now, dt);
         else drawWorld(ctx, s, e, v, anim, now, dt, inBattle ? null : (guideRef?.current ?? null));
         if (v.lastMode === 'battle' && s.mode !== 'battle') anim.warpAt = now;
@@ -285,6 +299,8 @@ export function Screen({ stateRef, env, anim, onSwipe, overlay, title, guideRef 
     // the map pointer, mirrored for tests (data-guide on the canvas)
     const mark = !s || title ? '' : v.guideMark;
     if ((c.dataset['guide'] ?? '') !== mark) c.dataset['guide'] = mark;
+    const boats = String(!s || title ? 0 : v.boats);
+    if (c.dataset['boats'] !== boats) c.dataset['boats'] = boats;
     // screen shake (CSS transform on the canvas so the HUD text stays crisp)
     const sk = (now - anim.shakeAt) / 360;
     if (sk >= 0 && sk < 1 && !envRef.current.reduced) {
@@ -406,7 +422,8 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   v.lastPending = pend;
   const moveFor = (who: string): { path: Dir[] } | null => (newPending && pend?.kind === 'move' && pend.who === who ? { path: pend.path } : null);
 
-  const avatarSprite: SpriteId = s.save.avatar === 'b' ? 'player_b' : 'player_a';
+  // P4 (v0.5b): in Kathā book 5 the player walks as Hanumān, the student riding on his shoulder
+  const avatarSprite: SpriteId = playerSprite(s.save);
   const fresh = v.mapId !== map.id || !v.player;
   if (fresh) {
     v.mapId = map.id;
@@ -453,19 +470,44 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   const y0 = Math.max(0, Math.floor(cy / TILE));
   const x1 = Math.min(map.width - 1, Math.floor((cx + VIEW_W) / TILE));
   const y1 = Math.min(map.height - 1, Math.floor((cy + VIEW_H) / TILE));
+  // v0.5b Laṅkā ablaze: a roof block burns once Hanumān has leapt onto its roof_fire tile; until then it is a roof
+  const fire = roofFires(map).length > 0 ? burningBlocks(map, s.save.flags) : null;
+  const roofTile = (id: TileId, x: number, y: number): TileId => (fire && (id === 'lanka_roof' || id === 'roof_fire') ? (fire.has(roofBlock(map, x, y)) ? 'roof_fire' : 'lanka_roof') : id);
   for (let y = y0; y <= y1; y++) {
     for (let x = x0; x <= x1; x++) {
       const tl = tileAt(map, x, y);
-      if (tl.ground) env.art.drawTile(ctx, tl.ground, x * TILE - cx, y * TILE - cy, t);
-      if (tl.overlay) env.art.drawTile(ctx, tl.overlay, x * TILE - cx, y * TILE - cy, t);
+      if (tl.ground) env.art.drawTile(ctx, roofTile(tl.ground, x, y), x * TILE - cx, y * TILE - cy, t);
+      if (tl.overlay) env.art.drawTile(ctx, roofTile(tl.overlay, x, y), x * TILE - cx, y * TILE - cy, t);
     }
+  }
+  if (fire) {
+    if (v.fireMap === map.id && fire.size > v.fireLit) v.fireFlashAt = now;
+    if (v.fireMap !== map.id) v.embers = [];
+    v.fireMap = map.id;
+    v.fireLit = fire.size;
+    // a roof not yet alight but waiting for Hanumān: a spark on it, so the eye finds it
+    for (const f of roofFires(map)) {
+      if (fire.has(f.block)) continue;
+      const sx = f.x * TILE - cx;
+      const sy = f.y * TILE - cy;
+      if (sx < -TILE || sx > VIEW_W || sy < -TILE || sy > VIEW_H) continue;
+      const k = reduced ? 0 : Math.floor(t * 6) % 3;
+      ctx.fillStyle = 'rgb(255,192,48)';
+      ctx.fillRect(sx + 7, sy + 5 + k, 2, 2);
+      ctx.fillStyle = 'rgb(255,122,32)';
+      ctx.fillRect(sx + 4 + k * 3, sy + 10, 1, 1);
+    }
+  } else {
+    v.fireMap = null;
+    v.fireLit = 0;
+    v.embers = [];
   }
 
   // who is speaking? (pending say with a person.* / sprite id) → a pixel speech bubble above them
   let speaker: Ent | null = null;
   if (pend?.kind === 'say' && pend.who) {
     const sid = pend.who.replace(/^person\./, '');
-    if (sid === 'player' || sid === '{player}') speaker = v.player;
+    if (sid === 'player' || sid === '{player}' || (sid === avatarSprite && avatarSprite === 'hanuman')) speaker = v.player;
     else {
       let best = Infinity;
       for (const ent of v.npcs.values()) {
@@ -481,6 +523,16 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
 
   // sprites, y-sorted
   const list: { y: number; draw: () => void }[] = [];
+  // v0.5b (WP-B, for WP-A's ferry): a figure carried over water (a scripted move: nobody walks there) sits in a boat;
+  // figures side by side on one row share one hull
+  const afloat = new Set<string>();
+  for (const ent of [...v.npcs.values(), v.player as Ent]) {
+    const q = entPos(ent, now);
+    const bx = Math.round(q.x);
+    const by = Math.round(q.y);
+    if (onWater(map, bx, by)) afloat.add(`${bx},${by}`);
+  }
+  v.boats = afloat.size;
   const pushEnt = (ent: Ent, isPlayer: boolean): void => {
     const p = entPos(ent, now);
     let ox = 0;
@@ -505,7 +557,15 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
         ctx.fillStyle = 'rgba(0,0,0,0.22)';
         ctx.fillRect(px + 3, py + 13, 10, 2);
         ctx.fillRect(px + 4, py + 12, 8, 4);
-        env.art.drawSprite(ctx, ent.sprite, px, py, p.facing, frame);
+        const rider = isPlayer && ent.sprite === 'hanuman';
+        const side = p.facing === 'left' || p.facing === 'right';
+        if (rider && side) drawRider(ctx, px, py - 8, p.facing, s.save.avatar === 'b' ? 'b' : 'a', frame);
+        const tx = Math.round(p.x);
+        const ty = Math.round(p.y);
+        const boat = afloat.has(`${tx},${ty}`);
+        env.art.drawSprite(ctx, ent.sprite, px, py, p.facing, boat ? 0 : frame);
+        if (rider && !side) drawRider(ctx, px, py - 8, p.facing, s.save.avatar === 'b' ? 'b' : 'a', frame);
+        if (boat) drawHull(ctx, px, py, !afloat.has(`${tx - 1},${ty}`), !afloat.has(`${tx + 1},${ty}`));
       },
     });
   };
@@ -530,11 +590,206 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   }
 
   env.art.drawLight(ctx, map.light, t);
+  // v0.5b (WP-B), above the light so they read at night: the lamplight a guard watches (P3), the burning roofs
+  drawSight(ctx, map, s, cx, cy, t, reduced);
+  if (fire) drawFire(ctx, map, fire, v, cx, cy, now, dt, reduced);
   // the map pointer sits above the light, so it reads on night maps too
   if (guide && guide.map === map.id) {
     const ent = guide.kind === 'npc' && guide.npc ? v.npcs.get(guide.npc) : undefined;
     const gp = ent ? entPos(ent, now) : { x: guide.x, y: guide.y };
     v.guideMark = drawGuide(ctx, guide.kind, Math.round(gp.x * TILE - cx), Math.round(gp.y * TILE - cy), Math.round(pp.x * TILE - cx) + 8, Math.round(pp.y * TILE - cy) + 8, now, reduced);
+  }
+}
+
+// ───────────────────────── Sundara-kāṇḍa in Kathā (v0.5b, WP-B) ─────────────────────────
+
+/**
+ * P4: the student riding on Hanumān's right shoulder, drawn over his sprite (16×24, top-left x, y): beside his head
+ * when he faces the player or walks away, behind his head in profile (drawn first, so he covers it). Pixel masks:
+ * o ink · H hair · S skin · s skin shade · T top · L lower cloth · K the verse book · F flower (avatar b).
+ */
+export const RIDER: Record<'down' | 'up' | 'right' | 'left', { x: number; y: number; rows: Record<'a' | 'b', string[]> }> = {
+  down: {
+    x: -2,
+    y: 4,
+    rows: {
+      a: ['..o..', '.oHo.', 'oHHHo', 'oHSSo', 'oSSSo', '.oso.', 'oSTSo', 'oTKTo', 'oLLLo', '.oLLo', '..oSo', '...o.'],
+      b: ['.....', '.ooo.', 'oHHFo', 'oHSSH', 'HSSSH', 'Hoso.', 'oTTTo', 'oTKTo', 'oLLLo', '.oLLo', '..oSo', '...o.'],
+    },
+  },
+  up: {
+    x: 13,
+    y: 4,
+    rows: {
+      a: ['..o..', '.oHo.', 'oHHHo', 'oHHHo', 'oHHHo', '.oso.', 'oSSSo', 'osSso', 'oLLLo', 'oLLo.', '.....', '.....'],
+      b: ['.....', '.ooo.', 'oHHFo', 'oHHHo', 'oHHHH', 'oHHHo', 'oTHTo', 'oTTTo', 'oLLLo', 'oLLo.', '.....', '.....'],
+    },
+  },
+  right: {
+    x: -2,
+    y: 5,
+    rows: {
+      a: ['..o..', '.oHo.', 'oHHHo', 'oHHSo', 'oHSSo', '.oso.', 'oSSTo', 'oTTKo', 'oLLLo', '.oLLo', '..oSo', '...o.'],
+      b: ['.....', '.ooo.', 'oHHHo', 'FHHSo', 'HHSSo', 'Hoso.', 'oTTTo', 'oTTKo', 'oLLLo', '.oLLo', '..oSo', '...o.'],
+    },
+  },
+  left: {
+    x: 13,
+    y: 5,
+    rows: {
+      a: ['..o..', '.oHo.', 'oHHHo', 'oSHHo', 'oSSHo', '.oso.', 'oTSSo', 'oKTTo', 'oLLLo', 'oLLo.', 'oSo..', '.o...'],
+      b: ['.....', '.ooo.', 'oHHHo', 'oSHHF', 'oSSHH', '.osoH', 'oTTTo', 'oKTTo', 'oLLLo', 'oLLo.', 'oSo..', '.o...'],
+    },
+  },
+};
+
+/** The rider's colours: the chosen avatar's own (art-sprites player_a / player_b). */
+export function riderPalette(avatar: 'a' | 'b'): Record<string, string> {
+  const skin = avatar === 'b' ? R.skinFair : R.skinWarm;
+  return {
+    o: INK,
+    H: '#2c2238',
+    S: skin[1],
+    s: skin[2],
+    T: avatar === 'b' ? R.teal[2] : skin[1],
+    L: avatar === 'b' ? R.saffron[1] : '#fbf8f0',
+    K: R.saffron[2],
+    F: R.lotus[1],
+  };
+}
+
+function drawRider(ctx: CanvasRenderingContext2D, x: number, y: number, facing: Dir, avatar: 'a' | 'b', frame: 0 | 1 | 2): void {
+  const m = RIDER[facing];
+  const pal = riderPalette(avatar);
+  const bob = frame === 0 ? 0 : 1; // he rides with Hanumān's stride
+  const rows = m.rows[avatar];
+  for (let j = 0; j < rows.length; j++) {
+    const row = rows[j] as string;
+    for (let i = 0; i < row.length; i++) {
+      const c = pal[row[i] as string];
+      if (!c) continue;
+      ctx.fillStyle = c;
+      ctx.fillRect(x + m.x + i, y + m.y + j + bob, 1, 1);
+    }
+  }
+}
+
+const WATERY: ReadonlySet<TileId> = new Set<TileId>(['water', 'water_deep', 'ocean', 'lotus', 'shore_n', 'shore_s', 'shore_e', 'shore_w']);
+
+/** A water or shore tile (where a figure can only be by boat). */
+function onWater(map: MapDef, x: number, y: number): boolean {
+  const t = tileAt(map, x, y);
+  return t.ground !== null && WATERY.has(t.ground);
+}
+
+/**
+ * Guha's ferry (for WP-A, Ayodhyā 2.52): a wooden hull drawn over the figure's feet (16 px wide; the prow curls up at a
+ * row's free ends, so figures side by side sit in one boat).
+ */
+function drawHull(ctx: CanvasRenderingContext2D, px: number, py: number, leftEnd: boolean, rightEnd: boolean): void {
+  const x0 = px - (leftEnd ? 3 : 0);
+  const x1 = px + 16 + (rightEnd ? 3 : 0);
+  // a ripple at the waterline
+  ctx.fillStyle = 'rgba(232,252,255,0.55)';
+  ctx.fillRect(x0 - 1, py + 15, x1 - x0 + 2, 1);
+  ctx.fillStyle = INK;
+  ctx.fillRect(x0, py + 9, x1 - x0, 6);
+  ctx.fillStyle = R.wood[1];
+  ctx.fillRect(x0 + (leftEnd ? 1 : 0), py + 10, x1 - x0 - (leftEnd ? 1 : 0) - (rightEnd ? 1 : 0), 1);
+  ctx.fillStyle = R.wood[2];
+  ctx.fillRect(x0 + (leftEnd ? 1 : 0), py + 11, x1 - x0 - (leftEnd ? 1 : 0) - (rightEnd ? 1 : 0), 2);
+  ctx.fillStyle = R.wood[3];
+  ctx.fillRect(x0 + (leftEnd ? 2 : 0), py + 13, x1 - x0 - (leftEnd ? 2 : 0) - (rightEnd ? 2 : 0), 1);
+  // the prows curl up at the ends
+  if (leftEnd) {
+    ctx.fillStyle = INK;
+    ctx.fillRect(x0 - 1, py + 7, 2, 3);
+    ctx.fillStyle = R.wood[1];
+    ctx.fillRect(x0, py + 8, 1, 2);
+  }
+  if (rightEnd) {
+    ctx.fillStyle = INK;
+    ctx.fillRect(x1 - 1, py + 7, 2, 3);
+    ctx.fillStyle = R.wood[1];
+    ctx.fillRect(x1 - 1, py + 8, 1, 2);
+  }
+}
+
+/** P3: the tiles a guard watches glow with lamplight (a soft pool with a brighter rim), so the dark way reads. */
+function drawSight(ctx: CanvasRenderingContext2D, map: MapDef, s: GameState, cx: number, cy: number, t: number, reduced: boolean): void {
+  const tiles = sightTiles(map, s.save.flags);
+  if (tiles.length === 0) return;
+  const on = new Set(tiles.map((p) => p.y * map.width + p.x));
+  const pulse = reduced ? 0 : Math.sin(t * 2.4) * 0.04;
+  for (const p of tiles) {
+    const sx = p.x * TILE - cx;
+    const sy = p.y * TILE - cy;
+    if (sx < -TILE || sx > VIEW_W || sy < -TILE || sy > VIEW_H) continue;
+    // warm lamplight over the cool night (source-over, so it reads as orange, not as a white highlight)
+    ctx.fillStyle = `rgba(255,158,52,${0.3 + pulse})`;
+    ctx.fillRect(sx, sy, TILE, TILE);
+    // the pool is brightest in its middle: a lighter inner square
+    ctx.fillStyle = `rgba(255,206,110,${0.16 + pulse})`;
+    ctx.fillRect(sx + 3, sy + 3, TILE - 6, TILE - 6);
+    // where the light ends: a dotted rim, every other pixel (the step that would be seen)
+    ctx.fillStyle = 'rgba(255,226,140,0.85)';
+    const rim = (x0: number, y0: number, horiz: boolean): void => {
+      for (let i = 0; i < TILE; i += 2) ctx.fillRect(horiz ? x0 + i : x0, horiz ? y0 : y0 + i, 1, 1);
+    };
+    if (!on.has((p.y - 1) * map.width + p.x)) rim(sx, sy, true);
+    if (!on.has((p.y + 1) * map.width + p.x)) rim(sx, sy + TILE - 1, true);
+    if (p.x === 0 || !on.has(p.y * map.width + p.x - 1)) rim(sx, sy, false);
+    if (p.x === map.width - 1 || !on.has(p.y * map.width + p.x + 1)) rim(sx + TILE - 1, sy, false);
+  }
+}
+
+/** Laṅkā ablaze: burning roofs glow through the night, embers rise (not with reduced motion), a new blaze flashes. */
+function drawFire(ctx: CanvasRenderingContext2D, map: MapDef, fire: Set<number>, v: Vis, cx: number, cy: number, now: number, dt: number, reduced: boolean): void {
+  const prev = ctx.globalCompositeOperation;
+  ctx.globalCompositeOperation = 'lighter';
+  const x0 = Math.max(0, Math.floor(cx / TILE));
+  const y0 = Math.max(0, Math.floor(cy / TILE));
+  const x1 = Math.min(map.width - 1, Math.floor((cx + VIEW_W) / TILE));
+  const y1 = Math.min(map.height - 1, Math.floor((cy + VIEW_H) / TILE));
+  const lit: { x: number; y: number }[] = [];
+  for (let y = y0; y <= y1; y++)
+    for (let x = x0; x <= x1; x++) {
+      if (!fire.has(roofBlock(map, x, y))) continue;
+      lit.push({ x, y });
+      const flick = reduced ? 0 : ((x * 7 + y * 13 + Math.floor(now / 90)) % 5) * 0.025;
+      ctx.fillStyle = `rgba(255,96,24,${0.22 + flick})`;
+      ctx.fillRect(x * TILE - cx, y * TILE - cy, TILE, TILE);
+    }
+  // the whole sky warms as more of the city burns
+  if (fire.size > 0) {
+    ctx.fillStyle = `rgba(120,40,8,${Math.min(0.24, 0.06 * fire.size)})`;
+    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+  }
+  // embers
+  if (!reduced && lit.length > 0) {
+    for (let n = 0; n < 2 && v.embers.length < 60; n++) {
+      if (v.rng.next() > dt / 40) continue;
+      const p = lit[Math.floor(v.rng.next() * lit.length)] as { x: number; y: number };
+      v.embers.push({ x: p.x * TILE + v.rng.next() * TILE, y: p.y * TILE + v.rng.next() * 6, vx: (v.rng.next() - 0.5) * 0.012, vy: -0.02 - v.rng.next() * 0.02, g: 0, t0: now, life: 900 + v.rng.next() * 700, color: v.rng.next() < 0.5 ? 'rgb(255,192,48)' : 'rgb(255,122,32)', size: 1, shape: 'sq' });
+    }
+    const live: Particle[] = [];
+    for (const e of v.embers) {
+      const age = now - e.t0;
+      if (age > e.life) continue;
+      live.push(e);
+      ctx.globalAlpha = 1 - age / e.life;
+      ctx.fillStyle = e.color;
+      ctx.fillRect(Math.round(e.x + e.vx * age - cx), Math.round(e.y + e.vy * age - cy), e.size, e.size);
+    }
+    ctx.globalAlpha = 1;
+    v.embers = live;
+  } else v.embers = [];
+  ctx.globalCompositeOperation = prev;
+  // a roof catches: one warm flash (none with reduced motion)
+  const fk = (now - v.fireFlashAt) / 420;
+  if (fk >= 0 && fk < 1 && !reduced) {
+    ctx.fillStyle = `rgba(255,170,80,${(1 - fk) * 0.5})`;
+    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
   }
 }
 

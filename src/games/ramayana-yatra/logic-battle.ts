@@ -30,15 +30,22 @@
  * a boss readies a great blow one turn ahead (a `warn` beat; it then acts after the hero) that a support move, a switch,
  * a cover (`choose COVER_CMD`: a benched guardian steps in) or a counter blunts; the same astra on consecutive turns
  * tires (× 0.6, × 0.4). Duels and the practice game never reach any of it.
+ * v0.5b (WP-C, logic-chain.ts): a Kathā duel against a foe of content/katha-chain.json is a verse chain (śloka-antyakṣarī):
+ * the opponent's turn is a line (a model beat, like the tutorial's), the player's turn an 'antya' pick (three heard
+ * pādas, one opens with the last sound of the opponent's line); the link lands at full power, half on a miss, × 1.5 when
+ * the opponent is stumped; the opponent never strikes, so it cannot be lost. Boss phases (`tactics.phases`, P7): Rāvaṇa's
+ * heads grow back — hits that do not fit cannot take him below the phase floor while the hero holds the fitting astra —
+ * and Mātali's line plays once (a beat when a phase begins).
  */
 import type { Rng } from '@sdk';
 import { cardinal } from '@sanskrit';
-import type { Action, BattleBeat, BattleSpec, BattleState, EnemyDef, Fighter, Fx, GameContent, GameState, MapDef, MoveDef, MoveEffect, PartyMember } from './types';
+import type { Action, BattleBeat, BattleSpec, BattleState, EnemyDef, Fighter, Fx, GameContent, GameState, MapDef, MoveDef, MoveEffect, PadaRefT, PartyMember } from './types';
 import { bump, clamp, indexOf, must, rngFor } from './logic-util';
 import { MAX_STAGE, addXp, battleXp, damage, elementMult, fighterFromEnemy, fighterFromMember, maxHpOf } from './logic-progress';
 import { grade, makeChallenge, markSeen, recordResult } from './logic-learning';
 import { astraBinding, astraPada, buildSmarana, duelMove, duelPada, gradeSmarana, isEchoDuel, isKatha, kathaFoe, kathaLead, recordSmarana } from './logic-katha';
-import { COVER_CMD, KATHA_BLUNT, KATHA_OPENING, KATHA_STRIKE, KATHA_STRIKE_CAP, SHIELD_CMD, type WarnPlan, answerOf, canShield, coverOf, fatigueMult, fitFor, isDecisive, nextChain, readiesAt, shieldPada, warnPlan } from './logic-tactics';
+import { COVER_CMD, KATHA_BLUNT, KATHA_OPENING, KATHA_STRIKE, KATHA_STRIKE_CAP, SHIELD_CMD, type WarnPlan, answerOf, canShield, coverOf, fatigueMult, fitFor, isDecisive, nextChain, phaseFloor, phasesBegun, readiesAt, shieldPada, strikeScale, warnPlan } from './logic-tactics';
+import { CHAIN_MISS, CHAIN_STUMPED, chainDuel, chainFoe, chainOpen, chainOptions, chainReady, chainTurn, isChainDuel } from './logic-chain';
 import saBattleJson from './content/sa-battle.json';
 
 export const QUALITY = { swift: 1.5, correct: 1.0, wrong: 0.35 } as const;
@@ -312,7 +319,9 @@ export function startBattle(state: GameState, content: GameContent, spec: Battle
   if (!member) throw new Error('startBattle: empty party');
   const ally = fighterFromMember(member, content);
   const foe0 = fighterFromEnemy(first.id, first.level, content);
-  const foe = isKatha(state) ? kathaFoe(foe0, ally, spec, content) : foe0; // Kathā: shorter story fights (v0.4.1)
+  // v0.5b: a Kathā duel against a chain opponent opens with its first line (null: nothing heard yet — the ordinary duel)
+  const chain = isChainDuel(state, content, spec) ? chainOpen(state, content, first.id) : null;
+  const foe = chain ? chainFoe(foe0, ally, content, chainDuel(content, first.id)) : isKatha(state) ? kathaFoe(foe0, ally, spec, content) : foe0; // Kathā: shorter story fights (v0.4.1)
   const snap = { allyHp: ally.hp, foeHp: foe.hp };
   // the tutorial duel opens with the duelist's first model line (the pāda the first turn says back)
   const echo = isEchoDuel(state, spec);
@@ -328,11 +337,15 @@ export function startBattle(state: GameState, content: GameContent, spec: Battle
     phase = 'lost';
   } else if (model) {
     beats.push({ ...modelText(first.id), ...snap, fx: { kind: 'switch' as const, target: 'ally' as const }, model });
+  } else if (chain) {
+    // the verse chain: the rule in one line, then the opponent's first line (a model beat: the pāda printed in full)
+    beats.push({ ...tplBeat('kathaChainRule', first.id), ...snap, fx: { kind: 'switch' as const, target: 'ally' as const } });
+    beats.push({ ...tplBeat('kathaChainSays', first.id), ...snap, model: chain.line });
   } else {
     const duel = spec.kind === 'duel';
     beats.push(withSa({ text: duel ? `${allyName(ally.id)} steps forward to answer.` : `Go, ${allyName(ally.id)}!`, ...snap, fx: { kind: 'switch' as const, target: 'ally' as const } }, saText(duel ? 'duelStepForward' : 'go', { x: saAlly(ally.id) })));
   }
-  const battle: BattleState = { spec, foeIndex: 0, foe, ally, active, phase, beats, participants: [active], turn: 0, ...(isKatha(state) && spec.kind !== 'duel' ? { foeActs: 0, ...(open.warn ? { warn: open.warn } : {}) } : {}) };
+  const battle: BattleState = { spec, foeIndex: 0, foe, ally, active, phase, beats, participants: [active], turn: 0, ...(isKatha(state) && spec.kind !== 'duel' ? { foeActs: 0, ...(open.warn ? { warn: open.warn } : {}) } : {}), ...(chain && alive.length > 0 ? { antya: chain.antya } : {}) };
   const fx: Fx[] = [...state.fx, { kind: 'music', track: spec.music }];
   return { ...state, mode: 'battle', battle, pending: { kind: 'battle' }, fx };
 }
@@ -371,6 +384,10 @@ interface Ctx {
   answer?: 'guard' | 'counter' | 'switch' | 'cover' | 'shield' | 'shieldHalf';
   /** how this boss warns (null: it does not) */
   plan: WarnPlan | null;
+  /** v0.5b P7: the boss phases begun (BattleState.bossPhases) */
+  phases: string[];
+  /** v0.5b P7: the save's story flags (a boss phase may wait for one, e.g. seen.aditya) */
+  flags: GameState['save']['flags'];
 }
 
 function beat(cx: Ctx, text: string, fx?: BattleBeat['fx'], sfx?: BattleBeat['sfx'], textSa?: string, recital?: BattleBeat['recital'], model?: BattleBeat['model'], tactic?: BattleBeat['tactic']): void {
@@ -509,7 +526,7 @@ function kathaAllyAct(cx: Ctx, mv: MoveDef, correct: boolean, k: KathaCast, wear
   if (k.recital && cx.spec.kind === 'duel' && !k.bound) beat(cx, `${me} answers with a line of verse!`, undefined, undefined, saText('kathaDuelRecite', { x: meSa }), k.recital);
   else if (k.recital) beat(cx, `${me} recites the line and invokes ${moveName(mv.id)}!`, undefined, undefined, saText('kathaRecite', { x: meSa, m: mv.id }), k.recital);
   // v0.5a: a decisive fitting astra's story beat names the cast itself, so the "uses" line is left out
-  else if (!(cx.tactics && !k.duel && correct && !weary && mv.power > 0 && isDecisive(cx.content, cx.chapter, cx.foe, mv.id))) beat(cx, cx.v.uses(me, moveName(mv.id)), undefined, undefined, saText(cx.v.sa.uses, { x: meSa, m: mv.id }));
+  else if (!(cx.tactics && !k.duel && correct && !weary && mv.power > 0 && isDecisive(cx.content, cx.chapter, cx.foe, mv.id, cx.flags))) beat(cx, cx.v.uses(me, moveName(mv.id)), undefined, undefined, saText(cx.v.sa.uses, { x: meSa, m: mv.id }));
   if (weary) beat(cx, `${me} is weary: with no PP left, the move is weak.`, undefined, undefined, saText('weary', { x: meSa }));
   const eff = (e: MoveEffect): MoveEffect => (correct ? e : halfEffect(e));
   // v0.5a tactics: answering a readied blow, astra fatigue (× 0.6, × 0.4 on a repeat) and the decisive fitting astra
@@ -519,18 +536,24 @@ function kathaAllyAct(cx: Ctx, mv: MoveDef, correct: boolean, k: KathaCast, wear
     if (ans) cx.answer = ans;
     tired = fatigueMult(cx.chain, cx.content, mv.id);
     cx.chain = nextChain(cx.chain, mv.id);
-    if (correct && !weary && mv.power > 0 && isDecisive(cx.content, cx.chapter, cx.foe, mv.id)) return decisiveHit(cx);
+    if (correct && !weary && mv.power > 0 && isDecisive(cx.content, cx.chapter, cx.foe, mv.id, cx.flags)) return decisiveHit(cx);
   }
   if (mv.power > 0) {
     const q = (correct ? (k.recalled ? KATHA_QUALITY.recalled : KATHA_QUALITY.full) : KATHA_QUALITY.half) * (weary ? 0.5 : 1) * tired;
     const d = damage(cx.ally, cx.foe, mv, q, variance(cx));
-    cx.foe.hp = Math.max(0, cx.foe.hp - d.amount);
+    // v0.5b P7: a boss phase's floor — a hit that does not fit cannot take the boss below it (Rāvaṇa's heads grow back)
+    const floor = cx.tactics && !k.duel ? phaseFloor(cx.content, cx.chapter, cx.foe, cx.ally, mv.id, cx.flags) : null;
+    const held = floor !== null && cx.foe.hp - d.amount < floor.hp;
+    const amount = held && floor ? Math.max(0, Math.min(d.amount, cx.foe.hp - floor.hp)) : d.amount;
+    cx.foe.hp = Math.max(0, cx.foe.hp - amount);
     // a miss: the element line first, then the falter, then the damage ("It is super effective! But the line falters: …")
     const half = correct ? null : halfLine(d.effective);
     const tiredLine = tired < 1 ? tplBeat('kathaTired') : null;
     const pre = (tiredLine ? `${tiredLine.text} ` : '') + (d.effective === 'super' ? 'It is super effective! ' : d.effective === 'weak' ? 'It is not very effective. ' : '') + (half ? `${half.text} ` : '');
-    const takesSa = saText(cx.v.sa.takes, { x: saFoe(cx.foe.id), n: d.amount });
-    beat(cx, `${pre}${cx.v.takes(foeName(cx.foe.id), d.amount)}`, { kind: 'hit', target: 'foe', amount: d.amount, ...(d.effective ? { effective: d.effective } : {}) }, 'tap', saJoin(...(tiredLine ? [tiredLine.textSa] : []), ...(d.effective ? [saEffect(d.effective)] : []), ...(half ? [half.textSa] : []), takesSa), undefined, undefined, tiredLine ? 'tired' : undefined);
+    const takesSa = saText(cx.v.sa.takes, { x: saFoe(cx.foe.id), n: amount });
+    // (a hit the floor stops entirely shows only the phase's line)
+    if (amount > 0 || !held) beat(cx, `${pre}${cx.v.takes(foeName(cx.foe.id), amount)}`, { kind: 'hit', target: 'foe', amount, ...(d.effective ? { effective: d.effective } : {}) }, 'tap', saJoin(...(tiredLine ? [tiredLine.textSa] : []), ...(d.effective ? [saEffect(d.effective)] : []), ...(half ? [half.textSa] : []), takesSa), undefined, undefined, tiredLine ? 'tired' : undefined);
+    phaseBeats(cx, held && floor ? floor : null);
     if (mv.effect && (cx.foe.hp > 0 || mv.effect.kind === 'drain')) applyEffect(cx, 'ally', eff(mv.effect));
   } else {
     if (!correct) cx.prefix = { text: 'The line falters: only half the power lands.', textSa: saText('kathaHalf') };
@@ -557,6 +580,57 @@ function decisiveHit(cx: Ctx): void {
   const t = tplBeat(fit?.beat ?? 'super');
   beat(cx, t.text, { kind: 'hit', target: 'foe', amount, effective: 'super' }, 'tap', t.textSa, undefined, undefined, 'fit');
   checkFoe(cx);
+}
+
+/**
+ * v0.5b P7: boss phases after a hit (logic-tactics phasesBegun / phaseFloor). The floor held the hit (`held`): its phase's
+ * beat (a head falls and a new one rises) and, if the fitting astra is spent, it comes back to hand (1 PP); then each
+ * phase that begins now shows its beat (Mātali's line, once) — a beat already shown this turn is not repeated.
+ */
+function phaseBeats(cx: Ctx, held: { fit?: string; phase: { beat?: string } } | null): void {
+  const shown = new Set<string>();
+  if (held) {
+    if (held.phase.beat) {
+      const t = tplBeat(held.phase.beat, cx.foe.id);
+      beat(cx, t.text, undefined, undefined, t.textSa);
+      shown.add(held.phase.beat);
+    }
+    const m = cx.party[cx.active];
+    if (held.fit && m && m.moves.includes(held.fit) && (m.pp[held.fit] ?? 0) <= 0) cx.party[cx.active] = { ...m, pp: { ...m.pp, [held.fit]: 1 } };
+  }
+  const r = phasesBegun(cx.content, cx.chapter, cx.foe, cx.phases, cx.flags);
+  cx.phases = r.begun;
+  for (const p of r.now) {
+    if (!p.beat || shown.has(p.beat)) continue;
+    const t = tplBeat(p.beat, cx.foe.id);
+    beat(cx, t.text, undefined, undefined, t.textSa);
+    shown.add(p.beat);
+  }
+}
+
+/**
+ * v0.5b (WP-C) the verse chain: the player's link — one beat: the line said (the recital; on a miss the right line, at
+ * half power: "But the line falters…"; a stumped opponent: × CHAIN_STUMPED, "{x} knows no line with that sound…") and
+ * the hit. The line's power only (the best damaging move, no PP, no secondary effect).
+ */
+function chainAllyAct(cx: Ctx, act: Extract<PlayerAct, { kind: 'chain' }>): void {
+  const said = withSa({ text: `${allyName(cx.ally.id)} answers with a line of verse!` }, saText('kathaDuelRecite', { x: saAlly(cx.ally.id) }));
+  const half = act.correct ? null : { text: 'But the line falters: only half the power lands.', textSa: saText('kathaHalfBut') };
+  const stumped = act.stumped ? tplBeat('kathaChainStumped', cx.foe.id) : null;
+  const q = (act.correct ? KATHA_QUALITY.full : CHAIN_MISS) * (act.stumped ? CHAIN_STUMPED : 1);
+  const d = damage(cx.ally, cx.foe, act.move, q, variance(cx));
+  cx.foe.hp = Math.max(0, cx.foe.hp - d.amount);
+  const parts = [said, ...(half ? [half] : []), ...(stumped ? [stumped] : []), withSa({ text: cx.v.takes(foeName(cx.foe.id), d.amount) }, saText(cx.v.sa.takes, { x: saFoe(cx.foe.id), n: d.amount }))];
+  beat(cx, parts.map((x) => x.text).join(' '), { kind: 'hit', target: 'foe', amount: d.amount }, 'tap', saJoin(...parts.map((x) => x.textSa)), { ...act.spoken, correct: act.correct });
+  checkFoe(cx);
+}
+
+/** v0.5b (WP-C) the verse chain: the opponent's turn — its line (a model beat: the pāda printed in full), never a blow. */
+function chainFoeLine(cx: Ctx, line: PadaRefT | null): void {
+  if (!line || cx.foe.hp <= 0 || cx.ally.hp <= 0) return;
+  cx.foe.stunned = false;
+  const t = tplBeat('kathaChainSays', cx.foe.id);
+  beat(cx, t.text, undefined, undefined, t.textSa, undefined, line);
 }
 
 /** v0.5a: a benched guardian steps in front of the readied blow with a guard move (one tap): its effect, and the blow is blunted. */
@@ -597,8 +671,10 @@ function foeStrike(cx: Ctx, w: NonNullable<BattleState['warn']>): void {
   const fn = foeName(cx.foe.id);
   const line = w.strike ? tplBeat(w.strike, cx.foe.id, mv.id) : withSa({ text: cx.v.foeUses(fn, moveName(mv.id)) }, saText(cx.v.sa.foeUses, { x: saFoe(cx.foe.id), m: mv.id }));
   beat(cx, line.text, undefined, undefined, line.textSa);
-  const d = damage(cx.foe, cx.ally, mv, KATHA_STRIKE, variance(cx));
-  let amount = Math.min(d.amount, Math.max(1, Math.round(cx.ally.maxHp * KATHA_STRIKE_CAP)));
+  // (v0.5b: a blow aimed elsewhere — the rain of blood on the altar — costs the heroes only its share, strikeScale)
+  const sc = strikeScale(cx.content, cx.chapter, cx.foe.id);
+  const d = damage(cx.foe, cx.ally, mv, KATHA_STRIKE * sc, variance(cx));
+  let amount = Math.min(d.amount, Math.max(1, Math.round(cx.ally.maxHp * KATHA_STRIKE_CAP * sc)));
   const blunt = cx.answer !== undefined;
   // a faltering verse shield protects half as well (the Kathā rule: a miss = half effect) and leaves no opening
   const half = cx.answer === 'shieldHalf';
@@ -785,7 +861,13 @@ function extraEffects(mv: MoveDef): MoveEffect[] {
 }
 
 /** `pass`: the hero's turn went elsewhere (a switch — `answer: 'switch'` braces the new hero for a readied blow —, an item, a failed run); `cover` (v0.5a): a benched guardian steps in */
-type PlayerAct = { kind: 'move'; move: MoveDef; correct: boolean; swift: boolean; weary: boolean; katha?: KathaCast } | { kind: 'pass'; answer?: 'switch' } | { kind: 'cover'; allyId: string; moveId: string } | { kind: 'shield'; correct: boolean; recital: { shlokaId: string; pada: number; correct: boolean } };
+type PlayerAct =
+  | { kind: 'move'; move: MoveDef; correct: boolean; swift: boolean; weary: boolean; katha?: KathaCast }
+  | { kind: 'pass'; answer?: 'switch' }
+  | { kind: 'cover'; allyId: string; moveId: string }
+  | { kind: 'shield'; correct: boolean; recital: { shlokaId: string; pada: number; correct: boolean } }
+  /** v0.5b (WP-C) a verse-chain link: the line said (`spoken`), the opponent's answer (`reply`) or, stumped, its fresh line */
+  | { kind: 'chain'; move: MoveDef; correct: boolean; spoken: PadaRefT; reply: PadaRefT | null; fresh?: PadaRefT; stumped: boolean };
 
 function finishTurn(state: GameState, cx: Ctx, b: BattleState): GameState {
   let s: GameState = { ...state, save: { ...state.save, party: cx.party } };
@@ -807,6 +889,8 @@ function finishTurn(state: GameState, cx: Ctx, b: BattleState): GameState {
     nb.chain = cx.chain;
     nb.warn = cx.foeDown ? undefined : cx.warn;
     nb.foeActs = cx.foeActs;
+    // v0.5b P7: the boss phases begun (only once a boss has phases: other battles carry no field)
+    if (cx.phases.length > 0 || b.bossPhases) nb.bossPhases = cx.phases;
   }
   return withBattle({ ...s, save: { ...s.save, party } }, nb);
 }
@@ -834,11 +918,12 @@ function makeCtx(state: GameState, content: GameContent, b: BattleState): { cx: 
 }
 
 /** v0.5a: the tactics part of a turn's context (off — `tactics: false` — outside Kathā wild / boss fights). */
-function tacticsCtx(state: GameState, content: GameContent, b: BattleState): Pick<Ctx, 'tactics' | 'chapter' | 'chain' | 'warn' | 'foeActs' | 'plan'> {
+function tacticsCtx(state: GameState, content: GameContent, b: BattleState): Pick<Ctx, 'tactics' | 'chapter' | 'chain' | 'warn' | 'foeActs' | 'plan' | 'phases' | 'flags'> {
   const on = isKatha(state) && b.spec.kind !== 'duel';
   const chapter = state.save.chapter;
-  if (!on) return { tactics: false, chapter, foeActs: 0, plan: null };
-  return { tactics: true, chapter, chain: b.chain, warn: b.warn, foeActs: b.foeActs ?? 0, plan: warnPlan(content, chapter, b.spec, b.foe) };
+  const flags = state.save.flags;
+  if (!on) return { tactics: false, chapter, foeActs: 0, plan: null, phases: [], flags };
+  return { tactics: true, chapter, chain: b.chain, warn: b.warn, foeActs: b.foeActs ?? 0, plan: warnPlan(content, chapter, b.spec, b.foe), phases: b.bossPhases ?? [], flags };
 }
 
 /** A content/sa-battle.json template as a beat: its English (`{x}` / `{m}` filled with name markup) and its Sanskrit. */
@@ -872,6 +957,10 @@ function resolveTurn(state0: GameState, content: GameContent, act: PlayerAct): G
   } else if (act.kind === 'shield') {
     shieldAct(cx, act.correct, act.recital);
     foeTurn();
+  } else if (act.kind === 'chain') {
+    // the verse chain: the player's link first, then the opponent's line (its answer, or a fresh line when stumped)
+    chainAllyAct(cx, act);
+    if (!cx.foeDown) chainFoeLine(cx, act.reply ?? act.fresh ?? null);
   } else {
     // a readied blow is slow (v0.5a): the hero acts first, so an answer comes in time
     const allyFirst = cx.echo || (cx.tactics && !!cx.warn) || cx.ally.spd >= cx.foe.spd;
@@ -926,6 +1015,7 @@ function afterBeats(state: GameState, content: GameContent): GameState {
     foeAct(cx);
     return finishTurn(s2, cx, s2.battle as BattleState);
   }
+  if (isKatha(state) && b.spec.kind === 'duel' && b.antya) return chainDuelTurn(state, content, b);
   if (isKatha(state) && b.spec.kind === 'duel') return kathaDuelTurn(state, content, b);
   return withBattle(state, { ...b, phase: 'command' });
 }
@@ -1094,6 +1184,41 @@ function kathaDuelTurn(state: GameState, content: GameContent, b: BattleState): 
   return { ...s, battle: { ...b, phase: 'challenge', pendingMove: mv.id, casts: casts + 1 }, pending: { kind: 'challenge', challenge, context: 'battle' } };
 }
 
+/**
+ * v0.5b (WP-C) the verse chain's player turn: straight to the 'antya' pick (logic-chain chainOptions) with no command
+ * menu — the chain reset to "any line" first when no unused heard pāda opens with the key (chainReady). The line carries
+ * the power of the hero's best damaging move (duelMove; no PP). Nothing to pick (no heard verse): the ordinary Kathā duel.
+ */
+function chainDuelTurn(state: GameState, content: GameContent, b: BattleState): GameState {
+  const mv = duelMove(b.ally, b.foe, content);
+  const antya = chainReady(state, content, b.antya as NonNullable<BattleState['antya']>);
+  const r = mv ? chainOptions(state, content, antya) : null;
+  if (!r || !mv) return kathaDuelTurn(state, content, { ...b, antya: undefined });
+  return { ...r.state, battle: { ...b, antya, phase: 'challenge', pendingMove: mv.id }, pending: { kind: 'challenge', challenge: r.challenge, context: 'battle' } };
+}
+
+/**
+ * v0.5b (WP-C) the verse chain's pick resolves the turn directly (no feedback phase): the picked line (logic-chain
+ * chainTurn: a wrong chip says the right line, at half power), the opponent's answer or its fresh line when stumped.
+ */
+function chainAnswer(state: GameState, content: GameContent, answer: { option?: string; timeMs?: number }): GameState {
+  const b = state.battle as BattleState;
+  const p = state.pending;
+  if (p?.kind !== 'challenge' || !b.antya || !b.pendingMove || !p.challenge.antya) return state;
+  const ch = p.challenge;
+  const i = (ch.options ?? []).findIndex((o) => o.id === answer.option);
+  const pick = ch.antya?.lines[i];
+  if (i < 0 || !pick) return state;
+  const correct = (ch.answers ?? []).includes(answer.option as string);
+  const t = chainTurn(state, content, b.antya, pick);
+  const timeMs = typeof answer.timeMs === 'number' && Number.isFinite(answer.timeMs) ? Math.max(0, answer.timeMs) : 0;
+  const s = recordResult(state, ch, { correct, swift: false, timeMs });
+  const mv = must(indexOf(content).move, b.pendingMove, 'move');
+  const s0: GameState = { ...s, pending: { kind: 'battle' }, battle: { ...b, phase: 'beats', pendingMove: undefined, antya: t.antya } };
+  const s1 = resolveTurn(s0, content, { kind: 'chain', move: mv, correct, spoken: t.spoken, reply: t.reply, ...(t.reply === null && t.antya.prev ? { fresh: t.antya.prev } : {}), stumped: t.reply === null });
+  return { ...s1, fx: [...s1.fx, { kind: 'sfx', name: correct ? 'correct' : 'wrong' }] };
+}
+
 /** Kathā: a smarana answer resolves the turn directly (no feedback phase); `lastSmarana` lets the view animate it. */
 function kathaAnswer(state: GameState, content: GameContent, answer: { picks?: unknown; auto?: unknown; timeMs?: unknown }): GameState {
   const b = state.battle as BattleState;
@@ -1127,6 +1252,7 @@ function doAnswer(state: GameState, content: GameContent, answer: { option?: str
   const p = state.pending;
   if (p?.kind !== 'challenge') return state;
   if (p.challenge.kind === 'smarana') return kathaAnswer(state, content, answer as { picks?: unknown; auto?: unknown; timeMs?: unknown });
+  if (p.challenge.kind === 'antya') return chainAnswer(state, content, answer);
   const result = grade(p.challenge, answer, false);
   const s = recordResult(state, p.challenge, result);
   return {

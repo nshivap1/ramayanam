@@ -8,6 +8,9 @@
  *    the foe open); ignored it is capped; wild fights, duels and the practice game never warn
  *  - fatigue: the same astra on consecutive turns × 0.6, then × 0.4; another move resets it; plain moves never tire
  *  - grants: Viśvāmitra's astras reach Rāma when Tāṭakā falls (Kathā only); roles: Lakṣmaṇa covers from the bench
+ *  - v0.5b P7 (WP-C) boss phases: Rāvaṇa's heads grow back — from half strength a blow that is not the brahmāstra
+ *    cannot take him below 40 % while Rāma holds it (a held blow shows the heads line; a spent brahmāstra comes back to
+ *    hand); Mātali's line plays once; the brahmāstra ends it; every bot wins, the strategic one in ≤ 15 turns
  * This file holds no Sanskrit: every string comes from the content.
  */
 import { test } from 'node:test';
@@ -40,7 +43,10 @@ import {
 import { SA_BATTLE, battleAction, saText, startBattle } from './logic-battle';
 import { fighterFromEnemy, newMember } from './logic-progress';
 import { newGame, reduce } from './logic';
-import { strategicChoice } from './logic-sim';
+import { botActions, strategicChoice } from './logic-sim';
+import { createRng } from '@sdk';
+import { existsSync } from 'node:fs';
+import { phaseFloor, phasesBegun, phasesOf, strikeScale } from './logic-tactics';
 import { getOracle } from './sa-verify';
 
 const C = loadContent();
@@ -294,6 +300,27 @@ test('warnings: Subāhu’s rain of blood is readied in the opening (Bāla 1.30.
   assert.ok(!practice.beats.some((x) => x.tactic));
 });
 
+test('warnings (v0.5b): the rain of blood falls on the altar — it costs the heroes half a great blow (strikeScale, Bāla 1.30.12); the Mānava answers it (1.30.15); other blows are unchanged', () => {
+  assert.equal(strikeScale(C, 1, 'subahu'), 0.5);
+  assert.equal(strikeScale(C, 1, 'maricha'), 0.5);
+  assert.equal(strikeScale(C, 1, 'tataka'), 1, 'Tāṭakā’s stones fall on the heroes');
+  assert.equal(strikeScale(C, 3, 'maricha'), 1, 'only the sacrifice of Book 1');
+  for (const w of T.warnings) {
+    const k = (w as { strikeScale?: number }).strikeScale;
+    if (k !== undefined) assert.ok(k > 0 && k <= 1 && /1\.30\.12/.test(w.source), `${w.foe}: a share in (0, 1] with its source`);
+  }
+  const warn = { foeId: 'subahu', moveId: 'x', counter: T.warnings.find((w) => w.foe === 'subahu')!.counter ?? [] };
+  assert.equal(answerOf(C, warn, 'manavastra'), 'counter', 'the Mānava scatters them (1.30.15)');
+  // an unanswered rain: at most half the usual cap of the hero's HP
+  const party = [member('rama', 8, ['bana', 'agneyastra']), member('lakshmana', 8, ['bana'])];
+  let s = toCommand(startBattle(kState(party, { heard: ['s-ma-nishada'] }), C, spec([['subahu', 7]], 'boss', 'rama')));
+  assert.ok(s.battle!.warn, 'readied in the opening');
+  const hp0 = s.battle!.ally.hp;
+  const n = cast(s, 'bana');
+  const strike = turnBeats(s, n).find((b) => b.fx?.kind === 'hit' && b.fx.target === 'ally')!;
+  assert.ok(strike.fx!.amount! <= Math.max(1, Math.round(s.battle!.ally.maxHp * KATHA_STRIKE_CAP * 0.5)), `half the cap (${strike.fx!.amount} of ${hp0})`);
+});
+
 // ───────────────────────── fatigue ─────────────────────────
 
 test('fatigue: the same astra on consecutive turns lands × 0.6, then × 0.4 (a tired beat), another move resets it; plain moves never tire', () => {
@@ -378,4 +405,177 @@ test('the strategic bot: the decisive astra first; with a blow readied a counter
   let r = toCommand(startBattle(kState([member('rama', 20, ['agneyastra', 'varunastra'])]), C, spec([['kumbhakarna', 26]], 'wild')));
   r = toCommand(cast(noFoe(r), 'agneyastra'));
   assert.equal(pick(r), 'varunastra');
+});
+
+// ───────────────────────── boss phases (v0.5b P7, WP-C) ─────────────────────────
+
+/** Rāvaṇa's fight as the story reaches it (party and moves of a Kathā playthrough at Book 6, level floor 33). */
+const RAMA6 = ['dharma_vigraha', 'aditya_hrdaya', 'brahmastra', 'vayavyastra'];
+const HEARD6 = ['s-ramo-vigrahavan', 's-aditya-hrdayam', 's-ma-nishada', 's-jayatyatibalo', 's-sakrdeva', 's-anirvedah'];
+/** The flag package E's Āditya-hṛdayam cutscene sets (Yuddha 6.105): Rāvaṇa's finishing phases wait for it. */
+const HYMN = 'seen.aditya';
+function ravanaFight(ramaMoves = RAMA6, o: { style?: 'katha' | 'abhyasa'; seed?: number; hymn?: boolean } = {}): GameState {
+  const party = [member('player', 33, ['pada_bana', 'lipi_raksha', 'shoka_shloka', 'shuddha_vak']), member('hanuman', 33, ['vayu_vega', 'gada', 'jaya_ghosha']), member('rama', 33, ramaMoves), member('lakshmana', 33, ['bana', 'khadga', 'agni_bana', 'viddhi'])];
+  const s0 = kState(party, { chapter: 6, heard: HEARD6, ...(o.style ? { style: o.style } : {}), ...(o.hymn === false ? {} : { flags: [HYMN] }) });
+  return startBattle({ ...s0, seed: o.seed ?? 5 }, C, spec([['ravana', 30]], 'boss', 'rama'));
+}
+
+/**
+ * Package E's cutscene (logic-cutscene.ts `cutsceneDue`, the action `cutscene-done` sets seen.aditya) when its module is
+ * there; otherwise its effect: the flag, the first time Rāvaṇa is at or below 60 %.
+ */
+type CutsceneMod = { cutsceneDue: (s: GameState, c: typeof C) => unknown };
+const cutsceneMod: Promise<CutsceneMod | null> = (async () => {
+  const url = new URL('./logic-cutscene.ts', import.meta.url);
+  if (!existsSync(url)) return null;
+  return (await import(url.href)) as CutsceneMod;
+})();
+async function hymnIfDue(s: GameState): Promise<GameState> {
+  const b = s.battle;
+  if (!b || b.foe.id !== 'ravana' || s.save.flags[HYMN]) return s;
+  const mod = await cutsceneMod;
+  if (mod) return mod.cutsceneDue(s, C) ? reduce(s, C, { type: 'cutscene-done', id: 'aditya-hridayam' } as unknown as Parameters<typeof reduce>[2]) : s;
+  return b.foe.hp <= Math.ceil(b.foe.maxHp * 0.6) ? { ...s, save: { ...s.save, flags: { ...s.save.flags, [HYMN]: true } } } : s;
+}
+const tplEn = (k: string): string => SA_BATTLE.templates[k]!.en;
+/** All beats queued by a state (the turn's narration, before it is advanced). */
+const queued = (s: GameState): BattleBeat[] => s.battle?.beats ?? [];
+
+test('phases content: every phase names a real foe, its fitting move and a sa-battle beat, with a source; Rāvaṇa: the heads from half strength (floor 40 %, the brahmāstra fits), Mātali once', () => {
+  const problems: string[] = [];
+  for (const p of T.phases ?? []) {
+    if (!idx.enemy.has(p.foe) || !p.source.trim() || !p.id) problems.push(`phase ${p.id}: foe / source`);
+    if (p.fit !== undefined && !idx.move.has(p.fit)) problems.push(`phase ${p.id}: fit ${p.fit}`);
+    if (p.beat !== undefined && !SA_BATTLE.templates[p.beat]) problems.push(`phase ${p.id}: beat ${p.beat}`);
+    if (!(p.below > 0 && p.below < 1) || (p.floor !== undefined && !(p.floor > 0 && p.floor < p.below))) problems.push(`phase ${p.id}: shares`);
+    const sa = p.beat ? saText(p.beat) : undefined;
+    if (p.beat && (!sa || !getOracle().verifyLine(sa, {}).ok)) problems.push(`phase ${p.id}: beat does not verify: ${sa}`);
+  }
+  assert.deepEqual(problems, []);
+  const r = phasesOf(C, 6, 'ravana');
+  assert.deepEqual(r.map((p) => [p.below, p.floor, p.fit, p.once ?? false, p.requires]), [[0.5, 0.4, 'brahmastra', false, HYMN], [0.4, undefined, undefined, true, HYMN]], 'both wait for the Āditya-hṛdayam (Yuddha 6.105)');
+  assert.ok(/6\.107/.test(r[0]!.source) && /6\.108/.test(r[1]!.source), 'Yuddha 6.107 (the heads), 6.108 (Mātali)');
+  assert.deepEqual(phasesOf(C, 5, 'ravana'), [], 'Book 6 only');
+  // the floor holds for a hero who holds the brahmāstra, for every move but the brahmāstra
+  const rv = fighterFromEnemy('ravana', 30, C);
+  const hymn = { [HYMN]: true as const };
+  assert.equal(phaseFloor(C, 6, rv, { moves: RAMA6 }, 'dharma_vigraha', hymn)?.hp, Math.ceil(rv.maxHp * 0.4));
+  assert.equal(phaseFloor(C, 6, rv, { moves: RAMA6 }, 'brahmastra', hymn), null);
+  assert.equal(phaseFloor(C, 6, rv, { moves: ['bana', 'khadga'] }, 'bana', hymn), null, 'after the hymn a hero without the brahmāstra is never held back');
+  assert.equal(phaseFloor(C, 6, rv, { moves: RAMA6 }, 'brahmastra', {})?.hp, Math.ceil(rv.maxHp * 0.4), 'before the hymn the brahmāstra is held too');
+  assert.equal(phaseFloor(C, 6, rv, { moves: ['bana'] }, 'bana', {})?.hp, Math.ceil(rv.maxHp * 0.4), 'before the hymn every hero is held');
+  assert.equal(isDecisive(C, 6, { ...rv, hp: 1 }, 'brahmastra', {}), false, 'before the hymn the brahmāstra is not decisive');
+  assert.equal(isDecisive(C, 6, { ...rv, hp: 1 }, 'brahmastra', hymn), true);
+  // phases begin at their share, `once` stays, the others may begin again
+  const half = { ...rv, hp: Math.ceil(rv.maxHp * 0.5) };
+  assert.deepEqual(phasesBegun(C, 6, half, [], hymn).now.map((p) => p.id), ['ravana_heads']);
+  assert.deepEqual(phasesBegun(C, 6, half, [], {}).now, [], 'before the hymn no phase begins');
+  assert.deepEqual(phasesBegun(C, 6, { ...rv, hp: Math.ceil(rv.maxHp * 0.4) }, ['ravana_heads'], hymn).now.map((p) => p.id), ['ravana_matali']);
+  assert.deepEqual(phasesBegun(C, 6, rv, ['ravana_heads', 'ravana_matali'], hymn).begun, ['ravana_matali'], 'healed above half: the heads may begin again; Mātali stays said');
+  assert.deepEqual(phasesBegun(C, 6, { ...rv, hp: 0 }, [], hymn).now, [], 'never for a fallen foe');
+});
+
+test('phases: before the Āditya-hṛdayam (Yuddha 6.105; seen.aditya) Rāvaṇa cannot be finished — every blow, the brahmāstra too, is held at 40 %, no phase begins; once the hymn is heard, Mātali speaks and the brahmāstra ends it', () => {
+  let s = toCommand(ravanaFight(RAMA6, { hymn: false }));
+  const floor = Math.ceil(s.battle!.foe.maxHp * 0.4);
+  const beats: BattleBeat[] = [];
+  const moves = ['dharma_vigraha', 'brahmastra', 'vayavyastra', 'brahmastra'];
+  for (let i = 0; i < 24; i++) {
+    const n = cast(noFoe(s), moves[i % moves.length]!);
+    beats.push(...queued(n));
+    s = toCommand(n);
+    assert.ok(s.battle!.foe.hp >= floor && s.battle!.phase !== 'won', `turn ${i}: Rāvaṇa ${s.battle!.foe.hp} ≥ ${floor}`);
+  }
+  assert.equal(s.battle!.foe.hp, floor, 'held at 40 %');
+  assert.ok(!beats.some((b) => b.tactic === 'fit'), 'the brahmāstra is not decisive yet');
+  assert.ok(!beats.some((b) => b.text === tplEn('kathaMatali')), 'Mātali waits for the hymn');
+  assert.ok(beats.some((b) => b.text === tplEn('kathaHeads')), 'a held blow: the head grows back');
+  assert.ok(!(s.battle!.bossPhases ?? []).length, 'no phase has begun');
+  // the hymn (package E's cutscene sets the flag); the next blow that the heads hold brings Mātali's line, once
+  s = { ...s, save: { ...s.save, flags: { ...s.save.flags, [HYMN]: true } } };
+  const m = cast(noFoe(s), 'dharma_vigraha');
+  assert.equal(queued(m).filter((b) => b.text === tplEn('kathaMatali')).length, 1, 'Mātali speaks');
+  const end = cast(toCommand(m), 'brahmastra');
+  assert.ok(queued(end).some((b) => b.tactic === 'fit'));
+  assert.equal(end.battle!.phase, 'won');
+});
+
+test('phases: Rāvaṇa’s heads grow back — from half strength a blow that is not the brahmāstra cannot take him below 40 % (the heads line each time); Mātali’s line plays once; then the brahmāstra ends it (Yuddha 6.107–108)', () => {
+  let s = toCommand(ravanaFight());
+  const floor = Math.ceil(s.battle!.foe.maxHp * 0.4);
+  const beats: BattleBeat[] = [];
+  for (let i = 0; i < 24; i++) {
+    const n = cast(noFoe(s), i % 2 ? 'vayavyastra' : 'dharma_vigraha');
+    beats.push(...queued(n));
+    s = toCommand(n);
+    assert.ok(s.battle!.foe.hp >= floor, `turn ${i}: Rāvaṇa ${s.battle!.foe.hp} ≥ ${floor}`);
+  }
+  assert.equal(s.battle!.foe.hp, floor, 'held at 40 %');
+  const heads = beats.filter((b) => b.text === tplEn('kathaHeads'));
+  assert.ok(heads.length >= 3, `the heads line at half strength and on each held blow (${heads.length})`);
+  assert.ok(heads.every((b) => b.textSa === saText('kathaHeads')), 'with its Sanskrit');
+  assert.equal(beats.filter((b) => b.text === tplEn('kathaMatali')).length, 1, 'Mātali speaks once');
+  assert.deepEqual(s.battle!.bossPhases, ['ravana_heads', 'ravana_matali']);
+  // the brahmāstra ends it (the decisive story beat)
+  const end = cast(s, 'brahmastra');
+  assert.ok(queued(end).some((b) => b.tactic === 'fit' && b.text === tplEn('kathaFitBrahma')));
+  assert.equal(end.battle!.foe.hp, 0);
+  assert.equal(end.battle!.phase, 'won');
+});
+
+test('phases: a spent brahmāstra comes back to hand when the heads hold; a hero without it is never held back; other bosses and the practice game carry no phases', () => {
+  let s = toCommand(ravanaFight());
+  const ri = s.battle!.active;
+  s = { ...s, save: { ...s.save, party: s.save.party.map((m, i) => (i === ri ? { ...m, pp: { ...m.pp, brahmastra: 0 } } : m)) } };
+  for (let i = 0; i < 24 && (s.save.party[ri]!.pp['brahmastra'] ?? 0) === 0; i++) s = toCommand(cast(noFoe(s), i % 2 ? 'vayavyastra' : 'dharma_vigraha'));
+  assert.equal(s.save.party[ri]!.pp['brahmastra'], 1, 'the brahmāstra is back in hand');
+  assert.equal(s.battle!.foe.hp, Math.ceil(s.battle!.foe.maxHp * 0.4));
+  // without the brahmāstra equipped the fight is an ordinary one
+  let t = toCommand(ravanaFight(['dharma_vigraha', 'aditya_hrdaya', 'vayavyastra', 'agneyastra']));
+  for (let i = 0; i < 40 && t.battle!.phase !== 'won'; i++) t = toCommand(cast(noFoe(t), i % 2 ? 'vayavyastra' : 'dharma_vigraha'));
+  assert.equal(t.battle!.phase, 'won', 'never held back');
+  // other bosses: no field; the practice game: no field, no floor
+  const k = toCommand(cast(noFoe(toCommand(startBattle(kState([member('rama', 33, RAMA6)], { chapter: 6, heard: HEARD6 }), C, spec([['kumbhakarna', 26]], 'boss', 'rama')))), 'dharma_vigraha'));
+  assert.equal(k.battle!.bossPhases, undefined);
+  const p = ravanaFight(RAMA6, { style: 'abhyasa' });
+  assert.equal(p.battle!.bossPhases, undefined);
+});
+
+test('phases: every bot beats Rāvaṇa — strategic (≤ 15 turns), spammer, 70 % and careless 70 % reciters, with the Āditya-hṛdayam at 60 % (package E’s cutscene, or its effect); Mātali speaks at most once a fight', async () => {
+  const BOTS = [
+    { name: 'strategic', policy: 'strategic' as const, accuracy: 1 },
+    { name: 'spammer', policy: 'spam' as const, accuracy: 1 },
+    { name: '70 %', accuracy: 0.7 },
+    { name: 'careless 70 %', accuracy: 0.7, careless: 0.5 },
+  ];
+  const mean: Record<string, number> = {};
+  for (const bot of BOTS) {
+    const turns: number[] = [];
+    for (let seed = 1; seed <= 25; seed++) {
+      let s = ravanaFight(RAMA6, { seed, hymn: false });
+      const ctx = { recited: false, rested: false, reciter: { accuracy: bot.accuracy, rng: createRng(seed) }, ...(bot.careless ? { careless: { chance: bot.careless, rng: createRng(seed + 99) } } : {}), ...(bot.policy ? { policy: bot.policy } : {}) };
+      let matali = 0;
+      for (let n = 0; n < 3000 && s.battle && !(['won', 'lost'].includes(s.battle.phase) && s.battle.beats.length === 0); n++) {
+        if (s.battle.phase === 'command') s = await hymnIfDue(s);
+        const before = s;
+        for (const a of botActions(s, C, ctx)) {
+          const nx = battleAction(s, C, a);
+          if (nx !== s) {
+            s = nx;
+            break;
+          }
+        }
+        if (s === before) break;
+        // a turn resolves from an empty queue: the beats it adds are the new tail
+        if (s.battle && before.battle && s.battle.beats.length > before.battle.beats.length) matali += s.battle.beats.slice(before.battle.beats.length).filter((b) => b.text === tplEn('kathaMatali')).length;
+      }
+      assert.equal(s.battle?.phase, 'won', `${bot.name} seed ${seed}: Rāvaṇa falls (turn ${s.battle?.turn}, ${s.battle?.foe.hp} HP)`);
+      assert.ok(s.save.flags[HYMN], 'the hymn came first');
+      assert.ok(matali <= 1, `${bot.name} seed ${seed}: Mātali speaks at most once (${matali})`);
+      turns.push(s.battle!.turn);
+    }
+    mean[bot.name] = turns.reduce((a, b) => a + b, 0) / turns.length;
+    if (bot.policy === 'strategic') assert.ok(Math.max(...turns) <= 15, `strategic: at most 15 turns (${Math.max(...turns)})`);
+  }
+  assert.ok((mean['spammer'] as number) > (mean['strategic'] as number), `the spammer is slower (${JSON.stringify(mean)})`);
 });

@@ -426,7 +426,7 @@
      "y": 9,
      "facing": "left",
      "event": "ch1.krauncha_birds",
-     "showIf": "!ch1.krauncha_seen"
+     "showIf": "!ch1.krauncha_seen&!ch1.krauncha_fell"
     },
     {
      "id": "krauncha_b",
@@ -1156,13 +1156,50 @@
      "portrait": "valmiki"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "face": "krauncha_a",
+       "dir": "down"
+      },
+      {
+       "face": "krauncha_b",
+       "dir": "up"
+      }
+     ]
+    },
+    {
      "say": "In a tree by the water, a pair of krauncha birds sing to each other, never apart."
     },
     {
      "music": "sorrow"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "move": "hunter",
+       "path": [
+        "right",
+        "right"
+       ]
+      },
+      {
+       "set": "ch1.krauncha_fell"
+      }
+     ]
+    },
+    {
      "say": "Then a {w:nishada} (hunter) looses an arrow from the bushes. The male bird falls to the sand, and his mate cries out over him."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "face": "valmiki",
+       "dir": "left"
+      }
+     ]
     },
     {
      "say": "Valmiki's heart fills with pity. Words rise out of his grief, measured and whole."
@@ -1183,6 +1220,24 @@
      "say": "Four quarters, eight syllables in each, fit to be sung to the strings of the vina. Let it be called a verse, and nothing else.",
      "who": "person.valmiki",
      "portrait": "valmiki"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "face": "valmiki",
+       "dir": "up"
+      },
+      {
+       "say": "Say the first quarter with me, {player}.",
+       "who": "person.valmiki",
+       "portrait": "valmiki"
+      },
+      {
+       "smarana": "s-ma-nishada",
+       "pada": 0
+      }
+     ]
     },
     {
      "quiz": "artha",

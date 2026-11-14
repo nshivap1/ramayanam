@@ -200,3 +200,34 @@ duel and the practice game never reach it (a practice battle state carries none 
   strategic 138.9 (before 137.4) · 70 % 166.9 (156.9) · careless 133.5 (131.9) · spammer 136.2 (138.2); distinct verses
   recited in story fights: strategic 7.0 (before 5.0), spammer 3.0. Est. playthrough (strategic): 109 min (before 114).
   The sacrifice fight is 2 turns for a strategic player (the text's two decisive astras), ~20 for a spammer.
+
+## v0.5 (v0.5b): story set pieces, Hanumān, verse chains, the Āditya-hṛdayam, Lava–Kuśa (14 Nov)
+Plan: `notes/v05b-plan.md`; ownership `notes/v05b-ownership.md`; each package's design, decisions and checks in
+`notes/v05b-a.md` … `v05b-e.md`; the first Sanskrit review in `notes/v05b-rev1.md` (the second in REVIEW.md).
+Rules that hold for every set piece:
+- **Kathā only.** Each set piece is a `{ "if": "style.katha", "then": [...], "else": [...] }` block (or a Kathā-only
+  `requires`), and Kathā-only walkthrough steps carry `style: 'katha'` (skipped by guideStep, runWalkthrough, runGuide
+  and the e2e bot in the practice journey). The practice journey runs the v0.5a commands: the "v0.5b guard" hash in
+  logic.test (`V05A_PRACTICE`, seeds 1–3 × L2–4) and `V03_SNAPSHOT` are unchanged.
+- **Sanskrit files.** New Kathā lines go to sa-dialogue-6 (ch1–3), 7 (ch4), 8 (ch5), 9 (ch6); file 5 is frozen
+  (`FILE5_V05A`). New interface strings: sa-ui-scene, sa-ui-chain, sa-ui-setu; the hymn's narration and controls live in
+  `content/aditya-hridayam.json → ui / narration` (checked in cutscene.test). Numbers are Devanagari digits.
+- **Nothing can be lost.** A missed recitation shows the right word and the script goes on; a misread question returns
+  to the question; the bridge locks true stones; stealth sends Hanumān back with no fight; the chain duel never strikes.
+- **Engine pieces** (types.ts): P1 `{smarana, pada | "least"}` (logic-scene.ts, RecitePanel with context 'scene');
+  P2 `{book: n}` (BookEnd in review mode); P3 `TriggerDef.avoid` (findPath treats an active one as a wall); P4
+  `playerSprite(save)` ('hanuman' only in Kathā, chapter 5, flag `katha.hanuman`); P5 `{setu}` (logic-setu.ts,
+  view-setu.tsx); P6 `Challenge.kind 'antya'` (logic-chain.ts, view-chain.tsx); P7 `tactics.phases` with an optional
+  `requires` flag condition; warnings may carry `strikeScale` (the rain of blood falls on the altar: × 0.5).
+- **The hymn gate.** In Kathā, Rāvaṇa's phases (`ravana_heads`, `ravana_matali`) require `seen.aditya`; until the
+  cutscene has played every blow is held at 40 %. `cutsceneDue` (logic-cutscene.ts): Rāvaṇa's battle in book 6, no
+  `seen.aditya`, the first calm moment he is shown at ≤ 60 %. The view plays the scene and dispatches `cutscene-done`
+  (sets the flag); logic-sim's Kathā bot dispatches it itself, so every story bot reaches the ending. The practice bot
+  never dispatches it (the practice game reads nothing of it).
+- **Integration (orchestrator, 14 Nov):** the ending panel routes Kathā to `KathaEnding` (view-bookend) after the
+  recital and keeps the practice ending; `ch6.shore_start` unsets `katha.hanuman` for older saves; Rāvaṇa's battle has
+  `lead: "rama"`; the Kathā battle check allows the 'smarana' and 'antya' kinds; in Kathā `ch6.agastya` skips its
+  "Ravana himself is coming out to fight…" line (that moment is now the cutscene's); Akṣa's warned blow (ch5, Hanumān
+  leads alone) is countered by Hanumān's `vayu_vega` (katha.json warnings, Sundara 5.47.23: between the arrows like the
+  wind). Without it the spammer bot lost Akṣa in 2 of 75 runs (a crit on an ignored strike, Akṣa at 1–2 HP); after it:
+  0 losses for all four bots, Akṣa strategic 6.4 / spammer 8.0 turns, bosses spammer / strategic 11.03 / 8.03 = 1.37.

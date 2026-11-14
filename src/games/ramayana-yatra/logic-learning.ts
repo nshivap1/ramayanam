@@ -442,7 +442,7 @@ export function unlockedKinds(save: SaveData, level?: Level): ChallengeKind[] {
   if (reader === 'sa') return KIND_ORDER.filter((k) => !READER_SKIPS.sa.includes(k));
   const ch = Math.max(save.chapter, ...save.completedChapters.map((k) => Math.min(6, k + 1)), 1);
   const early = level !== undefined && level >= 4 ? 1 : 0;
-  const at: Record<ChallengeKind, number> = { artha: 1, lipi: 1, purana: 2, krama: 3, viccheda: 4 - early, vibhakti: 5 - early, smarana: 99 }; // smarana is never drawn at random (Kathā builds it for a pāda)
+  const at: Record<ChallengeKind, number> = { artha: 1, lipi: 1, purana: 2, krama: 3, viccheda: 4 - early, vibhakti: 5 - early, smarana: 99, antya: 99 }; // smarana / antya are never drawn at random (Kathā builds them for a pāda / a chain duel)
   const kinds = KIND_ORDER.filter((k) => ch >= at[k]);
   return reader ? kinds.filter((k) => !READER_SKIPS[reader].includes(k)) : kinds;
 }
@@ -465,7 +465,7 @@ export function readerChain(kind: ChallengeKind, reader: Reader, unlocked: reado
   const skip = READER_SKIPS[reader];
   const out: ChallengeKind[] = [];
   const add = (k: ChallengeKind, open: boolean): void => {
-    if (k !== 'smarana' && !skip.includes(k) && !out.includes(k) && (open || !gate || unlocked.includes(k))) out.push(k);
+    if (k !== 'smarana' && k !== 'antya' && !skip.includes(k) && !out.includes(k) && (open || !gate || unlocked.includes(k))) out.push(k);
   };
   const hard = reader === 'sa' ? rng.shuffle([...HARD_KINDS]) : [];
   const others: ChallengeKind[] = reader === 'sa' ? [...hard, 'artha'] : [...KIND_ORDER];
@@ -490,6 +490,7 @@ function fallbackOf(kind: ChallengeKind): ChallengeKind | null {
       return 'lipi';
     case 'lipi':
     case 'smarana':
+    case 'antya':
       return null;
   }
 }
@@ -1044,6 +1045,7 @@ const BUILDERS: Record<ChallengeKind, (cx: Ctx) => Challenge | null> = {
   viccheda: buildViccheda,
   vibhakti: buildVibhakti,
   smarana: () => null, // Kathā: built for a specific pāda by kc-core (notes/katha.md), never drawn at random
+  antya: () => null, // v0.5b (WP-C): built by logic-chain for a verse-chain duel turn, never drawn at random
 };
 
 function placeholder(id: string, kind: ChallengeKind, content?: GameContent): Challenge {

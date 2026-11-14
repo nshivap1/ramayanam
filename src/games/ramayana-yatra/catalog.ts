@@ -21,6 +21,7 @@ export const TILE_IDS = [
   'lamp', 'gate', 'market_stall', 'banner', 'city_wall',
   // ── Laṅkā / battlefield ──
   'lanka_wall', 'lanka_floor', 'lanka_roof', 'lanka_door', 'battle_ground', 'torch',
+  'roof_fire', // v0.5b (WP-B): a burning roof Hanumān steps onto (Sundara 5.53–55); walkable
   // ── misc ──
   'void',
 ] as const;
@@ -64,6 +65,7 @@ export const SPRITE_IDS = [
   'hanuman', 'sugriva', 'jambavan', 'angada', 'vanara',
   'vibhishana', 'rakshasa', 'rakshasi', 'ravana', 'kumbhakarna', 'indrajit', 'lanka_devi', 'surasa',
   'golden_deer', 'krauncha', 'hunter',
+  'kusha', 'lava', // v0.5b (WP-D): Kuśa and Lava, Vālmīki's pupils who sing the poem in Rāma's court (Bāla 1.4)
 ] as const;
 export type SpriteId = (typeof SPRITE_IDS)[number];
 

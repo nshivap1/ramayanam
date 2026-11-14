@@ -1105,6 +1105,42 @@ function lankaRoof(p: Pix): void {
   p.set(12, 9, R.gold[1]);
 }
 
+/**
+ * v0.5b (WP-B): a Laṅkā roof ablaze (Sundara 5.54). The same scalloped tiles as lankaRoof, scorched to ember red with
+ * rims glowing orange, embers that wink from frame to frame and three tongues of flame swaying out of step.
+ */
+function roofFire(p: Pix, f: number): void {
+  p.rect(0, 0, 16, 16, R.red[4]);
+  for (let row = 0; row < 4; row++) {
+    const y = row * 4;
+    const off = row % 2 ? 2 : 0;
+    for (let k = -1; k < 5; k++) {
+      const cx = k * 4 + off + 2;
+      for (let dy = 0; dy < 4; dy++)
+        for (let dx = -2; dx < 2; dx++) {
+          const x = cx + dx;
+          if (x < 0 || x > 15) continue;
+          const edge = dy === 3 || (dy === 2 && (dx === -2 || dx === 1));
+          p.set(x, y + dy, edge ? R.fire[4] : dy === 0 ? R.red[2] : dx < 0 ? R.red[3] : R.red[4]);
+        }
+      if (cx - 1 >= 0 && cx - 1 < 16) p.set(cx - 1, y, R.red[4]);
+    }
+  }
+  // embers glowing in the cracks: a different handful lights up on each frame
+  speckle(p, 341 + f * 7, 0.025, R.fire[3]);
+  speckle(p, 353 + f * 5, 0.01, R.fire[2]);
+  // flames rising off the roof, out of step with each other
+  const fl = new Pix(16, 16);
+  flame(fl, 4, 14, f, 1.3);
+  flame(fl, 11, 10, f + 2, 1.0);
+  flame(fl, 13, 15, f + 1, 0.7);
+  p.blit(fl, 0, 0);
+  // a curl of smoke at the top, drifting
+  const sx = 2 + ((f * 3) % 12);
+  p.set(sx, 0, '#3a2e3a');
+  p.set(sx + 1, 1, '#4a3c48');
+}
+
 function lankaDoor(p: Pix): void {
   lankaWall(p);
   p.rect(3, 2, 10, 14, R.gold[3]);
@@ -1243,6 +1279,7 @@ export const TILES: Record<TileId, TileDef> = {
   lanka_door: st(lankaDoor),
   battle_ground: st(battleGround),
   torch: an(4, 6, torch),
+  roof_fire: an(4, 6, roofFire), // v0.5b (WP-B): a burning roof Hanumān steps onto (Sundara 5.54)
   void: st(voidTile),
 };
 

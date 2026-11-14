@@ -2,6 +2,9 @@
  * Bottom screen (view agent): the DS-style context panel. Switches on state.pending / state.mode:
  * explore controls, dialogue, choices, verse and word cards, challenges, feedback, chapter cards,
  * shop, shrine, save, battle and the ending credits.
+ * v0.5b routes (WP0): a story recitation (challenge context 'scene') → view-scene SceneRecite; a book review ('book') →
+ * view-scene BookReview; Nala's bridge ('setu') → view-setu SetuPanel; a verse-chain pick (challenge kind 'antya') →
+ * view-chain ChainPanel. Each package owns its view file; this switch is WP0's.
  */
 import { type ReactElement, type ReactNode, useEffect, useRef, useState } from 'react';
 import { Button, Choice, Pill, SaText, cx } from '@ui';
@@ -16,6 +19,10 @@ import { Name, PlayerName, VerseRef, useButtons, useEnv } from './view-common';
 import { Markup, StoryLine, useStoryTypewriter } from './view-markup';
 import { UiText, useUi } from './view-ui';
 import { RecitePanel, VerseMoment, isKatha } from './view-katha';
+import { BookReview, SceneRecite } from './view-scene';
+import { KathaEnding } from './view-bookend';
+import { SetuPanel } from './view-setu';
+import { ChainPanel } from './view-chain';
 import type { Action, Dir, GameState, Pending } from './types';
 
 export interface PanelProps {
@@ -30,6 +37,8 @@ export interface PanelProps {
   shrine: ShrineApi;
   /** The last dialogue line, kept on screen (dimmed) while wait / move / fade play. */
   echo?: Extract<Pending, { kind: 'say' }> | null;
+  /** v0.5b P2: recitation lines answered this session, per verse (the book review counts its book's) */
+  recited?: ReadonlyMap<string, number>;
 }
 
 /** How the shrine menu maps onto reducer actions (kept in one place; see notes/core.md). */
@@ -57,6 +66,9 @@ export function Panel(props: PanelProps): ReactElement {
     case 'words':
       return <WordsPanel ids={p.lexIds} {...props} />;
     case 'challenge':
+      // v0.5b P1 (WP-A): a story recitation; P6 (WP-C): a verse-chain pick
+      if (p.context === 'scene' && p.challenge.smarana) return <SceneRecite pending={p} state={state} dispatch={props.dispatch} />;
+      if (p.challenge.kind === 'antya') return <ChainPanel pending={p} state={state} dispatch={props.dispatch} onTimeLeft={props.onTimeLeft} />;
       if (p.challenge.kind === 'smarana' && p.challenge.smarana) return <RecitePanel pending={p} state={state} dispatch={props.dispatch} />;
       return <ChallengePanel pending={p} dispatch={props.dispatch} onTimeLeft={props.onTimeLeft} />;
     case 'feedback':
@@ -71,6 +83,10 @@ export function Panel(props: PanelProps): ReactElement {
       return <SavePanel {...props} />;
     case 'battle':
       return <BattlePanel state={state} dispatch={props.dispatch} />;
+    case 'book': // v0.5b P2 (WP-A): a read-only review of one book
+      return <BookReview kanda={p.kanda} state={state} recited={props.recited} dispatch={props.dispatch} />;
+    case 'setu': // v0.5b P5 (WP-D): Nala's bridge
+      return <SetuPanel p={p} dispatch={props.dispatch} />;
     default:
       return <AutoPanel echo={props.echo} />;
   }
@@ -582,7 +598,13 @@ function SavePanel({ onSave, dispatch }: PanelProps): ReactElement {
 
 // ───────────────────────── ending ─────────────────────────
 
-function EndingPanel({ state, onFinish }: PanelProps): ReactElement {
+function EndingPanel(props: PanelProps): ReactElement {
+  // v0.5b WP-D: the Kathā journey ends with its own panel (after the Lava–Kuśa court recital); practice keeps this one
+  if (isKatha(props.state.save)) return <KathaEnding state={props.state} recited={props.recited} onFinish={props.onFinish} />;
+  return <PracticeEnding {...props} />;
+}
+
+function PracticeEnding({ state, onFinish }: PanelProps): ReactElement {
   const env = useEnv();
   const ui = useUi();
   useButtons({ a: onFinish });

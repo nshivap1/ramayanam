@@ -620,7 +620,7 @@
      "y": 12,
      "facing": "left",
      "event": "ch3.maricha_deer",
-     "showIf": "!ch3.maricha_defeated"
+     "showIf": "!ch3.maricha_defeated&!ch3.deer_fell"
     },
     {
      "id": "deer_glimpse_1",
@@ -630,6 +630,66 @@
      "facing": "right",
      "event": "ch3.deer_glimpse",
      "showIf": "!ch3.chase_1"
+    },
+    {
+     "id": "deer_k2",
+     "sprite": "golden_deer",
+     "x": 14,
+     "y": 15,
+     "facing": "up",
+     "event": "ch3.deer_glimpse",
+     "showIf": "style.katha&ch3.chase_1&!ch3.chase_2&!ch3.chase_3",
+     "solid": false
+    },
+    {
+     "id": "deer_k3",
+     "sprite": "golden_deer",
+     "x": 25,
+     "y": 7,
+     "facing": "left",
+     "event": "ch3.deer_glimpse",
+     "showIf": "style.katha&ch3.chase_2&!ch3.chase_3",
+     "solid": false
+    },
+    {
+     "id": "shadow_a",
+     "sprite": "golden_deer",
+     "x": 19,
+     "y": 11,
+     "facing": "right",
+     "event": "ch3.deer_glimpse",
+     "showIf": "ch3.deer_shadows",
+     "solid": false
+    },
+    {
+     "id": "shadow_b",
+     "sprite": "golden_deer",
+     "x": 23,
+     "y": 9,
+     "facing": "left",
+     "event": "ch3.deer_glimpse",
+     "showIf": "ch3.deer_shadows",
+     "solid": false
+    },
+    {
+     "id": "shadow_c",
+     "sprite": "golden_deer",
+     "x": 24,
+     "y": 12,
+     "facing": "left",
+     "event": "ch3.deer_glimpse",
+     "showIf": "ch3.deer_shadows",
+     "solid": false
+    },
+    {
+     "id": "maricha_true",
+     "sprite": "rakshasa",
+     "x": 32,
+     "y": 12,
+     "facing": "left",
+     "event": "ch3.maricha_deer",
+     "showIf": "ch3.deer_fell&!ch3.maricha_dead&!ch3.maricha_defeated",
+     "solid": false
     }
    ],
    "warps": [
@@ -1832,6 +1892,39 @@
    "id": "ch3.chase_1",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "if": "!ch3.chase_1",
+       "then": [
+        {
+         "face": "deer_glimpse_1",
+         "dir": "left"
+        },
+        {
+         "wait": 300
+        },
+        {
+         "move": "deer_glimpse_1",
+         "path": [
+          "right",
+          "right",
+          "right",
+          "right",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
      "say": "A flash of gold between the trees! The deer leaps away, just out of reach."
     },
     {
@@ -1846,6 +1939,27 @@
      "say": "The deer stops and looks back, as if waiting. When you come near, it is gone again."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "if": "ch3.chase_1&!ch3.chase_2&!ch3.chase_3",
+       "then": [
+        {
+         "move": "deer_k2",
+         "path": [
+          "down",
+          "down",
+          "right"
+         ]
+        }
+       ]
+      },
+      {
+       "set": "ch3.chase_1"
+      }
+     ]
+    },
+    {
      "set": "ch3.chase_2"
     }
    ]
@@ -1854,7 +1968,44 @@
    "id": "ch3.chase_3",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "set": "ch3.deer_shadows"
+      }
+     ]
+    },
+    {
      "say": "The forest grows strange. Some of the deer around you are only shadows. Rama grips his bow."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "unset": "ch3.deer_shadows"
+      },
+      {
+       "if": "ch3.chase_2&!ch3.chase_3",
+       "then": [
+        {
+         "move": "deer_k3",
+         "path": [
+          "right",
+          "right",
+          "right",
+          "down",
+          "down"
+         ]
+        }
+       ]
+      },
+      {
+       "set": "ch3.chase_1"
+      },
+      {
+       "set": "ch3.chase_2"
+      }
+     ]
     },
     {
      "set": "ch3.chase_3"
@@ -1929,7 +2080,31 @@
          "music": "sorrow"
         },
         {
-         "say": "Struck by Rama's arrow, Maricha takes his true form. With his last breath he cries out in Rama's own voice: \"Ha Sita! Ha Lakshmana!\""
+         "if": "style.katha",
+         "then": [
+          {
+           "set": "ch3.deer_fell"
+          },
+          {
+           "say": "Struck by Rama's arrow, the deer falls. There lies Maricha, in his true form."
+          },
+          {
+           "say": "\"Ha Sita! Ha Lakshmana!\"",
+           "who": "Maricha, in Rama's voice",
+           "portrait": "rama"
+          },
+          {
+           "set": "ch3.maricha_dead"
+          },
+          {
+           "say": "Then Maricha dies. But his cry, in Rama's own voice, rings on through the forest."
+          }
+         ],
+         "else": [
+          {
+           "say": "Struck by Rama's arrow, Maricha takes his true form. With his last breath he cries out in Rama's own voice: \"Ha Sita! Ha Lakshmana!\""
+          }
+         ]
         },
         {
          "say": "Lakshmana was right. That cry will reach Sita. What will she think? We must hurry back!",
@@ -2030,9 +2205,124 @@
        "mode": "hear"
       },
       {
-       "say": "It was Ravana. He took Sita in his flying chariot and flew south. I broke his chariot and fought him with all my strength.",
-       "who": "person.jatayu",
-       "portrait": "jatayu"
+       "if": "style.katha",
+       "then": [
+        {
+         "label": "k_ask"
+        },
+        {
+         "if": "!ch3.jatayu_who",
+         "then": [
+          {
+           "if": "!ch3.jatayu_way",
+           "then": [
+            {
+             "choice": "Jatayu has breath for only a few words. What will you ask him?",
+             "options": [
+              {
+               "label": "Who took Sita?",
+               "goto": "k_who"
+              },
+              {
+               "label": "Which way did he take her?",
+               "goto": "k_way"
+              },
+              {
+               "label": "Who are you?",
+               "goto": "k_miss"
+              }
+             ]
+            }
+           ],
+           "else": [
+            {
+             "choice": "Jatayu has breath for only a few words. What will you ask him?",
+             "options": [
+              {
+               "label": "Who took Sita?",
+               "goto": "k_who"
+              },
+              {
+               "label": "Who are you?",
+               "goto": "k_miss"
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "else": [
+          {
+           "if": "!ch3.jatayu_way",
+           "then": [
+            {
+             "choice": "Jatayu has breath for only a few words. What will you ask him?",
+             "options": [
+              {
+               "label": "Which way did he take her?",
+               "goto": "k_way"
+              },
+              {
+               "label": "Who are you?",
+               "goto": "k_miss"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "goto": "k_told"
+        },
+        {
+         "label": "k_who"
+        },
+        {
+         "say": "Ravana. The king of the rakshasas.",
+         "who": "person.jatayu",
+         "portrait": "jatayu"
+        },
+        {
+         "set": "ch3.jatayu_who"
+        },
+        {
+         "goto": "k_ask"
+        },
+        {
+         "label": "k_way"
+        },
+        {
+         "say": "Through the sky... to the south.",
+         "who": "person.jatayu",
+         "portrait": "jatayu"
+        },
+        {
+         "set": "ch3.jatayu_way"
+        },
+        {
+         "goto": "k_ask"
+        },
+        {
+         "label": "k_miss"
+        },
+        {
+         "say": "Jatayu only gasps. His breath is almost gone."
+        },
+        {
+         "goto": "k_ask"
+        },
+        {
+         "label": "k_told"
+        }
+       ],
+       "else": [
+        {
+         "say": "It was Ravana. He took Sita in his flying chariot and flew south. I broke his chariot and fought him with all my strength.",
+         "who": "person.jatayu",
+         "portrait": "jatayu"
+        }
+       ]
       },
       {
        "say": "But I am old, and he struck me down. She cried out your name, Rama. Go south. You will find her.",

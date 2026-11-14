@@ -11,6 +11,10 @@
  * v0.4.2: the BFS (`findPath`) lives in logic-guide (re-exported here); `runGuide` is a bot that only follows the map pointer.
  * v0.4.3: `reader` ('sa' / 'sa-en') starts the journey with that reader level (save.reader), as the view does for a
  * player whose story text is संस्कृतम् / संस्कृतम् + English; absent = English (no field, today's game).
+ * v0.5b: the story bots follow the steps of their journey only (a walkthrough step with `style: 'katha'` is Kathā-only:
+ * logic-katha stepInJourney); `botActions` solves Nala's bridge (pending 'setu', logic-setu setuBotActions), continues a
+ * book review ('book'), recites a story pāda (challenge context 'scene', like any smarana) and answers a verse-chain pick
+ * ('antya', options / answers) with the reciter's accuracy.
  * v0.5a: `policy` picks the battle moves — 'best' (default, the battle agent's perfect bot: set-ups, then the most
  * damaging move), 'spam' (the most damaging move every turn: no set-up, blind to warnings, fatigue and fits) or
  * 'strategic' (Kathā tactics, logic-tactics.ts: the decisive fitting astra, answers a readied blow — a counter, a support
@@ -25,6 +29,9 @@ import { newGame } from './logic-state';
 import { DELTA, DIRS, hasTile, isSolidTile, mapById, npcsOn, tileAt, triggerCovers, triggerFlag, warpAt } from './logic-world';
 import { type GuideTarget, findPath, guideStep, guideTarget, spot, talkSpots, visibleTarget } from './logic-guide';
 import { COVER_CMD, SHIELD_CMD, answerOf, battleMenu, canShield, coverOf, damage, fatigueMult, fighterFromMember, isDecisive, nextChain, reduce } from './logic';
+import { stepInJourney } from './logic-katha';
+import { setuBotActions } from './logic-setu';
+import { cutsceneDue } from './logic-cutscene'; // v0.5b WP-E
 
 export class SimError extends Error {}
 
@@ -73,6 +80,11 @@ function correctAnswer(s: GameState, reciter?: AutoOptions['reciter']): Action |
     return { type: 'answer', picks, timeMs: 1500 };
   }
   if (ch.orders && ch.orders.length > 0) return { type: 'answer', order: [...ch.orders[0]!], timeMs: 500 };
+  // v0.5b P6 (a verse-chain pick, WP-C): the reciter's accuracy applies — a miss picks a chip that does not chain
+  if (ch.kind === 'antya' && ch.answers && ch.answers.length > 0 && reciter && reciter.rng.next() >= reciter.accuracy) {
+    const wrong = (ch.options ?? []).find((o) => !ch.answers!.includes(o.id));
+    if (wrong) return { type: 'answer', option: wrong.id, timeMs: 1500 };
+  }
   if (ch.answers && ch.answers.length > 0) return { type: 'answer', option: ch.answers[0]!, timeMs: 500 };
   return null;
 }
@@ -234,6 +246,8 @@ interface AutoCtx {
   policy?: AutoOptions['policy'];
   /** choices answered in this scene (choiceKey → times) */
   choices?: Map<string, number>;
+  /** v0.5b WP-E: the due cutscene is already offered (its candidates are being listed after it) */
+  sceneSeen?: boolean;
 }
 
 /** Candidate actions for the current state, best first (the first one the reducer accepts is used). */
@@ -241,6 +255,11 @@ export function botActions(s: GameState, content: GameContent, ctx: AutoCtx): Ac
   const p = s.pending;
   const ans = correctAnswer(s, ctx.reciter);
   if (s.mode === 'battle') {
+    // v0.5b WP-E: the Kathā bot watches a due cutscene first (the view would play it); the battle's own candidates
+    // follow, for callers that step with battleAction alone. The practice bot never does, so the practice journey's
+    // actions and hashes stay as they were
+    const scene = s.save.style === 'katha' && !ctx.sceneSeen ? cutsceneDue(s, content) : null;
+    if (scene) return [{ type: 'cutscene-done', id: scene }, ...botActions(s, content, { ...ctx, sceneSeen: true })];
     const b = s.battle;
     const generic: Action[] = [{ type: 'advance' }, { type: 'choose', index: 0 }, { type: 'choose', index: -1 }, { type: 'choose', index: 1 }, { type: 'choose', index: 2 }];
     if (ans) return [ans, ...generic];
@@ -302,7 +321,10 @@ export function botActions(s: GameState, content: GameContent, ctx: AutoCtx): Ac
       return [{ type: 'choose', index: 3 }];
     case 'ending':
       return [];
+    case 'setu': // v0.5b P5 (WP-D): solve Nala's bridge (logic-setu), then continue
+      return setuBotActions(p);
     default:
+      // (v0.5b P2: a book review 'book' continues with advance too)
       return [{ type: 'advance' }];
   }
 }
@@ -610,10 +632,13 @@ export function runWalkthrough(content: GameContent, seed: number, level: Level,
   } catch (e) {
     return result(0, `intro: ${(e as Error).message}`);
   }
-  const steps = opts.steps ?? content.walkthrough;
+  // v0.5b: only the steps of this journey (a Kathā-only step, `style: 'katha'`, is skipped in the practice game);
+  // `onStep` and `failedAt` keep the step's index in opts.steps / content.walkthrough
+  const all = opts.steps ?? content.walkthrough;
+  const order = all.flatMap((w, i) => (stepInJourney(w, s.save) ? [i] : []));
   const trace = opts.trace;
-  for (let i = 0; i < steps.length; i++) {
-    const step = steps[i]!;
+  for (const i of order) {
+    const step = all[i]!;
     let lastErr = '';
     const tries = opts.attempts ?? 5;
     for (let attempt = 0; attempt < tries && !s.save.flags[step.expectFlag]; attempt++) {

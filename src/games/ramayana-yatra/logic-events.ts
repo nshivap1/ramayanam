@@ -11,6 +11,8 @@
  * smarana challenges with no feedback pending in between; the shrine has a study hall (SHRINE_STUDY).
  * v0.5a: a story flag that a Kathā grant names (katha.json tactics.grants: Viśvāmitra's astras after Tāṭakā) gives the
  * hero those moves at once, with a toast; story battles re-check every grant (an older save past the flag).
+ * v0.5b (WP0 hooks, notes/v05b-plan.md §1): `{smarana}` (P1) and `{book}` (P2) → logic-scene, `{setu}` (P5) →
+ * logic-setu; their pendings resume here (challenge context 'scene', 'book', 'setu'). All three are Kathā-only.
  */
 import type { BattleSpec, Challenge, ChallengeResult, Dir, EventCmd, GameContent, GameState, KandaId, PartyMember, Pending } from './types';
 import { clamp, indexOf, testFlag } from './logic-util';
@@ -21,6 +23,8 @@ import { applyGrants } from './logic-tactics';
 import { uiSa } from './sa-ui';
 import { joinLevel, newMember, statsAt, withUnlockedMoves } from './logic-progress';
 import { DELTA, isDir, isSolidTile, mapById, npcKey, triggerFlag } from './logic-world';
+import { sceneAnswer, startBookReview, startSceneRecital } from './logic-scene';
+import { setuAction, startSetu } from './logic-setu';
 
 /** Hard cap on commands executed by one interpreter run (catches goto loops in content). */
 export const MAX_CMDS_PER_RUN = 500;
@@ -365,6 +369,10 @@ function exec(s: GameState, content: GameContent, cmd: EventCmd): GameState {
   }
   if ('objective' in cmd) return { ...s, save: { ...s.save, objective: String(cmd.objective) } };
   if ('end' in cmd) return { ...s, mode: 'ended', script: null, pending: { kind: 'ending' } };
+  // ── v0.5b (notes/v05b-plan.md §1): Kathā-only commands; each module skips (same state) in the practice game ──
+  if ('smarana' in cmd) return startSceneRecital(s, content, cmd); // P1, logic-scene (WP-A)
+  if ('book' in cmd) return startBookReview(s, content, cmd.book); // P2, logic-scene (WP-A)
+  if ('setu' in cmd) return isKatha(s) ? startSetu(s, content, cmd.setu) : s; // P5, logic-setu (WP-D)
   return s; // unknown command: skipped (world.test reports it)
 }
 
@@ -454,6 +462,11 @@ export function resumeScript(state: GameState, content: GameContent, action: { t
     }
     case 'challenge': {
       if (action.type !== 'answer') return state;
+      // v0.5b P1: a story recitation (logic-scene): no feedback pending, the script carries on after the answer
+      if (p.context === 'scene') {
+        const s = sceneAnswer(state, content, action);
+        return s === state ? state : run(s, content);
+      }
       if (p.challenge.kind === 'smarana') {
         // Kathā shrine recital: no feedback pending; the next pāda (or the end of the recital) follows directly
         if (p.context !== 'recite' || !state.recital || !validSmaranaAnswer(action)) return state;
@@ -527,6 +540,13 @@ export function resumeScript(state: GameState, content: GameContent, action: { t
       if (i === SHRINE_STUDY && isKatha(state)) return startStudy(rewind(state), content);
       if (i === SHRINE_LEAVE || i === -1) return run({ ...state, pending: null }, content);
       return state;
+    }
+    case 'book': // v0.5b P2: the book review, read-only → ▶ continues
+      return action.type === 'advance' ? run({ ...state, pending: null }, content) : state;
+    case 'setu': {
+      // v0.5b P5 (logic-setu, WP-D): choose i turns a stone; advance gives a hint, or continues once solved
+      const s = setuAction(state, content, action);
+      return s !== state && s.pending === null ? run(s, content) : s;
     }
     default:
       return state; // 'ending', 'battle'

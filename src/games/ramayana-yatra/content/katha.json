@@ -462,8 +462,13 @@
   ],
   "warnings": [
    { "foe": "tataka", "chapter": 1, "ready": "kathaWarnStones", "strike": "kathaStrikeStones", "counter": ["bana"], "source": "Bāla 1.26.16–17: by māyā Tāṭakā rains stones on the two Rāghavas; Rāma meets her rain of stones with a rain of arrows (शिलावर्षं महत्तस्याः शरवर्षेण राघवः)" },
-   { "foe": "subahu", "chapter": 1, "ready": "kathaWarnBlood", "strike": "kathaStrikeBlood", "first": 0, "source": "Bāla 1.30.12–13: Mārīca, Subāhu and their followers pour streams of blood, and the altar is drenched — the first thing they do" },
-   { "foe": "maricha", "chapter": 1, "ready": "kathaWarnBlood", "strike": "kathaStrikeBlood", "source": "Bāla 1.30.12–13 (as for Subāhu)" }
+   { "foe": "subahu", "chapter": 1, "ready": "kathaWarnBlood", "strike": "kathaStrikeBlood", "first": 0, "counter": ["manavastra"], "strikeScale": 0.5, "source": "Bāla 1.30.12–13: Mārīca, Subāhu and their followers pour streams of blood, and the altar is drenched — the first thing they do. v0.5b (WP-C): the rain falls on the altar, not on the heroes, so it costs them half a great blow (strikeScale); seeing it, Rāma tells Lakṣmaṇa he will scatter them with the Mānava astra as the wind scatters clouds (1.30.15: मानवास्त्रसमाधूतान् अनिलेन यथा घनान्) — the Mānava counters it" },
+   { "foe": "maricha", "chapter": 1, "ready": "kathaWarnBlood", "strike": "kathaStrikeBlood", "counter": ["manavastra"], "strikeScale": 0.5, "source": "Bāla 1.30.12–13 (as for Subāhu); the counter and the share: 1.30.15 (as for Subāhu)" },
+   { "foe": "aksha", "chapter": 5, "counter": ["vayu_vega"], "source": "Sundara 5.47.23: Hanumān, swift as thought, darts through the gaps between Akṣa's arrows like the wind (शरान्तरे मारुतवद्विनिष्पतन्) — his rush of wind (vāyu-vega) answers Akṣa's great blow. v0.5 (integration): Hanumān leads this fight alone (lead: hanuman), so the text's answer is his own move." }
+  ],
+  "phases": [
+   { "id": "ravana_heads", "foe": "ravana", "chapter": 6, "below": 0.5, "floor": 0.4, "fit": "brahmastra", "beat": "kathaHeads", "requires": "seen.aditya", "source": "v0.5b (WP-C) Yuddha 6.105 → 6.107.55–58: Agastya first teaches Rāma the Āditya-hṛdayam in the battle (6.105; package E's cutscene sets seen.aditya — until then Rāvaṇa cannot be finished: every blow, the brahmāstra too, is held at 40 %). Then Rāma's arrow cuts off Rāvaṇa's head, and a head like it rises at once (तस्यैव सदृशं चान्यद्रावणस्योत्थितं शिरः); a hundred heads are cut, yet he does not die — so from half strength a blow that is not the brahmāstra cannot take him below 40 %" },
+   { "id": "ravana_matali", "foe": "ravana", "chapter": 6, "below": 0.4, "beat": "kathaMatali", "once": true, "requires": "seen.aditya", "source": "v0.5b (WP-C) Yuddha 6.108.1–2 (after the hymn of 6.105): Mātali reminds Rāma to loose the astra of Brahmā (the Paitāmaha) for Rāvaṇa's death; Rāma takes up Agastya's arrow (6.108.3–4) and it pierces Rāvaṇa's heart (6.108.16–18) — Mātali's line plays once, when the heads first hold" }
   ]
  }
 }

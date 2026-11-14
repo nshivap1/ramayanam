@@ -11,7 +11,7 @@
  * `isKatha(state)` first.
  */
 import { scanLine, spellingKey, splitAksharas, devaToSlp1, normalizeDeva } from '@sanskrit';
-import type { BattleSpec, Challenge, ChallengeOption, Fighter, GameContent, GameState, JourneyStyle, MoveDef, PartyMember, SaveData, Shloka, SmaranaChunk, SmaranaSpec } from './types';
+import type { BattleSpec, Challenge, ChallengeOption, Fighter, GameContent, GameState, JourneyStyle, MoveDef, PartyMember, SaveData, Shloka, SmaranaChunk, SmaranaSpec, WalkStep } from './types';
 import { bump, clamp, indexOf, rngFor } from './logic-util';
 import { MAX_EQUIPPED, addXp, damage, learnableMoves, xpToNext } from './logic-progress';
 
@@ -27,6 +27,20 @@ export function styleOf(save: Pick<SaveData, 'style'>): JourneyStyle {
 
 export function isKatha(state: { save: Pick<SaveData, 'style'> }): boolean {
   return state.save.style === 'katha';
+}
+
+/**
+ * v0.5b: does this walkthrough step belong to the save's journey? A step with `style: 'katha'` (a Kathā set piece's
+ * extra goal) is skipped in the practice game; every other step is shared. Used by the pointer (guideStep), the story
+ * bots, quest progress and the e2e snapshot's `next`.
+ */
+export function stepInJourney(step: Pick<WalkStep, 'style'>, save: Pick<SaveData, 'style'>): boolean {
+  return step.style === undefined || step.style === styleOf(save);
+}
+
+/** The walkthrough steps of the save's journey (story order). */
+export function journeySteps(content: Pick<GameContent, 'walkthrough'>, save: Pick<SaveData, 'style'>): WalkStep[] {
+  return content.walkthrough.filter((w) => stepInJourney(w, save));
 }
 
 /**
@@ -695,6 +709,11 @@ export interface SmaranaRequest {
    * recite with no gap (level 0) gets the level-1 gap (its last eligible chunk) — one tap, never more
    */
   echo?: boolean;
+  /**
+   * v0.5b P1 (a story recitation `{smarana}`, logic-scene): with mode 'recital', a mastered pāda recites itself (no gap,
+   * no spot check); below mastery the recital's one gap, as at a shrine
+   */
+  story?: boolean;
 }
 
 /** Which chunk to gap at this gap level (L1: the last eligible chunk; L2/L3: rotate after the previous gap). */
@@ -712,7 +731,7 @@ export function buildSmarana(state: GameState, content: GameContent, req: Smaran
   if (!info || !sh) throw new Error(`buildSmarana: unknown pāda ${req.shlokaId}:${req.pada}`);
   const rng = rngFor(state, `smarana:${info.key}`);
   const entry = smrtiOf(state.save, info.key);
-  const plan0 = castPlan(entry, req.mode);
+  const plan0 = req.story && entry.level >= MASTERED ? { gapLevel: 0 as const, check: false } : castPlan(entry, req.mode);
   const plan = req.echo && plan0.gapLevel === 0 && entry.level < MASTERED ? { gapLevel: 1 as const, check: false } : plan0;
   const eligible = info.chunks.length === 1 ? [0] : gapEligible(content, info, req.moveId);
   const gap = pickGap(eligible, plan.gapLevel, entry, rng);

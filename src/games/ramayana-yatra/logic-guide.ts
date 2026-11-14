@@ -5,7 +5,8 @@
  * view can use it without importing the test bot.
  *
  *   guideTarget(state, content) → GuideTarget | null
- *     The first walkthrough step whose `expectFlag` is not set (the walkthrough is shared by both journey styles).
+ *     The first walkthrough step whose `expectFlag` is not set (the walkthrough is shared by both journey styles;
+ *     v0.5b: a step marked `style: 'katha'` belongs to the Kathā journey only and is skipped in the practice game).
  *     Its goal is a person (talk), a tile (reach) or a shrine (recite) on the step's map. When the goal is on the
  *     player's map, the target is that person / tile / shrine. Otherwise the target is the exit (warp tile) on the
  *     player's map that the shortest route to the goal crosses first (findPath over walkable tiles and open warps;
@@ -15,8 +16,8 @@
 import type { Dir, GameContent, GameState, MapDef, SaveData, WalkStep, WarpDef } from './types';
 import { TILE_PROPS } from './catalog';
 import { testFlag } from './logic-util';
-import { DELTA, DIRS, hasTile, inBounds, isSolidTile, mapById, npcsOn, tileAt, triggerCovers, type PlacedNpc } from './logic-world';
-import { isKatha } from './logic-katha';
+import { DELTA, DIRS, hasTile, inBounds, inSight, isSolidTile, mapById, npcsOn, tileAt, triggerCovers, type PlacedNpc } from './logic-world';
+import { isKatha, stepInJourney } from './logic-katha';
 
 // ───────────────────────── pathing ─────────────────────────
 
@@ -61,6 +62,7 @@ function layoutOf(content: GameContent): Layout {
  * BFS from the player's position over walkable tiles and open warps (across maps) to the first tile
  * satisfying `goal`. Returns the step directions, or null. Tiles with repeatable (once:false) triggers are
  * avoided unless they are the goal. `avoidEncounters` skips encounter tiles (the caller retries without).
+ * v0.5b P3: an active avoid-trigger (a guard's line of sight, logic-world inSight) is never crossed.
  */
 export function findPath(state: GameState, content: GameContent, goal: (map: string, x: number, y: number) => boolean, avoidEncounters = false): Dir[] | null {
   const flags = state.save.flags;
@@ -104,6 +106,8 @@ export function findPath(state: GameState, content: GameContent, goal: (map: str
       const nx = cx + DELTA[dir][0];
       const ny = cy + DELTA[dir][1];
       if (!inBounds(map, nx, ny) || isSolidTile(map, nx, ny) || blocked(map.id, map.width, nx, ny)) continue;
+      // v0.5b P3: a guard's line of sight (an active avoid-trigger) is a wall, even as the goal
+      if (inSight(map, flags, nx, ny)) continue;
       const warp = warpIndex(map).get(ny * map.width + nx);
       let nextMap = map;
       let tx = nx;
@@ -192,9 +196,12 @@ export interface GuideTarget {
   distance: number;
 }
 
-/** Index of the first walkthrough step whose flag is not set yet (-1: every step is done). */
-export function guideStep(save: Pick<SaveData, 'flags'>, content: GameContent): number {
-  return content.walkthrough.findIndex((w) => !save.flags[w.expectFlag]);
+/**
+ * Index of the first walkthrough step of the save's journey whose flag is not set yet (-1: every step is done).
+ * v0.5b: a Kathā-only step (`style: 'katha'`) is skipped in the practice game (logic-katha stepInJourney).
+ */
+export function guideStep(save: Pick<SaveData, 'flags' | 'style'>, content: GameContent): number {
+  return content.walkthrough.findIndex((w) => stepInJourney(w, save) && !save.flags[w.expectFlag]);
 }
 
 interface Goal {

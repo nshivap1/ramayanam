@@ -134,7 +134,12 @@ export interface NameEntry {
 
 // ───────────────────────── Learning ─────────────────────────
 
-export type ChallengeKind = 'artha' | 'lipi' | 'purana' | 'krama' | 'viccheda' | 'vibhakti' | 'smarana';
+/**
+ * v0.5b P6 (WP-C, notes/v05b-plan.md §4): 'antya' is the pick in a verse-chain duel (śloka-antyakṣarī) — three full
+ * pādas, exactly one opening with the key sound. It uses `options` / `answers` like a classic challenge (so the
+ * bots, `opt-<id>` test ids and grading work unchanged) and carries `Challenge.antya`. Never drawn at random.
+ */
+export type ChallengeKind = 'artha' | 'lipi' | 'purana' | 'krama' | 'viccheda' | 'vibhakti' | 'smarana' | 'antya';
 
 /**
  * Journey style (Kathā mode, v0.4). 'abhyasa' = the practice game (every move a challenge, random encounters);
@@ -223,6 +228,27 @@ export interface Challenge {
   explanationSa?: string;
   /** smarana (recite the pāda) challenges only: chunks, gaps and per-gap options. `options`/`answers` stay unset. */
   smarana?: SmaranaSpec;
+  /** v0.5b P6 (WP-C): 'antya' (verse-chain pick) challenges only; `options` / `answers` hold the three pādas */
+  antya?: AntyaSpec;
+}
+
+/** A pāda of a verse (shlokaId + pāda index 0–3). */
+export interface PadaRefT {
+  shlokaId: string;
+  pada: number;
+}
+
+/**
+ * v0.5b P6 (WP-C, logic-chain.ts): what a verse-chain pick shows. The key is the last consonant of the other side's
+ * pāda (`splitAksharas`; vowel signs, ं, ः and ् ignored); a valid answer is a heard pāda whose first consonant is the key.
+ */
+export interface AntyaSpec {
+  /** the key consonant (Devanagari); null = any line opens (the chain was reset) */
+  key: Deva | null;
+  /** the other side's pāda that set the key (shown in full, the key akṣara highlighted) */
+  prev?: PadaRefT;
+  /** per option (same order as `Challenge.options`): the pāda that option is, verbatim */
+  lines: PadaRefT[];
 }
 
 /** Kathā: one answered smarana challenge (GameState.lastSmarana). */
@@ -234,8 +260,8 @@ export interface SmaranaResult {
   correct: boolean;
   /** automatic recitation (no input; mastery untouched) */
   auto: boolean;
-  /** where it was answered */
-  context: 'battle' | 'recite';
+  /** where it was answered ('scene': a story recitation `{smarana}`, v0.5b P1) */
+  context: 'battle' | 'recite' | 'scene';
 }
 
 export interface ChallengeResult {
@@ -384,6 +410,13 @@ export interface TriggerDef {
   event: string;
   once?: boolean; // default true
   requires?: FlagCond;
+  /**
+   * v0.5b P3 (WP-B): a guard's line of sight. While active (`requires` holds and, for a once-trigger, its flag is not set)
+   * `findPath` treats it as a wall (so the map pointer, `runGuide` and the RY_FULL bot keep out of sight) and the e2e
+   * snapshot grid marks it '#'. Stepping on it still runs its event (a guard turns). Kathā only: world.test requires
+   * `requires` to include style.katha.
+   */
+  avoid?: boolean;
 }
 
 export interface SignDef {
@@ -457,7 +490,14 @@ export type EventCmd =
   | { save: true }
   | { chapter: KandaId }
   | { objective: string } // sets the quest-log line shown in the HUD ("Find Vālmīki by the river")
-  | { end: true };
+  | { end: true }
+  // ── v0.5b (notes/v05b-plan.md §1): Kathā only — world.test refuses them outside a `{ "if": "style.katha", "then": [...] }` block ──
+  /** P1 (WP-A, logic-scene.ts): the player says one pāda as the story's action (a smarana challenge, context 'scene'); "least" = the verse's least-practised pāda */
+  | { smarana: string; pada: number | 'least' }
+  /** P2 (WP-A, logic-scene.ts): a read-only review of one book (the book-complete screen in review mode); ▶ continues */
+  | { book: KandaId }
+  /** P5 (WP-D, logic-setu.ts): Nala's bridge puzzle, seeded by its tag; the script continues once it is solved */
+  | { setu: string };
 
 export interface EventDef {
   id: string; // "ch1.valmiki_intro"
@@ -486,6 +526,12 @@ export interface WalkStep {
   action: { talk: string } | { reach: { x: number; y: number } } | { recite: string };
   /** Flag that must be true after this step (proves progress). */
   expectFlag: string;
+  /**
+   * v0.5b: a step of one journey only. 'katha' = a Kathā-only step (a set piece's extra goal): the practice game's
+   * pointer (`guideStep` / `guideTarget`), story bots (`runWalkthrough`, `runGuide`), quest progress and the e2e `next`
+   * skip it, so a practice save never needs its flag. Absent = both journeys (logic-katha `stepInJourney`).
+   */
+  style?: 'katha';
 }
 
 export interface GameContent {
@@ -513,6 +559,110 @@ export interface GameContent {
   ui?: Record<string, UiEntry>;
   /** Kathā mode content (content/katha.json): astra → pāda bindings and per-verse anvaya + सरलार्थः. */
   katha?: KathaContent;
+  /** v0.5b P6 (WP-C): verse-chain duel opponents (content/katha-chain.json) */
+  chain?: ChainContent;
+  /** v0.5b WP-E: the Āditya-hṛdayam cutscene in the Rāvaṇa battle (content/aditya-hridayam.json; logic-cutscene.ts) */
+  aditya?: CutsceneContent;
+}
+
+// ── v0.5b WP-E (hook granted by the orchestrator): the Āditya-hṛdayam cutscene, Yuddha 6.105.1–31 ──
+/** A string shown in the cutscene: Sanskrit (oracle-verified, cutscene.test) and English. `label`: no final । needed. */
+export interface CutsceneText {
+  sa: string;
+  en: string;
+  label?: boolean;
+  ctx?: string;
+}
+/** One śloka of the hymn: pādas as printed (project convention for a sandhi at the pāda break), sources and variants. */
+export interface CutsceneVerse {
+  n: number;
+  ref: string;
+  speaker: 'narrator' | 'agastya';
+  meter: 'anustubh' | 'puspitagra';
+  padas: string[];
+  /** padaccheda per pāda (pausal forms, compounds whole) for the sandhi-engine rebuild; or `wordsFrom` a game verse */
+  words?: string[][];
+  wordsFrom?: string;
+  /** original English (one or two plain lines), awaiting human review */
+  en: string;
+  meterNote?: string;
+  /** no sandhi at this pāda break (index of the pāda before it), as printed in every source */
+  pausa?: { after: number; note: string };
+  /** each witness's text of the verse, as fetched (source id → text) */
+  readings: Record<string, string>;
+  /** spots checked in the sanskritdocuments.org stotra (short quotes) */
+  sd?: string[];
+  /** every difference between a witness and the chosen text: `in` = witness id → its reading */
+  variants: { chosen: string; kind: 'reading' | 'orthography' | 'typo'; note: string; in: Record<string, string> }[];
+}
+export interface CutsceneContent {
+  version: 1;
+  id: string;
+  /** the save flag set once the scene has been seen (`cutscene-done`) */
+  flag: string;
+  /** the scene is due the first time this foe (in this book) is shown at or below `below` × its HP */
+  trigger: { foe: string; chapter?: number; below: number; source: string };
+  reference: { kanda: number; sarga: number; verses: number[]; edition: string; criticalEdition: string; review: string };
+  sources: { id: string; name: string; url: string; accessed: string; numbering: string; coverage: string }[];
+  choice: string;
+  narration: CutsceneText[];
+  ui: Record<string, CutsceneText>;
+  verses: CutsceneVerse[];
+}
+
+/**
+ * content/katha-chain.json (v0.5b, OWNER: WP-C): who duels in verse chains (śloka-antyakṣarī, notes/v05b-plan.md §4).
+ * A Kathā duel against a foe listed here is a chain duel; v0.6 adds opponents here without code.
+ */
+export interface ChainContent {
+  version: number;
+  about?: string;
+  duels: ChainDuel[];
+}
+
+export interface ChainDuel {
+  /** EnemyDef id of the opponent (a duelist) */
+  foe: string;
+  /** the opponent's HP in links: HP = links × the lead's best hit (default 5) */
+  links?: number;
+  /** where the text puts this exchange (e.g. Kiṣkindhā 4.3) */
+  source: string;
+}
+
+/** v0.5b P6 (WP-C): a verse-chain duel in progress (BattleState.antya; Kathā only). */
+export interface AntyaState {
+  /** the key the player's next line must open with (null = any line) */
+  key: Deva | null;
+  /** pādas used in this duel (`${shlokaId}:${pada}`): none is used twice */
+  used: string[];
+  /** the opponent's last line (shown in full with the key akṣara highlighted) */
+  prev?: PadaRefT;
+  /** the player's line ended on a sound no remaining heard pāda opens with: the opponent is stumped */
+  stumped?: boolean;
+}
+
+/**
+ * v0.5b P7 (WP-C): a boss phase (content/katha.json → tactics.phases), e.g. Rāvaṇa's heads (Yuddha 6.107–108).
+ * Read by logic-tactics / logic-battle (WP-C); every entry carries its `source`.
+ */
+export interface KathaPhase {
+  /** stable id (BattleState.bossPhases records the ones begun) */
+  id: string;
+  foe: string;
+  chapter?: number;
+  /** the phase begins once the foe is at or below this share of its HP (0–1) */
+  below: number;
+  /** while the phase holds, hits that do not fit cannot take the foe below this share of its HP */
+  floor?: number;
+  /** the move that fits (ends the floor), e.g. the brahmāstra */
+  fit?: string;
+  /** content/sa-battle.json template of the beat the phase shows when it begins */
+  beat?: string;
+  /** the beat plays only once per battle (default: each time the phase begins) */
+  once?: boolean;
+  /** v0.5b WP-C: the phase's fitting move only finishes the foe once these flags hold (e.g. seen.aditya: the Āditya-hṛdayam first) */
+  requires?: FlagCond;
+  source: string;
 }
 
 /** content/katha.json (OWNER: kc-content). Sanskrit verified by katha-content.test.ts; see notes/katha.md. */
@@ -552,7 +702,9 @@ export interface KathaTactics {
    * `counter`: moves that answer it besides any support move, a switch or a cover; `first`: the foe's action that readies
    * it first (0 = in the battle's opening, before the first turn)
    */
-  warnings: { foe: string; chapter?: number; ready?: string; strike?: string; counter?: string[]; first?: number; source: string }[];
+  warnings: { foe: string; chapter?: number; ready?: string; strike?: string; counter?: string[]; first?: number; /** v0.5b WP-C: the strike's damage scale (default 1) */ strikeScale?: number; source: string }[];
+  /** v0.5b P7 (WP-C): boss phases as data (Rāvaṇa's heads, Mātali's line) */
+  phases?: KathaPhase[];
 }
 
 export interface KathaVerse {
@@ -713,6 +865,30 @@ export interface BattleState {
   foeActs?: number;
   /** Kathā (v0.5a): the recitation pending is a verse shield (no move): its answer resolves the turn as a shield */
   pendingShield?: true;
+  /** Kathā (v0.5b P6, WP-C): a verse-chain duel in progress; absent in the practice game */
+  antya?: AntyaState;
+  /** Kathā (v0.5b P7, WP-C): ids of the boss phases begun in this battle; absent in the practice game */
+  bossPhases?: string[];
+}
+
+/**
+ * v0.5b P5 (WP-D, logic-setu.ts): Nala's bridge (Yuddha 6.22) as a pending. `cells` are the stones' current turns, read
+ * row by row (`cols` columns = the five days); the bridge is whole when `cells` equals `solution`. `choose i` turns
+ * stone i; `advance` asks Nala for a hint (`hint` = the stone he points at) or, once solved, continues the script.
+ */
+export interface SetuPending {
+  kind: 'setu';
+  /** the `{setu}` command's tag (seeds the puzzle) */
+  tag: string;
+  cols: number;
+  /** how many turns a stone has (a turn is +1 mod `turns`) */
+  turns: number;
+  cells: number[];
+  solution: number[];
+  /** stones turned so far */
+  taps: number;
+  /** the stone Nala points at (after a hint), else null */
+  hint: number | null;
 }
 
 /** What the view must present and wait on. Exactly one at a time. */
@@ -721,7 +897,8 @@ export type Pending =
   | { kind: 'choice'; prompt: string | null; options: string[] }
   | { kind: 'shloka'; shlokaId: string } // verse card
   | { kind: 'words'; lexIds: string[] } // word cards
-  | { kind: 'challenge'; challenge: Challenge; context: 'quiz' | 'battle' | 'recite'; step?: number; steps?: number }
+  // context 'scene' (v0.5b P1): a story recitation `{smarana}` — no feedback pending; the script carries on after the answer
+  | { kind: 'challenge'; challenge: Challenge; context: 'quiz' | 'battle' | 'recite' | 'scene'; step?: number; steps?: number }
   | { kind: 'feedback'; challenge: Challenge; result: ChallengeResult; picked?: string; order?: number[] }
   | { kind: 'title'; nameId: string; subtitle?: string } // chapter card
   | { kind: 'shop'; items: string[] }
@@ -731,7 +908,9 @@ export type Pending =
   | { kind: 'fade'; to: 'in' | 'out' }
   | { kind: 'move'; who: string; path: Dir[] }
   | { kind: 'battle' } // battle UI reads state.battle
-  | { kind: 'ending' };
+  | { kind: 'ending' }
+  | { kind: 'book'; kanda: KandaId } // v0.5b P2: a read-only review of one book → advance
+  | SetuPending; // v0.5b P5: Nala's bridge → choose i / advance
 
 /** One-shot cosmetic effects for the view; reduce() clears and refills this every call. */
 export type Fx =
@@ -787,6 +966,7 @@ export type Action =
   | { type: 'buy'; itemId: string; qty: number }
   | { type: 'equip'; member: number; moves: string[] }
   | { type: 'next-book' } // v0.5a book-complete screen, "continue": explore → the next book's opening plays at once (logic-world beginNextBook)
+  | { type: 'cutscene-done'; id: string } // v0.5b WP-E: the view played a due cutscene (logic-cutscene cutsceneDue) → its save flag
   | { type: 'tick'; ms: number }; // play-time accounting (no randomness)
 
 export const VIEW_W = 320;

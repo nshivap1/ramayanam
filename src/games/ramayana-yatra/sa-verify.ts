@@ -39,7 +39,12 @@ import sa2 from './content/sa-dialogue-2.json';
 import sa3 from './content/sa-dialogue-3.json';
 import sa4 from './content/sa-dialogue-4.json';
 import sa5 from './content/sa-dialogue-5.json';
+import sa6 from './content/sa-dialogue-6.json';
+import sa7 from './content/sa-dialogue-7.json';
+import sa8 from './content/sa-dialogue-8.json';
+import sa9 from './content/sa-dialogue-9.json';
 import { UI_FILES } from './content';
+import { hashString } from '@sdk';
 import defsJson from './content/defs.json';
 import kathaJson from './content/katha.json';
 import storyCommon from './content/story-common.json';
@@ -325,8 +330,11 @@ export function bundledModels(): SaModel[] {
   return [...BUNDLED_FILES, ...(UI_FILES as unknown as DialogueFile[])].flatMap((f) => f.models ?? []);
 }
 
-/** sa-dialogue-1 … 5 in file order (5 = the Sanskrit of story lines inside Kathā-only blocks, OWNER: kc-content). */
-export const BUNDLED_FILES = [sa1, sa2, sa3, sa4, sa5] as unknown as DialogueFile[];
+/**
+ * sa-dialogue-1 … 9 in file order (5 = the Sanskrit of story lines inside Kathā-only blocks up to v0.5a, OWNER:
+ * kc-content; 6–9 = the Kathā lines v0.5b adds: 6 ch1–3 (WP-A), 7 ch4 + new moveText (WP-C), 8 ch5 (WP-B), 9 ch6 (WP-D)).
+ */
+export const BUNDLED_FILES = [sa1, sa2, sa3, sa4, sa5, sa6, sa7, sa8, sa9] as unknown as DialogueFile[];
 
 export function createOracle(opts: OracleOptions = {}): Oracle {
   const t0 = performance.now();
@@ -952,7 +960,44 @@ export function suggest(word: string, max?: number): string[] {
 
 // ───────────────────────── Story strings (coverage) ─────────────────────────
 
-export type DialogueFileNo = 1 | 2 | 3 | 4 | 5;
+export type DialogueFileNo = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+/** v0.5b: the dialogue file of new Kathā text, by story file: 6 common / ch1–3 (WP-A), 7 ch4 (WP-C), 8 ch5 (WP-B), 9 ch6 (WP-D). */
+export type KathaFileNo = 6 | 7 | 8 | 9;
+
+/** A short stable key of an English string (hashString, base 36): the frozen v0.5a sets below are written with it. */
+export function enKey(en: string): string {
+  return hashString(en).toString(36);
+}
+
+/**
+ * v0.5b: the strings sa-dialogue-5.json held at v0.5a (enKey of each `en`). Kathā text among them stays in file 5; every
+ * other Kathā string goes to the package file of its chapter (6–9), so the four packages never edit the same file.
+ * File 5 may only lose entries (a line a package rewrites becomes stale there).
+ */
+export const FILE5_V05A: ReadonlySet<string> = new Set([
+  '1g3a7t4', 'qlxkmc', '15ny4e6', '1fgqzim', '6qvrpo', '9skonk', '1ozfiyx', '15sbpge', '40spau', '17ukp7t', '27r8xv',
+  '3gl80u', 'epui5u', '1dquje2', 'kxgbd4', '1j8zno9', '10lub8l', '1xrih61', '1gq4q9u', '1kbgni1', '1plzzl7',
+  '1s2js3m', '4oxkaw', 'iy0aix', 'modtxd', '1ta7pkz', 'pt6do3', '1q38gos', '1b9118r', 'h352ue', 'rh9sbn', 'mz2dd5',
+  'udp5l0', 'lf12sl', '19kr180', '12lrgd4', '1sauuaf', '1xk38er', '6cm63u', 'gkpq57', '12j64eb', '14ctxcn',
+  '1czfvv1', 'nilos4', 'ns2hut', '1t95cjq', 'd3q280', '6h4bzr', '1e3mw7x', '1v9od9p', '11irep0', '1tvin6y', 'oewpvb',
+  'kh9xu5', '17f1gx3', '1fh2m6f', 'ztrire', 'iri9hp', '1w25s9b', '1sm7r6p', '4gh3gv', 'kvz2qr', '1wvzjct', 'bafqhj',
+  '15autws', 'lxa9yz', '13tya22', 'llmlxb', 'l8mmg6', '7d7yoq', '1bx1s25', '1hr16rj', '1kpznjb', '1njophb', '2x8b68',
+  'yhv6hl', '17o3anj', 'f4fflo', '84tl0q', 'oumbic', 'jaakro', 'lhayz7', 'z0zg8y', 'f9s23p', '131lw66', '1cyx0oa',
+  'ywoszq', 'wusxw0', 'h8nho9', '1upzob5',
+]);
+
+/**
+ * v0.5b: the speaker titles ("label": true) sa-dialogue-4.json held at v0.5a (enKey). A title that is not among them and
+ * is used only inside Kathā blocks goes to the Kathā file of its chapter (6–9, as a label), not to file 4.
+ */
+export const LABELS4_V05A: ReadonlySet<string> = new Set([
+  't8dq7p', '9mnfpq', '2y4btw', '536fcd', '1pa52oz', '13crbi5', 'tslf41', 'rrtj83', '1ubuk3w', '780c00', '9un6s4',
+  '1x5u46m', 'c5ed1y', 'wagnwy', 'mkaky5', '17cih99', '1m575se', 'v962ib', '1gohyfl', '19aztcb', '433a1t', 'zn7snp',
+  '19ff0e3', '18mb9mv', '6ojxhg', '1hw9aou', 'zhpawn', 'qjdk1o', '1hknv30', 'oacq6f', '7nv6ka', '1fe7vry', 'rjiaj4',
+  '1cbdf8n', '119jcwn', 'qi9sts', '112gfd0', '27hzd2', '49rqcw', '7tyios', '6urj4l', '1p1w7di', '11v4oia', 'nm3uvc',
+  '1j31v2s', 'f0qa95', 'j1zvfh', 'po9x5r', '73hik2', '19l8e2b', '1yd7lpb', '1jfcnko', '1drvcnh', '29rmfb', 'da5bdb',
+  '18vfo6v', '1nf6zl0', '1snxuk7', '1mk7277',
+]);
 
 /**
  * A Kathā-only block: `{ "if": "style.katha", "then": [...] }` (also `style.katha&…`). Its `then` lines are seen only in
@@ -976,7 +1021,8 @@ export interface StoryString {
   en: string;
   /**
    * which dialogue file owns it: 1 common/ch1/ch2 · 2 ch3/ch4 · 3 ch5/ch6 + enemy lines · 4 content strings (titles,
-   * descriptions…) · 5 story lines inside Kathā-only blocks (any chapter)
+   * descriptions…) · 5 story lines inside Kathā-only blocks up to v0.5a (any chapter) · 6–9 Kathā lines new in v0.5b
+   * (6 common/ch1–3, 7 ch4 and new moveText, 8 ch5, 9 ch6), incl. new Kathā-only speaker titles (labels)
    */
   file: DialogueFileNo;
   ctx: string;
@@ -985,12 +1031,12 @@ export interface StoryString {
 }
 
 type Cmd = Record<string, unknown>;
-interface StoryLike {
+export interface StoryLike {
   chapters?: { kanda: number; summary?: string }[];
   maps?: { id: string; signs?: { text: string }[] }[];
   events?: { id: string; cmds?: Cmd[] }[];
 }
-interface DefsLike {
+export interface DefsLike {
   moves?: { id: string; description?: string; origin?: string }[];
   allies?: { id: string; description?: string }[];
   enemies?: { id: string; description?: string; intro?: string; defeatLine?: string }[];
@@ -1013,21 +1059,29 @@ function isNameWho(who: string, nameIds: ReadonlySet<string>): boolean {
  * (DEFEAT_TEXT, REST_TEXT, DEFAULT_OBJECTIVE, the next-book objectives), NPC speaker titles (`who` that is free
  * English, as labels), chapter summaries, and the defs.json descriptions (moves, allies, enemies, items) and move
  * origins (except the internal tags in MOVE_ORIGIN_TAGS).
- * File 5 (Kathā): every story line inside the `then` of a Kathā-only block (`{ "if": "style.katha", … }`, see isKathaCond)
- * or the `else` of a practice-only block (`{ "if": "!style.katha", … }`, see isPracticeCond), in any chapter (the
- * practice-only `then` keeps its file 1–3); speaker titles used there still go to file 4. Also the Kathā wording of
- * move descriptions (`katha.json → moveText`, v0.4.1), after every other string.
+ * Kathā text (files 5–9): every story line inside the `then` of a Kathā-only block (`{ "if": "style.katha", … }`, see
+ * isKathaCond) or the `else` of a practice-only block (`{ "if": "!style.katha", … }`, see isPracticeCond), in any chapter
+ * (the practice-only `then` keeps its file 1–3), and the Kathā wording of move descriptions (`katha.json → moveText`,
+ * v0.4.1, after every other string). v0.5b rule: a string sa-dialogue-5.json held at v0.5a (FILE5_V05A) stays in file 5;
+ * any other goes to the package file of its story file — 6 for story-common / ch1–3, 7 for ch4, 8 for ch5, 9 for ch6, and
+ * 7 for a new moveText. Speaker titles go to file 4, except a NEW title (not in LABELS4_V05A) first used inside a Kathā
+ * block: it goes, as a label, to that chapter's Kathā file (6–9).
+ * `input` replaces the bundled files (tests); every field defaults to the bundled content.
  */
-export function collectStoryStrings(): StoryString[] {
-  const files: [StoryLike, 1 | 2 | 3][] = [
-    [storyCommon as unknown as StoryLike, 1],
-    [storyCh1 as unknown as StoryLike, 1],
-    [storyCh2 as unknown as StoryLike, 1],
-    [storyCh3 as unknown as StoryLike, 2],
-    [storyCh4 as unknown as StoryLike, 2],
-    [storyCh5 as unknown as StoryLike, 3],
-    [storyCh6 as unknown as StoryLike, 3],
+export function collectStoryStrings(input: StoryInput = {}): StoryString[] {
+  const files: [StoryLike, 1 | 2 | 3, KathaFileNo][] = input.stories ?? [
+    [storyCommon as unknown as StoryLike, 1, 6],
+    [storyCh1 as unknown as StoryLike, 1, 6],
+    [storyCh2 as unknown as StoryLike, 1, 6],
+    [storyCh3 as unknown as StoryLike, 2, 6],
+    [storyCh4 as unknown as StoryLike, 2, 7],
+    [storyCh5 as unknown as StoryLike, 3, 8],
+    [storyCh6 as unknown as StoryLike, 3, 9],
   ];
+  const file5 = input.file5 ?? FILE5_V05A;
+  const labels4 = input.labels4 ?? LABELS4_V05A;
+  /** the file of a Kathā string: 5 when file 5 held it at v0.5a, else the chapter's package file */
+  const kathaFile = (en: unknown, fresh: KathaFileNo): DialogueFileNo => (typeof en === 'string' && file5.has(enKey(en)) ? 5 : fresh);
   const out: StoryString[] = [];
   const seen = new Set<string>();
   const push = (en: unknown, file: DialogueFileNo, ctx: string, label?: boolean): void => {
@@ -1035,32 +1089,34 @@ export function collectStoryStrings(): StoryString[] {
     seen.add(en);
     out.push(label ? { en, file, ctx, label } : { en, file, ctx });
   };
-  const walk = (cmds: unknown, file: 1 | 2 | 3 | 5, ev: string): void => {
+  /** `katha`: inside a Kathā branch — its strings go to 5 (held at v0.5a) or to `kfile` (new, v0.5b) */
+  const walk = (cmds: unknown, file: 1 | 2 | 3, kfile: KathaFileNo, katha: boolean, ev: string): void => {
     if (!Array.isArray(cmds)) return;
     for (const c of cmds as Cmd[]) {
       if (!c || typeof c !== 'object') continue;
-      const k5 = file === 5 ? ' (Kathā)' : '';
-      if ('say' in c) push(c.say, file, `${ev} · ${typeof c.who === 'string' ? c.who : 'narration'}${k5}`);
+      const k5 = katha ? ' (Kathā)' : '';
+      const at = (en: unknown): DialogueFileNo => (katha ? kathaFile(en, kfile) : file);
+      if ('say' in c) push(c.say, at(c.say), `${ev} · ${typeof c.who === 'string' ? c.who : 'narration'}${k5}`);
       if ('choice' in c) {
-        push(c.choice, file, `${ev} · choice prompt${k5}`);
-        if (Array.isArray(c.options)) for (const o of c.options as { label?: unknown }[]) push(o?.label, file, `${ev} · choice option${file === 5 ? " (player's reply, Kathā)" : ''}`);
+        push(c.choice, at(c.choice), `${ev} · choice prompt${k5}`);
+        if (Array.isArray(c.options)) for (const o of c.options as { label?: unknown }[]) push(o?.label, at(o?.label), `${ev} · choice option${katha ? " (player's reply, Kathā)" : ''}`);
       }
-      if ('objective' in c) push(c.objective, file, `${ev} · objective${k5}`);
-      if ('battle' in c && c.battle && typeof c.battle === 'object') push((c.battle as { intro?: unknown }).intro, file, `${ev} · battle intro${k5}`);
+      if ('objective' in c) push(c.objective, at(c.objective), `${ev} · objective${k5}`);
+      if ('battle' in c && c.battle && typeof c.battle === 'object') push((c.battle as { intro?: unknown }).intro, at((c.battle as { intro?: unknown }).intro), `${ev} · battle intro${k5}`);
       for (const k of ['then', 'else', 'onCorrect', 'onWrong', 'onWin', 'onLose']) {
         if (!(k in c)) continue;
-        // Kathā text belongs to file 5: the `then` of a Kathā-only block and the `else` of a practice-only block. The
-        // practice game's text (`else` of a Kathā block, `then` of a practice block) keeps its file.
+        // Kathā text: the `then` of a Kathā-only block and the `else` of a practice-only block. The practice game's text
+        // (`else` of a Kathā block, `then` of a practice block) keeps its file.
         const kathaBranch = 'if' in c && ((k === 'then' && isKathaCond(c.if)) || (k === 'else' && isPracticeCond(c.if)));
-        walk(c[k], kathaBranch ? 5 : file, ev);
+        walk(c[k], file, kfile, katha || kathaBranch, ev);
       }
     }
   };
-  for (const [s, file] of files) {
-    for (const e of s.events ?? []) walk(e.cmds, file, e.id);
+  for (const [s, file, kfile] of files) {
+    for (const e of s.events ?? []) walk(e.cmds, file, kfile, false, e.id);
     for (const m of s.maps ?? []) for (const sg of m.signs ?? []) push(sg.text, file, `${m.id} · sign`);
   }
-  const defs = defsJson as unknown as DefsLike;
+  const defs = input.defs ?? (defsJson as unknown as DefsLike);
   for (const e of defs.enemies ?? []) {
     push(e.intro, 3, `${e.id} · intro`);
     push(e.defeatLine, 3, `${e.id} · defeatLine`);
@@ -1073,16 +1129,21 @@ export function collectStoryStrings(): StoryString[] {
   push(REST_TEXT, 4, 'logic-events REST_TEXT · narration (shrine: rest)');
   for (const n of [1, 2, 3, 4, 5, 6] as const) push(nextBookObjective(n), 4, `logic-events nextBookObjective(${n}) · objective (after Book ${n} ends)`);
   // NPC speaker titles: a `who` in free English (names.json ids are drawn from names.json)
-  const nameIds = new Set((namesJson as unknown as { names: NameEntry[] }).names.map((n) => n.id));
-  const walkWho = (cmds: unknown, ev: string): void => {
+  const nameIds = new Set(input.nameIds ?? (namesJson as unknown as { names: NameEntry[] }).names.map((n) => n.id));
+  // v0.5b: a new title (not in file 4 at v0.5a) first used inside a Kathā block goes to that chapter's Kathā file
+  const walkWho = (cmds: unknown, kfile: KathaFileNo, katha: boolean, ev: string): void => {
     if (!Array.isArray(cmds)) return;
     for (const c of cmds as Cmd[]) {
       if (!c || typeof c !== 'object') continue;
-      if (typeof c.who === 'string' && !isNameWho(c.who, nameIds)) push(c.who, 4, `${ev} · speaker title (label)`, true);
-      for (const k of ['then', 'else', 'onCorrect', 'onWrong', 'onWin', 'onLose']) if (k in c) walkWho(c[k], ev);
+      if (typeof c.who === 'string' && !isNameWho(c.who, nameIds)) push(c.who, katha && !labels4.has(enKey(c.who)) ? kfile : 4, `${ev} · speaker title (label)${katha ? ' (Kathā)' : ''}`, true);
+      for (const k of ['then', 'else', 'onCorrect', 'onWrong', 'onWin', 'onLose']) {
+        if (!(k in c)) continue;
+        const kathaBranch = 'if' in c && ((k === 'then' && isKathaCond(c.if)) || (k === 'else' && isPracticeCond(c.if)));
+        walkWho(c[k], kfile, katha || kathaBranch, ev);
+      }
     }
   };
-  for (const [s] of files) for (const e of s.events ?? []) walkWho(e.cmds, e.id);
+  for (const [s, , kfile] of files) for (const e of s.events ?? []) walkWho(e.cmds, kfile, false, e.id);
   // chapter cards
   for (const [s] of files) for (const ch of s.chapters ?? []) push(ch.summary, 4, `chapter ${ch.kanda} · summary (title card)`);
   // defs.json
@@ -1092,10 +1153,25 @@ export function collectStoryStrings(): StoryString[] {
   for (const e of defs.enemies ?? []) push(e.description, 4, `enemy ${e.id} · description`);
   for (const it of defs.items ?? []) push(it.description, 4, `item ${it.id} · description`);
 
-  // ── file 5: Kathā content strings ──
-  const katha = kathaJson as unknown as KathaContent;
-  for (const [id, en] of Object.entries(katha.moveText ?? {})) push(en, 5, `move ${id} · description (Kathā: katha.json moveText)`);
+  // ── Kathā content strings: file 5 (held at v0.5a), else file 7 (katha.json is WP-C's in v0.5b) ──
+  const moveText = input.moveText ?? (kathaJson as unknown as KathaContent).moveText ?? {};
+  for (const [id, en] of Object.entries(moveText)) push(en, kathaFile(en, 7), `move ${id} · description (Kathā: katha.json moveText)`);
   return out;
+}
+
+/** What collectStoryStrings reads (tests pass their own; every field defaults to the bundled content). */
+export interface StoryInput {
+  /** story files in play order, each with its file for story lines (1–3) and for new Kathā lines (6–9) */
+  stories?: [StoryLike, 1 | 2 | 3, KathaFileNo][];
+  defs?: DefsLike;
+  /** names.json ids (a `who` that is a name id is not a speaker title) */
+  nameIds?: string[];
+  /** katha.json moveText */
+  moveText?: Record<string, string>;
+  /** enKey of the strings file 5 held at v0.5a (default FILE5_V05A) */
+  file5?: ReadonlySet<string>;
+  /** enKey of the speaker titles file 4 held at v0.5a (default LABELS4_V05A) */
+  labels4?: ReadonlySet<string>;
 }
 
 // ───────────────────────── Level report helper ─────────────────────────

@@ -10,6 +10,8 @@ This repository is the standalone home of the game. The game is one game folder 
   - You cast astras by reciting a line of their verse: one tap fills the missing word.
   - There are no random battles and no quizzes.
   - A gold marker on the map shows where to go next.
+  - The great scenes are played, not just told (v0.5): the Krauñca birds, Guha's ferry, the golden deer, Jaṭāyu, a verse-chain duel with Hanumān, walking as Hanumān through Laṅkā by night and setting it ablaze, Nala's bridge, Rāvaṇa in phases, the Puṣpaka return and the Lava–Kuśa recital as the ending.
+  - Mid-battle with Rāvaṇa, the **Āditya-hṛdayam** plays as a cutscene that leaves the flat battle for a 3D view: all 31 verses (Yuddha 6.105) with English, lit line by line so you can follow along. Replay it from the verse book.
 - **Abhyāsa (practice).** Every move in battle is a Sanskrit question about words, sandhi or grammar.
 
 ## Run it
@@ -29,7 +31,7 @@ To deploy it on its own: `node tools/vercel-build.mjs` with `SAMSKURU_GAME=ramay
 | Path | What |
 |---|---|
 | `src/games/ramayana-yatra/` | The game: `PRD.md` (the spec), `logic*.ts` (pure, seeded rules), `view-*.tsx`, `content/` (story, verses, lexicon, Sanskrit tables), tests |
-| `src/games/ramayana-yatra/notes/` | Design notes: Kathā (`katha.md`), Sanskrit style (`sambhashana.md`, `sa-ui.md`), the reviews and the v0.4.2 audit (`audit-*.md`) |
+| `src/games/ramayana-yatra/notes/` | Design notes: Kathā (`katha.md`), Sanskrit style (`sambhashana.md`, `sa-ui.md`), the reviews and the v0.4.2 audit (`audit-*.md`), the v0.5 plan and package notes (`v05b-*.md`) |
 | `src/games/ramayana-yatra/REVIEW.md` | What a human Sanskrit teacher should check, in priority order |
 | `src/games/akshara-paricaya/`, `src/games/smrti-yugala/` | The platform's two reference games. Its contract tests use them. |
 | `src/app`, `src/sdk`, `src/ui`, `src/sanskrit`, `src/content`, `tools`, `tests`, `docs` | The Samskuru platform. See [AGENTS.md](AGENTS.md) and [docs/](docs/). |

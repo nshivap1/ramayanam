@@ -12,10 +12,11 @@ import { createArt } from './art';
 import type { TrackId } from './catalog';
 import { loadContent } from './content';
 import { HeldDirs, isDir, useGameKeys } from './input';
-import { type GuideTarget, currentMap, guideTarget, halfVerseLines, isWalkable, loadGame, maxHpOf, newGame, nextBookKanda, reduce, sessionResult, setReader, storyProgress, testFlag, tileAt, toSave, visibleNpcs } from './logic';
+import { type GuideTarget, currentMap, guideTarget, halfVerseLines, inSight, isWalkable, loadGame, maxHpOf, newGame, nextBookKanda, playerSprite, reduce, sessionResult, setReader, stepInJourney, storyProgress, testFlag, tileAt, toSave, visibleNpcs } from './logic';
 import { indexOf } from './logic-util';
 import { manifest } from './manifest';
-import type { Action, Fx, GameState, JourneyStyle } from './types';
+import type { Action, EventCmd, Fx, GameState, JourneyStyle } from './types';
+import { startScript } from './logic-events';
 import { AutoReciteToggle, JourneyPicker, defaultJourney, isKatha, kathaResult, smaranaSummary } from './view-katha';
 import { DEFAULT_NAME } from './logic-state';
 import { type UiSlots, uiEn, uiSa } from './sa-ui';
@@ -29,6 +30,8 @@ import { BattleTags, Screen, createAnim } from './view-screen';
 import { UiText, useUi } from './view-ui';
 import { Markup, StoryLine, markupPlain } from './view-markup';
 import { Sheet } from '@ui';
+import { cutsceneDue } from './logic-cutscene'; // v0.5b WP-E
+import { Cutscene } from './view-cutscene'; // v0.5b WP-E
 
 const SAVE_KEY = 'save-v1';
 /** The e2e snapshot is only built when the shell exposes it (URL has e2e=1); saves work in normal play. */
@@ -129,6 +132,9 @@ export default function Game({ ctx }: GameProps): ReactElement {
   const bookEndOn = useRef(false);
   /** e2e: the last toasts shown (English), so a test can see one that came and went. */
   const toastLog = useRef<string[]>([]);
+  /** v0.5b WP-E: a cutscene replayed from the verse book (its id), and whether any cutscene is on (input waits) */
+  const [replay, setReplay] = useState<string | null>(null);
+  const cutsceneOn = useRef(false);
 
   const setPrefs = (p: ViewPrefs): void => {
     setPrefsState(p);
@@ -284,6 +290,23 @@ export default function Game({ ctx }: GameProps): ReactElement {
     [content, commit, showToast],
   );
 
+  // ───────── e2e only (v0.5b): run an ad-hoc script from a calm moment ─────────
+  // `window.__ryScript(cmds)` (only with ?e2e=1): the packages' browser tests reach a set piece's panel (a story
+  // recitation, a book review, Nala's bridge, …) before its story content exists. Ignored unless free exploration.
+  useEffect(() => {
+    if (!E2E) return;
+    const w = window as unknown as { __ryScript?: (cmds: EventCmd[]) => boolean };
+    w.__ryScript = (cmds) => {
+      const s = stateRef.current;
+      if (!s || s.mode !== 'explore' || s.pending || !Array.isArray(cmds)) return false;
+      commit(startScript(s, content, 'e2e.script', cmds), s);
+      return true;
+    };
+    return () => {
+      delete w.__ryScript;
+    };
+  }, [commit, content]);
+
   // ───────── start / continue ─────────
   const begin = (s: GameState): void => {
     audio.current?.unlock();
@@ -313,7 +336,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
   // ───────── movement loop ─────────
   const tryStep = useCallback(() => {
     const s = stateRef.current;
-    if (!s || s.mode !== 'explore' || s.pending || menuOpen.current || finished.current || bookEndOn.current) {
+    if (!s || s.mode !== 'explore' || s.pending || menuOpen.current || finished.current || bookEndOn.current || cutsceneOn.current) {
       // leaving free exploration forgets held directions (keys re-press through autorepeat; the pad is gone)
       held.clear();
       return;
@@ -344,6 +367,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
   useGameKeys(
     (b, repeat) => {
       audio.current?.unlock();
+      if (cutsceneOn.current) return; // v0.5b WP-E: the cutscene takes its own keys (pause, skip)
       if (menuOpen.current || detail) {
         if (repeat) return;
         if (b === 'menu') setMenu((m) => ({ ...m, open: false }));
@@ -438,6 +462,11 @@ export default function Game({ ctx }: GameProps): ReactElement {
     return () => clearTimeout(t);
   }, [banner]);
 
+  // ───────── v0.5b WP-E: a cutscene due in this battle (logic-cutscene), or a replay from the verse book ─────────
+  const dueScene = useMemo(() => (state && screen === 'game' ? cutsceneDue(state, content) : null), [state, screen, content]);
+  const scene = dueScene ?? replay;
+  cutsceneOn.current = !!scene;
+
   // ───────── audio ─────────
   useEffect(() => {
     if (!ctx.settings.sound) return;
@@ -455,6 +484,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
   }, [prefs.music, ctx.settings.sound]);
   const track: TrackId | null = useMemo(() => {
     if (screen !== 'game' || !state) return 'title';
+    if (scene) return 'shloka'; // v0.5b WP-E: the cutscene's quiet drone (the existing verse track; follows mute / music)
     if (state.mode === 'ended') return 'ending';
     if (state.mode === 'battle' && state.battle) return state.battle.spec.music;
     const o = musicOverride.current;
@@ -465,7 +495,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
       return null;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [screen, state?.mode, state?.battle?.spec, state?.save.mapId, musicTick, content]);
+  }, [screen, state?.mode, state?.battle?.spec, state?.save.mapId, musicTick, content, scene]);
   useEffect(() => {
     audio.current?.play(track);
   }, [track]);
@@ -524,7 +554,8 @@ export default function Game({ ctx }: GameProps): ReactElement {
       for (let y = 0; y < map.height; y++) {
         let row = '';
         for (let x = 0; x < map.width; x++) {
-          row += isWalkable(away, content, x, y) ? '.' : '#';
+          // v0.5b P3: a guard's line of sight (an active avoid-trigger) is '#' too: the bots keep out of it
+          row += isWalkable(away, content, x, y) && !inSight(map, s.save.flags, x, y) ? '.' : '#';
           const t = tileAt(map, x, y);
           if (t.ground === 'shrine' || t.overlay === 'shrine') shrines.push({ x, y });
         }
@@ -549,7 +580,8 @@ export default function Game({ ctx }: GameProps): ReactElement {
       map = null;
     }
     const n = s ? nav(s) : null;
-    const next = s ? content.walkthrough.find((w) => !s.save.flags[w.expectFlag]) ?? null : null;
+    // v0.5b: the first step of the save's journey not done (a Kathā-only step is skipped in the practice game)
+    const next = s ? content.walkthrough.find((w) => stepInJourney(w, s.save) && !s.save.flags[w.expectFlag]) ?? null : null;
     ctx.expose({
       seq: seq.current,
       phase,
@@ -594,9 +626,18 @@ export default function Game({ ctx }: GameProps): ReactElement {
       guide: guide ? { kind: guide.kind, map: guide.map, x: guide.x, y: guide.y, to: guide.to ?? null, npc: guide.npc ?? null, recite: guide.recite ?? null, step: guide.step, goal: guide.goal, distance: guide.distance } : null,
       guideShown,
       showWay: prefs.showWay,
+      // ── v0.5b (notes/v05b-plan.md §1) ──
+      // P4: the sprite the player walks as ('hanuman' in Kathā book 5 with katha.hanuman, else the avatar's)
+      playerSprite: s ? playerSprite(s.save) : null,
+      // P2: the book under review (pending 'book'), else null
+      book: p?.kind === 'book' ? p.kanda : null,
+      // P5: Nala's bridge (pending 'setu'): the stones, the solution (the e2e bot taps toward it), taps, Nala's hint
+      setu: p?.kind === 'setu' ? { tag: p.tag, cols: p.cols, turns: p.turns, cells: p.cells, solution: p.solution, taps: p.taps, hint: p.hint } : null,
+      // WP-E: the cutscene on screen (due in this battle, or a replay from the verse book), else null
+      cutscene: scene ? { id: scene, replay: !dueScene } : null,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, screen, menu.open, chapterDone, ctx, content, saved, prefs.dialogueLang, prefs.autoRecite, prefs.showWay, toast, guide, guideShown]);
+  }, [state, screen, menu.open, chapterDone, ctx, content, saved, prefs.dialogueLang, prefs.autoRecite, prefs.showWay, toast, guide, guideShown, scene]);
 
   // ───────── env ─────────
   const openWord = useCallback((id: string, form?: string) => setDetail({ kind: 'word', id, form }), []);
@@ -682,17 +723,32 @@ export default function Game({ ctx }: GameProps): ReactElement {
       <EnvContext.Provider value={env}>
         <KeysContext.Provider value={keys}>
           {screen === 'game' && state ? (
-            <div className={cx('g-ramayana-yatra__frame', showChapterDone && 'is-bookend')}>
+            <div className={cx('g-ramayana-yatra__frame', showChapterDone && 'is-bookend', scene && 'is-cutscene')}>
               <Screen stateRef={stateRef} env={env} anim={anim} overlay={overlay} guideRef={guideRef} onSwipe={(d) => {
                 held.queued = d;
                 tryStep();
               }} />
               <div className={cx('g-ramayana-yatra__panel', `is-${state.pending?.kind ?? state.mode}`)} data-testid="panel">
-                {showChapterDone ? null : <Panel state={state} dispatch={dispatch} held={held} kick={tryStep} openMenu={openMenu} onTimeLeft={onTimeLeft} onSave={() => {
+                {showChapterDone || scene ? null : <Panel state={state} dispatch={dispatch} held={held} kick={tryStep} openMenu={openMenu} onTimeLeft={onTimeLeft} onSave={() => {
                 persist(stateRef.current, true);
                 dirty.current = true; // and again once the event has finished
-              }} onFinish={finish} shrine={SHRINE} echo={echoRef.current} />}
+              }} onFinish={finish} shrine={SHRINE} echo={echoRef.current} recited={recited.current} />}
               </div>
+              {scene ? (
+                // v0.5b WP-E: the Āditya-hṛdayam cutscene over the battle (the panel waits); a replay returns to the verse book
+                <Cutscene
+                  key={`${scene}:${dueScene ? 'due' : 'replay'}`}
+                  id={scene}
+                  replay={!dueScene}
+                  onDone={() => {
+                    if (dueScene) dispatch({ type: 'cutscene-done', id: dueScene });
+                    else {
+                      setReplay(null);
+                      setMenu({ open: true, tab: 'verses' });
+                    }
+                  }}
+                />
+              ) : null}
               {showChapterDone && chapterDone !== null ? (
                 <BookEnd kanda={chapterDone} state={state} mark={bookMark.current} recitedNow={recitedNow()} onNext={nextBookKanda(state) === chapterDone + 1 ? continueBook : null} onStop={finish} />
               ) : null}
@@ -718,6 +774,12 @@ export default function Game({ ctx }: GameProps): ReactElement {
                 }}
                 onRest={finish}
                 canUseItems={calm}
+                onCutscene={(id) => {
+                  // v0.5b WP-E: replay from the verse book (the menu closes; it opens again on श्लोकाः when the scene ends)
+                  setDetail(null);
+                  setMenu((m) => ({ ...m, open: false }));
+                  setReplay(id);
+                }}
               />
               <Sheet title={detail?.kind === 'shloka' ? plainKey('common.verse') : plainKey('common.word')} open={!menu.open && detail !== null} onClose={() => setDetail(null)} data-testid="detail-sheet">
                 {detail?.kind === 'word' ? <WordCard lexId={detail.id} save={state.save} highlight={detail.form} /> : detail?.kind === 'shloka' ? <ShlokaCard id={detail.id} save={state.save} /> : null}

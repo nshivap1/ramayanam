@@ -3,7 +3,7 @@
  * All game-local content is JSON under ./content (human-auditable, separate from engine code).
  * Sanskrit inside it is Devanagari only and is validated by content.test.ts / world.test.ts.
  */
-import type { AllyDef, ChapterDef, DialogueEntry, EnemyDef, EventDef, GameContent, ItemDef, KathaContent, LexEntry, MapDef, MoveDef, NameEntry, Shloka, UiEntry, UiFile, WalkStep } from './types';
+import type { AllyDef, ChainContent, ChapterDef, CutsceneContent, DialogueEntry, EnemyDef, EventDef, GameContent, ItemDef, KathaContent, LexEntry, MapDef, MoveDef, NameEntry, Shloka, UiEntry, UiFile, WalkStep } from './types';
 import shlokas1 from './content/shlokas-1.json';
 import shlokas2 from './content/shlokas-2.json';
 import lexicon1 from './content/lexicon-1.json';
@@ -27,12 +27,25 @@ import uiB from './content/sa-ui-b.json';
 import uiKatha from './content/sa-ui-katha.json';
 import kathaJson from './content/katha.json';
 import sa5 from './content/sa-dialogue-5.json';
+// v0.5b (notes/v05b-ownership.md): one file per package — new Kathā lines of ch1–3 → 6 (WP-A), ch4 → 7 (WP-C), ch5 → 8 (WP-B), ch6 → 9 (WP-D)
+import sa6 from './content/sa-dialogue-6.json';
+import sa7 from './content/sa-dialogue-7.json';
+import sa8 from './content/sa-dialogue-8.json';
+import sa9 from './content/sa-dialogue-9.json';
+import uiScene from './content/sa-ui-scene.json';
+import uiSetu from './content/sa-ui-setu.json';
+import uiChain from './content/sa-ui-chain.json';
+import kathaChain from './content/katha-chain.json';
+// v0.5b WP-E: the Āditya-hṛdayam cutscene (Yuddha 6.105.1–31, sources and variants; logic-cutscene.ts)
+import aditya from './content/aditya-hridayam.json';
 
 /**
  * All Sambhāṣaṇa dialogue entries in file order (translators own one file each): 1–3 story lines,
- * 4 content strings (NPC titles, chapter summaries, move / ally / enemy / item descriptions, move origins).
+ * 4 content strings (NPC titles, chapter summaries, move / ally / enemy / item descriptions, move origins),
+ * 5 Kathā lines up to v0.5a, 6–9 the Kathā lines v0.5b adds (6: ch1–3, 7: ch4 + new moveText, 8: ch5, 9: ch6;
+ * the rule is sa-verify collectStoryStrings).
  */
-export const DIALOGUE_FILES = [sa1, sa2, sa3, sa4, sa5] as unknown as { entries: DialogueEntry[] }[];
+export const DIALOGUE_FILES = [sa1, sa2, sa3, sa4, sa5, sa6, sa7, sa8, sa9] as unknown as { entries: DialogueEntry[] }[];
 
 /** English → Sanskrit map of translated story text (entries with an empty `sa` are skipped). */
 export function dialogueMap(files: { entries: DialogueEntry[] }[] = DIALOGUE_FILES): Record<string, string> {
@@ -41,8 +54,13 @@ export function dialogueMap(files: { entries: DialogueEntry[] }[] = DIALOGUE_FIL
   return out;
 }
 
-/** Interface-string files (common: orchestrator · a: screens & menus · b: battle, challenges, cards, toasts · katha: Kathā mode). */
-export const UI_FILES = [uiCommon, uiA, uiB, uiKatha] as unknown as UiFile[];
+/**
+ * Interface-string files (common: orchestrator · a: screens & menus · b: battle, challenges, cards, toasts · katha: Kathā
+ * mode · v0.5b: scene (WP-A, keys scene.*), setu (WP-D, keys setu.*), chain (WP-C, keys chain.*)).
+ */
+export const UI_FILES = [uiCommon, uiA, uiB, uiKatha, uiScene, uiSetu, uiChain] as unknown as UiFile[];
+/** File names of UI_FILES, same order (tests report by name). */
+export const UI_FILE_NAMES = ['sa-ui-common.json', 'sa-ui-a.json', 'sa-ui-b.json', 'sa-ui-katha.json', 'sa-ui-scene.json', 'sa-ui-setu.json', 'sa-ui-chain.json'] as const;
 
 /** Merged interface strings; the first file that defines a key wins (sa-ui.test.ts forbids duplicates). */
 export function uiMap(files: UiFile[] = UI_FILES): Record<string, UiEntry> {
@@ -104,6 +122,8 @@ export function loadContent(): GameContent {
     dialogueSa: dialogueMap(),
     ui: uiMap(),
     katha: kathaJson as unknown as KathaContent,
+    chain: kathaChain as unknown as ChainContent,
+    aditya: aditya as unknown as CutsceneContent, // v0.5b WP-E
   };
   return cached;
 }

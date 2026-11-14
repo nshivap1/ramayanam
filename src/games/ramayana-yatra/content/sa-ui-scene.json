@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "about": "v0.5b interface strings (OWNER: WP-A): story set pieces in Kathā (view-scene.tsx: story recitations, the book review); keys scene.*. Rules: notes/sa-ui.md.",
+  "models": [],
+  "entries": {
+    "scene.your": {
+      "en": "Your line",
+      "sa": "तव पादः",
+      "label": true,
+      "ctx": "story recitation (P1, view-scene): the badge before the line — the player says this pāda as the story's action"
+    },
+    "scene.syllables": {
+      "en": "{$n} syllables",
+      "sa": "{$n} अक्षराणि",
+      "label": true,
+      "ctx": "story recitation (P1): the pāda's metre beside the badge, its number of syllables (akṣaras; an anuṣṭubh pāda has 8: Bāla 1.2, \"four quarters, eight syllables in each\")"
+    }
+  }
+}

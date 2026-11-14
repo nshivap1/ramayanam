@@ -215,6 +215,10 @@ export const CHARS: Record<SpriteId, CharSpec> = {
   golden_deer: { kind: 'deer', skin: R.deerGold, hair: WHITE_HAIR, top: WHITE_CLOTH, lower: WHITE_CLOTH, accent: R.white[0], acc: [] },
   krauncha: { kind: 'krauncha', skin: R.feather, hair: WHITE_HAIR, top: WHITE_CLOTH, lower: WHITE_CLOTH, accent: R.red[1], acc: [] },
   hunter: { skin: R.skinDeep, hair: BLACK_HAIR, top: [R.skinDeep[1], R.skinDeep[2]], lower: [R.wood[2], R.wood[3]], accent: R.wood[1], bare: true, acc: ['headband', 'feather', 'bow', 'quiver'] },
+  // v0.5b (WP-D): Kuśa and Lava, the twins Vālmīki taught the poem (Bāla 1.4.4–12): boys in hermit dress, Rāma's likeness
+  // (1.4.10–11), singing to the strings (1.4.8) — the veena; Lava with a tuft instead of a topknot, to tell them apart
+  kusha: { child: true, skin: R.skinRama, hair: BLACK_HAIR, top: [R.skinRama[1], R.skinRama[2]], lower: OCHRE, accent: R.saffron[1], bare: true, acc: ['topknot', 'veena'] },
+  lava: { child: true, skin: R.skinRama, hair: BLACK_HAIR, top: [R.skinRama[1], R.skinRama[2]], lower: OCHRE, accent: R.gold[1], bare: true, acc: ['tuft', 'veena'] },
 };
 
 const EYE = '#1a1020';

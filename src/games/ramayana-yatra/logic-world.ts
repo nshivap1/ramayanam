@@ -147,6 +147,29 @@ export function triggerFlag(mapId: string, eventId: string): string {
   return `trig.${mapId}.${eventId}`;
 }
 
+/**
+ * v0.5b P3: an avoid-trigger (`TriggerDef.avoid`, a guard's line of sight) is active while its `requires` holds and,
+ * for a once-trigger, its flag is not set yet. An active one is a wall to `findPath` and '#' in the e2e grid.
+ */
+export function avoidActive(t: TriggerDef, mapId: string, flags: Record<string, true>): boolean {
+  return t.avoid === true && testFlag(flags, t.requires) && (t.once === false || !flags[triggerFlag(mapId, t.event)]);
+}
+
+const avoidCache = new WeakMap<MapDef, TriggerDef[]>();
+
+/** The avoid-triggers of a map (cached per map object: findPath asks for every tile it visits). */
+export function avoidTriggers(map: MapDef): TriggerDef[] {
+  let a = avoidCache.get(map);
+  if (!a) avoidCache.set(map, (a = (map.triggers ?? []).filter((t) => t.avoid === true)));
+  return a;
+}
+
+/** v0.5b P3: (x, y) lies in an active avoid-trigger of the map. */
+export function inSight(map: MapDef, flags: Record<string, true>, x: number, y: number): boolean {
+  const av = avoidTriggers(map);
+  return av.length > 0 && av.some((t) => triggerCovers(t, x, y) && avoidActive(t, map.id, flags));
+}
+
 /** The NPC the player would talk to when pressing A (directly in front, or across a market-stall counter). */
 export function npcInFront(state: GameState, content: GameContent): PlacedNpc | undefined {
   const map = currentMap(state, content);

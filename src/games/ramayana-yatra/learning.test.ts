@@ -687,7 +687,7 @@ test('recital unlock: a hero with 4 moves only gains the move as learnable (PP s
 // ───────────────────────── Sambhāṣaṇa (ui-b): prompts, explanations, role labels, recital toasts ─────────────────────────
 
 /** The English of a prompt key with its line slot: must equal the prompt the builder wrote (English unchanged). */
-const PROMPT_KEY: Record<ChallengeKind, string> = { artha: 'learn.arthaPrompt', lipi: 'learn.lipiPrompt', purana: 'learn.puranaPrompt', krama: 'learn.kramaPrompt', viccheda: 'learn.vicchedaPrompt', vibhakti: 'learn.vibhaktiPrompt', smarana: 'learn.smaranaPrompt' };
+const PROMPT_KEY: Record<ChallengeKind, string> = { artha: 'learn.arthaPrompt', lipi: 'learn.lipiPrompt', purana: 'learn.puranaPrompt', krama: 'learn.kramaPrompt', viccheda: 'learn.vicchedaPrompt', vibhakti: 'learn.vibhaktiPrompt', smarana: 'learn.smaranaPrompt', antya: '' /* v0.5b: built by logic-chain only, never by makeChallenge */ };
 
 function saProblems(content: GameContent, ch: Challenge, o: ReturnType<typeof getOracle>): string[] {
   const out: string[] = [];

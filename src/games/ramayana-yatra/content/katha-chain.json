@@ -1,0 +1,11 @@
+{
+ "version": 1,
+ "about": "v0.5b verse-chain duel opponents (OWNER: WP-C; notes/v05b-plan.md §4, types.ts ChainContent): a Kathā duel against a foe listed here is a śloka-antyakṣarī (logic-chain.ts). Each entry: foe (EnemyDef id), links (HP = links × the lead's best hit, default 5), source (where the text puts the exchange).",
+ "duels": [
+  {
+   "foe": "hanuman_duel",
+   "links": 5,
+   "source": "Kiṣkindhā 4.2–3: Sugrīva sends Hanumān to learn who the two armed strangers are; in a mendicant's guise he speaks with them, and Rāma praises his flawless words (4.3.28–29: s-nanrgveda, s-vyakaranam). The chain of verse lines is the game's friendly test of words, not an event of the text."
+  }
+ ]
+}

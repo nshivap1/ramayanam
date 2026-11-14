@@ -666,3 +666,173 @@
   .g-ramayana-yatra__model-line { font-size: 22px; }
   .g-ramayana-yatra__cast-coach { padding: 2px var(--s-1); font-size: var(--fs-xs); }
 }
+
+/* ══ v0.5b (notes/v05b-plan.md, notes/v05b-ownership.md): one section per package — edit only inside your own markers ══ */
+
+/* ── v0.5b WP0: the book review (P2, view-bookend `review`): the book-complete screen inside the panel ── */
+.g-ramayana-yatra__bookend.is-review { border: 0; border-radius: 0; box-shadow: none; animation: none; }
+
+/* ── v0.5b WP-A (view-scene.tsx: story recitations, book review) — begin ── */
+.g-ramayana-yatra__scene { display: contents; }
+/* the story recitation's head: "your line" and the pāda's metre (its syllables) */
+.g-ramayana-yatra__scene-head { flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
+.g-ramayana-yatra__scene-your { flex: none; padding: 0 10px; border-radius: var(--r-pill); background: var(--accent-soft); color: var(--accent-ink); font-weight: 800; font-size: var(--fs-sm); line-height: 1.6; }
+.g-ramayana-yatra__scene-meter { flex: none; padding: 0 8px; border: 2px solid var(--line); border-radius: var(--r-pill); color: var(--ink-2); font-size: var(--fs-xs); font-weight: 700; line-height: 1.6; font-variant-numeric: tabular-nums; }
+/* the first recitation of all: the coach line, and the gap and the chips pulse until the pick (a static ring with reduced motion) */
+.g-ramayana-yatra__scene-coach { flex: none; margin: 0; padding: 4px var(--s-2); border-radius: var(--r-sm); background: var(--accent-soft); color: var(--accent-ink); font-size: var(--fs-sm); font-weight: 700; line-height: 1.5; text-align: center; }
+.g-ramayana-yatra__scene[data-coach] .g-ramayana-yatra__cast[data-picked=""] .g-ramayana-yatra__cast-box { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); animation: g-ramayana-yatra-gap-pulse 1.2s ease-in-out infinite; }
+.g-ramayana-yatra__scene[data-coach] .g-ramayana-yatra__cast[data-picked=""] .g-ramayana-yatra__cast-chips:not(.is-arming) .g-ramayana-yatra__cast-chip { border-color: var(--accent); box-shadow: 0 var(--edge) 0 var(--accent), 0 0 0 3px var(--accent-soft); animation: g-ramayana-yatra-chip-pulse 1.2s ease-in-out infinite; }
+@media (max-height: 700px) {
+  .g-ramayana-yatra__scene-your { font-size: var(--fs-xs); }
+  .g-ramayana-yatra__scene-coach { padding: 2px var(--s-1); font-size: var(--fs-xs); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-ramayana-yatra__scene[data-coach] .g-ramayana-yatra__cast-box, .g-ramayana-yatra__scene[data-coach] .g-ramayana-yatra__cast-chip { animation: none; }
+}
+/* ── v0.5b WP-A — end ── */
+
+/* ── v0.5b WP-B (view-screen.tsx, art-tiles.ts: Hanumān, stealth, roofs) — begin ── */
+/* ── v0.5b WP-B — end ── */
+
+/* ── v0.5b WP-C (view-chain.tsx: the verse-chain duel; Rāvaṇa's phases) — begin ── */
+/* the verse-chain pick: the opponent's line (its last sound marked), the key and the question, three stacked line chips */
+.g-ramayana-yatra__chain { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.g-ramayana-yatra__chain-head { flex: none; display: flex; align-items: center; gap: var(--s-2); min-height: 32px; padding-bottom: 4px; border-bottom: 2px solid var(--line); }
+.g-ramayana-yatra__chain-who { margin-left: auto; color: var(--gold-ink); font-weight: 800; font-size: var(--fs-sm); }
+.g-ramayana-yatra__chain-prev { flex: none; display: grid; place-items: center; padding: 4px var(--s-2); border: 2px solid var(--gold); border-radius: var(--r-md); background: var(--gold-soft); }
+.g-ramayana-yatra__chain-line { display: inline-flex; flex-wrap: wrap; justify-content: center; column-gap: 0.3em; line-height: 1.5; }
+.g-ramayana-yatra__chain-w { display: inline-flex; white-space: nowrap; }
+.g-ramayana-yatra__chain-line.is-prev { font-size: clamp(20px, 6.2vw, 26px); color: var(--ink); }
+.g-ramayana-yatra__chain-line .sk-sa--deva { font-family: var(--font-shloka); }
+.g-ramayana-yatra__chain-line .sk-sa--iast { font-family: var(--font-iast); font-style: italic; }
+.g-ramayana-yatra__chain-ak { transition: color 120ms; }
+.g-ramayana-yatra__chain-ak.is-key { padding: 0 2px; border-radius: 6px; background: var(--accent); color: var(--surface); box-shadow: 0 0 0 2px var(--accent); }
+.g-ramayana-yatra__chain-ak.is-head { text-decoration: underline 2px var(--line-strong); text-underline-offset: 6px; }
+.g-ramayana-yatra__chain-ak.is-dark { color: var(--ink-3); }
+.g-ramayana-yatra__chain-ak.is-lit { color: var(--ink); }
+.g-ramayana-yatra__chain-ask { flex: none; margin: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 8px; text-align: center; color: var(--ink-2); font-size: var(--fs-sm); font-weight: 700; line-height: 1.5; }
+.g-ramayana-yatra__chain-last { color: var(--ink-3); font-size: var(--fs-xs); }
+.g-ramayana-yatra__chain-key { display: inline-grid; place-items: center; min-width: 1.6em; padding: 0 6px; border: 2px solid var(--accent); border-radius: 8px; background: var(--accent-soft); color: var(--accent-ink); font-family: var(--font-shloka); font-size: 22px; line-height: 1.3; }
+.g-ramayana-yatra__chain-q.is-any { color: var(--accent-ink); }
+.g-ramayana-yatra__chain-chip .g-ramayana-yatra__chain-line.is-chip { justify-content: flex-start; flex-wrap: nowrap; font-size: clamp(17px, 5.3vw, 22px); font-weight: 600; }
+.g-ramayana-yatra__chain-chip.is-off { opacity: 0.45; }
+.g-ramayana-yatra__chain-chip.is-right { background: linear-gradient(100deg, var(--gold-soft) 20%, var(--paper) 40%, var(--gold-soft) 60%) 0 0 / 250% 100%; animation: g-ramayana-yatra-shimmer 900ms ease-in-out 2; }
+@media (max-height: 700px) {
+  .g-ramayana-yatra__chain { gap: 4px; }
+  .g-ramayana-yatra__chain-head { min-height: 28px; padding-bottom: 2px; }
+  .g-ramayana-yatra__chain-prev { padding: 2px var(--s-1); }
+  .g-ramayana-yatra__chain-line.is-prev { font-size: clamp(18px, 5.6vw, 22px); }
+  .g-ramayana-yatra__chain-key { font-size: 19px; }
+  .g-ramayana-yatra__chain-ask { font-size: var(--fs-xs); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-ramayana-yatra__chain-chip.is-right { animation: none; }
+}
+/* ── v0.5b WP-C — end ── */
+
+/* ── v0.5b WP-D (view-setu.tsx: Nala's bridge; view-bookend.tsx: the finale) — begin ── */
+/* Nala's bridge: a heading + status line, one strip (shore · five stones · Laṅkā), the day numbers, the total, one button */
+.g-ramayana-yatra__setu { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--s-2); }
+.g-ramayana-yatra__setu-head { display: grid; gap: 2px; text-align: center; }
+.g-ramayana-yatra__setu-head .g-ramayana-yatra__eyebrow { margin: 0; }
+.g-ramayana-yatra__setu-status { margin: 0; min-height: 3em; display: grid; align-content: center; font-size: var(--fs-md); font-weight: 600; line-height: 1.5; color: var(--ink); }
+.g-ramayana-yatra__setu-status.is-whole { color: var(--ok-ink); font-weight: 800; }
+.g-ramayana-yatra__setu-strip { --setu-stone: 52px; display: flex; justify-content: center; align-items: flex-start; }
+.g-ramayana-yatra__setu-endcol { flex: none; width: 22px; display: grid; justify-items: center; gap: 4px; }
+.g-ramayana-yatra__setu-end { width: 22px; height: var(--setu-stone); display: grid; }
+.g-ramayana-yatra__setu-end-art { width: 100%; height: 100%; display: block; }
+.g-ramayana-yatra__setu-stones { display: flex; gap: 4px; padding: 0 3px; }
+.g-ramayana-yatra__setu-col { display: grid; justify-items: center; gap: 4px; }
+.g-ramayana-yatra__setu-cell { position: relative; width: var(--setu-stone); height: var(--setu-stone); padding: 0; border: 2px solid var(--line-strong); border-radius: var(--r-sm); background: var(--indigo-soft); overflow: hidden; cursor: pointer; box-shadow: 0 3px 0 var(--line-strong); touch-action: manipulation; }
+.g-ramayana-yatra__setu-cell:active:not([aria-disabled]) { transform: translateY(2px); box-shadow: 0 1px 0 var(--line-strong); }
+.g-ramayana-yatra__setu-cell:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.g-ramayana-yatra__setu-cell.is-set { border-color: var(--gold); box-shadow: 0 3px 0 var(--gold-ink); cursor: default; }
+.g-ramayana-yatra__setu-cell.is-hint { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 3px 0 var(--accent-ink); animation: g-ramayana-yatra-setu-hint 1.1s ease-in-out infinite; }
+@keyframes g-ramayana-yatra-setu-hint { 50% { box-shadow: 0 0 0 7px var(--accent-soft), 0 3px 0 var(--accent-ink); } }
+.g-ramayana-yatra__setu-turn { position: absolute; inset: 0; display: block; transition: transform 220ms var(--ease); }
+.g-ramayana-yatra__setu-span { width: 100%; height: 100%; display: block; }
+.g-ramayana-yatra__setu-key { position: absolute; left: 2px; top: 0; padding: 0 3px; border-radius: var(--r-sm); background: var(--surface); color: var(--ink-2); font-size: 11px; font-weight: 800; line-height: 1.4; opacity: 0.85; }
+.g-ramayana-yatra__setu-cell.is-set .g-ramayana-yatra__setu-key { background: var(--gold-soft); color: var(--gold-ink); }
+.g-ramayana-yatra__setu-sky { fill: var(--indigo-soft); }
+.g-ramayana-yatra__setu-sun { fill: var(--saffron); }
+.g-ramayana-yatra__setu-sea { fill: var(--indigo); }
+.g-ramayana-yatra__setu-wave { fill: none; stroke: var(--indigo-soft); stroke-width: 1.5; stroke-linecap: round; opacity: 0.8; }
+.g-ramayana-yatra__setu-rock { fill: var(--mute); }
+.g-ramayana-yatra__setu-deck { fill: var(--paper-3); stroke: var(--ink-3); stroke-width: 1; }
+.g-ramayana-yatra__setu-seam { fill: none; stroke: var(--ink-3); stroke-width: 1; }
+.g-ramayana-yatra__setu-sand { fill: var(--saffron-soft); stroke: var(--saffron-ink); stroke-width: 0.6; }
+.g-ramayana-yatra__setu-palm { fill: none; stroke: var(--leaf-ink); stroke-width: 1.6; stroke-linecap: round; }
+.g-ramayana-yatra__setu-wall { fill: var(--gold); stroke: var(--gold-ink); stroke-width: 0.8; }
+.g-ramayana-yatra__setu-day { text-align: center; color: var(--ink-3); font-size: var(--fs-sm); font-weight: 700; line-height: 1.3; }
+.g-ramayana-yatra__setu-day.is-set { color: var(--gold-ink); font-weight: 900; }
+.g-ramayana-yatra__setu-endname { width: 0; display: flex; justify-content: center; overflow: visible; white-space: nowrap; color: var(--ink-3); font-size: var(--fs-xs); font-weight: 700; }
+.g-ramayana-yatra__setu-built { margin: 0; text-align: center; color: var(--ink-2); font-size: var(--fs-sm); font-weight: 700; }
+.g-ramayana-yatra__setu-strip.is-whole .g-ramayana-yatra__setu-stones { gap: 0; }
+.g-ramayana-yatra__setu-strip.is-whole .g-ramayana-yatra__setu-cell { border-radius: 0; box-shadow: none; border-left-width: 0; border-right-width: 0; }
+.g-ramayana-yatra__setu-foot { display: grid; }
+@media (max-width: 380px) { .g-ramayana-yatra__setu-strip { --setu-stone: 48px; } }
+@media (max-height: 700px) {
+  .g-ramayana-yatra__setu { gap: var(--s-1); }
+  .g-ramayana-yatra__setu-status { min-height: 0; font-size: var(--fs-sm); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-ramayana-yatra__setu-turn { transition: none; }
+  .g-ramayana-yatra__setu-cell.is-hint { animation: none; }
+}
+.g-ramayana-yatra.is-reduced .g-ramayana-yatra__setu-turn { transition: none; }
+/* the Kathā ending (view-bookend KathaEnding): the journey's numbers, then every verse book by book */
+.g-ramayana-yatra__kend-stats .g-ramayana-yatra__bookend-stat { align-items: center; }
+.g-ramayana-yatra__kend-books { display: grid; gap: var(--s-3); }
+.g-ramayana-yatra__kend-book { display: grid; gap: var(--s-1); }
+.g-ramayana-yatra__kend-book-name { margin: 0; color: var(--gold-ink); font-weight: 800; font-size: var(--fs-sm); }
+.g-ramayana-yatra__kend-verse { cursor: default; }
+.g-ramayana-yatra__kend-verse.is-locked { opacity: 0.7; border-style: dashed; }
+.g-ramayana-yatra__kend-lines { color: var(--ink-3); font-size: var(--fs-xs); font-weight: 700; }
+/* ── v0.5b WP-D — end ── */
+
+/* ── v0.5b WP-E (view-cutscene.tsx, cutscene3d.ts: the Āditya-hṛdayam cutscene) — begin ── */
+/* the overlay mirrors the frame: the stage sits exactly over the game screen (then grows for the 3D view), the reader
+   over the panel; the canvases are low-resolution and scaled up with crisp pixels like the game's own screen */
+.g-ramayana-yatra__frame.is-cutscene { position: relative; }
+.g-ramayana-yatra__cs { position: absolute; inset: 0; z-index: 6; display: flex; flex-direction: column; gap: var(--s-2); }
+.g-ramayana-yatra__cs-stage { position: relative; flex: none; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--r-md); overflow: hidden; background: var(--ink); box-shadow: 0 0 0 2px var(--line-strong), 0 var(--edge) 0 2px var(--line-strong); }
+.g-ramayana-yatra__cs-stage > canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; image-rendering: crisp-edges; image-rendering: pixelated; }
+.g-ramayana-yatra__cs.is-fallback .g-ramayana-yatra__cs-gl { visibility: hidden; }
+.g-ramayana-yatra__cs-still { object-fit: cover; }
+.g-ramayana-yatra__cs-reader { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-2) var(--s-3); background: var(--surface); color: var(--ink); border: 2px solid var(--line-strong); border-radius: var(--r-lg); box-shadow: 0 var(--edge) 0 var(--line-strong), inset 0 0 0 2px var(--paper-2); overflow: hidden; }
+.g-ramayana-yatra__cs-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); flex: none; }
+.g-ramayana-yatra__cs-title { display: grid; gap: 0; min-width: 0; }
+.g-ramayana-yatra__cs-name { font-size: var(--fs-lg); font-weight: 700; color: var(--gold-ink); line-height: 1.3; }
+.g-ramayana-yatra__cs-count { font-size: var(--fs-sm); font-weight: 700; color: var(--ink-3); white-space: nowrap; }
+.g-ramayana-yatra__cs-ctrl { display: flex; gap: var(--s-1); flex: none; }
+.g-ramayana-yatra__cs-btn { min-height: 44px; min-width: 44px; padding: 0 var(--s-3); border: 2px solid var(--line-strong); border-radius: var(--r-pill); background: var(--paper); color: var(--ink); font: inherit; font-size: var(--fs-sm); font-weight: 800; cursor: pointer; box-shadow: 0 2px 0 var(--line-strong); }
+.g-ramayana-yatra__cs-btn[aria-pressed="true"] { background: var(--gold-soft); border-color: var(--gold-ink); }
+.g-ramayana-yatra__cs-btn.is-yes { background: var(--gold-soft); }
+.g-ramayana-yatra__cs-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.g-ramayana-yatra__cs-ask { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: var(--s-2); padding: var(--s-2); border-radius: var(--r-md); background: var(--paper-2); font-weight: 700; flex: none; }
+.g-ramayana-yatra__cs-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: grid; align-content: start; gap: var(--s-2); padding: var(--s-1) var(--s-1) 40%; scrollbar-width: thin; mask-image: linear-gradient(to bottom, transparent 0, var(--ink) 22px, var(--ink) calc(100% - 22px), transparent 100%); }
+.g-ramayana-yatra__cs-nar { margin: 0; display: grid; gap: 2px; padding: var(--s-1) var(--s-2); border-radius: var(--r-sm); color: var(--ink-3); font-size: var(--fs-md); line-height: 1.5; }
+.g-ramayana-yatra__cs-nar.is-done { color: var(--ink-2); }
+.g-ramayana-yatra__cs-nar.is-now, .g-ramayana-yatra__cs-pada.is-now { color: var(--ink); background: linear-gradient(90deg, var(--gold-soft) calc(var(--cs-sweep, 0) * 100%), color-mix(in srgb, var(--gold-soft) 35%, transparent) 0); box-shadow: inset 3px 0 0 var(--gold); }
+.g-ramayana-yatra__cs-en { color: var(--ink-3); font-size: var(--fs-sm); font-weight: 600; line-height: 1.4; }
+.g-ramayana-yatra__cs-nar.is-now .g-ramayana-yatra__cs-en { color: var(--ink-2); }
+.g-ramayana-yatra__cs-verse { display: grid; gap: 1px; padding: var(--s-1) 0; border-top: 1px dashed var(--line); }
+.g-ramayana-yatra__cs-vhead { display: flex; gap: var(--s-2); align-items: baseline; font-size: var(--fs-xs); font-weight: 800; color: var(--ink-3); letter-spacing: 0.04em; }
+.g-ramayana-yatra__cs-vnum { color: var(--gold-ink); }
+.g-ramayana-yatra__cs-pada { padding: 1px var(--s-2); border-radius: var(--r-sm); color: var(--ink-3); font-size: clamp(1.05rem, 4.6vw, 1.4rem); line-height: 1.55; }
+.g-ramayana-yatra__cs-pada.is-done { color: var(--ink-2); }
+.g-ramayana-yatra__cs-verse:not(.is-now):not(.is-done) .g-ramayana-yatra__cs-pada { opacity: 0.6; }
+.g-ramayana-yatra__cs-tr { margin: var(--s-1) 0 0; padding: 0 var(--s-2); color: var(--ink-2); font-size: var(--fs-sm); }
+.g-ramayana-yatra__cs-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.g-ramayana-yatra__cs.is-paused .g-ramayana-yatra__cs-stage { filter: saturate(0.6); }
+.g-ramayana-yatra__cs-entry { border-color: var(--gold-ink); background: color-mix(in srgb, var(--gold-soft) 60%, var(--paper)); }
+@media (max-height: 700px) {
+  .g-ramayana-yatra__cs-pada { font-size: clamp(1rem, 4.4vw, 1.2rem); line-height: 1.45; }
+  .g-ramayana-yatra__cs-nar { font-size: var(--fs-sm); }
+  .g-ramayana-yatra__cs-reader { padding: var(--s-1) var(--s-2); gap: var(--s-1); }
+  .g-ramayana-yatra__cs-name { font-size: var(--fs-md); }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  .g-ramayana-yatra__cs-stage { width: auto; height: 30dvh; align-self: center; }
+}
+/* ── v0.5b WP-E — end ── */
