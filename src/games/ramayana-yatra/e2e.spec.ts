@@ -16,7 +16,7 @@ import { type GameSession, expectNoOverflow, gameSuite } from '../../../tests/e2
 import { loadContent } from './content';
 import { TILE_PROPS, halfVerseLines, hardWord, isWalkable, loadGame, newGame, newMember, testFlag, tileAt, toSave, visibleNpcs, withUnlockedMoves } from './logic';
 import type { GameContent, GameState } from './types';
-import { uiSa } from './sa-ui';
+import { uiEn, uiSa } from './sa-ui';
 
 interface Snap {
   seq: number;
@@ -65,6 +65,10 @@ interface Snap {
   heard: string[];
   flags: string[];
   chapterDone: number | null;
+  /** v0.5a: the book-complete screen is on (the book, and the book "continue" opens: null = none) */
+  bookEnd?: { kanda: number; next: number | null } | null;
+  /** the start menu is open */
+  menu?: boolean;
   npcs: { id: string; x: number; y: number }[];
   warps: { x: number; y: number; to: string; open?: boolean }[];
   grid: string[];
@@ -389,7 +393,11 @@ class Bot {
   /** The move to use: `pickMove`'s choice, else the strongest usable move (by power), else the first usable one. */
   async pickMoveIndex(s: Snap, scope: ReturnType<Page['locator']>): Promise<number> {
     const ids = await scope.locator('[data-testid^="move-"]').evaluateAll((els) => els.map((e) => ((e as HTMLButtonElement).disabled ? '' : (e.getAttribute('data-testid') ?? '').slice(5))));
-    const power = (id: string): number => (id ? (POWER.get(id) ?? 0) + 1 : -1);
+    // Kathā (v0.5a): a tired astra (its "tired" tag) counts as weaker, and the astra the foe card names as fitting wins
+    const tired = new Set(await scope.locator('[data-testid^="tired-"]').evaluateAll((els) => els.map((e) => (e.getAttribute('data-testid') ?? '').slice(6))));
+    const aff = this.page.locator('[data-testid="foe-affinity"]');
+    const fit = (await aff.count()) ? await aff.first().getAttribute('data-affinity') : null;
+    const power = (id: string): number => (id ? ((POWER.get(id) ?? 0) + 1) * (tired.has(id) ? 0.4 : 1) * (id === fit ? 10 : 1) : -1);
     let n = 0;
     ids.forEach((id, i) => {
       if (power(id) > power(ids[n] ?? '')) n = i;
@@ -713,25 +721,220 @@ gameSuite('ramayana-yatra', ({ open }) => {
     return g;
   }
 
+  // ───────── the end of a book (v0.5a): the book-complete screen, then the next book in the same session or the result ─────────
   const ch1Plan = planAt(CONTENT, 1, 'siddhashrama', 14, ['player', 'rama', 'lakshmana']);
-  test('completing a chapter ends the session (completed); the save resumes in the next book', { skip: ch1Plan ? false : 'chapter 1 finale (siddhashrama) is not in the content yet' }, async () => {
-    assert.ok(ch1Plan);
-    const g = await openWithSave(ch1Plan.save, 13);
-    const bot = new Bot(g);
-    await bot.playUntil((s) => s.chapterDone !== null && s.phase === 'explore' && !s.pending, 900).catch(async (e: unknown) => {
-      // the bot refuses to walk once the chapter is done; that is the state we want
-      const s = await bot.snap();
-      if (s.chapterDone === null) throw e;
+  const BOOK2 = CONTENT.chapters.find((c) => c.kanda === 2);
+  const ch1Verses = CONTENT.chapters.find((c) => c.kanda === 1)?.shlokaIds ?? [];
+  /** Two of book 1's verses (no astra) heard but not restored, so the screen shows both states. */
+  const unrestoredIds = ch1Verses.filter((id) => !CONTENT.moves.some((m) => m.unlockShloka === id)).slice(0, 2);
+  const bookEndSave = (style: 'katha' | 'abhyasa'): ReturnType<typeof toSave> | null => {
+    if (!ch1Plan || !BOOK2) return null;
+    const base = style === 'katha' ? kathaFrom(ch1Plan.save, 1) : ch1Plan.save;
+    const shlokas = { ...base.shlokas };
+    const flags = { ...base.flags };
+    for (const id of unrestoredIds) {
+      const p = shlokas[id];
+      if (p) shlokas[id] = { ...p, restored: false, best: 0.5 };
+      delete flags[`restored.${id}`];
+    }
+    return { ...base, shlokas, flags };
+  };
+  const bookName = (k: number): { en: string; sa: string; pada: string } => {
+    const n = CONTENT.names.find((x) => x.id === `kanda.${k}`);
+    const sa = n?.sa ?? '';
+    return { en: (n?.en ?? '').split(' · ')[0] ?? '', sa, pada: sa.replace(/म्$/, 'ं') };
+  };
+  const squash = (t: string | null): string => (t ?? '').replace(/\s+/g, '');
+  const bookSkip = ch1Plan && BOOK2 && unrestoredIds.length === 2 ? false : 'needs the chapter 1 finale (siddhashrama), book 2 and two book-1 verses without an astra';
+
+  /** A book-1-finale save and the story-text language, then Continue from the title (seeded, at a viewport). */
+  async function openAtBookEnd(save: ReturnType<typeof toSave>, lang: 'en' | 'sa-en' | 'sa', viewport: { width: number; height: number }, seed = 13): Promise<GameSession> {
+    const g = await open({ seed, viewport });
+    await g.page.evaluate(([sv, l]) => {
+      localStorage.setItem('samskuru:v1:game:ramayana-yatra:save-v1', JSON.stringify(sv));
+      localStorage.setItem('samskuru:v1:game:ramayana-yatra:prefs-v1', JSON.stringify({ dialogueLang: l }));
+    }, [save, lang] as const);
+    await reloadToTitle(g);
+    await g.waitForState('s => s.screen === "title" && s.canContinue');
+    await g.tap('title-continue');
+    await g.waitForState("s => s.screen === 'game'");
+    return g;
+  }
+  /** Play the finale until the book-complete screen is on and armed. */
+  async function playToBookEnd(g: GameSession, bot: Bot): Promise<Snap> {
+    await bot.playUntil((s) => !!s.bookEnd, 900).catch(async (e: unknown) => {
+      if (!(await bot.snap()).bookEnd) throw e;
     });
-    await g.page.locator('[data-testid="panel-chapter-done"]').waitFor();
+    await g.page.locator('[data-testid="panel-chapter-done"][data-armed]').waitFor();
+    return bot.snap();
+  }
+  /** What the book-complete screen must show (book 1 → book 2): title, story line, the three numbers explained, verses, buttons. */
+  async function checkBookEnd(g: GameSession, s: Snap, lang: 'en' | 'sa-en' | 'sa', style: 'katha' | 'abhyasa'): Promise<void> {
+    assert.deepEqual(s.bookEnd, { kanda: 1, next: 2 }, 'book 1 is complete and book 2 is next');
+    assert.equal(await g.page.locator('[data-testid="result"]').count(), 0, 'nothing from the shell yet');
+    const panel = g.page.locator('[data-testid="panel-chapter-done"]');
+    const b1 = bookName(1);
+    const b2 = bookName(2);
+    const title = (await panel.locator('[data-testid="book-end-title"]').textContent()) ?? '';
+    if (lang === 'en') assert.equal(title.trim(), `${b1.en} complete`);
+    else assert.ok(title.includes(`${b1.pada} समाप्तम्`), `the title is "${b1.pada} समाप्तम्": ${title}`);
+    const story = await panel.locator('[data-testid="book-end-story"]').textContent();
+    assert.ok(squash(story).includes(squash(lang === 'en' ? uiEn(CONTENT, 'bookEnd.story1') : (uiSa(CONTENT, 'bookEnd.story1') ?? '?'))), `the story line: ${story}`);
+    // the three numbers, each with what it means
+    const rows = style === 'katha' ? ['heard', 'recited', 'restored'] : ['heard', 'answers', 'restored'];
+    for (const id of rows) {
+      const row = panel.locator(`[data-testid="book-end-${id}"]`);
+      assert.ok(await row.isVisible() || (await row.count()) === 1, `row ${id}`);
+      const why = `bookEnd.${id}Why`;
+      const text = await row.textContent();
+      assert.ok(squash(text).includes(squash(lang === 'en' ? uiEn(CONTENT, why) : (uiSa(CONTENT, why) ?? '?'))), `row ${id} explains itself: ${text}`);
+      if (lang === 'sa-en') assert.ok(squash(text).includes(squash(uiEn(CONTENT, why))), `sa-en: row ${id} has its English gloss`);
+    }
+    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-n'), String(ch1Verses.length), 'every verse of book 1 heard');
+    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-of'), String(ch1Verses.length));
+    assert.equal(await panel.locator('[data-testid="book-end-restored"]').getAttribute('data-n'), String(ch1Verses.length - unrestoredIds.length), 'restored of book 1');
+    if (style === 'katha') {
+      // (the finale's fights may end without a recitation: v0.5a battle tactics let a fitting astra decide a fight)
+      const lines = Object.values(s.recited ?? {}).reduce((a, b) => a + b, 0);
+      assert.equal(await panel.locator('[data-testid="book-end-recited"]').getAttribute('data-n'), String(lines), 'lines recited since the session began');
+    } else assert.ok(Number(await panel.locator('[data-testid="book-end-answers"]').getAttribute('data-of')) > 0, 'questions were answered in the finale');
+    // the book's verses with their state
+    const verses = panel.locator('[data-testid^="book-end-verse-"]');
+    assert.equal(await verses.count(), ch1Verses.length, 'one row per verse of the book');
+    for (const id of ch1Verses) assert.equal(await panel.locator(`[data-testid="book-end-verse-${id}"]`).getAttribute('data-state'), unrestoredIds.includes(id) ? 'heard' : 'restored', `state of ${id}`);
+    // primary: on to the next book (named); secondary: stop here
+    const next = (await g.page.locator('[data-testid="chapter-next"]').textContent()) ?? '';
+    if (lang === 'en') assert.ok(next.includes(`On to ${b2.en}`), next);
+    else assert.ok(next.includes(`${b2.pada} प्रति`), `the next book is named: ${next}`);
+    if (lang === 'sa') await expectNoLatin(g, 'book complete');
+    else await expectNoOverflow(g);
+    // the buttons are on screen without scrolling, ≥ 44 px
+    const vp = g.page.viewportSize();
+    for (const id of ['chapter-next', 'chapter-finish']) {
+      const box = await g.page.locator(`[data-testid="${id}"]`).boundingBox();
+      assert.ok(box && vp && box.y >= 0 && box.y + box.height <= vp.height && box.height >= 44, `${id} on screen (${JSON.stringify(box)})`);
+    }
+  }
+  /** After "continue": the next book's opening plays in this session (its title card), and nothing came from the shell. */
+  async function expectNextBookOpening(g: GameSession): Promise<void> {
+    await g.waitForState(`s => s.chapter === 2 && s.map === '${BOOK2?.startMap}' && !s.bookEnd && s.chapterDone === null && s.pending === 'title'`, 8000);
+    await g.page.locator('[data-testid="panel-title"]').waitFor();
+    assert.equal(await g.page.locator('[data-testid="result"]').count(), 0, 'no result screen: the session goes on');
+    assert.equal(await g.page.evaluate(() => (window as unknown as { __result?: unknown }).__result ?? null), null, 'ctx.finish was not called');
+  }
+  async function shot(g: GameSession, name: string): Promise<void> {
+    if (process.env['RY_SHOTS']) await g.page.screenshot({ path: `${process.env['RY_SHOTS']}/${name}.png` });
+  }
+
+  test('book complete (practice, English): the book-complete screen explains heard / right answers / restored and lists the verses; "stop here" ends the session (completed); the save resumes in the next book, whose opening plays on the first steps', { skip: bookSkip }, async () => {
+    const save = bookEndSave('abhyasa');
+    assert.ok(save && BOOK2);
+    const g = await openAtBookEnd(save, 'en', { width: 390, height: 844 });
+    const bot = new Bot(g);
+    const s = await playToBookEnd(g, bot);
+    await checkBookEnd(g, s, 'en', 'abhyasa');
+    await shot(g, 'book-end-en-390');
+    // the screen holds still: no walking or menu behind it
+    await g.page.keyboard.press('ArrowUp');
+    await g.page.keyboard.press('m');
+    await g.page.waitForTimeout(300);
+    const still = await bot.snap();
+    assert.ok(still.x === s.x && still.y === s.y && !still.menu && still.bookEnd, 'no step and no menu behind the book-complete screen');
     await g.tap('chapter-finish');
     const rec = await g.expectResult();
     assert.equal(rec.result.outcome, 'completed');
-    const saved = JSON.parse((await g.page.evaluate(() => localStorage.getItem('samskuru:v1:game:ramayana-yatra:save-v1'))) ?? '{}') as { completedChapters?: number[]; mapId?: string };
+    assert.match((rec.result as { summary?: string }).summary ?? '', /^Book 1 complete · /, 'English rows unchanged');
+    const saved = JSON.parse((await g.page.evaluate(() => localStorage.getItem('samskuru:v1:game:ramayana-yatra:save-v1'))) ?? '{}') as { completedChapters?: number[]; mapId?: string; flags?: Record<string, true> };
     assert.ok(saved.completedChapters?.includes(1), 'chapter 1 recorded as completed in the save');
     // autosave waits for a calm moment, so the save is never taken mid-event (before the hand-off warp)
-    const ch2 = CONTENT.chapters.find((c) => c.kanda === 2);
-    if (ch2) assert.equal(saved.mapId, ch2.startMap, 'the save resumes where book 2 starts, after the chapter hand-off');
+    assert.equal(saved.mapId, BOOK2.startMap, 'the save resumes where book 2 starts, after the chapter hand-off');
+    assert.ok(!saved.flags?.['ch2.started'], 'book 2 has not started yet');
+    // Play again → Continue: book 2 begins (its opening plays on the first steps)
+    await g.tap('result-again');
+    await g.waitForState("s => s.screen === 'title' && s.canContinue", 15000);
+    await g.tap('title-continue');
+    await g.waitForState(`s => s.screen === 'game' && s.map === '${BOOK2.startMap}' && !s.bookEnd`);
+    await bot.playUntil((x) => x.flags.includes('ch2.started') && x.chapter === 2, 300);
+    g.expectClean();
+    await g.close();
+  });
+
+  test('book complete (practice, संस्कृतम् + English): Sanskrit with English glosses; "continue" goes straight into book 2\'s opening in the same session', { skip: bookSkip }, async () => {
+    const save = bookEndSave('abhyasa');
+    assert.ok(save);
+    const g = await openAtBookEnd(save, 'sa-en', { width: 390, height: 844 }, 15);
+    const s = await playToBookEnd(g, new Bot(g));
+    await checkBookEnd(g, s, 'sa-en', 'abhyasa');
+    await shot(g, 'book-end-sa-en-390');
+    await g.tap('chapter-next');
+    await expectNextBookOpening(g);
+    g.expectClean();
+    await g.close();
+  });
+
+  test('book complete (Kathā, संस्कृतम्, 390×844, keyboard): no Latin; the three numbers explained; Enter continues into book 2\'s opening (no shell result); a later Rest & end session reports in Sanskrit', { skip: bookSkip, timeout: 240_000 }, async () => {
+    const save = bookEndSave('katha');
+    assert.ok(save);
+    const g = await openAtBookEnd(save, 'sa', { width: 390, height: 844 });
+    const bot = new Bot(g);
+    const s = await playToBookEnd(g, bot);
+    await checkBookEnd(g, s, 'sa', 'katha');
+    await shot(g, 'book-end-sa-390');
+    if (process.env['RY_SHOTS']) {
+      await g.page.evaluate(() => (document.documentElement.dataset['theme'] = 'dark'));
+      await shot(g, 'book-end-sa-390-dark');
+      await g.page.evaluate(() => delete document.documentElement.dataset['theme']);
+    }
+    await g.page.locator('[data-testid="book-end-verses"]').scrollIntoViewIfNeeded();
+    await shot(g, 'book-end-sa-390-verses');
+    await g.page.keyboard.press('Enter');
+    await expectNextBookOpening(g);
+    await expectNoLatin(g, 'book 2 title card');
+    // the opening plays on; then the player rests: the session reports book 1 (and this sitting's numbers) in Sanskrit
+    await bot.playUntil((x) => x.flags.includes('ch2.started') && x.phase === 'explore' && !x.pending, 400);
+    await g.tap('btn-menu');
+    await g.tap('menu-rest');
+    await g.tap('menu-rest-confirm');
+    const rec = await g.expectResult();
+    const r = rec.result as { outcome: string; summary?: string; review?: { sa: string; en?: string; note?: string }[] };
+    assert.equal(r.outcome, 'completed');
+    assert.ok((r.summary ?? '').startsWith(`${bookName(1).pada} समाप्तम्`) && !LATIN.test(r.summary ?? ''), `Sanskrit summary: ${r.summary}`);
+    g.expectClean();
+    await g.close();
+  });
+
+  test('book complete (Kathā, संस्कृतम्, 360×640): the screen fits; "stop here" → the shell result (completed) with Sanskrit rows; Play again → Continue resumes in book 2', { skip: bookSkip, timeout: 240_000 }, async () => {
+    const save = bookEndSave('katha');
+    assert.ok(save && BOOK2);
+    const g = await openAtBookEnd(save, 'sa', { width: 360, height: 640 }, 17);
+    const bot = new Bot(g);
+    const s = await playToBookEnd(g, bot);
+    await checkBookEnd(g, s, 'sa', 'katha');
+    await shot(g, 'book-end-sa-360');
+    await g.tap('chapter-finish');
+    const rec = await g.expectResult();
+    const r = rec.result as { outcome: string; summary?: string; share?: string; review?: { sa: string; en?: string; note?: string }[] };
+    assert.equal(r.outcome, 'completed');
+    const lines = Object.values(s.recited ?? {}).reduce((a, b) => a + b, 0);
+    const parts = (r.summary ?? '').split(' · ');
+    assert.equal(parts.length, 4, `book · heard · recited · restored: ${r.summary}`);
+    assert.equal(parts[0], `${bookName(1).pada} समाप्तम्`);
+    assert.equal(parts[2], uiSa(CONTENT, 'bookEnd.resultRecited', { n: lines }), 'lines recited, as on the book-complete screen');
+    assert.ok(!LATIN.test(r.summary ?? '') && r.share === r.summary, `the summary (and share) in Sanskrit: ${r.summary}`);
+    if (lines > 0) assert.ok((r.review ?? []).length > 0, 'a verse recited this session has its row');
+    for (const row of r.review ?? []) {
+      assert.ok(!LATIN.test(`${row.en ?? ''} ${row.note ?? ''}`) && DEVA.test(row.en ?? ''), `a Sanskrit review row: ${JSON.stringify(row)}`);
+    }
+    const shown = (await g.page.locator('.app-result__summary').textContent()) ?? '';
+    assert.equal(shown, r.summary, 'the shell shows the Sanskrit summary');
+    await shot(g, 'result-sa-360');
+    const saved = JSON.parse((await g.page.evaluate(() => localStorage.getItem('samskuru:v1:game:ramayana-yatra:save-v1'))) ?? '{}') as { completedChapters?: number[]; mapId?: string };
+    assert.ok(saved.completedChapters?.includes(1) && saved.mapId === BOOK2.startMap, 'the save resumes in book 2');
+    await g.tap('result-again');
+    await g.waitForState("s => s.screen === 'title' && s.canContinue", 15000);
+    await g.tap('title-continue');
+    await g.waitForState(`s => s.screen === 'game' && s.map === '${BOOK2.startMap}' && s.phase === 'explore' && !s.bookEnd`);
+    await bot.playUntil((x) => x.flags.includes('ch2.started') && x.chapter === 2, 300);
     g.expectClean();
     await g.close();
   });
@@ -778,14 +981,16 @@ gameSuite('ramayana-yatra', ({ open }) => {
             await g.waitForState("s => s.screen === 'game' && s.style === 'katha'");
           } else await startJourney(g);
           const label = `full ${run.journey}/${run.lang} seed ${seed}`;
-          const stats = await guidePlaythrough(g, { label, ...(run.lang === 'sa' ? { latin: () => latinOnScreen(g) } : {}) });
+          // v0.5a: Kathā takes the book-complete screen's "continue" (one session); practice stops at each book end and resumes
+          const stats = await guidePlaythrough(g, { label, continueBooks: run.journey === 'katha', ...(run.lang === 'sa' ? { latin: () => latinOnScreen(g) } : {}) });
           const rec = await g.expectResult(30000);
           assert.equal(rec.result.outcome, 'won');
           const total = stats.chapters.reduce((a, c) => ({ battles: a.battles + c.battles, wild: a.wild + c.wild, challenges: a.challenges + c.challenges, losses: a.losses + c.losses }), { battles: 0, wild: 0, challenges: 0, losses: 0 });
           console.log(`[${label}] ${(stats.totalMs / 60000).toFixed(1)} min wall, ${stats.sessions} sessions, ${stats.targets} pointer targets (${stats.steps} pad steps, ${stats.presses} presses of A), ${run.lang === 'sa' ? `${stats.swept} screens swept for Latin, ` : ''}${total.battles} battles (${total.wild} wild), ${total.challenges} challenges, ${total.losses} losses`);
           for (const c of stats.chapters) console.log(`[${label}] book ${c.chapter}: ${(c.ms / 1000).toFixed(0)} s, ${c.battles} battles (${c.wild} wild, ${c.grindBattles} grinding), ${c.challenges} challenges, ${c.losses} losses`);
           assert.ok(stats.chapters.some((c) => c.chapter === 6), 'reached book 6');
-          assert.equal(stats.sessions, 6, 'one session per book (each chapter end → result → Continue)');
+          if (run.journey === 'katha') assert.equal(stats.sessions, 1, 'one session: each book end → "continue" → the next book');
+          else assert.equal(stats.sessions, 6, 'one session per book (each book end → "stop here" → result → Continue)');
           if (run.lang === 'sa') assert.ok(stats.swept > 200, `the screens were swept for Latin (${stats.swept})`);
           assert.deepEqual(stats.issues, [], `issues seen on the way:\n${stats.issues.join('\n')}`);
           g.expectClean();
@@ -1315,18 +1520,21 @@ gameSuite('ramayana-yatra', ({ open }) => {
     assert.ok([...seen].some((k) => k.includes(':battle:')), `battle screens were swept: ${[...seen].join(', ')}`);
     assert.deepEqual(duelMenus, [], 'every duel turn went straight to the recitation');
     assert.ok(duelRecitations > 0, 'the duel was fought with recitations only');
-    // the session result reports verses heard / recited / restored, never a quiz score with ✗
+    // the session result reports verses heard / recited / restored, never a quiz score with ✗ (v0.5a: a reader of
+    // संस्कृतम् gets these game-provided rows in Sanskrit)
     await g.tap('btn-menu');
     await g.page.locator('[data-testid="menu"]').waitFor();
     await g.tap('menu-rest');
     await g.tap('menu-rest-confirm');
     const rec = (await g.expectResult()) as Awaited<ReturnType<GameSession['expectResult']>> & { result: { summary?: string; review?: { sa: string; correct: boolean; note?: string }[] } };
     const summary = rec.result.summary ?? '';
-    assert.match(summary, /\d+ verses? heard · \d+ lines? recited · \d+ verses? restored/, `Kathā result summary: ${summary}`);
-    assert.doesNotMatch(summary, /correct/, 'no correct/total score in Kathā');
+    const saParts = summary.split(' · ');
+    assert.equal(saParts.length, 4, `Kathā result summary: book · heard · recited · restored: ${summary}`);
+    assert.ok(saParts[1]?.startsWith(uiSa(CONTENT, 'bookEnd.resultHeard', { n: 0 })?.replace(/\s*०$/, '') ?? '?') && saParts[2]?.startsWith(uiSa(CONTENT, 'bookEnd.resultRecited', { n: 0 })?.replace(/\s*०$/, '') ?? '?') && saParts[3]?.startsWith(uiSa(CONTENT, 'bookEnd.resultRestored', { n: 0 })?.replace(/\s*०$/, '') ?? '?'), `Kathā result summary in Sanskrit: ${summary}`);
+    assert.ok(!LATIN.test(summary), `no Latin in the summary: ${summary}`);
     assert.equal(rec.result.share, summary);
     assert.ok((rec.result.review ?? []).length > 0 && (rec.result.review ?? []).every((r) => r.correct), 'the review lists the verses met, none marked wrong');
-    assert.ok((rec.result.review ?? []).some((r) => /restored/.test(r.note ?? '')), 'the restored verse says so');
+    assert.ok((rec.result.review ?? []).some((r) => (r.note ?? '').includes(uiSa(CONTENT, 'verses.restored') ?? '?')), 'the restored verse says so (पूर्णः)');
     assert.equal(await g.page.locator('.app-result__review li.is-bad').count(), 0, 'no ✗ on the result screen');
     g.expectClean();
     await g.close();
@@ -1502,6 +1710,106 @@ gameSuite('ramayana-yatra', ({ open }) => {
     assert.ok(!end.battle || end.battle.phase === 'won' || end.flags.includes('ch1.tataka_defeated'), `Tāṭakā is defeated: ${JSON.stringify(end.battle)}`);
     console.log(`Kathā boss (Tāṭakā): ${turns} player turns = ${turns} move taps + ${chipTaps} recitation taps; no other menu taps`);
     assert.ok(turns <= 16, `a Kathā boss is a short fight (${turns} turns)`);
+    g.expectClean();
+    await g.close();
+  });
+
+  // ───────── v0.5a (fx-strat): Kathā battle tactics — affinities, a warned blow and its answer, fatigue, the fitting astra ─────────
+  const yajnaPlan = planAt(CONTENT, 1, 'siddhashrama', 8, ['player', 'rama', 'lakshmana']);
+  const kathaYajna = yajnaPlan ? kathaFrom(yajnaPlan.save, 1) : null;
+  const tacticsSkip = kathaYajna && CONTENT.katha?.tactics?.fits.some((f) => f.foe === 'maricha') ? false : 'needs the chapter 1 finale (siddhashrama) and katha.json tactics';
+  test('Kathā tactics (v0.5a) in संस्कृतम् at 390×844: Subāhu and Mārīca — each foe card shows its fitting astra; the opening warning line; Lakṣmaṇa’s cover blunts the blow; a repeated astra is tired; the fitting astras decide with their story beats; no Latin', { skip: tacticsSkip, timeout: 300_000 }, async () => {
+    assert.ok(kathaYajna);
+    const g = await open({ seed: 23, viewport: { width: 390, height: 844 } });
+    await reloadWith(g, kathaYajna, 'sa');
+    await continueToExplore(g);
+    const beatOf = (tactic: string): ReturnType<Page['locator']> => g.page.locator(`[data-testid="battle-beat"][data-tactic="${tactic}"]`);
+    const toCommand = async (): Promise<Snap> => {
+      await g.waitForState("s => !!s.battle && s.battle.phase === 'command' && s.battle.beats === 0", 60_000);
+      await g.page.locator('[data-testid="katha-cmd"][data-armed="true"]').waitFor();
+      return g.state<Snap>();
+    };
+    // walk the story to the last night's battle (narration advances by itself in battle)
+    await new Bot(g, { noHurry: true }).playUntil((s) => !!s.battle, 400);
+    // 1. the opening: Subāhu readies a rain of blood on the sacrifice (Bāla 1.30.12) — one short Sanskrit line
+    const warn = beatOf('warn');
+    await warn.waitFor({ timeout: 20_000 });
+    const warnText = (await warn.locator('[data-testid="beat-text"]').textContent()) ?? '';
+    assert.ok(DEVA.test(warnText) && !LATIN.test(warnText), `the warning is Sanskrit: ${warnText}`);
+    await g.page.waitForFunction(() => (document.querySelector('[data-testid="battle-beat"][data-tactic="warn"] [data-testid="beat-text"]')?.textContent ?? '').includes('करिष्यति'), undefined, { timeout: 15_000 });
+    await shot(g, 'tactics-1-warning');
+    await expectNoLatin(g, 'the warning beat');
+    const s0 = await toCommand();
+    assert.equal(s0.battle?.foe, 'subahu');
+    const moves0 = s0.battle?.moves ?? [];
+    assert.ok(moves0.includes('agneyastra') && moves0.includes('manavastra'), `Rāma leads with Viśvāmitra's astras: ${moves0.join(', ')}`);
+    // 2. the foe card: Subāhu's fitting astra is the Āgneya (Bāla 1.30.22), in Sanskrit
+    const aff = g.page.locator('[data-testid="foe-affinity"]');
+    assert.equal(await aff.getAttribute('data-affinity'), 'agneyastra');
+    const affText = (await aff.textContent()) ?? '';
+    assert.ok(affText.includes('उचितम्') && affText.includes(CONTENT.names.find((n) => n.id === 'move.agneyastra')?.sa ?? '?'), `the card names the fitting astra: ${affText}`);
+    assert.equal(await g.page.locator('[data-testid="foe-warn"]').count(), 1, 'the card marks the readied blow');
+    // the answers sit above the moves while the blow is readied: the verse shield and Lakṣmaṇa's cover (one tap each)
+    const cover = g.page.locator('[data-testid="cmd-cover"]');
+    assert.ok(await cover.isVisible() && (await g.page.locator('[data-testid="cmd-shield"]').isVisible()), 'the answers are offered');
+    assert.match((await cover.textContent()) ?? '', /लक्ष्मणः/, 'Lakṣmaṇa covers');
+    await shot(g, 'tactics-2-foe-card');
+    await expectNoLatin(g, 'the command panel with a readied blow');
+    // 3. answer: Lakṣmaṇa steps in with रक्षा — the blow lands softly (× 0.3 of a capped strike)
+    await cover.click();
+    await beatOf('blunt').waitFor({ timeout: 20_000 });
+    const s1 = await toCommand();
+    const lost = (s0.battle?.allyHp ?? 0) - (s1.battle?.allyHp ?? 0);
+    assert.ok(lost >= 0 && lost <= Math.ceil((s0.battle?.allyMax ?? 0) * 0.45 * 0.3) + 1, `the answered blow is blunted (${lost} of ${s0.battle?.allyMax})`);
+    assert.equal(await g.page.locator('[data-testid="cmd-cover"]').count(), 0, 'no answers once the blow is spent');
+    // 4. fatigue: the same astra twice — its button says श्रान्तम् after the first cast
+    await g.page.locator('[data-testid="move-vayavyastra"]').click();
+    await toCommand();
+    const tired = g.page.locator('[data-testid="tired-vayavyastra"]');
+    assert.ok(await tired.isVisible(), 'the repeated astra is marked tired');
+    assert.equal((await tired.textContent())?.trim(), uiSa(CONTENT, 'katha.tired'));
+    assert.equal(await g.page.locator('[data-testid="tired-agneyastra"]').count(), 0, 'only the astra just cast');
+    await shot(g, 'tactics-3-tired');
+    await expectNoLatin(g, 'a tired astra');
+    // 5. the fitting astra: the Āgneya fells Subāhu (a story beat), then the Mānava hurls Mārīca into the ocean
+    await g.page.locator('[data-testid="move-agneyastra"]').click();
+    await beatOf('fit').waitFor({ timeout: 20_000 });
+    const s2 = await toCommand();
+    assert.equal(s2.battle?.foe, 'maricha', 'Subāhu is down at once; Mārīca steps forward');
+    assert.equal(await g.page.locator('[data-testid="foe-affinity"]').getAttribute('data-affinity'), 'manavastra');
+    await g.page.locator('[data-testid="move-manavastra"]').click();
+    const fit = beatOf('fit');
+    await fit.waitFor({ timeout: 20_000 });
+    await g.page.waitForFunction(() => (document.querySelector('[data-testid="battle-beat"][data-tactic="fit"] [data-testid="beat-text"]')?.textContent ?? '').includes('जीवति'), undefined, { timeout: 20_000 });
+    const fitText = (await fit.locator('[data-testid="beat-text"]').textContent()) ?? '';
+    assert.ok(fitText.includes('सागरे') && !LATIN.test(fitText), `the Mānava beat: ${fitText}`);
+    await shot(g, 'tactics-4-manava-beat');
+    await expectNoLatin(g, 'the Mānava beat');
+    const end = await new Bot(g, { noHurry: true }).playUntil((s) => !s.battle || s.battle.phase === 'won', 60);
+    assert.ok(!end.battle || end.battle.phase === 'won', 'the sacrifice is safe');
+    g.expectClean();
+    await g.close();
+  });
+
+  test('Kathā tactics (v0.5a) at 360×640: with a blow readied, the answer row, every move and the secondary buttons fit on screen without scrolling; keys 8 / 9 answer', { skip: tacticsSkip, timeout: 240_000 }, async () => {
+    assert.ok(kathaYajna);
+    const g = await open({ seed: 29, viewport: { width: 360, height: 640 } });
+    await reloadWith(g, kathaYajna, 'sa');
+    await continueToExplore(g);
+    await new Bot(g, { noHurry: true }).playUntil((s) => !!s.battle && s.battle.phase === 'command' && s.battle.beats === 0, 400);
+    await g.page.locator('[data-testid="katha-cmd"][data-armed="true"]').waitFor();
+    const vp = g.page.viewportSize();
+    const ids = ['cmd-shield', 'cmd-cover', 'cmd-switch', 'cmd-item', ...((await g.state<Snap>()).battle?.moves ?? []).map((m) => `move-${m}`)];
+    for (const id of ids) {
+      const box = await g.page.locator(`[data-testid="${id}"]`).boundingBox();
+      assert.ok(box && vp && box.y >= 0 && box.y + box.height <= vp.height + 1 && box.x >= 0 && box.x + box.width <= vp.width + 1, `${id} on screen (${JSON.stringify(box)})`);
+    }
+    await expectNoLatin(g, 'the answer row at 360×640');
+    await shot(g, 'tactics-5-answers-360');
+    const s0 = await g.state<Snap>();
+    await g.page.keyboard.press('9'); // Lakṣmaṇa's cover
+    await g.waitForState(`s => s.seq > ${s0.seq} && s.battle && s.battle.phase !== 'command'`);
+    await g.page.locator('[data-testid="battle-beat"][data-tactic="blunt"]').waitFor({ timeout: 20_000 });
     g.expectClean();
     await g.close();
   });
@@ -2222,7 +2530,7 @@ interface FullRun {
  * Plays from the current screen (a journey just begun) to the ending and the result "won", following the pointer.
  * `latin` (संस्कृतम्): returns the Latin strings on screen; it is called whenever the screen changes.
  */
-async function guidePlaythrough(g: GameSession, opts: { latin?: () => Promise<string[]>; label: string; until?: (s: Snap) => boolean }): Promise<FullRun> {
+async function guidePlaythrough(g: GameSession, opts: { latin?: () => Promise<string[]>; label: string; until?: (s: Snap) => boolean; continueBooks?: boolean }): Promise<FullRun> {
   const bot = new Bot(g, { useItems: true });
   const t0 = Date.now();
   const chapters: ChapterStats[] = [];
@@ -2334,10 +2642,16 @@ async function guidePlaythrough(g: GameSession, opts: { latin?: () => Promise<st
       await g.page.waitForSelector('[data-testid="result"]');
       continue;
     }
-    // chapter complete (calm) → see results (the session ends; the next one continues from the save)
+    // book complete (calm) → the book-complete screen: "continue" (the next book's opening, same session) or "stop
+    // here" (the session ends; the next one continues from the save)
     if (s.chapterDone !== null && s.phase === 'explore' && !s.pending) {
-      await g.page.locator('[data-testid="panel-chapter-done"]').waitFor();
+      await g.page.locator('[data-testid="panel-chapter-done"][data-armed]').waitFor();
       await sweep('chapter complete', `done:${s.chapterDone}`);
+      if (opts.continueBooks && s.bookEnd?.next) {
+        await g.tap('chapter-next');
+        await g.waitForState(`s => s.chapterDone === null && s.chapter === ${s.bookEnd.next}`, 15000);
+        continue;
+      }
       await g.tap('chapter-finish');
       await g.page.waitForSelector('[data-testid="result"]');
       continue;

@@ -175,6 +175,46 @@ export function enterMap(state: GameState, content: GameContent, mapId: string, 
   return enterMapEffects(s, content, mapId);
 }
 
+/** The book whose opening `next-book` would play now (n + 1 after the last completed book n < 6), or null. */
+export function nextBookKanda(state: GameState): number | null {
+  const done = state.save.completedChapters;
+  if (done.length === 0) return null;
+  const k = Math.max(...done) + 1;
+  return k <= 6 && !state.save.flags[`ch${k}.started`] ? k : null;
+}
+
+/**
+ * v0.5a, the book-complete screen's "continue" (explore, nothing pending): right after book n is complete and before
+ * book n + 1 has started, put the player where book n + 1 begins (its ChapterDef startMap / startX / startY; a player
+ * already on that map stays where they are) and play its opening at once. The opening is the start map's trigger
+ * that covers the walkthrough's `ch{n+1}.started` reach point: the same event a step into that area runs (it sets
+ * the chapter, shows the title card and its scene). Anything else: the same state object.
+ */
+export function beginNextBook(state: GameState, content: GameContent): GameState {
+  if (state.mode !== 'explore' || state.pending) return state;
+  const k = nextBookKanda(state);
+  const ch = k === null ? undefined : content.chapters.find((c) => c.kanda === k);
+  const map = ch ? mapById(content, ch.startMap) : undefined;
+  if (!ch || !map) return state;
+  const step = content.walkthrough.find((w) => w.expectFlag === `ch${k}.started` && w.map === map.id);
+  const at = step && 'reach' in step.action ? step.action.reach : { x: ch.startX, y: ch.startY };
+  let s: GameState = state;
+  if (state.save.mapId !== map.id) {
+    const dx = at.x - ch.startX;
+    const dy = at.y - ch.startY;
+    const facing: Dir = Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'left' : 'right') : dy < 0 ? 'up' : 'down';
+    s = enterMap(state, content, map.id, ch.startX, ch.startY, facing);
+    if (s.mode !== 'explore' || s.pending) return s; // the map's own onEnter took over (no start map has one today)
+  }
+  const ev = indexOf(content).event;
+  const trig = map.triggers.find(
+    (t) => triggerCovers(t, at.x, at.y) && ev.has(t.event) && testFlag(s.save.flags, t.requires) && (t.once === false || !s.save.flags[triggerFlag(map.id, t.event)]),
+  );
+  if (!trig) return s;
+  if (trig.once !== false) s = setFlag(s, triggerFlag(map.id, trig.event));
+  return startEvent(s, content, trig.event);
+}
+
 /** Explore-mode `step`. Returns the same object when nothing at all changed. */
 export function stepPlayer(state: GameState, content: GameContent, dir: Dir): GameState {
   const map = currentMap(state, content);

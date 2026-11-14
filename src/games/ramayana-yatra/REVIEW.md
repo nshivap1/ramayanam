@@ -569,3 +569,46 @@ Battle lines of the tutorial duel (`content/sa-battle.json`) and interface strin
 - [ ] **katha.echoBar** (label) — recites with → पाठः
 
 Constructions to confirm first: स्मर / स्मराम / स्मरतु for "learn by heart" (कण्ठस्थं कुरु is not in the packs); अनुवद for "say it after me" (the oracle glosses अनु+वद् "to repeat"); एतस्मै मित्राय … तम् उपदिश (dative of the person taught); आवयोः मनसोः (dual locative, "in our two minds"); गुरवे वदाम for "let us tell the guru".
+
+## Kathā battle tactics (v0.5a, fx-strat): model-written, machine-verified, awaiting human review
+
+The owner found Bāla-kāṇḍa's fights repetitive ("just spamming Rāma with the āgneyāstra"). Kathā fights now have a light strategic layer, grounded in the text where it says something (`notes/katha.md` → "v0.5a"; `content/katha.json → tactics`, every entry with its source). Textual claims, checked against the vulgate as printed on sanskritdocuments.org / valmikiramayan.net (read 13 Nov 2026):
+- Bāla 1.30.12–13: Mārīca, Subāhu and their followers pour streams of blood (रुधिरौघान् अवासृजन्); the altar is drenched → Subāhu's / Mārīca's warning "rain of blood on the sacrifice".
+- Bāla 1.30.17–20: Rāma looses the Mānava astra (मानवं परमोदारमस्त्रं) at Mārīca's chest; it hurls him a full hundred yojanas into the ocean (सम्पूर्णं योजनशतं क्षिप्तः सागरसम्प्लवे), senseless but alive (शीतेषु) → Mārīca's fitting astra (Book 1 only).
+- Bāla 1.30.21–22: the Āgneya at Subāhu's chest; pierced, he falls (स विद्धः प्रापतद्भुवि) → Subāhu's fitting astra. (1.30.23, the Vāyavya against the followers, is not encoded: no battle has those followers as foes.)
+- Bāla 1.26.16–17: by māyā Tāṭakā rains stones (शिलावर्षेण); Rāma meets the rain of stones with a rain of arrows (शरवर्षेण) → her warning, answered also by Rāma's / Lakṣmaṇa's bāṇa.
+- Bāla 1.27 (prose list): the Mānava is among the astras Viśvāmitra gives Rāma → granted with the Vāyavya in Kathā when Tāṭakā falls.
+- Yuddha 6.108.1–4, 18: Mātali reminds Rāma of the Paitāmaha astra; the arrow Agastya gave pierces Rāvaṇa's heart → the brahmāstra is decisive once Rāvaṇa is worn down to half.
+Everything else is game logic, not a claim about the text: Lakṣmaṇa's guard role (रक्षा), the verse shield, fatigue, element affinities. Every Sanskrit word verifies with the oracle (`sa-battle.test.ts`, `sambhashana.test.ts`, `sa-ui.test.ts`, `tactics.test.ts`). One new declension model (मातलि, muni-m, file 5). Nothing here has been reviewed by a human.
+
+New name (`content/names.json`) and move forms (`content/sa-battle.json → forms.move`):
+- [ ] **move.manavastra** — मानव "Manu's astra" (the adjective names the weapon, as for आग्नेय / वारुण / वायव्य); acc. मानवम् अस्त्रम्, ins. मानवेन अस्त्रेण (cf. 1.30.18 मानवेन).
+- [ ] **move manavastra · description** (file 4) — The missile of Manu: it carries a foe far away, but does not take its life. → मानवम् अस्त्रम्। शत्रुं दूरे क्षिपति, किन्तु न हन्ति।
+
+Battle lines (`content/sa-battle.json` templates):
+- [ ] **kathaWarn** — {x} is about to use {m}! → {x.nom} {m.acc} प्रयोक्ष्यते! (the future of the "uses" line प्रयुङ्क्ते: reading the tense is the warning)
+- [ ] **kathaWarnStones** — {x} is about to rain stones on you! → {x.nom} शिलानां वृष्टिं करिष्यति!
+- [ ] **kathaStrikeStones** — {x} rains stones down! → {x.nom} शिलानां वृष्टिं करोति!
+- [ ] **kathaWarnBlood** — {x} is about to rain blood on the sacrifice! → {x.nom} यज्ञे रक्तस्य वृष्टिं करिष्यति! (रक्त for the text's रुधिर, which is not in the packs)
+- [ ] **kathaStrikeBlood** — {x} rains blood on the sacrifice! → {x.nom} यज्ञे रक्तस्य वृष्टिं करोति!
+- [ ] **kathaBlunt** — The heroes were ready: the blow lands softly. → वीराः सज्जाः आसन्। अतः फलम् अल्पम्।
+- [ ] **kathaTired** — The astra is tired. → अस्त्रं श्रान्तम्।
+- [ ] **kathaShield** — {x} recites a line of verse: the heroes stand ready! → {x.nom} श्लोकस्य पादं पठति। वीराः सज्जाः!
+- [ ] **kathaFitManava** — Rāma looses the Mānava astra at Mārīca's chest. It hurls him a hundred leagues away into the ocean: stunned, but alive! → रामः मारीचस्य वक्षसि मानवम् अस्त्रं क्षिपति। मारीचः दूरे सागरे पतति, किन्तु जीवति!
+- [ ] **kathaFitAgneya** — Rāma looses the Āgneya astra at Subāhu's chest. Pierced, Subāhu falls to the earth! → रामः सुबाहोः वक्षसि आग्नेयम् अस्त्रं क्षिपति। सुबाहुः भुवि पतति!
+- [ ] **kathaFitBrahma** — Rāma looses the brahmāstra: it pierces Rāvaṇa's heart! → रामः ब्रह्मास्त्रं क्षिपति। तत् रावणस्य हृदयं भिनत्ति!
+
+Story lines (`content/sa-dialogue-5.json`; `{ "if": "style.katha" }` blocks of story-ch1.json and story-ch6.json):
+- [ ] **ch1.tataka** — Viśvāmitra: By her illusion she will rain stones on you. When she makes ready, guard yourselves, or recite a verse! → सा मायया शिलानां वृष्टिं करिष्यति। तदा रक्षां कुरु, अथवा श्लोकं पठ!
+- [ ] **ch1.tataka (onWin)** — Viśvāmitra: The same astra, loosed again and again, grows tired. Choose another astra! → एकम् एव अस्त्रं पुनः पुनः प्रयुक्तं श्राम्यति। अन्यत् अस्त्रं चिनु!
+- [ ] **ch1.yajna** — Rāma: See, Lakshmana: the weapon of Manu will throw Maricha far into the ocean, and Agni's weapon will strike down Subahu. → लक्ष्मण, पश्य। मानवम् अस्त्रं मारीचं दूरे सागरे क्षेप्स्यति। आग्नेयम् अस्त्रं सुबाहुं हनिष्यति। (cf. 1.30.15, 20: पश्य लक्ष्मण …)
+- [ ] **ch1.yajna** — Rāma: If they make ready to rain blood on the altar, raise your guard, brother! → यदि ते यज्ञे रक्तस्य वृष्टिं करिष्यन्ति, तदा रक्षां कुरु, भ्रातः!
+- [ ] **ch6.ravana** — narration: Matali, the charioteer of the gods, whispers to Rama: when Ravana's strength wanes, loose Brahma's weapon. → मातलिः रामं वदति — यदा रावणः श्रान्तः भवति, तदा ब्रह्मास्त्रं क्षिप।
+
+Interface strings (`content/sa-ui-katha.json`):
+- [ ] **katha.fitTag** (label) — Fitting: {$x} → उचितम्: {$x} (on the foe card)
+- [ ] **katha.tired** (label) — tired → श्रान्तम् (agrees with अस्त्रम्)
+- [ ] **katha.shield** (label) — Recite a verse → श्लोकं पठ
+- [ ] **katha.cover** (label) — {$who}: {$move} (slots only, e.g. लक्ष्मणः: रक्षा)
+
+Constructions to confirm first: प्रयोक्ष्यते (future ātmanepada of प्र+युज्) as "is about to use"; वृष्टिं करोति / करिष्यति for "rains"; क्षिप् with the locative (वक्षसि … क्षिपति, सागरे क्षेप्स्यति) for "looses at / hurls into"; मानवम् अस्त्रम् as the weapon's name; मातलि (i-stem like मुनि).

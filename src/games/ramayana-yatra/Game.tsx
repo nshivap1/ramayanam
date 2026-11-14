@@ -12,7 +12,7 @@ import { createArt } from './art';
 import type { TrackId } from './catalog';
 import { loadContent } from './content';
 import { HeldDirs, isDir, useGameKeys } from './input';
-import { type GuideTarget, currentMap, guideTarget, halfVerseLines, isWalkable, loadGame, maxHpOf, newGame, reduce, sessionResult, setReader, storyProgress, testFlag, tileAt, toSave, visibleNpcs } from './logic';
+import { type GuideTarget, currentMap, guideTarget, halfVerseLines, isWalkable, loadGame, maxHpOf, newGame, nextBookKanda, reduce, sessionResult, setReader, storyProgress, testFlag, tileAt, toSave, visibleNpcs } from './logic';
 import { indexOf } from './logic-util';
 import { manifest } from './manifest';
 import type { Action, Fx, GameState, JourneyStyle } from './types';
@@ -22,7 +22,9 @@ import { type UiSlots, uiEn, uiSa } from './sa-ui';
 import { WordCard, ShlokaCard } from './view-cards';
 import { type Buttons, DialogueLangControl, EnvContext, KeysContext, MOVE_STEP_MS, STEP_MS, PlayerName, VerseRef, type ViewEnv, type ViewPrefs, isDefaultName, osReducedMotion, readPrefs, resolveGender, saPlayer, storySa, useEnv } from './view-common';
 import { type Detail, Menu, type MenuTab } from './view-menu';
-import { ChapterDonePanel, Kbd, Panel, type ShrineApi } from './view-panel';
+import { Kbd, Panel, type ShrineApi } from './view-panel';
+import { BookEnd } from './view-bookend';
+import { type BookMark, ZERO_MARK, bookName, saResult } from './bookend';
 import { BattleTags, Screen, createAnim } from './view-screen';
 import { UiText, useUi } from './view-ui';
 import { Markup, StoryLine, markupPlain } from './view-markup';
@@ -121,6 +123,10 @@ export default function Game({ ctx }: GameProps): ReactElement {
   const dirty = useRef(false);
   /** Kathā: recitation lines answered this session, per verse (the session result reports them). */
   const recited = useRef(new Map<string, number>());
+  /** v0.5a: the session counters where the current book began (the book-complete screen shows one book's numbers). */
+  const bookMark = useRef<BookMark>(ZERO_MARK);
+  /** v0.5a: the book-complete screen is on (no walking, no menu behind it). */
+  const bookEndOn = useRef(false);
   /** e2e: the last toasts shown (English), so a test can see one that came and went. */
   const toastLog = useRef<string[]>([]);
 
@@ -183,7 +189,10 @@ export default function Game({ ctx }: GameProps): ReactElement {
     ctx.hud({ timeLeftMs: undefined });
     const base = sessionResult(s, content);
     // Kathā: verses heard / lines recited / verses restored instead of a correct/total line with ✗ (same contract)
-    ctx.finish(isKatha(s.save) ? kathaResult(base, s, content, recited.current) : base);
+    const result = isKatha(s.save) ? kathaResult(base, s, content, recited.current) : base;
+    // v0.5a: a reader of संस्कृतम् gets the game-provided strings (summary, share, review rows) in Sanskrit, in the
+    // player's script; the shell's own headings and buttons stay platform English
+    ctx.finish(s.save.reader === 'sa' ? saResult(result, s, content, isKatha(s.save), recited.current, (t) => renderSa(t, ctx.settings.script)) : result);
   }, [ctx, content, persist]);
 
   /** `textSa`: the Sambhāṣaṇa version (a logic toast's textSa, or useUi().sa(key) for a view toast). */
@@ -304,7 +313,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
   // ───────── movement loop ─────────
   const tryStep = useCallback(() => {
     const s = stateRef.current;
-    if (!s || s.mode !== 'explore' || s.pending || menuOpen.current || finished.current) {
+    if (!s || s.mode !== 'explore' || s.pending || menuOpen.current || finished.current || bookEndOn.current) {
       // leaving free exploration forgets held directions (keys re-press through autorepeat; the pad is gone)
       held.clear();
       return;
@@ -350,7 +359,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
       if (repeat) return;
       const s = stateRef.current;
       if (b === 'menu') {
-        if (s && s.mode === 'explore' && !s.pending) setMenu((m) => ({ ...m, open: true }));
+        if (s && s.mode === 'explore' && !s.pending && !bookEndOn.current) setMenu((m) => ({ ...m, open: true }));
         return;
       }
       if (b === 'a') keys.current.a?.();
@@ -571,6 +580,8 @@ export default function Game({ ctx }: GameProps): ReactElement {
       menu: menu.open,
       dialogueLang: prefs.dialogueLang,
       chapterDone,
+      // v0.5a: the book-complete screen (and the book "continue" would open), or null
+      bookEnd: chapterDone !== null && s && s.mode === 'explore' && !s.pending ? { kanda: chapterDone, next: nextBookKanda(s) } : null,
       toasts: toastLog.current,
       recited: Object.fromEntries(recited.current),
       npcs: s && map ? visibleNpcs(s, content).map((np) => ({ id: np.id, x: np.x, y: np.y, event: np.event })) : [],
@@ -611,9 +622,29 @@ export default function Game({ ctx }: GameProps): ReactElement {
 
   const calm = !!state && state.mode === 'explore' && !state.pending;
   const showChapterDone = chapterDone !== null && calm && state?.mode !== 'ended';
+  bookEndOn.current = showChapterDone;
   useEffect(() => {
-    if (showChapterDone) persist();
-  }, [showChapterDone, persist]);
+    if (!showChapterDone || chapterDone === null) return;
+    persist();
+    // screen reader: the book-complete screen is a dialog; say what it is once
+    const b = bookName(content, chapterDone);
+    const slots: UiSlots = { book: { en: b.en, sa: b.saPada } };
+    ctx.announce(uiPlainText(uiEn(content, 'bookEnd.title', slots), uiSa(content, 'bookEnd.title', slots)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showChapterDone, chapterDone, persist]);
+  const recitedNow = (): number => [...recited.current.values()].reduce((a, b) => a + b, 0);
+  /**
+   * v0.5a, the book-complete screen's "continue": the story goes on in this session, straight into the next book's
+   * opening (logic `next-book`); the next book's numbers start from here. No ctx.finish.
+   */
+  const continueBook = useCallback(() => {
+    const s = stateRef.current;
+    if (!s || finished.current) return;
+    bookMark.current = { recited: [...recited.current.values()].reduce((a, b) => a + b, 0), correct: s.session.correct, total: s.session.total };
+    setChapterDone(null);
+    bookEndOn.current = false;
+    dispatch({ type: 'next-book' });
+  }, [dispatch]);
 
   const openMenu = useCallback((tab?: string) => {
     audio.current?.unlock();
@@ -651,17 +682,20 @@ export default function Game({ ctx }: GameProps): ReactElement {
       <EnvContext.Provider value={env}>
         <KeysContext.Provider value={keys}>
           {screen === 'game' && state ? (
-            <div className="g-ramayana-yatra__frame">
+            <div className={cx('g-ramayana-yatra__frame', showChapterDone && 'is-bookend')}>
               <Screen stateRef={stateRef} env={env} anim={anim} overlay={overlay} guideRef={guideRef} onSwipe={(d) => {
                 held.queued = d;
                 tryStep();
               }} />
               <div className={cx('g-ramayana-yatra__panel', `is-${state.pending?.kind ?? state.mode}`)} data-testid="panel">
-                {showChapterDone && chapterDone !== null ? <ChapterDonePanel kanda={chapterDone} onFinish={finish} /> : <Panel state={state} dispatch={dispatch} held={held} kick={tryStep} openMenu={openMenu} onTimeLeft={onTimeLeft} onSave={() => {
+                {showChapterDone ? null : <Panel state={state} dispatch={dispatch} held={held} kick={tryStep} openMenu={openMenu} onTimeLeft={onTimeLeft} onSave={() => {
                 persist(stateRef.current, true);
                 dirty.current = true; // and again once the event has finished
               }} onFinish={finish} shrine={SHRINE} echo={echoRef.current} />}
               </div>
+              {showChapterDone && chapterDone !== null ? (
+                <BookEnd kanda={chapterDone} state={state} mark={bookMark.current} recitedNow={recitedNow()} onNext={nextBookKanda(state) === chapterDone + 1 ? continueBook : null} onStop={finish} />
+              ) : null}
               <Menu
                 open={menu.open}
                 tab={menu.tab}

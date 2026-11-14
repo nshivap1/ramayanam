@@ -11,6 +11,10 @@
  * v0.4.2: the BFS (`findPath`) lives in logic-guide (re-exported here); `runGuide` is a bot that only follows the map pointer.
  * v0.4.3: `reader` ('sa' / 'sa-en') starts the journey with that reader level (save.reader), as the view does for a
  * player whose story text is संस्कृतम् / संस्कृतम् + English; absent = English (no field, today's game).
+ * v0.5a: `policy` picks the battle moves — 'best' (default, the battle agent's perfect bot: set-ups, then the most
+ * damaging move), 'spam' (the most damaging move every turn: no set-up, blind to warnings, fatigue and fits) or
+ * 'strategic' (Kathā tactics, logic-tactics.ts: the decisive fitting astra, answers a readied blow — a counter, a support
+ * move, else a guardian's cover —, and rotates so it never casts a tired astra when another move does as much).
  */
 import { type Level, type Rng, createRng, hashString } from '@sdk';
 import type { Action, Dir, EventCmd, GameContent, GameState, JourneyStyle, Reader, WalkStep } from './types';
@@ -20,7 +24,7 @@ import { lastCmd, maxHpOf } from './logic-events';
 import { newGame } from './logic-state';
 import { DELTA, DIRS, hasTile, isSolidTile, mapById, npcsOn, tileAt, triggerCovers, triggerFlag, warpAt } from './logic-world';
 import { type GuideTarget, findPath, guideStep, guideTarget, spot, talkSpots, visibleTarget } from './logic-guide';
-import { battleMenu, damage, fighterFromMember, reduce } from './logic';
+import { COVER_CMD, SHIELD_CMD, answerOf, battleMenu, canShield, coverOf, damage, fatigueMult, fighterFromMember, isDecisive, nextChain, reduce } from './logic';
 
 export class SimError extends Error {}
 
@@ -50,6 +54,8 @@ export interface AutoOptions {
   reciter?: { accuracy: number; rng: Rng };
   /** A careless player (v0.4.1): with probability `chance` a battle move is a random usable PLAIN move, not the best (rng: the bot's own). */
   careless?: { chance: number; rng: Rng };
+  /** v0.5a battle policy (default 'best'); see the file header */
+  policy?: 'best' | 'spam' | 'strategic';
 }
 
 function correctAnswer(s: GameState, reciter?: AutoOptions['reciter']): Action | null {
@@ -100,7 +106,7 @@ function choiceKey(s: GameState): string {
  * Index (in the battle menu) of the move to use: the same policy as the battle agent's perfect bot
  * (heal below 40%, set up debuffs/buffs while the foe is healthy, else the most damaging usable move).
  */
-function bestMoveIndex(s: GameState, content: GameContent): number {
+function bestMoveIndex(s: GameState, content: GameContent, tactics = false): number {
   const b = s.battle;
   if (!b) return 0;
   const idx = indexOf(content);
@@ -114,18 +120,99 @@ function bestMoveIndex(s: GameState, content: GameContent): number {
     const e = mv.effect;
     const foeHealthy = b.foe.hp > b.foe.maxHp * 0.5;
     let score = -1;
-    if (mv.power > 0) score = damage(b.ally, b.foe, mv, 1, 1).amount;
+    if (mv.power > 0) score = damage(b.ally, b.foe, mv, 1, 1).amount * (tactics ? fatigueMult(b.chain, content, mv.id) : 1);
     else if (e?.kind === 'heal') score = b.ally.hp / b.ally.maxHp < 0.4 ? 1e6 : -1;
     else if (e?.kind === 'debuff-def') score = b.foe.stages.def > -2 && foeHealthy ? 5e5 : -1;
     else if (e?.kind === 'buff-atk') score = b.ally.stages.atk < 2 && foeHealthy ? 4e5 : -1;
     else if (e?.kind === 'debuff-atk') score = b.foe.stages.atk > -2 && foeHealthy ? 3e5 : -1;
-    else if (e?.kind === 'buff-def') score = b.ally.stages.def < 2 && b.foe.hp > b.foe.maxHp * 0.6 ? 2e5 : -1;
+    // (the strategic bot keeps its guard for a readied blow)
+    else if (e?.kind === 'buff-def') score = !tactics && b.ally.stages.def < 2 && b.foe.hp > b.foe.maxHp * 0.6 ? 2e5 : -1;
     if (score > bestScore) {
       bestScore = score;
       best = i;
     }
   });
   return Math.max(0, best);
+}
+
+/** v0.5a 'spam': the most damaging usable move every turn (no set-up; blind to warnings, fatigue and fits). */
+function spamMoveIndex(s: GameState, content: GameContent): number {
+  const b = s.battle;
+  if (!b) return 0;
+  const idx = indexOf(content);
+  let best = -1;
+  let bestD = 0;
+  battleMenu(s, content).moves.forEach((m, i) => {
+    const mv = idx.move.get(m.id);
+    if (!m.usable || !mv || mv.power <= 0) return;
+    const d = damage(b.ally, b.foe, mv, 1, 1).amount;
+    if (d > bestD) {
+      bestD = d;
+      best = i;
+    }
+  });
+  return best >= 0 ? best : bestMoveIndex(s, content);
+}
+
+/**
+ * v0.5a 'strategic' (Kathā): a decisive fitting astra first; with a blow readied, a counter (the most damaging), else a
+ * recited answer (a verse-bound support mantra, else the verse shield), else a guardian's cover, else a plain support move; otherwise the perfect bot's choice with
+ * tired astras scored at their tired damage (so it rotates).
+ */
+export function strategicChoice(s: GameState, content: GameContent): { cover: true } | { shield: true } | { index: number } {
+  const b = s.battle;
+  if (!b) return { index: 0 };
+  const idx = indexOf(content);
+  const moves = battleMenu(s, content).moves.map((m, i) => ({ ...m, i, def: idx.move.get(m.id) })).filter((m) => m.usable && m.def);
+  const decisive = moves.find((m) => isDecisive(content, s.save.chapter, b.foe, m.id));
+  if (decisive) return { index: decisive.i };
+  if (b.warn) {
+    const hit = (m: (typeof moves)[number]): number => damage(b.ally, b.foe, m.def!, 1, 1).amount * fatigueMult(b.chain, content, m.id);
+    const counters = moves.filter((m) => answerOf(content, b.warn, m.id) === 'counter').sort((x, y) => hit(y) - hit(x));
+    if (counters[0]) return { index: counters[0].i };
+    // a support move answers: a recited one (a verse-bound mantra) first, then a guard (defence up / foe's attack down)
+    const rank = (m: (typeof moves)[number]): number => (m.def!.unlockShloka ? 2 : 0) + (['buff-def', 'debuff-atk'].includes(m.def!.effect?.kind ?? '') ? 1 : 0);
+    const support = moves.filter((m) => answerOf(content, b.warn, m.id) === 'guard').sort((x, y) => rank(y) - rank(x));
+    // a recited answer first: a verse-bound support mantra, else the verse shield; then a guardian's cover, a plain support move
+    if (support[0]?.def!.unlockShloka) return { index: support[0].i };
+    if (canShield(s, content)) return { shield: true };
+    if (coverOf(s, content)) return { cover: true };
+    if (support[0]) return { index: support[0].i };
+  }
+  // the perfect bot's set-up moves, else the damaging move that is best over two turns (this cast, then the best cast
+  // after it): a tired astra gives way to another move when that pays off
+  const base = bestMoveIndex(s, content, true);
+  if ((idx.move.get(battleMenu(s, content).moves[base]?.id ?? '')?.power ?? 0) <= 0) return { index: base };
+  // the best astra is tired: a verse-bound mantra that still builds (attack up, the foe's defence down, a heal when hurt)
+  // rests it, and is recited
+  if (b.chain && fatigueMult(b.chain, content, b.chain.moveId) < 1 && b.foe.hp > b.foe.maxHp * 0.25) {
+    const builds = moves.find((m) => {
+      const e = m.def!.effect;
+      if (m.def!.power > 0 || !m.def!.unlockShloka || !e) return false;
+      if (e.kind === 'buff-atk') return b.ally.stages.atk < 2;
+      if (e.kind === 'debuff-def') return b.foe.stages.def > -2;
+      if (e.kind === 'heal') return b.ally.hp < b.ally.maxHp * 0.6;
+      return false;
+    });
+    if (builds) return { index: builds.i };
+  }
+  // a recited astra lands × 1.1 when its gap is recalled (KATHA_QUALITY.recalled): counted, so a verse wins a near tie
+  const dmg = (id: string, chain: typeof b.chain): number => {
+    const mv = idx.move.get(id);
+    return mv && mv.power > 0 ? damage(b.ally, b.foe, mv, 1, 1).amount * fatigueMult(chain, content, id) * (mv.unlockShloka ? 1.1 : 1) : 0;
+  };
+  let best = base;
+  let bestScore = -1;
+  for (const m of moves) {
+    if (m.def!.power <= 0) continue;
+    const after = nextChain(b.chain, m.id);
+    const score = dmg(m.id, b.chain) + Math.max(0, ...moves.map((x) => dmg(x.id, after)));
+    if (score > bestScore) {
+      bestScore = score;
+      best = m.i;
+    }
+  }
+  return { index: best };
 }
 
 function healItemIndex(s: GameState, content: GameContent): number {
@@ -144,6 +231,7 @@ interface AutoCtx {
   rested: boolean;
   reciter?: AutoOptions['reciter'];
   careless?: AutoOptions['careless'];
+  policy?: AutoOptions['policy'];
   /** choices answered in this scene (choiceKey → times) */
   choices?: Map<string, number>;
 }
@@ -160,12 +248,25 @@ export function botActions(s: GameState, content: GameContent, ctx: AutoCtx): Ac
     switch (b?.phase) {
       case 'command':
         if (lowHp(s) && healItemIndex(s, content) >= 0) return [{ type: 'choose', index: 2 }, { type: 'choose', index: 0 }, ...generic];
+        if (ctx.policy === 'strategic') {
+          const c = strategicChoice(s, content);
+          if ('cover' in c) return [{ type: 'choose', index: COVER_CMD }, { type: 'choose', index: 0 }, ...generic];
+          if ('shield' in c) return [{ type: 'choose', index: SHIELD_CMD }, { type: 'choose', index: 0 }, ...generic];
+        }
         return [{ type: 'choose', index: 0 }, ...generic];
       case 'pick-move': {
         // a careless player: now and then a plain move picked at random (astras still cast with sense)
         const plain = battleMenu(s, content).moves.flatMap((m, i) => (m.usable && !indexOf(content).move.get(m.id)?.unlockShloka ? [i] : []));
         const careless = ctx.careless && plain.length > 0 && ctx.careless.rng.next() < ctx.careless.chance;
-        const first = careless ? (plain[ctx.careless!.rng.int(plain.length)] as number) : bestMoveIndex(s, content);
+        const pick = (): number => {
+          if (ctx.policy === 'spam') return spamMoveIndex(s, content);
+          if (ctx.policy === 'strategic') {
+            const c = strategicChoice(s, content);
+            return 'index' in c ? c.index : bestMoveIndex(s, content, true);
+          }
+          return bestMoveIndex(s, content);
+        };
+        const first = careless ? (plain[ctx.careless!.rng.int(plain.length)] as number) : pick();
         return [{ type: 'choose', index: first }, ...[0, 1, 2, 3].map((i) => ({ type: 'choose', index: i }) as Action), { type: 'choose', index: -1 }];
       }
       case 'pick-switch': {
@@ -208,7 +309,7 @@ export function botActions(s: GameState, content: GameContent, ctx: AutoCtx): Ac
 
 /** Play every pending/battle state until the game is back in explore (or ended). Throws SimError when stuck. */
 export function autoplay(state: GameState, content: GameContent, opts: AutoOptions = {}): GameState {
-  const ctx: AutoCtx = { recited: false, rested: false, choices: new Map(), ...(opts.recite ? { recite: opts.recite } : {}), ...(opts.reciter ? { reciter: opts.reciter } : {}), ...(opts.careless ? { careless: opts.careless } : {}) };
+  const ctx: AutoCtx = { recited: false, rested: false, choices: new Map(), ...(opts.recite ? { recite: opts.recite } : {}), ...(opts.reciter ? { reciter: opts.reciter } : {}), ...(opts.careless ? { careless: opts.careless } : {}), ...(opts.policy ? { policy: opts.policy } : {}) };
   const max = opts.maxActions ?? 20000;
   let losses = 0;
   let s = state;
@@ -472,7 +573,7 @@ export interface WalkResult {
  * `style: 'katha'` plays the Kathā journey (no grinding: a failed step rests at a shrine and retries); `accuracy` is the
  * reciter's chance of picking the right chunk of a smarana gap (default 1).
  */
-export function runWalkthrough(content: GameContent, seed: number, level: Level, opts: { maxGrind?: number; attempts?: number; avoidEncounters?: boolean; trace?: (msg: string) => void; steps?: WalkStep[]; onStep?: (index: number, state: GameState) => void; style?: JourneyStyle; accuracy?: number; careless?: number; onAction?: AutoOptions['onAction']; reader?: Reader } = {}): WalkResult {
+export function runWalkthrough(content: GameContent, seed: number, level: Level, opts: { maxGrind?: number; attempts?: number; avoidEncounters?: boolean; trace?: (msg: string) => void; steps?: WalkStep[]; onStep?: (index: number, state: GameState) => void; style?: JourneyStyle; accuracy?: number; careless?: number; onAction?: AutoOptions['onAction']; reader?: Reader; policy?: AutoOptions['policy'] } = {}): WalkResult {
   let actions = 0;
   let battles = 0;
   let defeats = 0;
@@ -485,6 +586,7 @@ export function runWalkthrough(content: GameContent, seed: number, level: Level,
     ...(opts.avoidEncounters !== undefined ? { avoidEncounters: opts.avoidEncounters } : {}),
     ...(opts.accuracy !== undefined ? { reciter: { accuracy: opts.accuracy, rng: createRng((seed ^ hashString(`reciter:${level}`)) >>> 0) } } : {}),
     ...(opts.careless ? { careless: { chance: opts.careless, rng: createRng((seed ^ hashString(`careless:${level}`)) >>> 0) } } : {}),
+    ...(opts.policy ? { policy: opts.policy } : {}),
     onAction: (b, a, n) => {
       actions++;
       if (b.mode === 'battle' && n.mode !== 'battle') {

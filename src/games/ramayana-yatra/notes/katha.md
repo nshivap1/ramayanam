@@ -154,3 +154,49 @@ pāda was level 0, so the duel recited itself with no input at all; the story ne
   coach line above the line (`katha.coach`: पादं शृणु। रिक्ते स्थाने उचितं पदं चिनु।), read for 1.2 s before the line
   starts (a tap starts it), and the gap and the three chips pulse until the first tap (a static accent ring with
   reduced motion). The caption अत्र किं पदम्? shows in संस्कृतम् too (first three gapped casts, every language).
+
+## v0.5a: a strategic layer for Kathā battles (fx-strat, 13 Nov)
+Owner's playtest of Bāla-kāṇḍa: "the fight sequence was a bit repetitive and chore-like. just spamming Rāma with the
+āgneyāstra was effective … there wasn't really a strategic element there." Code: `logic-tactics.ts` (data:
+`content/katha.json → tactics`; every textual entry has its `source`). Kathā wild and boss fights only: duels, the tutorial
+duel and the practice game never reach it (a practice battle state carries none of the new fields; snapshot green).
+- **Matchups (the right astra for the right foe).** `tactics.fits`: where Vālmīki names the astra, it is decisive — the
+  foe falls / is driven off at once with a story beat (sa-battle `kathaFit*`; no "uses" line before it): Mārīca ←
+  Mānava and Subāhu ← Āgneya in Book 1 (Bāla 1.30.17–22), Rāvaṇa ← brahmāstra once worn to ≤ ½ (Yuddha 6.108). Not encoded:
+  the Vāyavya against the followers (1.30.23; no such foes in a battle). The foe card (`BattleTags` → `foe-affinity`)
+  says उचितम्: <the astra>, else the hero element × 2 against the foe (`affinityOf`). Viśvāmitra's grant
+  (`tactics.grants`): setting `ch1.tataka_defeated` gives Rāma the Mānava (a new defs move, not in any learnset: the
+  practice game never sees it) and the Vāyavya, equipped in place of the plain bāṇa, with the usual toasts; story battles
+  re-apply grants (older saves). The sacrifice fight has `lead: "rama"` (the text: Rāma does it).
+- **Warnings.** Every Kathā boss readies its great blow (its strongest damaging move) on its 2nd action and every 3rd
+  after (`KATHA_WARN_FIRST` 2, `…EVERY` 3; `first: 0` = in the opening, Subāhu's rain of blood, Bāla 1.30.12). The ready
+  beat (`tactic: 'warn'`) is one short Sanskrit line, future tense: `kathaWarn` "{x} {m.acc} प्रयोक्ष्यते!" or the boss's
+  own (`kathaWarnStones` for Tāṭakā, Bāla 1.26.16; `kathaWarnBlood`). Readying is not a blow. The next foe action is the
+  strike, and with a blow readied the hero always acts first. Answers this turn (`answerOf` etc.): any support move
+  (power 0), a counter (`counter` list: Rāma's / Lakṣmaṇa's bāṇa against Tāṭakā's stones, Bāla 1.26.17; or a move of the
+  natural element × 2 against the blow's element), a switch (the hero who steps in braces), a **cover** (`choose 4`: a
+  benched guardian — `tactics.guards`, Lakṣmaṇa → रक्षा — or a benched hero with an unbound guard move; the hero keeps
+  the field) or the **verse shield** (`choose 5`: a recitation of the least-practised ≥ 2-chunk pāda of any heard verse;
+  `kathaShield`; a miss protects half). Answered: × `KATHA_BLUNT` 0.3 (`kathaBlunt`, `tactic: 'blunt'`) and the foe is left
+  open (defence −`KATHA_OPENING` 1; a faltering shield: × 0.65, no opening). Ignored: × `KATHA_STRIKE` 2.4 of an ordinary
+  hit, capped at `KATHA_STRIKE_CAP` 45 % of the hero's max HP. A bound foe loses its readied blow; a fallen one too.
+- **Fatigue.** The same astra (verse-bound, or `tactics.divine`: āgneya, vāruṇa, vāyavya, mānava) on consecutive turns
+  lands × 0.6, then × 0.4 (`KATHA_FATIGUE`; `battle.chain`); any other action (a move, a switch, an item, a cover, a
+  shield) resets it; plain moves never tire (tiring them too made the two-hero Laṅkā fights losable for a spammer). The
+  beat says `kathaTired`; the move button shows श्रान्तम् (`katha.tired`). Foe HP is now scaled to `rotationHit` (the hit
+  kept up while rotating: max((d1 + d2)/2, (1.6 d1 + d2)/3, 0.4 d1), d1 when the best move does not tire) and
+  `KATHA_TURNS.boss` is 10 (bosses are often capped at their ordinary HP).
+- **View.** Foe card: affinity chip + a "!" mark while a blow is readied. Command panel: an answer row above the moves
+  (श्लोकं पठ key 8, the cover key 9; move descriptions hide to make room), a श्रान्तम् tag on a tired astra, moves that
+  answer the blow get a red edge. Beats carry `data-tactic` (warn / fit borders).
+- **Hints (Kathā blocks, sa-dialogue-5):** Viśvāmitra before Tāṭakā (stones; guard or recite) and after her (fatigue);
+  Rāma before the sacrifice (Mānava for Mārīca, Āgneya for Subāhu; guard the altar); Mātali before Rāvaṇa (the
+  brahmāstra when he tires).
+- **Bots** (logic-sim `policy`): 'strategic' (decisive fit; with a blow readied a counter, a recited support move, the
+  verse shield, a cover; otherwise set-ups and a two-turn rotation), 'spam' (the most damaging move every turn).
+  Census (25 seeds × 3 levels, all books; /home/claude/scratch/fx-strat/): 0 lost fights for strategic, spammer, 70 %,
+  careless (and spammer / strategic at 70 %). Boss turns (mean per boss fight) strategic 8.9 (before, perfect bot 9.5) ·
+  spammer 11.7 (+32 %; before it was the fastest at 8.2) · 70 % 11.7 · careless 12.0. Recitations per playthrough:
+  strategic 138.9 (before 137.4) · 70 % 166.9 (156.9) · careless 133.5 (131.9) · spammer 136.2 (138.2); distinct verses
+  recited in story fights: strategic 7.0 (before 5.0), spammer 3.0. Est. playthrough (strategic): 109 min (before 114).
+  The sacrifice fight is 2 turns for a strategic player (the text's two decisive astras), ~20 for a spammer.

@@ -171,3 +171,29 @@ go next (logic: notes/core.md "Show the way").
   errors (or game warnings) on load in en / sa-en / sa (title, New journey, first scene, Continue; no Latin in sa);
   offline: the test builds the game with the service worker, visits once, goes offline, reloads → title → a new
   journey starts, fonts loaded.
+
+## v0.5a the end of a book (fx-end, 13 Nov)
+Owner, after Bāla-kāṇḍa in संस्कृतम्: the shell's result screen ("Book 1 complete · 5 verses heard · 16 lines recited ·
+2 verses restored", English rows) was confusing, and it was unclear how to go on to the next kāṇḍa.
+- **Book-complete screen** (`view-bookend.tsx`, pure helpers `bookend.ts`): at the first calm moment after
+  `completedChapters` grows (as before), covering the whole frame (canvas and panel hidden behind it, body scrolls,
+  buttons in a footer): eyebrow काण्डम् १ / ६ · title `bookEnd.title` (बालकाण्डं समाप्तम्; the name's anusvāra form)
+  · one story line `bookEnd.story<k>` (sentences of the verified chapter summary) · "In this book": heard n / N and
+  restored n / N (the book's verses in the save) and lines recited (Kathā, since the book began in this session; the
+  view's `recited` count minus a mark) or right answers c / t (practice), each with a one-line "what it means and why
+  it matters" (`bookEnd.*Why`) · the book's verses (first pāda, VerseRef, the astra it gives, chip पूर्णः / श्रुतः /
+  ??? अद्य अपि न श्रुतः; a heard verse opens its card) · primary `chapter-next` "{next book} प्रति ▶" → logic
+  `next-book` (no ctx.finish; the next book's title card and opening play at once) · secondary `chapter-finish`
+  अद्य अलम् → `finish()` exactly as before · the note menu.restNote. Book 6 never shows it (the ending has its own
+  finish); without a next book only the finish button (फलं पश्य) is offered.
+- Input: A / Z / Enter = continue, armed after 700 ms (the player may still be pressing ▶ on the last line); the
+  buttons are disabled until then (`data-armed` on the panel). Nothing walks and M opens no menu behind the screen
+  (`bookEndOn` ref). `ctx.announce` says the title once. role=dialog.
+- **Result strings**: `finish()` passes the result through `saResult` when `save.reader === 'sa'`: summary / share and
+  (Kathā) review rows in Sanskrit, rendered in the player's script (`renderSa`). English and sa-en readers get the
+  English rows as before. The shell's own words (What you practised, Share, Play again, Back to games, Complete!) are
+  platform English — outside the game.
+- e2e snapshot: `bookEnd` ({kanda, next} | null). The kept test ids `panel-chapter-done` / `chapter-finish` mean the
+  RY_FULL bot still works; it now takes `chapter-next` in the Kathā run (one session) and stops in the practice run.
+- Screenshots: /home/claude/scratch/fx-end/shots/ (book-end-sa-390, book-end-sa-390-verses, book-end-sa-360,
+  book-end-sa-en-390, book-end-en-390, result-sa-360).

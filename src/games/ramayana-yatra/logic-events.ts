@@ -9,12 +9,15 @@
  * Kathā (v0.4, notes/katha.md): story `{quiz}` commands are skipped (their onCorrect runs); the party is raised to the
  * chapter's level floor at the chapter card, on `{join}` and before every story battle; a shrine recital is four
  * smarana challenges with no feedback pending in between; the shrine has a study hall (SHRINE_STUDY).
+ * v0.5a: a story flag that a Kathā grant names (katha.json tactics.grants: Viśvāmitra's astras after Tāṭakā) gives the
+ * hero those moves at once, with a toast; story battles re-check every grant (an older save past the flag).
  */
 import type { BattleSpec, Challenge, ChallengeResult, Dir, EventCmd, GameContent, GameState, KandaId, PartyMember, Pending } from './types';
 import { clamp, indexOf, testFlag } from './logic-util';
 import { battleOutcome, endBattle, startBattle } from './logic-battle';
-import { grade, makeChallenge, markHeard, markSeen, recitalAdvance, recitalAnswer, recordResult, saToast, startRecital, startStudy, studyAdvance, uiItemSlot } from './logic-learning';
+import { grade, makeChallenge, markHeard, markSeen, movesToasts, recitalAdvance, recitalAnswer, recordResult, saToast, startRecital, startStudy, studyAdvance, uiItemSlot } from './logic-learning';
 import { applyKathaFloor, armMember, isKatha } from './logic-katha';
+import { applyGrants } from './logic-tactics';
 import { uiSa } from './sa-ui';
 import { joinLevel, newMember, statsAt, withUnlockedMoves } from './logic-progress';
 import { DELTA, isDir, isSolidTile, mapById, npcKey, triggerFlag } from './logic-world';
@@ -224,10 +227,17 @@ function challengeUsable(ch: Challenge): boolean {
   return (ch.options?.length ?? 0) > 0 || (ch.tiles?.length ?? 0) > 0;
 }
 
+/** v0.5a (Kathā): the moves a grant gives when its story flag is set (logic-tactics applyGrants), with toasts. */
+function grantOn(state: GameState, content: GameContent, flag: string): GameState {
+  if (!isKatha(state)) return state;
+  const r = applyGrants(state, content, flag);
+  return r.granted.length ? { ...r.state, fx: [...r.state.fx, ...movesToasts(content, r.granted)] } : state;
+}
+
 function beginBattle(state: GameState, content: GameContent, spec: BattleSpec, onWin: EventCmd[] | undefined): GameState {
   const enemies = indexOf(content).enemy;
   if (spec.enemies.length === 0 || spec.enemies.some((e) => !enemies.has(e.id))) return pushFrame(state, onWin); // defs not written yet: let the story continue
-  const b = startBattle(addFx(applyKathaFloor(state, content), { kind: 'encounter' }), content, spec);
+  const b = startBattle(addFx(applyGrants(applyKathaFloor(state, content), content).state, { kind: 'encounter' }), content, spec);
   return b.battle && battleOutcome(b) !== null ? afterBattle(b, content) : b;
 }
 
@@ -259,7 +269,7 @@ function exec(s: GameState, content: GameContent, cmd: EventCmd): GameState {
   if ('label' in cmd) return s;
   if ('goto' in cmd) return gotoLabel(s, cmd.goto);
   if ('if' in cmd) return pushFrame(s, testFlag(s.save.flags, cmd.if) ? cmd.then : cmd.else);
-  if ('set' in cmd) return setFlag(s, cmd.set, content);
+  if ('set' in cmd) return grantOn(setFlag(s, cmd.set, content), content, cmd.set);
   if ('unset' in cmd) return unsetFlag(s, cmd.unset);
   if ('give' in cmd) {
     const qty = Math.max(1, Math.floor(cmd.qty ?? 1));
@@ -438,7 +448,7 @@ export function resumeScript(state: GameState, content: GameContent, action: { t
       const cmd = lastCmd(state);
       const opt = cmd && 'choice' in cmd ? cmd.options[i] : undefined;
       let s: GameState = { ...state, pending: null };
-      if (opt?.set) s = setFlag(s, opt.set, content);
+      if (opt?.set) s = grantOn(setFlag(s, opt.set, content), content, opt.set);
       if (opt?.goto) s = gotoLabel(s, opt.goto);
       return run(s, content);
     }

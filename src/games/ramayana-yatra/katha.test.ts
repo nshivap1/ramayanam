@@ -53,6 +53,7 @@ import {
   padaInfo,
   padaKey,
   recordSmarana,
+  rotationHit,
   smrtiOf,
   styleOf,
 } from './logic-katha';
@@ -1161,7 +1162,7 @@ test('check the lead: in Kathā the hero with the most equipped bound astras ste
   assert.equal(kathaLead(party.map((m) => ({ ...m, hp: 0 })), boss, REAL), undefined, 'nobody conscious');
 });
 
-test('shorter story fights: Kathā foe HP = clamp(turns / foes × best hit, floor, ordinary); the practice game keeps the ordinary HP; spec.lead (Kathā only)', () => {
+test('shorter story fights: Kathā foe HP = clamp(turns / foes × the hit kept up while rotating astras (a duel: the best hit), floor, ordinary); the practice game keeps the ordinary HP; spec.lead (Kathā only)', () => {
   const party = [member('player', 20, ['pada_bana', 'shoka_shloka'], REAL), member('lakshmana', 20, ['bana', 'khadga', 'viddhi'], REAL), member('rama', 20, ['dharma_vigraha', 'agneyastra'], REAL)];
   for (const kind of ['wild', 'boss', 'duel'] as const) {
     for (const foes of [[['tataka', 6]], [['ravana', 30]], [['subahu', 7], ['maricha', 7]], [['bharadvaja_duel', 3]], [['kumbhakarna', 26]]] as [string, number][][]) {
@@ -1171,7 +1172,8 @@ test('shorter story fights: Kathā foe HP = clamp(turns / foes × best hit, floo
       const ord = fighterFromEnemy(foes[0]![0], foes[0]![1], REAL);
       assert.equal(p.foe.maxHp, ord.maxHp, 'practice: ordinary HP');
       assert.equal(p.foe.hp, ord.hp);
-      const want = Math.round((KATHA_TURNS[kind] / foes.length) * bestHit(k.ally, ord, REAL, kind !== 'duel'));
+      // v0.5a: wild and boss fights scale to rotationHit (astra fatigue makes the best hit alone unsustainable)
+      const want = Math.round((KATHA_TURNS[kind] / foes.length) * (kind === 'duel' ? bestHit(k.ally, ord, REAL, false) : rotationHit(k.ally, ord, REAL, true)));
       assert.equal(k.foe.maxHp, Math.min(ord.maxHp, Math.max(Math.ceil(ord.maxHp * KATHA_HP_FLOOR), want)), `${kind} ${foes.map((f) => f[0])}`);
       assert.equal(k.foe.hp, k.foe.maxHp, 'a fresh foe at full (scaled) HP');
       assert.deepEqual({ ...k.foe, hp: 0, maxHp: 0, atk: 0 }, { ...ord, hp: 0, maxHp: 0, atk: 0 }, 'every other stat unchanged');
@@ -1204,10 +1206,25 @@ test('shorter story fights: Kathā foe HP = clamp(turns / foes × best hit, floo
 
 // ───────────────────────── simulation ─────────────────────────
 
-test('story bot plays Kathā to the ending for every seed × level — perfect, 70 %-accurate and careless 70 % reciters (a random plain move half the time), no lost fight, no grinding; fights ≤ 10 turns, bosses ≤ 15; the lead holds the most astras', (t) => {
+/**
+ * v0.5a bots (logic-sim `policy`): the strategic player (the fitting astra, answers every warned blow, rotates astras),
+ * the spammer (the most damaging move every turn), and the existing 70 %-accurate and careless 70 % reciters (the battle
+ * agent's move choice; careless: a random plain move half the time).
+ */
+const KATHA_BOTS = [
+  { name: 'strategic', accuracy: 1, policy: 'strategic' as const },
+  { name: 'spammer', accuracy: 1, policy: 'spam' as const },
+  { name: '70 % reciter', accuracy: 0.7 },
+  { name: 'careless 70 % reciter', accuracy: 0.7, careless: 0.5 },
+];
+
+test('story bots play Kathā to the ending for every seed × level — strategic, spammer, 70 % and careless reciters: no lost fight, no grinding; the strategic player is the fastest (story fights ≤ 10 turns, bosses ≤ 15) and the spammer takes ≥ 30 % more turns on bosses; the lead holds the most astras', (t) => {
   const seeds = Math.max(1, Math.min(25, Number(process.env['RY_BOT_SEEDS'] ?? 25) || 25));
   const failures: string[] = [];
-  for (const [accuracy, careless] of [[1, 0], [0.7, 0], [0.7, 0.5]] as const) {
+  const bossMean: Record<string, number> = {};
+  for (const bot of KATHA_BOTS) {
+    const { accuracy } = bot;
+    const careless = bot.careless ?? 0;
     const stats = { runs: 0, battles: 0, recitations: 0, gapped: 0, misses: 0, retries: 0, actions: 0 };
     const turns = new Map<string, number[]>();
     for (const { level, seed } of testMatrix(LEVELS, seeds)) {
@@ -1216,6 +1233,7 @@ test('story bot plays Kathā to the ending for every seed × level — perfect, 
         style: 'katha',
         accuracy,
         ...(careless ? { careless } : {}),
+        ...(bot.policy ? { policy: bot.policy } : {}),
         attempts: 12,
         onAction: (b, _a, n) => {
           if (b.mode !== 'battle' && n.mode === 'battle' && n.battle && !bad) {
@@ -1246,7 +1264,7 @@ test('story bot plays Kathā to the ending for every seed × level — perfect, 
       stats.misses += r.misses;
       stats.retries += r.retries;
       stats.actions += r.actions;
-      const tag = `acc ${accuracy} seed ${seed} level ${level}`;
+      const tag = `${bot.name} seed ${seed} level ${level}`;
       if (r.error) failures.push(`${tag}: ${r.error}`);
       else if (r.state.mode !== 'ended' || !r.state.save.flags['ch6.complete']) failures.push(`${tag}: did not reach the ending`);
       else if (r.losses > 0 || r.defeats > 0) failures.push(`${tag}: lost ${r.losses} fight(s), ${r.defeats} defeat(s)`);
@@ -1254,15 +1272,21 @@ test('story bot plays Kathā to the ending for every seed × level — perfect, 
       if (failures.length >= 3) break;
     }
     const n = Math.max(1, stats.runs);
-    t.diagnostic(`Kathā bot (accuracy ${accuracy}${careless ? `, careless ${careless}` : ''}): ${stats.runs} runs · per playthrough ${(stats.battles / n).toFixed(1)} battles, ${(stats.recitations / n).toFixed(1)} recitations (${(stats.gapped / n).toFixed(1)} with a gap to fill, ${(stats.misses / n).toFixed(1)} missed), ${(stats.retries / n).toFixed(2)} step retries, ${Math.round(stats.actions / n)} actions`);
     const mean = (xs: number[]): number => xs.reduce((a, b) => a + b, 0) / Math.max(1, xs.length);
+    const bosses = [...turns].filter(([k]) => k.startsWith('boss'));
+    bossMean[bot.name] = mean(bosses.map(([, v]) => mean(v)));
+    t.diagnostic(`Kathā bot ${bot.name}: ${stats.runs} runs · per playthrough ${(stats.battles / n).toFixed(1)} battles, ${(stats.recitations / n).toFixed(1)} recitations (${(stats.gapped / n).toFixed(1)} with a gap to fill, ${(stats.misses / n).toFixed(1)} missed), ${(stats.retries / n).toFixed(2)} step retries, ${Math.round(stats.actions / n)} actions · boss fight ${bossMean[bot.name]!.toFixed(2)} turns on average`);
     t.diagnostic(`  turns per fight (mean): ${[...turns].map(([k, v]) => `${k} ${mean(v).toFixed(1)}`).join(' · ')}`);
-    // the reciter often leads now (most astras): a boss of two foes runs to ≈ 14 turns; the careless bot is only held to 0 losses
-    if (!careless) for (const [k, v] of turns) assert.ok(mean(v) <= (k.startsWith('boss') ? 15 : 10), `${k}: ${mean(v).toFixed(1)} turns on average (bosses ≤ 15, other story fights ≤ 10)`);
+    // the strategic player's fights stay short; the other bots are held to 0 losses (a spammer's fights run long on purpose)
+    if (bot.policy === 'strategic') for (const [k, v] of turns) assert.ok(mean(v) <= (k.startsWith('boss') ? 15 : 10), `${bot.name}: ${k}: ${mean(v).toFixed(1)} turns on average (bosses ≤ 15, other story fights ≤ 10)`);
     if (accuracy === 1) assert.equal(stats.misses, 0);
     else assert.ok(stats.misses > 0, 'the 70 % reciter does miss');
   }
   assert.deepEqual(failures, []);
+  // v0.5a: strategy pays — the strategic player is the fastest, the spammer clearly slower on bosses (≥ 30 % more turns)
+  const strat = bossMean['strategic'] as number;
+  for (const [name, m] of Object.entries(bossMean)) if (name !== 'strategic') assert.ok(m > strat, `the strategic player is the fastest on bosses (${strat.toFixed(2)} turns; ${name} ${m.toFixed(2)})`);
+  if (seeds >= 10) assert.ok((bossMean['spammer'] as number) >= 1.3 * strat, `the spammer takes ≥ 30 % more turns on bosses (${(bossMean['spammer'] as number).toFixed(2)} vs ${strat.toFixed(2)})`);
 });
 
 const DIRS = ['up', 'down', 'left', 'right'] as const;

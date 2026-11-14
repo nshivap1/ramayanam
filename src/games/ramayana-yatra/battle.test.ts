@@ -331,7 +331,7 @@ test('defs.json: every ally/enemy/move/item from DESIGN, valid ids, English text
   assert.deepEqual(ids(C.allies), [...ALLY_IDS].sort());
   assert.deepEqual(ids(C.enemies), [...ENEMY_IDS].sort());
   assert.deepEqual(ids(C.items), ['chudamani', 'kanda_mula', 'kusha_mudrika', 'madhu', 'oshadhi', 'phala', 'sanjivani']);
-  const moveIds = 'pada_bana lipi_raksha shoka_shloka suprabhata shuddha_vak bana agneyastra varunastra vayavyastra dharma_vigraha abhaya aditya_hrdaya brahmastra khadga viddhi agni_bana vayu_vega gada jaya_ghosha anirveda shaila vriksha prajna mantrana jala_dhara nakha maya_jala shula garjana andhakara parigha agni_varsha naga_pasha chandrahasa tarka prashna'.split(' ');
+  const moveIds = 'pada_bana lipi_raksha shoka_shloka suprabhata shuddha_vak bana agneyastra varunastra vayavyastra manavastra dharma_vigraha abhaya aditya_hrdaya brahmastra khadga viddhi agni_bana vayu_vega gada jaya_ghosha anirveda shaila vriksha prajna mantrana jala_dhara nakha maya_jala shula garjana andhakara parigha agni_varsha naga_pasha chandrahasa tarka prashna'.split(' ');
   assert.deepEqual(ids(C.moves), moveIds.sort());
   const kinds = new Set(['artha', 'lipi', 'purana', 'krama', 'viccheda', 'vibhakti']);
   const deva = /[ऀ-ॿ]/;

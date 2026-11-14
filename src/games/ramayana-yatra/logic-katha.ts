@@ -123,7 +123,7 @@ export function armParty(state: GameState, content: GameContent): { state: GameS
 // ───────────────────────── shorter story fights (v0.4.1) ─────────────────────────
 
 /** Player turns a Kathā fight is scaled to (with the lead hero's best hit), split over the foes of the battle. */
-export const KATHA_TURNS: Record<BattleSpec['kind'], number> = { wild: 3, duel: 6, boss: 7 };
+export const KATHA_TURNS: Record<BattleSpec['kind'], number> = { wild: 3, duel: 6, boss: 10 };
 /** The tutorial duel (`spec.tutorial`, v0.4.3) is scaled to one turn per pāda: the verse is learned once through. */
 export const KATHA_TUTORIAL_TURNS = 4;
 
@@ -162,6 +162,39 @@ export function bestHit(ally: Fighter, foe: Fighter, content: GameContent, setup
   return setup ? best * (up ? 1.25 : 1) * (down ? 1.25 : 1) : best;
 }
 
+/**
+ * v0.5a: a damaging astra that tires when cast on consecutive turns (logic-tactics): verse-bound (defs.json
+ * unlockShloka) or one of katha.json `tactics.divine` (Viśvāmitra's weapons). Plain moves (an arrow, a mace) do not tire:
+ * they are the rest an astra needs (tiring them too made long fights of the two-hero Laṅkā books losable).
+ */
+export function tiresMove(content: GameContent, moveId: string): boolean {
+  const mv = indexOf(content).move.get(moveId);
+  if (!mv || mv.power <= 0) return false;
+  return !!mv.unlockShloka || (content.katha?.tactics?.divine ?? []).includes(moveId);
+}
+
+/**
+ * v0.5a: the damage per turn a hero keeps up under astra fatigue (× 0.6, then × 0.4 on a repeat): with the best hit d1
+ * and the best other move d2 (fresh), the better of alternating them, (d1 + d2) / 2, two casts then the other,
+ * (1.6 d1 + d2) / 3, or the tired astra alone, 0.4 d1 — or d1 when the best move does not tire. `setup` as in bestHit.
+ */
+export function rotationHit(ally: Fighter, foe: Fighter, content: GameContent, setup = true): number {
+  const idx = indexOf(content);
+  const hits = ally.moves
+    .map((id) => ({ id, mv: idx.move.get(id) }))
+    .filter((x): x is { id: string; mv: MoveDef } => !!x.mv && x.mv.power > 0)
+    .map((x) => ({ id: x.id, d: damage(ally, foe, x.mv, 1, 0.925).amount }))
+    .sort((a, b) => b.d - a.d);
+  const [first, second] = hits;
+  if (!first) return 0;
+  const best = bestHit(ally, foe, content, setup);
+  if (!tiresMove(content, first.id)) return best;
+  const d1 = first.d;
+  const d2 = second?.d ?? 0;
+  const rot = Math.max((d1 + d2) / 2, (1.6 * d1 + d2) / 3, 0.4 * d1);
+  return best * (rot / d1);
+}
+
 /** Equipped moves of a member that are bound to a pāda (astras the hero can recite). */
 export function boundAstras(member: Pick<PartyMember, 'moves'>, content: GameContent): number {
   return member.moves.filter((id) => astraBinding(content, id) !== null).length;
@@ -196,11 +229,14 @@ export function kathaLead(party: PartyMember[], spec: BattleSpec, content: GameC
 /**
  * Kathā foe HP: min(ordinary, max(KATHA_HP_FLOOR × ordinary, KATHA_TURNS[kind] / foes × the active hero's best hit)),
  * so a story fight lasts ≈ 6–10 player turns and a boss ≈ 8–12 whatever the party (never longer than the practice game's).
+ * v0.5a: in wild and boss fights the hit is the one the hero keeps up while rotating astras (rotationHit).
  * The foe's level (XP, coins) and every other stat are unchanged.
  */
 export function kathaFoe(foe: Fighter, ally: Fighter, spec: BattleSpec, content: GameContent): Fighter {
   const tamed = kathaFoeAtk(foe, ally, content);
-  const hit = bestHit(ally, tamed, content, spec.kind !== 'duel');
+  // v0.5a: wild / boss fights are scaled to the hit a hero keeps up while rotating astras (rotationHit); a duel's line
+  // never tires, so it keeps the best hit
+  const hit = spec.kind === 'duel' ? bestHit(ally, tamed, content, false) : rotationHit(ally, tamed, content, true);
   if (hit <= 0) return tamed;
   const turns = spec.kind === 'duel' && spec.tutorial ? KATHA_TUTORIAL_TURNS : KATHA_TURNS[spec.kind];
   const want = Math.round((turns / Math.max(1, spec.enemies.length)) * hit);

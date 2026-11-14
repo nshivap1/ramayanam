@@ -110,6 +110,16 @@
       "origin": "Granted by {n:person.vishvamitra}"
     },
     {
+      "id": "manavastra",
+      "nameId": "move.manavastra",
+      "element": "none",
+      "power": 75,
+      "pp": 12,
+      "challenge": "purana",
+      "description": "The missile of Manu: it carries a foe far away, but does not take its life.",
+      "origin": "Granted by {n:person.vishvamitra}"
+    },
+    {
       "id": "dharma_vigraha",
       "nameId": "move.dharma_vigraha",
       "element": "divya",

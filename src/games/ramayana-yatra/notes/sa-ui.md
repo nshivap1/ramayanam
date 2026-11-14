@@ -81,3 +81,6 @@ Use these everywhere: interface, story files and battle lines.
 | Explore (objective line) | सर्वत्र गच्छतु |
 | nearly (won) | प्रायः {g:जितवान्\|जितवती} |
 | a concept-named move inside a sentence | quoted, with इति: “धर्मः” इति मन्त्रम् / मन्त्रेण (sa-battle `forms.move`) |
+| a book (kāṇḍa) complete (v0.5a) | {book} समाप्तम् — the name before a consonant: बालकाण्डं समाप्तम्, अयोध्याकाण्डं प्रति |
+| stop for today | अद्य अलम् (menu.rest, bookEnd.stop) |
+| a line of a verse (recited) | पादः (पठिताः पादाः) |

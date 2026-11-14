@@ -2230,6 +2230,16 @@
      "portrait": "vishvamitra"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "By her illusion she will rain stones on you. When she makes ready, guard yourselves, or recite a verse!",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      }
+     ]
+    },
+    {
      "choice": "Rest and save before the battle?",
      "options": [
       {
@@ -2292,6 +2302,16 @@
       },
       {
        "say": "Vishvamitra teaches Rama the mantras of the divine weapons. They will answer Rama as he grows in strength."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "The same astra, loosed again and again, grows tired. Choose another astra!",
+         "who": "person.vishvamitra",
+         "portrait": "vishvamitra"
+        }
+       ]
       },
       {
        "set": "ch1.tataka_defeated"
@@ -2441,6 +2461,21 @@
            "portrait": "rama"
           },
           {
+           "if": "style.katha",
+           "then": [
+            {
+             "say": "See, Lakshmana: the weapon of Manu will throw Maricha far into the ocean, and Agni's weapon will strike down Subahu.",
+             "who": "person.rama",
+             "portrait": "rama"
+            },
+            {
+             "say": "If they make ready to rain blood on the altar, raise your guard, brother!",
+             "who": "person.rama",
+             "portrait": "rama"
+            }
+           ]
+          },
+          {
            "battle": {
             "enemies": [
              {
@@ -2457,6 +2492,7 @@
             "canLose": false,
             "bg": "ashrama",
             "music": "boss",
+            "lead": "rama",
             "intro": "Subahu and Maricha descend upon the sacrifice!"
            },
            "onWin": [

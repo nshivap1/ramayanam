@@ -10,7 +10,7 @@ import { useRafLoop, useSwipe } from '@ui';
 import { toDevaDigits } from '@sanskrit';
 import type { BattleBgId, BattlerId, SpriteId } from './catalog';
 import { DELTA } from './input';
-import { type GuideTarget, currentMap, tileAt, visibleNpcs } from './logic';
+import { type GuideTarget, affinityOf, currentMap, isKatha, tileAt, visibleNpcs } from './logic';
 import { ELEMENT_COLOR, MOVE_STEP_MS, STEP_MS, Name, PlayerName, type ViewEnv, asciiLabel, englishName, useEnv } from './view-common';
 import { useUi } from './view-ui';
 import { type BattleBeat, type Dir, type Element, type GameState, TILE, VIEW_H, VIEW_W } from './types';
@@ -327,7 +327,13 @@ export function BattleTags({ state }: { state: GameState }): ReactElement | null
           <Name id={foeDef?.nameId} fallback={b.foe.id} />
         </span>
         {lv(b.foe.level)}
+        {b.warn ? (
+          <span className="g-ramayana-yatra__btag-warn" data-testid="foe-warn">
+            !
+          </span>
+        ) : null}
       </div>
+      <FoeAffinity state={state} />
       <div className="g-ramayana-yatra__btag is-ally">
         <span className="g-ramayana-yatra__btag-name">{b.ally.id === 'player' ? <PlayerName /> : <Name id={allyDef?.nameId} fallback={b.ally.id} />}</span>
         {lv(b.ally.level)}
@@ -337,6 +343,27 @@ export function BattleTags({ state }: { state: GameState }): ReactElement | null
           {b.spec.kind === 'duel' ? ui.t('hud.resolve', undefined, { gloss: false }) : ui.t('common.hp', undefined, { gloss: false })} {ui.num(allyHp)}/{ui.num(b.ally.maxHp)}
         </span>
       </div>
+    </div>
+  );
+}
+
+/**
+ * v0.5a (Kathā wild / boss fights): the foe's affinity under its name — the astra that fits it in Vālmīki (Mānava for
+ * Mārīca in Book 1), else the element strong against it (logic-tactics affinityOf). In the player's language.
+ */
+function FoeAffinity({ state }: { state: GameState }): ReactElement | null {
+  const env = useEnv();
+  const ui = useUi();
+  const b = state.battle;
+  if (!b || !isKatha(state) || b.spec.kind === 'duel') return null;
+  const aff = affinityOf(env.content, state.save.chapter, b.foe);
+  if (!aff) return null;
+  const n = env.idx.name.get(aff.kind === 'astra' ? `move.${aff.moveId}` : `element.${aff.element}`);
+  if (!n) return null;
+  return (
+    <div className={`g-ramayana-yatra__btag is-affinity ${aff.kind === 'astra' ? 'is-astra' : `el-${aff.kind === 'element' ? aff.element : ''}`}`} data-testid="foe-affinity" data-affinity={aff.kind === 'astra' ? aff.moveId : aff.element}>
+      <span aria-hidden="true">✦ </span>
+      {ui.t('katha.fitTag', { x: { en: n.en, sa: n.sa } }, { gloss: false })}
     </div>
   );
 }

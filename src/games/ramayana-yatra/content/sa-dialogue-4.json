@@ -476,6 +476,11 @@
    "ctx": "move agneyastra · description"
   },
   {
+   "en": "The missile of Manu: it carries a foe far away, but does not take its life.",
+   "sa": "मानवम् अस्त्रम्। शत्रुं दूरे क्षिपति, किन्तु न हन्ति।",
+   "ctx": "move manavastra · description"
+  },
+  {
    "en": "The water missile. Strong against fire.",
    "sa": "जलस्य अस्त्रम्। अग्निं प्रति एतत् तीक्ष्णम्।",
    "ctx": "move varunastra · description"

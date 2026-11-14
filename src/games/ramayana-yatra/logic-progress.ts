@@ -54,6 +54,9 @@ export function learnableMoves(member: PartyMember, save: Pick<SaveData, 'shloka
     if (ok && !out.includes(m.moveId)) out.push(m.moveId);
   }
   for (const m of member.moves) if (!out.includes(m)) out.push(m);
+  // v0.5a: a move the hero holds a PP record for (a Kathā grant such as Viśvāmitra's Mānava astra) stays learnable when
+  // unequipped; in the practice game every PP record is a learned move of the list above, so nothing changes there
+  for (const m of Object.keys(member.pp)) if (!out.includes(m) && idx.move.has(m)) out.push(m);
   return out;
 }
 

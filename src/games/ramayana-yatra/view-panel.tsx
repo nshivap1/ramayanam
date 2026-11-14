@@ -618,23 +618,4 @@ function EndingPanel({ state, onFinish }: PanelProps): ReactElement {
   );
 }
 
-export function ChapterDonePanel({ kanda, onFinish }: { kanda: number; onFinish: () => void }): ReactElement {
-  const env = useEnv();
-  const ui = useUi();
-  useButtons({ a: onFinish });
-  const n = env.idx.name.get(`kanda.${kanda}`);
-  return (
-    <div className="g-ramayana-yatra__titlecard" data-testid="panel-chapter-done">
-      <p className="g-ramayana-yatra__eyebrow">{ui.t('chapter.done', { k: kanda })}</p>
-      {n ? (
-        <SaText as="div" shloka className="g-ramayana-yatra__titlecard-sa">
-          {n.sa}
-        </SaText>
-      ) : null}
-      <p className="g-ramayana-yatra__context">{ui.t('chapter.doneNote', undefined, { block: true })}</p>
-      <Button onClick={onFinish} data-testid="chapter-finish">
-        <UiText k="chapter.results" />
-      </Button>
-    </div>
-  );
-}
+// The book-complete screen (v0.5a) lives in view-bookend.tsx.

@@ -1290,13 +1290,22 @@ export function unlockMovesFor(state: GameState, content: GameContent, shlokaId:
 export function armKatha(state: GameState, content: GameContent): GameState {
   if (!isKatha(state)) return state;
   const r = armParty(state, content);
-  const fx: Fx[] = r.armed.map((x) => {
+  const fx = movesToasts(content, r.armed);
+  return fx.length ? { ...r.state, fx: [...r.state.fx, ...fx] } : r.state;
+}
+
+/**
+ * Toasts for moves a hero gained in Kathā (armed astras; v0.5a: granted astras): "New move for X: M", or "X now uses M
+ * in place of O", or (not equipped) "… (equip it from the Party menu)" — English + Sanskrit.
+ */
+export function movesToasts(content: GameContent, list: { allyId: string; moveId: string; replaced?: string; equipped?: boolean }[]): Fx[] {
+  return list.map((x) => {
     const slots = { who: uiAllySlot(x.allyId, 'nom', allyRef(x.allyId), content), move: uiMoveSlot(x.moveId) };
+    if (x.equipped === false) return saToast(`New move for ${allyRef(x.allyId)}: {n:move.${x.moveId}} (equip it from the Party menu)`, uiSa(content, 'recital.newMoveEquip', slots), slots);
     if (!x.replaced) return saToast(`New move for ${allyRef(x.allyId)}: {n:move.${x.moveId}}`, uiSa(content, 'recital.newMove', slots), slots);
     const swap = { ...slots, old: uiMoveSlot(x.replaced) };
     return saToast(uiEn(content, 'toast.astraArmed', swap), uiSa(content, 'toast.astraArmed', swap), swap);
   });
-  return fx.length ? { ...r.state, fx: [...r.state.fx, ...fx] } : r.state;
 }
 
 function allyRef(allyId: string | null): string {

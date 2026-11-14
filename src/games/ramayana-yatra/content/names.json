@@ -2832,6 +2832,32 @@
    }
   },
   {
+   "id": "move.manavastra",
+   "sa": "मानव",
+   "en": "Manu's astra",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga30/balasans30.htm",
+      "accessed": "2026-11-13",
+      "note": "Bāla 1.30.17–18: मानवं परमोदारमस्त्रं परमभास्वरम् … स तेन परमास्त्रेण मानवेन समाहितः; 1.30.20: पश्य लक्ष्मण शीतेषुं मानवं मनुसंहितम्; given by Viśvāmitra in Bāla 1.27"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मानव (adj. 'belonging to or derived from Manu')"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "As for आग्नेय / वारुण / वायव्य, the text names the weapon with the adjective (मानवम् अस्त्रम्), so the adjective is the name. Read online 2026-11-13 (fx-strat): source:valmiki-ramayana. Asserted from reference knowledge by agent fx-strat, not fetched this session: source:monier-williams."
+   }
+  },
+  {
    "id": "move.dharma_vigraha",
    "sa": "धर्म",
    "en": "Dharma",

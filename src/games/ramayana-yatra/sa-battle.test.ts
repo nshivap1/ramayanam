@@ -21,6 +21,7 @@ import { indexOf } from './logic-util';
 import { SA_BATTLE, type SaRef, type SaSlots, battleAction, battleItems, battleMenu, battleOutcome, mergeGender, saFormsOf, saNumber, saText, startBattle } from './logic-battle';
 import { learnableMoves, newMember } from './logic-progress';
 import { getOracle } from './sa-verify';
+import { WARN_TEMPLATE } from './logic-tactics';
 
 const C: GameContent = loadContent();
 const idx = indexOf(C);
@@ -43,6 +44,8 @@ const NUMBERS = Array.from({ length: 999 }, (_v, i) => i + 1);
 const DOMAIN: Record<string, Kind[]> = {
   appearWild: ['enemy'], appearNext: ['enemy'], appearBoss: ['enemy'], appearDuel: ['enemy'], foeDown: ['enemy'], duelFoeDown: ['enemy'],
   kathaEchoIntro: ['enemy'], kathaEchoModel: ['enemy'], kathaEchoDown: ['enemy'], kathaEchoSay: ['ally'],
+  // v0.5a Kathā tactics (logic-tactics): a boss's warned blow and its strike lines name the foe; the verse shield the hero
+  kathaWarn: ['enemy'], kathaWarnStones: ['enemy'], kathaStrikeStones: ['enemy'], kathaWarnBlood: ['enemy'], kathaStrikeBlood: ['enemy'], kathaShield: ['ally'],
   go: ['ally'], duelStepForward: ['ally'], comeBack: ['ally'], kathaRecite: ['ally'], kathaDuelRecite: ['ally'], weary: ['ally'], allyDown: ['ally'], duelAllyDown: ['ally'], levelUp: ['ally'], learned: ['ally'], xp: ['ally'], revived: ['ally'], ppFull: ['ally'], ppRecharged: ['ally'],
   uses: ['ally', 'enemy'], duelAnswers: ['ally', 'enemy'], duelCounters: ['ally', 'enemy'], takes: ['ally', 'enemy'], duelTakes: ['ally', 'enemy'], recovers: ['ally', 'enemy'], fullStrength: ['ally', 'enemy'], stun: ['ally', 'enemy'], bound: ['ally', 'enemy'],
   statRise: ['ally', 'enemy', 'group'], statRiseSharp: ['ally', 'enemy', 'group'], statMax: ['ally', 'enemy', 'group'], statFall: ['ally', 'enemy'], statFallSharp: ['ally', 'enemy'], statMin: ['ally', 'enemy'],
@@ -90,9 +93,15 @@ test('sa-battle: the templates the battle logic uses all exist, none is stale, a
   const NON_KEYS = new Set(['ally', 'foe', 'enemy', 'group', 'heroes', 'atk', 'def', 'switch', 'heal', 'buff', 'debuff', 'faint', 'flee', 'hit', 'miss', 'merge', 'tap', 'correct', 'wrong', 'lose', 'levelup', 'command', 'beats', 'duel', 'boss', 'wild', 'party', 'self', 'string', 'player', 'm', 'f', 'n', 'a', 'b']);
   const used = new Set<string>();
   for (const line of src.split('\n')) {
-    if (!/saText\(|\bsa: \{|'appear/.test(line) || /^\s*(\/\/|\*)/.test(line) || /function saText|data\.templates/.test(line)) continue;
+    if (!/saText\(|tplBeat\(|\bsa: \{|'appear/.test(line) || /^\s*(\/\/|\*)/.test(line) || /function saText|function tplBeat|data\.templates/.test(line)) continue;
     for (const m of line.matchAll(/'(\w+)'/g)) if (!NON_KEYS.has(m[1] as string) || KEYS.includes(m[1] as string)) used.add(m[1] as string);
   }
+  // v0.5a: the tactics lines are named by content/katha.json `tactics` (fits[].beat, warnings[].ready / strike) and by
+  // logic-tactics WARN_TEMPLATE (a boss's default warning)
+  const tactics = C.katha?.tactics;
+  for (const f of tactics?.fits ?? []) used.add(f.beat);
+  for (const w of tactics?.warnings ?? []) for (const k of [w.ready, w.strike]) if (k) used.add(k);
+  used.add(WARN_TEMPLATE);
   ['super', 'weak'].forEach((k) => used.add(k)); // via saEffect(d.effective)
   const problems: string[] = [];
   for (const k of used) if (!KEYS.includes(k)) problems.push(`template "${k}" is used in logic-battle.ts but missing in content/sa-battle.json`);

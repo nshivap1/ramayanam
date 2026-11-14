@@ -14,7 +14,7 @@ import { SaMarkup, StoryLine, useStoryTypewriter } from './view-markup';
 import { ELEMENT_EN, KIND_EN, Name, englishName, useButtons, useEnv } from './view-common';
 import { useUi } from './view-ui';
 import { ModelLine, astraBinding, isKatha, useAutoBeat } from './view-katha';
-import { ELEMENT_CHART, SA_BATTLE, battleMenu, indexOf, maxHpOf, saText } from './logic';
+import { COVER_CMD, ELEMENT_CHART, SA_BATTLE, SHIELD_CMD, answerOf, battleMenu, canShield, coverOf, indexOf, isTired, maxHpOf, saText } from './logic';
 import type { Action, BattleBeat, BattleState, Element, GameContent, GameState } from './types';
 
 /** A rich-slot placeholder: the template is filled with it, then split so a React node can stand there. */
@@ -78,7 +78,7 @@ function Versus({ b, state }: { b: BattleState; state: GameState }): ReactElemen
   );
 }
 
-function BeatView({ text, textSa, onNext, auto = false, model }: { text: string; textSa?: string; onNext: () => void; auto?: boolean; model?: BattleBeat['model'] }): ReactElement {
+function BeatView({ text, textSa, onNext, auto = false, model, tactic }: { text: string; textSa?: string; onNext: () => void; auto?: boolean; model?: BattleBeat['model']; tactic?: BattleBeat['tactic'] }): ReactElement {
   // battle intros and enemy intro/defeat lines are story text (content.dialogueSa); the other narration carries its
   // own Sambhāṣaṇa line (beat.textSa, from content/sa-battle.json)
   const tw = useStoryTypewriter(text, textSa);
@@ -87,7 +87,7 @@ function BeatView({ text, textSa, onNext, auto = false, model }: { text: string;
   const go = (): void => (tw.done ? onNext() : tw.skip());
   useButtons({ a: go, b: go });
   return (
-    <div className={cx('g-ramayana-yatra__beat', auto && 'is-auto')} onClick={go} data-testid="battle-beat" data-auto={auto ? 'true' : undefined}>
+    <div className={cx('g-ramayana-yatra__beat', auto && 'is-auto', tactic && `is-${tactic}`)} onClick={go} data-testid="battle-beat" data-auto={auto ? 'true' : undefined} data-tactic={tactic}>
       <div className="g-ramayana-yatra__say-box">
         <div className="g-ramayana-yatra__say-body">
           <p className="g-ramayana-yatra__beat-text" aria-live="polite">
@@ -114,7 +114,7 @@ export function BattlePanel({ state, dispatch }: { state: GameState; dispatch: (
   const tutorial = katha && !!b.spec.tutorial;
   const auto = katha && !tutorial;
   let body: ReactElement;
-  if (beat) body = <BeatView key={`${b.turn}:${b.beats.length}:${beat.text}`} text={beat.text} textSa={beat.textSa} onNext={() => dispatch({ type: 'advance' })} auto={auto} model={beat.model} />;
+  if (beat) body = <BeatView key={`${b.turn}:${b.beats.length}:${beat.text}`} text={beat.text} textSa={beat.textSa} onNext={() => dispatch({ type: 'advance' })} auto={auto} model={beat.model} tactic={beat.tactic} />;
   // Kathā: one-tap moves (the command panel IS the move list); the practice game keeps Fight → move list
   else if (b.phase === 'command') body = katha ? <KathaCommand key={`kc:${b.turn}:${b.active}`} b={b} state={state} choose={choose} /> : <CommandMenu b={b} state={state} choose={choose} />;
   else if (b.phase === 'pick-move') body = <MoveList b={b} state={state} choose={choose} />;
@@ -236,6 +236,23 @@ function KathaCommand({ b, state, choose }: { b: BattleState; state: GameState; 
     choose(0);
     choose(i);
   };
+  // v0.5a: a foe has readied a great blow — the answers (the verse shield; a benched guardian's cover) sit above the moves
+  const shield = b.warn ? canShield(state, env.content) : false;
+  const cover = b.warn ? coverOf(state, env.content) : null;
+  const answers: { label: ReactNode; testid: string; index: number; key: number }[] = [
+    ...(shield ? [{ label: ui.t('katha.shield', undefined, { gloss: false }), testid: 'cmd-shield', index: SHIELD_CMD, key: 8 }] : []),
+    ...(cover
+      ? [
+          {
+            // the player is शिष्यः / शिष्या on a label (battle.player), never the typed name, as in HeroName
+            label: ui.t('katha.cover', { who: cover.allyId === 'player' ? { en: '{player}', sa: ui.sa('battle.player') ?? '' } : { en: `{n:ally.${cover.allyId}}`, sa: SA_BATTLE.forms.ally[cover.allyId]?.nom ?? '' }, move: { en: `{n:move.${cover.moveId}}`, sa: env.idx.name.get(`move.${cover.moveId}`)?.sa ?? '' } }, { gloss: false }),
+            testid: 'cmd-cover',
+            index: COVER_CMD,
+            key: 9,
+          },
+        ]
+      : []),
+  ];
   const secondary: { label: ReactNode; testid: string; index: number; disabled: boolean }[] = [
     { label: ui.t('battle.switch', undefined, { gloss: false }), testid: 'cmd-switch', index: 1, disabled: menu.switchable.length === 0 },
     { label: ui.t('battle.item', undefined, { gloss: false }), testid: 'cmd-item', index: 2, disabled: menu.items.length === 0 },
@@ -247,20 +264,39 @@ function KathaCommand({ b, state, choose }: { b: BattleState; state: GameState; 
       if (n >= 1 && n <= 4) cast(n - 1);
       const s = secondary[n - 5];
       if (s && !s.disabled) choose(s.index);
+      const a = answers.find((x) => x.key === n);
+      if (a) choose(a.index);
     },
   });
   return (
-    <div className="g-ramayana-yatra__cmd g-ramayana-yatra__kcmd" data-testid="katha-cmd" data-armed={arm.armed ? 'true' : 'false'}>
+    <div className={cx('g-ramayana-yatra__cmd g-ramayana-yatra__kcmd', answers.length > 0 && 'has-answers')} data-testid="katha-cmd" data-armed={arm.armed ? 'true' : 'false'}>
       <WhatWillDo b={b} state={state} />
+      {answers.length ? (
+        <div className="g-ramayana-yatra__kcmd-answers" data-testid="katha-answers">
+          {answers.map((a) => (
+            <button key={a.testid} type="button" className="g-ramayana-yatra__kcmd-btn g-ramayana-yatra__answer" onPointerDown={arm.down} onClick={(e) => {
+              if (arm.click(e)) choose(a.index);
+            }} data-testid={a.testid}>
+              <span className="g-ramayana-yatra__key" aria-hidden="true">
+                {a.key}
+              </span>
+              {a.label}
+            </button>
+          ))}
+        </div>
+      ) : null}
       <div className="g-ramayana-yatra__kcmd-moves" role="group" aria-label={ui.plain('battle.fight')}>
         {moves.map((m, i) => {
           const astra = !!astraBinding(env.content, m.id);
           const desc = moveDescription(env.content, m.id, true);
+          // v0.5a: cast again, this astra lands weaker; a move that would answer a readied blow is marked too
+          const tired = isTired(b, env.content, m.id);
+          const answering = b.warn ? answerOf(env.content, b.warn, m.id) !== null : false;
           return (
             <button
               key={m.id}
               type="button"
-              className={cx('g-ramayana-yatra__move g-ramayana-yatra__kmove', m.def && `el-${m.def.element}`, astra && 'is-astra')}
+              className={cx('g-ramayana-yatra__move g-ramayana-yatra__kmove', m.def && `el-${m.def.element}`, astra && 'is-astra', tired && 'is-tired', answering && 'is-answer')}
               disabled={!m.usable}
               onPointerDown={arm.down}
               onClick={(e) => {
@@ -277,6 +313,11 @@ function KathaCommand({ b, state, choose }: { b: BattleState; state: GameState; 
                   {astra ? (
                     <span className="g-ramayana-yatra__move-kind g-ramayana-yatra__astra-tag" data-testid={`astra-${m.id}`}>
                       {ui.t('common.verse', undefined, { gloss: false })}
+                    </span>
+                  ) : null}
+                  {tired ? (
+                    <span className="g-ramayana-yatra__move-kind g-ramayana-yatra__tired-tag" data-testid={`tired-${m.id}`}>
+                      {ui.t('katha.tired', undefined, { gloss: false })}
                     </span>
                   ) : null}
                 </span>

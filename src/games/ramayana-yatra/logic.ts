@@ -3,7 +3,7 @@
  * Pure, deterministic and immutable. The view imports everything it needs from here.
  *
  *   reduce(state, content, action)  THE entry point: clears fx, then dispatches by mode
- *     explore → step / face / interact / use-item / equip / set-style / tick
+ *     explore → step / face / interact / use-item / equip / set-style / next-book (v0.5a) / tick
  *     script  → advance / choose / answer / recite / buy (resume the event interpreter) / tick
  *     battle  → battleAction (logic-battle); when the battle is over → endBattle + resume
  *     ended   → tick only
@@ -15,7 +15,7 @@ import { indexOf } from './logic-util';
 import { battleAction, battleOutcome } from './logic-battle';
 import { statsAt } from './logic-progress';
 import { afterBattle, resumeScript } from './logic-events';
-import { interact, isDir, stepPlayer } from './logic-world';
+import { beginNextBook, interact, isDir, stepPlayer } from './logic-world';
 import { armKatha, saToast, uiAllySlot, uiItemSlot } from './logic-learning';
 import { type UiSlot, uiSa } from './sa-ui';
 import { applyKathaFloor, kathaSave } from './logic-katha';
@@ -44,6 +44,8 @@ export {
   OPPOSITE,
   VOID_MAP,
   isDir,
+  beginNextBook,
+  nextBookKanda,
   type PlacedNpc,
 } from './logic-world';
 export { nextBookObjective, MAX_CMDS_PER_RUN, SHRINE_EVENT_ID, SHRINE_REST, SHRINE_RECITE, SHRINE_SAVE, SHRINE_LEAVE, SHRINE_STUDY, MAX_PARTY, DEFEAT_TEXT, REST_TEXT, lastCmd, maxHpOf, heardFlag, restoredFlag } from './logic-events';
@@ -53,6 +55,7 @@ export * from './logic-learning';
 export * from './logic-battle';
 export * from './logic-progress';
 export * from './logic-katha';
+export * from './logic-tactics';
 export * from './logic-reader';
 export * from './types';
 export * from './catalog';
@@ -194,6 +197,8 @@ function reduceExplore(s: GameState, content: GameContent, a: AnyAction): GameSt
       return equip(s, content, a['member'], a['moves']);
     case 'set-style':
       return setStyle(s, content, a['style']);
+    case 'next-book':
+      return beginNextBook(s, content);
     default:
       return s;
   }

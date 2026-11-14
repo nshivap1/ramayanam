@@ -525,6 +525,34 @@ export interface KathaContent {
    * (its Sanskrit is in the dialogue TM, file 5). The view shows it instead of defs.json `description` in Kathā.
    */
   moveText?: Record<string, string>;
+  /** v0.5a (fx-strat): battle tactics — matchups from Vālmīki, warned blows, astra fatigue, guardians (logic-tactics.ts) */
+  tactics?: KathaTactics;
+}
+
+/**
+ * Kathā battle tactics (v0.5a, notes/katha.md "v0.5a"; content/katha.json `tactics`). Every textual claim carries its
+ * `source`; where the text says nothing the game uses plain element logic (catalog ELEMENT_CHART).
+ */
+export interface KathaTactics {
+  about?: string;
+  /** Viśvāmitra's weapons: astras not bound to a verse that tire like the verse-bound ones (and a grant never takes their slot) */
+  divine: string[];
+  /** moves a hero receives in Kathā when a story flag is set (e.g. Viśvāmitra's astras after Tāṭakā) */
+  grants: { flag: string; ally: string; moves: string[]; source: string }[];
+  /** guardians: a benched hero who can step in front of a warned blow with this move, in one tap (a cover) */
+  guards: { ally: string; move: string; source: string }[];
+  /**
+   * the astra that fits a foe in Vālmīki: decisive (the foe falls or is driven off, with the story beat `beat`, a
+   * content/sa-battle.json template) — at once, or once the foe is down to `below` × its HP; `chapter` limits it to a book
+   */
+  fits: { foe: string; chapter?: number; move: string; below?: number; beat: string; source: string }[];
+  /**
+   * a boss's warned blow (every Kathā boss warns; an entry gives it its own words): `ready` / `strike` are
+   * content/sa-battle.json templates ({x} = the foe; default: kathaWarn "X is about to use M!" / the usual "uses" line);
+   * `counter`: moves that answer it besides any support move, a switch or a cover; `first`: the foe's action that readies
+   * it first (0 = in the battle's opening, before the first turn)
+   */
+  warnings: { foe: string; chapter?: number; ready?: string; strike?: string; counter?: string[]; first?: number; source: string }[];
 }
 
 export interface KathaVerse {
@@ -656,6 +684,12 @@ export interface BattleBeat {
    * verbatim from the content; no gap, no input) right before the player says it back. Never set in the practice game.
    */
   model?: { shlokaId: string; pada: number };
+  /**
+   * Kathā tactics only (v0.5a): what this beat shows — `warn` a foe readies a great blow (its short Sanskrit line),
+   * `blunt` an answered blow lands softly, `fit` the astra that fits the foe (a story beat), `tired` a repeated astra
+   * lands weaker. Never set in the practice game.
+   */
+  tactic?: 'warn' | 'blunt' | 'fit' | 'tired';
 }
 
 export interface BattleState {
@@ -671,6 +705,14 @@ export interface BattleState {
   /** Kathā: smarana casts so far in this battle (duels rotate their pādas with it); absent in the practice game */
   casts?: number;
   turn: number;
+  /** Kathā (v0.5a): the move the active hero used last and how many times in a row (astra fatigue); absent in the practice game */
+  chain?: { moveId: string; n: number };
+  /** Kathā (v0.5a): a great blow the foe has readied (it lands on the foe's next action); absent in the practice game */
+  warn?: { foeId: string; moveId: string; strike?: string; counter: string[] };
+  /** Kathā (v0.5a): actions the current foe has taken (the warning cadence); absent in the practice game */
+  foeActs?: number;
+  /** Kathā (v0.5a): the recitation pending is a verse shield (no move): its answer resolves the turn as a shield */
+  pendingShield?: true;
 }
 
 /** What the view must present and wait on. Exactly one at a time. */
@@ -744,6 +786,7 @@ export type Action =
   | { type: 'use-item'; itemId: string; target: number } // from the start menu (explore) — battle items go through choose
   | { type: 'buy'; itemId: string; qty: number }
   | { type: 'equip'; member: number; moves: string[] }
+  | { type: 'next-book' } // v0.5a book-complete screen, "continue": explore → the next book's opening plays at once (logic-world beginNextBook)
   | { type: 'tick'; ms: number }; // play-time accounting (no randomness)
 
 export const VIEW_W = 320;

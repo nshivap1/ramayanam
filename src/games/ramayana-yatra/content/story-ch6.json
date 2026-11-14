@@ -1864,6 +1864,14 @@
      "portrait": "ravana"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Matali, the charioteer of the gods, whispers to Rama: when Ravana's strength wanes, loose Brahma's weapon."
+      }
+     ]
+    },
+    {
      "choice": "Rest and save before the battle?",
      "options": [
       {

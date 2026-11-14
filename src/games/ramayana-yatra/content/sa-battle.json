@@ -48,6 +48,7 @@
       "agneyastra": { "gender": "n", "acc": "आग्नेयम् अस्त्रम्", "ins": "आग्नेयेन अस्त्रेण" },
       "varunastra": { "gender": "n", "acc": "वारुणम् अस्त्रम्", "ins": "वारुणेन अस्त्रेण" },
       "vayavyastra": { "gender": "n", "acc": "वायव्यम् अस्त्रम्", "ins": "वायव्येन अस्त्रेण" },
+      "manavastra": { "gender": "n", "acc": "मानवम् अस्त्रम्", "ins": "मानवेन अस्त्रेण" },
       "dharma_vigraha": { "gender": "m", "acc": "“धर्मः” इति मन्त्रम्", "ins": "“धर्मः” इति मन्त्रेण" },
       "abhaya": { "gender": "m", "acc": "“अभयम्” इति मन्त्रम्", "ins": "“अभयम्” इति मन्त्रेण" },
       "aditya_hrdaya": { "gender": "n", "acc": "आदित्यहृदयम्", "ins": "आदित्यहृदयेन" },
@@ -157,6 +158,17 @@
     "kathaEchoModel": { "en": "{x} says a line: listen, then say it back.", "sa": "{x.nom} एकं पादं वदति। शृणु, ततः तम् अनुवद।" },
     "kathaEchoSay": { "en": "{x} says the line back!", "sa": "{x.nom} तं पादम् अनुवदति!" },
     "kathaEchoDown": { "en": "{x} says: well done! You know every line!", "sa": "{x.nom} वदति — साधु! त्वं सर्वान् पादान् जानासि!" },
-    "kathaEchoWin": { "en": "The lesson is complete!", "sa": "पाठः पूर्णः!" }
+    "kathaEchoWin": { "en": "The lesson is complete!", "sa": "पाठः पूर्णः!" },
+    "kathaWarn": { "en": "{x} is about to use {m}!", "sa": "{x.nom} {m.acc} प्रयोक्ष्यते!" },
+    "kathaWarnStones": { "en": "{x} is about to rain stones on you!", "sa": "{x.nom} शिलानां वृष्टिं करिष्यति!" },
+    "kathaStrikeStones": { "en": "{x} rains stones down!", "sa": "{x.nom} शिलानां वृष्टिं करोति!" },
+    "kathaWarnBlood": { "en": "{x} is about to rain blood on the sacrifice!", "sa": "{x.nom} यज्ञे रक्तस्य वृष्टिं करिष्यति!" },
+    "kathaStrikeBlood": { "en": "{x} rains blood on the sacrifice!", "sa": "{x.nom} यज्ञे रक्तस्य वृष्टिं करोति!" },
+    "kathaBlunt": { "en": "The heroes were ready: the blow lands softly.", "sa": "वीराः सज्जाः आसन्। अतः फलम् अल्पम्।" },
+    "kathaTired": { "en": "The astra is tired.", "sa": "अस्त्रं श्रान्तम्।" },
+    "kathaShield": { "en": "{x} recites a line of verse: the heroes stand ready!", "sa": "{x.nom} श्लोकस्य पादं पठति। वीराः सज्जाः!" },
+    "kathaFitManava": { "en": "{n:ally.rama} looses the {n:move.manavastra} at {n:enemy.maricha}'s chest. It hurls him a hundred leagues away into the ocean: stunned, but alive!", "sa": "रामः मारीचस्य वक्षसि मानवम् अस्त्रं क्षिपति। मारीचः दूरे सागरे पतति, किन्तु जीवति!" },
+    "kathaFitAgneya": { "en": "{n:ally.rama} looses the {n:move.agneyastra} at {n:enemy.subahu}'s chest. Pierced, {n:enemy.subahu} falls to the earth!", "sa": "रामः सुबाहोः वक्षसि आग्नेयम् अस्त्रं क्षिपति। सुबाहुः भुवि पतति!" },
+    "kathaFitBrahma": { "en": "{n:ally.rama} looses the {n:move.brahmastra}: it pierces {n:enemy.ravana}'s heart!", "sa": "रामः ब्रह्मास्त्रं क्षिपति। तत् रावणस्य हृदयं भिनत्ति!" }
   }
 }

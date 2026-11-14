@@ -515,7 +515,7 @@ const PLACE_MAP_IDS = [
   'setu_shore', 'setu', 'suvela_camp', 'lanka_battlefield', 'lanka_palace', 'ayodhya_return',
 ];
 const MOVE_IDS = [
-  'pada_bana', 'lipi_raksha', 'shoka_shloka', 'suprabhata', 'shuddha_vak', 'bana', 'agneyastra', 'varunastra', 'vayavyastra',
+  'pada_bana', 'lipi_raksha', 'shoka_shloka', 'suprabhata', 'shuddha_vak', 'bana', 'agneyastra', 'varunastra', 'vayavyastra', 'manavastra',
   'dharma_vigraha', 'abhaya', 'aditya_hrdaya', 'brahmastra', 'khadga', 'viddhi', 'agni_bana', 'vayu_vega', 'gada', 'jaya_ghosha',
   'anirveda', 'shaila', 'vriksha', 'prajna', 'mantrana', 'jala_dhara',
   'nakha', 'maya_jala', 'shula', 'garjana', 'andhakara', 'parigha', 'agni_varsha', 'naga_pasha', 'chandrahasa', 'tarka', 'prashna',

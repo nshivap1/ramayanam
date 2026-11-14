@@ -26,6 +26,10 @@
  * (`BattleBeat.model`: the next pāda said in full, no input) instead of an attack, the player's turn says that pāda back
  * with one gap (buildSmarana `echo`), one beat per answer ("{x} says the line back!" with the hit), and the battle opens
  * with the first model line; the foe never strikes, so the tutorial cannot be lost.
+ * v0.5a (logic-tactics.ts, Kathā wild / boss fights): the astra that fits a foe in Vālmīki is decisive (a story beat);
+ * a boss readies a great blow one turn ahead (a `warn` beat; it then acts after the hero) that a support move, a switch,
+ * a cover (`choose COVER_CMD`: a benched guardian steps in) or a counter blunts; the same astra on consecutive turns
+ * tires (× 0.6, × 0.4). Duels and the practice game never reach any of it.
  */
 import type { Rng } from '@sdk';
 import { cardinal } from '@sanskrit';
@@ -34,6 +38,7 @@ import { bump, clamp, indexOf, must, rngFor } from './logic-util';
 import { MAX_STAGE, addXp, battleXp, damage, elementMult, fighterFromEnemy, fighterFromMember, maxHpOf } from './logic-progress';
 import { grade, makeChallenge, markSeen, recordResult } from './logic-learning';
 import { astraBinding, astraPada, buildSmarana, duelMove, duelPada, gradeSmarana, isEchoDuel, isKatha, kathaFoe, kathaLead, recordSmarana } from './logic-katha';
+import { COVER_CMD, KATHA_BLUNT, KATHA_OPENING, KATHA_STRIKE, KATHA_STRIKE_CAP, SHIELD_CMD, type WarnPlan, answerOf, canShield, coverOf, fatigueMult, fitFor, isDecisive, nextChain, readiesAt, shieldPada, warnPlan } from './logic-tactics';
 import saBattleJson from './content/sa-battle.json';
 
 export const QUALITY = { swift: 1.5, correct: 1.0, wrong: 0.35 } as const;
@@ -313,6 +318,9 @@ export function startBattle(state: GameState, content: GameContent, spec: Battle
   const echo = isEchoDuel(state, spec);
   const model = echo ? duelPada(state, content, first.id, 0) : null;
   const beats: BattleBeat[] = [{ ...introText(spec, def, true, echo && !!model), ...snap }];
+  // v0.5a: a boss whose blow is readied in the opening (Subāhu's rain of blood on the altar, Bāla 1.30.12) says so first
+  const open = alive.length > 0 ? openingWarn(state, content, spec, foe, snap) : { beats: [] };
+  beats.push(...open.beats);
   let phase: BattleState['phase'] = 'intro';
   if (alive.length === 0) {
     const v = vocab(spec, echo);
@@ -324,7 +332,7 @@ export function startBattle(state: GameState, content: GameContent, spec: Battle
     const duel = spec.kind === 'duel';
     beats.push(withSa({ text: duel ? `${allyName(ally.id)} steps forward to answer.` : `Go, ${allyName(ally.id)}!`, ...snap, fx: { kind: 'switch' as const, target: 'ally' as const } }, saText(duel ? 'duelStepForward' : 'go', { x: saAlly(ally.id) })));
   }
-  const battle: BattleState = { spec, foeIndex: 0, foe, ally, active, phase, beats, participants: [active], turn: 0 };
+  const battle: BattleState = { spec, foeIndex: 0, foe, ally, active, phase, beats, participants: [active], turn: 0, ...(isKatha(state) && spec.kind !== 'duel' ? { foeActs: 0, ...(open.warn ? { warn: open.warn } : {}) } : {}) };
   const fx: Fx[] = [...state.fx, { kind: 'music', track: spec.music }];
   return { ...state, mode: 'battle', battle, pending: { kind: 'battle' }, fx };
 }
@@ -350,16 +358,29 @@ interface Ctx {
   prefix?: { text: string; textSa: string | undefined };
   /** the Kathā tutorial duel (isEchoDuel): call and response, the foe models the next pāda instead of attacking */
   echo: boolean;
+  /** v0.5a: Kathā tactics are on (a Kathā wild / boss fight; never a duel, never the practice game) */
+  tactics: boolean;
+  chapter: number;
+  /** the active hero's last move and how many times in a row (astra fatigue) */
+  chain?: BattleState['chain'];
+  /** the foe's readied blow (lands on its next action) */
+  warn?: BattleState['warn'];
+  /** actions the current foe has taken (warning cadence) */
+  foeActs: number;
+  /** how the hero answered a readied blow this turn (`shieldHalf`: a verse shield whose line faltered — half the protection) */
+  answer?: 'guard' | 'counter' | 'switch' | 'cover' | 'shield' | 'shieldHalf';
+  /** how this boss warns (null: it does not) */
+  plan: WarnPlan | null;
 }
 
-function beat(cx: Ctx, text: string, fx?: BattleBeat['fx'], sfx?: BattleBeat['sfx'], textSa?: string, recital?: BattleBeat['recital'], model?: BattleBeat['model']): void {
+function beat(cx: Ctx, text: string, fx?: BattleBeat['fx'], sfx?: BattleBeat['sfx'], textSa?: string, recital?: BattleBeat['recital'], model?: BattleBeat['model'], tactic?: BattleBeat['tactic']): void {
   const pre = cx.prefix;
   if (pre) {
     cx.prefix = undefined;
     text = `${pre.text} ${text}`;
     textSa = saJoin(pre.textSa, textSa);
   }
-  cx.beats.push({ text, allyHp: cx.ally.hp, foeHp: cx.foe.hp, ...(fx ? { fx } : {}), ...(sfx ? { sfx } : {}), ...(textSa !== undefined ? { textSa } : {}), ...(recital ? { recital } : {}), ...(model ? { model } : {}) });
+  cx.beats.push({ text, allyHp: cx.ally.hp, foeHp: cx.foe.hp, ...(fx ? { fx } : {}), ...(sfx ? { sfx } : {}), ...(textSa !== undefined ? { textSa } : {}), ...(recital ? { recital } : {}), ...(model ? { model } : {}), ...(tactic ? { tactic } : {}) });
 }
 
 function variance(cx: Ctx): number {
@@ -487,18 +508,29 @@ function kathaAllyAct(cx: Ctx, mv: MoveDef, correct: boolean, k: KathaCast, wear
   // the recital replaces "{x} uses {m}!" (a duel turn on another verse: "answers with a line of verse")
   if (k.recital && cx.spec.kind === 'duel' && !k.bound) beat(cx, `${me} answers with a line of verse!`, undefined, undefined, saText('kathaDuelRecite', { x: meSa }), k.recital);
   else if (k.recital) beat(cx, `${me} recites the line and invokes ${moveName(mv.id)}!`, undefined, undefined, saText('kathaRecite', { x: meSa, m: mv.id }), k.recital);
-  else beat(cx, cx.v.uses(me, moveName(mv.id)), undefined, undefined, saText(cx.v.sa.uses, { x: meSa, m: mv.id }));
+  // v0.5a: a decisive fitting astra's story beat names the cast itself, so the "uses" line is left out
+  else if (!(cx.tactics && !k.duel && correct && !weary && mv.power > 0 && isDecisive(cx.content, cx.chapter, cx.foe, mv.id))) beat(cx, cx.v.uses(me, moveName(mv.id)), undefined, undefined, saText(cx.v.sa.uses, { x: meSa, m: mv.id }));
   if (weary) beat(cx, `${me} is weary: with no PP left, the move is weak.`, undefined, undefined, saText('weary', { x: meSa }));
   const eff = (e: MoveEffect): MoveEffect => (correct ? e : halfEffect(e));
+  // v0.5a tactics: answering a readied blow, astra fatigue (× 0.6, × 0.4 on a repeat) and the decisive fitting astra
+  let tired = 1;
+  if (cx.tactics && !k.duel) {
+    const ans = answerOf(cx.content, cx.warn, mv.id);
+    if (ans) cx.answer = ans;
+    tired = fatigueMult(cx.chain, cx.content, mv.id);
+    cx.chain = nextChain(cx.chain, mv.id);
+    if (correct && !weary && mv.power > 0 && isDecisive(cx.content, cx.chapter, cx.foe, mv.id)) return decisiveHit(cx);
+  }
   if (mv.power > 0) {
-    const q = (correct ? (k.recalled ? KATHA_QUALITY.recalled : KATHA_QUALITY.full) : KATHA_QUALITY.half) * (weary ? 0.5 : 1);
+    const q = (correct ? (k.recalled ? KATHA_QUALITY.recalled : KATHA_QUALITY.full) : KATHA_QUALITY.half) * (weary ? 0.5 : 1) * tired;
     const d = damage(cx.ally, cx.foe, mv, q, variance(cx));
     cx.foe.hp = Math.max(0, cx.foe.hp - d.amount);
     // a miss: the element line first, then the falter, then the damage ("It is super effective! But the line falters: …")
     const half = correct ? null : halfLine(d.effective);
-    const pre = (d.effective === 'super' ? 'It is super effective! ' : d.effective === 'weak' ? 'It is not very effective. ' : '') + (half ? `${half.text} ` : '');
+    const tiredLine = tired < 1 ? tplBeat('kathaTired') : null;
+    const pre = (tiredLine ? `${tiredLine.text} ` : '') + (d.effective === 'super' ? 'It is super effective! ' : d.effective === 'weak' ? 'It is not very effective. ' : '') + (half ? `${half.text} ` : '');
     const takesSa = saText(cx.v.sa.takes, { x: saFoe(cx.foe.id), n: d.amount });
-    beat(cx, `${pre}${cx.v.takes(foeName(cx.foe.id), d.amount)}`, { kind: 'hit', target: 'foe', amount: d.amount, ...(d.effective ? { effective: d.effective } : {}) }, 'tap', saJoin(...(d.effective ? [saEffect(d.effective)] : []), ...(half ? [half.textSa] : []), takesSa));
+    beat(cx, `${pre}${cx.v.takes(foeName(cx.foe.id), d.amount)}`, { kind: 'hit', target: 'foe', amount: d.amount, ...(d.effective ? { effective: d.effective } : {}) }, 'tap', saJoin(...(tiredLine ? [tiredLine.textSa] : []), ...(d.effective ? [saEffect(d.effective)] : []), ...(half ? [half.textSa] : []), takesSa), undefined, undefined, tiredLine ? 'tired' : undefined);
     if (mv.effect && (cx.foe.hp > 0 || mv.effect.kind === 'drain')) applyEffect(cx, 'ally', eff(mv.effect));
   } else {
     if (!correct) cx.prefix = { text: 'The line falters: only half the power lands.', textSa: saText('kathaHalf') };
@@ -512,6 +544,78 @@ function kathaAllyAct(cx: Ctx, mv: MoveDef, correct: boolean, k: KathaCast, wear
     beat(cx, left.text, undefined, undefined, left.textSa);
   }
   checkFoe(cx);
+}
+
+/**
+ * v0.5a: the astra that fits the foe in Vālmīki lands decisively — its story beat (content/sa-battle.json `fits[].beat`,
+ * e.g. the Mānava astra hurls Mārīca into the ocean) takes the foe's remaining strength, and the foe falls / is driven off.
+ */
+function decisiveHit(cx: Ctx): void {
+  const fit = fitFor(cx.content, cx.chapter, cx.foe.id);
+  const amount = Math.max(1, cx.foe.hp);
+  cx.foe.hp = 0;
+  const t = tplBeat(fit?.beat ?? 'super');
+  beat(cx, t.text, { kind: 'hit', target: 'foe', amount, effective: 'super' }, 'tap', t.textSa, undefined, undefined, 'fit');
+  checkFoe(cx);
+}
+
+/** v0.5a: a benched guardian steps in front of the readied blow with a guard move (one tap): its effect, and the blow is blunted. */
+function coverAct(cx: Ctx, allyId: string, moveId: string): void {
+  const mv = indexOf(cx.content).move.get(moveId);
+  cx.answer = 'cover';
+  cx.chain = undefined;
+  beat(cx, cx.v.uses(allyName(allyId), moveName(moveId)), undefined, undefined, saText(cx.v.sa.uses, { x: saAlly(allyId), m: moveId }));
+  if (mv?.effect) applyEffect(cx, 'ally', mv.effect);
+}
+
+/** v0.5a: the verse shield — the hero recites a line of a heard verse and the heroes stand ready (a faltering line: half). */
+function shieldAct(cx: Ctx, correct: boolean, recital: { shlokaId: string; pada: number; correct: boolean }): void {
+  cx.answer = correct ? 'shield' : 'shieldHalf';
+  cx.chain = undefined;
+  const me = allyName(cx.ally.id);
+  const said = withSa({ text: `${me} recites a line of verse: the heroes stand ready!` }, saText('kathaShield', { x: saAlly(cx.ally.id) }));
+  const half = correct ? null : { text: 'But the line falters: only half the power lands.', textSa: saText('kathaHalfBut') };
+  beat(cx, half ? `${said.text} ${half.text}` : said.text, { kind: 'buff', target: 'ally' }, undefined, half ? saJoin(said.textSa, half.textSa) : said.textSa, recital);
+}
+
+/** v0.5a: the foe readies its great blow (one short line, the future tense); it lands on the foe's next action. */
+function foeReady(cx: Ctx, plan: WarnPlan): void {
+  cx.warn = { foeId: cx.foe.id, moveId: plan.moveId, ...(plan.strike ? { strike: plan.strike } : {}), counter: plan.counter };
+  const t = tplBeat(plan.ready, cx.foe.id, plan.moveId);
+  beat(cx, t.text, undefined, undefined, t.textSa, undefined, undefined, 'warn');
+}
+
+/**
+ * v0.5a: the readied blow lands: × KATHA_STRIKE of an ordinary hit, at most KATHA_STRIKE_CAP of the hero's max HP; answered
+ * this turn (a support move, a counter, a switch, a cover) it is blunted to × KATHA_BLUNT ("The heroes were ready …") and the
+ * foe is left open (its defence falls KATHA_OPENING stages).
+ */
+function foeStrike(cx: Ctx, w: NonNullable<BattleState['warn']>): void {
+  cx.warn = undefined;
+  const mv = indexOf(cx.content).move.get(w.moveId);
+  if (!mv) return;
+  const fn = foeName(cx.foe.id);
+  const line = w.strike ? tplBeat(w.strike, cx.foe.id, mv.id) : withSa({ text: cx.v.foeUses(fn, moveName(mv.id)) }, saText(cx.v.sa.foeUses, { x: saFoe(cx.foe.id), m: mv.id }));
+  beat(cx, line.text, undefined, undefined, line.textSa);
+  const d = damage(cx.foe, cx.ally, mv, KATHA_STRIKE, variance(cx));
+  let amount = Math.min(d.amount, Math.max(1, Math.round(cx.ally.maxHp * KATHA_STRIKE_CAP)));
+  const blunt = cx.answer !== undefined;
+  // a faltering verse shield protects half as well (the Kathā rule: a miss = half effect) and leaves no opening
+  const half = cx.answer === 'shieldHalf';
+  if (blunt) amount = Math.max(1, Math.round(amount * (half ? (1 + KATHA_BLUNT) / 2 : KATHA_BLUNT)));
+  cx.ally.hp = Math.max(0, cx.ally.hp - amount);
+  const takesSa = saText(cx.v.sa.takes, { x: saAlly(cx.ally.id), n: amount });
+  const takes = cx.v.takes(allyName(cx.ally.id), amount);
+  if (blunt) {
+    const b = tplBeat('kathaBlunt');
+    beat(cx, `${b.text} ${takes}`, { kind: 'hit', target: 'ally', amount }, 'tap', saJoin(b.textSa, takesSa), undefined, undefined, 'blunt');
+    // the blow spent, the foe is left open
+    if (cx.ally.hp > 0 && !half) applyEffect(cx, 'ally', { kind: 'debuff-def', amount: KATHA_OPENING, target: 'enemy' });
+  } else {
+    const pre = d.effective === 'super' ? 'It is super effective! ' : d.effective === 'weak' ? 'It is not very effective. ' : '';
+    beat(cx, `${pre}${takes}`, { kind: 'hit', target: 'ally', amount, ...(d.effective ? { effective: d.effective } : {}) }, 'wrong', saJoin(...(d.effective ? [saEffect(d.effective)] : []), takesSa));
+  }
+  checkAlly(cx);
 }
 
 /**
@@ -589,12 +693,18 @@ function foeAct(cx: Ctx): void {
   if (cx.foe.hp <= 0 || cx.ally.hp <= 0) return;
   const fn = foeName(cx.foe.id);
   const fnSa = saFoe(cx.foe.id);
+  // v0.5a: the foe's action number (warning cadence), counted for every action it takes
+  const act = cx.foeActs;
+  if (cx.tactics) cx.foeActs = act + 1;
   if (cx.foe.stunned) {
     cx.foe.stunned = false;
     cx.immune = 'foe';
+    cx.warn = undefined; // a bound foe loses its readied blow
     beat(cx, `${fn} is bound and cannot act!`, undefined, undefined, saText('bound', { x: fnSa }));
     return;
   }
+  if (cx.tactics && cx.warn) return foeStrike(cx, cx.warn);
+  if (cx.tactics && cx.plan && readiesAt(cx.plan, act)) return foeReady(cx, cx.plan);
   const mv = chooseFoeMove(cx.foe, cx.ally, cx.content, cx.rng);
   beat(cx, cx.v.foeUses(fn, moveName(mv.id)), undefined, undefined, saText(cx.v.sa.foeUses, { x: fnSa, m: mv.id }));
   if (mv.power > 0) {
@@ -674,7 +784,8 @@ function extraEffects(mv: MoveDef): MoveEffect[] {
   return Array.isArray(x) ? x : [];
 }
 
-type PlayerAct = { kind: 'move'; move: MoveDef; correct: boolean; swift: boolean; weary: boolean; katha?: KathaCast } | { kind: 'pass' };
+/** `pass`: the hero's turn went elsewhere (a switch — `answer: 'switch'` braces the new hero for a readied blow —, an item, a failed run); `cover` (v0.5a): a benched guardian steps in */
+type PlayerAct = { kind: 'move'; move: MoveDef; correct: boolean; swift: boolean; weary: boolean; katha?: KathaCast } | { kind: 'pass'; answer?: 'switch' } | { kind: 'cover'; allyId: string; moveId: string } | { kind: 'shield'; correct: boolean; recital: { shlokaId: string; pada: number; correct: boolean } };
 
 function finishTurn(state: GameState, cx: Ctx, b: BattleState): GameState {
   let s: GameState = { ...state, save: { ...state.save, party: cx.party } };
@@ -691,6 +802,12 @@ function finishTurn(state: GameState, cx: Ctx, b: BattleState): GameState {
   const am = party[cx.active];
   if (am) party[cx.active] = { ...am, hp: cx.ally.hp };
   const nb: BattleState = { ...b, ally: cx.ally, foe: cx.foe, beats: [...b.beats, ...cx.beats], phase, turn: b.turn + 1 };
+  if (cx.tactics) {
+    // v0.5a: the hero's chain, the foe's readied blow (dropped with the foe) and its action count carry to the next turn
+    nb.chain = cx.chain;
+    nb.warn = cx.foeDown ? undefined : cx.warn;
+    nb.foeActs = cx.foeActs;
+  }
   return withBattle({ ...s, save: { ...s.save, party } }, nb);
 }
 
@@ -711,8 +828,32 @@ function makeCtx(state: GameState, content: GameContent, b: BattleState): { cx: 
     allyDown: false,
     immune: null,
     echo: isEchoDuel(state, b.spec),
+    ...tacticsCtx(state, content, b),
   };
   return { cx, state: bump(state) };
+}
+
+/** v0.5a: the tactics part of a turn's context (off — `tactics: false` — outside Kathā wild / boss fights). */
+function tacticsCtx(state: GameState, content: GameContent, b: BattleState): Pick<Ctx, 'tactics' | 'chapter' | 'chain' | 'warn' | 'foeActs' | 'plan'> {
+  const on = isKatha(state) && b.spec.kind !== 'duel';
+  const chapter = state.save.chapter;
+  if (!on) return { tactics: false, chapter, foeActs: 0, plan: null };
+  return { tactics: true, chapter, chain: b.chain, warn: b.warn, foeActs: b.foeActs ?? 0, plan: warnPlan(content, chapter, b.spec, b.foe) };
+}
+
+/** A content/sa-battle.json template as a beat: its English (`{x}` / `{m}` filled with name markup) and its Sanskrit. */
+function tplBeat(key: string, foeId?: string, moveId?: string): { text: string; textSa?: string } {
+  const en = (SA_BATTLE.templates[key]?.en ?? key).replace('{x}', foeId ? foeName(foeId) : '').replace('{m}', moveId ? moveName(moveId) : '');
+  return withSa({ text: en }, saText(key, { ...(foeId ? { x: saFoe(foeId) } : {}), ...(moveId ? { m: moveId } : {}) }));
+}
+
+/** v0.5a: the opening of a boss whose blow is readied before the first turn (warning `first: 0`): its beat and warn. */
+function openingWarn(state: GameState, content: GameContent, spec: BattleSpec, foe: Fighter, snap: { allyHp: number; foeHp: number }): { beats: BattleBeat[]; warn?: BattleState['warn'] } {
+  if (!isKatha(state) || spec.kind === 'duel') return { beats: [] };
+  const plan = warnPlan(content, state.save.chapter, spec, foe);
+  if (!plan || !readiesAt(plan, -1)) return { beats: [] };
+  const t = tplBeat(plan.ready, foe.id, plan.moveId);
+  return { beats: [{ ...t, ...snap, tactic: 'warn' }], warn: { foeId: foe.id, moveId: plan.moveId, ...(plan.strike ? { strike: plan.strike } : {}), counter: plan.counter } };
 }
 
 function resolveTurn(state0: GameState, content: GameContent, act: PlayerAct): GameState {
@@ -721,9 +862,19 @@ function resolveTurn(state0: GameState, content: GameContent, act: PlayerAct): G
   // the tutorial duel: the player speaks first, then the duelist says the next pāda (the one the next turn says back)
   const foeTurn = (): void => (cx.echo ? echoModel(cx, duelPada(state0, content, cx.foe.id, b.casts ?? 0)) : foeAct(cx));
   if (act.kind === 'pass') {
+    // v0.5a: any other action breaks the astra chain; a switch braces the hero who steps in
+    if (cx.tactics) cx.chain = undefined;
+    if (act.answer && cx.tactics && cx.warn) cx.answer = act.answer;
+    foeTurn();
+  } else if (act.kind === 'cover') {
+    coverAct(cx, act.allyId, act.moveId);
+    foeTurn();
+  } else if (act.kind === 'shield') {
+    shieldAct(cx, act.correct, act.recital);
     foeTurn();
   } else {
-    const allyFirst = cx.echo || cx.ally.spd >= cx.foe.spd;
+    // a readied blow is slow (v0.5a): the hero acts first, so an answer comes in time
+    const allyFirst = cx.echo || (cx.tactics && !!cx.warn) || cx.ally.spd >= cx.foe.spd;
     if (allyFirst) {
       allyAct(cx, act.move, act, act.weary);
       if (!cx.foeDown) foeTurn();
@@ -752,7 +903,16 @@ function afterBeats(state: GameState, content: GameContent): GameState {
     const def = must(indexOf(content).enemy, nextSpec.id, 'enemy');
     const foe0 = fighterFromEnemy(nextSpec.id, nextSpec.level, content);
     const foe = isKatha(state) ? kathaFoe(foe0, b.ally, b.spec, content) : foe0;
-    return withBattle(state, { ...b, foe, foeIndex: b.foeIndex + 1, phase: 'beats', beats: [{ ...introText(b.spec, def, false), allyHp: b.ally.hp, foeHp: foe.hp }] });
+    const snap = { allyHp: b.ally.hp, foeHp: foe.hp };
+    const nb: BattleState = { ...b, foe, foeIndex: b.foeIndex + 1, phase: 'beats', beats: [{ ...introText(b.spec, def, false), ...snap }] };
+    if (isKatha(state) && b.spec.kind !== 'duel') {
+      // v0.5a: a new foe starts its own warning cadence (and may ready its blow as it steps forward)
+      const open = openingWarn(state, content, b.spec, foe, snap);
+      nb.beats.push(...open.beats);
+      nb.foeActs = 0;
+      nb.warn = open.warn;
+    }
+    return withBattle(state, nb);
   }
   if (b.ally.hp <= 0) {
     if (conscious(state.save.party).length === 0) return withBattle(state, { ...b, phase: 'lost' });
@@ -806,8 +966,8 @@ function doSwitch(state: GameState, content: GameContent, target: number): GameS
   if (!forced) beats.push(withSa({ text: `${allyName(b.ally.id)}, come back!`, allyHp: b.ally.hp, foeHp: b.foe.hp }, saText('comeBack', { x: saAlly(b.ally.id) })));
   beats.push(withSa({ text: `Go, ${allyName(ally.id)}!`, allyHp: ally.hp, foeHp: b.foe.hp, fx: { kind: 'switch' as const, target: 'ally' as const } }, saText('go', { x: saAlly(ally.id) })));
   const participants = b.participants.includes(target) ? b.participants : [...b.participants, target];
-  const s1 = withBattle(s0, { ...b, ally, active: target, participants, beats, phase: 'beats' });
-  return forced ? s1 : resolveTurn(s1, content, { kind: 'pass' });
+  const s1 = withBattle(s0, { ...b, ally, active: target, participants, beats, phase: 'beats', ...(b.chain ? { chain: undefined } : {}) });
+  return forced ? s1 : resolveTurn(s1, content, { kind: 'pass', answer: 'switch' });
 }
 
 function doItem(state: GameState, content: GameContent, i: number): GameState {
@@ -868,6 +1028,25 @@ function doItem(state: GameState, content: GameContent, i: number): GameState {
   return resolveTurn(s1, content, { kind: 'pass' });
 }
 
+/** v0.5a (Kathā): a benched guardian covers the readied blow (logic-tactics coverOf); the same object when nobody can. */
+function doCover(state: GameState, content: GameContent): GameState {
+  const c = coverOf(state, content);
+  const b = state.battle as BattleState;
+  if (!c || b.phase !== 'command') return state;
+  const participants = b.participants.includes(c.index) ? b.participants : [...b.participants, c.index];
+  const s1 = withBattle(state, { ...b, participants, phase: 'beats' });
+  return resolveTurn(s1, content, { kind: 'cover', allyId: c.allyId, moveId: c.moveId });
+}
+
+/** v0.5a (Kathā): the verse shield — a recitation of a heard verse's pāda (shieldPada); its answer resolves the turn. */
+function doShield(state: GameState, content: GameContent): GameState {
+  const b = state.battle as BattleState;
+  const ref = canShield(state, content) ? shieldPada(state, content) : null;
+  if (!ref || b.phase !== 'command') return state;
+  const { state: s, challenge } = buildSmarana(state, content, { shlokaId: ref.shlokaId, pada: ref.pada, mode: 'battle' });
+  return { ...s, battle: { ...b, phase: 'challenge', pendingMove: undefined, pendingShield: true, casts: (b.casts ?? 0) + 1 }, pending: { kind: 'challenge', challenge, context: 'battle' } };
+}
+
 function doPickMove(state: GameState, content: GameContent, i: number): GameState {
   const b = state.battle as BattleState;
   if (i === -1) return withBattle(state, { ...b, phase: 'command' });
@@ -919,7 +1098,7 @@ function kathaDuelTurn(state: GameState, content: GameContent, b: BattleState): 
 function kathaAnswer(state: GameState, content: GameContent, answer: { picks?: unknown; auto?: unknown; timeMs?: unknown }): GameState {
   const b = state.battle as BattleState;
   const p = state.pending;
-  if (p?.kind !== 'challenge' || !b.pendingMove || !p.challenge.smarana) return state;
+  if (p?.kind !== 'challenge' || (!b.pendingMove && !b.pendingShield) || !p.challenge.smarana) return state;
   const ch = p.challenge;
   const spec = p.challenge.smarana;
   const g = gradeSmarana(ch, answer);
@@ -928,7 +1107,13 @@ function kathaAnswer(state: GameState, content: GameContent, answer: { picks?: u
   let s = recordSmarana(state, spec, g.correct, g.auto);
   const timeMs = typeof answer.timeMs === 'number' && Number.isFinite(answer.timeMs) ? Math.max(0, answer.timeMs) : 0;
   if (gapped && !g.auto) s = recordResult(s, ch, { correct: g.correct, swift: false, timeMs });
-  const mv = must(indexOf(content).move, b.pendingMove, 'move');
+  if (b.pendingShield) {
+    // v0.5a: a verse shield's line resolves the turn as a shield
+    const s0: GameState = { ...s, lastSmarana: { challenge: ch, picks: g.picks, correct: g.correct, auto: g.auto, context: 'battle' }, pending: { kind: 'battle' }, battle: { ...b, phase: 'beats', pendingMove: undefined, pendingShield: undefined } };
+    const s1 = resolveTurn(s0, content, { kind: 'shield', correct: g.correct, recital: { shlokaId: spec.shlokaId, pada: spec.pada, correct: g.correct } });
+    return { ...s1, fx: [...s1.fx, ...(gapped && !g.auto ? [{ kind: 'sfx' as const, name: g.correct ? ('correct' as const) : ('wrong' as const) }] : [])] };
+  }
+  const mv = must(indexOf(content).move, b.pendingMove as string, 'move');
   const duel = b.spec.kind === 'duel'; // a Kathā duel turn (kathaDuelTurn): the line, not the move, is the answer
   const katha: KathaCast = { recital: { shlokaId: spec.shlokaId, pada: spec.pada, correct: g.correct }, recalled: g.correct && gapped && !g.auto, bound: !duel && astraBinding(content, mv.id) !== null, ...(duel ? { duel: true } : {}) };
   const s0: GameState = { ...s, lastSmarana: { challenge: ch, picks: g.picks, correct: g.correct, auto: g.auto, context: 'battle' }, pending: { kind: 'battle' }, battle: { ...b, phase: 'beats', pendingMove: undefined } };
@@ -987,6 +1172,8 @@ export function battleAction(state: GameState, content: GameContent, action: Act
       if (action.index === 1) return battleMenu(state, content).switchable.length ? withBattle(state, { ...b, phase: 'pick-switch' }) : infoBeat(state, 'No other hero can step in.', saText('noSwitch'));
       if (action.index === 2) return battleItems(state, content).length ? withBattle(state, { ...b, phase: 'pick-item' }) : infoBeat(state, 'You have no items to use.', saText('noItems'));
       if (action.index === 3) return doRun(state, content);
+      if (action.index === COVER_CMD) return doCover(state, content);
+      if (action.index === SHIELD_CMD) return doShield(state, content);
       return state;
     }
     case 'pick-move':

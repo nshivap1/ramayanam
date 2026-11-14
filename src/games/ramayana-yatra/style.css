@@ -146,6 +146,10 @@
 .g-ramayana-yatra__btag.is-ally-hp { left: calc(195 / 320 * 100%); top: calc(153 / 180 * 100%); height: calc(14 / 180 * 100%); justify-content: flex-end; font-size: 6cqh; }
 .g-ramayana-yatra__btag-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .g-ramayana-yatra__btag-lv { flex: none; color: rgb(110 70 40); font-size: 0.9em; }
+/* v0.5a (fx-strat): the foe's affinity chip under its box, and the mark of a readied blow */
+.g-ramayana-yatra__btag.is-affinity { left: calc(6 / 320 * 100%); top: calc(41 / 180 * 100%); width: auto; max-width: calc(170 / 320 * 100%); height: auto; justify-content: flex-start; gap: 0; padding: 0.5cqh 2cqw; border: 1px solid var(--gold); border-radius: var(--r-pill); background: var(--paper); color: var(--gold-ink); font-size: 6cqh; overflow: hidden; text-overflow: ellipsis; }
+.g-ramayana-yatra__btag-warn { flex: none; display: inline-grid; place-items: center; width: 1.3em; height: 1.3em; border-radius: 50%; background: var(--bad); color: var(--on-accent); font-size: 0.9em; animation: g-ramayana-yatra-blink 700ms ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .g-ramayana-yatra__btag-warn { animation: none; } }
 
 /* the dialogue-language picker (Settings, New journey) */
 .g-ramayana-yatra__dlang { display: grid; gap: var(--s-1); width: 100%; }
@@ -295,6 +299,38 @@
 .g-ramayana-yatra__verse-btn.is-restored { border-color: var(--gold); background: var(--gold-soft); }
 .g-ramayana-yatra__verse-btn.is-locked { opacity: 0.55; cursor: default; border-style: dashed; }
 .g-ramayana-yatra__credits { display: grid; gap: var(--s-2); align-content: start; }
+
+/* ── book complete (v0.5a, view-bookend.tsx): covers canvas + panel; body scrolls, buttons in a footer ── */
+.g-ramayana-yatra__frame.is-bookend { position: relative; }
+.g-ramayana-yatra__frame.is-bookend > .g-ramayana-yatra__screen, .g-ramayana-yatra__frame.is-bookend > .g-ramayana-yatra__panel { visibility: hidden; }
+.g-ramayana-yatra__bookend { position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3); background: var(--surface); color: var(--ink); border: 2px solid var(--line-strong); border-radius: var(--r-lg); box-shadow: 0 var(--edge) 0 var(--line-strong), inset 0 0 0 2px var(--paper-2); overflow: hidden; animation: g-ramayana-yatra-rise var(--t-slow) var(--ease) both; }
+.g-ramayana-yatra__bookend-scroll { display: grid; align-content: start; gap: var(--s-3); }
+.g-ramayana-yatra__bookend-head { display: grid; justify-items: center; gap: var(--s-1); padding: var(--s-3); border-radius: var(--r-md); background: color-mix(in srgb, var(--ink) 90%, transparent); color: var(--paper); text-align: center; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--gold) 70%, transparent); }
+.g-ramayana-yatra__bookend-head .g-ramayana-yatra__eyebrow { color: inherit; opacity: 0.75; }
+.g-ramayana-yatra__bookend-title { margin: 0; font-size: clamp(1.6rem, 8vw, 2.2rem); line-height: 1.3; font-weight: 700; }
+.g-ramayana-yatra__bookend-title .g-ramayana-yatra__ui-en { display: block; font-size: var(--fs-sm); font-weight: 700; color: inherit; opacity: 0.8; }
+.g-ramayana-yatra__bookend-story { margin: 0; max-width: 34em; font-size: var(--fs-sm); line-height: 1.6; }
+.g-ramayana-yatra__bookend-story .g-ramayana-yatra__ui-en { color: inherit; opacity: 0.8; }
+.g-ramayana-yatra__bookend-sec { display: grid; gap: var(--s-2); }
+.g-ramayana-yatra__bookend-stats { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-2); }
+.g-ramayana-yatra__bookend-stat { display: grid; grid-template-columns: minmax(3.6em, auto) 1fr; align-items: start; gap: var(--s-2) var(--s-3); padding: var(--s-2) var(--s-3); border: 2px solid var(--line); border-left: 6px solid var(--accent); border-radius: var(--r-md); background: var(--paper-2); }
+.g-ramayana-yatra__bookend-num { display: grid; justify-items: center; font-size: var(--fs-2xl); font-weight: 800; line-height: 1.15; color: var(--accent-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.g-ramayana-yatra__bookend-of { font-size: var(--fs-xs); font-weight: 700; color: var(--ink-3); }
+.g-ramayana-yatra__bookend-text { display: grid; gap: 2px; min-width: 0; }
+.g-ramayana-yatra__bookend-label { font-weight: 800; line-height: 1.35; }
+.g-ramayana-yatra__bookend-why { font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-2); }
+.g-ramayana-yatra__bookend-verses { display: grid; gap: var(--s-1); }
+.g-ramayana-yatra__bookend-astra { display: block; color: var(--accent-ink); }
+.g-ramayana-yatra__bookend-foot { flex: none; display: grid; gap: var(--s-1); padding-top: var(--s-2); border-top: 2px solid var(--line); }
+.g-ramayana-yatra__bookend-foot .sk-btn:not(.sk-btn--ghost) .g-ramayana-yatra__ui-en { color: inherit; opacity: 0.85; }
+.g-ramayana-yatra__bookend-note { margin: 0; text-align: center; font-size: var(--fs-xs); line-height: 1.4; color: var(--ink-3); }
+@media (max-height: 700px) {
+  .g-ramayana-yatra__bookend { padding: var(--s-2); gap: var(--s-1); }
+  .g-ramayana-yatra__bookend-head { padding: var(--s-2); }
+  .g-ramayana-yatra__bookend-title { font-size: clamp(1.4rem, 7vw, 1.8rem); }
+  .g-ramayana-yatra__bookend-stat { padding: var(--s-1) var(--s-2); }
+  .g-ramayana-yatra__bookend-num { font-size: var(--fs-xl); }
+}
 .g-ramayana-yatra__credit-list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-2); }
 .g-ramayana-yatra__credit-list li { display: grid; padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--gold-soft); color: var(--gold-ink); }
 
@@ -566,6 +602,15 @@
 .g-ramayana-yatra__kmove.is-astra { background: color-mix(in srgb, var(--gold-soft) 45%, var(--surface)); }
 .g-ramayana-yatra__kmove-top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-2); min-width: 0; }
 .g-ramayana-yatra__kmove-top .g-ramayana-yatra__astra-tag { flex: none; font-size: var(--fs-xs); font-weight: 800; }
+/* v0.5a (fx-strat) Kathā tactics: the answer row (a readied blow), a tired astra, a move that answers, tactic beats */
+.g-ramayana-yatra__kcmd-answers { flex: none; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--s-2); }
+.g-ramayana-yatra__kcmd.has-answers .g-ramayana-yatra__kmove .g-ramayana-yatra__move-desc { display: none; } /* the answer row takes the descriptions' room */
+.g-ramayana-yatra__kcmd-btn.g-ramayana-yatra__answer { border-color: var(--bad); background: var(--bad-soft); color: var(--bad-ink); }
+.g-ramayana-yatra__kmove.is-tired { opacity: 0.7; }
+.g-ramayana-yatra__kmove.is-answer { border-color: var(--bad); }
+.g-ramayana-yatra__kmove-top .g-ramayana-yatra__tired-tag { flex: none; padding: 0 var(--s-2); border-radius: var(--r-pill); background: var(--mute-soft); color: var(--ink-2); font-size: var(--fs-xs); font-weight: 800; }
+.g-ramayana-yatra__beat.is-warn .g-ramayana-yatra__say-box { border-color: var(--bad); background: color-mix(in srgb, var(--bad-soft) 55%, var(--paper)); }
+.g-ramayana-yatra__beat.is-fit .g-ramayana-yatra__say-box { border-color: var(--gold); background: color-mix(in srgb, var(--gold-soft) 55%, var(--paper)); }
 .g-ramayana-yatra__kmove .g-ramayana-yatra__move-meta .g-ramayana-yatra__pp { color: inherit; }
 .g-ramayana-yatra__kmove .g-ramayana-yatra__move-desc { -webkit-line-clamp: 1; line-clamp: 1; }
 .g-ramayana-yatra__kcmd-more { flex: none; margin-top: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-2); padding-bottom: 2px; }
