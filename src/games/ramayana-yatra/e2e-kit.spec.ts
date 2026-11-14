@@ -243,6 +243,11 @@ export class Bot {
       this.note(`cast ${sm.shlokaId}:${sm.pada} L${sm.level} ${how} ${miss ? 'miss' : 'ok'}`);
       if (how === 'key') await this.key(String(sm.options.indexOf(picked) + 1));
       else await this.tap(`recite-opt-${picked}`);
+      // v0.5: a missed pick is marked with an ✗ on the chip the player chose, beside the right one in gold
+      if (miss) {
+        await this.page.locator(`[data-testid="recite-opt-${picked}"] [data-testid="recite-miss-mark"]`).waitFor({ timeout: 2000 });
+        assert.equal(await this.page.locator('[data-testid="recite-miss-mark"]').count(), 1, 'one ✗, on the chip picked');
+      }
     }
     assert.ok(await this.waitSeq(seq0, 9000), 'the cast completes and the game moves on');
     if (this.opts.afterCast) await this.opts.afterCast(s, picked, Date.now() - t0);

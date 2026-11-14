@@ -93,12 +93,13 @@ export const V05B_C: E2eCase[] = [
           }
           const foe0 = s.battle?.foeHp ?? 0;
           // the second turn misses on purpose: the right line shimmers in and is said
-          const miss = turns >= 2 && !missed && c.answers.length === 1;
-          const pick = miss ? (c.optionIds.find((o) => !c.answers.includes(o)) as string) : (c.answers[0] as string);
+          const miss: boolean = turns >= 2 && !missed && c.answers.length === 1;
+          const pick: string = miss ? (c.optionIds.find((o) => !c.answers.includes(o)) as string) : (c.answers[0] as string);
           await g.tap(`opt-${pick}`);
           if (miss) {
             await g.page.locator(`[data-testid="chain-panel"][data-correct="false"]`).waitFor({ timeout: 2000 });
             assert.equal(await g.page.locator(`[data-testid="opt-${c.answers[0]}"].is-right`).count(), 1, 'the right line shimmers in');
+            assert.equal(await g.page.locator(`[data-testid="opt-${pick}"] [data-testid="chain-miss-mark"]`).count(), 1, 'the line picked carries an ✗');
             await shot(g, 'c5-chain-miss-sa-360');
             missed = true;
           }

@@ -227,6 +227,11 @@ function ChainTurn({ pending, state, dispatch }: { pending: ChallengePending; st
                 {n + 1}
               </span>
               <Line text={o.sa ?? ''} head className="is-chip" {...(isSaid && !reduced ? { lit } : {})} />
+              {picked === o.id && !ok ? (
+                <span className="g-ramayana-yatra__cast-x" aria-hidden="true" data-testid="chain-miss-mark">
+                  ✗
+                </span>
+              ) : null}
             </button>
           );
         })}

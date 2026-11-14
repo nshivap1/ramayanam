@@ -752,6 +752,11 @@ function Cast({ ch, spec, pending, state, dispatch, auto }: { ch: Challenge; spe
                   {n + 1}
                 </span>
                 <SaText className="g-ramayana-yatra__cast-chip-t">{o.sa ?? ''}</SaText>
+                {missed && picked === o.id ? (
+                  <span className="g-ramayana-yatra__cast-x" aria-hidden="true" data-testid="recite-miss-mark">
+                    ✗
+                  </span>
+                ) : null}
               </button>
             ))
           : null}
