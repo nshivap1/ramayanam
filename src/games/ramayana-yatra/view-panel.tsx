@@ -22,6 +22,7 @@ import { RecitePanel, VerseMoment, isKatha } from './view-katha';
 import { BookReview, SceneRecite } from './view-scene';
 import { KathaEnding } from './view-bookend';
 import { SetuPanel } from './view-setu';
+import { HotspotPanel } from './view-told'; // v0.6 WP0
 import { ChainPanel } from './view-chain';
 import type { Action, Dir, GameState, Pending } from './types';
 
@@ -87,6 +88,10 @@ export function Panel(props: PanelProps): ReactElement {
       return <BookReview kanda={p.kanda} state={state} recited={props.recited} dispatch={props.dispatch} />;
     case 'setu': // v0.5b P5 (WP-D): Nala's bridge
       return <SetuPanel p={p} dispatch={props.dispatch} />;
+    case 'hotspot': // v0.6 (WP0): a hidden moment — the last line stays, A looks closer, ▶ passes
+      return <HotspotPanel echo={props.echo} dispatch={props.dispatch} />;
+    case 'cutscene': // v0.6 (WP0): a told cutscene plays over the frame (Game renders view-told); the panel waits
+      return <AutoPanel echo={props.echo} />;
     default:
       return <AutoPanel echo={props.echo} />;
   }
@@ -278,7 +283,7 @@ function speakerSprite(who: string | undefined, portrait: SpriteId | undefined, 
   return SPRITES.has(id) ? (id as SpriteId) : null;
 }
 
-function Speaker({ who }: { who: string }): ReactElement {
+export function Speaker({ who }: { who: string }): ReactElement {
   const env = useEnv();
   const ui = useUi();
   if (who === 'player' || who === '{player}')
@@ -507,8 +512,9 @@ function ShrinePanel({ state, dispatch, shrine }: PanelProps): ReactElement {
   const env = useEnv();
   const ui = useUi();
   const [reciting, setReciting] = useState(false);
+  // v0.6: a v0.6 verse (kathaOnly) is heard only — the shrine recites the restorable verses
   const heard = Object.entries(state.save.shlokas)
-    .filter(([id, p]) => p.heard && env.idx.shloka.has(id))
+    .filter(([id, p]) => p.heard && env.idx.shloka.has(id) && !env.idx.shloka.get(id)?.kathaOnly)
     .map(([id, p]) => ({ id, p, sh: env.idx.shloka.get(id) }))
     .sort((a, b) => (a.sh && b.sh ? a.sh.kanda - b.sh.kanda || a.sh.sarga - b.sh.sarga || a.sh.verse - b.sh.verse : 0));
   const recite = (shlokaId: string): void => dispatch({ type: 'recite', shlokaId });

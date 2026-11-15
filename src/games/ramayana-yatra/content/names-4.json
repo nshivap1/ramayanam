@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "about": "v0.6 names of package B (same schema as names.json; ids must be new). Kathā-only: the practice game never sees them.",
+  "names": [
+    {
+      "id": "person.sampati",
+      "sa": "सम्पाति",
+      "en": "Sampāti, Jaṭāyu's elder brother",
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (vulgate)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga14/aranyasans14.htm",
+            "note": "Araṇya 3.14.33: संपातिः च मम अग्रजः (Jaṭāyu names his elder brother); Kiṣkindhā 4.56–63: Sampāti meets the search party",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne, as displayed on kosha.sanskrit.today",
+            "url": "https://kosha.sanskrit.today/word/sa/सम्पाति",
+            "note": "s.v. सम्-पाति m. \"N. of a fabulous bird (the eldest son of Aruṇa or Garuḍa and brother of Jaṭāyu), MBh. R.\"",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmiki-ramayana",
+          "source:monier-williams",
+          "engine:validateDeva"
+        ],
+        "notes": "MW headword stem (class nasal म्प as in MW; the verse prints संपातिः with anusvāra, the same word). Read this session (v06-B, 2026-11-14)."
+      }
+    },
+    {
+      "id": "place.godavari",
+      "sa": "गोदावरी",
+      "en": "The Godāvarī river",
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (vulgate)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga64/aranyasans64.htm",
+            "note": "Araṇya 3.64.7: न ताम् शशंसू रामाय तथा गोदावरी नदी (the river does not tell Rāma where Sītā is)",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne, as displayed on kosha.sanskrit.today",
+            "url": "https://kosha.sanskrit.today/word/sa/गोदावरी",
+            "note": "s.v. गो-दावरी f. \"N. of a river in the Dekhan, MBh. Hariv. R.\"",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmiki-ramayana",
+          "source:monier-williams",
+          "engine:validateDeva"
+        ],
+        "notes": "Read this session (v06-B, 2026-11-14). For the \"deer show the way\" set piece by Pañcavaṭī (no map of its own)."
+      }
+    },
+    {
+      "id": "person.deer",
+      "sa": "मृग",
+      "en": "Deer",
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (vulgate)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga64/aranyasans64.htm",
+            "note": "Araṇya 3.64.17–18: ते मृगाः सहसा उत्थिता / दक्षिण अभिमुखाः सर्वे (the deer rise and face south)",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+            "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+            "note": "s.v. मृग m. \"a forest animal or wild beast; a deer, fawn, gazelle\"",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmiki-ramayana",
+          "source:monier-williams",
+          "engine:validateDeva"
+        ],
+        "notes": "The new sprite `deer` (art-v06-b.ts): an ordinary spotted deer for the deer-show-the-way set piece. Same word as person.golden_deer (मृग). MW asserted from reference knowledge by agent v06-B, not fetched this session; lexicon-1 already has मृग (mrga) \"deer; wild animal\"."
+      }
+    }
+  ]
+}

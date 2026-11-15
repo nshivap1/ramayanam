@@ -6,7 +6,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { devaToSlp1, normalizeDeva, sameSpelling, slp1ToDeva, spellingKey } from '@sanskrit';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { type Level, testMatrix } from '@sdk';
 import type { Challenge, ChallengeKind, GameContent, GameState, GrammarRole, LexEntry, PartOfSpeech, SaveData, Shloka, ShlokaWord } from './types';
 import { loadContent } from './content';
@@ -908,7 +908,11 @@ test('QA 11 Nov S2-03: a word with an open edition variant is never the gap of a
   const flagged = REAL.shlokas.flatMap((sh) => sh.words.filter((w) => w.variant).map((w) => ({ sh, w })));
   // the three edition variants REVIEW.md flags (5.34.6, 6.109.25, 3.37.13) carry the flag on the word that differs
   for (const id of ['s-kalyani-bata', 's-maranantani', 's-ramo-vigrahavan']) assert.ok(flagged.some((f) => f.sh.id === id), `${id} has a flagged variant word`);
-  const review = readFileSync(new URL('./REVIEW.md', import.meta.url), 'utf8');
+  // REVIEW.md + (v0.6) the content packages' REVIEW-v06-<a|b|c>.md (notes/v06-ownership.md)
+  const review = ['REVIEW.md', 'REVIEW-v06-a.md', 'REVIEW-v06-b.md', 'REVIEW-v06-c.md']
+    .filter((f) => f === 'REVIEW.md' || existsSync(new URL(`./${f}`, import.meta.url)))
+    .map((f) => readFileSync(new URL(`./${f}`, import.meta.url), 'utf8'))
+    .join('\n');
   for (const { sh, w } of flagged) {
     assert.ok(review.includes(`**${sh.id}**`), `${sh.id} is on REVIEW.md's human-review list`);
     assert.ok(w.variant && !HAS_DEVA.test(w.variant), 'variant note is English');

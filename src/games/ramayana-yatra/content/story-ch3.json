@@ -422,7 +422,16 @@
      "text": "East: the deep forest. North: Janasthana. South, across the river: the road to Pampa."
     }
    ],
-   "onEnter": "ch3.enter_panchavati"
+   "onEnter": "ch3.enter_panchavati",
+   "spots": [
+    {
+     "x": 20,
+     "y": 8,
+     "event": "ch3.trees_remember",
+     "requires": "style.katha&ch3.maricha_defeated&!ch3.jatayu_done",
+     "glow": true
+    }
+   ]
   },
   {
    "id": "khara_camp",
@@ -1090,6 +1099,25 @@
        "portrait": "rama"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Rama, these rakshasas have done us no harm. Must you fight them?",
+         "who": "person.sita",
+         "portrait": "sita"
+        },
+        {
+         "say": "I have given my word to the sages, Sita. I would sooner give up my life.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "shloka": "s-apyaham-jivitam",
+         "mode": "hear"
+        }
+       ]
+      },
+      {
        "say": "Then go to Panchavati, by the Godavari, as the sage Agastya advised. Live there, and the forest will be safer for it.",
        "who": "Sage of Dandaka",
        "portrait": "rishi"
@@ -1238,6 +1266,15 @@
        "say": "Do not be alarmed, children. I am Jatayu, king of the vultures, and a friend of your father, King Dasharatha.",
        "who": "person.jatayu",
        "portrait": "jatayu"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-tasmajjato",
+         "mode": "hear"
+        }
+       ]
       },
       {
        "say": "When you go out into the forest, I will watch over Sita.",
@@ -1841,6 +1878,15 @@
          "portrait": "rakshasa"
         },
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "shloka": "s-sulabhah-purusha",
+           "mode": "hear"
+          }
+         ]
+        },
+        {
          "shloka": "s-ramo-vigrahavan",
          "mode": "hear"
         },
@@ -2154,12 +2200,123 @@
          "portrait": "rama"
         },
         {
-         "say": "Rama searches every grove and riverbank, calling her name. The trees and the river give no answer."
-        },
-        {
-         "say": "Brother, look: broken flowers, and marks on the ground leading south, across the river.",
-         "who": "person.lakshmana",
-         "portrait": "lakshmana"
+         "if": "style.katha",
+         "then": [
+          {
+           "say": "As Ravana carried her off through the sky, Sita had called out to the trees."
+          },
+          {
+           "shloka": "s-amantraye",
+           "mode": "hear"
+          },
+          {
+           "say": "Now Rama goes from tree to tree and asks each one."
+          },
+          {
+           "shloka": "s-asti-kaccit",
+           "mode": "hear"
+          },
+          {
+           "say": "The trees cannot answer. The Godavari is silent too: she fears Ravana."
+          },
+          {
+           "prop": "deer1",
+           "sprite": "deer",
+           "at": {
+            "x": 20,
+            "y": 10
+           }
+          },
+          {
+           "prop": "deer2",
+           "sprite": "deer",
+           "at": {
+            "x": 21,
+            "y": 11
+           }
+          },
+          {
+           "prop": "deer3",
+           "sprite": "deer",
+           "at": {
+            "x": 22,
+            "y": 10
+           }
+          },
+          {
+           "topple": [
+            "deer1",
+            "deer2",
+            "deer3"
+           ]
+          },
+          {
+           "say": "Nearby, a herd of deer is resting. They look at Rama again and again."
+          },
+          {
+           "say": "Where is Sita? Tell me!",
+           "who": "person.rama",
+           "portrait": "rama"
+          },
+          {
+           "rise": [
+            "deer1",
+            "deer2",
+            "deer3"
+           ]
+          },
+          {
+           "prop": "deer1",
+           "to": {
+            "x": 24,
+            "y": 16
+           },
+           "ms": 1800
+          },
+          {
+           "prop": "deer2",
+           "to": {
+            "x": 25,
+            "y": 17
+           },
+           "ms": 1800
+          },
+          {
+           "prop": "deer3",
+           "to": {
+            "x": 26,
+            "y": 16
+           },
+           "ms": 1800
+          },
+          {
+           "glow": {
+            "x": 25,
+            "y": 18,
+            "w": 1,
+            "h": 2
+           },
+           "ms": 3000
+          },
+          {
+           "say": "The deer rise at once. They face south, toward the sky where Sita was taken, and run to the river, looking back at Rama."
+          },
+          {
+           "say": "Brother, the deer are showing us the way. South, across the river!",
+           "who": "person.lakshmana",
+           "portrait": "lakshmana"
+          }
+         ],
+         "else": [
+          {
+           "say": "Rama searches every grove and riverbank, calling her name. The trees and the river give no answer."
+          },
+          {
+           "say": "Brother, look: broken flowers, and marks on the ground leading south, across the river.",
+           "who": "person.lakshmana",
+           "portrait": "lakshmana"
+          }
+         ]
         },
         {
          "rest": true
@@ -2331,6 +2488,20 @@
       },
       {
        "say": "With these words, Jatayu, faithful friend of Dasharatha, gives up his life in Rama's arms."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Lakshmana, this bird gave his life for us.",
+         "who": "person.rama",
+         "portrait": "rama"
+        },
+        {
+         "shloka": "s-sarvatra-khalu",
+         "mode": "hear"
+        }
+       ]
       },
       {
        "say": "Rama himself performs the last rites for Jatayu, as he would for his own father."
@@ -2513,6 +2684,15 @@
        "portrait": "shabari"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-maya-tu-vividham",
+         "mode": "hear"
+        }
+       ]
+      },
+      {
        "say": "Your devotion honours us, Shabari.",
        "who": "person.rama",
        "portrait": "rama"
@@ -2617,6 +2797,43 @@
     },
     {
      "say": "You found 1 healing herb."
+    }
+   ]
+  },
+  {
+   "id": "ch3.trees_remember",
+   "cmds": [
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "if": "ch3.trees_remembered",
+       "then": [
+        {
+         "say": "The tree is quiet now. A few petals still fall."
+        }
+       ],
+       "else": [
+        {
+         "fx": "petals",
+         "ms": 3500
+        },
+        {
+         "say": "Petals fall from a tree beside the hut. It saw everything."
+        },
+        {
+         "say": "Sita asked the trees and the river to tell Rama. The river was afraid. But the trees remember her words."
+        },
+        {
+         "shloka": "s-amantraye",
+         "mode": "hear"
+        },
+        {
+         "set": "ch3.trees_remembered"
+        }
+       ]
+      }
+     ]
     }
    ]
   }

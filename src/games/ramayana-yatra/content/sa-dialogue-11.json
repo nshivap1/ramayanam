@@ -1,0 +1,127 @@
+{
+ "version": 1,
+ "about": "v0.6 Kathā story lines (OWNER: v0.6 WP-B): the new English lines inside { \"if\": \"style.katha\", \"then\": [...] } blocks of chapters 3–4 that no file 1–9 held at v0.5.1, and new Kathā-only speaker titles (\"label\": true). Rule: sa-verify collectStoryStrings; notes/v06-ownership.md. Same format and rules as files 1–9 (notes/sambhashana.md).",
+ "models": [],
+ "entries": [
+  {
+   "en": "Rama, these rakshasas have done us no harm. Must you fight them?",
+   "sa": "आर्यपुत्र, एते राक्षसाः अस्मान् न पीडितवन्तः। किं भवान् तैः सह युद्धं करिष्यति?",
+   "ctx": "ch3.dandaka_sages · person.sita (Kathā)"
+  },
+  {
+   "en": "I have given my word to the sages, Sita. I would sooner give up my life.",
+   "sa": "सीते, अहम् ऋषिभ्यः वचनं दत्तवान्। अहं प्राणान् त्यजेयम्, न तु वचनम्।",
+   "ctx": "ch3.dandaka_sages · person.rama (Kathā)"
+  },
+  {
+   "en": "As Ravana carried her off through the sky, Sita had called out to the trees.",
+   "sa": "रावणः सीताम् आकाशेन हृतवान्। तदा सीता वृक्षान् आहूतवती।",
+   "ctx": "ch3.maricha_deer · narration (Kathā)"
+  },
+  {
+   "en": "Now Rama goes from tree to tree and asks each one.",
+   "sa": "अधुना रामः वृक्षात् वृक्षं गच्छति, सर्वान् पृच्छति च।",
+   "ctx": "ch3.maricha_deer · narration (Kathā)"
+  },
+  {
+   "en": "The trees cannot answer. The Godavari is silent too: she fears Ravana.",
+   "sa": "वृक्षाः उत्तरं दातुं न शक्नुवन्ति। गोदावरी अपि तूष्णीं तिष्ठति, सा रावणात् बिभेति।",
+   "ctx": "ch3.maricha_deer · narration (Kathā)"
+  },
+  {
+   "en": "Nearby, a herd of deer is resting. They look at Rama again and again.",
+   "sa": "तत्र मृगाः उपविशन्ति। ते पुनः पुनः रामं पश्यन्ति।",
+   "ctx": "ch3.maricha_deer · narration (Kathā)"
+  },
+  {
+   "en": "Where is Sita? Tell me!",
+   "sa": "सीता कुत्र अस्ति? मां वदत!",
+   "ctx": "ch3.maricha_deer · person.rama (Kathā)"
+  },
+  {
+   "en": "The deer rise at once. They face south, toward the sky where Sita was taken, and run to the river, looking back at Rama.",
+   "sa": "मृगाः सहसा उत्तिष्ठन्ति। ते दक्षिणां दिशम् आकाशं च पश्यन्ति। ते नदीं प्रति धावन्ति, पुनः पुनः रामं पश्यन्ति।",
+   "ctx": "ch3.maricha_deer · narration (Kathā)"
+  },
+  {
+   "en": "Brother, the deer are showing us the way. South, across the river!",
+   "sa": "भ्रातः, मृगाः अस्मभ्यं मार्गं सूचयन्ति। नदीं तीर्त्वा दक्षिणां दिशं गच्छाम!",
+   "ctx": "ch3.maricha_deer · person.lakshmana (Kathā)"
+  },
+  {
+   "en": "Petals fall from a tree beside the hut. It saw everything.",
+   "sa": "आश्रमे एकस्मात् वृक्षात् पुष्पाणि पतन्ति। सः वृक्षः सर्वं दृष्टवान्।",
+   "ctx": "ch3.trees_remember · narration (Kathā)"
+  },
+  {
+   "en": "Sita asked the trees and the river to tell Rama. The river was afraid. But the trees remember her words.",
+   "sa": "सीता वृक्षान् नदीं च उक्तवती, रामाय कथयत इति। नदी भीता आसीत्। परन्तु वृक्षाः तस्याः वचनं स्मरन्ति।",
+   "ctx": "ch3.trees_remember · narration (Kathā)"
+  },
+  {
+   "en": "The tree is quiet now. A few petals still fall.",
+   "sa": "इदानीं वृक्षः शान्तः। अल्पानि पुष्पाणि पतन्ति।",
+   "ctx": "ch3.trees_remember · narration (Kathā)"
+  },
+  {
+   "en": "Lakshmana, this bird gave his life for us.",
+   "sa": "लक्ष्मण, अयं पक्षी अस्माकं कृते प्राणान् त्यक्तवान्।",
+   "ctx": "ch3.jatayu · person.rama (Kathā)"
+  },
+  {
+   "en": "Sugriva welcomes the princes warmly and offers Rama his hand.",
+   "sa": "सुग्रीवः रामस्य लक्ष्मणस्य च स्वागतं करोति। सः रामाय हस्तं ददाति।",
+   "ctx": "ch4.sugriva_alliance · narration (Kathā)"
+  },
+  {
+   "en": "Rama clasps his hand. Then Hanuman brings fire, and it burns between them.",
+   "sa": "रामः तस्य हस्तं गृह्णाति। ततः हनुमान् अग्निम् आनयति। सः अग्निः तयोः मध्ये ज्वलति।",
+   "ctx": "ch4.sugriva_alliance · narration (Kathā)"
+  },
+  {
+   "en": "But Vali is mighty. Can anyone defeat him?",
+   "sa": "परन्तु वाली महाबलः। कः तं जेतुं शक्नोति?",
+   "ctx": "ch4.sugriva_alliance · person.sugriva (Kathā)"
+  },
+  {
+   "en": "Seven great sala trees stand in a row. Rama takes up his bow and a single arrow.",
+   "sa": "तत्र सप्त सालाः क्रमेण तिष्ठन्ति। रामः धनुः एकं बाणं च गृह्णाति।",
+   "ctx": "ch4.sugriva_alliance · narration (Kathā)"
+  },
+  {
+   "en": "In a moment the arrow flies back to Rama. Sugriva stares, amazed.",
+   "sa": "क्षणेन सः बाणः पुनः रामं प्रति आगच्छति। सुग्रीवः आश्चर्येण पश्यति।",
+   "ctx": "ch4.sugriva_alliance · narration (Kathā)"
+  },
+  {
+   "en": "Vali fell to Rama's arrow. Before he died, he gave his son Angada this advice.",
+   "sa": "रामस्य बाणेन वाली पतितः। मृत्योः पूर्वं सः पुत्रम् अङ्गदम् एवम् उक्तवान्।",
+   "ctx": "ch4.sugriva_alliance · narration (Kathā)"
+  },
+  {
+   "en": "The rains came. Rama waited on a nearby hill, thinking of Sita.",
+   "sa": "वर्षाः आगताः। रामः पर्वते वसति, सीतां स्मरति च।",
+   "ctx": "ch4.arrive_kishkindha · narration (Kathā)"
+  },
+  {
+   "en": "The rains passed, and the city celebrated its king.",
+   "sa": "वर्षाः गताः। नगरे जनाः राज्ञः उत्सवं कुर्वन्ति।",
+   "ctx": "ch4.arrive_kishkindha · narration (Kathā)"
+  },
+  {
+   "en": "Hanuman rises. The vanaras praise him, and with every word of praise he grows.",
+   "sa": "हनुमान् उत्तिष्ठति। वानराः तं प्रशंसन्ति, सः च वर्धते।",
+   "ctx": "ch4.jambavan_speech · narration (Kathā)"
+  },
+  {
+   "en": "He grows as vast as a mountain, and roars with joy.",
+   "sa": "सः पर्वतः इव महान् भवति, हर्षेण गर्जति च।",
+   "ctx": "ch4.jambavan_speech · narration (Kathā)"
+  },
+  {
+   "en": "Hanuman sits apart, silent, looking out over the sea.",
+   "sa": "हनुमान् दूरे तूष्णीं तिष्ठति, समुद्रं पश्यति।",
+   "ctx": "ch4.hanuman_apart · narration (Kathā)"
+  }
+ ]
+}

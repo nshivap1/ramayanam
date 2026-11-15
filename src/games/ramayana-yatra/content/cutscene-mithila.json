@@ -1,0 +1,510 @@
+{
+ "version": 1,
+ "about": "v0.6 told cutscene (OWNER: v0.6 WP-A): Mithilā (Bāla 1.49–1.76, Vālmīki only): Ahalyā (a hidden hotspot), the bow breaks, Janaka gives Sītā, Paraśurāma on the road home (Lakṣmaṇa says nothing to him). Started by { \"cutscene\": \"mithila\" } in the Kathā block of ch1.yajna. Format: types.ts ToldCutscene; engine: logic-told.ts / view-told.tsx; painter \"a\": cutscene-paint-a.ts. Sources of each narration line: notes/v06-a.md.",
+ "id": "mithila",
+ "chapter": 1,
+ "title": "Mithila",
+ "painter": "a",
+ "source": "Vālmīki Rāmāyaṇa, Bāla 1.49.16–19 (Ahalyā), 1.66.18–26 and 1.67.16–19 (the bow), 1.73.25–28 (the wedding), 1.74.1–19, 1.75.3–10 and 1.76.5–24 (Paraśurāma) — vulgate numbering (valmikiramayan.net)",
+ "steps": [
+  {
+   "scene": "road"
+  },
+  {
+   "cast": "vm",
+   "sprite": "vishvamitra",
+   "at": {
+    "x": 1,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "rama",
+   "sprite": "rama",
+   "at": {
+    "x": 2.4,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "lak",
+   "sprite": "lakshmana",
+   "at": {
+    "x": 3.6,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "vm",
+   "to": {
+    "x": 8,
+    "y": 8
+   },
+   "ms": 2800
+  },
+  {
+   "cast": "rama",
+   "to": {
+    "x": 9.4,
+    "y": 8
+   },
+   "ms": 2800
+  },
+  {
+   "cast": "lak",
+   "to": {
+    "x": 10.6,
+    "y": 8
+   },
+   "ms": 2800
+  },
+  {
+   "say": "From Siddhashrama, Vishvamitra leads the princes to Mithila."
+  },
+  {
+   "scene": "ashrama"
+  },
+  {
+   "cast": "vm",
+   "at": {
+    "x": 3,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "rama",
+   "at": {
+    "x": 5,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "lak",
+   "at": {
+    "x": 6.2,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "hotspot": "ahalya",
+   "at": [
+    13,
+    4,
+    4,
+    4
+   ],
+   "ms": 7000,
+   "then": [
+    {
+     "cast": "rama",
+     "to": {
+      "x": 12,
+      "y": 8
+     },
+     "ms": 900
+    },
+    {
+     "cast": "ahalya",
+     "sprite": "ahalya",
+     "at": {
+      "x": 14.5,
+      "y": 8
+     },
+     "face": "left"
+    },
+    {
+     "glow": {
+      "x": 14,
+      "y": 6,
+      "w": 2,
+      "h": 3
+     },
+     "ms": 2000
+    },
+    {
+     "say": "Rama steps inside. There shines Ahalya, the wife of the sage Gautama. For a long time no one could see her."
+    },
+    {
+     "verse": "s-ahalya"
+    },
+    {
+     "fx": "petals",
+     "ms": 3500
+    },
+    {
+     "wait": 1500
+    },
+    {
+     "cast": "ahalya",
+     "remove": true
+    }
+   ]
+  },
+  {
+   "say": "On the way there is a hermitage. No one lives there now."
+  },
+  {
+   "wait": 1500
+  },
+  {
+   "scene": "sabha"
+  },
+  {
+   "cast": "vm",
+   "at": {
+    "x": 5.6,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "rama",
+   "at": {
+    "x": 7,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "lak",
+   "at": {
+    "x": 8.2,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "janaka",
+   "sprite": "janaka",
+   "at": {
+    "x": 14,
+    "y": 8
+   },
+   "face": "left"
+  },
+  {
+   "cast": "c1",
+   "sprite": "guard",
+   "at": {
+    "x": 1.4,
+    "y": 8.4
+   },
+   "face": "right"
+  },
+  {
+   "cast": "c2",
+   "sprite": "villager_m",
+   "at": {
+    "x": 2.9,
+    "y": 8.6
+   },
+   "face": "right"
+  },
+  {
+   "cast": "c3",
+   "sprite": "rishi",
+   "at": {
+    "x": 16.6,
+    "y": 8.4
+   },
+   "face": "left"
+  },
+  {
+   "cast": "c4",
+   "sprite": "guard",
+   "at": {
+    "x": 18.1,
+    "y": 8.6
+   },
+   "face": "left"
+  },
+  {
+   "prop": "bow",
+   "sprite": "shiva_dhanus",
+   "at": {
+    "x": 11,
+    "y": 7.6
+   }
+  },
+  {
+   "say": "No king could even take hold of Shiva's bow. If Rama strings it, I will give him Sita.",
+   "who": "person.janaka"
+  },
+  {
+   "cast": "rama",
+   "to": {
+    "x": 10,
+    "y": 8
+   },
+   "ms": 800
+  },
+  {
+   "prop": "bow",
+   "to": {
+    "x": 10.2,
+    "y": 6.4
+   },
+   "ms": 600
+  },
+  {
+   "verse": "s-aropayitva"
+  },
+  {
+   "fx": "flash",
+   "ms": 500
+  },
+  {
+   "fx": "shake",
+   "ms": 1000
+  },
+  {
+   "prop": "bow",
+   "sprite": "shiva_dhanus_broken"
+  },
+  {
+   "prop": "bow",
+   "to": {
+    "x": 11,
+    "y": 8
+   },
+   "ms": 400
+  },
+  {
+   "topple": {
+    "allBut": [
+     "rama",
+     "lak",
+     "vm",
+     "janaka",
+     "bow"
+    ]
+   }
+  },
+  {
+   "verse": "s-nipetush"
+  },
+  {
+   "rise": "all"
+  },
+  {
+   "scene": "wedding"
+  },
+  {
+   "prop": "bow",
+   "remove": true
+  },
+  {
+   "cast": "vm",
+   "at": {
+    "x": 4.6,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "lak",
+   "at": {
+    "x": 6,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "rama",
+   "at": {
+    "x": 9,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "sita",
+   "sprite": "sita",
+   "at": {
+    "x": 13,
+    "y": 8
+   },
+   "face": "left"
+  },
+  {
+   "cast": "janaka",
+   "at": {
+    "x": 14.6,
+    "y": 8
+   },
+   "face": "left"
+  },
+  {
+   "say": "Janaka brings Sita in all her jewels. She stands before the fire, in front of Rama."
+  },
+  {
+   "verse": "s-iyam-sita"
+  },
+  {
+   "fx": "petals",
+   "ms": 3500
+  },
+  {
+   "wait": 1200
+  },
+  {
+   "scene": "storm"
+  },
+  {
+   "cast": "vm",
+   "remove": true
+  },
+  {
+   "cast": "janaka",
+   "remove": true
+  },
+  {
+   "cast": "c1",
+   "remove": true
+  },
+  {
+   "cast": "c2",
+   "remove": true
+  },
+  {
+   "cast": "c3",
+   "remove": true
+  },
+  {
+   "cast": "c4",
+   "remove": true
+  },
+  {
+   "cast": "sita",
+   "at": {
+    "x": 2.6,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "dasharatha",
+   "sprite": "dasharatha",
+   "at": {
+    "x": 4.4,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "rama",
+   "at": {
+    "x": 6.4,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "cast": "lak",
+   "at": {
+    "x": 7.6,
+    "y": 8
+   },
+   "face": "right"
+  },
+  {
+   "fx": "tint",
+   "color": "night"
+  },
+  {
+   "cast": "pr",
+   "sprite": "parashurama",
+   "at": {
+    "x": 20,
+    "y": 8
+   },
+   "face": "left"
+  },
+  {
+   "cast": "pr",
+   "to": {
+    "x": 14,
+    "y": 8
+   },
+   "ms": 1500
+  },
+  {
+   "prop": "vbow",
+   "sprite": "vishnu_dhanus",
+   "at": {
+    "x": 12.8,
+    "y": 7.4
+   }
+  },
+  {
+   "say": "On the road to Ayodhya, darkness falls. Parashurama, the son of Jamadagni, stands in the way."
+  },
+  {
+   "verse": "s-purayasva"
+  },
+  {
+   "say": "Sage, your anger is over now. Grant safety to my young sons!",
+   "who": "person.dasharatha"
+  },
+  {
+   "cast": "rama",
+   "to": {
+    "x": 11,
+    "y": 8
+   },
+   "ms": 800
+  },
+  {
+   "prop": "vbow",
+   "to": {
+    "x": 11.2,
+    "y": 6.6
+   },
+   "ms": 600
+  },
+  {
+   "verse": "s-aropya"
+  },
+  {
+   "say": "Parashurama's strength is gone. He speaks softly:"
+  },
+  {
+   "verse": "s-madhuhantaram"
+  },
+  {
+   "arrow": {
+    "from": "rama",
+    "to": {
+     "x": 20,
+     "y": 1
+    }
+   },
+   "ms": 700
+  },
+  {
+   "fx": "flash",
+   "ms": 400
+  },
+  {
+   "cast": "pr",
+   "to": {
+    "x": 21,
+    "y": 8
+   },
+   "ms": 3000
+  },
+  {
+   "fx": "tint",
+   "color": "none"
+  },
+  {
+   "say": "Rama looses the arrow. Parashurama bows to him and goes away to Mount Mahendra."
+  }
+ ]
+}

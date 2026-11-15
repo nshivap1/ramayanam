@@ -13,6 +13,8 @@ import { uiItemSlot } from './logic-learning';
 import { AutoReciteToggle, JourneyPicker, astraBinding, isKatha, storyOrder } from './view-katha';
 import type { Action, GameState, MasteryTier } from './types';
 import { CutsceneEntry } from './view-cutscene'; // v0.5b WP-E
+import { ToldEntries } from './view-told'; // v0.6 WP0
+import { echoesOf } from './logic-told'; // v0.6 WP0
 
 export type MenuTab = 'party' | 'words' | 'verses' | 'items' | 'settings';
 export type Detail = { kind: 'word'; id: string; form?: string } | { kind: 'shloka'; id: string } | null;
@@ -34,6 +36,8 @@ export interface MenuProps {
   canUseItems: boolean;
   /** v0.5b WP-E: replay a cutscene that has been seen (the verse book's "आदित्यहृदयम् ▶") */
   onCutscene?: (id: string) => void;
+  /** v0.6 WP0: replay a told cutscene that has been seen ("<title> ▶") */
+  onTold?: (id: string) => void;
 }
 
 export function Menu(props: MenuProps): ReactElement | null {
@@ -76,6 +80,7 @@ export function Menu(props: MenuProps): ReactElement | null {
             {tab === 'party' ? <PartyTab state={state} dispatch={props.dispatch} canEdit={props.canUseItems} /> : null}
             {tab === 'words' ? <WordsTab state={state} open={(id) => setDetail({ kind: 'word', id })} /> : null}
             {tab === 'verses' ? <CutsceneEntry save={state.save} onPlay={props.onCutscene} /> : null /* v0.5b WP-E: the replay, once seen */}
+            {tab === 'verses' ? <ToldEntries save={state.save} onPlay={props.onTold} /> : null /* v0.6 WP0: told cutscenes seen */}
             {tab === 'verses' ? <VersesTab state={state} open={(id) => setDetail({ kind: 'shloka', id })} /> : null}
             {tab === 'items' ? <ItemsTab {...props} /> : null}
             {tab === 'settings' ? <SettingsTab {...props} /> : null}
@@ -314,43 +319,73 @@ function VersesTab({ state, open }: { state: GameState; open: (id: string) => vo
   return <VersesByBook state={state} open={open} />;
 }
 
-/** Kathā: the verse book (पुस्तकम्) in story order, with "n / 21 heard" progress. */
+/**
+ * Kathā: the verse book (पुस्तकम्) in story order, with "n / total heard" progress — v0.6: book by book (each with its own
+ * "n / m heard"), so ~13 verses a book read as progress, not as gaps; books not reached yet show only their count. A
+ * verse whose echo has been noticed (content/katha-echoes.json, `{ "echo" }`) carries the echo's title line.
+ */
 function StoryBook({ state, open }: { state: GameState; open: (id: string) => void }): ReactElement {
   const env = useEnv();
   const ui = useUi();
   const ids = storyOrder(env.content);
-  const heard = ids.filter((id) => state.save.shlokas[id]?.heard).length;
+  const heardOf = (xs: string[]): number => xs.filter((id) => state.save.shlokas[id]?.heard).length;
+  const heard = heardOf(ids);
+  const books = [...env.content.chapters].sort((a, b) => a.kanda - b.kanda).map((c) => ({ k: c.kanda, list: ids.filter((id) => env.idx.shloka.get(id)?.kanda === c.kanda) })).filter((b) => b.list.length);
+  const reached = Math.max(state.save.chapter, ...books.filter((b) => heardOf(b.list) > 0).map((b) => b.k));
   return (
     <div className="sk-stack" data-testid="shlokakosha" data-order="story">
-      <div className="g-ramayana-yatra__book-progress" data-testid="book-progress">
+      <div className="g-ramayana-yatra__book-progress" data-testid="book-progress" data-n={heard} data-of={ids.length}>
         <span className="g-ramayana-yatra__eyebrow">{ui.t('katha.bookProgress', { n: heard, total: ids.length }, { gloss: false })}</span>
         <span className="g-ramayana-yatra__book-bar" aria-hidden="true">
           <i style={{ width: `${ids.length ? (heard / ids.length) * 100 : 0}%` }} />
         </span>
       </div>
-      {ids.map((id) => {
-        const s = env.idx.shloka.get(id);
-        if (!s) return null;
-        const p = state.save.shlokas[id];
-        if (!p?.heard)
-          return (
-            <div key={id} className="g-ramayana-yatra__verse-btn is-locked">
-              <span className="g-ramayana-yatra__move-name">???</span>
-              <span className="g-ramayana-yatra__move-meta">
-                <VerseRef kanda={s.kanda} sarga={s.sarga} verse={s.verse} />
-              </span>
-            </div>
-          );
+      {books.map((b) => {
+        const n = heardOf(b.list);
+        const later = b.k > reached;
         return (
-          <button key={id} type="button" className={cx('g-ramayana-yatra__verse-btn', p.restored && 'is-restored')} onClick={() => open(id)} data-testid={`verse-${id}`}>
-            <span className="g-ramayana-yatra__move-name">
-              <SaText shloka>{s.padas[0] ?? ''}</SaText>
-              <span className="g-ramayana-yatra__move-meta">
-                <VerseRef kanda={s.kanda} sarga={s.sarga} verse={s.verse} />
+          <section key={b.k} className={cx('sk-stack g-ramayana-yatra__vbook', later && 'is-later')} data-testid={`verse-book-${b.k}`} data-n={n} data-of={b.list.length}>
+            <div className="g-ramayana-yatra__vbook-head">
+              <span className="g-ramayana-yatra__eyebrow">
+                <Name id={`kanda.${b.k}`} en fallback={ui.plain('verses.book', { k: b.k })} />
               </span>
-            </span>
-            {p.restored ? <Pill tone="gold">{ui.t('verses.restored', undefined, { gloss: false })}</Pill> : <Pill>{ui.t('common.heard', undefined, { gloss: false })}</Pill>}
-          </button>
+              <span className="g-ramayana-yatra__vbook-n">{ui.t('katha.bookProgress', { n, total: b.list.length }, { gloss: false })}</span>
+            </div>
+            {later
+              ? null
+              : b.list.map((id) => {
+                  const s = env.idx.shloka.get(id);
+                  if (!s) return null;
+                  const p = state.save.shlokas[id];
+                  if (!p?.heard)
+                    return (
+                      <div key={id} className="g-ramayana-yatra__verse-btn is-locked">
+                        <span className="g-ramayana-yatra__move-name">???</span>
+                        <span className="g-ramayana-yatra__move-meta">
+                          <VerseRef kanda={s.kanda} sarga={s.sarga} verse={s.verse} />
+                        </span>
+                      </div>
+                    );
+                  const echoes = echoesOf(env.content, state.save.flags, id);
+                  return (
+                    <button key={id} type="button" className={cx('g-ramayana-yatra__verse-btn', p.restored && 'is-restored')} onClick={() => open(id)} data-testid={`verse-${id}`}>
+                      <span className="g-ramayana-yatra__move-name">
+                        <SaText shloka>{s.padas[0] ?? ''}</SaText>
+                        <span className="g-ramayana-yatra__move-meta">
+                          <VerseRef kanda={s.kanda} sarga={s.sarga} verse={s.verse} />
+                        </span>
+                        {echoes.map((e) => (
+                          <span key={e.id} className="g-ramayana-yatra__echo" data-testid={`echo-${e.id}`}>
+                            <span aria-hidden="true">↺ </span>
+                            {ui.t(e.title, undefined, { gloss: false })}
+                          </span>
+                        ))}
+                      </span>
+                      {p.restored ? <Pill tone="gold">{ui.t('verses.restored', undefined, { gloss: false })}</Pill> : <Pill>{ui.t('common.heard', undefined, { gloss: false })}</Pill>}
+                    </button>
+                  );
+                })}
+          </section>
         );
       })}
     </div>

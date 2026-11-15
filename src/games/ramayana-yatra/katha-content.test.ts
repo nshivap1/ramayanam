@@ -190,7 +190,9 @@ function sharedLines(): Set<string> {
 const SHARED = sharedLines();
 
 /** Every command kind of the story language (types.ts EventCmd; world.test validates each one's references). */
-const EVENT_KINDS = new Set(['say', 'shloka', 'choice', 'label', 'goto', 'if', 'set', 'unset', 'give', 'take', 'niska', 'learn', 'quiz', 'battle', 'join', 'leave', 'heal', 'rest', 'shrine', 'warp', 'move', 'face', 'wait', 'fade', 'music', 'sfx', 'shop', 'save', 'chapter', 'objective', 'end', 'smarana', 'book', 'setu']);
+const EVENT_KINDS = new Set(['say', 'shloka', 'choice', 'label', 'goto', 'if', 'set', 'unset', 'give', 'take', 'niska', 'learn', 'quiz', 'battle', 'join', 'leave', 'heal', 'rest', 'shrine', 'warp', 'move', 'face', 'wait', 'fade', 'music', 'sfx', 'shop', 'save', 'chapter', 'objective', 'end', 'smarana', 'book', 'setu',
+  // v0.6 Kathā-only kit and cutscene commands (validated in world.test)
+  'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo']);
 
 test('katha: about ten scenes carry a Sambhāṣaṇa choice in a Kathā-only block', () => {
   console.log(`# Kathā choices in: ${CHOICE_BLOCKS.map((b) => b.event).join(', ')}`);

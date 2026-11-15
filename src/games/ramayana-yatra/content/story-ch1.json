@@ -1924,6 +1924,20 @@
      "portrait": "vishvamitra"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "The old king was afraid. He said to me:",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "shloka": "s-unashodasha",
+       "mode": "hear"
+      }
+     ]
+    },
+    {
      "say": "The sage rises and gently wakes the elder prince."
     },
     {
@@ -2021,6 +2035,20 @@
      "say": "Come, the day has begun.",
      "who": "person.vishvamitra",
      "portrait": "vishvamitra"
+    },
+    {
+     "if": "style.katha&!heard.s-mantragramam",
+     "then": [
+      {
+       "say": "Last evening, by this river, I gave Rama two mantras.",
+       "who": "person.vishvamitra",
+       "portrait": "vishvamitra"
+      },
+      {
+       "shloka": "s-mantragramam",
+       "mode": "hear"
+      }
+     ]
     }
    ]
   },
@@ -2155,9 +2183,20 @@
        "portrait": "vishvamitra"
       },
       {
-       "say": "My father told me to obey your word. For the sake of the people and the sages, I will do as you say.",
-       "who": "person.rama",
-       "portrait": "rama"
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-pitur-vacana",
+         "mode": "hear"
+        }
+       ],
+       "else": [
+        {
+         "say": "My father told me to obey your word. For the sake of the people and the sages, I will do as you say.",
+         "who": "person.rama",
+         "portrait": "rama"
+        }
+       ]
       },
       {
        "say": "Then rest a moment first. That forest is dark even at noon.",
@@ -2564,9 +2603,20 @@
              "say": "At dawn the sacrifice is complete, and Vishvamitra breaks his silence."
             },
             {
-             "say": "My purpose is fulfilled, Rama. You have honoured your father's word. Truly this is now the hermitage of fulfilment.",
-             "who": "person.vishvamitra",
-             "portrait": "vishvamitra"
+             "if": "style.katha",
+             "then": [
+              {
+               "shloka": "s-krtartho-smi",
+               "mode": "hear"
+              }
+             ],
+             "else": [
+              {
+               "say": "My purpose is fulfilled, Rama. You have honoured your father's word. Truly this is now the hermitage of fulfilment.",
+               "who": "person.vishvamitra",
+               "portrait": "vishvamitra"
+              }
+             ]
             },
             {
              "set": "ch1.yajna_done"
@@ -2575,7 +2625,17 @@
              "music": "shloka"
             },
             {
-             "say": "From Siddhashrama, Vishvamitra led the princes to Mithila. There Rama lifted the great bow of Shiva and broke it, and King Janaka gave him his daughter Sita in marriage."
+             "if": "style.katha",
+             "then": [
+              {
+               "cutscene": "mithila"
+              }
+             ],
+             "else": [
+              {
+               "say": "From Siddhashrama, Vishvamitra led the princes to Mithila. There Rama lifted the great bow of Shiva and broke it, and King Janaka gave him his daughter Sita in marriage."
+              }
+             ]
             },
             {
              "say": "Many happy years passed in Ayodhya. So ends the first book, the Book of Youth."

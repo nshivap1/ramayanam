@@ -1,0 +1,98 @@
+{
+ "version": 1,
+ "about": "v0.6 Kathā story lines (OWNER: v0.6 WP-C): the new English lines inside { \"if\": \"style.katha\", \"then\": [...] } blocks of chapters 5–6 (and cutscene-kumbhakarna.json, new katha.json moveText) that no file 1–9 held at v0.5.1, and new Kathā-only speaker titles (\"label\": true). Rule: sa-verify collectStoryStrings; notes/v06-ownership.md. Same format and rules as files 1–9 (notes/sambhashana.md).",
+ "models": [],
+ "entries": [
+  {
+   "en": "The vanaras hold their breath. Hanuman crouches low, ready to spring.",
+   "sa": "सर्वे वानराः शान्ताः पश्यन्ति। हनुमान् उत्पतितुं सज्जः भवति।",
+   "ctx": "ch5.leap_start · narration (Kathā) — Sundara 5.1: the launch from Mahendra"
+  },
+  {
+   "en": "Dadhimukha, keeper of Sugriva's honey grove, runs to the king: the vanaras have drunk all the honey!",
+   "sa": "दधिमुखः सुग्रीवस्य मधुवनं रक्षति। सः राजानं प्रति धावति। वानराः सर्वं मधु पीतवन्तः!",
+   "ctx": "ch5.sita · narration (Kathā) — Sundara 5.62–63: Dadhimukha reports the raid on Madhuvana"
+  },
+  {
+   "en": "Sugriva laughs. He knows at once: they have found Sita.",
+   "sa": "सुग्रीवः हसति। ते सीतां दृष्टवन्तः इति सः जानाति।",
+   "ctx": "ch5.sita · narration (Kathā) — Sundara 5.64: Sugrīva understands that Sītā has been found"
+  },
+  {
+   "en": "In the honey grove, Madhuvana, the vanaras sing, dance and tumble from the trees.",
+   "sa": "मधुवने वानराः गायन्ति, नृत्यन्ति, वृक्षेभ्यः पतन्ति च।",
+   "ctx": "ch5.sita · hidden moment, narration (Kathā) — Sundara 5.61: the vānaras revel in Madhuvana"
+  },
+  {
+   "en": "Stop! This is the king's own grove!",
+   "sa": "तिष्ठत! एतत् राज्ञः वनम्!",
+   "ctx": "ch5.sita · person.dadhimukha, hidden moment (Kathā)"
+  },
+  {
+   "en": "But Angada has told them to drink, and the dance goes on.",
+   "sa": "परन्तु अङ्गदः 'पिबत' इति उक्तवान्। अतः वानराः नृत्यन्ति एव।",
+   "ctx": "ch5.sita · hidden moment, narration (Kathā) — Sundara 5.61: Aṅgada allows the feast"
+  },
+  {
+   "en": "I warned him: people who say only pleasant things are easy to find. One who says what is hard but good is rare.",
+   "sa": "अहं तम् एवम् अवदम्। प्रियं वदन्तः जनाः सुलभाः। अप्रियं हितं च वदन् जनः दुर्लभः।",
+   "ctx": "ch6.vibhishana_refuge · person.vibhishana, hidden moment (Kathā) — Yuddha 6.16.21cd–22ab, his parting words to Rāvaṇa"
+  },
+  {
+   "en": "Long ago, when Ravana planned to carry Sita away, Maricha said almost the same words to him.",
+   "sa": "पूर्वं मारीचः अपि रावणम् एतानि एव वचनानि अवदत्। तदा रावणः सीतां हर्तुम् ऐच्छत्।",
+   "ctx": "ch6.vibhishana_refuge · hidden moment, narration (Kathā) — Araṇya 3.37.2: Mārīca's counsel"
+  },
+  {
+   "en": "Two counsellors gave Ravana the same advice. He listened to neither.",
+   "sa": "द्वौ मन्त्रिणौ रावणाय एकम् एव हितं वचनम् अवदताम्। सः कस्य अपि वचनं न श्रुतवान्।",
+   "ctx": "ch6.vibhishana_refuge · hidden moment, narration (Kathā) — the two counsellors"
+  },
+  {
+   "en": "Kumbhakarna wakes",
+   "sa": "कुम्भकर्णः प्रबुध्यते",
+   "label": true,
+   "ctx": "cutscene-kumbhakarna · title (Kathā)"
+  },
+  {
+   "en": "The rakshasas shout at the sleeping giant: \"Get up!\"",
+   "sa": "राक्षसाः कुम्भकर्णम् 'उत्तिष्ठ' इति उच्चैः वदन्ति।",
+   "ctx": "cutscene-kumbhakarna · narration (Kathā) — Yuddha 6.60: the rākṣasas try to wake Kumbhakarṇa"
+  },
+  {
+   "en": "They beat him with clubs. He sleeps on.",
+   "sa": "ते दण्डैः तं ताडयन्ति। सः तु स्वपिति एव।",
+   "ctx": "cutscene-kumbhakarna · narration (Kathā) — Yuddha 6.60.53: clubs and śataghnīs"
+  },
+  {
+   "en": "At last he wakes.",
+   "sa": "अन्ते सः प्रबुध्यते।",
+   "ctx": "cutscene-kumbhakarna · narration (Kathā) — Yuddha 6.60.55–58: he wakes, yawning"
+  },
+  {
+   "en": "You make as much noise as you can too. He sleeps on.",
+   "sa": "त्वम् अपि उच्चैः शब्दं करोषि। सः तु स्वपिति एव।",
+   "ctx": "cutscene-kumbhakarna · hidden drum gag (Kathā)"
+  },
+  {
+   "en": "Then Indrajit strikes from the clouds with Brahma's weapon. Rama, Lakshmana and the army fall senseless.",
+   "sa": "ततः इन्द्रजित् मेघेषु स्थित्वा ब्रह्मास्त्रं क्षिपति। रामः, लक्ष्मणः, सर्वे वानराः च भूमौ पतन्ति।",
+   "ctx": "ch6.kumbhakarna · narration (Kathā) — Yuddha 6.73: Indrajit's weapon"
+  },
+  {
+   "en": "Old Jambavan, wounded too, sends Hanuman north to the mountain of herbs.",
+   "sa": "वृद्धः जाम्बवान् अपि पीडितः। सः हनुमन्तम् ओषधीनां पर्वतं प्रेषयति।",
+   "ctx": "ch6.kumbhakarna · narration (Kathā) — Yuddha 6.74: Jāmbavān sends Hanumān"
+  },
+  {
+   "en": "Lakshmana takes up one last arrow and makes a vow.",
+   "sa": "लक्ष्मणः अन्तिमं बाणं गृह्णाति। सः प्रतिज्ञां करोति।",
+   "ctx": "ch6.indrajit · narration (Kathā) — Yuddha 6.90.69–72: Lakṣmaṇa's act of truth"
+  },
+  {
+   "en": "Bharata places the sandals on Rama's feet and bows to him.",
+   "sa": "भरतः रामस्य पादयोः पादुके स्थापयति। सः रामं नमस्करोति।",
+   "ctx": "ch6.ravana · narration (Kathā) — Yuddha 6.127.52–53: Bharata returns the sandals"
+  }
+ ]
+}

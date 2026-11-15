@@ -1,0 +1,151 @@
+{
+ "version": 1,
+ "about": "v0.6 told cutscene (OWNER: v0.6 WP-C): waking Kumbhakarṇa (Yuddha 6.60), comic, about 13 s on the main path (three short lines). The hidden drum gag is a hotspot (tap the drum, or H): it adds one line. The verse 6.60.54 (s-vadhyamano) is heard right after the cutscene, in story-ch6 ch6.kumbhakarna. Format: types.ts ToldCutscene; engine: logic-told.ts / view-told.tsx.",
+ "id": "kumbhakarna",
+ "chapter": 6,
+ "title": "Kumbhakarna wakes",
+ "painter": "c",
+ "source": "Yuddha 6.60.35–58 (valmikiramayan.net): conches, drums, clubs and śataghnīs; a thousand elephants driven over his body (6.60.54); he wakes, yawning.",
+ "steps": [
+  {
+   "scene": "hall"
+  },
+  {
+   "cast": "kk",
+   "sprite": "kumbhakarna",
+   "at": {
+    "x": 7.5,
+    "y": 6.6
+   },
+   "face": "down"
+  },
+  {
+   "topple": [
+    "kk"
+   ]
+  },
+  {
+   "grow": "kk",
+   "scale": 2.5
+  },
+  {
+   "cast": "r1",
+   "sprite": "rakshasa",
+   "at": {
+    "x": 1.8,
+    "y": 8.4
+   },
+   "face": "right"
+  },
+  {
+   "cast": "r2",
+   "sprite": "rakshasa",
+   "at": {
+    "x": 17.6,
+    "y": 8.4
+   },
+   "face": "left"
+  },
+  {
+   "prop": "d1",
+   "sprite": "drum",
+   "at": {
+    "x": 4.2,
+    "y": 9.2
+   }
+  },
+  {
+   "prop": "d2",
+   "sprite": "drum",
+   "at": {
+    "x": 15,
+    "y": 9.2
+   }
+  },
+  {
+   "say": "The rakshasas shout at the sleeping giant: \"Get up!\""
+  },
+  {
+   "hotspot": "drum",
+   "at": [
+    3.5,
+    8.5,
+    2,
+    1.75
+   ],
+   "ms": 6000,
+   "then": [
+    {
+     "fx": "shake",
+     "ms": 400
+    },
+    {
+     "say": "You make as much noise as you can too. He sleeps on."
+    }
+   ]
+  },
+  {
+   "fx": "shake",
+   "ms": 600
+  },
+  {
+   "topple": [
+    "r1",
+    "r2"
+   ]
+  },
+  {
+   "say": "They beat him with clubs. He sleeps on."
+  },
+  {
+   "rise": [
+    "r1",
+    "r2"
+   ]
+  },
+  {
+   "prop": "e1",
+   "sprite": "elephant",
+   "at": {
+    "x": -2,
+    "y": 6.1
+   },
+   "to": {
+    "x": 21,
+    "y": 6.1
+   },
+   "ms": 3200
+  },
+  {
+   "prop": "e2",
+   "sprite": "elephant",
+   "at": {
+    "x": -4,
+    "y": 6.4
+   },
+   "to": {
+    "x": 19,
+    "y": 6.4
+   },
+   "ms": 3200
+  },
+  {
+   "wait": 1600
+  },
+  {
+   "rise": [
+    "kk"
+   ]
+  },
+  {
+   "fx": "shake",
+   "ms": 900
+  },
+  {
+   "say": "At last he wakes."
+  },
+  {
+   "wait": 300
+  }
+ ]
+}

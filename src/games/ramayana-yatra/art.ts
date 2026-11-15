@@ -3,8 +3,12 @@
  * HUD font are generated in code (no image files) and cached into offscreen canvases on first use.
  * Runtime drawing is drawImage from those atlases only. OWNER: art.
  */
-import { TILE_IDS } from './catalog';
-import type { BattleBgId, BattlerId, SpriteId, TileId } from './catalog';
+import { PROP_IDS, SPRITE_IDS, TILE_IDS } from './catalog';
+import type { BattleBgId, BattlerId, PropId, SpriteId, TileId } from './catalog';
+import { PROPS_A } from './art-v06-a';
+import { PROPS_B } from './art-v06-b';
+import { PROPS_C } from './art-v06-c';
+import { PROPS_D } from './art-v06-d';
 import type { Dir, MapDef } from './types';
 import { HAS_DOM, Pix, makeCanvas, pixCanvas, putPix } from './art-core';
 import { type FringeSide, OBJECT_TILES, TILES, buildFringe, createGroundResolver, drawObjectLayer, fringeBetween } from './art-tiles';
@@ -31,7 +35,15 @@ export interface Art {
   battlerUrl(id: BattlerId): string;
   /** 5x7 ASCII pixel font for canvas HUD numbers/labels. */
   drawText(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, color?: string): void;
+  /**
+   * v0.6 effects kit: a prop at (x, y) = the top-left of the tile it stands on — a PROP_ID (16×16, art-v06-<x>.ts), any
+   * TileId (drawn as an object) or a SpriteId (a figure facing down). Unknown ids draw nothing.
+   */
+  drawProp(ctx: CanvasRenderingContext2D, id: string, x: number, y: number, t: number): void;
 }
+
+/** v0.6: the packages' prop drawings (art-v06-<x>.ts). */
+export const PROP_DRAW: Record<PropId, (p: Pix) => void> = { ...PROPS_A, ...PROPS_B, ...PROPS_C, ...PROPS_D };
 
 const DIRS: Dir[] = ['down', 'up', 'left', 'right'];
 type Canvas = HTMLCanvasElement;
@@ -81,6 +93,8 @@ export function createArt(): Art {
     }
   };
   const sprites = new Map<SpriteId, Canvas | null>();
+  /** v0.6: prop canvases (PROP_IDS) */
+  const props = new Map<string, Canvas | null>();
   const battlers = new Map<BattlerId, { img: Canvas | null; white: Canvas | null }>();
   const bgs = new Map<BattleBgId, BgLayers | null>();
   const portraits = new Map<string, string>();
@@ -356,6 +370,18 @@ export function createArt(): Art {
       return url;
     },
 
+    drawProp(ctx, id, x, y, t) {
+      if ((PROP_IDS as readonly string[]).includes(id)) {
+        if (!props.has(id)) {
+          const p = new Pix(16, 16);
+          (PROP_DRAW as Record<string, ((p: Pix) => void) | undefined>)[id]?.(p);
+          props.set(id, pixCanvas(p));
+        }
+        const img = props.get(id);
+        if (img) ctx.drawImage(img, Math.round(x), Math.round(y));
+      } else if ((TILE_IDS as readonly string[]).includes(id)) this.drawTile(ctx, id as TileId, Math.round(x), Math.round(y), t);
+      else if ((SPRITE_IDS as readonly string[]).includes(id)) this.drawSprite(ctx, id as SpriteId, Math.round(x), Math.round(y), 'down', 0);
+    },
     drawText(ctx, text, x, y, color = '#ffffff') {
       const atlas = font(color);
       if (!atlas) return;

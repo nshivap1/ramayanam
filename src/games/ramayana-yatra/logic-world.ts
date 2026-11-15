@@ -3,7 +3,7 @@
  * OWNER: core. Pure and deterministic (randomness only through logic-battle's rollEncounter).
  * Kathā (v0.4): random encounters are off (kuśa tiles never roll).
  */
-import type { Dir, GameContent, GameState, MapDef, NpcDef, SignDef, TriggerDef, WarpDef } from './types';
+import type { Dir, GameContent, GameState, MapDef, NpcDef, SignDef, SpotDef, TriggerDef, WarpDef } from './types';
 import { type TileId, TILE_IDS, TILE_PROPS } from './catalog';
 import { indexOf, testFlag } from './logic-util';
 import { battleOutcome, rollEncounter, startBattle } from './logic-battle';
@@ -136,6 +136,16 @@ export function warpAt(map: MapDef, x: number, y: number): WarpDef | undefined {
 
 export function signAt(map: MapDef, x: number, y: number): SignDef | undefined {
   return map.signs?.find((s) => s.x === x && s.y === y);
+}
+
+/** v0.6: the active hidden spot on tile (x, y) (MapDef.spots; active while its `requires` holds), if any. */
+export function spotAt(map: MapDef, flags: Record<string, true>, x: number, y: number): SpotDef | undefined {
+  return map.spots?.find((s) => s.x === x && s.y === y && !!s.requires && testFlag(flags, s.requires));
+}
+
+/** v0.6: the active hidden spots of a map that shimmer (`glow`), for the view. */
+export function glowingSpots(map: MapDef, flags: Record<string, true>): SpotDef[] {
+  return (map.spots ?? []).filter((s) => s.glow && !!s.requires && testFlag(flags, s.requires));
 }
 
 export function triggerCovers(t: TriggerDef, x: number, y: number): boolean {
@@ -291,6 +301,9 @@ export function interact(state: GameState, content: GameContent): GameState {
     const s: GameState = { ...state, save: { ...state.save, npcPos: { ...state.save.npcPos, [npcKey(map.id, npc.id)]: { x: npc.x, y: npc.y, facing: OPPOSITE[facing] } } } };
     return startEvent(s, content, npc.event);
   }
+  // v0.6: a hidden spot (Kathā only: its requires holds style.katha) — facing it and A runs its event
+  const spot = spotAt(map, state.save.flags, fx, fy) ?? spotAt(map, state.save.flags, state.save.x, state.save.y);
+  if (spot && indexOf(content).event.has(spot.event)) return startEvent(state, content, spot.event);
   const sign = signAt(map, fx, fy);
   if (sign) return startScript(state, content, 'core.sign', [{ say: sign.text }]);
   if (hasTile(map, fx, fy, 'shrine')) return startScript(state, content, SHRINE_EVENT_ID, SHRINE_CMDS);

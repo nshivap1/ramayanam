@@ -48,7 +48,8 @@ test('sa-ui (v0.5b): every interface file is bundled under its name; the package
     assert.deepEqual(Object.keys(UI_FILES[i]!.entries), Object.keys(disk.entries), `${name} is the bundled file #${i}`);
   }
   // v0.5b (notes/v05b-ownership.md): each package adds keys only to its own file, with its own prefix
-  const PREFIX: Record<string, string> = { 'sa-ui-scene.json': 'scene.', 'sa-ui-setu.json': 'setu.', 'sa-ui-chain.json': 'chain.' };
+  // v0.6 (notes/v06-ownership.md): WP0's shared file v06.*, the packages' v06a.* … v06d.*
+  const PREFIX: Record<string, string> = { 'sa-ui-scene.json': 'scene.', 'sa-ui-setu.json': 'setu.', 'sa-ui-chain.json': 'chain.', 'sa-ui-v06.json': 'v06.', 'sa-ui-v06-a.json': 'v06a.', 'sa-ui-v06-b.json': 'v06b.', 'sa-ui-v06-c.json': 'v06c.', 'sa-ui-v06-d.json': 'v06d.' };
   const problems: string[] = [];
   for (const [i, name] of NAMES.entries()) {
     const own = PREFIX[name];

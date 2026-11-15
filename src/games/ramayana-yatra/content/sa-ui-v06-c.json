@@ -1,0 +1,31 @@
+{
+ "version": 1,
+ "about": "v0.6 interface strings of package C (OWNER: v0.6 WP-C); keys v06c.*. Rules: notes/sa-ui.md.",
+ "models": [],
+ "entries": {
+  "v06c.echo.uttishtha": {
+   "en": "“Arise!”, to Rāma and to Hanumān",
+   "sa": "उत्तिष्ठ इति रामाय हनुमते च",
+   "label": true,
+   "ctx": "verse echo title (katha-echoes.json uttishtha): Viśvāmitra's उत्तिष्ठ नरशार्दूल (1.23.2) and Jāmbavān's उत्तिष्ठ हरिशार्दूल (4.66.36)"
+  },
+  "v06c.echo.kausalya": {
+   "en": "“Kausalyā’s fine son”, said twice",
+   "sa": "कौसल्या सुप्रजा इति द्विः",
+   "label": true,
+   "ctx": "verse echo title (kausalya): the same first pāda कौसल्या सुप्रजा राम at Rāma's first dawn (1.23.2) and at the good news from Laṅkā (5.64.28)"
+  },
+  "v06c.echo.paduke": {
+   "en": "The sandals, and the kingdom back to Rāma",
+   "sa": "पादुके, राज्यं च पुनः रामाय",
+   "label": true,
+   "ctx": "verse echo title (paduke): Bharata asks Rāma to step into the sandals (2.112.21) and returns the kingdom (6.127.54)"
+  },
+  "v06c.echo.counsellors": {
+   "en": "Two counsellors, one counsel",
+   "sa": "द्वौ मन्त्रिणौ, एकं वचनम्",
+   "label": true,
+   "ctx": "verse echo title (counsellors, hidden): Mārīca (3.37.2) and Vibhīṣaṇa (6.16.21cd–22ab, one word different) give Rāvaṇa the same advice"
+  }
+ }
+}

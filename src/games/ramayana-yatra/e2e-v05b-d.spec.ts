@@ -12,7 +12,7 @@
  *      closing line, the ending; the shell result "won" with Sanskrit rows
  */
 import assert from 'node:assert/strict';
-import { type E2eCase, Bot, CONTENT, DEVA, LATIN, type Snap, continueToExplore, expectNoLatin, kathaFrom, planAt, reloadWith, shot } from './e2e-kit.spec';
+import { type E2eCase, Bot, CONTENT, DEVA, LATIN, PRACTICE, type Snap, continueToExplore, expectNoLatin, kathaFrom, planAt, reloadWith, shot } from './e2e-kit.spec';
 import type { EventCmd } from './types';
 
 const ALLIES = ['player', 'rama', 'lakshmana', 'hanuman', 'jambavan'];
@@ -34,6 +34,9 @@ const councilSave = kathaSave('setu_shore', 'ch6.council');
 const finaleSave = kathaSave('tamasa_ashrama', 'ch6.complete');
 
 /** The Kathā block of the Puṣpaka tour (story-ch6 ch6.ravana → onWin): the opening line, then a verse and a question per stop. */
+/** The v0.5 (restorable) verse ids: the Puṣpaka stops are among them. */
+const V05_IDS = new Set(PRACTICE.shlokas.map((x) => x.id));
+
 function pushpakaBlock(): EventCmd[] | null {
   const ev = CONTENT.events.find((e) => e.id === 'ch6.ravana');
   const battle = ev?.cmds.find((c) => 'battle' in c) as { onWin?: EventCmd[] } | undefined;
@@ -217,7 +220,8 @@ export const V05B_D: E2eCase[] = [
       const verses: string[] = [];
       const bot = new Bot(g, {
         onVerse: async (s) => {
-          if (s.shloka && verses.at(-1) !== s.shloka) verses.push(s.shloka); // a first ▶ may only finish the verse moment's unfolding
+          // v0.6: the flight opens with a heard v0.6 verse (6.123.16, Kathā only): only the v0.5 stops count
+          if (s.shloka && V05_IDS.has(s.shloka) && verses.at(-1) !== s.shloka) verses.push(s.shloka); // a first ▶ may only finish the verse moment's unfolding
         },
         onStep: async (s) => {
           if (s.pending === 'choice') {

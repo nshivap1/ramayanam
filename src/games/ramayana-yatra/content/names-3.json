@@ -1,0 +1,156 @@
+{
+ "version": 1,
+ "about": "v0.6 names of package A (same schema as names.json; ids must be new). Kathā-only: the practice game never sees them.",
+ "names": [
+  {
+   "id": "person.janaka",
+   "sa": "जनक",
+   "en": "Janaka, king of Mithilā",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-1/chapter-72/verse-17",
+      "note": "Bāla 1.73.26 (critical edition 1.72.17): अब्रवीज्जनको राजा"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जनक (N. of a king of Videha or Mithilā, father of Sītā)"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Verse attestation read online by agent v06-A on 2026-11-14 (critical-edition text 1.72.17 and siva.sh 1.73.26); the MW entry is asserted from reference knowledge, not fetched (the Cologne site disallows the fetch tool)."
+   }
+  },
+  {
+   "id": "person.ahalya",
+   "sa": "अहल्या",
+   "en": "Ahalyā, wife of the sage Gautama",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga49/balasans49.htm",
+      "note": "Bāla 1.49.11: … महाभागामहल्यां देवरूपिणीम्; 1.49.21: गौतमोऽपि महातेजा अहल्यासहितः सुखी"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. अहल्या (wife of Gautama, restored by Rāma)"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Verse attestation read online by agent v06-A on 2026-11-14 (valmikiramayan.net sarga 49); the MW entry is asserted from reference knowledge, not fetched (the Cologne site disallows the fetch tool)."
+   }
+  },
+  {
+   "id": "person.gautama",
+   "sa": "गौतम",
+   "en": "Gautama, the sage, Ahalyā's husband",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga49/balasans49.htm",
+      "note": "Bāla 1.49.17: स्मरन्ती गौतमवचः; 1.49.21: गौतमोऽपि महातेजाः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. गौतम (N. of a sage, husband of Ahalyā)"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Verse attestation read online by agent v06-A on 2026-11-14 (valmikiramayan.net sarga 49); the MW entry is asserted from reference knowledge, not fetched (the Cologne site disallows the fetch tool)."
+   }
+  },
+  {
+   "id": "person.parashurama",
+   "sa": "जामदग्न्य",
+   "en": "Paraśurāma (Jāmadagnya, son of Jamadagni)",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga74/balasans74.htm",
+      "note": "Bāla 1.74.17: भार्गवं जामदग्न्यं तं …; 1.74.24: … रामो जामदग्न्योऽभ्यभाषत; 1.76.5: जामदग्न्यं ततो रामं. Vālmīki names him Jāmadagnya, Bhārgava or Rāma; परशु is only his axe (1.74.19), so the attested patronymic is used"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. जामदग्न्य (patr. of Paraśu-rāma)"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Verse attestation read online by agent v06-A on 2026-11-14 (valmikiramayan.net sargas 74 and 76); the MW entry is asserted from reference knowledge, not fetched (the Cologne site disallows the fetch tool)."
+   }
+  },
+  {
+   "id": "place.mithila",
+   "sa": "मिथिला",
+   "en": "Mithilā, Janaka's city",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga49/balasans49.htm",
+      "note": "Bāla 1.49.22: … जगाम मिथिलां ततः"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मिथिला (N. of the capital of Videha)"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Verse attestation read online by agent v06-A on 2026-11-14 (valmikiramayan.net sarga 49); the MW entry is asserted from reference knowledge, not fetched (the Cologne site disallows the fetch tool)."
+   }
+  },
+  {
+   "id": "person.ganga",
+   "sa": "गङ्गा",
+   "en": "Gaṅgā, the river goddess",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa (vulgate / Gita Press numbering as on valmikiramayan.net)",
+      "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-2/chapter-46/verse-68",
+      "note": "Ayodhyā 2.52.83 (critical edition 2.46.68): … गङ्गे त्वदभिरक्षितः (valmikiramayan.net prints गन्गे)"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. गङ्गा (the river Ganges, personified as a goddess)"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams",
+     "engine:validateDeva"
+    ],
+    "notes": "Verse attestation read online by agent v06-A on 2026-11-14 (critical-edition text 2.46.68 and valmikiramayan.net 2-52-83); the MW entry is asserted from reference knowledge, not fetched (the Cologne site disallows the fetch tool)."
+   }
+  }
+ ]
+}

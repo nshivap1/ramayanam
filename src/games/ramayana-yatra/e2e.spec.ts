@@ -4,6 +4,7 @@
  * so the tests survive content changes (maps, dialogue, verses) as long as the walkthrough works.
  * v0.5b (WP0): the shared helpers (Snap, Bot, planAt, navigation, sweeps …) live in e2e-kit.spec.ts; the four packages add
  * their browser tests to e2e-v05b-a … -d.spec.ts (lists of E2eCase), which this spec registers at the end of its suite.
+ * v0.6 (WP0): the same for e2e-v06-wp0 (WP0) and e2e-v06-a … -d.spec.ts (V06_A … V06_D).
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -15,12 +16,18 @@ import { type GameSession, expectNoOverflow, gameSuite } from '../../../tests/e2
 import { halfVerseLines, hardWord, toSave } from './logic';
 import { uiEn, uiSa } from './sa-ui';
 
-import { type Dir, type Snap, Bot, CONTENT, D, DEVA, LATIN, POWER, PREFS, ROOT, SAVE, closeSay, continueToExplore, expectCastLayout, expectNoLatin, expectNoPointer, expectPointer, followPointer, guidePlaythrough, interactUntil, introPlan, kathaFrom, kathaVerse, latinOnScreen, planAt, planFinale, pointerOnCanvas, readLine, reloadToTitle, reloadWith, serveDir, setDialogueLang, shopPlan, shot, shrinePlan, signPlan, startJourney, toChapterCard, toNewJourney, openWithSave as kitOpenWithSave } from './e2e-kit.spec';
+import { type Dir, type Snap, Bot, CONTENT, PRACTICE, D, DEVA, LATIN, POWER, PREFS, ROOT, SAVE, closeSay, continueToExplore, expectCastLayout, expectNoLatin, expectNoPointer, expectPointer, followPointer, guidePlaythrough, interactUntil, introPlan, kathaFrom, kathaVerse, latinOnScreen, planAt, planFinale, pointerOnCanvas, readLine, reloadToTitle, reloadWith, serveDir, setDialogueLang, shopPlan, shot, shrinePlan, signPlan, startJourney, toChapterCard, toNewJourney, openWithSave as kitOpenWithSave } from './e2e-kit.spec';
 import { V05B_A } from './e2e-v05b-a.spec';
 import { V05B_B } from './e2e-v05b-b.spec';
 import { V05B_C } from './e2e-v05b-c.spec';
 import { V05B_D } from './e2e-v05b-d.spec';
 import { V05B_E } from './e2e-v05b-e.spec'; // v0.5b WP-E: the Āditya-hṛdayam cutscene
+// v0.6 (notes/v06-ownership.md): WP0's browser tests and the four packages' (A Bāla/Ayodhyā, B Araṇya/Kiṣkindhā, C Sundara/Yuddha, D the herbs)
+import { V06_WP0 } from './e2e-v06-wp0.spec';
+import { V06_A } from './e2e-v06-a.spec';
+import { V06_B } from './e2e-v06-b.spec';
+import { V06_C } from './e2e-v06-c.spec';
+import { V06_D } from './e2e-v06-d.spec';
 
 gameSuite('ramayana-yatra', ({ open }) => {
   /** A save in localStorage, reload, Continue (e2e-kit openWithSave with this suite's `open`). */
@@ -211,7 +218,9 @@ gameSuite('ramayana-yatra', ({ open }) => {
   // ───────── the end of a book (v0.5a): the book-complete screen, then the next book in the same session or the result ─────────
   const ch1Plan = planAt(CONTENT, 1, 'siddhashrama', 14, ['player', 'rama', 'lakshmana']);
   const BOOK2 = CONTENT.chapters.find((c) => c.kanda === 2);
-  const ch1Verses = CONTENT.chapters.find((c) => c.kanda === 1)?.shlokaIds ?? [];
+  // v0.6: book 1's v0.5 verses (a planned save has heard and restored them) and, in Kathā, the v0.6 verses not heard yet
+  const ch1Verses = PRACTICE.chapters.find((c) => c.kanda === 1)?.shlokaIds ?? [];
+  const ch1All = CONTENT.chapters.find((c) => c.kanda === 1)?.shlokaIds ?? [];
   /** Two of book 1's verses (no astra) heard but not restored, so the screen shows both states. */
   const unrestoredIds = ch1Verses.filter((id) => !CONTENT.moves.some((m) => m.unlockShloka === id)).slice(0, 2);
   const bookEndSave = (style: 'katha' | 'abhyasa'): ReturnType<typeof toSave> | null => {
@@ -277,9 +286,15 @@ gameSuite('ramayana-yatra', ({ open }) => {
       assert.ok(squash(text).includes(squash(lang === 'en' ? uiEn(CONTENT, why) : (uiSa(CONTENT, why) ?? '?'))), `row ${id} explains itself: ${text}`);
       if (lang === 'sa-en') assert.ok(squash(text).includes(squash(uiEn(CONTENT, why))), `sa-en: row ${id} has its English gloss`);
     }
-    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-n'), String(ch1Verses.length), 'every verse of book 1 heard');
-    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-of'), String(ch1Verses.length));
+    // v0.6: heard of every verse of the book (Kathā: the v0.6 verses too); restored of the restorable (v0.5) verses only
+    const bookVerses = style === 'katha' ? ch1All : ch1Verses;
+    // Kathā: the finale plays the Mithilā told cutscene, so the v0.6 verses heard there count too (s.heard at the screen)
+    const heardN = style === 'katha' ? bookVerses.filter((id) => s.heard.includes(id)).length : ch1Verses.length;
+    assert.ok(style !== 'katha' || ch1Verses.every((id) => s.heard.includes(id)), 'every v0.5 verse of book 1 heard');
+    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-n'), String(heardN), 'heard of book 1');
+    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-of'), String(bookVerses.length));
     assert.equal(await panel.locator('[data-testid="book-end-restored"]').getAttribute('data-n'), String(ch1Verses.length - unrestoredIds.length), 'restored of book 1');
+    assert.equal(await panel.locator('[data-testid="book-end-restored"]').getAttribute('data-of'), String(ch1Verses.length), 'restored counts against the restorable verses');
     if (style === 'katha') {
       // (the finale's fights may end without a recitation: v0.5a battle tactics let a fitting astra decide a fight)
       const lines = Object.values(s.recited ?? {}).reduce((a, b) => a + b, 0);
@@ -287,8 +302,8 @@ gameSuite('ramayana-yatra', ({ open }) => {
     } else assert.ok(Number(await panel.locator('[data-testid="book-end-answers"]').getAttribute('data-of')) > 0, 'questions were answered in the finale');
     // the book's verses with their state
     const verses = panel.locator('[data-testid^="book-end-verse-"]');
-    assert.equal(await verses.count(), ch1Verses.length, 'one row per verse of the book');
-    for (const id of ch1Verses) assert.equal(await panel.locator(`[data-testid="book-end-verse-${id}"]`).getAttribute('data-state'), unrestoredIds.includes(id) ? 'heard' : 'restored', `state of ${id}`);
+    assert.equal(await verses.count(), bookVerses.length, 'one row per verse of the book');
+    for (const id of bookVerses) assert.equal(await panel.locator(`[data-testid="book-end-verse-${id}"]`).getAttribute('data-state'), !ch1Verses.includes(id) ? (s.heard.includes(id) ? 'heard' : 'new') : unrestoredIds.includes(id) ? 'heard' : 'restored', `state of ${id}`);
     // primary: on to the next book (named); secondary: stop here
     const next = (await g.page.locator('[data-testid="chapter-next"]').textContent()) ?? '';
     if (lang === 'en') assert.ok(next.includes(`On to ${b2.en}`), next);
@@ -1696,8 +1711,10 @@ gameSuite('ramayana-yatra', ({ open }) => {
     assert.ok(await g.page.locator('[data-testid="screen"]').isVisible(), 'the canvas stays visible');
     const name = CONTENT.names.find((x) => x.id === 'kanda.1')?.sa.replace(/म्$/, 'ं') ?? '?';
     assert.ok(((await panel.locator('[data-testid="book-end-title"]').textContent()) ?? '').includes(name), 'the book is named');
+    // v0.6: the v0.5 verses are heard in this save; the book lists the v0.6 verses too (Kathā)
     const book1 = CONTENT.chapters.find((c) => c.kanda === 1)?.shlokaIds ?? [];
-    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-n'), String(book1.length), 'verses heard of book 1');
+    const book1v05 = PRACTICE.chapters.find((c) => c.kanda === 1)?.shlokaIds ?? [];
+    assert.equal(await panel.locator('[data-testid="book-end-heard"]').getAttribute('data-n'), String(book1v05.length), 'verses heard of book 1');
     assert.equal(await panel.locator('[data-testid="book-end-recited"]').getAttribute('data-n'), '1', "the story's line counts as a line recited");
     assert.equal(await panel.locator('[data-testid^="book-end-verse-"]').count(), book1.length, 'one row per verse of the book');
     await expectNoLatin(g, 'book review');
@@ -1715,5 +1732,5 @@ gameSuite('ramayana-yatra', ({ open }) => {
   });
 
   // ───────── v0.5b: the packages' browser tests (e2e-v05b-a … -d.spec.ts; notes/v05b-ownership.md) ─────────
-  for (const c of [...V05B_A, ...V05B_B, ...V05B_C, ...V05B_D, ...V05B_E]) test(c.name, { skip: c.skip ?? false, timeout: c.timeout ?? 240_000 }, () => c.run({ open }));
+  for (const c of [...V05B_A, ...V05B_B, ...V05B_C, ...V05B_D, ...V05B_E, ...V06_WP0, ...V06_A, ...V06_B, ...V06_C, ...V06_D]) test(c.name, { skip: c.skip ?? false, timeout: c.timeout ?? 240_000 }, () => c.run({ open }));
 });

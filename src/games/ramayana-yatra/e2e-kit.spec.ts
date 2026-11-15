@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 import type { Page } from 'playwright';
 import { type GameSession, type OpenOptions, expectNoOverflow } from '../../../tests/e2e/harness';
 import { loadContent } from './content';
-import { TILE_PROPS, isWalkable, loadGame, newGame, newMember, testFlag, tileAt, toSave, visibleNpcs, withUnlockedMoves } from './logic';
+import { TILE_PROPS, isWalkable, loadGame, newGame, newMember, practiceContent, testFlag, tileAt, toSave, visibleNpcs, withUnlockedMoves } from './logic';
 import type { GameContent, GameState } from './types';
 
 /** The suite's `open` (harness): a new browser page with the game (e2e hooks on). */
@@ -107,6 +107,17 @@ export interface Snap {
   book?: number | null;
   /** P5: Nala's bridge (pending 'setu'): the stones, the solution, taps, Nala's hint */
   setu?: { tag: string; cols: number; turns: number; cells: number[]; solution: number[]; taps: number; hint: number | null } | null;
+  // ── v0.6 (notes/v06-wp0.md) ──
+  /** WP-E: the Āditya-hṛdayam cutscene on screen */
+  cutscene?: { id: string; replay: boolean } | null;
+  /** a told cutscene on screen (pending 'cutscene' in the story, or a replay) */
+  told?: { id: string; replay: boolean } | null;
+  /** the effects kit's stage while a script runs */
+  stage?: { down: string[]; scale: Record<string, number>; props: Record<string, { sprite: string; x: number; y: number; carry?: string }>; tint: string | null } | null;
+  /** a hidden moment waiting on the map */
+  hotspot?: { x: number; y: number; ms: number } | null;
+  /** the kit's timed effects fired so far (names, newest last) */
+  kitLog?: string[];
 }
 
 export type Dir = 'up' | 'down' | 'left' | 'right';
@@ -115,6 +126,8 @@ export const KEY: Record<Dir, string> = { up: 'ArrowUp', down: 'ArrowDown', left
 export const DEVA = /[\u0900-\u097F]/;
 export const LATIN = /[A-Za-z]/;
 export const CONTENT = loadContent();
+/** v0.6: the practice game's content (the v0.5 verses, words and names: logic-journey practiceContent). */
+export const PRACTICE = practiceContent(CONTENT);
 export const ROOT = fileURLToPath(new URL('../../..', import.meta.url));
 
 /** A minimal static server for a build folder (Node built-ins only: a game folder may not import tools/). */
@@ -157,6 +170,10 @@ export interface BotOpts {
   pickMove?: (s: Snap, usable: string[]) => string | undefined;
   /** Kathā one-tap moves: cast with a key (1–4) or a tap; default follows `keyboard`. */
   moveInput?: (s: Snap) => 'key' | 'tap';
+  /** v0.6: find the hidden moments (a map hotspot: look closer; a told cutscene: tap its hotspot). Default: pass them by. */
+  findHidden?: boolean;
+  /** v0.6: the option to pick at a told cutscene's k-th question (default 0) */
+  toldAnswer?: (k: number) => number;
 }
 
 export class Bot {
@@ -359,7 +376,7 @@ export class Bot {
         const b = s.battle;
         assert.ok(b);
         // v0.5b WP-E: the Āditya-hṛdayam cutscene plays over the battle (input waits); in e2e it is fast (≈ 1.6 s)
-        if ((s as { cutscene?: unknown }).cutscene) {
+        if (s.cutscene) {
           this.note('cutscene: waiting');
           await this.page.waitForFunction(() => !(window as unknown as { __game?: { cutscene?: unknown } }).__game?.cutscene, null, { timeout: 60000 });
           break;
@@ -418,6 +435,42 @@ export class Bot {
         // v0.5b P2: the book review — ▶ continue once it is armed
         await this.page.locator('[data-testid="book-review"][data-armed]').waitFor({ timeout: 3000 });
         await this.a('book-continue');
+        break;
+      }
+      case 'cutscene': {
+        // v0.6: a told cutscene (view-told; fast in e2e): answer its questions, tap its hotspots with findHidden, wait
+        await this.page.locator('[data-testid="told"]').waitFor({ timeout: 5000 });
+        let asked = 0;
+        const t0 = Date.now();
+        while (Date.now() - t0 < 90_000) {
+          const now = await this.snap();
+          if (now.pending !== 'cutscene') break;
+          if (this.opts.findHidden && (await this.page.locator('[data-testid="told-hotspot"]').count())) {
+            this.note('told: hotspot');
+            await this.page.locator('[data-testid="told-hotspot"]').click({ timeout: 1000 }).catch(() => undefined);
+          }
+          if (await this.page.locator('[data-testid="told-ask"]').count()) {
+            const i = this.opts.toldAnswer?.(asked) ?? 0;
+            this.note(`told: answer ${asked} → ${i}`);
+            asked++;
+            if (this.opts.keyboard) await this.key(String(i + 1));
+            else await this.page.locator(`[data-testid="told-opt-${i}"]`).click({ timeout: 2000 }).catch(() => undefined);
+            await this.page.waitForFunction(() => document.querySelector('[data-testid="told"]')?.getAttribute('data-ask') !== 'true', null, { timeout: 3000 }).catch(() => undefined);
+            continue;
+          }
+          await this.page.waitForTimeout(60);
+        }
+        break;
+      }
+      case 'hotspot': {
+        // v0.6: a hidden moment — look closer (findHidden, once armed) or pass it by (▶)
+        await this.page.locator('[data-testid="panel-hotspot"]').waitFor({ timeout: 3000 });
+        if (this.opts.findHidden) {
+          await this.page.locator('[data-testid="panel-hotspot"][data-armed="true"]').waitFor({ timeout: 3000 });
+          if (this.opts.keyboard) await this.key('z');
+          else await this.tap('hotspot-look');
+        } else if (this.opts.keyboard) await this.key('x');
+        else await this.tap('hotspot-pass');
         break;
       }
       case 'setu': {
@@ -1173,7 +1226,8 @@ export function planAt(content: GameContent, chapter: number, mapId: string, lev
   for (let c = 1; c < chapter; c++) flags[`ch${c}.complete`] = true;
   const shlokas: GameState['save']['shlokas'] = {};
   for (const s of content.shlokas) {
-    if (s.kanda > chapter) continue;
+    // v0.6: a v0.6 verse (Kathā-only, heard only) is never restored: a planned save holds the v0.5 verses
+    if (s.kanda > chapter || s.kathaOnly) continue;
     shlokas[s.id] = { heard: true, restored: true, best: 1 };
     flags[`heard.${s.id}`] = true;
     flags[`restored.${s.id}`] = true;

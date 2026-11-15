@@ -1,0 +1,29 @@
+{
+ "version": 1,
+ "about": "v0.6 told cutscene (OWNER: v0.6 WP-D): the mountain of herbs (Yuddha 6.74, Vālmīki only), a 3D cutscene on the Āditya engine (cutscene3d-herbs.ts; 2D still: painter \"d\", cutscene-paint-d.ts) with one question that cannot fail: \"Take the whole mountain!\". Started by { \"cutscene\": \"herbs\" } in package C's Kathā block of ch6.kumbhakarna (onWin), right after C's verse s-mrtasanjivani (6.74.33), so this scene carries no verse. Shots: north, himalaya, search, hidden, roar, lift, sea, revive. Format: types.ts ToldCutscene; engine: logic-told.ts / view-told.tsx. Each line's source: notes/v06-d.md.",
+ "id": "herbs",
+ "chapter": 6,
+ "title": "The mountain of herbs",
+ "painter": "d",
+ "scene3d": "herbs",
+ "source": "Vālmīki Rāmāyaṇa, Yuddha 6.74.29–31 (Jāmbavān: to the Himālaya, the herb mountain between Ṛṣabha and Kailāsa), 6.74.49–64 (the flight north; the herbs hide), 6.74.65–69 (Hanumān's words to the mountain; he tears off its peak and flies back, bright as the sun), 6.74.72–74 (the scent of the herbs: Rāma, Lakṣmaṇa and the army rise as if from sleep) — vulgate numbering (valmikiramayan.net)",
+ "steps": [
+  { "scene": "north" },
+  { "say": "Hanuman leaps into the sky, towards the Himalaya." },
+  { "scene": "himalaya" },
+  { "say": "Between Rishabha and Kailasa, the mountain of herbs shines." },
+  { "scene": "search" },
+  { "say": "The herbs know that he has come. They hide from him!" },
+  { "scene": "hidden" },
+  { "ask": "What will Hanuman do now?", "options": [{ "label": "Take the whole mountain!" }] },
+  { "scene": "roar" },
+  { "say": "Mountain, have you no pity for Rama? See my strength!", "who": "person.hanuman" },
+  { "fx": "flash" },
+  { "fx": "shake", "ms": 900 },
+  { "scene": "lift" },
+  { "say": "He takes the whole mountain and flies back, shining like the sun." },
+  { "scene": "sea", "ms": 2000 },
+  { "scene": "revive" },
+  { "say": "Rama, Lakshmana and the vanaras breathe in the herbs. They rise, as if from sleep." }
+ ]
+}

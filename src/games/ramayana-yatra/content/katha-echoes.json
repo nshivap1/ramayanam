@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "about": "v0.6 verse echoes (OWNER: v0.6 WP-C): a verse heard again elsewhere, or a shared pattern. {\"echo\": id} in a Kathā block sets the flag echo.<id> (with a toast); the verse book then shows the echo title line under each of its verses. title: a sa-ui key (sa-ui-v06-c.json). Format: types.ts VerseEcho.",
+ "echoes": [
+  {
+   "id": "uttishtha",
+   "title": "v06c.echo.uttishtha",
+   "shlokaIds": [
+    "s-kausalya-supraja",
+    "s-uttishtha-hari"
+   ],
+   "source": "Bāla 1.23.2 pāda 3 उत्तिष्ठ नरशार्दूल (Viśvāmitra wakes Rāma) and Kiṣkindhā 4.66.36 pāda 1 उत्तिष्ठ हरिशार्दूल (Jāmbavān rouses Hanumān): the same call. Noticed at the launch from Mahendra (ch5.leap_start) if 4.66.36 was heard."
+  },
+  {
+   "id": "kausalya",
+   "title": "v06c.echo.kausalya",
+   "shlokaIds": [
+    "s-kausalya-supraja",
+    "s-drshta-devi"
+   ],
+   "source": "Bāla 1.23.2 and Sundara 5.64.28 open with the same pāda, कौसल्या सुप्रजा राम: Viśvāmitra at Rāma's first dawn, Sugrīva at the news that Sītā is found. Noticed when 5.64.28 is heard (ch5.sita)."
+  },
+  {
+   "id": "paduke",
+   "title": "v06c.echo.paduke",
+   "shlokaIds": [
+    "s-paduke",
+    "s-etat-te-rakshitam"
+   ],
+   "source": "Ayodhyā 2.112.21: Bharata asks Rāma to step into the sandals that will keep the kingdom; Yuddha 6.127.52–54: Bharata puts the sandals back on Rāma's feet and returns the kingdom he kept. Noticed at the return (ch6.ravana) if 2.112.21 was heard."
+  },
+  {
+   "id": "counsellors",
+   "title": "v06c.echo.counsellors",
+   "shlokaIds": [
+    "s-sulabhah-purusha",
+    "s-vinashyed-dhi"
+   ],
+   "source": "Araṇya 3.37.2 (Mārīca) and Yuddha 6.16.21cd–22ab (Vibhīṣaṇa, valmikiramayan.net; CE 6.10.16): सुलभाः पुरुषा राजन्… the same couplet but for one particle (Araṇya च पथ्यस्य, Yuddha तु पथ्यस्य). Hidden: found at Vibhīṣaṇa's arrival (ch6.vibhishana_refuge)."
+  }
+ ]
+}

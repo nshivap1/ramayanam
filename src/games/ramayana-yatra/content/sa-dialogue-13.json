@@ -1,0 +1,61 @@
+{
+ "version": 1,
+ "about": "v0.6 Kathā story lines (OWNER: v0.6 WP-D): the new English lines inside { \"if\": \"style.katha\", \"then\": [...] } blocks of cutscene-herbs.json that no file 1–9 held at v0.5.1, and new Kathā-only speaker titles (\"label\": true). Rule: sa-verify collectStoryStrings; notes/v06-ownership.md. Same format and rules as files 1–9 (notes/sambhashana.md). Sources of each line: notes/v06-d.md.",
+ "models": [
+  {
+   "stem": "हिमवत्",
+   "gender": "m",
+   "paradigm": "bhagavat-m",
+   "en": "Himavat, the Himālaya",
+   "source": "MW himavat m. 'the Himālaya' (via kosha.sanskrit.today, read 2026-11-14); Yuddha 6.74.29 (vulgate, valmikiramayan.net): हिमवन्तं नगश्रेष्ठं हनूमन्गन्तुमर्हसि; vat-stem declined like भगवत् (हिमवान्, हिमवन्तम्)"
+  }
+ ],
+ "entries": [
+  {
+   "en": "The mountain of herbs",
+   "sa": "ओषधीनां पर्वतः",
+   "ctx": "cutscene herbs · title (label, Kathā) — Yuddha 6.74.31 सर्वौषधियुतं … औषधिपर्वतम्",
+   "label": true
+  },
+  {
+   "en": "Hanuman leaps into the sky, towards the Himalaya.",
+   "sa": "हनुमान् हिमवन्तं प्रति उत्पतति।",
+   "ctx": "cutscene herbs · narration (Kathā) — Yuddha 6.74.29 (Jāmbavān: हिमवन्तं … गन्तुमर्हसि), 6.74.49 (he leaps into the sky), 6.74.53–56 (he flies to the Himālaya)"
+  },
+  {
+   "en": "Between Rishabha and Kailasa, the mountain of herbs shines.",
+   "sa": "ऋषभस्य कैलासस्य च मध्ये ओषधीनां पर्वतः प्रकाशते।",
+   "ctx": "cutscene herbs · narration (Kathā) — Yuddha 6.74.30–32 (ऋषभ and the peak of Kailāsa; तयोः शिखरयोर्मध्ये … प्रदीप्तम्; the herbs blaze), 6.74.61"
+  },
+  {
+   "en": "The herbs know that he has come. They hide from him!",
+   "sa": "ओषधयः तम् आगतं जानन्ति। ताः न दृश्यन्ते!",
+   "ctx": "cutscene herbs · narration (Kathā) — Yuddha 6.74.62–64 (he searches; the herbs, knowing a seeker has come, go out of sight: ततो जग्मुरदर्शनम्)"
+  },
+  {
+   "en": "What will Hanuman do now?",
+   "sa": "हनुमान् अधुना किं करिष्यति?",
+   "ctx": "cutscene herbs · question (Kathā) — the one choice (cannot fail)"
+  },
+  {
+   "en": "Take the whole mountain!",
+   "sa": "सर्वं पर्वतम् एव नयतु!",
+   "ctx": "cutscene herbs · option (player's reply, Kathā) — the only option; Yuddha 6.74.67 (he tears off the peak)"
+  },
+  {
+   "en": "Mountain, have you no pity for Rama? See my strength!",
+   "sa": "हे पर्वत, रामे तव दया न अस्ति वा? मम बलं पश्य!",
+   "ctx": "cutscene herbs · person.hanuman (Kathā) — Yuddha 6.74.66 (to the mountain: यद्राघवे नासि कृतानुकम्पः … पश्याद्य मद्बाहुबलाभिभूतो)"
+  },
+  {
+   "en": "He takes the whole mountain and flies back, shining like the sun.",
+   "sa": "सः सर्वं पर्वतं गृहीत्वा आकाशेन प्रत्यागच्छति। सः सूर्यः इव प्रकाशते।",
+   "ctx": "cutscene herbs · narration (Kathā) — Yuddha 6.74.67–69 (he seizes the peak, leaps into the sky, shines like the sun: भास्करसंनिकाशः)"
+  },
+  {
+   "en": "Rama, Lakshmana and the vanaras breathe in the herbs. They rise, as if from sleep.",
+   "sa": "रामः लक्ष्मणः वानराः च ओषधीः जिघ्रन्ति। ते निद्रायाः इव उत्तिष्ठन्ति।",
+   "ctx": "cutscene herbs · narration (Kathā) — Yuddha 6.74.73–74 (तं गन्धमाघ्राय महौषधीनाम्; the army rises like sleepers at the end of night: निशान्तेष्विव संप्रबुद्धाः)"
+  }
+ ]
+}

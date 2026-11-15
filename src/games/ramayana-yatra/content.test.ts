@@ -10,7 +10,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { checkAnustubh, devaToSlp1, joinSandhi, normalizeDeva, slp1ToDeva, validateDeva } from '@sanskrit';
 import { loadContent } from './content';
 import type { LexEntry, NameEntry, Shloka } from './types';
@@ -27,7 +27,14 @@ import storyCh6 from './content/story-ch6.json';
 import { ALLY_IDS, ENEMY_IDS, SPRITE_IDS } from './catalog';
 
 const content = loadContent();
-const REVIEW_MD = readFileSync(new URL('./REVIEW.md', import.meta.url), 'utf8');
+/**
+ * REVIEW.md, and (v0.6, notes/v06-ownership.md) each content package's REVIEW-v06-<a|b|c>.md after it: the packages add
+ * their verses' sign-off rows and review items there without editing the shared file; every section of a name counts.
+ */
+const REVIEW_MD = ['REVIEW.md', 'REVIEW-v06-a.md', 'REVIEW-v06-b.md', 'REVIEW-v06-c.md']
+  .filter((f) => f === 'REVIEW.md' || existsSync(new URL(`./${f}`, import.meta.url)))
+  .map((f) => readFileSync(new URL(`./${f}`, import.meta.url), 'utf8'))
+  .join('\n');
 
 // ───────────────────────── Allowlists (mirror every change in REVIEW.md) ─────────────────────────
 
@@ -86,6 +93,32 @@ export const SANDHI_ENGINE_EXCEPTIONS: Record<string, string> = {
  */
 export const OMITTED_NAME_IDS: readonly string[] = ['person.rishika', 'person.villager_f'];
 
+/**
+ * v0.6 (notes/v06-ownership.md): a content package keeps the allowlist entries of ITS verses (v0.6, kathaOnly) in its own
+ * REVIEW-v06-<a|b|c>.md, under "## Single-source items" / "## Sandhi-engine exceptions" as "- `id`: reason" — no edit of
+ * this shared file. They join the two lists above (and are mirrored by construction); v0.5 verses stay listed here.
+ */
+function packageAllowlist(heading: string): Record<string, string> {
+  const v06 = new Set(content.shlokas.filter((x) => x.kathaOnly).map((x) => x.id));
+  const out: Record<string, string> = {};
+  for (const f of ['REVIEW-v06-a.md', 'REVIEW-v06-b.md', 'REVIEW-v06-c.md']) {
+    const url = new URL(`./${f}`, import.meta.url);
+    if (!existsSync(url)) continue;
+    let on = false;
+    for (const l of readFileSync(url, 'utf8').split('\n')) {
+      if (/^##\s/.test(l)) {
+        on = l.trim().toLowerCase() === `## ${heading}`.toLowerCase();
+        continue;
+      }
+      const m = on ? /^\s*-\s+`([^`]+)`\s*:?\s*(.*)$/.exec(l) : null;
+      if (m && v06.has(m[1] as string)) out[m[1] as string] = (m[2] ?? '').trim();
+    }
+  }
+  return out;
+}
+Object.assign(SINGLE_SOURCE, packageAllowlist('Single-source items'));
+Object.assign(SANDHI_ENGINE_EXCEPTIONS, packageAllowlist('Sandhi-engine exceptions'));
+
 // ───────────────────────── Helpers ─────────────────────────
 
 const LATIN_OR_IAST = /[A-Za-z\u00C0-\u024F\u1E00-\u1EFF]/;
@@ -120,14 +153,17 @@ const host = (url: string | undefined): string | null => {
   }
 };
 
-/** Bullet ids listed under a "## <heading>" section of REVIEW.md (lines starting with "- `id`"). */
+/** Bullet ids listed under every "## <heading>" section of REVIEW.md (+ REVIEW-v06-*.md) (lines starting with "- `id`"). */
 function reviewSection(heading: string): string[] {
   const lines = REVIEW_MD.split('\n');
-  const start = lines.findIndex((l) => l.trim().toLowerCase() === `## ${heading}`.toLowerCase());
-  if (start < 0) return [];
   const ids: string[] = [];
-  for (const l of lines.slice(start + 1)) {
-    if (/^##\s/.test(l)) break;
+  let on = false;
+  for (const l of lines) {
+    if (/^##\s/.test(l)) {
+      on = l.trim().toLowerCase() === `## ${heading}`.toLowerCase();
+      continue;
+    }
+    if (!on) continue;
     const m = /^\s*-\s+`([^`]+)`/.exec(l);
     if (m) ids.push(m[1] as string);
   }
@@ -367,7 +403,10 @@ test('shlokas: provenance, two confirmations, never humanReviewed', () => {
     if (!twoSources && !(s.id in SINGLE_SOURCE)) f.push(`${s.id}: only one source (${[...hosts].join(', ') || 'none'}) and no independent match; add a second source, or list it in SINGLE_SOURCE and REVIEW.md "## Single-source items"`);
     if (twoSources && s.id in SINGLE_SOURCE) f.push(`${s.id}: listed in SINGLE_SOURCE but now has two confirmations; remove it there and in REVIEW.md`);
   }
-  const discrepancySection = (REVIEW_MD.split(/^## Discrepancies found by independent verification$/m)[1] ?? '').split(/^## /m)[0] ?? '';
+  const discrepancySection = REVIEW_MD.split(/^## Discrepancies found by independent verification$/m)
+    .slice(1)
+    .map((part) => part.split(/^## /m)[0] ?? '')
+    .join('\n');
   for (const id of Object.keys(SINGLE_SOURCE)) if (!shlokaById.has(id)) f.push(`SINGLE_SOURCE: "${id}" is not a verse id`);
   for (const [id, c] of Object.entries(INDEPENDENT_CHECKS)) {
     if (!shlokaById.has(id)) f.push(`INDEPENDENT_CHECKS: "${id}" is not a verse id`);

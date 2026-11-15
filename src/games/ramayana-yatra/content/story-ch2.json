@@ -1707,9 +1707,25 @@
        "portrait": "kausalya"
       },
       {
-       "say": "May the forest, the rivers and the mountains protect him. May every god and sage keep him safe.",
-       "who": "person.kausalya",
-       "portrait": "kausalya"
+       "if": "style.katha&!heard.s-yan-mangalam",
+       "then": [
+        {
+         "say": "I said this to my son:",
+         "who": "person.kausalya",
+         "portrait": "kausalya"
+        },
+        {
+         "shloka": "s-yan-mangalam",
+         "mode": "hear"
+        }
+       ],
+       "else": [
+        {
+         "say": "May the forest, the rivers and the mountains protect him. May every god and sage keep him safe.",
+         "who": "person.kausalya",
+         "portrait": "kausalya"
+        }
+       ]
       }
      ],
      "else": [
@@ -1732,6 +1748,20 @@
        "say": "A wife walks with her husband, in the palace or the forest. I am not afraid of the forest. With Rama it will be like a garden.",
        "who": "person.sita",
        "portrait": "sita"
+      },
+      {
+       "if": "style.katha&!heard.s-agratas-te",
+       "then": [
+        {
+         "say": "This is what I told Rama:",
+         "who": "person.sita",
+         "portrait": "sita"
+        },
+        {
+         "shloka": "s-agratas-te",
+         "mode": "hear"
+        }
+       ]
       }
      ],
      "else": [
@@ -2126,9 +2156,20 @@
        "if": "ch2.left_city",
        "then": [
         {
-         "say": "Rama, my dear friend! This land is yours. Stay and rule here, and let me serve you.",
-         "who": "person.guha",
-         "portrait": "guha"
+         "if": "style.katha",
+         "then": [
+          {
+           "shloka": "s-yathayodhya",
+           "mode": "hear"
+          }
+         ],
+         "else": [
+          {
+           "say": "Rama, my dear friend! This land is yours. Stay and rule here, and let me serve you.",
+           "who": "person.guha",
+           "portrait": "guha"
+          }
+         ]
         },
         {
          "say": "Guha, I have vowed to live as a hermit in the forest. Your love is gift enough.",
@@ -2285,6 +2326,10 @@
            "say": "In mid-stream Sita bows to the Ganga and prays."
           },
           {
+           "shloka": "s-gange",
+           "mode": "hear"
+          },
+          {
            "say": "Mother Ganga, guard Rama. Fourteen years we will live in the forest. Bring us home again, and I will worship you.",
            "who": "person.sita",
            "portrait": "sita"
@@ -2419,9 +2464,20 @@
        "say": "Chitrakuta: a green hill of flowering trees above the Mandakini river. Lakshmana builds a hut of leaves, and for a while the three live happily."
       },
       {
-       "say": "Sita, see the Mandakini, bright with lotuses. Living here with you and Lakshmana, I do not miss the kingdom at all.",
-       "who": "person.rama",
-       "portrait": "rama"
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-na-rajyad",
+         "mode": "hear"
+        }
+       ],
+       "else": [
+        {
+         "say": "Sita, see the Mandakini, bright with lotuses. Living here with you and Lakshmana, I do not miss the kingdom at all.",
+         "who": "person.rama",
+         "portrait": "rama"
+        }
+       ]
       },
       {
        "say": "Nor do I. The forest has been kind to us.",
@@ -2473,6 +2529,20 @@
        "say": "I will keep the sandals safe, brother.",
        "who": "person.bharata",
        "portrait": "bharata"
+      },
+      {
+       "if": "style.katha&!heard.s-yad-acarati",
+       "then": [
+        {
+         "say": "On his last night, my father remembered something he did long ago. He said to mother Kausalya:",
+         "who": "person.bharata",
+         "portrait": "bharata"
+        },
+        {
+         "shloka": "s-yad-acarati",
+         "mode": "hear"
+        }
+       ]
       }
      ],
      "else": [
@@ -2491,12 +2561,71 @@
        "portrait": "bharata"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Rama grieves for his father, then comforts his brother:"
+        },
+        {
+         "shloka": "s-kshayanta",
+         "mode": "hear"
+        }
+       ]
+      },
+      {
        "say": "Bharata, our father's word must stand. I will return when the fourteen years are over. Rule for the people until then.",
        "who": "person.rama",
        "portrait": "rama"
       },
       {
-       "say": "At last Bharata asks for Rama's sandals. \"I will set them on the throne,\" he says, \"and rule as their servant, living as a hermit until you return.\""
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "At last Bharata sets down a pair of sandals adorned with gold."
+        },
+        {
+         "prop": "paduka",
+         "sprite": "paduka",
+         "at": "bharata"
+        },
+        {
+         "prop": "paduka",
+         "to": "player",
+         "ms": 700
+        },
+        {
+         "fx": "tint",
+         "color": "gold"
+        },
+        {
+         "shloka": "s-paduke",
+         "mode": "hear"
+        },
+        {
+         "say": "Rama stands on the sandals, then gives them to Bharata."
+        },
+        {
+         "prop": "paduka",
+         "to": "bharata",
+         "ms": 700
+        },
+        {
+         "wait": 700
+        },
+        {
+         "prop": "paduka",
+         "carry": "bharata"
+        },
+        {
+         "fx": "tint",
+         "color": "none"
+        }
+       ],
+       "else": [
+        {
+         "say": "At last Bharata asks for Rama's sandals. \"I will set them on the throne,\" he says, \"and rule as their servant, living as a hermit until you return.\""
+        }
+       ]
       },
       {
        "say": "Bharata places the sandals on his head and goes back to Ayodhya."

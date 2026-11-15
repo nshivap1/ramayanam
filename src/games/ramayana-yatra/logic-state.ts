@@ -10,6 +10,7 @@ import { isDir, isSolidTile, mapById } from './logic-world';
 import { ARMED_FLAG, KATHA_FLAG, MASTERED, applyKathaFloor, journeySteps, kathaSave } from './logic-katha';
 import { armKatha } from './logic-learning';
 import { toReader } from './logic-reader';
+import { journeyContent } from './logic-journey';
 
 export const INTRO_EVENT = 'common.intro';
 export const START_LEVEL = 3;
@@ -50,7 +51,9 @@ function baseState(seed: number, level: Level, save: SaveData): GameState {
  * field at all (the practice game, exactly as v0.3). `opts.reader` (v0.4.3): the story-text language as a reader level
  * ('sa' / 'sa-en'; 'en' or absent = no `reader` field); the view also sends `set-reader` on every start and change.
  */
-export function newGame(seed: number, level: Level, content: GameContent, opts: { name: string; avatar: 'a' | 'b'; style?: JourneyStyle; reader?: Reader | 'en' }): GameState {
+export function newGame(seed: number, level: Level, all: GameContent, opts: { name: string; avatar: 'a' | 'b'; style?: JourneyStyle; reader?: Reader | 'en' }): GameState {
+  // v0.6: the practice game never sees Kathā-only content (logic-journey)
+  const content = journeyContent(all, { style: opts?.style });
   const start = startOf(content);
   const save: SaveData = {
     v: 1,
@@ -243,8 +246,10 @@ function standable(content: GameContent, p: { mapId: string; x: number; y: numbe
 }
 
 /** Validate/migrate a stored save. Returns null for anything unusable; never throws. */
-export function loadGame(raw: unknown, seed: number, level: Level, content: GameContent): GameState | null {
+export function loadGame(raw: unknown, seed: number, level: Level, all: GameContent): GameState | null {
   let save: SaveData;
+  // v0.6: the practice game never sees Kathā-only content (logic-journey)
+  const content = journeyContent(all, isObj(raw) && raw['style'] === 'katha' ? { style: 'katha' } : null);
   try {
     save = parseSave(raw, content);
   } catch (e) {
@@ -279,7 +284,8 @@ export function loadGame(raw: unknown, seed: number, level: Level, content: Game
 
 export const REVIEW_MAX = 12;
 
-export function sessionResult(state: GameState, content: GameContent): SessionResult {
+export function sessionResult(state: GameState, all: GameContent): SessionResult {
+  const content = journeyContent(all, state.save);
   const idx = indexOf(content);
   const ss = state.session;
   const won = !!state.save.flags['ch6.complete'];

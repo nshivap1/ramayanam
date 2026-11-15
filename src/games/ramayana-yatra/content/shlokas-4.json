@@ -1,0 +1,2295 @@
+{
+  "version": 1,
+  "about": "v0.6 verses of package B (Araṇya, Kiṣkindhā) (OWNER: v0.6 WP-B). Same schema as shlokas-1.json; every verse has \"kathaOnly\": true (heard in Kathā only; the practice game never sees it). Built and checked by v06-B (notes/v06-b.md).",
+  "shlokas": [
+    {
+      "id": "s-apyaham-jivitam",
+      "kathaOnly": true,
+      "kanda": 3,
+      "sarga": 10,
+      "verse": 18,
+      "edition": "Vulgate numbering as on valmikiramayan.net: pādas 1–2 are 3.10.18cd and pādas 3–4 are 3.10.19ab (the couplet straddles two numbered verses; the page misprints its markers as ४-१०-N); one whole verse, 3.9.18, in the Baroda critical edition (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "अप्यहं जीवितं जह्यां",
+        "त्वां वा सीते सलक्ष्मणाम्",
+        "न तु प्रतिज्ञां संश्रुत्य",
+        "ब्राह्मणेभ्यो विशेषतः"
+      ],
+      "meterNote": "pāda 3 (LGLGGGGL, 8 syll.): ma-vipulā (syllables 5–7 GGG). Text not edited; checkAnustubh accepts only the pathyā form.",
+      "words": [
+        {
+          "form": "अपि",
+          "lexId": "api",
+          "grammar": "indecl.",
+          "gloss": "even",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "अहम्",
+          "lexId": "aham",
+          "grammar": "nom. sg.",
+          "gloss": "I",
+          "role": "subject",
+          "pada": 0
+        },
+        {
+          "form": "जीवितम्",
+          "lexId": "jivita",
+          "grammar": "acc. sg. n.",
+          "gloss": "life",
+          "role": "object",
+          "pada": 0
+        },
+        {
+          "form": "जह्याम्",
+          "lexId": "ha-2",
+          "grammar": "1st sg. optative (√hā)",
+          "gloss": "I would give up",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "त्वाम्",
+          "lexId": "tvam",
+          "grammar": "acc. sg.",
+          "gloss": "you",
+          "role": "object",
+          "pada": 1
+        },
+        {
+          "form": "वा",
+          "lexId": "va",
+          "grammar": "indecl.",
+          "gloss": "or",
+          "role": "indeclinable",
+          "pada": 1
+        },
+        {
+          "form": "सीते",
+          "lexId": "sita",
+          "grammar": "voc. sg. f.",
+          "gloss": "Sītā",
+          "role": "address",
+          "pada": 1
+        },
+        {
+          "form": "सलक्ष्मणाम्",
+          "lexId": "salakshmana",
+          "grammar": "acc. sg. f. (compound)",
+          "gloss": "together with Lakṣmaṇa",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "न",
+          "lexId": "na",
+          "grammar": "indecl.",
+          "gloss": "not",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "तु",
+          "lexId": "tu",
+          "grammar": "indecl.",
+          "gloss": "but",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "प्रतिज्ञाम्",
+          "lexId": "pratijna",
+          "grammar": "acc. sg. f.",
+          "gloss": "a promise",
+          "role": "object",
+          "pada": 2
+        },
+        {
+          "form": "संश्रुत्य",
+          "lexId": "shru",
+          "grammar": "absolutive (sam + √śru)",
+          "gloss": "having promised",
+          "pada": 2
+        },
+        {
+          "form": "ब्राह्मणेभ्यः",
+          "lexId": "brahmana",
+          "grammar": "dat. pl. m.",
+          "gloss": "to the Brahmins (the sages)",
+          "role": "recipient",
+          "pada": 3
+        },
+        {
+          "form": "विशेषतः",
+          "lexId": "visheshatas",
+          "grammar": "indecl.",
+          "gloss": "above all, especially",
+          "role": "indeclinable",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "अप्यहं",
+          "split": [
+            "अपि",
+            "अहम्"
+          ],
+          "note": "i before a different vowel becomes y (yaṇ-sandhi): api + aham → apyaham; the final m then becomes anusvāra before the consonant j."
+        },
+        {
+          "joined": "ब्राह्मणेभ्यो विशेषतः",
+          "split": [
+            "ब्राह्मणेभ्यः",
+            "विशेषतः"
+          ],
+          "note": "-aḥ becomes -o before a voiced consonant (here v)."
+        }
+      ],
+      "translation": "I would sooner give up my life, or you, Sītā, and Lakṣmaṇa with you, than break a promise once given, above all a promise given to the Brahmins.",
+      "context": "In the Daṇḍaka forest Sītā gently asks Rāma why he should take up arms against rākṣasas who have not harmed him. Rāma answers that he has promised the forest sages his protection, and a promise once given is not taken back.",
+      "speaker": "Rāma (to Sītā)",
+      "teaches": [
+        "i → y before a vowel (yaṇ)",
+        "optative \"I would …\" (jahyām)",
+        "absolutive in -ya (saṃśrutya)",
+        "dative plural in -bhyaḥ"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga10/aranyasans10.htm",
+            "note": "Printed word-split: अपि अहम् जीवितम् जह्याम् त्वाम् वा सीते स लक्ष्मणाम् || ४-१०-१८ / न तु प्रतिज्ञाम् संश्रुत्य ब्राह्मणेभ्यो विशेषतः | (the next line closes ४-१०-१९; the page misprints the kāṇḍa digit). Confirms wording, order and the vulgate division.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-9/verse-18",
+            "note": "Critical edition 3.9.18, one verse: अप्यहं जीवितं जह्यां त्वां वा सीते सलक्ष्मणाम् । न तु प्रतिज्ञां संश्रुत्य ब्राह्मणेभ्यो विशेषतः ॥ Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses; valmikiramayan.net prints them split (स लक्ष्मणाम्), the critical edition joined. Like s-naham-janami, the couplet straddles two vulgate verses; the game id keeps verse = 18. In the critical edition it is a single verse (3.9.18)."
+      }
+    },
+    {
+      "id": "s-tasmajjato",
+      "kathaOnly": true,
+      "kanda": 3,
+      "sarga": 14,
+      "verse": 33,
+      "edition": "Vulgate numbering 3.14.33 as on valmikiramayan.net; critical edition 3.13.33 (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "तस्माज्जातोऽहमरुणात्",
+        "संपातिश्च ममाग्रजः",
+        "जटायुरिति मां विद्धि",
+        "श्येनीपुत्रमरिंदम"
+      ],
+      "meterNote": "pāda 1 (GGGGLLLG, 8 syll.): na-vipulā (syllables 5–7 LLL). Text not edited; checkAnustubh accepts only the pathyā form.",
+      "words": [
+        {
+          "form": "तस्मात्",
+          "lexId": "tad",
+          "grammar": "abl. sg. m.",
+          "gloss": "from him",
+          "role": "source",
+          "pada": 0
+        },
+        {
+          "form": "जातः",
+          "lexId": "jan",
+          "grammar": "past passive participle (√jan), nom. sg. m.",
+          "gloss": "born",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "अहम्",
+          "lexId": "aham",
+          "grammar": "nom. sg.",
+          "gloss": "I",
+          "role": "subject",
+          "pada": 0
+        },
+        {
+          "form": "अरुणात्",
+          "lexId": "aruna",
+          "grammar": "abl. sg. m.",
+          "gloss": "from Aruṇa",
+          "role": "source",
+          "pada": 0
+        },
+        {
+          "form": "संपातिः",
+          "lexId": "sampati",
+          "grammar": "nom. sg. m.",
+          "gloss": "Sampāti",
+          "role": "subject",
+          "pada": 1
+        },
+        {
+          "form": "च",
+          "lexId": "ca",
+          "grammar": "indecl.",
+          "gloss": "and",
+          "role": "indeclinable",
+          "pada": 1
+        },
+        {
+          "form": "मम",
+          "lexId": "aham",
+          "grammar": "gen. sg.",
+          "gloss": "my",
+          "role": "possessor",
+          "pada": 1
+        },
+        {
+          "form": "अग्रजः",
+          "lexId": "agraja",
+          "grammar": "nom. sg. m. (predicate)",
+          "gloss": "elder brother",
+          "pada": 1
+        },
+        {
+          "form": "जटायुः",
+          "lexId": "jatayu",
+          "grammar": "nom. sg. m. (the name, with iti)",
+          "gloss": "Jaṭāyu",
+          "pada": 2
+        },
+        {
+          "form": "इति",
+          "lexId": "iti",
+          "grammar": "indecl.",
+          "gloss": "(marks the name)",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "माम्",
+          "lexId": "aham",
+          "grammar": "acc. sg.",
+          "gloss": "me",
+          "role": "object",
+          "pada": 2
+        },
+        {
+          "form": "विद्धि",
+          "lexId": "vid",
+          "grammar": "2nd sg. imperative (√vid)",
+          "gloss": "know!",
+          "role": "verb",
+          "pada": 2
+        },
+        {
+          "form": "श्येनीपुत्रम्",
+          "lexId": "shyeniputra",
+          "grammar": "acc. sg. m. (compound)",
+          "gloss": "the son of Śyenī",
+          "role": "modifier",
+          "pada": 3
+        },
+        {
+          "form": "अरिंदम",
+          "lexId": "arindama",
+          "grammar": "voc. sg. m.",
+          "gloss": "tamer of foes",
+          "role": "address",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "तस्माज्जातोऽहमरुणात्",
+          "split": [
+            "तस्मात्",
+            "जातः",
+            "अहम्",
+            "अरुणात्"
+          ],
+          "note": "Three joins in one pāda: t before j becomes j (tasmāj jātaḥ); -aḥ before a becomes o and swallows the a, marked by the avagraha ऽ (jāto 'ham); final m is written together with the next vowel (aham aruṇāt)."
+        },
+        {
+          "joined": "संपातिश्च",
+          "split": [
+            "संपातिः",
+            "च"
+          ],
+          "note": "Visarga before c becomes ś."
+        },
+        {
+          "joined": "ममाग्रजः",
+          "split": [
+            "मम",
+            "अग्रजः"
+          ],
+          "note": "a + a merge into ā (savarṇa-dīrgha)."
+        },
+        {
+          "joined": "जटायुरिति",
+          "split": [
+            "जटायुः",
+            "इति"
+          ],
+          "note": "Visarga after u becomes r before a vowel."
+        },
+        {
+          "joined": "श्येनीपुत्रमरिंदम",
+          "split": [
+            "श्येनीपुत्रम्",
+            "अरिंदम"
+          ],
+          "note": "Final m is written together with the following vowel."
+        }
+      ],
+      "translation": "From that Aruṇa I was born, and Sampāti is my elder brother. Know me as Jaṭāyu, the son of Śyenī, O tamer of foes.",
+      "context": "At Pañcavaṭī a great vulture comes to Rāma and Lakṣmaṇa. He tells them his lineage down to Aruṇa, names his elder brother Sampāti, and offers to guard Sītā while the brothers are away.",
+      "speaker": "Jaṭāyu (to Rāma)",
+      "teaches": [
+        "ablative \"from\" (tasmāt, aruṇāt)",
+        "avagraha ऽ (jāto 'ham)",
+        "imperative viddhi \"know!\"",
+        "iti marking a name"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga14/aranyasans14.htm",
+            "note": "Verse ३-१४-३३ printed word-split: तस्मात् जातो अहम् अरुणात् संपातिः च मम अग्रजः | जटायुर् इति माम् विद्धि श्येनी पुत्रम् अरिंदम. Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-13/verse-33",
+            "note": "Critical edition 3.13.33: तस्माज्जातो ऽहमरुणात् संपातिश्च ममाग्रजः । जटायुरिति मां विद्धि श्येनीपुत्रमरिंदम ॥ Pāda text follows this letter for letter (the avagraha is written without the space).",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses, both with anusvāra in संपातिः and अरिंदम. The research note reports the IIT Kanpur text numbering this verse 3.14.32. Cross-book link: Sampāti, named here, is the bird who points the way to Laṅkā in Kiṣkindhā 4.58 (s-ito-dvipe)."
+      }
+    },
+    {
+      "id": "s-sulabhah-purusha",
+      "kathaOnly": true,
+      "kanda": 3,
+      "sarga": 37,
+      "verse": 2,
+      "edition": "Vulgate numbering 3.37.2 as on valmikiramayan.net; critical edition 3.35.2 (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "सुलभाः पुरुषा राजन्",
+        "सततं प्रियवादिनः",
+        "अप्रियस्य च पथ्यस्य",
+        "वक्ता श्रोता च दुर्लभः"
+      ],
+      "words": [
+        {
+          "form": "सुलभाः",
+          "lexId": "sulabha",
+          "grammar": "nom. pl. m. (predicate)",
+          "gloss": "easy to find",
+          "pada": 0
+        },
+        {
+          "form": "पुरुषाः",
+          "lexId": "purusha",
+          "grammar": "nom. pl. m.",
+          "gloss": "people, men",
+          "role": "subject",
+          "pada": 0
+        },
+        {
+          "form": "राजन्",
+          "lexId": "rajan",
+          "grammar": "voc. sg. m.",
+          "gloss": "O king",
+          "role": "address",
+          "pada": 0
+        },
+        {
+          "form": "सततम्",
+          "lexId": "satatam",
+          "grammar": "indecl.",
+          "gloss": "always",
+          "role": "indeclinable",
+          "pada": 1
+        },
+        {
+          "form": "प्रियवादिनः",
+          "lexId": "priyavadin",
+          "grammar": "nom. pl. m. (compound)",
+          "gloss": "who say pleasant things",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "अप्रियस्य",
+          "lexId": "apriya",
+          "grammar": "gen. sg. n.",
+          "gloss": "of what is unpleasant",
+          "role": "possessor",
+          "pada": 2
+        },
+        {
+          "form": "च",
+          "lexId": "ca",
+          "grammar": "indecl.",
+          "gloss": "and (yet)",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "पथ्यस्य",
+          "lexId": "pathya",
+          "grammar": "gen. sg. n.",
+          "gloss": "of what is wholesome",
+          "role": "possessor",
+          "pada": 2
+        },
+        {
+          "form": "वक्ता",
+          "lexId": "vaktr",
+          "grammar": "nom. sg. m.",
+          "gloss": "a speaker",
+          "role": "subject",
+          "pada": 3
+        },
+        {
+          "form": "श्रोता",
+          "lexId": "shrotr",
+          "grammar": "nom. sg. m.",
+          "gloss": "a listener",
+          "role": "subject",
+          "pada": 3
+        },
+        {
+          "form": "च",
+          "lexId": "ca",
+          "grammar": "indecl.",
+          "gloss": "and",
+          "role": "indeclinable",
+          "pada": 3
+        },
+        {
+          "form": "दुर्लभः",
+          "lexId": "durlabha",
+          "grammar": "nom. sg. m. (predicate)",
+          "gloss": "hard to find",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "पुरुषा राजन्",
+          "split": [
+            "पुरुषाः",
+            "राजन्"
+          ],
+          "note": "-āḥ drops its visarga before a voiced sound (here r)."
+        },
+        {
+          "joined": "सततं प्रियवादिनः",
+          "split": [
+            "सततम्",
+            "प्रियवादिनः"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "King, people who always say pleasant things are easy to find; but one who speaks what is unpleasant yet good for you, and one who will listen to it, are hard to find.",
+      "context": "Rāvaṇa asks Mārīca to help him carry off Sītā. Mārīca begins his warning: flatterers are many, but few will say the unwelcome truth, and fewer still will hear it. The same couplet returns in the Yuddha-kāṇḍa (vulgate 6.16.21), spoken by Vibhīṣaṇa to Rāvaṇa.",
+      "speaker": "Mārīca (to Rāvaṇa)",
+      "teaches": [
+        "su- \"easy\" / dur- \"hard\" (sulabha, durlabha)",
+        "agent nouns in -tṛ (vaktā, śrotā)",
+        "genitive \"of\" (apriyasya, pathyasya)",
+        "visarga dropped before a voiced sound"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga37/aranyasans37.htm",
+            "note": "Verse ३-३७-२ printed word-split: सुलभाः पुरुषा राजन् सततम् प्रिय वादिनः | अप्रियस्य च पथ्यस्य वक्ता श्रोता च दुर्लभः. Confirms wording and number (च, not तु).",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-35/verse-2",
+            "note": "Critical edition 3.35.2: सुलभाः पुरुषा राजन् सततं प्रियवादिनः । अप्रियस्य च पथ्यस्य वक्ता श्रोता च दुर्लभः ॥ Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same letters in both witnesses (spacing only). The research note reports the IIT Kanpur text reading अप्रियस्य तु पथ्यस्य; we follow valmikiramayan.net and the critical edition (च). The same couplet recurs at Yuddha 6.16.21cd–22ab on valmikiramayan.net (re-fetched 2026-11-14), there reading अप्रियस्य तु पथ्यस्य: kept for package C's \"same words, two counsellors\" moment."
+      }
+    },
+    {
+      "id": "s-amantraye",
+      "kathaOnly": true,
+      "kanda": 3,
+      "sarga": 49,
+      "verse": 30,
+      "edition": "Vulgate numbering 3.49.30 as on valmikiramayan.net; critical edition 3.47.29 (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "आमन्त्रये जनस्थानं",
+        "कर्णिकारांश्च पुष्पितान्",
+        "क्षिप्रं रामाय शंसध्वं",
+        "सीतां हरति रावणः"
+      ],
+      "words": [
+        {
+          "form": "आमन्त्रये",
+          "lexId": "mantr",
+          "grammar": "1st sg. present, middle (ā + √mantr)",
+          "gloss": "I call on, I bid farewell to",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "जनस्थानम्",
+          "lexId": "janasthana",
+          "grammar": "acc. sg. n.",
+          "gloss": "Janasthāna",
+          "role": "object",
+          "pada": 0
+        },
+        {
+          "form": "कर्णिकारान्",
+          "lexId": "karnikara",
+          "grammar": "acc. pl. m.",
+          "gloss": "the karṇikāra trees",
+          "role": "object",
+          "pada": 1
+        },
+        {
+          "form": "च",
+          "lexId": "ca",
+          "grammar": "indecl.",
+          "gloss": "and",
+          "role": "indeclinable",
+          "pada": 1
+        },
+        {
+          "form": "पुष्पितान्",
+          "lexId": "pushpita",
+          "grammar": "acc. pl. m.",
+          "gloss": "in flower",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "क्षिप्रम्",
+          "lexId": "kshipram",
+          "grammar": "indecl.",
+          "gloss": "quickly",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "रामाय",
+          "lexId": "rama",
+          "grammar": "dat. sg. m.",
+          "gloss": "to Rāma",
+          "role": "recipient",
+          "pada": 2
+        },
+        {
+          "form": "शंसध्वम्",
+          "lexId": "shams",
+          "grammar": "2nd pl. imperative, middle (√śaṃs)",
+          "gloss": "tell!",
+          "role": "verb",
+          "pada": 2
+        },
+        {
+          "form": "सीताम्",
+          "lexId": "sita",
+          "grammar": "acc. sg. f.",
+          "gloss": "Sītā",
+          "role": "object",
+          "pada": 3
+        },
+        {
+          "form": "हरति",
+          "lexId": "hr",
+          "grammar": "3rd sg. present (√hṛ)",
+          "gloss": "is carrying off",
+          "role": "verb",
+          "pada": 3
+        },
+        {
+          "form": "रावणः",
+          "lexId": "ravana",
+          "grammar": "nom. sg. m.",
+          "gloss": "Rāvaṇa",
+          "role": "subject",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "कर्णिकारांश्च",
+          "split": [
+            "कर्णिकारान्",
+            "च"
+          ],
+          "note": "Final n before c becomes anusvāra + ś (karṇikārān ca → karṇikārāṃś ca, 8.3.7)."
+        },
+        {
+          "joined": "क्षिप्रं रामाय",
+          "split": [
+            "क्षिप्रम्",
+            "रामाय"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "I call on Janasthāna, and on you, karṇikāra trees in flower: tell Rāma quickly that Rāvaṇa is carrying Sītā away.",
+      "context": "Carried off through the sky by Rāvaṇa, Sītā calls on the land of Janasthāna and its flowering karṇikāra trees to take her message to Rāma.",
+      "speaker": "Sītā (to the trees of Janasthāna)",
+      "teaches": [
+        "dative \"to Rāma\" (rāmāya)",
+        "plural imperative (śaṃsadhvam)",
+        "n + c → ṃś (karṇikārāṃś ca)",
+        "present tense for what is happening now (harati)"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga49/aranyasans49.htm",
+            "note": "Verse ३-४९-३० printed word-split: आमंत्रये जनस्थानम् कर्णिकारान् च पुष्पितान् | क्षिप्रम् रामाय शंसध्वम् सीताम् हरति रावणः. Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-47/verse-29",
+            "note": "Critical edition 3.47.29: आमन्त्रये जनस्थानं कर्णिकारांश्च पुष्पितान् । क्षिप्रं रामाय शंसध्वं सीतां हरति रावणः ॥ Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses; orthography only: valmikiramayan.net spells आमंत्रये (anusvāra), the critical edition आमन्त्रये. The research note reports the IIT Kanpur text reading आमन्त्रये जनस्थाने कर्णिकारान्सुपुष्पितान्; we follow the two agreeing witnesses."
+      }
+    },
+    {
+      "id": "s-asti-kaccit",
+      "kathaOnly": true,
+      "kanda": 3,
+      "sarga": 60,
+      "verse": 12,
+      "edition": "Vulgate numbering 3.60.12 as on valmikiramayan.net; critical edition 3.58.12 (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "अस्ति कच्चित्त्वया दृष्टा",
+        "सा कदम्बप्रिया प्रिया",
+        "कदम्ब यदि जानीषे",
+        "शंस सीतां शुभाननाम्"
+      ],
+      "words": [
+        {
+          "form": "अस्ति",
+          "lexId": "as",
+          "grammar": "3rd sg. present (√as)",
+          "gloss": "is it (so)",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "कच्चित्",
+          "lexId": "kaccit",
+          "grammar": "indecl.",
+          "gloss": "perhaps? (asks a question)",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "त्वया",
+          "lexId": "tvam",
+          "grammar": "instr. sg.",
+          "gloss": "by you",
+          "role": "instrument",
+          "pada": 0
+        },
+        {
+          "form": "दृष्टा",
+          "lexId": "drsh",
+          "grammar": "past passive participle (√dṛś), nom. sg. f.",
+          "gloss": "seen",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "सा",
+          "lexId": "tad",
+          "grammar": "nom. sg. f.",
+          "gloss": "she",
+          "role": "subject",
+          "pada": 1
+        },
+        {
+          "form": "कदम्बप्रिया",
+          "lexId": "kadambapriya",
+          "grammar": "nom. sg. f. (compound)",
+          "gloss": "who loved the kadamba",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "प्रिया",
+          "lexId": "priya",
+          "grammar": "nom. sg. f.",
+          "gloss": "my beloved",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "कदम्ब",
+          "lexId": "kadamba",
+          "grammar": "voc. sg. m.",
+          "gloss": "O kadamba tree",
+          "role": "address",
+          "pada": 2
+        },
+        {
+          "form": "यदि",
+          "lexId": "yadi",
+          "grammar": "indecl.",
+          "gloss": "if",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "जानीषे",
+          "lexId": "jna",
+          "grammar": "2nd sg. present, middle (√jñā)",
+          "gloss": "you know",
+          "role": "verb",
+          "pada": 2
+        },
+        {
+          "form": "शंस",
+          "lexId": "shams",
+          "grammar": "2nd sg. imperative (√śaṃs)",
+          "gloss": "tell (me of)!",
+          "role": "verb",
+          "pada": 3
+        },
+        {
+          "form": "सीताम्",
+          "lexId": "sita",
+          "grammar": "acc. sg. f.",
+          "gloss": "Sītā",
+          "role": "object",
+          "pada": 3
+        },
+        {
+          "form": "शुभाननाम्",
+          "lexId": "shubhanana",
+          "grammar": "acc. sg. f.",
+          "gloss": "fair-faced",
+          "role": "modifier",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "कच्चित्त्वया",
+          "split": [
+            "कच्चित्",
+            "त्वया"
+          ],
+          "note": "Final t meets initial t: nothing changes, the two words are written together."
+        },
+        {
+          "joined": "सीतां शुभाननाम्",
+          "split": [
+            "सीताम्",
+            "शुभाननाम्"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "Kadamba, have you perhaps seen my beloved, who loved the kadamba? If you know of her, tell me of fair-faced Sītā.",
+      "context": "Rāma finds the hut empty. Half mad with grief, he goes from tree to tree in the forest, asking each one whether it has seen Sītā.",
+      "speaker": "Rāma (to a kadamba tree)",
+      "teaches": [
+        "kaccit in questions (\"perhaps…?\")",
+        "past participle with an instrumental agent (tvayā dṛṣṭā)",
+        "the pun kadambapriyā priyā",
+        "imperative śaṃsa \"tell!\""
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga60/aranyasans60.htm",
+            "note": "Verse ३-६०-१२ printed word-split: अस्ति कच्चित् त्वया दृष्टा सा कदम्ब प्रिया प्रिया | कदम्ब यदि जानीषे शंस सीताम् शुभ आननाम्. Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-58/verse-12",
+            "note": "Critical edition 3.58.12: अस्ति कच्चित्त्वया दृष्टा सा कदम्बप्रिया प्रिया । कदम्ब यदि जानीषे शंस सीतां शुभाननाम् ॥ Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses (spacing only). The research note reports the IIT Kanpur text opening अपि काचित्त्वया दृष्टा; we follow the two agreeing witnesses."
+      }
+    },
+    {
+      "id": "s-sarvatra-khalu",
+      "kathaOnly": true,
+      "kanda": 3,
+      "sarga": 68,
+      "verse": 24,
+      "edition": "Vulgate numbering 3.68.24 as on valmikiramayan.net; critical edition 3.64.24 (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "सर्वत्र खलु दृश्यन्ते",
+        "साधवो धर्मचारिणः",
+        "शूराः शरण्याः सौमित्रे",
+        "तिर्यग्योनिगतेष्वपि"
+      ],
+      "meterNote": "pāda 3 (GGLGGGGG, 8 syll.): ma-vipulā (syllables 5–7 GGG). Text not edited; checkAnustubh accepts only the pathyā form.",
+      "words": [
+        {
+          "form": "सर्वत्र",
+          "lexId": "sarvatra",
+          "grammar": "indecl.",
+          "gloss": "everywhere",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "खलु",
+          "lexId": "khalu",
+          "grammar": "indecl.",
+          "gloss": "indeed",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "दृश्यन्ते",
+          "lexId": "drsh",
+          "grammar": "3rd pl. present passive (√dṛś)",
+          "gloss": "are seen, are found",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "साधवः",
+          "lexId": "sadhu",
+          "grammar": "nom. pl. m.",
+          "gloss": "good people",
+          "role": "subject",
+          "pada": 1
+        },
+        {
+          "form": "धर्मचारिणः",
+          "lexId": "dharmacarin",
+          "grammar": "nom. pl. m. (compound)",
+          "gloss": "who follow dharma",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "शूराः",
+          "lexId": "shura",
+          "grammar": "nom. pl. m.",
+          "gloss": "brave",
+          "role": "modifier",
+          "pada": 2
+        },
+        {
+          "form": "शरण्याः",
+          "lexId": "sharanya",
+          "grammar": "nom. pl. m.",
+          "gloss": "who give refuge",
+          "role": "modifier",
+          "pada": 2
+        },
+        {
+          "form": "सौमित्रे",
+          "lexId": "saumitri",
+          "grammar": "voc. sg. m.",
+          "gloss": "O son of Sumitrā (Lakṣmaṇa)",
+          "role": "address",
+          "pada": 2
+        },
+        {
+          "form": "तिर्यग्योनिगतेषु",
+          "lexId": "tiryagyonigata",
+          "grammar": "loc. pl. m. (compound)",
+          "gloss": "among those born as animals",
+          "role": "location",
+          "pada": 3
+        },
+        {
+          "form": "अपि",
+          "lexId": "api",
+          "grammar": "indecl.",
+          "gloss": "even",
+          "role": "indeclinable",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "साधवो धर्मचारिणः",
+          "split": [
+            "साधवः",
+            "धर्मचारिणः"
+          ],
+          "note": "-aḥ becomes -o before a voiced consonant (here dh)."
+        },
+        {
+          "joined": "तिर्यग्योनिगतेष्वपि",
+          "split": [
+            "तिर्यग्योनिगतेषु",
+            "अपि"
+          ],
+          "note": "u before a different vowel becomes v (yaṇ-sandhi): …gateṣu api → …gateṣvapi."
+        }
+      ],
+      "translation": "Saumitri, good people who follow dharma, brave and ready to give refuge, are found everywhere, even among those born as animals.",
+      "context": "Jaṭāyu has died of the wounds he took fighting Rāvaṇa for Sītā. Over the body of the vulture king, Rāma tells Lakṣmaṇa that goodness and courage are found in every kind of creature.",
+      "speaker": "Rāma (to Lakṣmaṇa)",
+      "teaches": [
+        "passive present (dṛśyante \"are seen\")",
+        "u → v before a vowel (yaṇ)",
+        "locative plural \"among\" (-eṣu)",
+        "vocative Saumitri (son of Sumitrā)"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga68/aranyasans68.htm",
+            "note": "Verse ३-६८-२४ printed word-split: सर्वत्र खलु दृश्यन्ते साधवो धर्म चारिणः | शूराः शरण्याः सौमित्रे तिर्यक् योनि गतेषु अपि. Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-64/verse-24",
+            "note": "Critical edition 3.64.24: सर्वत्र खलु दृश्यन्ते साधवो धर्मचारिणः । शूराः शरण्याः सौमित्रे तिर्यग्योनिगतेष्वपि ॥ Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses; valmikiramayan.net prints तिर्यक् योनि split (the k becomes g inside the compound). The research note reports the IIT Kanpur text with the same reading."
+      }
+    },
+    {
+      "id": "s-maya-tu-vividham",
+      "kathaOnly": true,
+      "kanda": 3,
+      "sarga": 74,
+      "verse": 17,
+      "edition": "Vulgate numbering as on valmikiramayan.net: pādas 1–2 are 3.74.17cd and pādas 3–4 are 3.74.18ab (the couplet straddles two numbered verses); one whole verse, 3.70.13, in the Baroda critical edition (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "मया तु विविधं वन्यं",
+        "संचितं पुरुषर्षभ",
+        "तवार्थे पुरुषव्याघ्र",
+        "पम्पायास्तीरसंभवम्"
+      ],
+      "words": [
+        {
+          "form": "मया",
+          "lexId": "aham",
+          "grammar": "instr. sg.",
+          "gloss": "by me",
+          "role": "instrument",
+          "pada": 0
+        },
+        {
+          "form": "तु",
+          "lexId": "tu",
+          "grammar": "indecl.",
+          "gloss": "and (now)",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "विविधम्",
+          "lexId": "vividha",
+          "grammar": "nom. sg. n.",
+          "gloss": "of many kinds",
+          "role": "modifier",
+          "pada": 0
+        },
+        {
+          "form": "वन्यम्",
+          "lexId": "vanya",
+          "grammar": "nom. sg. n.",
+          "gloss": "forest food (fruits and roots)",
+          "role": "subject",
+          "pada": 0
+        },
+        {
+          "form": "संचितम्",
+          "lexId": "ci",
+          "grammar": "past passive participle (sam + √ci), nom. sg. n.",
+          "gloss": "gathered",
+          "role": "verb",
+          "pada": 1
+        },
+        {
+          "form": "पुरुषर्षभ",
+          "lexId": "purusharshabha",
+          "grammar": "voc. sg. m. (compound)",
+          "gloss": "bull among men",
+          "role": "address",
+          "pada": 1
+        },
+        {
+          "form": "तव",
+          "lexId": "tvam",
+          "grammar": "gen. sg.",
+          "gloss": "your",
+          "role": "possessor",
+          "pada": 2
+        },
+        {
+          "form": "अर्थे",
+          "lexId": "artha",
+          "grammar": "loc. sg. m.",
+          "gloss": "for the sake (of)",
+          "role": "location",
+          "pada": 2
+        },
+        {
+          "form": "पुरुषव्याघ्र",
+          "lexId": "purushavyaghra",
+          "grammar": "voc. sg. m. (compound)",
+          "gloss": "tiger among men",
+          "role": "address",
+          "pada": 2
+        },
+        {
+          "form": "पम्पायाः",
+          "lexId": "pampa",
+          "grammar": "gen. sg. f.",
+          "gloss": "of the Pampā",
+          "role": "possessor",
+          "pada": 3
+        },
+        {
+          "form": "तीरसंभवम्",
+          "lexId": "tirasambhava",
+          "grammar": "nom. sg. n. (compound)",
+          "gloss": "grown on the banks",
+          "role": "modifier",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "तवार्थे",
+          "split": [
+            "तव",
+            "अर्थे"
+          ],
+          "note": "a + a merge into ā (savarṇa-dīrgha)."
+        },
+        {
+          "joined": "पम्पायास्तीरसंभवम्",
+          "split": [
+            "पम्पायाः",
+            "तीरसंभवम्"
+          ],
+          "note": "Visarga before t becomes s."
+        },
+        {
+          "joined": "विविधं वन्यं",
+          "split": [
+            "विविधम्",
+            "वन्यम्"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "Bull among men, tiger among men: for your sake I have gathered forest food of many kinds, grown on the banks of the Pampā.",
+      "context": "At her āśrama by the Pampā the aged ascetic Śabarī welcomes Rāma and Lakṣmaṇa. Her teachers had told her that Rāma would come; she tells him that she has gathered forest food for him.",
+      "speaker": "Śabarī (to Rāma)",
+      "teaches": [
+        "instrumental agent with a past participle (mayā … saṃcitam)",
+        "arthe \"for the sake of\"",
+        "epithets puruṣarṣabha, puruṣavyāghra",
+        "visarga → s before t"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/aranya/sarga74/aranyasans74.htm",
+            "note": "Printed word-split: एवम् उक्ता महाभागैः तदा अहम् पुरुषर्षभ | मया तु विविधम् वन्यम् संचितम् पुरुषर्षभ || ३-७४-१७ / तव अर्थे पुरुषव्याघ्र पम्पायाः तीर संभवम् | (the next line closes ३-७४-१८). Confirms wording and the vulgate division.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-3/chapter-70/verse-13",
+            "note": "Critical edition 3.70.13, one verse: मया तु विविधं वन्यं संचितं पुरुषर्षभ । तवार्थे पुरुषव्याघ्र पम्पायास्तीरसंभवम् ॥ Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Owner's choice for Śabarī's anchor (14 Nov 2026): her critical-edition verse about the forest food she gathered for Rāma. Nothing is said about tasting the fruit (that is a later tradition). Same words in both witnesses; the research note reports the IIT Kanpur text with it as a whole verse 3.74.17. The game id keeps verse = 17."
+      }
+    },
+    {
+      "id": "s-rocate-yadi",
+      "kathaOnly": true,
+      "kanda": 4,
+      "sarga": 5,
+      "verse": 11,
+      "edition": "Vulgate numbering 4.5.11 as on valmikiramayan.net (4.5.12 in the IIT Kanpur text and in the Baroda critical edition); pāda text as printed in the IIT Kanpur text (vedapath.app), whose reading वा the critical edition shares",
+      "meter": "anustubh",
+      "padas": [
+        "रोचते यदि वा सख्यं",
+        "बाहुरेष प्रसारितः",
+        "गृह्यतां पाणिना पाणिर्",
+        "मर्यादा बध्यतां ध्रुवा"
+      ],
+      "words": [
+        {
+          "form": "रोचते",
+          "lexId": "ruc",
+          "grammar": "3rd sg. present, middle (√ruc)",
+          "gloss": "pleases (you)",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "यदि",
+          "lexId": "yadi",
+          "grammar": "indecl.",
+          "gloss": "if",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "वा",
+          "lexId": "va",
+          "grammar": "indecl.",
+          "gloss": "or, indeed (here a mild particle)",
+          "role": "indeclinable",
+          "pada": 0,
+          "variant": "Edition variant (open): pāda 1 yadi vā (IIT Kanpur text 4.5.12 and critical edition 4.5.12; stored) vs yadi me (valmikiramayan.net 4.5.11, both its Devanagari and its transliteration page). Not used as a gap until a human reviewer decides."
+        },
+        {
+          "form": "सख्यम्",
+          "lexId": "sakhya",
+          "grammar": "nom. sg. n.",
+          "gloss": "friendship",
+          "role": "subject",
+          "pada": 0
+        },
+        {
+          "form": "बाहुः",
+          "lexId": "bahu-2",
+          "grammar": "nom. sg. m.",
+          "gloss": "arm",
+          "role": "subject",
+          "pada": 1
+        },
+        {
+          "form": "एषः",
+          "lexId": "etad",
+          "grammar": "nom. sg. m.",
+          "gloss": "this, here",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "प्रसारितः",
+          "lexId": "sr",
+          "grammar": "past passive participle (causative of pra + √sṛ), nom. sg. m.",
+          "gloss": "stretched out",
+          "role": "verb",
+          "pada": 1
+        },
+        {
+          "form": "गृह्यताम्",
+          "lexId": "grah",
+          "grammar": "3rd sg. imperative passive (√grah)",
+          "gloss": "let (it) be taken",
+          "role": "verb",
+          "pada": 2
+        },
+        {
+          "form": "पाणिना",
+          "lexId": "pani",
+          "grammar": "instr. sg. m.",
+          "gloss": "by (your) hand",
+          "role": "instrument",
+          "pada": 2
+        },
+        {
+          "form": "पाणिः",
+          "lexId": "pani",
+          "grammar": "nom. sg. m.",
+          "gloss": "(my) hand",
+          "role": "subject",
+          "pada": 2
+        },
+        {
+          "form": "मर्यादा",
+          "lexId": "maryada",
+          "grammar": "nom. sg. f.",
+          "gloss": "a bond, a pact",
+          "role": "subject",
+          "pada": 3
+        },
+        {
+          "form": "बध्यताम्",
+          "lexId": "bandh",
+          "grammar": "3rd sg. imperative passive (√bandh)",
+          "gloss": "let (it) be tied",
+          "role": "verb",
+          "pada": 3,
+          "variant": "Edition variant (open): badhyatāṃ (valmikiramayan.net, IIT Kanpur text; stored) vs vadhyatāṃ (critical edition 4.5.12, a b/v spelling of the same verb). Not used as a gap until a human reviewer decides."
+        },
+        {
+          "form": "ध्रुवा",
+          "lexId": "dhruva",
+          "grammar": "nom. sg. f.",
+          "gloss": "firm",
+          "role": "modifier",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "बाहुरेष",
+          "split": [
+            "बाहुः",
+            "एषः"
+          ],
+          "note": "Visarga after u becomes r before a vowel (bāhur eṣa); eṣaḥ then drops its visarga before a consonant (eṣa prasāritaḥ)."
+        },
+        {
+          "joined": "पाणिर्मर्यादा",
+          "split": [
+            "पाणिः",
+            "मर्यादा"
+          ],
+          "note": "Visarga after i becomes r before a voiced consonant. The join runs across the pāda break, so pāda 3 ends in पाणिर् (stored at the word boundary, as in s-aranya-3)."
+        },
+        {
+          "joined": "गृह्यतां पाणिना",
+          "split": [
+            "गृह्यताम्",
+            "पाणिना"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "If friendship pleases you, here is my arm held out. Let hand take hand, and let a firm bond be made between us.",
+      "context": "On Mount Ṛśyamūka, Hanumān brings Rāma and Lakṣmaṇa to Sugrīva. Sugrīva offers Rāma his friendship and holds out his arm; Hanumān then kindles a fire, and the two walk around it to seal the pact.",
+      "speaker": "Sugrīva (to Rāma)",
+      "teaches": [
+        "passive imperative \"let it be …\" (gṛhyatām, badhyatām)",
+        "instrumental \"by the hand\" (pāṇinā)",
+        "visarga → r before a voiced sound",
+        "yadi \"if\""
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "vedapath.app Rāmāyaṇa reader (Devanagari vulgate text; appears to reproduce the IIT Kanpur valmiki.iitk.ac.in text)",
+            "url": "https://vedapath.app/en/ramayana/kishkindha-kanda/5",
+            "note": "Numbered 4.5.12: रोचते यदि वा सख्यं बाहुरेष प्रसारितः। गृह्यतां पाणिना पाणिर्मर्यादा बध्यतां ध्रुवा. Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-4/chapter-5/verse-12",
+            "note": "Critical edition 4.5.12: रोचते यदि वा सख्यं बाहुरेष प्रसारितः । गृह्यतां पाणिना पाणिर्मर्यादा वध्यतां ध्रुवा ॥ Same as the stored text except वध्यतां (b/v); the indology.info e-text (line 04005012a/c) reads the same.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/kish/sarga5/kishkindhasans5.htm",
+            "note": "Verse ४-५-११ printed word-split: रोचते यदि मे सख्यम् बाहुः एष प्रसारितः | गृह्यताम् पाणिना पाणिः मर्यादा बध्यताम् ध्रुवा. Confirms the vulgate number; reads मे for वा (the site's transliteration page agrees: rocate yadi me sakhyam).",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:vedapath.app (IIT Kanpur text)",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "source:valmikiramayan.net",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "READING SETTLED (v06-B, 14 Nov 2026): यदि वा, the reading of two independent witnesses (the IIT Kanpur vulgate text and the critical edition), against यदि मे on valmikiramayan.net only (both its pages). Meaning is hardly affected: \"if (my) friendship pleases (you)\". बध्यतां follows valmikiramayan.net and the IIT Kanpur text; the critical edition spells वध्यतां. Both variants are recorded on the words and wait for a human reviewer."
+      }
+    },
+    {
+      "id": "s-sa-visrshto",
+      "kathaOnly": true,
+      "kanda": 4,
+      "sarga": 12,
+      "verse": 3,
+      "edition": "Vulgate numbering 4.12.3 as on valmikiramayan.net and the IIT Kanpur text; critical edition 4.12.3 reads गिरिप्रस्थे (see notes); pāda text as printed in the critical-edition text except pāda 3, which follows the IIT Kanpur text",
+      "meter": "anustubh",
+      "padas": [
+        "स विसृष्टो बलवता",
+        "बाणः स्वर्णपरिष्कृतः",
+        "भित्त्वा सालान् गिरिप्रस्थं",
+        "सप्त भूमिं विवेश ह"
+      ],
+      "meterNote": "pāda 1 (LLGGLLLG, 8 syll.): na-vipulā (syllables 5–7 LLL). Text not edited; checkAnustubh accepts only the pathyā form.",
+      "words": [
+        {
+          "form": "सः",
+          "lexId": "tad",
+          "grammar": "nom. sg. m.",
+          "gloss": "that",
+          "role": "modifier",
+          "pada": 0
+        },
+        {
+          "form": "विसृष्टः",
+          "lexId": "srj",
+          "grammar": "past passive participle (vi + √sṛj), nom. sg. m.",
+          "gloss": "loosed",
+          "role": "modifier",
+          "pada": 0
+        },
+        {
+          "form": "बलवता",
+          "lexId": "balavat",
+          "grammar": "instr. sg. m.",
+          "gloss": "by the mighty one (Rāma)",
+          "role": "instrument",
+          "pada": 0
+        },
+        {
+          "form": "बाणः",
+          "lexId": "bana",
+          "grammar": "nom. sg. m.",
+          "gloss": "the arrow",
+          "role": "subject",
+          "pada": 1
+        },
+        {
+          "form": "स्वर्णपरिष्कृतः",
+          "lexId": "svarnaparishkrta",
+          "grammar": "nom. sg. m. (compound)",
+          "gloss": "decked with gold",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "भित्त्वा",
+          "lexId": "bhid",
+          "grammar": "absolutive (√bhid)",
+          "gloss": "having pierced",
+          "pada": 2
+        },
+        {
+          "form": "सालान्",
+          "lexId": "sala",
+          "grammar": "acc. pl. m.",
+          "gloss": "the sāla trees",
+          "role": "object",
+          "pada": 2
+        },
+        {
+          "form": "गिरिप्रस्थम्",
+          "lexId": "giriprastha",
+          "grammar": "acc. sg. m. (compound)",
+          "gloss": "the mountain slope",
+          "role": "object",
+          "pada": 2,
+          "variant": "Edition variant (open): giriprasthaṃ, accusative \"(pierced the sālas and) the mountain slope\" (valmikiramayan.net, IIT Kanpur text; stored) vs giriprasthe, locative \"the sālas on the mountain slope\" (critical edition 4.12.3). Not used as a gap until a human reviewer decides."
+        },
+        {
+          "form": "सप्त",
+          "lexId": "saptan",
+          "grammar": "acc. pl. (numeral)",
+          "gloss": "seven",
+          "role": "modifier",
+          "pada": 3
+        },
+        {
+          "form": "भूमिम्",
+          "lexId": "bhumi",
+          "grammar": "acc. sg. f.",
+          "gloss": "the earth",
+          "role": "object",
+          "pada": 3
+        },
+        {
+          "form": "विवेश",
+          "lexId": "vish",
+          "grammar": "3rd sg. perfect (√viś)",
+          "gloss": "entered",
+          "role": "verb",
+          "pada": 3
+        },
+        {
+          "form": "ह",
+          "lexId": "ha",
+          "grammar": "indecl.",
+          "gloss": "(indeed: a narrative particle)",
+          "role": "indeclinable",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "स विसृष्टो",
+          "split": [
+            "सः",
+            "विसृष्टः"
+          ],
+          "note": "saḥ drops its visarga before any consonant (sa visṛṣṭaḥ); visṛṣṭaḥ becomes visṛṣṭo before the voiced b."
+        },
+        {
+          "joined": "बाणः स्वर्णपरिष्कृतः",
+          "split": [
+            "बाणः",
+            "स्वर्णपरिष्कृतः"
+          ],
+          "note": "Before s the visarga may stay (bāṇaḥ svarṇa…, as the critical edition prints it) or become s (बाणस्स्वर्ण…, as the IIT Kanpur text prints it); both are correct."
+        },
+        {
+          "joined": "भूमिं विवेश",
+          "split": [
+            "भूमिम्",
+            "विवेश"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "Loosed by the mighty one, that gold-decked arrow pierced the seven sāla trees and the mountain slope, and went into the earth.",
+      "context": "Sugrīva doubts that anyone can defeat Vālī. To prove his strength, Rāma takes up his bow and looses a single arrow at a row of seven sāla trees. A moment later the arrow comes back to him.",
+      "speaker": "Narrator (Vālmīki)",
+      "teaches": [
+        "past participle with an instrumental agent (visṛṣṭo balavatā)",
+        "absolutive in -tvā (bhittvā)",
+        "perfect tense (viveśa)",
+        "saḥ → sa before a consonant"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-4/chapter-12/verse-3",
+            "note": "Critical edition 4.12.3: स विसृष्टो बलवता बाणः स्वर्णपरिष्कृतः । भित्त्वा सालान् गिरिप्रस्थे सप्त भूमिं विवेश ह ॥ Pādas 1, 2 and 4 follow this letter for letter; the indology.info e-text (line 04012003c) also reads giriprasthe.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "vedapath.app Rāmāyaṇa reader (Devanagari vulgate text; appears to reproduce the IIT Kanpur valmiki.iitk.ac.in text)",
+            "url": "https://vedapath.app/en/ramayana/kishkindha-kanda/12",
+            "note": "Verse 4.12.3: स विसृष्टो बलवता बाणस्स्वर्णपरिष्कृतः। भित्त्वा सालान् गिरिप्रस्थं सप्त भूमिं विवेश ह. Pāda 3 follows this letter for letter (बाणस्स्वर्ण is an optional spelling of बाणः स्वर्ण).",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/kish/sarga12/kishkindhasans12.htm",
+            "note": "Verse ४-१२-३ printed word-split: स विसृष्टो बलवता बाणः स्वर्ण परिष्कृतः | भित्त्वा सालान् गिरि प्रस्थम् सप्त भूमिम् विवेश ह. Reads गिरि प्रस्थम् (accusative), as its word gloss does.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "source:vedapath.app (IIT Kanpur text)",
+          "source:valmikiramayan.net",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "READING SETTLED (v06-B, 14 Nov 2026): गिरिप्रस्थं (accusative: the arrow pierced the sālas AND the mountain slope), the reading of the two vulgate witnesses (valmikiramayan.net, IIT Kanpur text), against the critical edition's गिरिप्रस्थे (locative: the sālas on the mountain slope). Recorded on the word for a human reviewer. Verse 4.12.4 (vulgate) tells how the arrow came back out of the earth and returned; the IIT Kanpur text says it entered \"its own quiver\"."
+      }
+    },
+    {
+      "id": "s-deshakalau",
+      "kathaOnly": true,
+      "kanda": 4,
+      "sarga": 22,
+      "verse": 20,
+      "edition": "Vulgate numbering 4.22.20 as on valmikiramayan.net; critical edition 4.22.20 (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "देशकालौ भजस्वाद्य",
+        "क्षममाणः प्रियाप्रिये",
+        "सुखदुःखसहः काले",
+        "सुग्रीववशगो भव"
+      ],
+      "words": [
+        {
+          "form": "देशकालौ",
+          "lexId": "deshakala",
+          "grammar": "acc. du. m. (compound)",
+          "gloss": "place and time",
+          "role": "object",
+          "pada": 0
+        },
+        {
+          "form": "भजस्व",
+          "lexId": "bhaj",
+          "grammar": "2nd sg. imperative, middle (√bhaj)",
+          "gloss": "respect, observe",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "अद्य",
+          "lexId": "adya",
+          "grammar": "indecl.",
+          "gloss": "from today, now",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "क्षममाणः",
+          "lexId": "ksham",
+          "grammar": "present participle, middle (√kṣam), nom. sg. m.",
+          "gloss": "bearing patiently",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "प्रियाप्रिये",
+          "lexId": "priyapriya",
+          "grammar": "acc. du. n. (compound)",
+          "gloss": "the pleasant and the unpleasant",
+          "role": "object",
+          "pada": 1
+        },
+        {
+          "form": "सुखदुःखसहः",
+          "lexId": "sukhaduhkhasaha",
+          "grammar": "nom. sg. m. (compound)",
+          "gloss": "bearing joy and sorrow",
+          "role": "modifier",
+          "pada": 2
+        },
+        {
+          "form": "काले",
+          "lexId": "kala",
+          "grammar": "loc. sg. m.",
+          "gloss": "in (their) time",
+          "role": "location",
+          "pada": 2
+        },
+        {
+          "form": "सुग्रीववशगः",
+          "lexId": "sugrivavashaga",
+          "grammar": "nom. sg. m. (compound, predicate)",
+          "gloss": "obedient to Sugrīva",
+          "pada": 3
+        },
+        {
+          "form": "भव",
+          "lexId": "bhu",
+          "grammar": "2nd sg. imperative (√bhū)",
+          "gloss": "be!",
+          "role": "verb",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "भजस्वाद्य",
+          "split": [
+            "भजस्व",
+            "अद्य"
+          ],
+          "note": "a + a merge into ā (savarṇa-dīrgha)."
+        },
+        {
+          "joined": "सुग्रीववशगो भव",
+          "split": [
+            "सुग्रीववशगः",
+            "भव"
+          ],
+          "note": "-aḥ becomes -o before a voiced consonant (here bh)."
+        }
+      ],
+      "translation": "From today, respect place and time; bear what is pleasant and what is not, endure joy and sorrow as they come, and live obedient to Sugrīva.",
+      "context": "Struck down by Rāma's arrow, the dying Vālī gives his son Aṅgada his last advice: to live wisely and patiently under his uncle Sugrīva, the new king.",
+      "speaker": "Vālī (to Aṅgada)",
+      "teaches": [
+        "dual compounds (deśakālau, priyāpriye)",
+        "middle imperative (bhajasva)",
+        "present participle in -māna (kṣamamāṇaḥ)",
+        "imperative bhava \"be!\""
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/kish/sarga22/kishkindhasans22.htm",
+            "note": "Verse ४-२२-२० printed word-split: देश कालौ भजस्व अद्य क्षममाणः प्रिय अप्रिये | सुख दुःख सहः काले सुग्रीव वशगो भव. Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-4/chapter-22/verse-20",
+            "note": "Critical edition 4.22.20: देशकालौ भजस्वाद्य क्षममाणः प्रियाप्रिये । सुखदुःखसहः काले सुग्रीववशगो भव ॥ Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses (spacing only). The research note reports the IIT Kanpur text with the same reading."
+      }
+    },
+    {
+      "id": "s-esha-gharma",
+      "kathaOnly": true,
+      "kanda": 4,
+      "sarga": 28,
+      "verse": 7,
+      "edition": "Vulgate numbering 4.28.7 as on valmikiramayan.net (the page misprints its markers as ३-२८-N) and the IIT Kanpur text; critical edition 4.27.7; pāda text as printed in the IIT Kanpur text (vedapath.app)",
+      "meter": "anustubh",
+      "padas": [
+        "एषा घर्मपरिक्लिष्टा",
+        "नववारिपरिप्लुता",
+        "सीतेव शोकसन्तप्ता",
+        "मही बाष्पं विमुञ्चति"
+      ],
+      "words": [
+        {
+          "form": "एषा",
+          "lexId": "etad",
+          "grammar": "nom. sg. f.",
+          "gloss": "this",
+          "role": "modifier",
+          "pada": 0
+        },
+        {
+          "form": "घर्मपरिक्लिष्टा",
+          "lexId": "gharmapariklishta",
+          "grammar": "nom. sg. f. (compound)",
+          "gloss": "worn out by the summer heat",
+          "role": "modifier",
+          "pada": 0
+        },
+        {
+          "form": "नववारिपरिप्लुता",
+          "lexId": "navavariparipluta",
+          "grammar": "nom. sg. f. (compound)",
+          "gloss": "drenched with fresh rain",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "सीता",
+          "lexId": "sita",
+          "grammar": "nom. sg. f.",
+          "gloss": "Sītā",
+          "pada": 2
+        },
+        {
+          "form": "इव",
+          "lexId": "iva",
+          "grammar": "indecl.",
+          "gloss": "like",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "शोकसन्तप्ता",
+          "lexId": "shokasantapta",
+          "grammar": "nom. sg. f. (compound)",
+          "gloss": "burning with grief",
+          "role": "modifier",
+          "pada": 2
+        },
+        {
+          "form": "मही",
+          "lexId": "mahi",
+          "grammar": "nom. sg. f.",
+          "gloss": "the earth",
+          "role": "subject",
+          "pada": 3
+        },
+        {
+          "form": "बाष्पम्",
+          "lexId": "bashpa",
+          "grammar": "acc. sg. m.",
+          "gloss": "vapour (also: tears)",
+          "role": "object",
+          "pada": 3
+        },
+        {
+          "form": "विमुञ्चति",
+          "lexId": "muc",
+          "grammar": "3rd sg. present (vi + √muc)",
+          "gloss": "gives off, sheds",
+          "role": "verb",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "सीतेव",
+          "split": [
+            "सीता",
+            "इव"
+          ],
+          "note": "ā + i merge into e (guṇa): sītā iva → sīteva."
+        },
+        {
+          "joined": "बाष्पं विमुञ्चति",
+          "split": [
+            "बाष्पम्",
+            "विमुञ्चति"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "This earth, worn out by the summer heat and drenched with fresh rain, gives off vapour, like Sītā shedding tears as she burns with grief.",
+      "context": "The rains have come, and nothing can be done until they pass. Waiting on a hill near Kiṣkindhā, Rāma watches the steaming earth and thinks of Sītā.",
+      "speaker": "Rāma (to Lakṣmaṇa)",
+      "teaches": [
+        "ā + i → e (sīteva)",
+        "iva similes",
+        "long descriptive compounds",
+        "the double sense of bāṣpa (vapour / tears)"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "vedapath.app Rāmāyaṇa reader (Devanagari vulgate text; appears to reproduce the IIT Kanpur valmiki.iitk.ac.in text)",
+            "url": "https://vedapath.app/en/ramayana/kishkindha-kanda/28",
+            "note": "Verse 4.28.7: एषा घर्मपरिक्लिष्टा नववारिपरिप्लुता। सीतेव शोकसन्तप्ता मही बाष्पं विमुञ्चति. Pāda text follows this letter for letter.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/kish/sarga28/kishkindhasans28.htm",
+            "note": "Verse printed word-split under the misprinted marker ३-२८-७: एषा घर्म परिक्लिष्टा नव वारि परिप्लुता | सीता इव शोक संतप्ता मही बाष्पम् विमुंचति. Same words.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-4/chapter-27/verse-7",
+            "note": "Critical edition 4.27.7: एषा धर्मपरिक्लिष्टा नववारिपरिप्लुता । सीतेव शोकसंतप्ता मही बाष्पं विमुञ्चति ॥ Same words except धर्म- for घर्म-, an e-text slip (the indology.info e-text line 04027007a reads dharmaparikliṣṭā too); \"worn out by dharma\" makes no sense beside \"drenched by new rain\".",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:vedapath.app (IIT Kanpur text)",
+          "source:valmikiramayan.net",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Two vulgate witnesses agree on every word (घर्म-, \"summer heat\"). Orthography: the IIT Kanpur text writes शोकसन्तप्ता and विमुञ्चति with class nasals (valmikiramayan.net: संतप्ता, विमुंचति). The critical-edition e-text's धर्मपरिक्लिष्टा is treated as an e-text error, not a reading."
+      }
+    },
+    {
+      "id": "s-anena-tvam",
+      "kathaOnly": true,
+      "kanda": 4,
+      "sarga": 44,
+      "verse": 13,
+      "edition": "Vulgate numbering 4.44.13 as on valmikiramayan.net; critical edition 4.43.12 (same wording); pāda text as printed in the critical-edition text, the pāda break stored at the word boundary",
+      "meter": "anustubh",
+      "padas": [
+        "अनेन त्वां हरिश्रेष्ठ",
+        "चिह्नेन जनकात्मजा",
+        "मत्सकाशादनुप्राप्तम्",
+        "अनुद्विग्नानुपश्यति"
+      ],
+      "words": [
+        {
+          "form": "अनेन",
+          "lexId": "idam",
+          "grammar": "instr. sg. n.",
+          "gloss": "by this",
+          "role": "instrument",
+          "pada": 0
+        },
+        {
+          "form": "त्वाम्",
+          "lexId": "tvam",
+          "grammar": "acc. sg.",
+          "gloss": "you",
+          "role": "object",
+          "pada": 0
+        },
+        {
+          "form": "हरिश्रेष्ठ",
+          "lexId": "harishreshtha",
+          "grammar": "voc. sg. m. (compound)",
+          "gloss": "best of monkeys",
+          "role": "address",
+          "pada": 0
+        },
+        {
+          "form": "चिह्नेन",
+          "lexId": "cihna",
+          "grammar": "instr. sg. n.",
+          "gloss": "token, sign",
+          "role": "instrument",
+          "pada": 1
+        },
+        {
+          "form": "जनकात्मजा",
+          "lexId": "janakatmaja",
+          "grammar": "nom. sg. f. (compound)",
+          "gloss": "Janaka's daughter (Sītā)",
+          "role": "subject",
+          "pada": 1
+        },
+        {
+          "form": "मत्सकाशात्",
+          "lexId": "matsakasha",
+          "grammar": "abl. sg. m. (compound)",
+          "gloss": "from my presence, from me",
+          "role": "source",
+          "pada": 2
+        },
+        {
+          "form": "अनुप्राप्तम्",
+          "lexId": "ap",
+          "grammar": "past passive participle (anu + pra + √āp), acc. sg. m.",
+          "gloss": "come, arrived",
+          "role": "modifier",
+          "pada": 2
+        },
+        {
+          "form": "अनुद्विग्ना",
+          "lexId": "anudvigna",
+          "grammar": "nom. sg. f.",
+          "gloss": "without alarm",
+          "role": "modifier",
+          "pada": 3
+        },
+        {
+          "form": "अनुपश्यति",
+          "lexId": "drsh",
+          "grammar": "3rd sg. present (anu + √dṛś)",
+          "gloss": "will see, will recognise",
+          "role": "verb",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "मत्सकाशादनुप्राप्तम्",
+          "split": [
+            "मत्सकाशात्",
+            "अनुप्राप्तम्"
+          ],
+          "note": "Final t becomes d before a vowel (jaśtva)."
+        },
+        {
+          "joined": "अनुद्विग्नानुपश्यति",
+          "split": [
+            "अनुद्विग्ना",
+            "अनुपश्यति"
+          ],
+          "note": "ā + a merge into ā."
+        },
+        {
+          "joined": "अनेन त्वां",
+          "split": [
+            "अनेन",
+            "त्वाम्"
+          ],
+          "note": "Final m becomes anusvāra before a consonant."
+        }
+      ],
+      "translation": "By this token, best of monkeys, Janaka's daughter will see that you have come from me, and she will not be afraid.",
+      "context": "As the search parties set out, Rāma gives Hanumān his ring, engraved with his own name, as a token by which Sītā will know that Hanumān comes from him.",
+      "speaker": "Rāma (to Hanumān)",
+      "teaches": [
+        "instrumental \"by this token\" (anena cihnena)",
+        "three anu- words (anuprāptam, anudvignā, anupaśyati)",
+        "t → d before a vowel",
+        "ā + a → ā"
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/kish/sarga44/kishkindhasans44.htm",
+            "note": "Verse ४-४४-१३ printed word-split: अनेन त्वाम् हरिश्रेष्ठ चिह्नेन जनकाअत्मजा | मत् सकाशात् अनुप्राप्तम् अनुद्विग्ना अनुपश्यति (जनकाअत्मजा is the page's display of जनक-आत्मजा). Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-4/chapter-43/verse-12",
+            "note": "Critical edition 4.43.12: अनेन त्वां हरिश्रेष्ठ चिह्नेन जनकात्मजा । मत्सकाशादनुप्राप्तमनुद्विग्नानुपश्यति ॥ Pāda text follows this letter for letter; the indology.info e-text (lines 04043012a/c) reads the same.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses. The critical edition prints pādas 3–4 as one run (…प्राप्तमनुद्विग्ना…); by the game's convention the pāda break is stored at the word boundary (…प्राप्तम् | अनुद्विग्ना…). The research note reports the IIT Kanpur text with the same reading. The ring itself is described in the verse before (4.44.12: स्वनामाङ्कोपशोभितम् अङ्गुलीयम्)."
+      }
+    },
+    {
+      "id": "s-ito-dvipe",
+      "kathaOnly": true,
+      "kanda": 4,
+      "sarga": 58,
+      "verse": 20,
+      "edition": "Vulgate numbering 4.58.20 as on valmikiramayan.net; critical edition 4.57.20 (same wording); pāda text as printed in the critical-edition e-text (indology.info), in Devanagari",
+      "meter": "anustubh",
+      "padas": [
+        "इतो द्वीपे समुद्रस्य",
+        "संपूर्णे शतयोजने",
+        "तस्मिँल्लङ्का पुरी रम्या",
+        "निर्मिता विश्वकर्मणा"
+      ],
+      "words": [
+        {
+          "form": "इतः",
+          "lexId": "itas",
+          "grammar": "indecl.",
+          "gloss": "from here",
+          "role": "indeclinable",
+          "pada": 0
+        },
+        {
+          "form": "द्वीपे",
+          "lexId": "dvipa",
+          "grammar": "loc. sg. m.",
+          "gloss": "on an island",
+          "role": "location",
+          "pada": 0
+        },
+        {
+          "form": "समुद्रस्य",
+          "lexId": "samudra",
+          "grammar": "gen. sg. m.",
+          "gloss": "of the ocean",
+          "role": "possessor",
+          "pada": 0
+        },
+        {
+          "form": "संपूर्णे",
+          "lexId": "sampurna",
+          "grammar": "loc. sg. n.",
+          "gloss": "full",
+          "role": "modifier",
+          "pada": 1
+        },
+        {
+          "form": "शतयोजने",
+          "lexId": "shatayojana",
+          "grammar": "loc. sg. n. (compound)",
+          "gloss": "a hundred yojanas (away)",
+          "role": "location",
+          "pada": 1
+        },
+        {
+          "form": "तस्मिन्",
+          "lexId": "tad",
+          "grammar": "loc. sg. m.",
+          "gloss": "on that (island)",
+          "role": "location",
+          "pada": 2
+        },
+        {
+          "form": "लङ्का",
+          "lexId": "lanka",
+          "grammar": "nom. sg. f.",
+          "gloss": "Laṅkā",
+          "role": "subject",
+          "pada": 2
+        },
+        {
+          "form": "पुरी",
+          "lexId": "puri",
+          "grammar": "nom. sg. f.",
+          "gloss": "the city",
+          "role": "modifier",
+          "pada": 2
+        },
+        {
+          "form": "रम्या",
+          "lexId": "ramya",
+          "grammar": "nom. sg. f.",
+          "gloss": "lovely",
+          "role": "modifier",
+          "pada": 2
+        },
+        {
+          "form": "निर्मिता",
+          "lexId": "ma-2",
+          "grammar": "past passive participle (nir + √mā), nom. sg. f.",
+          "gloss": "built",
+          "role": "verb",
+          "pada": 3
+        },
+        {
+          "form": "विश्वकर्मणा",
+          "lexId": "vishvakarman",
+          "grammar": "instr. sg. m.",
+          "gloss": "by Viśvakarman",
+          "role": "instrument",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "इतो द्वीपे",
+          "split": [
+            "इतः",
+            "द्वीपे"
+          ],
+          "note": "-aḥ becomes -o before a voiced consonant (here d)."
+        },
+        {
+          "joined": "तस्मिँल्लङ्का",
+          "split": [
+            "तस्मिन्",
+            "लङ्का"
+          ],
+          "note": "Final n before l becomes a nasalised l (8.4.60): tasmin laṅkā → tasmim̐l laṅkā, as the critical edition prints it (valmikiramayan.net prints the words apart)."
+        }
+      ],
+      "translation": "From here, on an island in the ocean a full hundred yojanas away, stands the lovely city of Laṅkā, built by Viśvakarman.",
+      "context": "On the southern shore the searchers, ready to give up, meet Sampāti, Jaṭāyu's elder brother, whose eyes see far. He tells them where Sītā is held.",
+      "speaker": "Sampāti (to the vānaras)",
+      "teaches": [
+        "locative of place and distance (dvīpe, śatayojane)",
+        "n + l → m̐l (tasmim̐l laṅkā)",
+        "past participle with an instrumental agent (nirmitā viśvakarmaṇā)",
+        "itaḥ \"from here\""
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/kish/sarga58/kishkindhasans58.htm",
+            "note": "Verse ४-५८-२० printed word-split: इतो द्वीपे समुद्रस्य संपूर्णे शत योजने | तस्मिन् लंका पुरी रम्या निर्मिता विश्वकर्मणा. Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, Baroda critical-edition e-text (romanised, line-numbered), indology.info mirror",
+            "url": "https://indology.info/bombay/ramayana/text/UR/Ram04.txt",
+            "note": "Critical edition 4.57.20, lines 04057020a/c: ito dvīpe samudrasya saṁpūrṇe śatayojane / tasmim̐l laṅkā purī ramyā nirmitā viśvakarmaṇā. Pāda text follows this letter for letter (converted to Devanagari; the pāda-internal space after तस्मिँल् is not kept).",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-4/chapter-57/verse-20",
+            "note": "Critical edition 4.57.20 in Devanagari: इतो द्वीपे समुद्रस्य संपूर्णे शतयोजने । तस्मिंल् लङ्का पुरी रम्या निर्मिता विश्वकर्मणा ॥ Same text; this site writes the nasalised l with anusvāra (ंल्).",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:indology.info (critical-edition e-text)",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in valmikiramayan.net and the critical edition. VARIANT not followed: the IIT Kanpur text (vedapath.app 4.58.20) reads इतो द्वीपस्समुद्रस्य (द्वीपः, nominative) and तस्मिन्लङ्कापुरी (no assimilation, one compound)."
+      }
+    },
+    {
+      "id": "s-uttishtha-hari",
+      "kathaOnly": true,
+      "kanda": 4,
+      "sarga": 66,
+      "verse": 36,
+      "edition": "Vulgate numbering 4.66.36 as on valmikiramayan.net; critical edition 4.65.34 (same wording); pāda text as printed in the critical-edition text",
+      "meter": "anustubh",
+      "padas": [
+        "उत्तिष्ठ हरिशार्दूल",
+        "लङ्घयस्व महार्णवम्",
+        "परा हि सर्वभूतानां",
+        "हनुमन्या गतिस्तव"
+      ],
+      "words": [
+        {
+          "form": "उत्तिष्ठ",
+          "lexId": "stha",
+          "grammar": "2nd sg. imperative (ud + √sthā)",
+          "gloss": "rise!",
+          "role": "verb",
+          "pada": 0
+        },
+        {
+          "form": "हरिशार्दूल",
+          "lexId": "harishardula",
+          "grammar": "voc. sg. m. (compound)",
+          "gloss": "tiger among monkeys",
+          "role": "address",
+          "pada": 0
+        },
+        {
+          "form": "लङ्घयस्व",
+          "lexId": "langh",
+          "grammar": "2nd sg. imperative, middle (causative of √laṅgh)",
+          "gloss": "leap across",
+          "role": "verb",
+          "pada": 1
+        },
+        {
+          "form": "महार्णवम्",
+          "lexId": "maharnava",
+          "grammar": "acc. sg. m. (compound)",
+          "gloss": "the great ocean",
+          "role": "object",
+          "pada": 1
+        },
+        {
+          "form": "परा",
+          "lexId": "para",
+          "grammar": "nom. sg. f. (predicate)",
+          "gloss": "beyond (that of), highest",
+          "pada": 2
+        },
+        {
+          "form": "हि",
+          "lexId": "hi",
+          "grammar": "indecl.",
+          "gloss": "for",
+          "role": "indeclinable",
+          "pada": 2
+        },
+        {
+          "form": "सर्वभूतानाम्",
+          "lexId": "sarvabhuta",
+          "grammar": "gen. pl. n. (compound)",
+          "gloss": "of all beings",
+          "role": "possessor",
+          "pada": 2
+        },
+        {
+          "form": "हनुमन्",
+          "lexId": "hanumat",
+          "grammar": "voc. sg. m.",
+          "gloss": "O Hanumān",
+          "role": "address",
+          "pada": 3
+        },
+        {
+          "form": "या",
+          "lexId": "yad",
+          "grammar": "nom. sg. f.",
+          "gloss": "which",
+          "role": "modifier",
+          "pada": 3
+        },
+        {
+          "form": "गतिः",
+          "lexId": "gati",
+          "grammar": "nom. sg. f.",
+          "gloss": "power of movement, speed",
+          "role": "subject",
+          "pada": 3
+        },
+        {
+          "form": "तव",
+          "lexId": "tvam",
+          "grammar": "gen. sg.",
+          "gloss": "your",
+          "role": "possessor",
+          "pada": 3
+        }
+      ],
+      "sandhiNotes": [
+        {
+          "joined": "हनुमन्या",
+          "split": [
+            "हनुमन्",
+            "या"
+          ],
+          "note": "n and y meet with no change; the two words are written together."
+        },
+        {
+          "joined": "गतिस्तव",
+          "split": [
+            "गतिः",
+            "तव"
+          ],
+          "note": "Visarga before t becomes s."
+        }
+      ],
+      "translation": "Rise, tiger among monkeys, and leap across the great ocean, Hanumān; for your power of movement surpasses that of every living being.",
+      "context": "On Mount Mahendra the vānaras despair before the ocean that none of them can cross. Jāmbavān turns to Hanumān, reminds him of his birth and his power, and urges him to leap.",
+      "speaker": "Jāmbavān (to Hanumān)",
+      "teaches": [
+        "imperative uttiṣṭha (as in the Bāla verse uttiṣṭha naraśārdūla)",
+        "causative middle imperative (laṅghayasva)",
+        "visarga → s before t",
+        "relative yā … \"which\""
+      ],
+      "provenance": {
+        "sources": [
+          {
+            "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (Gita Press-based vulgate; Devanagari page, words printed separately)",
+            "url": "https://www.valmikiramayan.net/utf8/kish/sarga66/kishkindhasans66.htm",
+            "note": "Verse ४-६६-३६ printed word-split: उत्तिष्ठ हरि शार्दूल लंघयस्व महा अर्णवम् | परा हि सर्व भूतानाम् हनुमन् या गतिः तव. Confirms wording and number.",
+            "accessed": "2026-11-14"
+          },
+          {
+            "name": "Vālmīki Rāmāyaṇa, critical-edition text, enjoylearningsanskrit.com (Devanagari + IAST)",
+            "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-4/chapter-65/verse-34",
+            "note": "Critical edition 4.65.34: उत्तिष्ठ हरिशार्दूल लङ्घयस्व महार्णवम् । परा हि सर्वभूतानां हनुमन्या गतिस्तव ॥ Pāda text follows this letter for letter; the indology.info e-text (lines 04065034a/c) reads the same.",
+            "accessed": "2026-11-14"
+          }
+        ],
+        "verifiedBy": [
+          "source:valmikiramayan.net",
+          "source:enjoylearningsanskrit.com (critical-edition text)",
+          "engine:checkAnustubh",
+          "engine:joinSandhiDeva"
+        ],
+        "notes": "Same words in both witnesses (valmikiramayan.net spells लंघयस्व with anusvāra). The research note reports the IIT Kanpur text with the same reading. Pairs with s-kausalya-supraja (उत्तिष्ठ नरशार्दूल): the same \"rise, tiger among …\" formula."
+      }
+    }
+  ]
+}

@@ -838,3 +838,28 @@
   .g-ramayana-yatra__cs-stage { width: auto; height: 30dvh; align-self: center; }
 }
 /* ── v0.5b WP-E — end ── */
+/* ── v0.6 WP0 (view-told.tsx told cutscenes, view-stage.ts kit, hotspots, the verse book by book) — begin ── */
+.g-ramayana-yatra__told .g-ramayana-yatra__told-canvas { opacity: var(--told-fade, 1); }
+.g-ramayana-yatra__told.is-3d .g-ramayana-yatra__told-canvas { visibility: hidden; }
+.g-ramayana-yatra__told-spot { position: absolute; z-index: 2; padding: 0; border: 0; border-radius: var(--r-sm); background: transparent; cursor: pointer; }
+.g-ramayana-yatra__told-spot:focus-visible { outline: 3px dashed var(--gold); outline-offset: 2px; }
+.g-ramayana-yatra__told-q { display: grid; gap: var(--s-2); padding: var(--s-2); border-radius: var(--r-md); background: var(--paper-2); }
+.g-ramayana-yatra__told-opt { justify-content: flex-start; text-align: start; width: 100%; min-height: 48px; }
+.g-ramayana-yatra__told-text .g-ramayana-yatra__cs-pada.is-now { background: linear-gradient(90deg, var(--gold-soft) calc(var(--told-sweep, 0) * 100%), color-mix(in srgb, var(--gold-soft) 35%, transparent) 0); }
+.g-ramayana-yatra__hotspot .g-ramayana-yatra__say-box { align-items: center; }
+.g-ramayana-yatra__hotspot-pass { flex: none; min-width: 44px; min-height: 44px; border: 2px solid var(--line-strong); border-radius: var(--r-pill); background: var(--paper); color: var(--ink); font: inherit; font-weight: 800; cursor: pointer; }
+.g-ramayana-yatra__hotspot-look { position: absolute; inset: 0; z-index: 3; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.g-ramayana-yatra__hotspot-look:focus-visible { outline: 3px dashed var(--gold); outline-offset: -3px; }
+.g-ramayana-yatra__vbook-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-2); }
+.g-ramayana-yatra__vbook-n { font-size: var(--fs-xs); font-weight: 700; color: var(--ink-3); white-space: nowrap; }
+.g-ramayana-yatra__vbook.is-later { opacity: 0.7; }
+.g-ramayana-yatra__echo { display: block; font-size: var(--fs-xs); font-weight: 700; color: var(--gold-ink); font-style: italic; }
+/* ── v0.6 WP0 — end ── */
+/* ── v0.6 WP-A — begin ── */
+/* ── v0.6 WP-A — end ── */
+/* ── v0.6 WP-B — begin ── */
+/* ── v0.6 WP-B — end ── */
+/* ── v0.6 WP-C — begin ── */
+/* ── v0.6 WP-C — end ── */
+/* ── v0.6 WP-D — begin ── */
+/* ── v0.6 WP-D — end ── */

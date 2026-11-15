@@ -10,7 +10,8 @@ import { useRafLoop, useSwipe } from '@ui';
 import { toDevaDigits } from '@sanskrit';
 import type { BattleBgId, BattlerId, SpriteId, TileId } from './catalog';
 import { DELTA } from './input';
-import { type GuideTarget, affinityOf, burningBlocks, currentMap, isKatha, playerSprite, roofBlock, roofFires, sightTiles, tileAt, visibleNpcs } from './logic';
+import { type GuideTarget, affinityOf, burningBlocks, currentMap, glowingSpots, isKatha, playerSprite, roofBlock, roofFires, sightTiles, tileAt, visibleNpcs } from './logic';
+import { type KitView, createKitView, drawGlowRect, drawKitFigure, drawKitFx, drawKitProp, fallK, kitActive, kitShake, propAt, resetKitView, scaleK, syncKitView } from './view-stage';
 import { INK, R } from './art-palette';
 import { ELEMENT_COLOR, MOVE_STEP_MS, STEP_MS, Name, PlayerName, type ViewEnv, asciiLabel, englishName, useEnv } from './view-common';
 import { useUi } from './view-ui';
@@ -27,9 +28,11 @@ export interface Anim {
   busyUntil: number;
   /** Current step duration (shorter while running). */
   stepMs: number;
+  /** v0.6: the effects kit on the map (stage animations and timed effects; Game adds the 'kit' fx) */
+  kit: KitView;
 }
 export function createAnim(): Anim {
-  return { shakeAt: -1e9, flashAt: -1e9, encounterAt: -1e9, warpAt: -1e9, bumpAt: -1e9, busyUntil: 0, stepMs: STEP_MS };
+  return { shakeAt: -1e9, flashAt: -1e9, encounterAt: -1e9, warpAt: -1e9, bumpAt: -1e9, busyUntil: 0, stepMs: STEP_MS, kit: createKitView() };
 }
 
 interface Ent {
@@ -303,10 +306,16 @@ export function Screen({ stateRef, env, anim, onSwipe, overlay, title, guideRef 
     if (c.dataset['boats'] !== boats) c.dataset['boats'] = boats;
     // screen shake (CSS transform on the canvas so the HUD text stays crisp)
     const sk = (now - anim.shakeAt) / 360;
+    // v0.6: the kit's shake (`{ "fx": "shake", "ms" }`) on the map; none with reduced motion
+    const ks = !s || title || s.mode === 'battle' ? { x: 0, y: 0 } : kitShake(anim.kit, now, envRef.current.reduced);
     if (sk >= 0 && sk < 1 && !envRef.current.reduced) {
       const a = (1 - sk) * 3;
-      c.style.transform = `translate(${Math.round(Math.sin(now / 18) * a)}px, ${Math.round(Math.cos(now / 23) * a * 0.6)}px)`;
-    } else if (c.style.transform) c.style.transform = '';
+      c.style.transform = `translate(${Math.round(Math.sin(now / 18) * a) + ks.x}px, ${Math.round(Math.cos(now / 23) * a * 0.6) + ks.y}px)`;
+    } else if (ks.x || ks.y) c.style.transform = `translate(${ks.x}px, ${ks.y}px)`;
+    else if (c.style.transform) c.style.transform = '';
+    // v0.6: the kit's effects on screen now, mirrored for tests (data-kit on the canvas)
+    const kitNow = !s || title || s.mode === 'battle' ? '' : kitActive(anim.kit, now).join(',');
+    if ((c.dataset['kit'] ?? '') !== kitNow) c.dataset['kit'] = kitNow;
   }, true);
 
   return (
@@ -429,6 +438,9 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
     v.mapId = map.id;
     v.player = newEnt(avatarSprite, s.save.x, s.save.y, s.save.facing);
     v.npcs = new Map();
+    // v0.6: a new map starts with a fresh kit (no animation of the stage it arrives with)
+    resetKitView(anim.kit);
+    anim.kit.last = s.stage ?? null;
   } else if (v.player) {
     v.player.sprite = avatarSprite;
     const moved = retarget(v.player, s.save.x, s.save.y, s.save.facing, now, reduced, moveFor('player'), anim.stepMs);
@@ -521,6 +533,10 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
     }
   }
 
+  // v0.6: the effects kit's stage (who has fallen, who has grown, the props) animates from what changed
+  syncKitView(anim.kit, s.stage, now);
+  const kit = anim.kit;
+
   // sprites, y-sorted
   const list: { y: number; draw: () => void }[] = [];
   // v0.5b (WP-B, for WP-A's ferry): a figure carried over water (a scripted move: nobody walks there) sits in a boat;
@@ -533,7 +549,7 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
     if (onWater(map, bx, by)) afloat.add(`${bx},${by}`);
   }
   v.boats = afloat.size;
-  const pushEnt = (ent: Ent, isPlayer: boolean): void => {
+  const pushEnt = (ent: Ent, isPlayer: boolean, id: string): void => {
     const p = entPos(ent, now);
     let ox = 0;
     let oy = 0;
@@ -563,14 +579,28 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
         const tx = Math.round(p.x);
         const ty = Math.round(p.y);
         const boat = afloat.has(`${tx},${ty}`);
-        env.art.drawSprite(ctx, ent.sprite, px, py, p.facing, boat ? 0 : frame);
+        // v0.6: the kit's fall (the player too) and growth
+        const fall = fallK(kit, id, now, reduced);
+        const scale = scaleK(kit, id, now, reduced);
+        if (fall > 0 || scale !== 1) drawKitFigure(ctx, env.art, ent.sprite, px, py, p.facing, boat ? 0 : frame, fall, scale);
+        else env.art.drawSprite(ctx, ent.sprite, px, py, p.facing, boat ? 0 : frame);
         if (rider && !side) drawRider(ctx, px, py - 8, p.facing, s.save.avatar === 'b' ? 'b' : 'a', frame);
         if (boat) drawHull(ctx, px, py, !afloat.has(`${tx - 1},${ty}`), !afloat.has(`${tx + 1},${ty}`));
       },
     });
   };
-  for (const ent of v.npcs.values()) pushEnt(ent, false);
-  pushEnt(player, true);
+  for (const [id, ent] of v.npcs) pushEnt(ent, false, id);
+  pushEnt(player, true, 'player');
+  // v0.6: the kit's props (placed on a tile, gliding, or carried over a figure's head)
+  for (const [id, pr] of Object.entries(s.stage?.props ?? {})) {
+    const carrier = pr.carry ? (pr.carry === 'player' ? player : v.npcs.get(pr.carry)) : undefined;
+    const cp = carrier ? entPos(carrier, now) : null;
+    const at = cp ? { x: cp.x, y: cp.y } : propAt(kit, id, pr.x, pr.y, now, reduced);
+    const px = Math.round(at.x * TILE - cx);
+    const py = Math.round(at.y * TILE - cy) - (cp ? Math.round(18 * scaleK(kit, pr.carry ?? '', now, reduced)) : 0);
+    if (px < -24 || px > VIEW_W + 8 || py < -24 || py > VIEW_H + 24) continue;
+    list.push({ y: at.y + (cp ? 0.002 : -0.001), draw: () => drawKitProp(ctx, env.art, pr.sprite, px, py, t, fallK(kit, id, now, reduced), scaleK(kit, id, now, reduced)) });
+  }
   list.sort((a, b) => a.y - b.y);
   for (const it of list) it.draw();
   if (speaker) {
@@ -593,6 +623,10 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   // v0.5b (WP-B), above the light so they read at night: the lamplight a guard watches (P3), the burning roofs
   drawSight(ctx, map, s, cx, cy, t, reduced);
   if (fire) drawFire(ctx, map, fire, v, cx, cy, now, dt, reduced);
+  // v0.6: hidden spots that shimmer, a hotspot waiting for a tap, and the kit's timed effects + tint (above the light)
+  for (const sp of glowingSpots(map, s.save.flags)) drawGlowRect(ctx, { x: sp.x * TILE - cx, y: sp.y * TILE - cy }, TILE, TILE, now, reduced, 0.55);
+  if (pend?.kind === 'hotspot') drawGlowRect(ctx, { x: pend.x * TILE - cx, y: pend.y * TILE - cy }, TILE, TILE, now, reduced, 1);
+  drawKitFx(ctx, kit, now, reduced, (x, y) => ({ x: x * TILE - cx, y: y * TILE - cy }));
   // the map pointer sits above the light, so it reads on night maps too
   if (guide && guide.map === map.id) {
     const ent = guide.kind === 'npc' && guide.npc ? v.npcs.get(guide.npc) : undefined;

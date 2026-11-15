@@ -231,3 +231,39 @@ Rules that hold for every set piece:
   leads alone) is countered by Hanumān's `vayu_vega` (katha.json warnings, Sundara 5.47.23: between the arrows like the
   wind). Without it the spammer bot lost Akṣa in 2 of 75 runs (a crit on an ignored strike, Akṣa at 1–2 HP); after it:
   0 losses for all four bots, Akṣa strategic 6.4 / spammer 8.0 turns, bosses spammer / strategic 11.03 / 8.03 = 1.37.
+
+## v0.6: 48 more verses, Paraśurāma, thirteen special moments (14 Nov)
+Plan and owner's decisions: `notes/v06-plan.md`; ownership `notes/v06-ownership.md`; WP0's APIs and examples
+`notes/v06-wp0.md`; each package's decisions, sources and checks in `notes/v06-a.md` … `v06-d.md`; the two Sanskrit
+reviews in `notes/v06-rev1.md` and `notes/v06-rev2.md`; sign-off rows per package in `REVIEW-v06-a/b/c.md`.
+- **Kathā-only content.** `shlokas-3/4/5.json` carry `"kathaOnly": true`; their lexicon forms, names and katha verses are
+  Kathā-only too. `logic-journey.ts` (`practiceContent`, `journeyContent`) gives the practice game exactly the v0.5
+  content in `reduce`, `newGame`, `loadGame`, `sessionResult` and the views; v06-hooks proves the practice hash is the same
+  with or without v0.6 content. The one change to the practice text is the removal of Nala's "Rāma's name on every stone"
+  line (owner: a later tradition); the "v0.5b guard" was re-baselined for it alone (verified: HEAD stories with only that
+  line removed give the new hash).
+- **Heard, never gates (pacing).** New verses are `{shloka}` moments (mode hear) or verse steps of told cutscenes; the
+  shrine neither lists nor accepts them; the HUD, book screens and the Kathā ending count "restored" against the v0.5
+  verses only ("heard" counts every verse). No package added an optional recitation. Census (katha.test, 75 runs per
+  bot), v0.5.1 → v0.6: strategic 1533 → 1598 actions (+4.2 %), spammer 1733 → 1798 (+3.8 %), 70 % 1782 → 1847 (+3.6 %),
+  careless 1767 → 1831 (+3.6 %); recitations 110.3 / 110.4 / 136.5 / 113.5 → 110.3 / 110.4 / 136.3 / 113.7; 0 lost fights.
+  Per package: A +8, B +31, C +26 (incl. D's scene) actions.
+- **Engine (WP0).** Kit commands `fx`, `topple`, `rise`, `grow`, `glow`, `prop`, `arrow` (logic-stage.ts; never wait;
+  cleared at the script's end or a warp; reduced-motion path each); `{hotspot}` (A / tap = found, ▶ = pass, passes by
+  itself) and `MapDef.spots` (hidden map tiles, never on the pointer's path); told cutscenes `{cutscene: id}` (logic-told.ts,
+  view-told.tsx; 2D painters `cutscene-paint-<x>.ts`, 3D scenes through `cutscene3d-scenes.ts`; skip with a confirmation;
+  replay from the verse book); `{echo}` (katha-echoes.json; a title line under each verse of the echo). All are Kathā-only
+  (world.test refuses them outside a Kathā block). Bots: logic-sim handles the new pendings; `hidden: true` finds every
+  hidden moment; the e2e Bot plays told cutscenes (`toldAnswer`) and hotspots (`findHidden`).
+- **The moments.** Main path: the bow breaks and Paraśurāma (Mithilā told cutscene, ≈ 2 min untapped, six verses), the
+  sandals, the deer show the way, one arrow through seven sālas, Hanumān grows + the launch, the Ocean rises, waking
+  Kumbhakarṇa (told cutscene, ≈ 14 s), the mountain of herbs (3D, ≈ 42 s). Hidden: Ahalyā, the trees remember (a map
+  spot by the hut, from the abduction to Jaṭāyu), the honey grove, same words two counsellors. Verse echoes: three on
+  the main path (उत्तिष्ठ, कौसल्या, the sandals), the counsellors' one hidden.
+  Every main-path interaction is one tap that cannot fail.
+- **Sanskrit.** New lines: sa-dialogue-10 (A, 18), 11 (B, 24), 12 (C, 18), 13 (D, 9); files 6–9 are frozen at v0.5.1
+  (`FILES69_V051`; they may only lose entries — C removed Nala's line from file 3). Interface: sa-ui-v06 (`v06.skipAsk`
+  एतत् त्यजसि?, `v06.look` पश्य) and sa-ui-v06-c (the echo titles). Level 1–3, ≤ ~10 words a sentence, oracle-verified;
+  two model reviews (rev1: 23 changes; rev2: kept all of them, 5 more; between them every verse text re-fetched once more);
+  integration fixed two verse analyses after rev1 (1.30.26
+  सत्यम् is a predicate adjective, "made true to its name"; 1.75.3 जामदग्न्यम् "of Jamadagni's line").

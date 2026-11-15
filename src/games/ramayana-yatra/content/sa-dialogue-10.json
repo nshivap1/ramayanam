@@ -1,0 +1,98 @@
+{
+ "version": 1,
+ "about": "v0.6 Kathā story lines (OWNER: v0.6 WP-A): the new English lines inside { \"if\": \"style.katha\", \"then\": [...] } blocks of chapters 1–2 (and story-common), and cutscene-mithila.json that no file 1–9 held at v0.5.1, and new Kathā-only speaker titles (\"label\": true). Rule: sa-verify collectStoryStrings; notes/v06-ownership.md. Same format and rules as files 1–9 (notes/sambhashana.md).",
+ "models": [],
+ "entries": [
+  {
+   "en": "The old king was afraid. He said to me:",
+   "sa": "वृद्धः राजा भीतः आसीत्। सः माम् एवम् उक्तवान्।",
+   "ctx": "ch1.road_dawn · person.vishvamitra (Kathā)"
+  },
+  {
+   "en": "Last evening, by this river, I gave Rama two mantras.",
+   "sa": "ह्यः सायम् अस्याः नद्याः तीरे अहं रामाय द्वौ मन्त्रौ दत्तवान्।",
+   "ctx": "ch1.vishvamitra_road · person.vishvamitra (Kathā)"
+  },
+  {
+   "en": "I said this to my son:",
+   "sa": "अहं पुत्रम् एवम् उक्तवती।",
+   "ctx": "ch2.kausalya · person.kausalya (Kathā)"
+  },
+  {
+   "en": "This is what I told Rama:",
+   "sa": "अहं रामम् एवम् उक्तवती।",
+   "ctx": "ch2.sita · person.sita (Kathā)"
+  },
+  {
+   "en": "On his last night, my father remembered something he did long ago. He said to mother Kausalya:",
+   "sa": "मृत्योः पूर्वं रात्रौ मम पिता पुरातनं कर्म स्मृतवान्। सः मातरं कौसल्याम् एवम् उक्तवान्।",
+   "ctx": "ch2.bharata · person.bharata (Kathā)"
+  },
+  {
+   "en": "Rama grieves for his father, then comforts his brother:",
+   "sa": "रामः पितरं शोचति। ततः सः भ्रातरं सान्त्वयति।",
+   "ctx": "ch2.bharata · narration (Kathā)"
+  },
+  {
+   "en": "At last Bharata sets down a pair of sandals adorned with gold.",
+   "sa": "अन्ते भरतः स्वर्णस्य पादुके भूमौ स्थापयति।",
+   "ctx": "ch2.bharata · narration (Kathā)"
+  },
+  {
+   "en": "Rama stands on the sandals, then gives them to Bharata.",
+   "sa": "रामः पादुकयोः उपरि तिष्ठति। ततः सः पादुके भरताय ददाति।",
+   "ctx": "ch2.bharata · narration (Kathā)"
+  },
+  {
+   "en": "Mithila",
+   "sa": "मिथिला",
+   "ctx": "cutscene mithila · title (label, Kathā)",
+   "label": true
+  },
+  {
+   "en": "From Siddhashrama, Vishvamitra leads the princes to Mithila.",
+   "sa": "विश्वामित्रः राजकुमारौ सिद्धाश्रमात् मिथिलां नयति।",
+   "ctx": "cutscene mithila · narration (Kathā)"
+  },
+  {
+   "en": "Rama steps inside. There shines Ahalya, the wife of the sage Gautama. For a long time no one could see her.",
+   "sa": "रामः आश्रमं प्रविशति। तत्र मुनेः गौतमस्य पत्नी अहल्या प्रकाशते। दीर्घं कालं सा केन अपि न दृष्टा।",
+   "ctx": "cutscene mithila · narration (Kathā)"
+  },
+  {
+   "en": "On the way there is a hermitage. No one lives there now.",
+   "sa": "मार्गे एकः आश्रमः अस्ति। तत्र अधुना कः अपि न वसति।",
+   "ctx": "cutscene mithila · narration (Kathā)"
+  },
+  {
+   "en": "No king could even take hold of Shiva's bow. If Rama strings it, I will give him Sita.",
+   "sa": "कः अपि राजा शिवस्य धनुः ग्रहीतुम् अपि न शक्तः। रामः धनुः सज्जं करोति चेत्, अहं तस्मै सीतां दास्यामि।",
+   "ctx": "cutscene mithila · person.janaka (Kathā)"
+  },
+  {
+   "en": "Janaka brings Sita in all her jewels. She stands before the fire, in front of Rama.",
+   "sa": "जनकः भूषितां सीताम् आनयति। सा अग्नेः पुरतः रामस्य अग्रे तिष्ठति।",
+   "ctx": "cutscene mithila · narration (Kathā)"
+  },
+  {
+   "en": "On the road to Ayodhya, darkness falls. Parashurama, the son of Jamadagni, stands in the way.",
+   "sa": "अयोध्यायाः मार्गे अन्धकारः भवति। जामदग्न्यः रामः मार्गे तिष्ठति।",
+   "ctx": "cutscene mithila · narration (Kathā)"
+  },
+  {
+   "en": "Sage, your anger is over now. Grant safety to my young sons!",
+   "sa": "हे मुने, भवतः क्रोधः शान्तः। भवान् मम बालेभ्यः पुत्रेभ्यः अभयं ददातु।",
+   "ctx": "cutscene mithila · person.dasharatha (Kathā)"
+  },
+  {
+   "en": "Parashurama's strength is gone. He speaks softly:",
+   "sa": "जामदग्न्यस्य बलं नष्टम्। सः मन्दं वदति।",
+   "ctx": "cutscene mithila · narration (Kathā)"
+  },
+  {
+   "en": "Rama looses the arrow. Parashurama bows to him and goes away to Mount Mahendra.",
+   "sa": "रामः बाणं मुञ्चति। जामदग्न्यः रामं नमति, महेन्द्रं पर्वतं गच्छति च।",
+   "ctx": "cutscene mithila · narration (Kathā)"
+  }
+ ]
+}

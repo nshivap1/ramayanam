@@ -854,3 +854,51 @@ Interface strings (`content/aditya-hridayam.json → ui`; labels need no ।):
 - [ ] **replay** (label) — Aditya-hridayam ▶ → आदित्यहृदयम् ▶
 
 Constructions to confirm first: बहु कालं युद्धं भवति for "the battle has gone on for a long time" (v05b-rev2: चलति, the modern idiom, replaced: the packs use it only for motion); तस्य बलं नवम् for "his strength renewed"; अगस्त्येन सह पठ ("recite with Agastya"); तिष्ठ for "pause" and अलम् for "skip"; आदित्यहृदयं त्यजसि? for "Skip the hymn?".
+
+## v0.6: 48 Kathā verses, Paraśurāma, thirteen special moments — model-written, machine-verified, two model reviews, awaiting human review
+Plan `notes/v06-plan.md`; packages `notes/v06-a.md` … `v06-d.md`. **Per-package sign-off sheets** (verse rows, discrepancies,
+human-review lists and the single-source / sandhi-engine allowlists — `content.test` and `learning.test` read them with this
+file): [REVIEW-v06-a.md](REVIEW-v06-a.md) (Bāla, Ayodhyā, Paraśurāma: 19 verses), [REVIEW-v06-b.md](REVIEW-v06-b.md)
+(Araṇya, Kiṣkindhā: 14), [REVIEW-v06-c.md](REVIEW-v06-c.md) (Sundara, Yuddha: 15). Every verse was re-fetched from
+valmikiramayan.net by its package and checked against a second source; both reviewers re-fetched the texts again between them
+(rev1 17, rev2 the other 31): no difference beyond the variants and site misprints recorded per verse.
+
+**Reviews.** [notes/v06-rev1.md](notes/v06-rev1.md): 191 strings + 48 verses checked, 23 changes (15 accuracy / meaning,
+8 register). [notes/v06-rev2.md](notes/v06-rev2.md): kept all 23 and both integration fixes, 5 more changes (4 faithfulness of
+a सरलार्थः to its verse, 1 a quote marked with एवम्). Gates after both: the whole game suite green; every सरलार्थः word L1–L3.
+
+**Integration changes after the reviews (orchestrator).**
+- 1.30.26 सत्यम्: a predicate adjective, सत्यं कृतम् "made true (to its name)" (lexicon `satya`, adjective), not the adverb
+  "truly"; translation changed to match (valmikiramayan.net's gloss).
+- 1.75.3 जामदग्न्यम्: "of Jamadagni's line" (the family's bow, 1.75.22, पितृपैतामहं 1.75.27), not "of Jamadagni's son";
+  translation, gloss, lexicon meaning and note changed; the translation's "that" follows the analysis of तत्.
+- 2.25.32 provenance note corrected: the page's own verse markers run one line early (not the fetch tool).
+
+**Not in the critical edition, kept from the vulgate (owner's base text).** The deer showing the way (Araṇya
+3.64.15cd–24ab; a set piece told in the game's own lines, no verse; the Godāvarī's silence, 3.64.7 = CE 3.60.7, is attested)
+and the first half of Sugrīva's 5.64.28 (कौसल्या सुप्रजा राम …; its second half = CE 5.61.16ab). Śabarī's verse is her
+critical-edition forest-food verse (vulgate 3.74.17cd–18ab = CE 3.70.13), by the owner's decision.
+
+**New Sanskrit lines** (Level 1–3, ≤ ~10 words a sentence, oracle-verified): sa-dialogue-10 (A: 18, incl. the Mithilā /
+Paraśurāma cutscene), 11 (B: 24), 12 (C: 18, incl. Kumbhakarṇa), 13 (D: 9, the herbs); interface `v06.skipAsk` एतत् त्यजसि?,
+`v06.look` पश्य, and C's four echo titles; names ऋषभ, कैलास, जामदग्न्य and 13 more (names-3…6); D's हिमवत् declension model
+(भगवत् type; every built form checked by rev1).
+
+**For the human teacher** (from rev1 and rev2; details in their notes):
+1. The register of the सरलार्थाः: allies and juniors use भवान् (3rd person) to Rāma and Sītā, elders and prayers त्वम्. An older
+   exception: v0.4's s-aranya-3 (Jaṭāyu, an elder, uses भवान्). Whether a younger brother says भवान् to the king (Vibhīṣaṇa to
+   Rāvaṇa) should be settled for both places at once.
+2. सज्जं करोति for "strings a bow" (MW sajja "strung, placed on a bow-string"; Apte the same).
+3. आरोपयित्वा (1.67.17) is an epic -tvā after a prefix (classical आरोप्य, 7.1.37); its grammar note could say so for learners
+   taught "prefix → lyap" (the string sits in shlokas-3 and lexicon-3).
+4. The gloss of इति in s-pitur-vacana ("so I hold: thus"): rev1 would change it, rev2 keeps it (the site's own gloss).
+5. मन्त्रिणौ for Mārīca, an adviser Rāvaṇa consulted rather than his minister ("counsellor" covers it).
+6. Liberties for play: "across the river" (Lakṣmaṇa's way-finding line), "the whole mountain" (the text says the peak), the
+   herbs scene's gold horizon (the text sets the journey at night) and Hanumān growing at the roar (in the text, before he leaps).
+7. Guha's भवतः कृते किं करोमि? (the verse's करवाणि is not in the packs); s-tato-madhyat's सरलार्थः keeps one sentence of
+   context (Rāma's anger) that explains the verse's ततः.
+8. Variant readings chosen and flagged `variant` (never a recitation gap): 1.30.26 वीर (CE राम), 1.49.17 मुदा (CE तदा), 1.76.5
+   इदम् (CE वचः), 2.52.83 पालयत्वेनं (IITK पारयित्वेमं), 4.5.11 यदि वा (site मे), 4.12.3 गिरिप्रस्थं (CE °प्रस्थे), 5.1.132 इहान्तरे
+   (CE इहान्तरा), 5.55.3 पुरुषश्रेष्ठा (site and CE °श्रेष्ठ), 6.60.54 च (CE तु), 6.90.71 तत्.
+9. Most of the ≈ 300 new lexicon lemmas cite Monier-Williams as "asserted" (the Cologne site refused the fetch tool); about 50
+   were read on wisdomlib / kosha.sanskrit.today or confirmed by the repo's packs. A spot-check is welcome.

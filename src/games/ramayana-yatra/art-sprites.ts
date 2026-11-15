@@ -2,6 +2,11 @@
 import type { SpriteId } from './catalog';
 import { type C, Pix } from './art-core';
 import { R } from './art-palette';
+// v0.6 (WP0): the packages' new characters (art-v06-<x>.ts) join CHARS; a package may draw one itself (BUILD_<X>)
+import { BUILD_A, CHARS_A } from './art-v06-a';
+import { BUILD_B, CHARS_B } from './art-v06-b';
+import { BUILD_C, CHARS_C } from './art-v06-c';
+import { BUILD_D, CHARS_D } from './art-v06-d';
 
 export type SDir = 'down' | 'up' | 'right';
 export const SPRITE_W = 16;
@@ -219,7 +224,15 @@ export const CHARS: Record<SpriteId, CharSpec> = {
   // (1.4.10–11), singing to the strings (1.4.8) — the veena; Lava with a tuft instead of a topknot, to tell them apart
   kusha: { child: true, skin: R.skinRama, hair: BLACK_HAIR, top: [R.skinRama[1], R.skinRama[2]], lower: OCHRE, accent: R.saffron[1], bare: true, acc: ['topknot', 'veena'] },
   lava: { child: true, skin: R.skinRama, hair: BLACK_HAIR, top: [R.skinRama[1], R.skinRama[2]], lower: OCHRE, accent: R.gold[1], bare: true, acc: ['tuft', 'veena'] },
+  // v0.6: the packages' characters (art-v06-a … -d.ts)
+  ...CHARS_A,
+  ...CHARS_B,
+  ...CHARS_C,
+  ...CHARS_D,
 };
+
+/** v0.6: package-drawn characters (art-v06-<x>.ts BUILD_<X>): a frame facing down / up / right. */
+const V06_BUILD: Partial<Record<SpriteId, (dir: 'down' | 'up' | 'right', frame: 0 | 1 | 2) => Pix>> = { ...BUILD_A, ...BUILD_B, ...BUILD_C, ...BUILD_D };
 
 const EYE = '#1a1020';
 
@@ -937,7 +950,9 @@ export function buildSprite(id: SpriteId, dir: 'down' | 'up' | 'left' | 'right',
   const s = CHARS[id];
   const d: SDir = dir === 'left' ? 'right' : dir;
   let p: Pix;
-  if (s.kind === 'krauncha') p = krauncha(d, frame);
+  const own = V06_BUILD[id];
+  if (own) p = own(d, frame);
+  else if (s.kind === 'krauncha') p = krauncha(d, frame);
   else if (s.kind === 'jatayu') p = jatayu(d, frame);
   else if (s.kind === 'deer') p = deer(d, frame);
   else p = humanoid(s, d, frame);

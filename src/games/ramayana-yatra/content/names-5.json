@@ -1,0 +1,138 @@
+{
+ "version": 1,
+ "about": "v0.6 names of package C (same schema as names.json; ids must be new). Kathā-only: the practice game never sees them.",
+ "names": [
+  {
+   "id": "person.sagara",
+   "sa": "सागर",
+   "en": "Sāgara, lord of the Ocean",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (vulgate)",
+      "url": "https://www.valmikiramayan.net/utf8/yuddha/sarga22/yuddhasans22.htm",
+      "note": "Yuddha 6.22.17 (re-fetched): ततो मध्यात् समुद्रस्य सागरः स्वयम् उत्थितः, the Ocean-lord rises before Rāma.",
+      "accessed": "2026-11-14"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. सागर (m. the ocean); also the repo's @content/vocab entry sagara (verifiedBy oracle:mw#sAgara, gloss:mw).",
+      "accessed": "2026-11-14"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:monier-williams (via @content/vocab oracle:mw#sAgara)",
+     "engine:validateDeva"
+    ],
+    "notes": "MW headword confirmed through the vocab pack's dictionary check; the Rāmāyaṇa passage was fetched this session."
+   }
+  },
+  {
+   "id": "person.mainaka",
+   "sa": "मैनाक",
+   "en": "Maināka, the golden mountain in the sea",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (vulgate)",
+      "url": "https://www.valmikiramayan.net/utf8/sundara/sarga1/sundarasans1.htm",
+      "note": "Sundara 5.1.92ab (re-fetched): हिरण्यनाभं मैनाकमुवाच गिरिसत्तमम् (\"he spoke to Maināka, the golden-naved, best of mountains\").",
+      "accessed": "2026-11-14"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. मैनाक (asserted, not fetched this session).",
+      "accessed": "2026-11-14"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "engine:validateDeva"
+    ],
+    "notes": "Rāmāyaṇa passage fetched this session; the MW entry is asserted by agent v06-C (the Cologne lookup could not be fetched), for a human spot-check."
+   }
+  },
+  {
+   "id": "person.dadhimukha",
+   "sa": "दधिमुख",
+   "en": "Dadhimukha, keeper of the honey grove",
+   "provenance": {
+    "sources": [
+     {
+      "name": "enjoylearningsanskrit.com Vālmīki-Rāmāyaṇa (critical edition)",
+      "url": "https://enjoylearningsanskrit.com/scriptures/ramayana/book-5/chapter-61",
+      "note": "Critical edition 5.61.14 (fetched): आर्य लक्ष्मण संप्राह वीरो दधिमुखः कपिः । अङ्गदप्रमुखैर्वीरैर्भक्षितं मधुवानरैः ॥ (vulgate 5.64).",
+      "accessed": "2026-11-14"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. दधि-मुख (asserted, not fetched this session).",
+      "accessed": "2026-11-14"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "engine:validateDeva"
+    ],
+    "notes": "Rāmāyaṇa passage fetched this session; the MW entry is asserted by agent v06-C, for a human spot-check."
+   }
+  },
+  {
+   "id": "person.nala",
+   "sa": "नल",
+   "en": "Nala, the vānara who built the bridge",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (vulgate)",
+      "url": "https://www.valmikiramayan.net/utf8/yuddha/sarga22/yuddhasans22.htm",
+      "note": "Yuddha 6.22.44 (re-fetched): अयम् सौम्य नलो नाम तनुजो विश्व कर्मणः, the Ocean names Nala, son of Viśvakarman. Also 6.123.17 नलसेतुः.",
+      "accessed": "2026-11-14"
+     },
+     {
+      "name": "Monier-Williams, Sanskrit-English Dictionary (1899), Cologne Digital Sanskrit Dictionaries",
+      "url": "https://www.sanskrit-lexicon.uni-koeln.de/",
+      "note": "s.v. नल (asserted, not fetched this session).",
+      "accessed": "2026-11-14"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "engine:validateDeva"
+    ],
+    "notes": "Rāmāyaṇa passage fetched this session (the story already calls him \"Nala\"); the MW entry is asserted by agent v06-C, for a human spot-check."
+   }
+  },
+  {
+   "id": "place.madhuvana",
+   "sa": "मधुवन",
+   "en": "Madhuvana, Sugrīva's honey grove",
+   "provenance": {
+    "sources": [
+     {
+      "name": "Vālmīki Rāmāyaṇa, valmikiramayan.net (vulgate)",
+      "url": "https://www.valmikiramayan.net/utf8/sundara/sarga64/sundarasans64.htm",
+      "note": "Sundara 5.64.27 (re-fetched): न मे मधु वनम् हन्यात् अहृष्टः प्लवग ईश्वरः (printed word by word).",
+      "accessed": "2026-11-14"
+     },
+     {
+      "name": "vedapath.app Rāmāyaṇa reader (IIT Kanpur text)",
+      "url": "https://vedapath.app/en/ramayana/sundara-kanda/64",
+      "note": "Same line, joined: न मे मधुवनं हन्यादहृष्टः प्लवगेश्वरः.",
+      "accessed": "2026-11-14"
+     }
+    ],
+    "verifiedBy": [
+     "source:valmiki-ramayana",
+     "source:vedapath.app (IIT Kanpur text)",
+     "engine:validateDeva"
+    ],
+    "notes": "Stem मधुवन (मधु honey + वन grove), as joined in the IIT Kanpur text; display convention: headword stem."
+   }
+  }
+ ]
+}

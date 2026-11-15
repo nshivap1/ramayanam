@@ -1103,6 +1103,46 @@
      "portrait": "vibhishana"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "shloka": "s-vinashyed-dhi"
+      },
+      {
+       "hotspot": {
+        "x": 24,
+        "y": 11
+       },
+       "flag": "found.ch6.counsellors",
+       "ms": 6000,
+       "then": [
+        {
+         "say": "I warned him: people who say only pleasant things are easy to find. One who says what is hard but good is rare.",
+         "who": "person.vibhishana",
+         "portrait": "vibhishana"
+        },
+        {
+         "say": "Long ago, when Ravana planned to carry Sita away, Maricha said almost the same words to him."
+        },
+        {
+         "if": "heard.s-sulabhah-purusha",
+         "then": [
+          {
+           "shloka": "s-sulabhah-purusha"
+          }
+         ]
+        },
+        {
+         "say": "Two counsellors gave Ravana the same advice. He listened to neither."
+        },
+        {
+         "echo": "counsellors"
+        }
+       ]
+      }
+     ]
+    },
+    {
      "say": "I have left Lanka, my home and my family. I seek refuge with Rama.",
      "who": "person.vibhishana",
      "portrait": "vibhishana"
@@ -1286,12 +1326,61 @@
          "say": "Rama prayed to the Ocean for three days. When the Ocean did not answer, Rama took up his bow in anger."
         },
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "fx": "tint",
+           "color": "sea"
+          },
+          {
+           "fx": "shake",
+           "ms": 1000
+          },
+          {
+           "prop": "ocean_lord",
+           "sprite": "sagara",
+           "at": {
+            "x": 10,
+            "y": 17
+           },
+           "to": {
+            "x": 10,
+            "y": 14
+           },
+           "ms": 1800
+          },
+          {
+           "glow": {
+            "x": 8,
+            "y": 13,
+            "w": 5,
+            "h": 3
+           },
+           "ms": 2500
+          },
+          {
+           "wait": 900
+          },
+          {
+           "shloka": "s-tato-madhyat"
+          }
+         ]
+        },
+        {
          "say": "Then the Ocean rose in person and bowed. 'Nala, son of Vishvakarma, can build a bridge. I will hold up whatever he places on my waters.'"
         },
         {
-         "say": "I am Nala. Vanaras, bring me trees and boulders! Rama's name on every stone!",
-         "who": "Nala",
-         "portrait": "vanara"
+         "if": "style.katha",
+         "then": [
+          {
+           "prop": "ocean_lord",
+           "remove": true
+          },
+          {
+           "fx": "tint",
+           "color": "none"
+          }
+         ]
         },
         {
          "say": "For five days the vanaras uproot trees and carry rocks. Nala sets them in the sea, and they float."
@@ -1678,6 +1767,17 @@
    "id": "ch6.kumbhakarna",
    "cmds": [
     {
+     "if": "style.katha&!seen.kumbhakarna",
+     "then": [
+      {
+       "cutscene": "kumbhakarna"
+      },
+      {
+       "shloka": "s-vadhyamano"
+      }
+     ]
+    },
+    {
      "say": "The ground shakes. Kumbhakarna, Ravana's giant brother, has been woken from his long sleep."
     },
     {
@@ -1734,6 +1834,23 @@
       },
       {
        "say": "In Lanka, Ravana weeps for his brother."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Then Indrajit strikes from the clouds with Brahma's weapon. Rama, Lakshmana and the army fall senseless."
+        },
+        {
+         "say": "Old Jambavan, wounded too, sends Hanuman north to the mountain of herbs."
+        },
+        {
+         "shloka": "s-mrtasanjivani"
+        },
+        {
+         "cutscene": "herbs"
+        }
+       ]
       },
       {
        "set": "ch6.kumbhakarna_defeated"
@@ -1798,7 +1915,27 @@
      },
      "onWin": [
       {
-       "say": "Lakshmana looses a final arrow with a vow: 'If Rama is truthful and devoted to dharma, let this arrow strike.'"
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Lakshmana takes up one last arrow and makes a vow."
+        },
+        {
+         "shloka": "s-dharmatma-satyasandhah"
+        },
+        {
+         "arrow": {
+          "from": "player",
+          "to": "indrajit"
+         },
+         "ms": 700
+        }
+       ],
+       "else": [
+        {
+         "say": "Lakshmana looses a final arrow with a vow: 'If Rama is truthful and devoted to dharma, let this arrow strike.'"
+        }
+       ]
       },
       {
        "say": "The arrow flies true, and Indrajit's sorcery ends forever."
@@ -2086,6 +2223,9 @@
          "say": "From the Pushpaka, Rama shows Sita the places of their story."
         },
         {
+         "shloka": "s-esha-setuh"
+        },
+        {
          "shloka": "s-anirvedah",
          "mode": "hear"
         },
@@ -2306,6 +2446,25 @@
        "say": "Fourteen years have passed. In {n:place.ayodhya_return}, Bharata comes out to meet his brother, carrying the sandals he kept on the throne all this time."
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "say": "Bharata places the sandals on Rama's feet and bows to him."
+        },
+        {
+         "shloka": "s-etat-te-rakshitam"
+        },
+        {
+         "if": "heard.s-paduke",
+         "then": [
+          {
+           "echo": "paduke"
+          }
+         ]
+        }
+       ]
+      },
+      {
        "say": "Ayodhya is lit with lamps and garlands, and every street is full of joy."
       },
       {
@@ -2347,6 +2506,14 @@
       },
       {
        "say": "Rama ruled for many years, and in his kingdom no one knew fear, sickness or sorrow."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-na-paryadevan"
+        }
+       ]
       },
       {
        "set": "ch6.crowned"

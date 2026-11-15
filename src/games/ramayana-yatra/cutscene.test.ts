@@ -386,7 +386,8 @@ test('story: the Kathā walkthrough (seed 1, level 3) sees the scene once, in R�
   let n = 0;
   let foe = '';
   const r = runWalkthrough(C, 1, 3, { style: 'katha', onAction: (s, a) => {
-    if (a.type === 'cutscene-done') {
+    // (v0.6: a told cutscene ends with cutscene-done too — logic-told; this test counts the Āditya-hṛdayam)
+    if (a.type === 'cutscene-done' && a.id === ADITYA_ID) {
       n++;
       foe = s.battle?.foe.id ?? '';
     }

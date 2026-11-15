@@ -13,6 +13,10 @@
  * hero those moves at once, with a toast; story battles re-check every grant (an older save past the flag).
  * v0.5b (WP0 hooks, notes/v05b-plan.md §1): `{smarana}` (P1) and `{book}` (P2) → logic-scene, `{setu}` (P5) →
  * logic-setu; their pendings resume here (challenge context 'scene', 'book', 'setu'). All three are Kathā-only.
+ * v0.6 (WP0, notes/v06-wp0.md): the effects kit → logic-stage (`execKit`: GameState.stage + 'kit' fx; the stage is
+ * cleared when the script ends), `{hotspot}` → pending 'hotspot' (choose 0 = found: its `then` + flag; advance =
+ * passes), `{cutscene}` → logic-told (pending 'cutscene', ended by cutscene-done / advance), `{echo}` → logic-told. All
+ * Kathā-only. A v0.6 verse (`kathaOnly`) is heard only: the shrine never recites it (logic-journey isRestorable).
  */
 import type { BattleSpec, Challenge, ChallengeResult, Dir, EventCmd, GameContent, GameState, KandaId, PartyMember, Pending } from './types';
 import { clamp, indexOf, testFlag } from './logic-util';
@@ -25,6 +29,9 @@ import { joinLevel, newMember, statsAt, withUnlockedMoves } from './logic-progre
 import { DELTA, isDir, isSolidTile, mapById, npcKey, triggerFlag } from './logic-world';
 import { sceneAnswer, startBookReview, startSceneRecital } from './logic-scene';
 import { setuAction, startSetu } from './logic-setu';
+import { clearStage, execKit, hotspotFlag, hotspotPending, isKitCmd } from './logic-stage';
+import { noteEcho, startTold, toldDone } from './logic-told';
+import { isRestorable } from './logic-journey';
 
 /** Hard cap on commands executed by one interpreter run (catches goto loops in content). */
 export const MAX_CMDS_PER_RUN = 500;
@@ -155,7 +162,7 @@ export function startEvent(state: GameState, content: GameContent, eventId: stri
 
 /** Start an ad-hoc script (signs, shrine, respawn) and run it until it needs the player. */
 export function startScript(state: GameState, content: GameContent, eventId: string, cmds: EventCmd[]): GameState {
-  return run({ ...state, mode: 'script', script: { eventId, frames: [{ cmds, pc: 0 }] }, pending: null }, content);
+  return run(clearStage({ ...state, mode: 'script', script: { eventId, frames: [{ cmds, pc: 0 }] }, pending: null }), content);
 }
 
 /** After arriving on a map: run (or, inside a script, push) the map's onEnter event. */
@@ -175,12 +182,13 @@ export function run(state: GameState, content: GameContent): GameState {
     const frames = s.script.frames;
     const top = frames[frames.length - 1];
     if (!top) {
-      s = { ...s, script: null, mode: 'explore' };
+      s = clearStage({ ...s, script: null, mode: 'explore' });
       break;
     }
     if (top.pc >= top.cmds.length) {
       const rest = frames.slice(0, -1);
-      s = rest.length > 0 ? { ...s, script: { ...s.script, frames: rest } } : { ...s, script: null, mode: 'explore' };
+      // v0.6: the effects kit's stage lives as long as the script
+      s = rest.length > 0 ? { ...s, script: { ...s.script, frames: rest } } : clearStage({ ...s, script: null, mode: 'explore' });
       continue;
     }
     if (++n > MAX_CMDS_PER_RUN) throw new Error(`Event "${s.script.eventId}" ran more than ${MAX_CMDS_PER_RUN} commands without waiting for the player (a goto loop?)`);
@@ -333,7 +341,8 @@ function exec(s: GameState, content: GameContent, cmd: EventCmd): GameState {
   if ('warp' in cmd) {
     const map = mapById(content, cmd.warp);
     if (!map || isSolidTile(map, cmd.x, cmd.y)) return s;
-    const w: GameState = { ...s, save: { ...s.save, mapId: map.id, x: cmd.x, y: cmd.y, facing: isDir(cmd.facing) ? cmd.facing : s.save.facing }, fx: [...s.fx, { kind: 'warp' }] };
+    // v0.6: the kit's stage belongs to a map (its figures, its tiles): a warp starts the new map with none
+    const w: GameState = clearStage({ ...s, save: { ...s.save, mapId: map.id, x: cmd.x, y: cmd.y, facing: isDir(cmd.facing) ? cmd.facing : s.save.facing }, fx: [...s.fx, { kind: 'warp' }] });
     return enterMapEffects(w, content, map.id);
   }
   if ('move' in cmd) {
@@ -373,6 +382,14 @@ function exec(s: GameState, content: GameContent, cmd: EventCmd): GameState {
   if ('smarana' in cmd) return startSceneRecital(s, content, cmd); // P1, logic-scene (WP-A)
   if ('book' in cmd) return startBookReview(s, content, cmd.book); // P2, logic-scene (WP-A)
   if ('setu' in cmd) return isKatha(s) ? startSetu(s, content, cmd.setu) : s; // P5, logic-setu (WP-D)
+  // ── v0.6 (notes/v06-wp0.md): Kathā-only; each skips (same state) in the practice game ──
+  if (isKitCmd(cmd)) return execKit(s, content, cmd, isKatha(s)); // the effects kit, logic-stage
+  if ('hotspot' in cmd) {
+    const p = isKatha(s) ? hotspotPending(cmd) : null;
+    return p ? pend(s, p) : s;
+  }
+  if ('cutscene' in cmd) return startTold(s, content, cmd.cutscene); // logic-told
+  if ('echo' in cmd) return noteEcho(s, content, cmd.echo); // logic-told
   return s; // unknown command: skipped (world.test reports it)
 }
 
@@ -525,7 +542,8 @@ export function resumeScript(state: GameState, content: GameContent, action: { t
     case 'shrine': {
       if (action.type === 'recite') {
         const id = action['shlokaId'];
-        if (typeof id !== 'string' || !knownShloka(content, id) || !state.save.shlokas[id]?.heard) return state;
+        // v0.6: a v0.6 verse is heard only (plan §0.2): never recited at a shrine
+        if (typeof id !== 'string' || !knownShloka(content, id) || !state.save.shlokas[id]?.heard || !isRestorable(content, id)) return state;
         const s = beginRecital(rewind(state), content, id);
         return s.pending === null ? run(s, content) : s;
       }
@@ -547,6 +565,20 @@ export function resumeScript(state: GameState, content: GameContent, action: { t
       // v0.5b P5 (logic-setu, WP-D): choose i turns a stone; advance gives a hint, or continues once solved
       const s = setuAction(state, content, action);
       return s !== state && s.pending === null ? run(s, content) : s;
+    }
+    case 'hotspot': {
+      // v0.6: a hidden moment — choose 0 (tap the shimmer / A) finds it: its flag, then its `then`; advance passes
+      if (action.type === 'advance') return run({ ...state, pending: null }, content);
+      if (action.type !== 'choose' || action['index'] !== 0) return state;
+      const cmd = lastCmd(state);
+      if (!cmd || !('hotspot' in cmd)) return run({ ...state, pending: null }, content);
+      const s = setFlag({ ...state, pending: null }, hotspotFlag(cmd, state.script?.eventId ?? 'script'), content);
+      return run(pushFrame(s, cmd.then), content);
+    }
+    case 'cutscene': {
+      // v0.6: a told cutscene has played (view-told) → logic-told toldDone (flags, verses heard), then the script goes on
+      const s = toldDone(state, content, action);
+      return s === state ? state : run(s, content);
     }
     default:
       return state; // 'ending', 'battle'

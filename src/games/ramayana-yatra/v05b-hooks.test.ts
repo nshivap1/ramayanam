@@ -303,7 +303,8 @@ test("v0.5b P6: an 'antya' pick is answered through options / answers; the bot's
 });
 
 test('v0.5b: the new content files are loaded (sa-dialogue-6…9, sa-ui-scene / -setu / -chain, katha-chain.json)', () => {
-  assert.equal(DIALOGUE_FILES.length, 9);
-  assert.equal(UI_FILES.length, 7);
+  // v0.6 added sa-dialogue-10…13 and sa-ui-v06 / -a…-d (v06-hooks.test.ts)
+  assert.equal(DIALOGUE_FILES.length, 13);
+  assert.equal(UI_FILES.length, 12);
   assert.ok(REAL.chain && REAL.chain.version === 1);
 });

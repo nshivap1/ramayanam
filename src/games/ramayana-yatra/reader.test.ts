@@ -10,12 +10,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { type Level, createRng } from '@sdk';
 import type { ChallengeKind, GameState, Reader } from './types';
 import { loadContent } from './content';
 import { indexOf } from './logic-util';
 import { SHRINE_CMDS, SHRINE_EVENT_ID, SHRINE_STUDY, startScript } from './logic-events';
-import { BASIC_POS, HARD_KINDS, KIND_ORDER, READER_BASIC, STUDY_ROUND, hardWord, isBasicWord, loadGame, makeChallenge, newGame, readerChain, reduce, setReader, startBattle, toSave, unlockedKinds } from './logic';
+import { BASIC_POS, HARD_KINDS, KIND_ORDER, READER_BASIC, STUDY_ROUND, hardWord, isBasicWord, loadGame, makeChallenge, newGame, practiceContent, readerChain, reduce, setReader, startBattle, toSave, unlockedKinds } from './logic';
 import { runWalkthrough } from './logic-sim';
 import { deriveBasic } from './reader-basic';
 import { type CensusDraw, census, censusState, kindCounts } from './reader-census';
@@ -45,14 +46,31 @@ const hashOf = (draws: CensusDraw[]): string => {
 };
 
 const cache: Partial<Record<Reader | 'en', CensusDraw[]>> = {};
+/**
+ * v0.6: the census runs on the practice view (logic-journey practiceContent: exactly the v0.5 content), so its hash keeps
+ * checking the classic-challenge engine; the v0.6 (Kathā-only) words in the study hall are checked in v06-hooks.test.ts.
+ */
+const CENSUS_CONTENT = practiceContent(REAL);
 function drawsFor(reader: Reader | 'en'): CensusDraw[] {
-  return (cache[reader] ??= census(REAL, SEEDS, LEVELS, BOOKS, reader === 'en' ? undefined : reader));
+  return (cache[reader] ??= census(CENSUS_CONTENT, SEEDS, LEVELS, BOOKS, reader === 'en' ? undefined : reader));
 }
 
 // ───────────────────────── the basic-word rule ─────────────────────────
 
 test('basic words: content/reader.json is exactly the derivation from @content/vocab and @content/dhatu; the rule on its examples', () => {
+  // v0.6: over the whole merged lexicon (lexicon-1…5). reader.json is derived data: after a lexicon change, regenerate it
+  // with RY_WRITE_READER=1 node --import tsx --test --test-name-pattern="basic words" src/games/ramayana-yatra/reader.test.ts
+  // (any package may; it is the union over every lexicon file — notes/v06-ownership.md)
   const derived = deriveBasic(REAL.lexicon);
+  if (process.env['RY_WRITE_READER'] === '1') {
+    const url = new URL('./content/reader.json', import.meta.url);
+    const json = JSON.parse(readFileSync(url, 'utf8')) as Record<string, unknown>;
+    // the file's own layout: one basic word per line
+    const head = Object.entries(json).filter(([k]) => k !== 'basic').map(([k, v]) => `  ${JSON.stringify(k)}: ${JSON.stringify(v)}`);
+    const rows = Object.entries(derived).map(([k, v]) => `    ${JSON.stringify(k)}: ${JSON.stringify(v)}`);
+    writeFileSync(url, `{\n${head.join(',\n')},\n  "basic": {\n${rows.join(',\n')}\n  }\n}\n`);
+    Object.assign(READER_BASIC as Record<string, unknown>, derived);
+  }
   assert.deepEqual(READER_BASIC, derived, `content/reader.json "basic" is out of date: replace it with\n${JSON.stringify(derived, null, 1)}`);
   for (const [id, e] of Object.entries(READER_BASIC)) assert.equal(lex(id)?.lemma, e.lemma, `${id}: the lemma it was derived for`);
   // rule 1: closed classes

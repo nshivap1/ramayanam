@@ -23,6 +23,7 @@ import { type UiSlot, uiSa } from './sa-ui';
 import { applyKathaFloor, kathaSave } from './logic-katha';
 import { setReader } from './logic-reader';
 import { cutsceneDone } from './logic-cutscene';
+import { journeyContent } from './logic-journey';
 
 export { newGame, loadGame, toSave, sessionResult, storyProgress, emptySession, INTRO_EVENT, START_LEVEL, START_NISKA } from './logic-state';
 export {
@@ -52,6 +53,8 @@ export {
   isDir,
   beginNextBook,
   nextBookKanda,
+  spotAt,
+  glowingSpots,
   type PlacedNpc,
 } from './logic-world';
 export { nextBookObjective, MAX_CMDS_PER_RUN, SHRINE_EVENT_ID, SHRINE_REST, SHRINE_RECITE, SHRINE_SAVE, SHRINE_LEAVE, SHRINE_STUDY, MAX_PARTY, DEFEAT_TEXT, REST_TEXT, lastCmd, maxHpOf, heardFlag, restoredFlag } from './logic-events';
@@ -69,6 +72,9 @@ export * from './logic-sundara';
 export * from './logic-chain';
 export * from './logic-setu';
 export * from './logic-cutscene'; // v0.5b WP-E: the Āditya-hṛdayam cutscene (cutsceneDue / cutsceneDone)
+export * from './logic-journey'; // v0.6 WP0: the content each journey sees (Kathā-only verses / lexicon / names)
+export * from './logic-stage'; // v0.6 WP0: the effects kit, hotspots
+export * from './logic-told'; // v0.6 WP0: told cutscenes, verse echoes
 export * from './types';
 export * from './catalog';
 
@@ -225,14 +231,17 @@ function reduceBattle(s: GameState, content: GameContent, a: AnyAction): GameSta
 }
 
 /** THE entry point. Clears fx, dispatches by mode. Invalid actions return the same object. */
-export function reduce(state: GameState, content: GameContent, action: Action): GameState {
+export function reduce(state: GameState, all: GameContent, action: Action): GameState {
   if (!isAction(action)) return state;
+  // v0.6: the practice game never sees Kathā-only content (logic-journey; V05A_PRACTICE, V03_SNAPSHOT)
+  const content = journeyContent(all, state.save);
   const base: GameState = state.fx.length > 0 ? { ...state, fx: [] } : state;
   let next: GameState;
   if (action.type === 'tick') next = tick(base, action['ms']);
   else if (action.type === 'set-reader') next = setReader(base, action['reader']);
   // v0.5b WP-E: a due cutscene was played → its save flag (only while due; otherwise the same state)
-  else if (action.type === 'cutscene-done') next = cutsceneDone(base, content, action['id']);
+  // v0.6: …or the end of a told cutscene (pending 'cutscene', logic-told) — the script goes on
+  else if (action.type === 'cutscene-done') next = base.pending?.kind === 'cutscene' ? resumeScript(base, content, action) : cutsceneDone(base, content, action['id']);
   else if (base.mode === 'explore') next = reduceExplore(base, content, action);
   else if (base.mode === 'script') next = resumeScript(base, content, action);
   else if (base.mode === 'battle') next = reduceBattle(base, content, action);

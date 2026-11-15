@@ -17,6 +17,10 @@
  * same scene) with crossfades.
  *
  * Pure helpers (no DOM; unit-tested): `shotFor`, `posePath`, `framePlane`, `sunDir`. The rest needs a browser.
+ *
+ * v0.6 WP-D reuses this engine for the mountain of herbs (cutscene3d-herbs.ts): the vector / matrix kit, the shaders
+ * (VS_TEX / FS_TEX, VS_SKY / FS_SKY / DITHER, VS_SEA / FS_SEA), the pixel textures (spriteStrip, groundCanvas, cloudCanvas,
+ * dotCanvas, lankaCanvas) and hexRgb are exported for it — exports only: the Āditya scene draws exactly as before.
  */
 import type { Art } from './art';
 import { R } from './art-palette';
@@ -28,17 +32,17 @@ import type { SpriteId } from './catalog';
 // ───────────────────────── small vector / matrix kit ─────────────────────────
 
 export type V3 = [number, number, number];
-const add = (a: V3, b: V3): V3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
-const sub = (a: V3, b: V3): V3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-const scale = (a: V3, k: number): V3 => [a[0] * k, a[1] * k, a[2] * k];
-const dot = (a: V3, b: V3): number => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-const cross = (a: V3, b: V3): V3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-const norm = (a: V3): V3 => {
+export const add = (a: V3, b: V3): V3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+export const sub = (a: V3, b: V3): V3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+export const scale = (a: V3, k: number): V3 => [a[0] * k, a[1] * k, a[2] * k];
+export const dot = (a: V3, b: V3): number => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+export const cross = (a: V3, b: V3): V3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+export const norm = (a: V3): V3 => {
   const l = Math.hypot(a[0], a[1], a[2]) || 1;
   return [a[0] / l, a[1] / l, a[2] / l];
 };
 export const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
-const lerp3 = (a: V3, b: V3, t: number): V3 => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+export const lerp3 = (a: V3, b: V3, t: number): V3 => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
 export const clamp01 = (x: number): number => Math.max(0, Math.min(1, x));
 export const smooth = (a: number, b: number, x: number): number => {
   const t = clamp01((x - a) / (b - a));
@@ -46,18 +50,18 @@ export const smooth = (a: number, b: number, x: number): number => {
 };
 export const easeInOut = (t: number): number => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
-function perspective(fovY: number, aspect: number, near: number, far: number): Float32Array {
+export function perspective(fovY: number, aspect: number, near: number, far: number): Float32Array {
   const f = 1 / Math.tan(fovY / 2);
   const nf = 1 / (near - far);
   return new Float32Array([f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, 2 * far * near * nf, 0]);
 }
-function lookAt(eye: V3, target: V3, up: V3): Float32Array {
+export function lookAt(eye: V3, target: V3, up: V3): Float32Array {
   const z = norm(sub(eye, target));
   const x = norm(cross(up, z));
   const y = cross(z, x);
   return new Float32Array([x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -dot(x, eye), -dot(y, eye), -dot(z, eye), 1]);
 }
-function mul(a: Float32Array, b: Float32Array): Float32Array {
+export function mul(a: Float32Array, b: Float32Array): Float32Array {
   const o = new Float32Array(16);
   for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) o[c * 4 + r] = (a[r] as number) * (b[c * 4] as number) + (a[4 + r] as number) * (b[c * 4 + 1] as number) + (a[8 + r] as number) * (b[c * 4 + 2] as number) + (a[12 + r] as number) * (b[c * 4 + 3] as number);
   return o;
@@ -170,7 +174,7 @@ export function framePlane(phase: CutscenePhase, k: number): { tilt: number; alp
 const DIRS: Dir[] = ['down', 'up', 'left', 'right'];
 
 /** A character's four facings side by side (16 × 24 each), drawn by the game's sprite art. */
-function spriteStrip(art: Art, id: SpriteId): HTMLCanvasElement | null {
+export function spriteStrip(art: Art, id: SpriteId): HTMLCanvasElement | null {
   const c = makeCanvas(64, 24);
   const g = c?.getContext('2d');
   if (!c || !g) return null;
@@ -261,7 +265,7 @@ export function chariotCanvas(art: Art): HTMLCanvasElement | null {
 }
 
 /** The battlefield before Laṅkā (64 × 64, tiles): trodden earth, sandy patches, grass tufts, stones, spent arrows. */
-function groundCanvas(): HTMLCanvasElement | null {
+export function groundCanvas(): HTMLCanvasElement | null {
   const c = makeCanvas(64, 64);
   const g = c?.getContext('2d');
   if (!c || !g) return null;
@@ -298,7 +302,7 @@ function groundCanvas(): HTMLCanvasElement | null {
   return c;
 }
 
-function cloudCanvas(): HTMLCanvasElement | null {
+export function cloudCanvas(): HTMLCanvasElement | null {
   const c = makeCanvas(64, 20);
   const g = c?.getContext('2d');
   if (!c || !g) return null;
@@ -317,7 +321,7 @@ function cloudCanvas(): HTMLCanvasElement | null {
   return c;
 }
 
-function dotCanvas(color: string, size: number, round: boolean): HTMLCanvasElement | null {
+export function dotCanvas(color: string, size: number, round: boolean): HTMLCanvasElement | null {
   const c = makeCanvas(size, size);
   const g = c?.getContext('2d');
   if (!c || !g) return null;
@@ -384,27 +388,27 @@ export function paintScene2D(g: CanvasRenderingContext2D, art: Art): void {
 
 // ───────────────────────── the WebGL renderer ─────────────────────────
 
-const VS_TEX = `attribute vec3 aPos; attribute vec2 aUv; uniform mat4 uVP; uniform vec3 uCam; varying vec2 vUv; varying float vDist;
+export const VS_TEX = `attribute vec3 aPos; attribute vec2 aUv; uniform mat4 uVP; uniform vec3 uCam; varying vec2 vUv; varying float vDist;
 void main(){ vUv = aUv; vDist = distance(aPos, uCam); gl_Position = uVP * vec4(aPos, 1.0); }`;
-const FS_TEX = `precision mediump float; varying vec2 vUv; varying float vDist; uniform sampler2D uTex; uniform float uAlpha; uniform vec3 uTint;
+export const FS_TEX = `precision mediump float; varying vec2 vUv; varying float vDist; uniform sampler2D uTex; uniform float uAlpha; uniform vec3 uTint;
 uniform vec3 uFog; uniform vec2 uFogR; uniform float uCut;
 void main(){ vec4 c = texture2D(uTex, vUv); if (uCut > 0.5 && c.a < 0.5) discard; vec3 col = c.rgb * uTint;
   float f = clamp((vDist - uFogR.x) / (uFogR.y - uFogR.x), 0.0, 1.0); col = mix(col, uFog, f * f);
   gl_FragColor = vec4(col, (uCut > 0.5 ? 1.0 : c.a) * uAlpha); }`;
-const VS_SKY = `attribute vec3 aPos; uniform mat4 uVP; uniform vec3 uCam; varying vec3 vDir;
+export const VS_SKY = `attribute vec3 aPos; uniform mat4 uVP; uniform vec3 uCam; varying vec3 vDir;
 void main(){ vDir = aPos; vec4 p = uVP * vec4(aPos * 400.0 + uCam, 1.0); gl_Position = p.xyww; }`;
 // interleaved-gradient-noise ordered dither and colour bands: the pixel-art look of the sky and the sea
-const DITHER = `float ign(vec2 p){ return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715)))); }
+export const DITHER = `float ign(vec2 p){ return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715)))); }
 vec3 band(vec3 c){ float n = ign(floor(gl_FragCoord.xy)); return floor(c * 14.0 + n) / 14.0; }`;
-const FS_SKY = `precision mediump float; varying vec3 vDir; uniform vec3 uSun; uniform vec3 uTop; uniform vec3 uMid; uniform vec3 uLow; uniform vec3 uSunCol; uniform float uTime;
+export const FS_SKY = `precision mediump float; varying vec3 vDir; uniform vec3 uSun; uniform vec3 uTop; uniform vec3 uMid; uniform vec3 uLow; uniform vec3 uSunCol; uniform float uTime;
 ${DITHER}
 void main(){ vec3 d = normalize(vDir); float e = d.y; vec3 col = mix(uLow, uMid, smoothstep(0.0, 0.22, e)); col = mix(col, uTop, smoothstep(0.22, 0.75, e));
   float s = max(dot(d, uSun), 0.0); col += uSunCol * (pow(s, 6.0) * 0.35 + pow(s, 40.0) * 0.55);
   float ray = 0.5 + 0.5 * sin(atan(d.x - uSun.x, d.y - uSun.y) * 18.0 + uTime * 0.3); col += uSunCol * pow(s, 14.0) * ray * 0.25;
   if (s > 0.9990) col = vec3(1.0, 0.97, 0.82); else if (s > 0.9984) col = mix(uSunCol, vec3(1.0), 0.6);
   gl_FragColor = vec4(band(col), 1.0); }`;
-const VS_SEA = `attribute vec3 aPos; uniform mat4 uVP; varying vec3 vW; void main(){ vW = aPos; gl_Position = uVP * vec4(aPos, 1.0); }`;
-const FS_SEA = `precision mediump float; varying vec3 vW; uniform vec3 uCam; uniform vec3 uSun; uniform float uTime; uniform vec3 uDeep; uniform vec3 uNear; uniform vec3 uFog; uniform vec3 uSunCol;
+export const VS_SEA = `attribute vec3 aPos; uniform mat4 uVP; varying vec3 vW; void main(){ vW = aPos; gl_Position = uVP * vec4(aPos, 1.0); }`;
+export const FS_SEA = `precision mediump float; varying vec3 vW; uniform vec3 uCam; uniform vec3 uSun; uniform float uTime; uniform vec3 uDeep; uniform vec3 uNear; uniform vec3 uFog; uniform vec3 uSunCol;
 ${DITHER}
 void main(){ vec3 v = normalize(uCam - vW); vec2 p = vW.xz; float w1 = sin(p.x * 0.9 + uTime * 1.3 + sin(p.y * 0.4)); float w2 = sin(p.y * 1.7 - uTime * 0.9 + p.x * 0.3);
   vec3 n = normalize(vec3(w1 * 0.06, 1.0, w2 * 0.08)); vec3 r = reflect(-v, n); float s = max(dot(r, uSun), 0.0);
@@ -412,7 +416,7 @@ void main(){ vec3 v = normalize(uCam - vW); vec2 p = vW.xz; float w1 = sin(p.x *
   col += uSunCol * pow(s, 60.0) * 1.4; col += uSunCol * pow(s, 8.0) * 0.18;
   col = mix(col, uFog, smoothstep(60.0, 380.0, dist)); gl_FragColor = vec4(band(col), 1.0); }`;
 
-interface Prog {
+export interface Prog {
   p: WebGLProgram;
   a: Record<string, number>;
   u: Record<string, WebGLUniformLocation | null>;
@@ -432,7 +436,7 @@ interface Sprite {
   blob?: boolean;
 }
 
-const hexRgb = (h: string): V3 => [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255];
+export const hexRgb = (h: string): V3 => [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255];
 
 export interface SceneCue {
   phase: CutscenePhase;

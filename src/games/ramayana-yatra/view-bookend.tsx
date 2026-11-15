@@ -26,6 +26,7 @@ import { isKatha } from './view-katha';
 import { VerseRef, useButtons, useEnv } from './view-common';
 import { useUi } from './view-ui';
 import type { GameState } from './types';
+import { restorableIds } from './logic-journey';
 
 /** A keypress or tap this soon after the screen appears is ignored (the player may still be pressing ▶ on the last line). */
 export const BOOK_END_ARM_MS = 700;
@@ -64,11 +65,14 @@ export function BookEnd({ kanda, state, mark, recitedNow, onNext, onStop, review
   const name = bookName(env.content, kanda);
   const nextName = onNext ? bookName(env.content, kanda + 1) : null;
   const total = st.verses.length;
+  // v0.6: restored counts against the book's restorable verses only (a v0.6 verse is heard, never restored), so ~13
+  // verses a book never read as "3 / 13 restored"
+  const restorable = restorableIds(env.content, st.verses).length;
   const story = STORY[kanda];
   const rows = [
     { id: 'heard', n: st.heard, of: total, label: 'bookEnd.heard', why: 'bookEnd.heardWhy' },
     katha ? { id: 'recited', n: st.recited, of: null, label: 'bookEnd.recited', why: 'bookEnd.recitedWhy' } : { id: 'answers', n: st.correct, of: st.answered, label: 'bookEnd.answers', why: 'bookEnd.answersWhy' },
-    { id: 'restored', n: st.restored, of: total, label: 'bookEnd.restored', why: 'bookEnd.restoredWhy' },
+    { id: 'restored', n: st.restored, of: restorable, label: 'bookEnd.restored', why: 'bookEnd.restoredWhy' },
   ];
   return (
     <div className={`g-ramayana-yatra__bookend${review ? ' is-review' : ''}`} role={review ? 'region' : 'dialog'} aria-modal={review ? undefined : true} aria-labelledby="ry-bookend-title" data-testid={review ? 'book-review' : 'panel-chapter-done'} data-kanda={kanda} data-armed={armed ? '' : undefined}>
@@ -188,10 +192,11 @@ export function KathaEnding({ state, recited, onFinish }: { state: GameState; re
   const heard = all.filter((id) => sh[id]?.heard).length;
   const restored = all.filter((id) => sh[id]?.restored).length;
   const lines = [...(recited?.values() ?? [])].reduce((a, b) => a + b, 0);
+  // v0.6: every verse is listed and counted as heard; restored counts against the restorable ones
   const rows = [
     { id: 'heard', n: heard, of: all.length, label: 'bookEnd.heard' },
     { id: 'recited', n: lines, of: null, label: 'bookEnd.recited' },
-    { id: 'restored', n: restored, of: all.length, label: 'bookEnd.restored' },
+    { id: 'restored', n: restored, of: restorableIds(env.content, all).length, label: 'bookEnd.restored' },
   ];
   return (
     <div className="g-ramayana-yatra__card-panel" data-testid="panel-ending" data-katha="true">

@@ -825,6 +825,41 @@
        "set": "katha.hanuman"
       },
       {
+       "say": "The vanaras hold their breath. Hanuman crouches low, ready to spring."
+      },
+      {
+       "fx": "shake",
+       "ms": 1200
+      },
+      {
+       "wait": 900
+      },
+      {
+       "shloka": "s-yatha-raghava"
+      },
+      {
+       "if": "heard.s-uttishtha-hari",
+       "then": [
+        {
+         "echo": "uttishtha"
+        }
+       ]
+      },
+      {
+       "arrow": {
+        "from": "player",
+        "to": {
+         "x": 36,
+         "y": 8
+        }
+       },
+       "ms": 900
+      },
+      {
+       "fx": "flash",
+       "ms": 300
+      },
+      {
        "goto": "k_ride"
       }
      ]
@@ -889,6 +924,14 @@
     },
     {
      "say": "Hanuman touches the peak with his hand in thanks. 'I have promised not to stop,' he says gently."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "shloka": "s-tvarate-karyakalo"
+      }
+     ]
     },
     {
      "say": "While he speaks with the mountain, you kneel at an old shrine on its slope and catch your breath."
@@ -1542,6 +1585,14 @@
      "say": "In the Ashoka grove, under a shimshapa tree, sits a lady in a faded yellow garment, pale with grief, guarded by rakshasis."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "shloka": "s-upavasa-krsham"
+      }
+     ]
+    },
+    {
      "say": "Hanuman knows at once: this is Sita, just as Rama described her."
     },
     {
@@ -1549,6 +1600,14 @@
     },
     {
      "say": "Sita places a blade of grass between herself and Ravana and answers him with courage. She will not even look at him."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "shloka": "s-trnam-antaratah"
+      }
+     ]
     },
     {
      "say": "Ravana storms away. When the guards drift off to sleep, Hanuman begins to speak, softly, from the tree."
@@ -1600,6 +1659,128 @@
       },
       {
        "fade": "in"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "honey",
+         "sprite": "honeycomb",
+         "at": {
+          "x": 3,
+          "y": 7
+         }
+        },
+        {
+         "hotspot": {
+          "x": 3,
+          "y": 7
+         },
+         "flag": "found.ch5.madhuvana",
+         "ms": 6000,
+         "then": [
+          {
+           "prop": "mv1",
+           "sprite": "vanara",
+           "at": {
+            "x": 4,
+            "y": 8
+           }
+          },
+          {
+           "prop": "mv2",
+           "sprite": "vanara",
+           "at": {
+            "x": 5,
+            "y": 6
+           }
+          },
+          {
+           "prop": "mv3",
+           "sprite": "angada",
+           "at": {
+            "x": 6,
+            "y": 8
+           }
+          },
+          {
+           "fx": "petals",
+           "ms": 2500
+          },
+          {
+           "say": "In the honey grove, Madhuvana, the vanaras sing, dance and tumble from the trees."
+          },
+          {
+           "topple": [
+            "mv1"
+           ]
+          },
+          {
+           "prop": "dm",
+           "sprite": "dadhimukha",
+           "at": {
+            "x": 9,
+            "y": 6
+           },
+           "to": {
+            "x": 5,
+            "y": 7
+           },
+           "ms": 900
+          },
+          {
+           "say": "Stop! This is the king's own grove!",
+           "who": "person.dadhimukha",
+           "portrait": "dadhimukha"
+          },
+          {
+           "rise": [
+            "mv1"
+           ]
+          },
+          {
+           "say": "But Angada has told them to drink, and the dance goes on."
+          },
+          {
+           "prop": "mv1",
+           "remove": true
+          },
+          {
+           "prop": "mv2",
+           "remove": true
+          },
+          {
+           "prop": "mv3",
+           "remove": true
+          },
+          {
+           "prop": "dm",
+           "remove": true
+          }
+         ]
+        },
+        {
+         "prop": "honey",
+         "remove": true
+        },
+        {
+         "say": "Dadhimukha, keeper of Sugriva's honey grove, runs to the king: the vanaras have drunk all the honey!"
+        },
+        {
+         "say": "Sugriva laughs. He knows at once: they have found Sita."
+        },
+        {
+         "shloka": "s-drshta-devi"
+        },
+        {
+         "if": "heard.s-kausalya-supraja",
+         "then": [
+          {
+           "echo": "kausalya"
+          }
+         ]
+        }
+       ]
       },
       {
        "say": "At Kishkindha, Hanuman bowed to Rama. 'I have seen Sita.'"
@@ -1713,6 +1894,14 @@
        "say": "I am Hanuman, Rama's messenger. Here is his ring, engraved with his name.",
        "who": "person.hanuman",
        "portrait": "hanuman"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-vanaro-ham"
+        }
+       ]
       },
       {
        "take": "kusha_mudrika"
@@ -2222,6 +2411,9 @@
          "say": "Hanuman dips his tail in the sea, and the fire goes out. Then fear grips him: is Sita safe?"
         },
         {
+         "shloka": "s-dhanyas-te"
+        },
+        {
          "objective": "Go to Sita in the Ashoka grove."
         }
        ],
@@ -2255,6 +2447,9 @@
         },
         {
          "say": "Hanuman dips his tail in the sea, and the fire goes out. Then fear grips him: is Sita safe?"
+        },
+        {
+         "shloka": "s-dhanyas-te"
         },
         {
          "objective": "Go to Sita in the Ashoka grove."
@@ -2292,6 +2487,9 @@
          "say": "Hanuman dips his tail in the sea, and the fire goes out. Then fear grips him: is Sita safe?"
         },
         {
+         "shloka": "s-dhanyas-te"
+        },
+        {
          "objective": "Go to Sita in the Ashoka grove."
         }
        ],
@@ -2325,6 +2523,9 @@
         },
         {
          "say": "Hanuman dips his tail in the sea, and the fire goes out. Then fear grips him: is Sita safe?"
+        },
+        {
+         "shloka": "s-dhanyas-te"
         },
         {
          "objective": "Go to Sita in the Ashoka grove."

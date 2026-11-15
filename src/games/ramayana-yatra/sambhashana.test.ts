@@ -8,14 +8,16 @@
  * as labels (no final ।); only label story strings may carry it. File 5 holds the lines inside Kathā-only blocks
  * (`{ "if": "style.katha", … }`, OWNER: kc-content) and the Kathā move descriptions (`katha.json → moveText`, v0.4.1);
  * the practice wording beside them (`{ "if": "!style.katha", … }`) keeps its file. katha.json itself is checked by
- * katha-content.test.ts. v0.5b: file 5 is frozen at v0.5a (FILE5_V05A); new Kathā text goes to 6 (ch1–3), 7 (ch4 and new
- * moveText), 8 (ch5), 9 (ch6) — one file per package (notes/v05b-ownership.md).
+ * katha-content.test.ts. v0.5b: file 5 is frozen at v0.5a (FILE5_V05A); new Kathā text went to 6 (ch1–3), 7 (ch4 and new
+ * moveText), 8 (ch5), 9 (ch6) — one file per package (notes/v05b-ownership.md). v0.6: files 6–9 are frozen at v0.5.1
+ * (FILES69_V051); new Kathā text goes to 10 (A: ch1–2, cutscene-mithila), 11 (B: ch3–4), 12 (C: ch5–6,
+ * cutscene-kumbhakarna, new moveText), 13 (D: cutscene-herbs) — notes/v06-ownership.md.
  * This file holds no Sanskrit beyond the oracle's self-test lines.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { BUNDLED_FILES, FILE5_V05A, LABELS4_V05A, collectStoryStrings, createOracle, easiest, enKey, getOracle, isKathaCond, isPracticeCond, type DialogueFile, type SaModel, type StoryLike } from './sa-verify';
+import { BUNDLED_FILES, FILE5_V05A, FILES69_V051, LABELS4_V05A, V06_FILE, collectStoryStrings, createOracle, easiest, enKey, getOracle, isKathaCond, isPracticeCond, type DialogueFile, type SaModel, type StoryLike, type ToldLike } from './sa-verify';
 import kathaJson from './content/katha.json';
 
 // Coverage is complete (919/919 at v0.2.0), so it is enforced by default. Set RY_SA_LENIENT=1 while a
@@ -126,7 +128,7 @@ test('sambhashana: file 5 holds exactly the story lines of Kathā-only blocks ({
   const moveText = (kathaJson as { moveText?: Record<string, string> }).moveText ?? {};
   for (const [id, en] of Object.entries(moveText)) {
     const s = story.find((x) => x.en === en);
-    const want = FILE5_V05A.has(enKey(en)) ? 5 : 7;
+    const want = FILE5_V05A.has(enKey(en)) ? 5 : (FILES69_V051.get(enKey(en)) ?? 12);
     if (s?.file !== want || s.ctx !== `move ${id} · description (Kathā: katha.json moveText)`) problems.push(`moveText.${id}: "${short(en)}" is ${s ? `file ${s.file} (${s.ctx})` : 'not collected'}, not file ${want} as its Kathā description`);
   }
   console.log(`# file 5 (Kathā): ${f5.length} strings (${Object.keys(moveText).length} move descriptions)`);
@@ -134,7 +136,7 @@ test('sambhashana: file 5 holds exactly the story lines of Kathā-only blocks ({
 });
 
 test('sambhashana (v0.5b): file 5 is frozen at v0.5a (it may only lose entries); files 6–9 hold exactly the new Kathā strings of their chapters', () => {
-  assert.equal(BUNDLED_FILES.length, 9, 'sa-dialogue-1 … 9 are bundled');
+  assert.equal(BUNDLED_FILES.length, 13, 'sa-dialogue-1 … 13 are bundled');
   const story = collectStoryStrings();
   const problems: string[] = [];
   for (const e of FILES[4]!.data.entries) if (!FILE5_V05A.has(enKey(e.en))) problems.push(`sa-dialogue-5.json: "${short(e.en)}" is new since v0.5a — new Kathā text goes to file 6–9 of its chapter (notes/v05b-ownership.md)`);
@@ -168,6 +170,9 @@ test('sambhashana (v0.5b): collectStoryStrings — Kathā text held by file 5 st
     moveText: { a: 'old move text', b: 'new move text' },
     file5: new Set(['old kept line', 'old move text'].map(enKey)),
     labels4: new Set([enKey('Old title')]),
+    // the v0.5b rule as it stood (v0.6 sends a new moveText to file 12: see the v0.6 test below)
+    moveTextFile: 7,
+    cutscenes: [],
   });
   const fileOf = (en: string): number | undefined => got.find((x) => x.en === en)?.file;
   const labelOf = (en: string): boolean => !!got.find((x) => x.en === en)?.label;
@@ -194,6 +199,73 @@ test('sambhashana (v0.5b): collectStoryStrings — Kathā text held by file 5 st
   // the frozen sets hold what files 4 and 5 held at v0.5a
   assert.equal(FILE5_V05A.size, 90);
   assert.equal(LABELS4_V05A.size, 59);
+});
+
+test('sambhashana (v0.6): files 6–9 are frozen at v0.5.1 (they may only lose entries); files 10–13 hold exactly the new Kathā strings of their packages', () => {
+  const story = collectStoryStrings();
+  const problems: string[] = [];
+  for (const n of [6, 7, 8, 9] as const) {
+    for (const e of FILES[n - 1]!.data.entries) if (FILES69_V051.get(enKey(e.en)) !== n) problems.push(`sa-dialogue-${n}.json: "${short(e.en)}" is new since v0.5.1 — new Kathā text goes to file 10–13 of its package (notes/v06-ownership.md)`);
+  }
+  for (const n of [10, 11, 12, 13] as const) {
+    const f = FILES[n - 1]!;
+    assert.equal(f.name, `sa-dialogue-${n}.json`);
+    const mine = new Set(story.filter((x) => x.file === n).map((x) => x.en));
+    for (const e of f.data.entries) if (!mine.has(e.en)) problems.push(`${f.name}: "${short(e.en)}" is ${story.find((x) => x.en === e.en) ? `a string of file ${story.find((x) => x.en === e.en)!.file}` : 'stale'}`);
+    for (const x of story) if (x.file === n && !f.data.entries.some((e) => e.en === x.en)) problems.push(`${f.name}: no entry for "${short(x.en)}" (${x.ctx})`);
+    console.log(`# file ${n}: ${mine.size} strings`);
+  }
+  assert.equal(FILES69_V051.size, 14 + 6 + 30 + 29, 'the frozen set holds what files 6–9 held at v0.5.1');
+  assert.deepEqual(V06_FILE, { a: 10, b: 11, c: 12, d: 13 });
+  assert.deepEqual(problems, [], report(problems));
+});
+
+test('sambhashana (v0.6): collectStoryStrings — text held by files 5–9 stays; new Kathā text goes to 10 (ch1–2), 11 (ch3–4), 12 (ch5–6, moveText), 13 (D); told cutscenes by package', () => {
+  const k = (ev: string, cmds: unknown[]): StoryLike => ({ events: [{ id: ev, cmds: cmds as Record<string, unknown>[] }] });
+  const kblock = (...lines: unknown[]): unknown => ({ if: 'style.katha', then: lines, else: [{ say: `practice ${lines.length}` }] });
+  const stories: [StoryLike, 1 | 2 | 3, 10 | 11 | 12][] = [
+    [k('ch1.x', [kblock({ say: 'new ch1' }, { say: 'v05b line kept' }, { hotspot: { x: 1, y: 1 }, then: [{ say: 'found line', who: 'Sage' }] })]), 1, 10],
+    [k('ch3.x', [kblock({ say: 'new ch3', who: 'v05b title' })]), 2, 11],
+    [k('ch6.x', [kblock({ choice: 'new ch6 prompt', options: [{ label: 'new ch6 reply' }] })]), 3, 12],
+  ];
+  const told = (id: string, steps: unknown[]): ToldLike => ({ id, title: `${id} title`, steps: steps as Record<string, unknown>[] });
+  const got = collectStoryStrings({
+    stories,
+    cutscenes: [
+      [told('mithila', [{ say: 'cutscene line', who: 'Herald' }, { hotspot: 'h', at: [0, 0, 1, 1], then: [{ say: 'hidden line' }] }, { ask: 'Which way?', options: [{ label: 'North', then: [{ say: 'north line' }] }] }]), 10],
+      [{ id: 'stubbed', title: 'never', stub: true, steps: [] }, 12],
+      [told('herbs', [{ say: 'herbs line' }]), 13],
+    ],
+    defs: {},
+    nameIds: [],
+    moveText: { b: 'new move text', c: 'v05b move kept' },
+    file5: new Set(),
+    files69: new Map([[enKey('v05b line kept'), 6], [enKey('v05b title'), 8], [enKey('v05b move kept'), 7]]),
+    labels4: new Set(),
+  });
+  const fileOf = (en: string): number | undefined => got.find((x) => x.en === en)?.file;
+  assert.equal(fileOf('new ch1'), 10);
+  assert.equal(fileOf('v05b line kept'), 6, 'a line file 6 held at v0.5.1 stays in file 6');
+  assert.equal(fileOf('found line'), 10, "a hotspot's then is Kathā text");
+  assert.equal(fileOf('Sage'), 10);
+  assert.ok(got.find((x) => x.en === 'Sage')?.label, 'a new Kathā speaker title is a label');
+  assert.equal(fileOf('new ch3'), 11);
+  assert.equal(fileOf('v05b title'), 8, 'a title file 8 held stays there');
+  assert.equal(fileOf('new ch6 prompt'), 12);
+  assert.equal(fileOf('new ch6 reply'), 12);
+  assert.equal(fileOf('practice 3'), 1, "the practice game's text keeps files 1–3");
+  assert.equal(fileOf('cutscene line'), 10, "A's cutscene → 10");
+  assert.equal(fileOf('Herald'), 10);
+  assert.equal(fileOf('hidden line'), 10, "a cutscene hotspot's line");
+  assert.equal(fileOf('Which way?'), 10);
+  assert.equal(fileOf('North'), 10);
+  assert.equal(fileOf('north line'), 10);
+  assert.equal(fileOf('mithila title'), 10);
+  assert.ok(got.find((x) => x.en === 'mithila title')?.label, 'a cutscene title is a label');
+  assert.equal(fileOf('never'), undefined, 'a stub has no strings');
+  assert.equal(fileOf('herbs line'), 13, "D's cutscene → 13");
+  assert.equal(fileOf('new move text'), 12, 'a new Kathā move description → 12 (WP-C)');
+  assert.equal(fileOf('v05b move kept'), 7);
 });
 
 test('sambhashana: models — valid paradigm, matching gender and ṇatva, source present, one model per stem', () => {

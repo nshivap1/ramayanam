@@ -5,6 +5,9 @@
  * switch on as soon as those files have content.
  * v0.5b (WP0): the Kathā-only commands {smarana} {book} {setu} must sit inside a Kathā block; avoid-triggers must
  * require style.katha; a walkthrough step's `style` is 'katha' or absent.
+ * v0.6 (WP0): so must the effects kit ({fx} {topple} {rise} {grow} {glow} {prop} {arrow}), {hotspot} (its `then` is
+ * walked), {cutscene} (a cutscene of content/cutscene-*.json) and {echo} (content/katha-echoes.json); a map's hidden
+ * spots require style.katha. References (verses, lexicon, names) are checked against the merged content (v0.6 files).
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -16,12 +19,10 @@ import ch4 from './content/story-ch4.json';
 import ch5 from './content/story-ch5.json';
 import ch6 from './content/story-ch6.json';
 import defsJson from './content/defs.json';
-import shlokas1 from './content/shlokas-1.json';
-import shlokas2 from './content/shlokas-2.json';
-import lexicon1 from './content/lexicon-1.json';
-import lexicon2 from './content/lexicon-2.json';
-import namesJson from './content/names.json';
-import { ALLY_IDS, BATTLE_BG_IDS, BATTLER_IDS, ENEMY_IDS, SPRITE_IDS, TILE_IDS, TRACK_IDS } from './catalog';
+import { loadContent } from './content';
+import { ALLY_IDS, BATTLE_BG_IDS, BATTLER_IDS, ENEMY_IDS, SPRITE_IDS, TILE_IDS, TRACK_IDS, isPropSprite } from './catalog';
+import { KIT_FX, TINTS } from './logic-stage';
+import { toldAsks, toldFlag, toldHotspotFlag, toldHotspots } from './logic-told';
 import type { AllyDef, ChapterDef, EnemyDef, EventCmd, EventDef, ItemDef, MapDef, MoveDef, WalkStep } from './types';
 import { isSolidTile, tileAt } from './logic-world';
 import { isKathaCond, isPracticeCond } from './sa-verify';
@@ -46,6 +47,10 @@ export interface Refs {
   shlokaIds: Set<string>;
   lexIds: Set<string>;
   nameIds: Set<string>;
+  /** v0.6: told cutscene ids (content/cutscene-*.json, stubs included) */
+  cutscenes?: Set<string>;
+  /** v0.6: verse echo ids (content/katha-echoes.json) */
+  echoes?: Set<string>;
 }
 
 function story(file: string, json: unknown): StoryFile {
@@ -64,11 +69,15 @@ const FILES: StoryFile[] = [
 ];
 const DEFS: Defs = { moves: [], allies: [], enemies: [], items: [], ...(defsJson as unknown as Partial<Defs>) };
 const ids = (xs: unknown[] | undefined): Set<string> => new Set((xs ?? []).map((x) => (x as { id: string }).id));
+// v0.6: the merged content (shlokas-1…5, lexicon-1…5, names + names-3…6), told cutscenes and verse echoes
+const CONTENT = loadContent();
 const REFS: Refs = {
   defs: DEFS,
-  shlokaIds: ids([...((shlokas1 as { shlokas?: unknown[] }).shlokas ?? []), ...((shlokas2 as { shlokas?: unknown[] }).shlokas ?? [])]),
-  lexIds: ids([...((lexicon1 as { lexicon?: unknown[] }).lexicon ?? []), ...((lexicon2 as { lexicon?: unknown[] }).lexicon ?? [])]),
-  nameIds: ids((namesJson as { names?: unknown[] }).names),
+  shlokaIds: ids(CONTENT.shlokas),
+  lexIds: ids(CONTENT.lexicon),
+  nameIds: ids(CONTENT.names),
+  cutscenes: new Set((CONTENT.cutscenes ?? []).map((c) => c.id)),
+  echoes: new Set((CONTENT.echoes ?? []).map((e) => e.id)),
 };
 
 // ───────────────────────── helpers ─────────────────────────
@@ -90,9 +99,11 @@ const CMD_KEYS = [
   'shrine', 'warp', 'move', 'face', 'wait', 'fade', 'music', 'sfx', 'shop', 'save', 'chapter', 'objective', 'end',
   // v0.5b (notes/v05b-plan.md §1): Kathā-only commands — P1 story recitation, P2 book review, P5 Nala's bridge
   'smarana', 'book', 'setu',
+  // v0.6 (notes/v06-wp0.md): the effects kit, hidden moments, told cutscenes, verse echoes — Kathā only
+  'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo',
 ] as const;
-/** v0.5b: commands that may only run inside a Kathā block (`then` of `if: style.katha…`, `else` of `if: !style.katha…`). */
-const KATHA_ONLY_CMDS = new Set(['smarana', 'book', 'setu']);
+/** v0.5b: commands that may only run inside a Kathā block (`then` of `if: style.katha…`, `else` of `if: !style.katha…`). v0.6: the kit and friends too. */
+const KATHA_ONLY_CMDS = new Set(['smarana', 'book', 'setu', 'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo']);
 /** Devanagari (incl. extended) and IAST/romanisation diacritics, including combining marks. */
 const DEVA = /[\u0900-\u097F\uA8E0-\uA8FF\u1CD0-\u1CFF]/;
 const IAST = /[\u0101\u012B\u016B\u1E5B\u1E5D\u1E37\u1E39\u1E45\u00F1\u1E6D\u1E0D\u1E47\u015B\u1E63\u1E25\u1E43\u1E41\u0100\u012A\u016A\u1E5A\u1E5C\u1E36\u1E38\u1E44\u00D1\u1E6C\u1E0C\u1E46\u015A\u1E62\u1E24\u1E42\u1E40\u0300-\u036F]/;
@@ -133,6 +144,8 @@ function walkCmds(cmds: EventCmd[] | undefined, path: string, labels: Set<string
       walkCmds(c.onWin, `${p}.onWin`, stack, visit, katha);
       walkCmds(c.onLose, `${p}.onLose`, stack, visit, katha);
     }
+    // v0.6: a hidden moment's `then` (pushed as a frame when found)
+    if ('hotspot' in c) walkCmds(c.then, `${p}.then`, stack, visit, katha);
   });
 }
 
@@ -267,6 +280,14 @@ export function checkPlacement(files: StoryFile[], refs: Refs): string[] {
         if (tr.avoid === true && !isKathaCond(tr.requires)) out.push(`${w}: an avoid-trigger (a guard's line of sight) is Kathā only — its requires must include style.katha`);
       }
       for (const s of m.signs ?? []) if (!inb(s.x, s.y)) out.push(`${where} sign at (${s.x},${s.y}) is out of bounds`);
+      // v0.6: hidden spots are Kathā only, in bounds, never on another sign
+      for (const sp of m.spots ?? []) {
+        const w = `${where} spot at (${sp.x},${sp.y})`;
+        if (!inb(sp.x, sp.y)) out.push(`${w} is out of bounds`);
+        if (!isKathaCond(sp.requires)) out.push(`${w}: a hidden spot is Kathā only — its requires must include style.katha`);
+        if (sp.glow !== undefined && typeof sp.glow !== 'boolean') out.push(`${w}: glow must be true or false`);
+        if (m.signs?.some((sg) => sg.x === sp.x && sg.y === sp.y)) out.push(`${w} is on a sign`);
+      }
     }
   }
   return out;
@@ -304,6 +325,7 @@ export function checkEvents(files: StoryFile[], refs: Refs): string[] {
       for (const w of m.warps ?? []) needEvent(w.lockedEvent, `${f.file} map ${m.id} warp at (${w.x},${w.y}) lockedEvent`);
       needEvent(m.onEnter, `${f.file} map ${m.id} onEnter`);
       for (const s of m.signs ?? []) markup(s.text, `${f.file} map ${m.id} sign at (${s.x},${s.y})`);
+      for (const sp of m.spots ?? []) needEvent(sp.event, `${f.file} map ${m.id} spot at (${sp.x},${sp.y})`);
     }
     for (const e of f.events) {
       if (!Array.isArray(e.cmds)) {
@@ -404,6 +426,8 @@ export function checkEvents(files: StoryFile[], refs: Refs): string[] {
         }
         if ('book' in c && !(isInt(c.book) && c.book >= 1 && c.book <= 6)) out.push(`${where}: book must be 1..6`);
         if ('setu' in c && (typeof c.setu !== 'string' || !c.setu.trim())) out.push(`${where}: setu needs a tag (a non-empty string)`);
+        // ── v0.6 (notes/v06-wp0.md): the effects kit, hidden moments, told cutscenes, echoes ──
+        out.push(...checkKitCmd(c, where, npcIds, refs));
       });
       // duplicate labels in one block
       const dupLabels = (cmds: EventCmd[], where: string): void => {
@@ -416,6 +440,69 @@ export function checkEvents(files: StoryFile[], refs: Refs): string[] {
       dupLabels(e.cmds, `${f.file} event ${e.id}`);
     }
   }
+  return out;
+}
+
+/** v0.6: one kit / hotspot / cutscene / echo command (empty = fine). Positions: tiles; ids: npcs, "player" or props. */
+export function checkKitCmd(c: EventCmd, where: string, npcIds: Set<string>, refs: Refs): string[] {
+  const out: string[] = [];
+  const pos = (p: unknown, what: string): void => {
+    if (typeof p === 'string') return;
+    if (!p || typeof p !== 'object' || !isInt((p as { x?: unknown }).x) || !isInt((p as { y?: unknown }).y)) out.push(`${where}: ${what} must be a tile {x, y} or a figure id`);
+  };
+  const target = (t: unknown, what: string, all: boolean): void => {
+    if (all && t === 'all') return;
+    const ok = (Array.isArray(t) && t.length > 0 && t.every((x) => typeof x === 'string')) || (!!t && typeof t === 'object' && !Array.isArray(t) && Array.isArray((t as { allBut?: unknown }).allBut) && (t as { allBut: unknown[] }).allBut.every((x) => typeof x === 'string'));
+    if (!ok) out.push(`${where}: ${what} must be a list of ids or {"allBut": [ids]}${all ? ' or "all"' : ''}`);
+  };
+  const ms = (v: unknown): void => {
+    if (v !== undefined && !(typeof v === 'number' && v >= 0 && v <= 20000)) out.push(`${where}: ms must be 0..20000`);
+  };
+  if ('fx' in c) {
+    if (!KIT_FX.includes(c.fx)) out.push(`${where}: fx must be one of ${KIT_FX.join('/')}`);
+    if (c.fx === 'tint' && !TINTS.includes(c.color ?? 'none')) out.push(`${where}: tint color must be one of ${TINTS.join('/')}`);
+    if (c.fx !== 'tint' && c.color !== undefined) out.push(`${where}: only a tint has a color`);
+    ms(c.ms);
+  }
+  if ('topple' in c) target(c.topple, 'topple', false);
+  if ('rise' in c) target(c.rise, 'rise', true);
+  if ('grow' in c) {
+    if (typeof c.grow !== 'string' || (c.grow !== 'player' && !npcIds.has(c.grow))) out.push(`${where}: grow "${String(c.grow)}" is not "player" or an npc id`);
+    if (!(typeof c.scale === 'number' && c.scale >= 0.5 && c.scale <= 4)) out.push(`${where}: grow scale must be 0.5..4`);
+  }
+  if ('glow' in c) {
+    const g = c.glow;
+    if (!g || !isInt(g.x) || !isInt(g.y) || (g.w !== undefined && !(isInt(g.w) && g.w >= 1)) || (g.h !== undefined && !(isInt(g.h) && g.h >= 1))) out.push(`${where}: glow must be {x, y, w?, h?} in tiles`);
+    ms(c.ms);
+  }
+  if ('prop' in c) {
+    if (typeof c.prop !== 'string' || !c.prop) out.push(`${where}: prop needs an id`);
+    if (c.sprite !== undefined && !isPropSprite(c.sprite)) out.push(`${where}: prop sprite "${c.sprite}" is not a PROP_ID, TileId or SpriteId`);
+    if (c.at !== undefined) pos(c.at, 'prop at');
+    if (c.to !== undefined) pos(c.to, 'prop to');
+    if (c.carry !== undefined && c.carry !== null && typeof c.carry !== 'string') out.push(`${where}: prop carry must be a figure id or null`);
+    if (c.at === undefined && c.to === undefined && c.carry === undefined && !c.remove && c.sprite === undefined) out.push(`${where}: prop needs at, to, carry, sprite or remove`);
+    ms(c.ms);
+  }
+  if ('arrow' in c) {
+    const a = c.arrow;
+    if (!a || typeof a !== 'object') out.push(`${where}: arrow needs {from, to, through?}`);
+    else {
+      pos(a.from, 'arrow from');
+      pos(a.to, 'arrow to');
+      if (a.through !== undefined && !Array.isArray(a.through)) out.push(`${where}: arrow through must be a list`);
+      for (const t of a.through ?? []) pos(t, 'arrow through');
+    }
+    ms(c.ms);
+  }
+  if ('hotspot' in c) {
+    if (!c.hotspot || !isInt(c.hotspot.x) || !isInt(c.hotspot.y)) out.push(`${where}: hotspot must be a tile {x, y}`);
+    if (!Array.isArray(c.then) || c.then.length === 0) out.push(`${where}: a hotspot needs its "then" commands`);
+    if (c.flag !== undefined && (typeof c.flag !== 'string' || !c.flag)) out.push(`${where}: hotspot flag must be a flag name`);
+    ms(c.ms);
+  }
+  if ('cutscene' in c && refs.cutscenes && !refs.cutscenes.has(c.cutscene)) out.push(`${where}: cutscene "${c.cutscene}" is not a content/cutscene-*.json`);
+  if ('echo' in c && refs.echoes && !refs.echoes.has(c.echo)) out.push(`${where}: echo "${c.echo}" is not in content/katha-echoes.json`);
   return out;
 }
 
@@ -470,7 +557,16 @@ export function checkWalkthrough(files: StoryFile[], refs: Refs): string[] {
           settable.add(`restored.${c.shloka}`);
         }
         if ('choice' in c) for (const o of c.options ?? []) if (o.set) settable.add(o.set);
+        // v0.6: a hidden moment's flag (default found.<event>) and an echo's flag
+        if ('hotspot' in c) settable.add(c.flag ?? `found.${e.id}`);
+        if ('echo' in c) settable.add(`echo.${c.echo}`);
       });
+  }
+  // v0.6: the flags a told cutscene sets (seen, its hotspots, its options)
+  for (const t of CONTENT.cutscenes ?? []) {
+    settable.add(toldFlag(t));
+    for (const h of toldHotspots(t)) settable.add(toldHotspotFlag(t, h));
+    for (const a of toldAsks(t)) for (const o of a.options) if (o.set) settable.add(o.set);
   }
   for (const f of files) {
     f.walkthrough.forEach((w, i) => {
@@ -651,6 +747,39 @@ test('validator self-test (v0.5b): P1/P2/P5 commands outside a Kathā block, bad
   assert.ok(!at('trigger ch1.e at (2,1)', 'style.katha'), 'a Kathā avoid-trigger is fine');
   assert.ok(at('walkthrough[1]', 'style must be "katha"'));
   assert.ok(!at('walkthrough[0]', 'style'), 'style: katha is a valid step');
+});
+
+test('validator self-test (v0.6): the effects kit, hotspots, cutscenes and echoes outside a Kathā block, bad arguments, unknown cutscene / echo ids and open hidden spots are reported', () => {
+  const map: MapDef = {
+    id: 'm1', nameId: 'place.m1', kanda: 1, width: 4, height: 3, legend: { '.': 'grass', S: 'shrine' }, ground: ['S...', '....', '....'], music: 'ashrama', battleBg: 'ashrama',
+    npcs: [{ id: 'sage', sprite: 'rishi', x: 2, y: 2, facing: 'down', event: 'ch1.e' }], warps: [], triggers: [],
+    spots: [
+      { x: 1, y: 1, event: 'ch1.e', requires: 'ch1.x', glow: true },
+      { x: 3, y: 1, event: 'ch1.e', requires: 'style.katha&!ch1.spot' },
+    ],
+  };
+  const good = [
+    { fx: 'shake', ms: 900 }, { fx: 'tint', color: 'gold' }, { topple: { allBut: ['sage'] } }, { rise: 'all' }, { grow: 'sage', scale: 2 },
+    { glow: { x: 1, y: 1, w: 2 } }, { prop: 'p', sprite: 'log', at: { x: 1, y: 1 } }, { prop: 'p', carry: 'sage' }, { arrow: { from: 'player', to: { x: 3, y: 0 }, through: ['sage'] } },
+    { hotspot: { x: 1, y: 1 }, then: [{ say: 'found' }], flag: 'ch1.found' }, { cutscene: 'mithila' }, { echo: 'twice' },
+  ];
+  const bad = [
+    { fx: 'boom' }, { fx: 'tint', color: 'pink' }, { topple: 'sage' }, { grow: 'nobody', scale: 9 }, { glow: { x: 'a', y: 1 } },
+    { prop: 'p', sprite: 'not-a-sprite', at: { x: 1, y: 1 } }, { prop: 'p' }, { arrow: { from: 7, to: { x: 1, y: 1 } } }, { hotspot: { x: 1, y: 1 }, then: [] }, { cutscene: 'nope' }, { echo: 'nope' },
+  ];
+  const cmds = [{ topple: ['player'] }, { cutscene: 'mithila' }, { if: 'style.katha', then: [...good, ...bad] }] as unknown as EventCmd[];
+  const f: StoryFile = { file: 'story-v06.json', chapters: [], maps: [map], events: [{ id: 'ch1.e', cmds }], walkthrough: [] };
+  const refs: Refs = { defs: { moves: [], allies: [], enemies: [], items: [] }, shlokaIds: new Set(), lexIds: new Set(), nameIds: new Set(), cutscenes: new Set(['mithila']), echoes: new Set(['twice']) };
+  const all = [...checkPlacement([f], refs), ...checkEvents([f], refs)];
+  const at = (path: string, what: string): boolean => all.some((p) => p.includes(path) && p.includes(what));
+  assert.ok(at('cmds[0]:', '{topple} is Kathā only'), all.join('\n'));
+  assert.ok(at('cmds[1]:', '{cutscene} is Kathā only'));
+  for (let i = 0; i < good.length; i++) assert.ok(!at(`cmds[2].then[${i}]:`, ''), `a well-formed Kathā command is fine (then[${i}] ${JSON.stringify(good[i])}): ${all.filter((p) => p.includes(`then[${i}]:`)).join(' | ')}`);
+  assert.ok(!at('cmds[2].then[9].then[0]', ''), "a hotspot's then is walked (and Kathā)");
+  const n = good.length;
+  for (const [k, what] of [[0, 'fx must be'], [1, 'tint color'], [2, 'topple must be'], [3, 'grow "nobody"'], [3, 'scale must be'], [4, 'glow must be'], [5, 'not a PROP_ID'], [6, 'prop needs'], [7, 'arrow from'], [8, 'needs its "then"'], [9, 'cutscene "nope"'], [10, 'echo "nope"']] as const) assert.ok(at(`cmds[2].then[${n + k}]`, what), `${what}: ${all.join('\n')}`);
+  assert.ok(at('spot at (1,1)', 'requires must include style.katha'), 'an open hidden spot');
+  assert.ok(!at('spot at (3,1)', 'style.katha'), 'a Kathā spot is fine');
 });
 
 test('validator self-test: a broken fixture yields precise messages', () => {

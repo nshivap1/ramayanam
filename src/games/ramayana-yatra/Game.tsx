@@ -15,7 +15,7 @@ import { HeldDirs, isDir, useGameKeys } from './input';
 import { type GuideTarget, currentMap, guideTarget, halfVerseLines, inSight, isWalkable, loadGame, maxHpOf, newGame, nextBookKanda, playerSprite, reduce, sessionResult, setReader, stepInJourney, storyProgress, testFlag, tileAt, toSave, visibleNpcs } from './logic';
 import { indexOf } from './logic-util';
 import { manifest } from './manifest';
-import type { Action, EventCmd, Fx, GameState, JourneyStyle } from './types';
+import type { Action, EventCmd, Fx, GameState, JourneyStyle, ToldCutscene } from './types';
 import { startScript } from './logic-events';
 import { AutoReciteToggle, JourneyPicker, defaultJourney, isKatha, kathaResult, smaranaSummary } from './view-katha';
 import { DEFAULT_NAME } from './logic-state';
@@ -32,6 +32,10 @@ import { Markup, StoryLine, markupPlain } from './view-markup';
 import { Sheet } from '@ui';
 import { cutsceneDue } from './logic-cutscene'; // v0.5b WP-E
 import { Cutscene } from './view-cutscene'; // v0.5b WP-E
+// v0.6 WP0: the content of the save's journey (Kathā-only parts hidden from the practice game), told cutscenes, the kit
+import { journeyContent, restorableIds } from './logic-journey';
+import { HotspotLook, ToldCutscene as ToldView } from './view-told';
+import { addKitFx } from './view-stage';
 
 const SAVE_KEY = 'save-v1';
 /** The e2e snapshot is only built when the shell exposes it (URL has e2e=1); saves work in normal play. */
@@ -85,7 +89,6 @@ function mapRoute(content: ReturnType<typeof loadContent>, from: string, to: str
 
 export default function Game({ ctx }: GameProps): ReactElement {
   const content = useMemo(() => loadContent(), []);
-  const idx = useMemo(() => indexOf(content), [content]);
   const art = useMemo(() => createArt(), []);
   const reduced = ctx.settings.reducedMotion || osReducedMotion();
   // prefs-v1 (music, text speed, relaxed, dialogue language) is its own small key, never part of the save
@@ -102,6 +105,11 @@ export default function Game({ ctx }: GameProps): ReactElement {
 
   const [screen, setScreen] = useState<Screenname>('title');
   const [state, setState] = useState<GameState | null>(null);
+  // v0.6: what the views read is the content of the save's journey (the practice game never sees Kathā-only verses,
+  // words or names; logic-journey). The reducer is given the whole content and applies the same rule itself.
+  const style = state?.save.style ?? saved?.save.style;
+  const shown = useMemo(() => journeyContent(content, { style }), [content, style]);
+  const idx = useMemo(() => indexOf(shown), [shown]);
   const stateRef = useRef<GameState | null>(null);
   const anim = useRef(createAnim()).current;
   const held = useRef(new HeldDirs()).current;
@@ -243,6 +251,15 @@ export default function Game({ ctx }: GameProps): ReactElement {
           case 'warp':
             anim.warpAt = now;
             break;
+          case 'kit':
+            // v0.6: the effects kit's timed effects on the map (view-screen draws them; reduced-motion paths there)
+            addKitFx(anim.kit, { name: f.name, ms: f.ms, ...(f.at ? { rect: f.at } : {}), ...(f.path ? { path: f.path } : {}) }, now);
+            if (f.name === 'shake') ctx.haptic('medium');
+            if (E2E) {
+              const w = window as unknown as { __ryKitLog?: string[] };
+              (w.__ryKitLog ??= []).push(f.name);
+            }
+            break;
         }
       }
     },
@@ -295,15 +312,25 @@ export default function Game({ ctx }: GameProps): ReactElement {
   // recitation, a book review, Nala's bridge, …) before its story content exists. Ignored unless free exploration.
   useEffect(() => {
     if (!E2E) return;
-    const w = window as unknown as { __ryScript?: (cmds: EventCmd[]) => boolean };
+    const w = window as unknown as { __ryScript?: (cmds: EventCmd[]) => boolean; __ryTold?: (c: ToldCutscene) => boolean };
     w.__ryScript = (cmds) => {
       const s = stateRef.current;
       if (!s || s.mode !== 'explore' || s.pending || !Array.isArray(cmds)) return false;
       commit(startScript(s, content, 'e2e.script', cmds), s);
       return true;
     };
+    // v0.6 (e2e only): register a told cutscene at run time (a package's scene before its JSON is final; WP0's tests)
+    w.__ryTold = (c) => {
+      if (!c || typeof c.id !== 'string' || !Array.isArray(c.steps)) return false;
+      const list = (content.cutscenes ??= []);
+      const i = list.findIndex((x) => x.id === c.id);
+      if (i >= 0) list[i] = c;
+      else list.push(c);
+      return true;
+    };
     return () => {
       delete w.__ryScript;
+      delete w.__ryTold;
     };
   }, [commit, content]);
 
@@ -406,6 +433,8 @@ export default function Game({ ctx }: GameProps): ReactElement {
     if (p.kind === 'wait') ms = reduced ? Math.min(p.ms, 150) : p.ms;
     else if (p.kind === 'fade') ms = reduced ? 60 : 380;
     else if (p.kind === 'move') ms = reduced ? 60 : p.path.length * MOVE_STEP_MS + 60;
+    // v0.6: a hidden moment passes by itself after its window (the same with reduced motion: it is a chance to look)
+    else if (p.kind === 'hotspot') ms = p.ms;
     if (ms < 0) return;
     const t = setTimeout(() => {
       if (stateRef.current?.pending === p) dispatch({ type: 'advance' });
@@ -416,7 +445,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
   // last dialogue line, echoed while wait / move / fade play (no flicker between lines)
   const echoRef = useRef<Extract<NonNullable<GameState['pending']>, { kind: 'say' }> | null>(null);
   if (pending?.kind === 'say') echoRef.current = pending;
-  else if (!pending || !['wait', 'move', 'fade'].includes(pending.kind)) echoRef.current = null;
+  else if (!pending || !['wait', 'move', 'fade', 'hotspot', 'cutscene'].includes(pending.kind)) echoRef.current = null;
 
   // ───────── screen reader: dialogue and beats ─────────
   const sayText = pending?.kind === 'say' ? pending.text : pending?.kind === 'battle' ? (state?.battle?.beats[0]?.text ?? null) : null;
@@ -465,7 +494,11 @@ export default function Game({ ctx }: GameProps): ReactElement {
   // ───────── v0.5b WP-E: a cutscene due in this battle (logic-cutscene), or a replay from the verse book ─────────
   const dueScene = useMemo(() => (state && screen === 'game' ? cutsceneDue(state, content) : null), [state, screen, content]);
   const scene = dueScene ?? replay;
-  cutsceneOn.current = !!scene;
+  // v0.6: a told cutscene pending in the story (logic-told), or one replayed from the verse book
+  const [toldReplay, setToldReplay] = useState<string | null>(null);
+  const toldDue = screen === 'game' && state?.pending?.kind === 'cutscene' ? state.pending.id : null;
+  const told = toldDue ?? toldReplay;
+  cutsceneOn.current = !!scene || !!told;
 
   // ───────── audio ─────────
   useEffect(() => {
@@ -518,10 +551,11 @@ export default function Game({ ctx }: GameProps): ReactElement {
     } catch {
       progress = 0;
     }
-    const slots: UiSlots = { book: { en: n?.en ?? uiEn(content, 'hud.book', { k }), sa: n?.sa ?? uiSa(content, 'hud.book', { k }) ?? '' }, n: restored, total: content.shlokas.length };
+    // v0.6: restored counts against the restorable verses (a v0.6 verse is heard only: logic-journey)
+    const slots: UiSlots = { book: { en: n?.en ?? uiEn(content, 'hud.book', { k }), sa: n?.sa ?? uiSa(content, 'hud.book', { k }) ?? '' }, n: restored, total: restorableIds(shown).length };
     ctx.hud({ progress, label: uiPlainText(uiEn(content, 'hud.label', slots), uiSa(content, 'hud.label', slots)) });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, ctx, idx, content, hudLang]);
+  }, [state, ctx, idx, content, shown, hudLang]);
 
   // ───────── map pointer ("Show the way", v0.4.2) ─────────
   // View-only: derived from the save (memoized per save object in logic-guide), never stored. Shown only in free
@@ -635,16 +669,25 @@ export default function Game({ ctx }: GameProps): ReactElement {
       setu: p?.kind === 'setu' ? { tag: p.tag, cols: p.cols, turns: p.turns, cells: p.cells, solution: p.solution, taps: p.taps, hint: p.hint } : null,
       // WP-E: the cutscene on screen (due in this battle, or a replay from the verse book), else null
       cutscene: scene ? { id: scene, replay: !dueScene } : null,
+      // ── v0.6 (notes/v06-wp0.md) ──
+      // a told cutscene on screen (pending in the story, or a replay from the verse book), else null
+      told: told ? { id: told, replay: !toldDue } : null,
+      // the effects kit's stage while a script runs (who lies down, scales, props, tint), else null
+      stage: s?.stage ? { down: s.stage.down, scale: s.stage.scale, props: s.stage.props, tint: s.stage.tint ?? null } : null,
+      // a hidden moment waiting on the map (pending 'hotspot'), else null
+      hotspot: p?.kind === 'hotspot' ? { x: p.x, y: p.y, ms: p.ms } : null,
+      // the kit's timed effects fired so far (names, newest last)
+      kitLog: ((window as unknown as { __ryKitLog?: string[] }).__ryKitLog ?? []).slice(-20),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, screen, menu.open, chapterDone, ctx, content, saved, prefs.dialogueLang, prefs.autoRecite, prefs.showWay, toast, guide, guideShown, scene]);
+  }, [state, screen, menu.open, chapterDone, ctx, content, saved, prefs.dialogueLang, prefs.autoRecite, prefs.showWay, toast, guide, guideShown, scene, told]);
 
   // ───────── env ─────────
   const openWord = useCallback((id: string, form?: string) => setDetail({ kind: 'word', id, form }), []);
   const openShloka = useCallback((id: string) => setDetail({ kind: 'shloka', id }), []);
   const env: ViewEnv = useMemo(
     () => ({
-      content,
+      content: shown,
       idx,
       art,
       script: ctx.settings.script,
@@ -658,7 +701,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
       setPrefs,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [content, idx, art, ctx.settings.script, ctx.level, reduced, prefs, state?.save.playerName, state?.save.avatar, openWord, openShloka],
+    [shown, idx, art, ctx.settings.script, ctx.level, reduced, prefs, state?.save.playerName, state?.save.avatar, openWord, openShloka],
   );
 
   const calm = !!state && state.mode === 'explore' && !state.pending;
@@ -710,6 +753,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
         </div>
       ) : null}
       {state?.mode === 'battle' && state.battle && prefs.dialogueLang !== 'en' ? <BattleTags state={state} /> : null}
+      {state?.pending?.kind === 'hotspot' ? <HotspotLook onLook={() => dispatch({ type: 'choose', index: 0 })} /> : null}
       {toast ? (
         <div key={toast.n} className="g-ramayana-yatra__toast" role="status" data-testid="toast">
           <StoryLine en={toast.text} sa={toast.textSa} />
@@ -723,13 +767,13 @@ export default function Game({ ctx }: GameProps): ReactElement {
       <EnvContext.Provider value={env}>
         <KeysContext.Provider value={keys}>
           {screen === 'game' && state ? (
-            <div className={cx('g-ramayana-yatra__frame', showChapterDone && 'is-bookend', scene && 'is-cutscene')}>
+            <div className={cx('g-ramayana-yatra__frame', showChapterDone && 'is-bookend', (scene || told) && 'is-cutscene')}>
               <Screen stateRef={stateRef} env={env} anim={anim} overlay={overlay} guideRef={guideRef} onSwipe={(d) => {
                 held.queued = d;
                 tryStep();
               }} />
               <div className={cx('g-ramayana-yatra__panel', `is-${state.pending?.kind ?? state.mode}`)} data-testid="panel">
-                {showChapterDone || scene ? null : <Panel state={state} dispatch={dispatch} held={held} kick={tryStep} openMenu={openMenu} onTimeLeft={onTimeLeft} onSave={() => {
+                {showChapterDone || scene || told ? null : <Panel state={state} dispatch={dispatch} held={held} kick={tryStep} openMenu={openMenu} onTimeLeft={onTimeLeft} onSave={() => {
                 persist(stateRef.current, true);
                 dirty.current = true; // and again once the event has finished
               }} onFinish={finish} shrine={SHRINE} echo={echoRef.current} recited={recited.current} />}
@@ -744,6 +788,21 @@ export default function Game({ ctx }: GameProps): ReactElement {
                     if (dueScene) dispatch({ type: 'cutscene-done', id: dueScene });
                     else {
                       setReplay(null);
+                      setMenu({ open: true, tab: 'verses' });
+                    }
+                  }}
+                />
+              ) : null}
+              {told && !scene ? (
+                // v0.6 WP0: a told cutscene over the frame (the panel waits); a replay returns to the verse book
+                <ToldView
+                  key={`${told}:${toldDue ? 'due' : 'replay'}`}
+                  id={told}
+                  replay={!toldDue}
+                  onDone={(r) => {
+                    if (toldDue) dispatch({ type: 'cutscene-done', id: toldDue, found: r.found, answers: r.answers });
+                    else {
+                      setToldReplay(null);
                       setMenu({ open: true, tab: 'verses' });
                     }
                   }}
@@ -779,6 +838,12 @@ export default function Game({ ctx }: GameProps): ReactElement {
                   setDetail(null);
                   setMenu((m) => ({ ...m, open: false }));
                   setReplay(id);
+                }}
+                onTold={(id) => {
+                  // v0.6: a told cutscene seen before, replayed from the verse book (same way back)
+                  setDetail(null);
+                  setMenu((m) => ({ ...m, open: false }));
+                  setToldReplay(id);
                 }}
               />
               <Sheet title={detail?.kind === 'shloka' ? plainKey('common.verse') : plainKey('common.word')} open={!menu.open && detail !== null} onClose={() => setDetail(null)} data-testid="detail-sheet">

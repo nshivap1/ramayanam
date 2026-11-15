@@ -618,6 +618,15 @@
      "y": 4,
      "facing": "left",
      "event": "ch4.jambavan_speech"
+    },
+    {
+     "id": "hanuman_m",
+     "sprite": "hanuman",
+     "x": 25,
+     "y": 5,
+     "facing": "left",
+     "event": "ch4.hanuman_apart",
+     "showIf": "style.katha&ch4.roll_call&!ch4.complete"
     }
    ],
    "warps": [
@@ -1092,7 +1101,24 @@
    "id": "ch4.sugriva_alliance",
    "cmds": [
     {
-     "say": "Sugriva welcomes the princes warmly. Hanuman kindles a fire between two stones."
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Sugriva welcomes the princes warmly and offers Rama his hand."
+      },
+      {
+       "shloka": "s-rocate-yadi",
+       "mode": "hear"
+      },
+      {
+       "say": "Rama clasps his hand. Then Hanuman brings fire, and it burns between them."
+      }
+     ],
+     "else": [
+      {
+       "say": "Sugriva welcomes the princes warmly. Hanuman kindles a fire between two stones."
+      }
+     ]
     },
     {
      "say": "Rama and Sugriva walk around the fire together and swear friendship, with the fire as their witness."
@@ -1139,7 +1165,171 @@
      "portrait": "sugriva"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "But Vali is mighty. Can anyone defeat him?",
+       "who": "person.sugriva",
+       "portrait": "sugriva"
+      },
+      {
+       "warp": "rishyamuka",
+       "x": 18,
+       "y": 2,
+       "facing": "right"
+      },
+      {
+       "prop": "sala1",
+       "sprite": "tree",
+       "at": {
+        "x": 19,
+        "y": 2
+       }
+      },
+      {
+       "prop": "sala2",
+       "sprite": "tree",
+       "at": {
+        "x": 20,
+        "y": 2
+       }
+      },
+      {
+       "prop": "sala3",
+       "sprite": "tree",
+       "at": {
+        "x": 21,
+        "y": 2
+       }
+      },
+      {
+       "prop": "sala4",
+       "sprite": "tree",
+       "at": {
+        "x": 22,
+        "y": 2
+       }
+      },
+      {
+       "prop": "sala5",
+       "sprite": "tree",
+       "at": {
+        "x": 23,
+        "y": 2
+       }
+      },
+      {
+       "prop": "sala6",
+       "sprite": "tree",
+       "at": {
+        "x": 24,
+        "y": 2
+       }
+      },
+      {
+       "prop": "sala7",
+       "sprite": "tree",
+       "at": {
+        "x": 25,
+        "y": 2
+       }
+      },
+      {
+       "say": "Seven great sala trees stand in a row. Rama takes up his bow and a single arrow."
+      },
+      {
+       "arrow": {
+        "from": "player",
+        "through": [
+         {
+          "x": 19,
+          "y": 2
+         },
+         {
+          "x": 20,
+          "y": 2
+         },
+         {
+          "x": 21,
+          "y": 2
+         },
+         {
+          "x": 22,
+          "y": 2
+         },
+         {
+          "x": 23,
+          "y": 2
+         },
+         {
+          "x": 24,
+          "y": 2
+         },
+         {
+          "x": 25,
+          "y": 2
+         }
+        ],
+        "to": {
+         "x": 30,
+         "y": 2
+        }
+       },
+       "ms": 900
+      },
+      {
+       "fx": "flash",
+       "ms": 250
+      },
+      {
+       "fx": "shake",
+       "ms": 600
+      },
+      {
+       "glow": {
+        "x": 19,
+        "y": 2,
+        "w": 7,
+        "h": 1
+       },
+       "ms": 1500
+      },
+      {
+       "wait": 1000
+      },
+      {
+       "shloka": "s-sa-visrshto",
+       "mode": "hear"
+      },
+      {
+       "arrow": {
+        "from": {
+         "x": 30,
+         "y": 2
+        },
+        "to": "player"
+       },
+       "ms": 600
+      },
+      {
+       "say": "In a moment the arrow flies back to Rama. Sugriva stares, amazed."
+      }
+     ]
+    },
+    {
      "say": "Rama promised to help his friend. In time, Sugriva regained his kingdom, and he vowed in turn to search the whole earth for Sita."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Vali fell to Rama's arrow. Before he died, he gave his son Angada this advice."
+      },
+      {
+       "shloka": "s-deshakalau",
+       "mode": "hear"
+      }
+     ]
     },
     {
      "join": "sugriva"
@@ -1173,7 +1363,28 @@
      "say": "{n:place.kishkindha_caves}: a city of caves and gardens, bright with torches and flowers."
     },
     {
-     "say": "The rains came and went. Rama waited out the monsoon on a nearby hill while the city celebrated its king."
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "rain",
+       "ms": 7000
+      },
+      {
+       "say": "The rains came. Rama waited on a nearby hill, thinking of Sita."
+      },
+      {
+       "shloka": "s-esha-gharma",
+       "mode": "hear"
+      },
+      {
+       "say": "The rains passed, and the city celebrated its king."
+      }
+     ],
+     "else": [
+      {
+       "say": "The rains came and went. Rama waited out the monsoon on a nearby hill while the city celebrated its king."
+      }
+     ]
     },
     {
      "say": "When autumn cleared the skies, Sugriva called the vanara armies together."
@@ -1230,6 +1441,15 @@
        "say": "If you find her, give her this. She will know you come from me.",
        "who": "person.rama",
        "portrait": "rama"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-anena-tvam",
+         "mode": "hear"
+        }
+       ]
       },
       {
        "give": "kusha_mudrika"
@@ -1635,6 +1855,15 @@
        "portrait": "jatayu"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "shloka": "s-ito-dvipe",
+         "mode": "hear"
+        }
+       ]
+      },
+      {
        "say": "Hope returns to the vanaras. They cheer and leap among the rocks."
       },
       {
@@ -1901,7 +2130,48 @@
          "portrait": "jambavan"
         },
         {
-         "say": "Hanuman rises. He grows and grows, as vast as a mountain, and the vanaras roar with joy."
+         "if": "style.katha",
+         "then": [
+          {
+           "shloka": "s-uttishtha-hari",
+           "mode": "hear"
+          }
+         ]
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "face": "hanuman_m",
+           "dir": "down"
+          },
+          {
+           "say": "Hanuman rises. The vanaras praise him, and with every word of praise he grows."
+          },
+          {
+           "grow": "hanuman_m",
+           "scale": 1.8
+          },
+          {
+           "wait": 800
+          },
+          {
+           "grow": "hanuman_m",
+           "scale": 3
+          },
+          {
+           "fx": "shake",
+           "ms": 700
+          },
+          {
+           "say": "He grows as vast as a mountain, and roars with joy."
+          }
+         ],
+         "else": [
+          {
+           "say": "Hanuman rises. He grows and grows, as vast as a mountain, and the vanaras roar with joy."
+          }
+         ]
         },
         {
          "leave": "hanuman"
@@ -1992,6 +2262,19 @@
       },
       {
        "set": "ch4.lurker_beaten"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ch4.hanuman_apart",
+   "cmds": [
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "say": "Hanuman sits apart, silent, looking out over the sea."
       }
      ]
     }

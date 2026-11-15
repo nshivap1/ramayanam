@@ -103,6 +103,16 @@ export interface Shloka {
   speaker: string;
   teaches: string[];
   provenance: Provenance;
+  /**
+   * v0.6: a verse of the Kathā journey only (shlokas-3/4/5.json; plan §0.1): heard in Kathā (never a gate, never
+   * restorable), never seen by the practice game (logic-journey `journeyContent` filters it out).
+   */
+  kathaOnly?: true;
+  /**
+   * v0.6 (optional): the verse it follows in its book's story order (verse book, book screens). Default: before the
+   * first v0.5 verse of the book with a higher sarga.verse, else at the end (content.ts `bookOrder`).
+   */
+  storyAfter?: string;
 }
 
 export type PartOfSpeech = 'noun' | 'adjective' | 'pronoun' | 'verb' | 'indeclinable' | 'participle' | 'name' | 'numeral' | 'compound';
@@ -117,11 +127,13 @@ export interface LexEntry {
   /** Short quiz gloss (≤ 40 chars). */
   meaning: string;
   notes?: string;
-  /** Inflected forms as they occur in the verses. */
-  forms: { form: Deva; grammar: string; shlokaIds: string[] }[];
+  /** Inflected forms as they occur in the verses. v0.6: `kathaOnly` = a form only the v0.6 lexicon files add (set by content.ts). */
+  forms: { form: Deva; grammar: string; shlokaIds: string[]; kathaOnly?: true }[];
   /** Distractor tags: person, nature, virtue, action, time, place, body, weapon, animal, family, emotion, number, grammar-word, speech. */
   tags: string[];
   provenance: Provenance;
+  /** v0.6: an entry only the v0.6 lexicon files (lexicon-3/4/5) define — Kathā-only (set by content.ts, never in JSON). */
+  kathaOnly?: true;
 }
 
 /** Other game-local Sanskrit (names of people, places, moves, items, chapters). content/names.json */
@@ -130,6 +142,8 @@ export interface NameEntry {
   sa: Deva;
   en: string;
   provenance: Provenance; // e.g. Monier-Williams entry, or the Rāmāyaṇa verse where it occurs
+  /** v0.6: a name of names-3/4/5/6.json — Kathā-only (set by content.ts, never in JSON). */
+  kathaOnly?: true;
 }
 
 // ───────────────────────── Learning ─────────────────────────
@@ -449,6 +463,21 @@ export interface MapDef {
   triggers: TriggerDef[];
   signs?: SignDef[];
   onEnter?: string;
+  /** v0.6 WP0: hidden spots (Kathā only) — see SpotDef */
+  spots?: SpotDef[];
+}
+
+/**
+ * v0.6 WP0: a hidden spot on a map (a tree that remembers, a grove where the vānaras dance): facing tile (x, y) and
+ * pressing A runs `event` while `requires` holds (Kathā only: world.test requires style.katha in it). With `glow` the
+ * tile shimmers softly while the spot is active. Never a walkthrough step: the pointer and the bots never go there.
+ */
+export interface SpotDef {
+  x: number;
+  y: number;
+  event: string;
+  requires: FlagCond;
+  glow?: boolean;
 }
 
 /**
@@ -497,7 +526,143 @@ export type EventCmd =
   /** P2 (WP-A, logic-scene.ts): a read-only review of one book (the book-complete screen in review mode); ▶ continues */
   | { book: KandaId }
   /** P5 (WP-D, logic-setu.ts): Nala's bridge puzzle, seeded by its tag; the script continues once it is solved */
-  | { setu: string };
+  | { setu: string }
+  // ── v0.6 WP0 (notes/v06-wp0.md): the effects kit (logic-stage.ts), hotspots, told cutscenes, verse echoes. Kathā only:
+  //    world.test refuses them outside a Kathā block. Kit commands never wait (compose them with {wait}); each has a
+  //    reduced-motion path in the view and is exposed to e2e (expose.stage, window.__ryKitLog). ──
+  /** a screen effect: shake / flash (one-shot, `ms`), petals / rain (fall for `ms`), tint (a colour wash until another tint or the script ends) */
+  | { fx: KitFxName; ms?: number; color?: TintColor }
+  /** these figures fall (lie down) — npc ids of this map, "player", prop ids; or everyone on the map but these */
+  | { topple: StageTarget }
+  /** these figures stand up again ("all": everyone lying down) */
+  | { rise: StageTarget | 'all' }
+  /** a figure's sprite scale (1 = normal; 0.5–4), anchored at its feet, animated */
+  | { grow: string; scale: number }
+  /** a tile shimmer for `ms` (one-shot; w × h tiles) */
+  | { glow: { x: number; y: number; w?: number; h?: number }; ms?: number }
+  /** a small object: placed `at` a tile / a figure, moved `to`, carried by a figure (drawn over its head), or removed */
+  | { prop: string; sprite?: PropSprite; at?: StagePos; to?: StagePos; carry?: string | null; remove?: true; ms?: number }
+  /** a projectile across tiles: from → through… → to, in `ms` (one-shot) */
+  | { arrow: { from: StagePos; to: StagePos; through?: StagePos[] }; ms?: number }
+  /** a hidden moment: tile (x, y) shimmers for `ms`; tap it / A → `then` runs (and `flag` is set); ▶ / B / the timer → passes */
+  | { hotspot: { x: number; y: number }; then: EventCmd[]; flag?: string; ms?: number }
+  /** a told cutscene (content/cutscene-<id>.json, logic-told.ts); the script waits until it has played */
+  | { cutscene: string }
+  /** a verse echo noticed (content/katha-echoes.json): sets echo.<id>, a toast with its title; the verse book shows the title */
+  | { echo: string };
+
+// ───────────────────────── v0.6 WP0: effects kit, hotspots, told cutscenes, echoes ─────────────────────────
+
+/** One-shot / timed screen effects of the kit. */
+export type KitFxName = 'shake' | 'flash' | 'petals' | 'rain' | 'tint';
+/** A colour wash (`{ "fx": "tint", "color": … }`); 'none' clears it. */
+export type TintColor = 'gold' | 'red' | 'night' | 'dawn' | 'sea' | 'none';
+/** A place on the stage: a tile (x, y; fractions allowed in a cutscene) or a figure id (npc / "player" / prop / cast id). */
+export type StagePos = { x: number; y: number } | string;
+/** Who a topple / rise means: a list of ids, or everyone on the stage except these. */
+export type StageTarget = string[] | { allBut: string[] };
+/**
+ * What a prop looks like: a PROP_ID (16×16 object, art-v06-*.ts), any TileId drawn as an object (e.g. "log", "tree"),
+ * or a SpriteId (a 16×24 figure). The catalog's three id lists are checked by world.test.
+ */
+export type PropSprite = string;
+
+/** A prop on the stage (map scripts: GameState.stage; cutscenes: the view's stage). */
+export interface StageProp {
+  sprite: PropSprite;
+  x: number;
+  y: number;
+  /** carried by this figure (drawn over its head, follows it) */
+  carry?: string;
+}
+
+/**
+ * v0.6: what the effects kit changed on the map while a script runs (GameState.stage). Never saved; cleared when the
+ * script ends. Absent = nothing changed. The practice journey never sets it (Kathā-only commands).
+ */
+export interface StageState {
+  /** ids lying down (toppled), in the order they fell */
+  down: string[];
+  /** sprite scale per id (absent = 1) */
+  scale: Record<string, number>;
+  /** props by id */
+  props: Record<string, StageProp>;
+  /** a colour wash over the map */
+  tint?: Exclude<TintColor, 'none'>;
+}
+
+/** v0.6: a hidden moment in a map script (`{ "hotspot" }`): choose 0 (tap / A) → found; advance (▶ / B / timer) → passes. */
+export interface HotspotPending {
+  kind: 'hotspot';
+  x: number;
+  y: number;
+  /** how long the view waits before it passes by itself (ms) */
+  ms: number;
+}
+
+/**
+ * v0.6: one step of a told cutscene (content/cutscene-<id>.json). Text is ENGLISH story text (its Sanskrit comes from
+ * the dialogue TM, sa-dialogue-10…13, like every story line); positions are stage tiles (20 × 11.25 on a 320 × 180
+ * stage; fractions allowed). Kit steps never wait: compose them with `{ "wait": ms }`.
+ */
+export type ToldStep =
+  /** a narration line (who: a names id / free English title); `ms` overrides the reading time */
+  | { say: string; who?: string; ms?: number }
+  /** a verse by id, its pādas lit one by one at the recitation pace (default all four); heard when the scene ends */
+  | { verse: string; padas?: number[]; ms?: number }
+  /** the painter's / 3D scene's shot (its own key, e.g. "road", "sabha", "lift"); `ms` holds before the next step */
+  | { scene: string; ms?: number }
+  /** a figure on the stage: placed `at`, moved `to` (in `ms`), turned `face`, or removed */
+  | { cast: string; sprite?: string; at?: { x: number; y: number }; to?: { x: number; y: number }; face?: Dir; remove?: true; ms?: number }
+  | { fx: KitFxName; ms?: number; color?: TintColor }
+  | { topple: StageTarget }
+  | { rise: StageTarget | 'all' }
+  | { grow: string; scale: number; ms?: number }
+  | { glow: { x: number; y: number; w?: number; h?: number }; ms?: number }
+  | { prop: string; sprite?: PropSprite; at?: StagePos; to?: StagePos; carry?: string | null; remove?: true; ms?: number }
+  | { arrow: { from: StagePos; to: StagePos; through?: StagePos[] }; ms?: number }
+  | { wait: number }
+  /**
+   * a hidden moment: the stage region `at` [x, y, w, h] (tiles) can be tapped (or found with the look key, H) for `ms`
+   * from now (the steps after it keep playing); found → `then` plays next and `flag` (default found.<cutscene>.<id>) is
+   * set when the scene ends
+   */
+  | { hotspot: string; at: [number, number, number, number]; ms?: number; flag?: string; then: ToldStep[] }
+  /** a question with one tap (cannot fail): the scene waits; each option may set a flag and play its own steps */
+  | { ask: string; options: { label: string; set?: string; then?: ToldStep[] }[] };
+
+/** v0.6: a told cutscene (content/cutscene-<id>.json; logic-told.ts, view-told.tsx). */
+export interface ToldCutscene {
+  version: 1;
+  id: string;
+  /** the book it belongs to (verse-book replay order) */
+  chapter: KandaId;
+  /** English story string (Sanskrit in the dialogue TM): the replay entry and the scene's label */
+  title: string;
+  /** save flag set once the scene has played (default `seen.<id>`) */
+  flag?: string;
+  /** the 2D painter (cutscene-paint-<x>.ts registry id) */
+  painter?: string;
+  /** a 3D scene of the cutscene3d-scenes registry (falls back to the painter for reduced motion / no WebGL) */
+  scene3d?: string;
+  /** the Vālmīki reference the scene follows */
+  source: string;
+  /** a placeholder not written yet: `{ "cutscene": id }` skips it */
+  stub?: true;
+  about?: string;
+  steps: ToldStep[];
+}
+
+/** v0.6: a verse echo (content/katha-echoes.json, OWNER: WP-C). */
+export interface VerseEcho {
+  id: string;
+  /** a sa-ui key (sa-ui-v06-c.json): the title line shown under each verse of the echo once found */
+  title: string;
+  /** the verses that echo each other (verse book rows that show the title) */
+  shlokaIds: string[];
+  /** why (the text) */
+  source: string;
+}
 
 export interface EventDef {
   id: string; // "ch1.valmiki_intro"
@@ -563,6 +728,10 @@ export interface GameContent {
   chain?: ChainContent;
   /** v0.5b WP-E: the Āditya-hṛdayam cutscene in the Rāvaṇa battle (content/aditya-hridayam.json; logic-cutscene.ts) */
   aditya?: CutsceneContent;
+  /** v0.6 WP0: told cutscenes (content/cutscene-*.json; logic-told.ts) */
+  cutscenes?: ToldCutscene[];
+  /** v0.6 WP0: verse echoes (content/katha-echoes.json) */
+  echoes?: VerseEcho[];
 }
 
 // ── v0.5b WP-E (hook granted by the orchestrator): the Āditya-hṛdayam cutscene, Yuddha 6.105.1–31 ──
@@ -910,7 +1079,9 @@ export type Pending =
   | { kind: 'battle' } // battle UI reads state.battle
   | { kind: 'ending' }
   | { kind: 'book'; kanda: KandaId } // v0.5b P2: a read-only review of one book → advance
-  | SetuPending; // v0.5b P5: Nala's bridge → choose i / advance
+  | SetuPending // v0.5b P5: Nala's bridge → choose i / advance
+  | HotspotPending // v0.6: a hidden moment on the map → choose 0 (found) / advance (passes)
+  | { kind: 'cutscene'; id: string }; // v0.6: a told cutscene plays (view-told) → cutscene-done { id, found, answers } / advance
 
 /** One-shot cosmetic effects for the view; reduce() clears and refills this every call. */
 export type Fx =
@@ -921,7 +1092,13 @@ export type Fx =
   | { kind: 'flash' }
   | { kind: 'encounter' }
   | { kind: 'bump' }
-  | { kind: 'warp' };
+  | { kind: 'warp' }
+  /**
+   * v0.6 effects kit (map scripts): a one-shot / timed effect for the view — shake / flash / petals / rain for `ms`, a
+   * tile glow (`at`, tiles), an arrow along `path` (tile centres). Topple, rise, grow, props and tint are state
+   * (GameState.stage), not fx.
+   */
+  | { kind: 'kit'; name: 'shake' | 'flash' | 'petals' | 'rain' | 'glow' | 'arrow'; ms: number; at?: { x: number; y: number; w: number; h: number }; path?: { x: number; y: number }[] };
 
 export interface GameState {
   v: 1;
@@ -948,6 +1125,8 @@ export interface GameState {
    * pending after a smarana answer: the battle beats / next recital step follow directly). Never set in the practice game.
    */
   lastSmarana?: SmaranaResult;
+  /** v0.6: what the effects kit changed on the map while this script runs (never saved; cleared when the script ends) */
+  stage?: StageState;
   session: SessionStats;
   fx: Fx[];
 }
@@ -966,7 +1145,12 @@ export type Action =
   | { type: 'buy'; itemId: string; qty: number }
   | { type: 'equip'; member: number; moves: string[] }
   | { type: 'next-book' } // v0.5a book-complete screen, "continue": explore → the next book's opening plays at once (logic-world beginNextBook)
-  | { type: 'cutscene-done'; id: string } // v0.5b WP-E: the view played a due cutscene (logic-cutscene cutsceneDue) → its save flag
+  /**
+   * v0.5b WP-E: the view played a due cutscene (logic-cutscene cutsceneDue) → its save flag. v0.6: also the end of a told
+   * cutscene (pending 'cutscene'): `found` = the hotspot ids found, `answers` = the option index picked per ask step (in
+   * play order) → their flags, the verses heard, the seen flag; the script goes on.
+   */
+  | { type: 'cutscene-done'; id: string; found?: string[]; answers?: number[] }
   | { type: 'tick'; ms: number }; // play-time accounting (no randomness)
 
 export const VIEW_W = 320;

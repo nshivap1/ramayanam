@@ -32,6 +32,7 @@ import { COVER_CMD, SHIELD_CMD, answerOf, battleMenu, canShield, coverOf, damage
 import { stepInJourney } from './logic-katha';
 import { setuBotActions } from './logic-setu';
 import { cutsceneDue } from './logic-cutscene'; // v0.5b WP-E
+import { toldHotspots, toldOf } from './logic-told'; // v0.6 WP0
 
 export class SimError extends Error {}
 
@@ -63,6 +64,8 @@ export interface AutoOptions {
   careless?: { chance: number; rng: Rng };
   /** v0.5a battle policy (default 'best'); see the file header */
   policy?: 'best' | 'spam' | 'strategic';
+  /** v0.6: find every hidden moment (a hotspot: choose 0; a told cutscene: all its hotspots found). Default: pass them by. */
+  hidden?: boolean;
 }
 
 function correctAnswer(s: GameState, reciter?: AutoOptions['reciter']): Action | null {
@@ -248,6 +251,8 @@ interface AutoCtx {
   choices?: Map<string, number>;
   /** v0.5b WP-E: the due cutscene is already offered (its candidates are being listed after it) */
   sceneSeen?: boolean;
+  /** v0.6: find hidden moments (AutoOptions.hidden) */
+  hidden?: boolean;
 }
 
 /** Candidate actions for the current state, best first (the first one the reducer accepts is used). */
@@ -323,6 +328,14 @@ export function botActions(s: GameState, content: GameContent, ctx: AutoCtx): Ac
       return [];
     case 'setu': // v0.5b P5 (WP-D): solve Nala's bridge (logic-setu), then continue
       return setuBotActions(p);
+    case 'hotspot': // v0.6: a hidden moment — passed by (advance), or found with `hidden`
+      return ctx.hidden ? [{ type: 'choose', index: 0 }, { type: 'advance' }] : [{ type: 'advance' }];
+    case 'cutscene': {
+      // v0.6: a told cutscene — the view would play it, then report what was found and picked (the first options)
+      const c = toldOf(content, p.id);
+      const found = ctx.hidden && c ? toldHotspots(c).map((h) => h.hotspot) : [];
+      return [{ type: 'cutscene-done', id: p.id, found, answers: [] }, { type: 'advance' }];
+    }
     default:
       // (v0.5b P2: a book review 'book' continues with advance too)
       return [{ type: 'advance' }];
@@ -331,7 +344,7 @@ export function botActions(s: GameState, content: GameContent, ctx: AutoCtx): Ac
 
 /** Play every pending/battle state until the game is back in explore (or ended). Throws SimError when stuck. */
 export function autoplay(state: GameState, content: GameContent, opts: AutoOptions = {}): GameState {
-  const ctx: AutoCtx = { recited: false, rested: false, choices: new Map(), ...(opts.recite ? { recite: opts.recite } : {}), ...(opts.reciter ? { reciter: opts.reciter } : {}), ...(opts.careless ? { careless: opts.careless } : {}), ...(opts.policy ? { policy: opts.policy } : {}) };
+  const ctx: AutoCtx = { recited: false, rested: false, choices: new Map(), ...(opts.recite ? { recite: opts.recite } : {}), ...(opts.reciter ? { reciter: opts.reciter } : {}), ...(opts.careless ? { careless: opts.careless } : {}), ...(opts.policy ? { policy: opts.policy } : {}), ...(opts.hidden ? { hidden: true } : {}) };
   const max = opts.maxActions ?? 20000;
   let losses = 0;
   let s = state;
@@ -595,7 +608,7 @@ export interface WalkResult {
  * `style: 'katha'` plays the Kathā journey (no grinding: a failed step rests at a shrine and retries); `accuracy` is the
  * reciter's chance of picking the right chunk of a smarana gap (default 1).
  */
-export function runWalkthrough(content: GameContent, seed: number, level: Level, opts: { maxGrind?: number; attempts?: number; avoidEncounters?: boolean; trace?: (msg: string) => void; steps?: WalkStep[]; onStep?: (index: number, state: GameState) => void; style?: JourneyStyle; accuracy?: number; careless?: number; onAction?: AutoOptions['onAction']; reader?: Reader; policy?: AutoOptions['policy'] } = {}): WalkResult {
+export function runWalkthrough(content: GameContent, seed: number, level: Level, opts: { maxGrind?: number; attempts?: number; avoidEncounters?: boolean; trace?: (msg: string) => void; steps?: WalkStep[]; onStep?: (index: number, state: GameState) => void; style?: JourneyStyle; accuracy?: number; careless?: number; onAction?: AutoOptions['onAction']; reader?: Reader; policy?: AutoOptions['policy']; /** v0.6: find every hidden moment */ hidden?: boolean } = {}): WalkResult {
   let actions = 0;
   let battles = 0;
   let defeats = 0;
@@ -609,6 +622,7 @@ export function runWalkthrough(content: GameContent, seed: number, level: Level,
     ...(opts.accuracy !== undefined ? { reciter: { accuracy: opts.accuracy, rng: createRng((seed ^ hashString(`reciter:${level}`)) >>> 0) } } : {}),
     ...(opts.careless ? { careless: { chance: opts.careless, rng: createRng((seed ^ hashString(`careless:${level}`)) >>> 0) } } : {}),
     ...(opts.policy ? { policy: opts.policy } : {}),
+    ...(opts.hidden ? { hidden: true } : {}),
     onAction: (b, a, n) => {
       actions++;
       if (b.mode === 'battle' && n.mode !== 'battle') {

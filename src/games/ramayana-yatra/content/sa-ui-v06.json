@@ -1,0 +1,36 @@
+{
+ "version": 1,
+ "about": "v0.6 shared interface strings (OWNER: v0.6 WP0): told cutscenes, hotspots, the verse book; keys v06.*. Rules: notes/sa-ui.md.",
+ "models": [],
+ "entries": {
+  "v06.pause": {
+   "en": "Pause",
+   "sa": "तिष्ठ",
+   "label": true,
+   "ctx": "told cutscene (view-told): button, pause the scene — the Āditya-hṛdayam scene's word (aditya-hridayam.json ui.pause, reviewed in v0.5b)"
+  },
+  "v06.resume": {
+   "en": "Resume ▶",
+   "sa": "अग्रे गच्छ ▶",
+   "label": true,
+   "ctx": "told cutscene: button, go on after a pause (as aditya-hridayam.json ui.resume)"
+  },
+  "v06.skip": {
+   "en": "Skip ▶▶",
+   "sa": "अलम् ▶▶",
+   "label": true,
+   "ctx": "told cutscene: button, skip the scene (asks to confirm; as aditya-hridayam.json ui.skip)"
+  },
+  "v06.skipAsk": {
+   "en": "Skip this scene?",
+   "sa": "एतत् त्यजसि?",
+   "ctx": "told cutscene: the question before skipping (yes / no: common.yes / common.no). Pattern of aditya-hridayam.json ui.skipAsk (आदित्यहृदयं त्यजसि?) with एतत् 'this'. NEW in v0.6: for rev1 / rev2"
+  },
+  "v06.look": {
+   "en": "Look closer",
+   "sa": "पश्य",
+   "label": true,
+   "ctx": "a hidden moment (hotspot) on the map or in a told cutscene: the screen-reader / keyboard label of the shimmering spot. पश्य 'look!' (2nd sg. imperative of दृश्). NEW in v0.6: for rev1 / rev2"
+  }
+ }
+}

@@ -4,7 +4,12 @@
  * - World/story agents may ONLY use ids listed here.
  * - Audio agent must provide every track and sfx.
  * Tests assert completeness in both directions.
+ * v0.6 (WP0): each package adds its sprites and props in its own art-v06-<x>.ts (ids + drawings); they are appended here.
  */
+import { PROP_IDS_A, SPRITE_IDS_A } from './art-v06-a';
+import { PROP_IDS_B, SPRITE_IDS_B } from './art-v06-b';
+import { PROP_IDS_C, SPRITE_IDS_C } from './art-v06-c';
+import { PROP_IDS_D, SPRITE_IDS_D } from './art-v06-d';
 
 export const TILE_IDS = [
   // ── nature ──
@@ -66,8 +71,22 @@ export const SPRITE_IDS = [
   'vibhishana', 'rakshasa', 'rakshasi', 'ravana', 'kumbhakarna', 'indrajit', 'lanka_devi', 'surasa',
   'golden_deer', 'krauncha', 'hunter',
   'kusha', 'lava', // v0.5b (WP-D): Kuśa and Lava, Vālmīki's pupils who sing the poem in Rāma's court (Bāla 1.4)
+  // v0.6: the packages' new characters (art-v06-a … -d.ts)
+  ...SPRITE_IDS_A, ...SPRITE_IDS_B, ...SPRITE_IDS_C, ...SPRITE_IDS_D,
 ] as const;
 export type SpriteId = (typeof SPRITE_IDS)[number];
+
+/**
+ * v0.6: small 16×16 objects for the effects kit's `{ "prop" }` (the packages' art-v06-<x>.ts). A prop may also be any
+ * TileId (drawn as an object) or SpriteId (a figure): `isPropSprite`.
+ */
+export const PROP_IDS = [...PROP_IDS_A, ...PROP_IDS_B, ...PROP_IDS_C, ...PROP_IDS_D] as const;
+export type PropId = (typeof PROP_IDS)[number];
+
+/** v0.6: can `id` be drawn as a prop (a PROP_ID, a TileId or a SpriteId)? */
+export function isPropSprite(id: unknown): boolean {
+  return typeof id === 'string' && ((PROP_IDS as readonly string[]).includes(id) || (TILE_IDS as readonly string[]).includes(id) || (SPRITE_IDS as readonly string[]).includes(id));
+}
 
 /** Battle sprites: 64x64, drawn facing LEFT (enemies). Allies are drawn mirrored. */
 export const BATTLER_IDS = [

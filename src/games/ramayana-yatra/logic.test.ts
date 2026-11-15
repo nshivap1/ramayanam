@@ -1019,8 +1019,11 @@ test('story-bot on the REAL content: follow content.walkthrough to the ending (l
  * at the end, projected like V03_SNAPSHOT (Sanskrit text fields excluded). Computed on the v0.5a HEAD (v0.4.5, 4d59bb0)
  * before any v0.5b change. A Kathā-only block (`if: style.katha`), a Kathā-only walkthrough step (`style: 'katha'`) or a
  * new Sanskrit line leaves it unchanged; anything a practice save would see changes it.
+ * v0.6 re-baseline (owner's decision, notes/v06-plan.md): Nala's "Rama's name on every stone" line (a later tradition)
+ * is removed from story-ch6 in both journeys. Was 9c766bd8c21a0c909c7c0070; verified that HEAD stories with only that
+ * line removed give the new hash, and that no other story file changes it.
  */
-const V05A_PRACTICE = '9c766bd8c21a0c909c7c0070';
+const V05A_PRACTICE = 'b28c7b319d330a663e86d3dc';
 test('v0.5b guard: the practice journey on the real content equals v0.5a (walkthrough hash, seeds 1–3 × levels 2–4)', () => {
   const h = createHash('sha256');
   const proj = (s: GameState): string => JSON.stringify({ save: s.save, session: s.session, battle: s.battle, pending: s.pending, mode: s.mode, tick: s.tick, recital: s.recital, fx: s.fx, script: s.script }, NO_SANSKRIT_TEXT);
