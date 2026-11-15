@@ -15,6 +15,13 @@
  *   { "prop": "sandals", "carry": "bharata" } | { "prop": "sandals", "carry": null }   carried over a figure's head / put down where it is
  *   { "prop": "sandals", "remove": true }
  *   { "arrow": { "from": "rama", "to": { "x": 30, "y": 6 }, "through": [{ "x": 20, "y": 6 }, …] }, "ms"? }   a projectile line
+ * v0.6.1 (notes/v061-animations.md):
+ *   { "fx": "wind" | "smoke" | "birds" | "embers" | "dust" | "rays" | "lamps", "ms"? }   more timed screen effects
+ *   { "glow": {…}, "color": "fire" }      flames on those tiles instead of the gold shimmer
+ *   { "emote": "sita", "icon": "heart" | "tears" | "music" | "exclaim" | "question" | "anger" | "dots" | "sleep" | "sparkle", "ms"? }
+ *                                        a picture bubble over a figure (one-shot)
+ *   { "hop": ["vanara_a", "player"] | "<id>" | { "allBut": [...] }, "n"?: 1–3 }   figures hop (one-shot)
+ *   { "focus": { "x": 21, "y": 9 } | "<figure id>" | null }   the camera glides there (stage state, until null / the script ends)
  * The view (view-screen + view-stage) draws GameState.stage and the 'kit' fx, with a reduced-motion path for each, and
  * logs every kit fx to window.__ryKitLog (e2e). The same commands are steps of a told cutscene (logic-told `stageAt`),
  * where the figures are the scene's cast.
@@ -22,24 +29,34 @@
  * The hidden moment `{ "hotspot": { x, y }, "then": [...], "flag"?, "ms"? }` is a pending (logic-events): see
  * `hotspotPending`.
  */
-import type { Dir, EventCmd, Fx, GameContent, GameState, HotspotPending, KitFxName, StagePos, StageProp, StageState, StageTarget, TintColor } from './types';
+import type { Dir, EmoteIcon, EventCmd, Fx, GameContent, GameState, GlowColor, HotspotPending, KitFxName, KitScreenFx, StagePos, StageProp, StageState, StageTarget, TintColor } from './types';
 import { indexOf } from './logic-util';
 import { visibleNpcs } from './logic-world';
 
 /** Default length (ms) of the timed kit effects. */
-export const KIT_MS = { shake: 600, flash: 450, petals: 4000, rain: 4000, glow: 2500, arrow: 700, prop: 600, grow: 800 } as const;
+export const KIT_MS = {
+  shake: 600, flash: 450, petals: 4000, rain: 4000, glow: 2500, arrow: 700, prop: 600, grow: 800,
+  // v0.6.1
+  wind: 2500, smoke: 3500, birds: 2600, embers: 3500, dust: 1800, rays: 3500, lamps: 4500, emote: 1600, hop: 380,
+} as const;
 /** How long a hotspot waits before it passes by itself (ms). */
 export const HOTSPOT_MS = 4000;
 /** Scale limits of `{ "grow" }`. */
 export const GROW_MIN = 0.5;
 export const GROW_MAX = 4;
-export const KIT_FX: readonly KitFxName[] = ['shake', 'flash', 'petals', 'rain', 'tint'];
+export const KIT_FX: readonly KitFxName[] = ['shake', 'flash', 'petals', 'rain', 'tint', 'wind', 'smoke', 'birds', 'embers', 'dust', 'rays', 'lamps'];
+/** v0.6.1: the timed screen effects (every fx but the tint). */
+export const SCREEN_FX: readonly KitScreenFx[] = ['shake', 'flash', 'petals', 'rain', 'wind', 'smoke', 'birds', 'embers', 'dust', 'rays', 'lamps'];
+export const EMOTES: readonly EmoteIcon[] = ['music', 'heart', 'tears', 'exclaim', 'question', 'anger', 'dots', 'sleep', 'sparkle'];
+export const GLOW_COLORS: readonly GlowColor[] = ['gold', 'fire'];
+/** Hops per `{ "hop" }` (1–3). */
+export const HOP_MAX = 3;
 export const TINTS: readonly TintColor[] = ['gold', 'red', 'night', 'dawn', 'sea', 'none'];
 /** The kit's event-command keys (world.test: Kathā only). */
-export const KIT_KEYS = ['fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow'] as const;
+export const KIT_KEYS = ['fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'emote', 'hop', 'focus'] as const;
 export type KitKey = (typeof KIT_KEYS)[number];
 
-export type KitCmd = Extract<EventCmd, { fx: KitFxName } | { topple: StageTarget } | { rise: StageTarget | 'all' } | { grow: string } | { glow: { x: number; y: number } } | { prop: string } | { arrow: unknown }>;
+export type KitCmd = Extract<EventCmd, { fx: KitFxName } | { topple: StageTarget } | { rise: StageTarget | 'all' } | { grow: string } | { glow: { x: number; y: number } } | { prop: string } | { arrow: unknown } | { emote: string } | { hop: unknown } | { focus: unknown }>;
 
 export function isKitCmd(cmd: unknown): cmd is KitCmd {
   return !!cmd && typeof cmd === 'object' && KIT_KEYS.some((k) => k in (cmd as object));
@@ -111,6 +128,17 @@ export function applyKit(stage: StageState, cmd: KitCmd, world: StageWorld): Sta
     }
     return stage.tint === c ? stage : { ...stage, tint: c };
   }
+  if ('focus' in cmd) {
+    const f = cmd.focus;
+    if (f === null || f === 'player') {
+      if (!stage.focus) return stage;
+      const { focus: _f, ...rest } = stage;
+      return rest;
+    }
+    const p = resolvePos(f, stage, world);
+    if (!p) return stage;
+    return stage.focus && stage.focus.x === p.x && stage.focus.y === p.y ? stage : { ...stage, focus: { x: p.x, y: p.y } };
+  }
   if ('topple' in cmd) {
     const props = Object.keys(stage.props);
     const ids = targetIds(cmd.topple, [...world.actors(), ...props]).filter((id) => !stage.down.includes(id));
@@ -153,6 +181,10 @@ export function applyKit(stage: StageState, cmd: KitCmd, world: StageWorld): Sta
       if (p) {
         next = { ...next, x: p.x, y: p.y };
         delete next.carry;
+        // v0.6.1: the glide takes the command's ms (a flight, a slow rise); without it the view's default
+        const ms = cmd.ms;
+        if (typeof ms === 'number' && Number.isFinite(ms) && ms > 0) next.ms = Math.min(20000, ms);
+        else delete next.ms;
       }
     }
     if (cmd.carry !== undefined) {
@@ -171,13 +203,29 @@ export function kitFx(cmd: KitCmd, stage: StageState, world: StageWorld): Extrac
     return typeof m === 'number' && Number.isFinite(m) && m >= 0 ? Math.min(20000, m) : d;
   };
   if ('fx' in cmd) {
-    if (cmd.fx === 'shake' || cmd.fx === 'flash' || cmd.fx === 'petals' || cmd.fx === 'rain') return { kind: 'kit', name: cmd.fx, ms: ms(KIT_MS[cmd.fx]) };
+    const name = cmd.fx;
+    if (name !== 'tint' && (SCREEN_FX as readonly string[]).includes(name)) return { kind: 'kit', name, ms: ms(KIT_MS[name as KitScreenFx]) };
     return null;
   }
   if ('glow' in cmd) {
     const g = cmd.glow;
     if (!g || typeof g.x !== 'number' || typeof g.y !== 'number') return null;
-    return { kind: 'kit', name: 'glow', ms: ms(KIT_MS.glow), at: { x: g.x, y: g.y, w: Math.max(1, g.w ?? 1), h: Math.max(1, g.h ?? 1) } };
+    const color = (cmd as { color?: unknown }).color;
+    return { kind: 'kit', name: 'glow', ms: ms(KIT_MS.glow), at: { x: g.x, y: g.y, w: Math.max(1, g.w ?? 1), h: Math.max(1, g.h ?? 1) }, ...(color === 'fire' ? { color: 'fire' as const } : {}) };
+  }
+  if ('emote' in cmd) {
+    const id = cmd.emote;
+    if (typeof id !== 'string' || !(EMOTES as readonly string[]).includes(cmd.icon)) return null;
+    const p = resolvePos(id, stage, world);
+    if (!p) return null; // nobody of that id on the stage now
+    return { kind: 'kit', name: 'emote', ms: ms(KIT_MS.emote), id, icon: cmd.icon, at: { x: p.x, y: p.y, w: 1, h: 1 } };
+  }
+  if ('hop' in cmd) {
+    const raw = cmd.hop;
+    const ids = (typeof raw === 'string' ? [raw] : targetIds(raw, [...world.actors(), ...Object.keys(stage.props)])).filter((id) => !!resolvePos(id, stage, world));
+    if (!ids.length) return null;
+    const n = typeof cmd.n === 'number' && Number.isFinite(cmd.n) ? Math.max(1, Math.min(HOP_MAX, Math.round(cmd.n))) : 1;
+    return { kind: 'kit', name: 'hop', ms: KIT_MS.hop * n, ids, n };
   }
   if ('arrow' in cmd) {
     const a = cmd.arrow as { from?: StagePos; to?: StagePos; through?: StagePos[] } | undefined;

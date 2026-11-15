@@ -35,7 +35,7 @@ import { Cutscene } from './view-cutscene'; // v0.5b WP-E
 // v0.6 WP0: the content of the save's journey (Kathā-only parts hidden from the practice game), told cutscenes, the kit
 import { journeyContent, restorableIds } from './logic-journey';
 import { HotspotLook, ToldCutscene as ToldView } from './view-told';
-import { addKitFx } from './view-stage';
+import { addKitFx, kitFxView } from './view-stage';
 
 const SAVE_KEY = 'save-v1';
 /** The e2e snapshot is only built when the shell exposes it (URL has e2e=1); saves work in normal play. */
@@ -253,7 +253,7 @@ export default function Game({ ctx }: GameProps): ReactElement {
             break;
           case 'kit':
             // v0.6: the effects kit's timed effects on the map (view-screen draws them; reduced-motion paths there)
-            addKitFx(anim.kit, { name: f.name, ms: f.ms, ...(f.at ? { rect: f.at } : {}), ...(f.path ? { path: f.path } : {}) }, now);
+            addKitFx(anim.kit, kitFxView(f), now);
             if (f.name === 'shake') ctx.haptic('medium');
             if (E2E) {
               const w = window as unknown as { __ryKitLog?: string[] };

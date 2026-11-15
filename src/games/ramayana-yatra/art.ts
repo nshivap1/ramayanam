@@ -9,6 +9,7 @@ import { PROPS_A } from './art-v06-a';
 import { PROPS_B } from './art-v06-b';
 import { PROPS_C } from './art-v06-c';
 import { PROPS_D } from './art-v06-d';
+import { PROPS_E } from './art-v061';
 import type { Dir, MapDef } from './types';
 import { HAS_DOM, Pix, makeCanvas, pixCanvas, putPix } from './art-core';
 import { type FringeSide, OBJECT_TILES, TILES, buildFringe, createGroundResolver, drawObjectLayer, fringeBetween } from './art-tiles';
@@ -43,7 +44,7 @@ export interface Art {
 }
 
 /** v0.6: the packages' prop drawings (art-v06-<x>.ts). */
-export const PROP_DRAW: Record<PropId, (p: Pix) => void> = { ...PROPS_A, ...PROPS_B, ...PROPS_C, ...PROPS_D };
+export const PROP_DRAW: Record<PropId, (p: Pix) => void> = { ...PROPS_A, ...PROPS_B, ...PROPS_C, ...PROPS_D, ...PROPS_E };
 
 const DIRS: Dir[] = ['down', 'up', 'left', 'right'];
 type Canvas = HTMLCanvasElement;

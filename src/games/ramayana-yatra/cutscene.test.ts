@@ -328,7 +328,32 @@ test('cutsceneDue: Rāvaṇa in book 6 at ≤ 60 % (as shown: the command menu o
     assert.equal(done.save.flags[FLAG], true);
     assert.ok(cutsceneSeen(C, done.save.flags));
     assert.equal(cutsceneDue(done, C), null, 'seen: never again');
-    assert.equal(done.battle, due.battle, 'the battle is untouched');
+    if (style === 'abhyasa') assert.equal(done.battle, due.battle, 'practice: the battle is untouched');
+    else {
+      // v0.6.1 (Kathā): Agastya teaches the hymn here — heard and restored, Rāma takes up its moves, one beat says so.
+      // As the Kathā journey arrives (no lesson before the gate): the hymn not yet heard, its two moves not yet held.
+      const HYMN_MOVES = ['aditya_hrdaya', 'brahmastra'];
+      const plain = (moves: string[]): string[] => moves.filter((id) => !HYMN_MOVES.includes(id));
+      const { ['s-aditya-hrdayam']: _hymn, ...shlokas } = due.save.shlokas;
+      const fresh: GameState = { ...due, save: { ...due.save, shlokas, party: due.save.party.map((m) => (m.id === 'rama' ? { ...m, moves: plain(m.moves) } : m)) }, battle: { ...due.battle!, ally: { ...due.battle!.ally, moves: plain(due.battle!.ally.moves) } } };
+      const taught = reduce(fresh, C, { type: 'cutscene-done', id: ADITYA_ID });
+      assert.equal(taught.save.shlokas['s-aditya-hrdayam']?.restored, true, 'Kathā: the hymn is restored');
+      assert.equal(taught.save.flags['restored.s-aditya-hrdayam'], true);
+      assert.equal(taught.save.flags['heard.s-aditya-hrdayam'], true);
+      assert.ok(taught.session.shlokasRestored.includes('s-aditya-hrdayam'));
+      assert.ok(HYMN_MOVES.every((id) => taught.battle!.ally.moves.includes(id)), `Kathā: Rāma holds the hymn and the brahmāstra (${taught.battle!.ally.moves.join(', ')})`);
+      for (const x of [taught, done]) {
+        assert.equal(x.battle!.phase, 'beats');
+        assert.match(x.battle!.beats.at(-1)!.text, /Agastya departs/);
+      }
+      // over the narration of the hit that crossed 60 %: the beat comes right after the one on screen, with its HP
+      const shown = { text: 'hit', allyHp: 50, foeHp: Math.floor(fresh.battle!.foe.maxHp * 0.55) };
+      const later = { text: 'counter', allyHp: 30, foeHp: shown.foeHp };
+      const mid: GameState = { ...fresh, battle: { ...fresh.battle!, phase: 'beats', beats: [shown, later] } };
+      const t2 = reduce(mid, C, { type: 'cutscene-done', id: ADITYA_ID });
+      assert.deepEqual(t2.battle!.beats.map((x) => x.text.startsWith('Agastya departs') ? 'agastya' : x.text), ['hit', 'agastya', 'counter']);
+      assert.deepEqual([t2.battle!.beats[1]!.allyHp, t2.battle!.beats[1]!.foeHp], [50, shown.foeHp]);
+    }
     assert.equal(reduce(done, C, { type: 'cutscene-done', id: ADITYA_ID }), done, 'a second dispatch is refused');
     assert.equal(reduce(s, C, { type: 'cutscene-done', id: ADITYA_ID }), s, 'not due: refused');
     assert.equal(reduce(due, C, { type: 'cutscene-done', id: 'nope' }), due, 'unknown id: refused');

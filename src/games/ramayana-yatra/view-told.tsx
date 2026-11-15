@@ -26,7 +26,7 @@ import type { SaveData, ToldStep } from './types';
 import { type CastFigure, EMPTY_TOLD_STAGE, type ToldBeat, type ToldStage, applyToldStep, isAsk, isHotspot, toldEffect, toldOf, toldSeen, toldTimeline, TOLD_HOTSPOT_MS } from './logic-told';
 import { type PaintCue, painterOf } from './cutscene-paint';
 import { SCENES_3D, type Scene3DTold, type ToldPhase3D } from './cutscene3d-scenes';
-import { type KitView, addKitFx, createKitView, drawGlowRect, drawKitFigure, drawKitFx, drawKitProp, fallK, kitActive, kitShake, propAt, scaleK, syncKitView } from './view-stage';
+import { type KitView, addKitFx, createKitView, drawEmotes, drawGlowRect, drawKitFigure, drawKitFx, drawKitProp, fallK, hopY, kitActive, kitFxView, kitShake, propAt, scaleK, syncKitView } from './view-stage';
 import { VerseRef, useButtons as useButtonsLocal, useEnv } from './view-common';
 import { useUi } from './view-ui';
 import { StoryLine } from './view-markup';
@@ -144,7 +144,7 @@ export function ToldCutscene({ id, replay, onDone }: ToldProps): ReactElement | 
         if ('scene' in s && s.scene !== before.scene) shotAt.current = sceneMs;
         const fx = toldEffect(before, s);
         stage.current = applyToldStep(before, s);
-        if (fx) addKitFx(kit.current, { name: fx.name, ms: fx.ms, ...(fx.at ? { rect: fx.at } : {}), ...(fx.path ? { path: fx.path } : {}) }, sceneMs);
+        if (fx) addKitFx(kit.current, kitFxView(fx), sceneMs);
         if (isHotspot(s)) {
           armed.current = { id: s.hotspot, at: s.at, until: sceneMs + (typeof s.ms === 'number' && s.ms > 0 ? s.ms : TOLD_HOTSPOT_MS), step: i };
           log(`told|hotspot|${s.hotspot}`);
@@ -299,7 +299,8 @@ export function ToldCutscene({ id, replay, onDone }: ToldProps): ReactElement | 
       const y = gl ? gl.fromY + (f.y - gl.fromY) * kk : f.y;
       const moving = kk < 1;
       const frame: 0 | 1 | 2 = moving ? ((Math.floor(sMs / 160) % 2) + 1) as 1 | 2 : 0;
-      list.push({ y, draw: () => drawKitFigure(g, env.art, f.sprite as SpriteId, Math.round(x * 16), Math.round(y * 16), f.facing, frame, fallK(kit.current, cid, sMs, reduced), scaleK(kit.current, cid, sMs, reduced)) });
+      const hop = hopY(kit.current, cid, sMs, reduced); // v0.6.1
+      list.push({ y, draw: () => drawKitFigure(g, env.art, f.sprite as SpriteId, Math.round(x * 16), Math.round(y * 16) - hop, f.facing, frame, fallK(kit.current, cid, sMs, reduced), scaleK(kit.current, cid, sMs, reduced)) });
     }
     for (const [pid, pr] of Object.entries(st.props)) {
       const carrier = pr.carry ? st.cast[pr.carry] : undefined;
@@ -312,6 +313,18 @@ export function ToldCutscene({ id, replay, onDone }: ToldProps): ReactElement | 
     const a = armed.current;
     if (a && phase === 'scene') drawGlowRect(g, { x: a.at[0] * 16, y: a.at[1] * 16 }, a.at[2] * 16, a.at[3] * 16, sMs, reduced, 0.5);
     drawKitFx(g, kit.current, sMs, reduced, (x, y) => ({ x: x * 16, y: y * 16 }));
+    // v0.6.1: emote bubbles over the cast
+    drawEmotes(
+      g,
+      kit.current,
+      sMs,
+      reduced,
+      (id) => {
+        const f = st.cast[id];
+        return f ? { x: f.x * 16, y: f.y * 16 - hopY(kit.current, id, sMs, reduced), scale: scaleK(kit.current, id, sMs, reduced) } : null;
+      },
+      (x, y) => ({ x: x * 16, y: y * 16 }),
+    );
   };
 
   // ── input ──

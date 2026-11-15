@@ -20,11 +20,14 @@ export function bump<T extends { tick: number }>(state: T): T {
 /** Evaluate "a&!b&c" against a flag set. Empty / undefined → true. */
 export function testFlag(flags: Record<string, true | undefined>, cond: FlagCond | undefined): boolean {
   if (!cond) return true;
-  return cond
-    .split('&')
-    .map((p) => p.trim())
-    .filter(Boolean)
-    .every((p) => (p.startsWith('!') ? !flags[p.slice(1)] : !!flags[p]));
+  // v0.6.1: `a&b|c` = (a and b) or c ('&' binds tighter); a condition without '|' reads as before
+  return cond.split('|').some((alt) =>
+    alt
+      .split('&')
+      .map((p) => p.trim())
+      .filter(Boolean)
+      .every((p) => (p.startsWith('!') ? !flags[p.slice(1)] : !!flags[p])),
+  );
 }
 
 export interface ContentIndex {

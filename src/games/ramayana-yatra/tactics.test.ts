@@ -40,13 +40,13 @@ import {
   tires,
   warnPlan,
 } from './logic-tactics';
-import { SA_BATTLE, battleAction, saText, startBattle } from './logic-battle';
+import { SA_BATTLE, battleAction, battleMenu, saText, startBattle } from './logic-battle';
 import { fighterFromEnemy, newMember } from './logic-progress';
 import { newGame, reduce } from './logic';
 import { botActions, strategicChoice } from './logic-sim';
 import { createRng } from '@sdk';
 import { existsSync } from 'node:fs';
-import { phaseFloor, phasesBegun, phasesOf, strikeScale } from './logic-tactics';
+import { onlyMove, phaseFloor, phasesBegun, phasesOf, spendOnly, strikeScale } from './logic-tactics';
 import { getOracle } from './sa-verify';
 
 const C = loadContent();
@@ -414,10 +414,17 @@ const RAMA6 = ['dharma_vigraha', 'aditya_hrdaya', 'brahmastra', 'vayavyastra'];
 const HEARD6 = ['s-ramo-vigrahavan', 's-aditya-hrdayam', 's-ma-nishada', 's-jayatyatibalo', 's-sakrdeva', 's-anirvedah'];
 /** The flag package E's Āditya-hṛdayam cutscene sets (Yuddha 6.105): Rāvaṇa's finishing phases wait for it. */
 const HYMN = 'seen.aditya';
-function ravanaFight(ramaMoves = RAMA6, o: { style?: 'katha' | 'abhyasa'; seed?: number; hymn?: boolean } = {}): GameState {
+/** v0.6.1: the hymn-only phase (katha.json ravana_weary) as it stands once Rāma has recited the Āditya-hṛdayam. */
+const WEARY_SPENT = ['ravana_weary', 'ravana_weary:spent'];
+/**
+ * Rāvaṇa's fight. In Kathā the hymn-only phase starts spent (Rāma has recited the hymn once, as after the cutscene), so
+ * the floor and heads tests see every move; `weary: true` leaves it fresh (the phase begins at 60 %, as in play).
+ */
+function ravanaFight(ramaMoves = RAMA6, o: { style?: 'katha' | 'abhyasa'; seed?: number; hymn?: boolean; weary?: boolean } = {}): GameState {
   const party = [member('player', 33, ['pada_bana', 'lipi_raksha', 'shoka_shloka', 'shuddha_vak']), member('hanuman', 33, ['vayu_vega', 'gada', 'jaya_ghosha']), member('rama', 33, ramaMoves), member('lakshmana', 33, ['bana', 'khadga', 'agni_bana', 'viddhi'])];
   const s0 = kState(party, { chapter: 6, heard: HEARD6, ...(o.style ? { style: o.style } : {}), ...(o.hymn === false ? {} : { flags: [HYMN] }) });
-  return startBattle({ ...s0, seed: o.seed ?? 5 }, C, spec([['ravana', 30]], 'boss', 'rama'));
+  const s = startBattle({ ...s0, seed: o.seed ?? 5 }, C, spec([['ravana', 30]], 'boss', 'rama'));
+  return o.weary || o.style === 'abhyasa' ? s : { ...s, battle: { ...s.battle!, bossPhases: [...WEARY_SPENT] } };
 }
 
 /**
@@ -453,8 +460,8 @@ test('phases content: every phase names a real foe, its fitting move and a sa-ba
   }
   assert.deepEqual(problems, []);
   const r = phasesOf(C, 6, 'ravana');
-  assert.deepEqual(r.map((p) => [p.below, p.floor, p.fit, p.once ?? false, p.requires]), [[0.5, 0.4, 'brahmastra', false, HYMN], [0.4, undefined, undefined, true, HYMN]], 'both wait for the Āditya-hṛdayam (Yuddha 6.105)');
-  assert.ok(/6\.107/.test(r[0]!.source) && /6\.108/.test(r[1]!.source), 'Yuddha 6.107 (the heads), 6.108 (Mātali)');
+  assert.deepEqual(r.map((p) => [p.below, p.floor, p.fit, p.once ?? false, p.requires, p.only ?? false]), [[0.6, undefined, 'aditya_hrdaya', true, undefined, true], [0.5, 0.4, 'brahmastra', false, HYMN, false], [0.4, undefined, undefined, true, HYMN, false]], 'the hymn alone from 60 % (v0.6.1); the heads and Mātali wait for the Āditya-hṛdayam (Yuddha 6.105)');
+  assert.ok(/6\.105/.test(r[0]!.source) && /6\.107/.test(r[1]!.source) && /6\.108/.test(r[2]!.source), 'Yuddha 6.105 (the hymn), 6.107 (the heads), 6.108 (Mātali)');
   assert.deepEqual(phasesOf(C, 5, 'ravana'), [], 'Book 6 only');
   // the floor holds for a hero who holds the brahmāstra, for every move but the brahmāstra
   const rv = fighterFromEnemy('ravana', 30, C);
@@ -468,15 +475,16 @@ test('phases content: every phase names a real foe, its fitting move and a sa-ba
   assert.equal(isDecisive(C, 6, { ...rv, hp: 1 }, 'brahmastra', hymn), true);
   // phases begin at their share, `once` stays, the others may begin again
   const half = { ...rv, hp: Math.ceil(rv.maxHp * 0.5) };
-  assert.deepEqual(phasesBegun(C, 6, half, [], hymn).now.map((p) => p.id), ['ravana_heads']);
-  assert.deepEqual(phasesBegun(C, 6, half, [], {}).now, [], 'before the hymn no phase begins');
-  assert.deepEqual(phasesBegun(C, 6, { ...rv, hp: Math.ceil(rv.maxHp * 0.4) }, ['ravana_heads'], hymn).now.map((p) => p.id), ['ravana_matali']);
-  assert.deepEqual(phasesBegun(C, 6, rv, ['ravana_heads', 'ravana_matali'], hymn).begun, ['ravana_matali'], 'healed above half: the heads may begin again; Mātali stays said');
+  assert.deepEqual(phasesBegun(C, 6, half, [], hymn).now.map((p) => p.id), ['ravana_weary', 'ravana_heads']);
+  assert.deepEqual(phasesBegun(C, 6, half, [], {}).now.map((p) => p.id), ['ravana_weary'], 'before the hymn only the hymn-only phase begins (the cutscene comes with it)');
+  assert.deepEqual(phasesBegun(C, 6, { ...rv, hp: Math.ceil(rv.maxHp * 0.4) }, [...WEARY_SPENT, 'ravana_heads'], hymn).now.map((p) => p.id), ['ravana_matali']);
+  assert.deepEqual(phasesBegun(C, 6, rv, [...WEARY_SPENT, 'ravana_heads', 'ravana_matali'], hymn).begun, [...WEARY_SPENT, 'ravana_matali'], 'healed above half: the heads may begin again; the hymn-only phase and Mātali stay said');
   assert.deepEqual(phasesBegun(C, 6, { ...rv, hp: 0 }, [], hymn).now, [], 'never for a fallen foe');
 });
 
 test('phases: before the Āditya-hṛdayam (Yuddha 6.105; seen.aditya) Rāvaṇa cannot be finished — every blow, the brahmāstra too, is held at 40 %, no phase begins; once the hymn is heard, Mātali speaks and the brahmāstra ends it', () => {
-  let s = toCommand(ravanaFight(RAMA6, { hymn: false }));
+  // Kathā (v0.6.1): before the cutscene Rāma has not learned the hymn — no hymn-only phase holds his other moves
+  let s = toCommand(ravanaFight(['dharma_vigraha', 'brahmastra', 'vayavyastra', 'agneyastra'], { hymn: false, weary: true }));
   const floor = Math.ceil(s.battle!.foe.maxHp * 0.4);
   const beats: BattleBeat[] = [];
   const moves = ['dharma_vigraha', 'brahmastra', 'vayavyastra', 'brahmastra'];
@@ -490,7 +498,7 @@ test('phases: before the Āditya-hṛdayam (Yuddha 6.105; seen.aditya) Rāvaṇa
   assert.ok(!beats.some((b) => b.tactic === 'fit'), 'the brahmāstra is not decisive yet');
   assert.ok(!beats.some((b) => b.text === tplEn('kathaMatali')), 'Mātali waits for the hymn');
   assert.ok(beats.some((b) => b.text === tplEn('kathaHeads')), 'a held blow: the head grows back');
-  assert.ok(!(s.battle!.bossPhases ?? []).length, 'no phase has begun');
+  assert.deepEqual(s.battle!.bossPhases, ['ravana_weary'], 'no phase but the hymn-only one has begun (it holds nothing while the hero lacks the hymn)');
   // the hymn (package E's cutscene sets the flag); the next blow that the heads hold brings Mātali's line, once
   s = { ...s, save: { ...s.save, flags: { ...s.save.flags, [HYMN]: true } } };
   const m = cast(noFoe(s), 'dharma_vigraha');
@@ -515,7 +523,7 @@ test('phases: Rāvaṇa’s heads grow back — from half strength a blow that i
   assert.ok(heads.length >= 3, `the heads line at half strength and on each held blow (${heads.length})`);
   assert.ok(heads.every((b) => b.textSa === saText('kathaHeads')), 'with its Sanskrit');
   assert.equal(beats.filter((b) => b.text === tplEn('kathaMatali')).length, 1, 'Mātali speaks once');
-  assert.deepEqual(s.battle!.bossPhases, ['ravana_heads', 'ravana_matali']);
+  assert.deepEqual(s.battle!.bossPhases, [...WEARY_SPENT, 'ravana_heads', 'ravana_matali']);
   // the brahmāstra ends it (the decisive story beat)
   const end = cast(s, 'brahmastra');
   assert.ok(queued(end).some((b) => b.tactic === 'fit' && b.text === tplEn('kathaFitBrahma')));
@@ -541,6 +549,31 @@ test('phases: a spent brahmāstra comes back to hand when the heads hold; a hero
   assert.equal(p.battle!.bossPhases, undefined);
 });
 
+test('phases (v0.6.1): from 60 % the Āditya-hṛdayam is Rāma’s only move until he has recited it once — the menu greys the rest, a tap on them does nothing; then every move is back; a hero without the hymn, other foes and the practice game are never held', () => {
+  let s = toCommand(ravanaFight(RAMA6, { weary: true }));
+  for (let i = 0; i < 40 && !(s.battle!.bossPhases ?? []).includes('ravana_weary'); i++) s = toCommand(cast(noFoe(s), 'vayavyastra'));
+  assert.ok(s.battle!.foe.hp <= Math.ceil(s.battle!.foe.maxHp * 0.6), 'at or below 60 %');
+  assert.deepEqual(battleMenu(s, C).moves.filter((m) => m.usable).map((m) => m.id), ['aditya_hrdaya'], 'only the hymn');
+  const hp = s.battle!.foe.hp;
+  assert.equal(battleAction(battleAction(s, C, { type: 'choose', index: 0 }), C, { type: 'choose', index: RAMA6.indexOf('dharma_vigraha') }).battle!.foe.hp, hp, 'another move does nothing');
+  s = toCommand(cast(noFoe(s), 'aditya_hrdaya'));
+  assert.ok(s.battle!.bossPhases!.includes('ravana_weary:spent'), 'spent once recited');
+  const menu = battleMenu(s, C).moves;
+  assert.ok(menu.filter((m) => m.pp > 0).every((m) => m.usable) && menu.some((m) => m.id === 'brahmastra' && m.usable), 'every move is back');
+  // the helpers: a hero without the hymn; a spent phase; another foe; the cast of another move spends nothing
+  assert.equal(onlyMove(C, 6, 'ravana', ['ravana_weary'], ['bana', 'khadga']), null);
+  assert.equal(onlyMove(C, 6, 'ravana', ['ravana_weary'], RAMA6), 'aditya_hrdaya');
+  assert.equal(onlyMove(C, 6, 'ravana', WEARY_SPENT, RAMA6), null);
+  assert.equal(onlyMove(C, 6, 'kumbhakarna', ['ravana_weary'], RAMA6), null);
+  assert.deepEqual(spendOnly(C, 6, 'ravana', ['ravana_weary'], 'brahmastra'), ['ravana_weary']);
+  assert.deepEqual(spendOnly(C, 6, 'ravana', ['ravana_weary'], 'aditya_hrdaya'), WEARY_SPENT);
+  // practice: no phases, every move with PP is usable at any HP
+  const p0 = toCommand(ravanaFight(RAMA6, { style: 'abhyasa' }));
+  const p = { ...p0, battle: { ...p0.battle!, foe: { ...p0.battle!.foe, hp: Math.ceil(p0.battle!.foe.maxHp * 0.5) } } };
+  assert.equal(p.battle.bossPhases, undefined);
+  assert.ok(battleMenu(p, C).moves.filter((m) => m.pp > 0).every((m) => m.usable), 'practice: nothing greyed');
+});
+
 test('phases: every bot beats Rāvaṇa — strategic (≤ 15 turns), spammer, 70 % and careless 70 % reciters, with the Āditya-hṛdayam at 60 % (package E’s cutscene, or its effect); Mātali speaks at most once a fight', async () => {
   const BOTS = [
     { name: 'strategic', policy: 'strategic' as const, accuracy: 1 },
@@ -552,7 +585,7 @@ test('phases: every bot beats Rāvaṇa — strategic (≤ 15 turns), spammer, 7
   for (const bot of BOTS) {
     const turns: number[] = [];
     for (let seed = 1; seed <= 25; seed++) {
-      let s = ravanaFight(RAMA6, { seed, hymn: false });
+      let s = ravanaFight(RAMA6, { seed, hymn: false, weary: true });
       const ctx = { recited: false, rested: false, reciter: { accuracy: bot.accuracy, rng: createRng(seed) }, ...(bot.careless ? { careless: { chance: bot.careless, rng: createRng(seed + 99) } } : {}), ...(bot.policy ? { policy: bot.policy } : {}) };
       let matali = 0;
       for (let n = 0; n < 3000 && s.battle && !(['won', 'lost'].includes(s.battle.phase) && s.battle.beats.length === 0); n++) {

@@ -21,8 +21,8 @@
  *                                    (content/katha-echoes.json); the verse book shows the title under its verses
  */
 import { splitAksharas } from '@sanskrit';
-import type { Dir, GameContent, GameState, KitFxName, StagePos, StageState, ToldCutscene, ToldStep, VerseEcho } from './types';
-import { type KitCmd, type StageWorld, applyKit, isKitCmd } from './logic-stage';
+import type { Dir, Fx, GameContent, GameState, StageState, ToldCutscene, ToldStep, VerseEcho } from './types';
+import { type KitCmd, type StageWorld, applyKit, isKitCmd, kitFx } from './logic-stage';
 import { markHeard } from './logic-learning';
 import { isKatha } from './logic-katha';
 import { uiToast } from './sa-ui';
@@ -299,22 +299,13 @@ export function toldStageAt(steps: readonly ToldStep[], n = steps.length): ToldS
   return st;
 }
 
-/** A kit step's one-shot effect in a cutscene: name, ms and (glow) region / (arrow) path in stage tiles. */
-export function toldEffect(stage: ToldStage, s: ToldStep): { name: Exclude<KitFxName, 'tint'> | 'glow' | 'arrow'; ms: number; at?: { x: number; y: number; w: number; h: number }; path?: { x: number; y: number }[] } | null {
-  if (!isKitCmd(s)) return null;
-  const world = castWorld(stage);
-  const ms = (d: number): number => {
-    const m = (s as { ms?: unknown }).ms;
-    return typeof m === 'number' && Number.isFinite(m) && m >= 0 ? m : d;
-  };
-  if ('fx' in s) return s.fx === 'tint' ? null : { name: s.fx, ms: ms({ shake: 600, flash: 450, petals: 4000, rain: 4000 }[s.fx]) };
-  if ('glow' in s) return { name: 'glow', ms: ms(2500), at: { x: s.glow.x, y: s.glow.y, w: Math.max(1, s.glow.w ?? 1), h: Math.max(1, s.glow.h ?? 1) } };
-  if ('arrow' in s) {
-    const pts = [s.arrow.from, ...(s.arrow.through ?? []), s.arrow.to].map((p: StagePos) => (typeof p === 'string' ? (world.at(p) ?? (stage.props[p] ? { x: stage.props[p]!.x, y: stage.props[p]!.y } : null)) : p));
-    if (pts.some((p) => !p)) return null;
-    return { name: 'arrow', ms: ms(700), path: pts as { x: number; y: number }[] };
-  }
-  return null;
+/** A kit step's one-shot effect in a cutscene (the same as on the map: logic-stage `kitFx`, with the cast as the figures). */
+export function toldEffect(stage: ToldStage, s: ToldStep): Omit<Extract<Fx, { kind: 'kit' }>, 'kind'> | null {
+  if (!isKitCmd(s) || 'focus' in s) return null;
+  const fx = kitFx(s as unknown as KitCmd, stage, castWorld(stage));
+  if (!fx) return null;
+  const { kind: _k, ...rest } = fx;
+  return rest;
 }
 
 // ───────────────────────── checks (tests and packages) ─────────────────────────

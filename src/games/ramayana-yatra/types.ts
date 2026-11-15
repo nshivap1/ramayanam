@@ -538,12 +538,18 @@ export type EventCmd =
   | { rise: StageTarget | 'all' }
   /** a figure's sprite scale (1 = normal; 0.5–4), anchored at its feet, animated */
   | { grow: string; scale: number }
-  /** a tile shimmer for `ms` (one-shot; w × h tiles) */
-  | { glow: { x: number; y: number; w?: number; h?: number }; ms?: number }
+  /** a tile shimmer for `ms` (one-shot; w × h tiles); color "fire": flames instead of the gold shimmer (v0.6.1) */
+  | { glow: { x: number; y: number; w?: number; h?: number }; ms?: number; color?: GlowColor }
   /** a small object: placed `at` a tile / a figure, moved `to`, carried by a figure (drawn over its head), or removed */
   | { prop: string; sprite?: PropSprite; at?: StagePos; to?: StagePos; carry?: string | null; remove?: true; ms?: number }
   /** a projectile across tiles: from → through… → to, in `ms` (one-shot) */
   | { arrow: { from: StagePos; to: StagePos; through?: StagePos[] }; ms?: number }
+  /** v0.6.1: a small picture bubble over a figure for `ms` (one-shot): music, a heart, tears, !, ?, anger, …, sleep, a sparkle */
+  | { emote: string; icon: EmoteIcon; ms?: number }
+  /** v0.6.1: these figures hop `n` times (1–3; one-shot) — joy, a start of surprise */
+  | { hop: StageTarget | string; n?: number }
+  /** v0.6.1: the camera glides to a tile / a figure and stays there until another focus, `null` (back to the player) or the script ends */
+  | { focus: StagePos | null }
   /** a hidden moment: tile (x, y) shimmers for `ms`; tap it / A → `then` runs (and `flag` is set); ▶ / B / the timer → passes */
   | { hotspot: { x: number; y: number }; then: EventCmd[]; flag?: string; ms?: number }
   /** a told cutscene (content/cutscene-<id>.json, logic-told.ts); the script waits until it has played */
@@ -553,8 +559,14 @@ export type EventCmd =
 
 // ───────────────────────── v0.6 WP0: effects kit, hotspots, told cutscenes, echoes ─────────────────────────
 
-/** One-shot / timed screen effects of the kit. */
-export type KitFxName = 'shake' | 'flash' | 'petals' | 'rain' | 'tint';
+/** One-shot / timed screen effects of the kit (v0.6.1 adds wind, smoke, birds, embers, dust, rays, lamps). */
+export type KitFxName = 'shake' | 'flash' | 'petals' | 'rain' | 'tint' | 'wind' | 'smoke' | 'birds' | 'embers' | 'dust' | 'rays' | 'lamps';
+/** v0.6.1: the timed screen effects drawn over the whole stage (no state). */
+export type KitScreenFx = Exclude<KitFxName, 'tint'>;
+/** v0.6.1: the pictures an `{ "emote" }` bubble can hold. */
+export type EmoteIcon = 'music' | 'heart' | 'tears' | 'exclaim' | 'question' | 'anger' | 'dots' | 'sleep' | 'sparkle';
+/** v0.6.1: a glow's look. */
+export type GlowColor = 'gold' | 'fire';
 /** A colour wash (`{ "fx": "tint", "color": … }`); 'none' clears it. */
 export type TintColor = 'gold' | 'red' | 'night' | 'dawn' | 'sea' | 'none';
 /** A place on the stage: a tile (x, y; fractions allowed in a cutscene) or a figure id (npc / "player" / prop / cast id). */
@@ -574,6 +586,8 @@ export interface StageProp {
   y: number;
   /** carried by this figure (drawn over its head, follows it) */
   carry?: string;
+  /** v0.6.1: how long its last move glides (the command's `ms`; absent = the view's default) */
+  ms?: number;
 }
 
 /**
@@ -589,6 +603,8 @@ export interface StageState {
   props: Record<string, StageProp>;
   /** a colour wash over the map */
   tint?: Exclude<TintColor, 'none'>;
+  /** v0.6.1: where the camera looks (tile; absent = it follows the player) */
+  focus?: { x: number; y: number };
 }
 
 /** v0.6: a hidden moment in a map script (`{ "hotspot" }`): choose 0 (tap / A) → found; advance (▶ / B / timer) → passes. */
@@ -618,9 +634,11 @@ export type ToldStep =
   | { topple: StageTarget }
   | { rise: StageTarget | 'all' }
   | { grow: string; scale: number; ms?: number }
-  | { glow: { x: number; y: number; w?: number; h?: number }; ms?: number }
+  | { glow: { x: number; y: number; w?: number; h?: number }; ms?: number; color?: GlowColor }
   | { prop: string; sprite?: PropSprite; at?: StagePos; to?: StagePos; carry?: string | null; remove?: true; ms?: number }
   | { arrow: { from: StagePos; to: StagePos; through?: StagePos[] }; ms?: number }
+  | { emote: string; icon: EmoteIcon; ms?: number }
+  | { hop: StageTarget | string; n?: number }
   | { wait: number }
   /**
    * a hidden moment: the stage region `at` [x, y, w, h] (tiles) can be tapped (or found with the look key, H) for `ms`
@@ -695,8 +713,9 @@ export interface WalkStep {
    * v0.5b: a step of one journey only. 'katha' = a Kathā-only step (a set piece's extra goal): the practice game's
    * pointer (`guideStep` / `guideTarget`), story bots (`runWalkthrough`, `runGuide`), quest progress and the e2e `next`
    * skip it, so a practice save never needs its flag. Absent = both journeys (logic-katha `stepInJourney`).
+   * v0.6.1: 'abhyasa' = a practice-only step (Agastya before the gate: in Kathā he teaches the hymn in the battle).
    */
-  style?: 'katha';
+  style?: 'katha' | 'abhyasa';
 }
 
 export interface GameContent {
@@ -831,6 +850,11 @@ export interface KathaPhase {
   once?: boolean;
   /** v0.5b WP-C: the phase's fitting move only finishes the foe once these flags hold (e.g. seen.aditya: the Āditya-hṛdayam first) */
   requires?: FlagCond;
+  /**
+   * v0.6.1: while the phase holds and the hero in front holds its `fit`, the fit is the ONLY move the hero can use (the
+   * others are greyed out) until it has been cast once (BattleState.bossPhases then records `<id>:spent`).
+   */
+  only?: true;
   source: string;
 }
 
@@ -1098,7 +1122,7 @@ export type Fx =
    * tile glow (`at`, tiles), an arrow along `path` (tile centres). Topple, rise, grow, props and tint are state
    * (GameState.stage), not fx.
    */
-  | { kind: 'kit'; name: 'shake' | 'flash' | 'petals' | 'rain' | 'glow' | 'arrow'; ms: number; at?: { x: number; y: number; w: number; h: number }; path?: { x: number; y: number }[] };
+  | { kind: 'kit'; name: KitScreenFx | 'glow' | 'arrow' | 'emote' | 'hop'; ms: number; at?: { x: number; y: number; w: number; h: number }; path?: { x: number; y: number }[]; color?: GlowColor; id?: string; ids?: string[]; icon?: EmoteIcon; n?: number };
 
 export interface GameState {
   v: 1;

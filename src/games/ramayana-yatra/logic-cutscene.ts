@@ -10,6 +10,11 @@
  *                                 beat, e.g. WP-C's "a head grows back"). In both journeys: the practice bots never
  *                                 dispatch the action, so the practice game's logic and hashes do not change.
  *   cutsceneDone(state, content, id)   `{ type: 'cutscene-done', id }` while due → sets the save flag (`seen.aditya`).
+ *                                 v0.6.1, Kathā (owner: the hymn is told once, mid-battle): Agastya teaches it HERE — the
+ *                                 verse is heard and restored (Rāma recites it three times, 6.105.28), the moves it
+ *                                 unlocks are armed (the hymn, the brahmāstra), the hero in front takes them up, and the
+ *                                 boss phase `ravana_weary` (content/katha.json) leaves the hymn as his only move until
+ *                                 he has cast it once. The practice game: only the flag, as before.
  *                                 Anything else returns the same state object (the reducer contract).
  *   cutsceneSteps(content, opts)  the follow-along timeline: the narration lines, then every pāda of the 31 verses in
  *                                 order, each with its duration at the recitation pace (≈ 3 akṣaras / s, tunable).
@@ -19,9 +24,15 @@
  */
 import { splitAksharas } from '@sanskrit';
 import type { CutsceneContent, GameContent, GameState } from './types';
+import { isKatha } from './logic-katha';
+import { movesToasts, unlockMovesFor } from './logic-learning';
+import { hymnTaught } from './logic-battle';
 
 /** The one cutscene so far. */
 export const ADITYA_ID = 'aditya-hridayam';
+/** v0.6.1: the verse and the move Agastya teaches in the cutscene (Kathā). */
+export const ADITYA_SHLOKA = 's-aditya-hrdayam';
+export const ADITYA_MOVE = 'aditya_hrdaya';
 
 /** Recitation pace of the follow-along (akṣaras per second). The owner asked for a calm pace; tune here. */
 export const RECITE_RATE = 3;
@@ -76,7 +87,27 @@ export function cutsceneDone(state: GameState, content: GameContent, id: unknown
   if (typeof id !== 'string' || cutsceneDue(state, content) !== id) return state;
   const c = cutsceneOf(content, id);
   if (!c) return state;
-  return { ...state, save: { ...state.save, flags: { ...state.save.flags, [c.flag]: true } } };
+  const s: GameState = { ...state, save: { ...state.save, flags: { ...state.save.flags, [c.flag]: true } } };
+  return c.id === ADITYA_ID && isKatha(s) ? teachHymn(s, content) : s;
+}
+
+/** v0.6.1 (Kathā): the hymn is heard and restored, its moves armed and taken up in the battle (see the file comment). */
+function teachHymn(state: GameState, content: GameContent): GameState {
+  let s = state;
+  const prev = s.save.shlokas[ADITYA_SHLOKA] ?? { heard: false, restored: false, best: 0 };
+  if (!prev.restored || !prev.heard) {
+    // as a heard verse and a recital do (logic-events noteHeard / noteRestored): the record, the flags, the session
+    const flags = { ...s.save.flags, [`heard.${ADITYA_SHLOKA}`]: true as const, [`restored.${ADITYA_SHLOKA}`]: true as const };
+    s = { ...s, save: { ...s.save, flags, shlokas: { ...s.save.shlokas, [ADITYA_SHLOKA]: { heard: true, restored: true, best: prev.best } } } };
+    const se = s.session;
+    s = { ...s, session: { ...se, shlokasHeard: se.shlokasHeard.includes(ADITYA_SHLOKA) ? se.shlokasHeard : [...se.shlokasHeard, ADITYA_SHLOKA], shlokasRestored: se.shlokasRestored.includes(ADITYA_SHLOKA) ? se.shlokasRestored : [...se.shlokasRestored, ADITYA_SHLOKA] } };
+  }
+  if (!prev.restored) {
+    const u = unlockMovesFor(s, content, ADITYA_SHLOKA);
+    const fx = movesToasts(content, u.unlocked.flatMap((x) => (x.allyId ? [{ ...x, allyId: x.allyId }] : [])));
+    s = fx.length ? { ...u.state, fx: [...u.state.fx, ...fx] } : u.state;
+  }
+  return hymnTaught(s, content, ADITYA_MOVE);
 }
 
 // ───────────────────────── the follow-along timeline ─────────────────────────

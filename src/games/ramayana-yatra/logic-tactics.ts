@@ -329,6 +329,28 @@ export function phaseOpen(p: PhaseDef, flags: Flags | undefined): boolean {
   return !p.requires || flags === undefined || testFlag(flags as Record<string, true | undefined>, p.requires);
 }
 
+/** v0.6.1: the marker BattleState.bossPhases keeps once an `only` phase's fit has been cast. */
+export const spentMark = (id: string): string => `${id}:spent`;
+
+/**
+ * v0.6.1: the one move the hero in front may use now — the fit of an `only` phase that has begun, is not spent and whose
+ * fit the hero holds (Rāvaṇa: from 60 % the Āditya-hṛdayam, until it has been recited once); else null.
+ */
+export function onlyMove(content: GameContent, chapter: number, foeId: string, begun: readonly string[] | undefined, allyMoves: readonly string[]): string | null {
+  if (!begun?.length) return null;
+  for (const p of phasesOf(content, chapter, foeId)) {
+    if (!p.only || !p.fit || !begun.includes(p.id) || begun.includes(spentMark(p.id))) continue;
+    if (allyMoves.includes(p.fit)) return p.fit;
+  }
+  return null;
+}
+
+/** v0.6.1: the begun list after `moveId` was cast: an `only` phase whose fit it is becomes spent (the same list otherwise). */
+export function spendOnly(content: GameContent, chapter: number, foeId: string, begun: string[], moveId: string): string[] {
+  const add = phasesOf(content, chapter, foeId).filter((p) => p.only && p.fit === moveId && begun.includes(p.id) && !begun.includes(spentMark(p.id))).map((p) => spentMark(p.id));
+  return add.length ? [...begun, ...add] : begun;
+}
+
 /** HP at or below which a share of the foe's HP is reached (as isDecisive: ceil of the share). */
 const shareHp = (maxHp: number, share: number): number => Math.ceil(maxHp * share);
 

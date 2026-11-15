@@ -10,6 +10,7 @@ import { PROP_IDS_A, SPRITE_IDS_A } from './art-v06-a';
 import { PROP_IDS_B, SPRITE_IDS_B } from './art-v06-b';
 import { PROP_IDS_C, SPRITE_IDS_C } from './art-v06-c';
 import { PROP_IDS_D, SPRITE_IDS_D } from './art-v06-d';
+import { PROP_IDS_E } from './art-v061';
 
 export const TILE_IDS = [
   // ── nature ──
@@ -80,7 +81,7 @@ export type SpriteId = (typeof SPRITE_IDS)[number];
  * v0.6: small 16×16 objects for the effects kit's `{ "prop" }` (the packages' art-v06-<x>.ts). A prop may also be any
  * TileId (drawn as an object) or SpriteId (a figure): `isPropSprite`.
  */
-export const PROP_IDS = [...PROP_IDS_A, ...PROP_IDS_B, ...PROP_IDS_C, ...PROP_IDS_D] as const;
+export const PROP_IDS = [...PROP_IDS_A, ...PROP_IDS_B, ...PROP_IDS_C, ...PROP_IDS_D, ...PROP_IDS_E] as const;
 export type PropId = (typeof PROP_IDS)[number];
 
 /** v0.6: can `id` be drawn as a prop (a PROP_ID, a TileId or a SpriteId)? */

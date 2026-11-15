@@ -85,6 +85,9 @@ test('v0.5b: stepInJourney — a step with style "katha" belongs to the Kathā j
   assert.ok(stepInJourney(step, {}) && stepInJourney(step, { style: 'katha' }) && stepInJourney(step, { style: 'abhyasa' }));
   const k = { ...step, style: 'katha' as const };
   assert.ok(!stepInJourney(k, {}) && !stepInJourney(k, { style: 'abhyasa' }) && stepInJourney(k, { style: 'katha' }));
+  // v0.6.1: a step with style "abhyasa" belongs to the practice journey only (Agastya before the gate)
+  const a = { ...step, style: 'abhyasa' as const };
+  assert.ok(stepInJourney(a, {}) && stepInJourney(a, { style: 'abhyasa' }) && !stepInJourney(a, { style: 'katha' }));
 });
 
 test('v0.5b: a Kathā-only step is skipped in the practice game by guideStep / guideTarget and quest progress, and served in Kathā', () => {
@@ -96,13 +99,16 @@ test('v0.5b: a Kathā-only step is skipped in the practice game by guideStep / g
   assert.equal(guideStep(katha.save, content), at, 'Kathā: the Kathā-only step');
   assert.equal(guideTarget(practice, content)?.step, at + 1);
   assert.equal(guideTarget(katha, content)?.step, at);
-  // quest progress counts the steps of the save's journey (ch6.complete left out: it means 1 on its own)
-  const shared = content.walkthrough.filter((w) => !w.style);
-  const most = Object.fromEntries(shared.filter((w) => w.expectFlag !== 'ch6.complete').map((w) => [w.expectFlag, true as const]));
-  const n = shared.filter((w) => w.expectFlag !== 'ch6.complete').length;
-  assert.equal(storyProgress(calm(undefined, { flags: most }), content), n / shared.length, 'practice: the Kathā-only step is not counted');
-  // v0.5b packages add their own Kathā-only steps: the Kathā journey counts every step of the walkthrough
-  assert.equal(storyProgress(calm('katha', { flags: { ...most, 'style.katha': true } }), content), n / content.walkthrough.length, 'Kathā: it is');
+  // quest progress counts the steps of the save's journey (ch6.complete left out: it means 1 on its own). The practice
+  // journey: every step but the Kathā-only ones (v0.6.1: with its practice-only steps); Kathā: every step but those.
+  const inPractice = content.walkthrough.filter((w) => w.style !== 'katha');
+  const inKatha = content.walkthrough.filter((w) => w.style !== 'abhyasa');
+  const most = Object.fromEntries(inPractice.filter((w) => w.expectFlag !== 'ch6.complete').map((w) => [w.expectFlag, true as const]));
+  const doneIn = (steps: readonly WalkStep[]): number => steps.filter((w) => most[w.expectFlag]).length;
+  assert.equal(doneIn(inPractice), inPractice.length - 1);
+  assert.equal(storyProgress(calm(undefined, { flags: most }), content), doneIn(inPractice) / inPractice.length, 'practice: the Kathā-only step is not counted');
+  assert.ok(inKatha.some((w) => w.expectFlag === 'v05b.katha_step') && !most['v05b.katha_step']);
+  assert.equal(storyProgress(calm('katha', { flags: { ...most, 'style.katha': true } }), content), doneIn(inKatha) / inKatha.length, 'Kathā: it is');
   const all = { ...most, 'ch6.complete': true as const };
   assert.equal(guideStep({ flags: all }, content), -1, 'practice: every step done');
   assert.equal(guideStep({ flags: all, style: 'katha' }, content), at, 'Kathā: the Kathā-only step is still open');
@@ -116,7 +122,7 @@ test('v0.5b: runWalkthrough skips a Kathā-only step in the practice game (plays
   assert.equal(a.error, null, a.error ?? '');
   assert.equal(a.failedAt, -1);
   assert.ok(!steps.includes(at), 'onStep never reports the Kathā-only step in the practice game');
-  assert.equal(steps.length, REAL.walkthrough.filter((w) => !w.style).length, 'every shared step, with its index in the walkthrough');
+  assert.equal(steps.length, REAL.walkthrough.filter((w) => w.style !== 'katha').length, 'every step of the practice journey, with its index in the walkthrough');
   assert.equal(a.actions, b.actions, 'the same actions');
   assert.equal(proj(a.state), proj(b.state), 'the same final state');
   assert.ok(!a.state.save.flags['v05b.katha_step']);

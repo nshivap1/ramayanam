@@ -174,6 +174,7 @@
     "kathaChainSays": { "en": "{x} says a line of verse.", "sa": "{x.nom} श्लोकस्य पादं वदति।" },
     "kathaChainStumped": { "en": "{x} thinks, but no line begins with that sound! The link lands with extra force.", "sa": "{x.nom} चिन्तयति। किन्तु सः वर्णः कस्य अपि पादस्य आरम्भे न अस्ति! अतः फलम् अधिकम्।" },
     "kathaHeads": { "en": "A head of {n:enemy.ravana} falls, but a new head rises in its place!", "sa": "रावणस्य एकं शिरः पतति। किन्तु तस्य स्थाने नूतनं शिरः उद्भवति!" },
+    "kathaHymnOnly": { "en": "Agastya departs. Now {n:ally.rama} uses only the {m}.", "sa": "अगस्त्यः गच्छति। अधुना रामः {m.acc} एव प्रयुङ्क्ते।" },
     "kathaMatali": { "en": "Matali calls to {n:ally.rama}: why wait? Loose Brahma's weapon now!", "sa": "मातलिः रामं वदति — हे राम, किमर्थं प्रतीक्षसे? अधुना ब्रह्मास्त्रं क्षिप!" }
   }
 }

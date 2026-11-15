@@ -2,7 +2,7 @@ import type { GameManifest } from '@sdk';
 
 export const manifest: GameManifest = {
   id: 'ramayana-yatra',
-  version: '0.6.0',
+  version: '0.6.1',
   title: { sa: 'रामायणयात्रा', iast: 'Rāmāyaṇa-yātrā', en: 'Journey through the Rāmāyaṇa' },
   tagline: 'A retro RPG where Rāmāyaṇa ślokas power every move',
   description:

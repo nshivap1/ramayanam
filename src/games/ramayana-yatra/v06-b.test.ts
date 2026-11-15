@@ -166,16 +166,22 @@ test('v0.6 B: the practice journey is unchanged — no B verse, no B line, no ki
 });
 
 test('v0.6 B: the main-path set pieces are short — only ▶ to continue, waits ≤ 2 s each, at most 4 lines once the kit starts', () => {
-  const pieces: Record<string, string> = { 'ch3.maricha_deer': 'the deer show the way', 'ch4.sugriva_alliance': 'one arrow, seven trees', 'ch4.jambavan_speech': 'Hanumān grows' };
-  for (const [event, name] of Object.entries(pieces)) {
+  // v0.6.1: other story animations now share these events, so a piece is measured from its own first command
+  const pieces: Record<string, [string, (c: EventCmd) => boolean]> = {
+    'ch3.maricha_deer': ['the deer show the way', (c) => 'prop' in c && c.prop === 'deer1'],
+    'ch4.sugriva_alliance': ['one arrow, seven trees', (c) => 'prop' in c && c.prop === 'sala1'],
+    'ch4.jambavan_speech': ['Hanumān grows', (c) => 'grow' in c && c.grow === 'hanuman_m'],
+  };
+  for (const [event, [name, starts]] of Object.entries(pieces)) {
     let waits = 0;
     let says = 0;
     let kit = 0;
     const e = EVENTS.find((x) => x.id === event)!;
     const go = (cmds: EventCmd[] | undefined, inK: boolean): void => {
       for (const c of cmds ?? []) {
-        if (inK && 'wait' in c) waits += c.wait;
-        if (inK && ('arrow' in c || 'prop' in c || 'grow' in c || 'topple' in c || 'rise' in c || 'fx' in c || 'glow' in c)) kit++;
+        if (inK && starts(c)) kit = Math.max(kit, 1);
+        if (inK && kit > 0 && 'wait' in c) waits += c.wait;
+        if (inK && kit > 0 && ('arrow' in c || 'prop' in c || 'grow' in c || 'topple' in c || 'rise' in c || 'fx' in c || 'glow' in c)) kit++;
         if (inK && kit > 0 && 'say' in c && B_LINES.has(c.say)) says++;
         if (inK) assert.ok(!('choice' in c) && !('battle' in c) && !('quiz' in c) && !('smarana' in c), `${name}: no input but ▶ (${JSON.stringify(c).slice(0, 40)})`);
         const o = c as unknown as Record<string, EventCmd[] | undefined>;

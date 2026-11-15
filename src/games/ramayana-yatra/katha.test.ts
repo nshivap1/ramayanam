@@ -1222,6 +1222,7 @@ test('story bots play Kathā to the ending for every seed × level — strategic
   const seeds = Math.max(1, Math.min(25, Number(process.env['RY_BOT_SEEDS'] ?? 25) || 25));
   const failures: string[] = [];
   const bossMean: Record<string, number> = {};
+  const freeMean: Record<string, number> = {};
   for (const bot of KATHA_BOTS) {
     const { accuracy } = bot;
     const careless = bot.careless ?? 0;
@@ -1275,6 +1276,9 @@ test('story bots play Kathā to the ending for every seed × level — strategic
     const mean = (xs: number[]): number => xs.reduce((a, b) => a + b, 0) / Math.max(1, xs.length);
     const bosses = [...turns].filter(([k]) => k.startsWith('boss'));
     bossMean[bot.name] = mean(bosses.map(([, v]) => mean(v)));
+    // v0.6.1: Rāvaṇa's fight is now led by the story — the hymn arrives at 60 % and is the only move until recited
+    // (katha.json ravana_weary) — so it leaves little to strategy; the spammer's margin is measured on the other bosses
+    freeMean[bot.name] = mean(bosses.filter(([k]) => k !== 'boss ravana').map(([, v]) => mean(v)));
     t.diagnostic(`Kathā bot ${bot.name}: ${stats.runs} runs · per playthrough ${(stats.battles / n).toFixed(1)} battles, ${(stats.recitations / n).toFixed(1)} recitations (${(stats.gapped / n).toFixed(1)} with a gap to fill, ${(stats.misses / n).toFixed(1)} missed), ${(stats.retries / n).toFixed(2)} step retries, ${Math.round(stats.actions / n)} actions · boss fight ${bossMean[bot.name]!.toFixed(2)} turns on average`);
     t.diagnostic(`  turns per fight (mean): ${[...turns].map(([k, v]) => `${k} ${mean(v).toFixed(1)}`).join(' · ')}`);
     // the strategic player's fights stay short; the other bots are held to 0 losses (a spammer's fights run long on purpose)
@@ -1286,7 +1290,8 @@ test('story bots play Kathā to the ending for every seed × level — strategic
   // v0.5a: strategy pays — the strategic player is the fastest, the spammer clearly slower on bosses (≥ 30 % more turns)
   const strat = bossMean['strategic'] as number;
   for (const [name, m] of Object.entries(bossMean)) if (name !== 'strategic') assert.ok(m > strat, `the strategic player is the fastest on bosses (${strat.toFixed(2)} turns; ${name} ${m.toFixed(2)})`);
-  if (seeds >= 10) assert.ok((bossMean['spammer'] as number) >= 1.3 * strat, `the spammer takes ≥ 30 % more turns on bosses (${(bossMean['spammer'] as number).toFixed(2)} vs ${strat.toFixed(2)})`);
+  const free = freeMean['strategic'] as number;
+  if (seeds >= 10) assert.ok((freeMean['spammer'] as number) >= 1.3 * free, `the spammer takes ≥ 30 % more turns on bosses whose fight the story does not lead (${(freeMean['spammer'] as number).toFixed(2)} vs ${free.toFixed(2)}; all bosses ${(bossMean['spammer'] as number).toFixed(2)} vs ${strat.toFixed(2)})`);
 });
 
 const DIRS = ['up', 'down', 'left', 'right'] as const;

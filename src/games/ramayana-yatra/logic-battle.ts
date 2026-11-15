@@ -44,7 +44,7 @@ import { bump, clamp, indexOf, must, rngFor } from './logic-util';
 import { MAX_STAGE, addXp, battleXp, damage, elementMult, fighterFromEnemy, fighterFromMember, maxHpOf } from './logic-progress';
 import { grade, makeChallenge, markSeen, recordResult } from './logic-learning';
 import { astraBinding, astraPada, buildSmarana, duelMove, duelPada, gradeSmarana, isEchoDuel, isKatha, kathaFoe, kathaLead, recordSmarana } from './logic-katha';
-import { COVER_CMD, KATHA_BLUNT, KATHA_OPENING, KATHA_STRIKE, KATHA_STRIKE_CAP, SHIELD_CMD, type WarnPlan, answerOf, canShield, coverOf, fatigueMult, fitFor, isDecisive, nextChain, phaseFloor, phasesBegun, readiesAt, shieldPada, strikeScale, warnPlan } from './logic-tactics';
+import { COVER_CMD, KATHA_BLUNT, KATHA_OPENING, KATHA_STRIKE, KATHA_STRIKE_CAP, SHIELD_CMD, type WarnPlan, answerOf, canShield, coverOf, fatigueMult, fitFor, isDecisive, nextChain, onlyMove, phaseFloor, phasesBegun, readiesAt, shieldPada, spendOnly, strikeScale, warnPlan } from './logic-tactics';
 import { CHAIN_MISS, CHAIN_STUMPED, chainDuel, chainFoe, chainOpen, chainOptions, chainReady, chainTurn, isChainDuel } from './logic-chain';
 import saBattleJson from './content/sa-battle.json';
 
@@ -263,8 +263,10 @@ export function battleMenu(state: GameState, content: GameContent): { moves: { i
   const m = state.save.party[b.active];
   const pps = b.ally.moves.map((id) => m?.pp[id] ?? 0);
   const allOut = pps.every((p) => p <= 0);
+  // v0.6.1 (Kathā): an `only` boss phase leaves the hero one move (Rāvaṇa from 60 %: the Āditya-hṛdayam, once)
+  const only = isKatha(state) && b.bossPhases ? onlyMove(content, state.save.chapter, b.foe.id, b.bossPhases, b.ally.moves) : null;
   return {
-    moves: b.ally.moves.map((id, i) => ({ id, pp: pps[i] ?? 0, maxPp: maxPp(id, content), usable: allOut || (pps[i] ?? 0) > 0 })),
+    moves: b.ally.moves.map((id, i) => ({ id, pp: pps[i] ?? 0, maxPp: maxPp(id, content), usable: only ? id === only : allOut || (pps[i] ?? 0) > 0 })),
     switchable: conscious(state.save.party).filter((i) => i !== b.active),
     items: battleItems(state, content),
     canRun: b.spec.kind === 'wild' && b.spec.canRun,
@@ -536,6 +538,7 @@ function kathaAllyAct(cx: Ctx, mv: MoveDef, correct: boolean, k: KathaCast, wear
     if (ans) cx.answer = ans;
     tired = fatigueMult(cx.chain, cx.content, mv.id);
     cx.chain = nextChain(cx.chain, mv.id);
+    cx.phases = spendOnly(cx.content, cx.chapter, cx.foe.id, cx.phases, mv.id); // v0.6.1: the only move, cast
     if (correct && !weary && mv.power > 0 && isDecisive(cx.content, cx.chapter, cx.foe, mv.id, cx.flags)) return decisiveHit(cx);
   }
   if (mv.power > 0) {
@@ -1021,6 +1024,25 @@ function afterBeats(state: GameState, content: GameContent): GameState {
 }
 
 // ───────────────────────── commands ─────────────────────────
+
+/**
+ * v0.6.1 (Kathā): Agastya has taught the Āditya-hṛdayam in the battle (logic-cutscene): the hero in front takes up the
+ * moves the hymn unlocked (the party already holds them) and a beat says that only the hymn can help him now. The scene
+ * plays over the beat on screen (a hit that crossed 60 %), so this beat comes right after it — before the rest of the
+ * turn's narration — with that beat's HP; from the command menu it is the one beat.
+ */
+export function hymnTaught(state: GameState, content: GameContent, moveId: string): GameState {
+  const b = state.battle;
+  if (!b) return state;
+  const m = state.save.party[b.active];
+  const ally = m && m.moves.join('|') !== b.ally.moves.join('|') ? { ...b.ally, moves: m.moves.slice() } : b.ally;
+  const t = tplBeat('kathaHymnOnly', undefined, moveId);
+  void content;
+  const shown = b.phase === 'beats' ? b.beats[0] : undefined;
+  if (!shown) return infoBeat(withBattle(state, { ...b, ally }), t.text, t.textSa);
+  const beat = withSa({ text: t.text, allyHp: shown.allyHp, foeHp: shown.foeHp }, t.textSa);
+  return withBattle(state, { ...b, ally, beats: [shown, beat, ...b.beats.slice(1)] });
+}
 
 function infoBeat(state: GameState, text: string, textSa?: string): GameState {
   const b = state.battle as BattleState;

@@ -916,11 +916,47 @@
    "id": "ch5.mainaka",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 900
+      },
+      {
+       "fx": "tint",
+       "color": "gold"
+      },
+      {
+       "fx": "rays",
+       "ms": 3500
+      },
+      {
+       "glow": {
+        "x": 15,
+        "y": 2,
+        "w": 3,
+        "h": 2
+       },
+       "ms": 3500
+      }
+     ]
+    },
+    {
      "say": "Midway across the {n:place.ocean_leap}, a golden mountain rises out of the waves: Mainaka."
     },
     {
      "say": "Rest on my peak, son of the Wind. Your father once saved me, and I would honour you.",
      "who": "Mainaka"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "player",
+       "icon": "heart",
+       "ms": 2400
+      }
+     ]
     },
     {
      "say": "Hanuman touches the peak with his hand in thanks. 'I have promised not to stop,' he says gently."
@@ -930,6 +966,15 @@
      "then": [
       {
        "shloka": "s-tvarate-karyakalo"
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "none"
       }
      ]
     },
@@ -953,6 +998,37 @@
   {
    "id": "ch5.surasa",
    "cmds": [
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "sea"
+      },
+      {
+       "fx": "shake",
+       "ms": 900
+      },
+      {
+       "prop": "surasa_p",
+       "sprite": "surasa",
+       "at": {
+        "x": 27,
+        "y": 10
+       },
+       "to": {
+        "x": 27,
+        "y": 8
+       },
+       "ms": 1500
+      },
+      {
+       "emote": "player",
+       "icon": "exclaim",
+       "ms": 1800
+      }
+     ]
+    },
     {
      "say": "A vast serpent-woman rises from the sea and blocks the way: Surasa, mother of serpents."
     },
@@ -998,7 +1074,46 @@
        "say": "Surasa opens her mouth wider and wider. Hanuman grows to match her, then suddenly shrinks to the size of a thumb."
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "surasa_p",
+         "to": {
+          "x": 26,
+          "y": 8
+         },
+         "ms": 300
+        },
+        {
+         "hop": "player",
+         "n": 2
+        }
+       ]
+      },
+      {
        "say": "He darts into her mouth and out again before she can close it, and bows to her."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "grow": "player",
+         "scale": 1
+        },
+        {
+         "grow": "surasa_p",
+         "scale": 1
+        },
+        {
+         "emote": "surasa_p",
+         "icon": "heart",
+         "ms": 2400
+        },
+        {
+         "fx": "tint",
+         "color": "none"
+        }
+       ]
       },
       {
        "say": "Go, best of vanaras. Find Sita, and bring Rama joy.",
@@ -1060,6 +1175,18 @@
        "portrait": "hanuman"
       },
       {
+       "grow": "surasa_p",
+       "scale": 2.4
+      },
+      {
+       "grow": "player",
+       "scale": 2.2
+      },
+      {
+       "fx": "shake",
+       "ms": 400
+      },
+      {
        "say": "Surasa opens her mouth wide, and Hanuman grows. She opens it wider, and he grows again."
       },
       {
@@ -1093,6 +1220,14 @@
        "label": "k_tiny"
       },
       {
+       "grow": "player",
+       "scale": 0.5
+      },
+      {
+       "fx": "flash",
+       "ms": 200
+      },
+      {
        "say": "Suddenly Hanuman becomes as small as a thumb."
       },
       {
@@ -1104,7 +1239,46 @@
      "if": "ch5.surasa_tiny&!ch5.surasa_done",
      "then": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "surasa_p",
+         "to": {
+          "x": 26,
+          "y": 8
+         },
+         "ms": 300
+        },
+        {
+         "hop": "player",
+         "n": 2
+        }
+       ]
+      },
+      {
        "say": "He darts into her mouth and out again before she can close it, and bows to her."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "grow": "player",
+         "scale": 1
+        },
+        {
+         "grow": "surasa_p",
+         "scale": 1
+        },
+        {
+         "emote": "surasa_p",
+         "icon": "heart",
+         "ms": 2400
+        },
+        {
+         "fx": "tint",
+         "color": "none"
+        }
+       ]
       },
       {
        "say": "Go, best of vanaras. Find Sita, and bring Rama joy.",
@@ -1127,6 +1301,24 @@
   {
    "id": "ch5.simhika",
    "cmds": [
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 700
+      },
+      {
+       "fx": "smoke",
+       "ms": 3000
+      },
+      {
+       "emote": "player",
+       "icon": "exclaim",
+       "ms": 1800
+      }
+     ]
+    },
     {
      "say": "Suddenly Hanuman slows, as if caught. Something beneath the waves has seized his shadow!"
     },
@@ -1151,7 +1343,32 @@
      },
      "onWin": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "flash",
+         "ms": 250
+        },
+        {
+         "hop": "player"
+        }
+       ]
+      },
+      {
        "say": "Hanuman breaks free, and Simhika sinks beneath the waves, never to trouble travellers again."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "rays",
+         "ms": 3500
+        },
+        {
+         "fx": "tint",
+         "color": "gold"
+        }
+       ]
       },
       {
        "say": "Ahead, the shore of Lanka appears, green with forests and bright with golden towers."
@@ -1181,10 +1398,50 @@
      "music": "lanka"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "focus": {
+        "x": 15,
+        "y": 8
+       }
+      },
+      {
+       "fx": "lamps",
+       "ms": 5000
+      }
+     ]
+    },
+    {
      "say": "Hanuman lands softly on Lamba hill. Before him rises Lanka on Mount Trikuta, its golden walls shining like a city of the gods."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "focus": null
+      },
+      {
+       "fx": "tint",
+       "color": "night"
+      },
+      {
+       "grow": "player",
+       "scale": 0.6
+      }
+     ]
+    },
+    {
      "say": "He waits for night. Then he makes himself as small as a cat, to slip inside unseen."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "grow": "player",
+       "scale": 1
+      }
+     ]
     },
     {
      "say": "An old stone shrine stands on the hillside to the west, forgotten by the city. You may rest there."
@@ -1256,6 +1513,20 @@
      },
      "onWin": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "shake",
+         "ms": 500
+        },
+        {
+         "emote": "lanka_devi",
+         "icon": "exclaim",
+         "ms": 2000
+        }
+       ]
+      },
+      {
        "say": "Hanuman strikes her with his left fist, holding back his strength, for she is a woman. Lanka sinks to her knees."
       },
       {
@@ -1290,7 +1561,25 @@
    "id": "ch5.city_enter",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "lamps",
+       "ms": 6000
+      }
+     ]
+    },
+    {
      "say": "{n:place.lanka_city} by night: golden mansions, crystal stairs, music and lamps in every window."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "grow": "player",
+       "scale": 0.6
+      }
+     ]
     },
     {
      "say": "Small as a cat, Hanuman slips from house to house, searching every face for Sita."
@@ -1521,7 +1810,27 @@
    "id": "ch5.despair",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "player",
+       "icon": "question",
+       "ms": 2600
+      }
+     ]
+    },
+    {
      "say": "Hanuman searches Ravana's palace: the halls, the gardens, the flying chariot Pushpaka, every sleeping chamber. Sita is not there."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "player",
+       "icon": "tears",
+       "ms": 2600
+      }
+     ]
     },
     {
      "say": "Have I failed? If I return without news, Rama will lose hope, and so will everyone who loves him.",
@@ -1529,7 +1838,34 @@
      "portrait": "hanuman"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "player",
+       "icon": "dots",
+       "ms": 2000
+      }
+     ]
+    },
+    {
      "say": "Hanuman sits on the palace wall, his head bowed. Then he lifts it."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "player",
+       "icon": "sparkle",
+       "ms": 2200
+      },
+      {
+       "fx": "rays",
+       "ms": 3000
+      },
+      {
+       "hop": "player"
+      }
+     ]
     },
     {
      "say": "No. Despair is not the way. {w:anirveda} is the root of all {w:shri}.",
@@ -1582,6 +1918,22 @@
      "music": "sorrow"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "focus": {
+        "x": 12,
+        "y": 9
+       }
+      },
+      {
+       "emote": "sita",
+       "icon": "tears",
+       "ms": 3200
+      }
+     ]
+    },
+    {
      "say": "In the Ashoka grove, under a shimshapa tree, sits a lady in a faded yellow garment, pale with grief, guarded by rakshasis."
     },
     {
@@ -1593,10 +1945,62 @@
      ]
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "glow": {
+        "x": 12,
+        "y": 10
+       },
+       "ms": 2800
+      }
+     ]
+    },
+    {
      "say": "Hanuman knows at once: this is Sita, just as Rama described her."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "dawn"
+      },
+      {
+       "prop": "ravana_v",
+       "sprite": "ravana",
+       "at": {
+        "x": 18,
+        "y": 9
+       },
+       "to": {
+        "x": 14,
+        "y": 10
+       },
+       "ms": 1400
+      }
+     ]
+    },
+    {
      "say": "Hiding among the branches, he watches. At dawn Ravana comes with threats and promises."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "prop": "blade",
+       "sprite": "kusha",
+       "at": {
+        "x": 13,
+        "y": 10
+       }
+      },
+      {
+       "emote": "sita",
+       "icon": "exclaim",
+       "ms": 2200
+      }
+     ]
     },
     {
      "say": "Sita places a blade of grass between herself and Ravana and answers him with courage. She will not even look at him."
@@ -1606,6 +2010,37 @@
      "then": [
       {
        "shloka": "s-trnam-antaratah"
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "ravana_v",
+       "icon": "anger",
+       "ms": 1500
+      },
+      {
+       "prop": "ravana_v",
+       "to": {
+        "x": 21,
+        "y": 8
+       },
+       "ms": 1300
+      },
+      {
+       "prop": "blade",
+       "remove": true
+      },
+      {
+       "emote": "trijata",
+       "icon": "sleep",
+       "ms": 3500
+      },
+      {
+       "fx": "tint",
+       "color": "night"
       }
      ]
     },
@@ -1626,6 +2061,11 @@
     {
      "if": "style.katha&ch5.ablaze&!ch5.complete",
      "then": [
+      {
+       "emote": "sita",
+       "icon": "heart",
+       "ms": 2600
+      },
       {
        "say": "The fire has not touched the grove. Sita is unharmed."
       },
@@ -1867,6 +2307,16 @@
        "portrait": "sita"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "sita",
+         "icon": "heart",
+         "ms": 2600
+        }
+       ]
+      },
+      {
        "say": "Sita's heart lifts. An old saying comes to her mind, and now it seems true."
       },
       {
@@ -1888,7 +2338,30 @@
        ]
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "hop": "player"
+        }
+       ]
+      },
+      {
        "say": "Hanuman climbs down and bows low."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "ring",
+         "sprite": "ring",
+         "at": "player"
+        },
+        {
+         "prop": "ring",
+         "to": "sita",
+         "ms": 900
+        }
+       ]
       },
       {
        "say": "I am Hanuman, Rama's messenger. Here is his ring, engraved with his name.",
@@ -1905,6 +2378,20 @@
       },
       {
        "take": "kusha_mudrika"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "ring",
+         "carry": "sita"
+        },
+        {
+         "emote": "sita",
+         "icon": "tears",
+         "ms": 3200
+        }
+       ]
       },
       {
        "say": "Sita holds the ring, and her eyes fill with tears of joy, as if she had met Rama himself."
@@ -1977,12 +2464,40 @@
        "portrait": "sita"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "ring",
+         "remove": true
+        },
+        {
+         "prop": "jewel",
+         "sprite": "jewel",
+         "at": "sita"
+        },
+        {
+         "prop": "jewel",
+         "to": "player",
+         "ms": 900
+        }
+       ]
+      },
+      {
        "say": "Take this jewel from my hair. Rama will know it, and know that I live.",
        "who": "person.sita",
        "portrait": "sita"
       },
       {
        "give": "chudamani"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "jewel",
+         "carry": "player"
+        }
+       ]
       },
       {
        "say": "Tell Rama I will wait only a little longer. Go safely.",
@@ -2062,6 +2577,23 @@
      "say": "Before leaving, Hanuman decides to test the strength of Ravana's army."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 700
+      },
+      {
+       "fx": "dust",
+       "ms": 1600
+      },
+      {
+       "hop": "player",
+       "n": 2
+      }
+     ]
+    },
+    {
      "say": "He breaks the boughs of Ravana's pleasure grove, climbs the temple, and roars a challenge over the city."
     },
     {
@@ -2077,6 +2609,24 @@
     },
     {
      "say": "The mightiest warrior in Lanka tonight calls himself a {w:dasa}, a servant. That is how Hanuman serves Rama."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 600
+      },
+      {
+       "fx": "dust",
+       "ms": 2000
+      },
+      {
+       "emote": "aksha",
+       "icon": "anger",
+       "ms": 2400
+      }
+     ]
     },
     {
      "say": "Rakshasa soldiers pour toward the grove! Hanuman waits on the temple steps."
@@ -2153,6 +2703,22 @@
      "say": "Ravana sent his servants against Hanuman, then his generals, then the sons of his ministers. All of them fell back."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "glow": {
+        "x": 28,
+        "y": 11
+       },
+       "ms": 3000
+      },
+      {
+       "fx": "dust",
+       "ms": 1500
+      }
+     ]
+    },
+    {
      "say": "Now Ravana's young son Aksha rides out in a golden chariot, bright as fire."
     },
     {
@@ -2203,16 +2769,66 @@
      },
      "onWin": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "topple": [
+          "aksha"
+         ]
+        },
+        {
+         "fx": "shake",
+         "ms": 1200
+        }
+       ]
+      },
+      {
        "say": "Aksha falls in battle, and all Lanka trembles."
       },
       {
        "set": "ch5.aksha_defeated"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "flash",
+         "ms": 300
+        },
+        {
+         "fx": "rays",
+         "ms": 2500
+        },
+        {
+         "emote": "player",
+         "icon": "exclaim",
+         "ms": 2000
+        }
+       ]
+      },
+      {
        "say": "Then Indrajit, Ravana's eldest son, bound Hanuman with the weapon of Brahma. Out of respect for Brahma, Hanuman let himself be taken, to see Ravana face to face."
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "tint",
+         "color": "red"
+        }
+       ]
+      },
+      {
        "say": "In Ravana's court Hanuman gave Rama's message: return Sita, and live. Ravana ordered his death, but Vibhishana reminded him that a messenger must never be killed."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "embers",
+         "ms": 4000
+        }
+       ]
       },
       {
        "say": "So the rakshasas wrapped Hanuman's tail in cloth and set it on fire."
@@ -2220,6 +2836,19 @@
       {
        "if": "style.katha",
        "then": [
+        {
+         "fx": "tint",
+         "color": "none"
+        },
+        {
+         "emote": "player",
+         "icon": "sparkle",
+         "ms": 2200
+        },
+        {
+         "hop": "player",
+         "n": 2
+        },
         {
          "say": "But the fire does not burn him, for Sita has prayed to Agni for his safety. Hanuman breaks free and springs onto the roofs."
         },

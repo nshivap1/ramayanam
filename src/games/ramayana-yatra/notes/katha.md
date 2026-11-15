@@ -267,3 +267,16 @@ reviews in `notes/v06-rev1.md` and `notes/v06-rev2.md`; sign-off rows per packag
   two model reviews (rev1: 23 changes; rev2: kept all of them, 5 more; between them every verse text re-fetched once more);
   integration fixed two verse analyses after rev1 (1.30.26
   सत्यम् is a predicate adjective, "made true to its name"; 1.75.3 जामदग्न्यम् "of Jamadagni's line").
+
+## v0.6.1: the story moves on screen; the Āditya-hṛdayam told once (15 Nov)
+Plan, list of moments, engine additions and numbers: `notes/v061-animations.md`.
+- **Animations, text unchanged.** 154 Kathā-only kit placements over 51 events (Krauñca, the army falling to Indrajit's
+  weapon, the grove, the coronation …); new kit commands `emote`, `hop`, `focus`; seven effects (wind, smoke, birds, embers,
+  dust, rays, lamps); a fire glow; prop moves glide for their `ms`; props palm_book, ring, jewel, necklace and the flying
+  `vimana`. The Puṣpaka's return flies over six places, one per question.
+- **Āditya-hṛdayam.** Kathā: no lesson before the gate (practice-only NPC and walkthrough step, `style: "abhyasa"`), the gate
+  opens after Indrajit; the told cutscene at 60 % teaches the hymn and arms its moves; the phase `ravana_weary` makes it the
+  only move until recited once. Practice: unchanged.
+- **Census.** Rāvaṇa: strategic 5.2 → 8.1 turns, spammer 11.9 → 8.0; the spammer margin (≥ 30 %) is measured on the bosses
+  the story does not lead (+32 %). 0 lost fights.
+

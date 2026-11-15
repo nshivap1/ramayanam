@@ -4,7 +4,7 @@
  * Checks skip gracefully while files are empty; reference checks against verses/lexicon/names/defs
  * switch on as soon as those files have content.
  * v0.5b (WP0): the Kathā-only commands {smarana} {book} {setu} must sit inside a Kathā block; avoid-triggers must
- * require style.katha; a walkthrough step's `style` is 'katha' or absent.
+ * require style.katha; a walkthrough step's `style` is 'katha', 'abhyasa' (v0.6.1) or absent.
  * v0.6 (WP0): so must the effects kit ({fx} {topple} {rise} {grow} {glow} {prop} {arrow}), {hotspot} (its `then` is
  * walked), {cutscene} (a cutscene of content/cutscene-*.json) and {echo} (content/katha-echoes.json); a map's hidden
  * spots require style.katha. References (verses, lexicon, names) are checked against the merged content (v0.6 files).
@@ -21,7 +21,7 @@ import ch6 from './content/story-ch6.json';
 import defsJson from './content/defs.json';
 import { loadContent } from './content';
 import { ALLY_IDS, BATTLE_BG_IDS, BATTLER_IDS, ENEMY_IDS, SPRITE_IDS, TILE_IDS, TRACK_IDS, isPropSprite } from './catalog';
-import { KIT_FX, TINTS } from './logic-stage';
+import { EMOTES, GLOW_COLORS, HOP_MAX, KIT_FX, TINTS } from './logic-stage';
 import { toldAsks, toldFlag, toldHotspotFlag, toldHotspots } from './logic-told';
 import type { AllyDef, ChapterDef, EnemyDef, EventCmd, EventDef, ItemDef, MapDef, MoveDef, WalkStep } from './types';
 import { isSolidTile, tileAt } from './logic-world';
@@ -101,9 +101,11 @@ const CMD_KEYS = [
   'smarana', 'book', 'setu',
   // v0.6 (notes/v06-wp0.md): the effects kit, hidden moments, told cutscenes, verse echoes — Kathā only
   'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo',
+  // v0.6.1 (notes/v061-animations.md): emote bubbles, hops, the camera's focus — Kathā only
+  'emote', 'hop', 'focus',
 ] as const;
 /** v0.5b: commands that may only run inside a Kathā block (`then` of `if: style.katha…`, `else` of `if: !style.katha…`). v0.6: the kit and friends too. */
-const KATHA_ONLY_CMDS = new Set(['smarana', 'book', 'setu', 'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo']);
+const KATHA_ONLY_CMDS = new Set(['smarana', 'book', 'setu', 'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo', 'emote', 'hop', 'focus']);
 /** Devanagari (incl. extended) and IAST/romanisation diacritics, including combining marks. */
 const DEVA = /[\u0900-\u097F\uA8E0-\uA8FF\u1CD0-\u1CFF]/;
 const IAST = /[\u0101\u012B\u016B\u1E5B\u1E5D\u1E37\u1E39\u1E45\u00F1\u1E6D\u1E0D\u1E47\u015B\u1E63\u1E25\u1E43\u1E41\u0100\u012A\u016A\u1E5A\u1E5C\u1E36\u1E38\u1E44\u00D1\u1E6C\u1E0C\u1E46\u015A\u1E62\u1E24\u1E42\u1E40\u0300-\u036F]/;
@@ -298,6 +300,17 @@ export function checkEvents(files: StoryFile[], refs: Refs): string[] {
   const maps = allMaps(files);
   const npcIds = new Set<string>();
   for (const m of maps.values()) for (const n of m.npcs ?? []) npcIds.add(n.id);
+  // v0.6.1: a prop placed by a script (`{ "prop": id, "at": … }`) is a figure too (it can grow, emote, hop)
+  const placeProps = (cmds: readonly EventCmd[]): void => {
+    for (const c of cmds) {
+      if ('prop' in c && typeof c.prop === 'string' && c.at !== undefined) npcIds.add(c.prop);
+      for (const k of ['then', 'else', 'onWin', 'onLose', 'onCorrect', 'onWrong'] as const) {
+        const sub = (c as Record<string, unknown>)[k];
+        if (Array.isArray(sub)) placeProps(sub as EventCmd[]);
+      }
+    }
+  };
+  for (const f of files) for (const e of f.events) placeProps(e.cmds);
   const events = new Map<string, string>();
   for (const f of files) {
     for (const e of f.events) {
@@ -473,8 +486,20 @@ export function checkKitCmd(c: EventCmd, where: string, npcIds: Set<string>, ref
   if ('glow' in c) {
     const g = c.glow;
     if (!g || !isInt(g.x) || !isInt(g.y) || (g.w !== undefined && !(isInt(g.w) && g.w >= 1)) || (g.h !== undefined && !(isInt(g.h) && g.h >= 1))) out.push(`${where}: glow must be {x, y, w?, h?} in tiles`);
+    if (c.color !== undefined && !GLOW_COLORS.includes(c.color)) out.push(`${where}: glow color must be one of ${GLOW_COLORS.join('/')}`);
     ms(c.ms);
   }
+  // v0.6.1
+  if ('emote' in c) {
+    if (typeof c.emote !== 'string' || !c.emote) out.push(`${where}: emote needs a figure id`);
+    if (!EMOTES.includes(c.icon)) out.push(`${where}: emote icon must be one of ${EMOTES.join('/')}`);
+    ms(c.ms);
+  }
+  if ('hop' in c) {
+    if (typeof c.hop !== 'string' || !c.hop) target(c.hop, 'hop', false);
+    if (c.n !== undefined && !(isInt(c.n) && c.n >= 1 && c.n <= HOP_MAX)) out.push(`${where}: hop n must be 1..${HOP_MAX}`);
+  }
+  if ('focus' in c && c.focus !== null) pos(c.focus, 'focus');
   if ('prop' in c) {
     if (typeof c.prop !== 'string' || !c.prop) out.push(`${where}: prop needs an id`);
     if (c.sprite !== undefined && !isPropSprite(c.sprite)) out.push(`${where}: prop sprite "${c.sprite}" is not a PROP_ID, TileId or SpriteId`);
@@ -583,7 +608,7 @@ export function checkWalkthrough(files: StoryFile[], refs: Refs): string[] {
         if (refs.shlokaIds.size > 0 && !refs.shlokaIds.has(String(a['recite']))) out.push(`${PENDING}${where}: recite "${String(a['recite'])}" is not in shlokas-*.json`);
         if (!hasShrine(m)) out.push(`${where}: map ${w.map} has no shrine tile to recite at`);
       } else out.push(`${where}: action must be {talk}, {reach} or {recite}`);
-      if (w.style !== undefined && w.style !== 'katha') out.push(`${where}: style must be "katha" (a Kathā-only step) or absent (both journeys)`);
+      if (w.style !== undefined && w.style !== 'katha' && w.style !== 'abhyasa') out.push(`${where}: style must be "katha" (a Kathā-only step), "abhyasa" (a practice-only step, v0.6.1) or absent (both journeys)`);
       if (typeof w.expectFlag !== 'string' || !w.expectFlag) out.push(`${where}: expectFlag is required`);
       else if (!settable.has(w.expectFlag)) out.push(`${where}: expectFlag "${w.expectFlag}" is never set by any {set}, choice option or once-trigger`);
       if (![1, 2, 3, 4, 5, 6].includes(w.chapter)) out.push(`${where}: chapter must be 1..6`);
@@ -730,6 +755,7 @@ test('validator self-test (v0.5b): P1/P2/P5 commands outside a Kathā block, bad
     walkthrough: [
       { chapter: 1, map: 'm1', action: { reach: { x: 3, y: 2 } }, expectFlag: 'trig.m1.ch1.e', style: 'katha' },
       { chapter: 1, map: 'm1', action: { reach: { x: 3, y: 2 } }, expectFlag: 'trig.m1.ch1.e', style: 'practice' as never },
+      { chapter: 1, map: 'm1', action: { reach: { x: 3, y: 2 } }, expectFlag: 'trig.m1.ch1.e', style: 'abhyasa' },
     ],
   };
   const refs: Refs = { defs: { moves: [], allies: [], enemies: [], items: [] }, shlokaIds: new Set(['s-x']), lexIds: new Set(), nameIds: new Set() };
@@ -747,6 +773,7 @@ test('validator self-test (v0.5b): P1/P2/P5 commands outside a Kathā block, bad
   assert.ok(!at('trigger ch1.e at (2,1)', 'style.katha'), 'a Kathā avoid-trigger is fine');
   assert.ok(at('walkthrough[1]', 'style must be "katha"'));
   assert.ok(!at('walkthrough[0]', 'style'), 'style: katha is a valid step');
+  assert.ok(!at('walkthrough[2]', 'style'), 'style: abhyasa (a practice-only step, v0.6.1) is valid too');
 });
 
 test('validator self-test (v0.6): the effects kit, hotspots, cutscenes and echoes outside a Kathā block, bad arguments, unknown cutscene / echo ids and open hidden spots are reported', () => {

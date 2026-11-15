@@ -1036,13 +1036,54 @@
        "music": "ayodhya"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "rays",
+         "ms": 3000
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        }
+       ]
+      },
+      {
        "say": "Ayodhya, city of the Ikshvaku kings. Twelve happy years have passed since Rama and Sita were married."
       },
       {
        "say": "King Dasharatha has grown old. With the joyful consent of his people, he has chosen Rama as his heir. The coronation is tomorrow."
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "petals",
+         "ms": 6000
+        }
+       ]
+      },
+      {
        "say": "Banners fly from every roof. The streets are sprinkled with water and strewn with flowers."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "herald",
+         "icon": "music",
+         "ms": 2600
+        },
+        {
+         "emote": "guard_gate",
+         "icon": "music",
+         "ms": 2600
+        },
+        {
+         "hop": "herald",
+         "n": 2
+        }
+       ]
       },
       {
        "say": "{player}, look at the city! Everyone is singing my brother's name.",
@@ -1566,16 +1607,79 @@
      "music": "sorrow"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "night"
+      },
+      {
+       "focus": {
+        "x": 11,
+        "y": 7
+       }
+      }
+     ]
+    },
+    {
      "say": "But in the night, everything changed."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "kaikeyi",
+       "icon": "anger",
+       "ms": 2800
+      }
+     ]
     },
     {
      "say": "Queen Kaikeyi, stirred up by her maid Manthara, reminded the king of the two boons he had promised her long ago, when she saved his life in battle."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "dasharatha",
+       "icon": "exclaim",
+       "ms": 2000
+      },
+      {
+       "fx": "shake",
+       "ms": 400
+      }
+     ]
+    },
+    {
      "say": "She asked that her son Bharata be crowned instead, and that Rama live in the forest for fourteen years."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "dawn"
+      },
+      {
+       "emote": "dasharatha",
+       "icon": "tears",
+       "ms": 3200
+      }
+     ]
+    },
+    {
      "say": "Bound by his word, the old king wept. When Rama came to him in the morning, he could not bring himself to speak."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "dasharatha",
+       "icon": "dots",
+       "ms": 2200
+      }
+     ]
     },
     {
      "say": "Rama...",
@@ -1637,6 +1741,23 @@
      "portrait": "rama"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "none"
+      },
+      {
+       "emote": "sita",
+       "icon": "heart",
+       "ms": 2800
+      },
+      {
+       "hop": "sita"
+      }
+     ]
+    },
+    {
      "say": "Sita will not stay behind. \"Where you go, I go,\" she says. \"With you, the forest will be my palace.\" Lakshmana, too, will follow his brother."
     },
     {
@@ -1662,6 +1783,16 @@
        "portrait": "dasharatha"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "dasharatha",
+         "icon": "tears",
+         "ms": 2800
+        }
+       ]
+      },
+      {
        "say": "The old king cannot say more. He holds to his word, though it breaks his heart."
       }
      ],
@@ -1681,6 +1812,16 @@
     {
      "if": "ch2.boons_done",
      "then": [
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "kaikeyi",
+         "icon": "dots",
+         "ms": 2400
+        }
+       ]
+      },
       {
        "say": "Queen Kaikeyi stands apart, silent, her face turned away."
       }
@@ -2112,13 +2253,66 @@
        "music": "sorrow"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "dust",
+         "ms": 2200
+        },
+        {
+         "fx": "wind",
+         "ms": 2500
+        }
+       ]
+      },
+      {
        "say": "Dressed in bark, Rama, Sita and Lakshmana leave Ayodhya in Sumantra's chariot. The whole city weeps and runs after them."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "tint",
+         "color": "night"
+        }
+       ]
       },
       {
        "say": "On the first night they rest on the bank of the Tamasa, and before dawn they slip away, so that the people will go home."
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "tint",
+         "color": "dawn"
+        },
+        {
+         "fx": "rays",
+         "ms": 3500
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        },
+        {
+         "emote": "player",
+         "icon": "sparkle",
+         "ms": 2600
+        }
+       ]
+      },
+      {
        "say": "The Tamasa! The very river where the first verse was born. You feel the poem folding back on itself."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "tint",
+         "color": "none"
+        }
+       ]
       },
       {
        "say": "At last they reach the Ganga, at Shringaverapura, the town of Guha, king of the Nishadas."
@@ -2234,7 +2428,30 @@
          ]
         },
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "fx": "tint",
+           "color": "night"
+          },
+          {
+           "emote": "guha",
+           "icon": "dots",
+           "ms": 2600
+          }
+         ]
+        },
+        {
          "say": "That night Guha and Lakshmana keep watch together, speaking of Rama until dawn."
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "fx": "tint",
+           "color": "dawn"
+          }
+         ]
         },
         {
          "say": "In the morning Rama sends Sumantra home with gentle words for the king."
@@ -2550,7 +2767,35 @@
        "music": "sorrow"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "dust",
+         "ms": 2500
+        },
+        {
+         "fx": "shake",
+         "ms": 500
+        },
+        {
+         "emote": "bharata",
+         "icon": "tears",
+         "ms": 3000
+        }
+       ]
+      },
+      {
        "say": "A great host approaches. Lakshmana fears an attack, but it is Bharata, on foot, in bark cloth, weeping."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "sita",
+         "icon": "tears",
+         "ms": 3200
+        }
+       ]
       },
       {
        "say": "King Dasharatha has died of grief. Bharata has refused the throne and has come to bring his brother home."

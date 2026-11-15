@@ -902,3 +902,16 @@ Paraśurāma cutscene), 11 (B: 24), 12 (C: 18, incl. Kumbhakarṇa), 13 (D: 9, t
    (CE इहान्तरा), 5.55.3 पुरुषश्रेष्ठा (site and CE °श्रेष्ठ), 6.60.54 च (CE तु), 6.90.71 तत्.
 9. Most of the ≈ 300 new lexicon lemmas cite Monier-Williams as "asserted" (the Cologne site refused the fetch tool); about 50
    were read on wisdomlib / kosha.sanskrit.today or confirmed by the repo's packs. A spot-check is welcome.
+
+## v0.6.1: two new Sanskrit lines (the Āditya-hṛdayam told once) — model-written, machine-verified, awaiting human review
+The animation pass changed no story text (`notes/v061-animations.md`). Moving Agastya's teaching into the battle (Kathā) needed
+two new lines, both Level 1–2 and verified word by word by the oracle (`sa-battle.test`, `sambhashana.test`):
+
+| where | English | Sanskrit | note |
+|---|---|---|---|
+| sa-battle `kathaHymnOnly` (a battle beat after the cutscene) | Agastya departs. Now Rama uses only the {m}. | अगस्त्यः गच्छति। अधुना रामः {m.acc} एव प्रयुङ्क्ते। | {m.acc} is the move's accusative (आदित्यहृदयम्); एव "only" after it (केवलम् would need its म् before a vowel-initial move name) |
+| sa-dialogue-12 (Indrajit's last objective, Kathā) | Go to the city's southern gate and enter Ravana's palace. | नगरस्य दक्षिणं द्वारं गत्वा रावणस्य प्रासादं प्रविशतु। | a new line so file 3's practice objective stays as it is; दक्षिणं (n. acc., with द्वारम्) is analysed by the oracle as m. acc. — the same form |
+
+For the human teacher: प्रयुङ्क्ते (Ātmanepada of प्र+युज्, as in the `uses` beat) for reciting a hymn; whether "uses" or
+"recites" (पठति) reads better for a stotra.
+

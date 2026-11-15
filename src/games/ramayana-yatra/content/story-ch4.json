@@ -699,6 +699,15 @@
      "say": "Following Shabari's directions, Rama and Lakshmana walk along Lake Pampa toward the hill {n:place.rishyamuka}."
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "birds",
+       "ms": 2600
+      }
+     ]
+    },
+    {
      "say": "Rama still grieves for Sita, but the lotus lake and the birdsong lift his heart a little."
     },
     {
@@ -907,6 +916,24 @@
        "say": "Hanuman joins your party!"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "grow": "hanuman_test",
+         "scale": 2.4
+        },
+        {
+         "fx": "shake",
+         "ms": 700
+        },
+        {
+         "emote": "hanuman_test",
+         "icon": "sparkle",
+         "ms": 2400
+        }
+       ]
+      },
+      {
        "say": "He takes his true form, mighty as a hill, and lifts both princes onto his shoulders to carry them to his king."
       },
       {
@@ -990,6 +1017,24 @@
       },
       {
        "say": "Hanuman joins your party!"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "grow": "hanuman_test",
+         "scale": 2.4
+        },
+        {
+         "fx": "shake",
+         "ms": 700
+        },
+        {
+         "emote": "hanuman_test",
+         "icon": "sparkle",
+         "ms": 2400
+        }
+       ]
       },
       {
        "say": "He takes his true form and lifts both princes onto his shoulders to carry them to his king."
@@ -1121,6 +1166,23 @@
      ]
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "glow": {
+        "x": 21,
+        "y": 3
+       },
+       "ms": 5000,
+       "color": "fire"
+      },
+      {
+       "fx": "embers",
+       "ms": 3000
+      }
+     ]
+    },
+    {
      "say": "Rama and Sugriva walk around the fire together and swear friendship, with the fire as their witness."
     },
     {
@@ -1129,9 +1191,38 @@
      "portrait": "sugriva"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "prop": "jewels",
+       "sprite": "jewel",
+       "at": "sugriva"
+      },
+      {
+       "prop": "jewels",
+       "to": "player",
+       "ms": 800
+      }
+     ]
+    },
+    {
      "say": "She dropped these jewels, wrapped in her upper cloth. We have kept them safe.",
      "who": "person.sugriva",
      "portrait": "sugriva"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "prop": "jewels",
+       "carry": "player"
+      },
+      {
+       "emote": "player",
+       "icon": "tears",
+       "ms": 3000
+      }
+     ]
     },
     {
      "say": "Rama presses the jewels to his heart and weeps. He asks Lakshmana whether he knows them."
@@ -1156,6 +1247,15 @@
      "onWrong": [
       {
        "say": "Not quite. Look again at the word card, then the meaning will stay with you."
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "prop": "jewels",
+       "remove": true
       }
      ]
     },
@@ -1360,6 +1460,15 @@
      "music": "kishkindha"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "lamps",
+       "ms": 5500
+      }
+     ]
+    },
+    {
      "say": "{n:place.kishkindha_caves}: a city of caves and gardens, bright with torches and flowers."
     },
     {
@@ -1383,6 +1492,19 @@
      "else": [
       {
        "say": "The rains came and went. Rama waited out the monsoon on a nearby hill while the city celebrated its king."
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "rays",
+       "ms": 3000
+      },
+      {
+       "fx": "birds",
+       "ms": 2600
       }
      ]
     },
@@ -1416,6 +1538,23 @@
        "portrait": "angada"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "hop": [
+          "fruit_seller",
+          "mother",
+          "child"
+         ],
+         "n": 2
+        },
+        {
+         "emote": "mother",
+         "icon": "exclaim"
+        }
+       ]
+      },
+      {
        "say": "Search parties, go east, west and north! Search every forest, river and cave. Return within one month.",
        "who": "person.sugriva",
        "portrait": "sugriva"
@@ -1433,6 +1572,25 @@
       },
       {
        "say": "Jambavan joins your party!"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "ring",
+         "sprite": "ring",
+         "at": "player"
+        },
+        {
+         "prop": "ring",
+         "carry": "player"
+        },
+        {
+         "emote": "player",
+         "icon": "sparkle",
+         "ms": 2400
+        }
+       ]
       },
       {
        "say": "Rama takes Hanuman aside and gives him his ring, engraved with his name."
@@ -1777,7 +1935,32 @@
      ],
      "else": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "angada_v",
+         "icon": "tears",
+         "ms": 2800
+        },
+        {
+         "emote": "scout",
+         "icon": "dots",
+         "ms": 2800
+        }
+       ]
+      },
+      {
        "say": "At the edge of the sea the vanaras sit in despair. Angada speaks of Jatayu, who gave his life defending Sita."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "sampati",
+         "icon": "question",
+         "ms": 2200
+        }
+       ]
       },
       {
        "say": "An old vulture with burnt wings drags himself out from the rocks."
@@ -1864,6 +2047,30 @@
        ]
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "hop": [
+          "angada_v",
+          "scout"
+         ],
+         "n": 3
+        },
+        {
+         "emote": "angada_v",
+         "icon": "exclaim"
+        },
+        {
+         "emote": "scout",
+         "icon": "music"
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        }
+       ]
+      },
+      {
        "say": "Hope returns to the vanaras. They cheer and leap among the rocks."
       },
       {
@@ -1890,7 +2097,44 @@
    "id": "ch4.mahendra_enter",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "sea"
+      },
+      {
+       "fx": "wind",
+       "ms": 3000
+      },
+      {
+       "fx": "shake",
+       "ms": 500
+      }
+     ]
+    },
+    {
      "say": "The vanaras reach the shore of the vast ocean. Its waves roar like a living thing."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "gaja",
+       "icon": "question",
+       "ms": 2400
+      },
+      {
+       "emote": "gavaksha",
+       "icon": "question",
+       "ms": 2400
+      },
+      {
+       "emote": "sharabha",
+       "icon": "question",
+       "ms": 2400
+      }
+     ]
     },
     {
      "say": "Who can leap a hundred yojanas? One by one, the vanaras say how far they could jump."

@@ -192,7 +192,9 @@ const SHARED = sharedLines();
 /** Every command kind of the story language (types.ts EventCmd; world.test validates each one's references). */
 const EVENT_KINDS = new Set(['say', 'shloka', 'choice', 'label', 'goto', 'if', 'set', 'unset', 'give', 'take', 'niska', 'learn', 'quiz', 'battle', 'join', 'leave', 'heal', 'rest', 'shrine', 'warp', 'move', 'face', 'wait', 'fade', 'music', 'sfx', 'shop', 'save', 'chapter', 'objective', 'end', 'smarana', 'book', 'setu',
   // v0.6 Kathā-only kit and cutscene commands (validated in world.test)
-  'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo']);
+  'fx', 'topple', 'rise', 'grow', 'glow', 'prop', 'arrow', 'hotspot', 'cutscene', 'echo',
+  // v0.6.1: emote bubbles, hops, the camera's focus
+  'emote', 'hop', 'focus']);
 
 test('katha: about ten scenes carry a Sambhāṣaṇa choice in a Kathā-only block', () => {
   console.log(`# Kathā choices in: ${CHOICE_BLOCKS.map((b) => b.event).join(', ')}`);
@@ -259,9 +261,10 @@ test('katha: each choice block plays — misreads loop back to the question, the
   for (const b of CHOICE_BLOCKS) {
     const block: EventCmd = { if: 'style.katha', then: b.then };
     const choice = b.then.find((c): c is Extract<EventCmd, { choice: string }> => 'choice' in c)!;
-    // (v0.5b set pieces may tell a few lines, or show a verse, before the question)
+    // (v0.5b set pieces may tell a few lines, or show a verse, before the question; v0.6.1: the Puṣpaka flies to a
+    // place first — a fade, a warp, a short wait)
     let s0 = startScript(fresh(true), REAL, `test.${b.event}`, [block]);
-    for (let k = 0; k < 20 && s0.pending && ['say', 'shloka', 'words', 'title'].includes(s0.pending.kind); k++) s0 = reduce(s0, REAL, { type: 'advance' });
+    for (let k = 0; k < 40 && s0.pending && ['say', 'shloka', 'words', 'title', 'fade', 'wait'].includes(s0.pending.kind); k++) s0 = reduce(s0, REAL, { type: 'advance' });
     assert.deepEqual(s0.pending, { kind: 'choice', prompt: choice.choice, options: choice.options.map((o) => o.label) }, `${b.event}: the question is asked`);
     choice.options.forEach((o, i) => {
       if (!o.goto) return;

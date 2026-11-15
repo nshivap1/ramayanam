@@ -1148,7 +1148,28 @@
    "id": "ch1.krauncha",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "focus": {
+        "x": 13,
+        "y": 9
+       }
+      }
+     ]
+    },
+    {
      "say": "At the ford the Tamasa runs clear over white sand. Valmiki and Bharadvaja are already waiting."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "valmiki",
+       "icon": "sparkle",
+       "ms": 2200
+      }
+     ]
     },
     {
      "say": "Look, Bharadvaja. This water is as clear as the mind of a good person. Set down the water pot; I will bathe here.",
@@ -1169,6 +1190,28 @@
      ]
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "krauncha_a",
+       "icon": "music",
+       "ms": 2800
+      },
+      {
+       "emote": "krauncha_b",
+       "icon": "heart",
+       "ms": 2800
+      },
+      {
+       "hop": [
+        "krauncha_a",
+        "krauncha_b"
+       ],
+       "n": 2
+      }
+     ]
+    },
+    {
      "say": "In a tree by the water, a pair of krauncha birds sing to each other, never apart."
     },
     {
@@ -1185,7 +1228,47 @@
        ]
       },
       {
+       "arrow": {
+        "from": "hunter",
+        "to": "krauncha_a"
+       },
+       "ms": 500
+      },
+      {
+       "wait": 550
+      },
+      {
+       "fx": "flash",
+       "ms": 200
+      },
+      {
        "set": "ch1.krauncha_fell"
+      },
+      {
+       "prop": "krauncha_fallen",
+       "sprite": "krauncha",
+       "at": {
+        "x": 21,
+        "y": 9
+       }
+      },
+      {
+       "prop": "krauncha_fallen",
+       "to": {
+        "x": 20,
+        "y": 10
+       },
+       "ms": 350
+      },
+      {
+       "topple": [
+        "krauncha_fallen"
+       ]
+      },
+      {
+       "emote": "krauncha_b",
+       "icon": "tears",
+       "ms": 3200
       }
      ]
     },
@@ -1198,6 +1281,16 @@
       {
        "face": "valmiki",
        "dir": "left"
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "valmiki",
+       "icon": "tears",
+       "ms": 2800
       }
      ]
     },
@@ -1269,7 +1362,44 @@
      ]
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "night"
+      },
+      {
+       "fx": "wind",
+       "ms": 4000
+      },
+      {
+       "fx": "smoke",
+       "ms": 5000
+      },
+      {
+       "fx": "birds",
+       "ms": 2600
+      },
+      {
+       "fx": "shake",
+       "ms": 400
+      }
+     ]
+    },
+    {
      "say": "A cold wind sweeps over the river. Smoke-dark shapes rise from the reeds, and the words of the new verse scatter like startled birds."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "emote": "bharadvaja",
+       "icon": "exclaim"
+      },
+      {
+       "hop": "bharadvaja"
+      }
+     ]
     },
     {
      "say": "Teacher, the words! They are flying away!",
@@ -1282,9 +1412,42 @@
      "portrait": "valmiki"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "none"
+      },
+      {
+       "prop": "book",
+       "sprite": "palm_book",
+       "at": "valmiki"
+      },
+      {
+       "prop": "book",
+       "to": "player",
+       "ms": 900
+      }
+     ]
+    },
+    {
      "say": "{player}, take this palm-leaf book. Every verse you hear will be written in it, and every word you learn will gather there.",
      "who": "person.valmiki",
      "portrait": "valmiki"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "prop": "book",
+       "carry": "player"
+      },
+      {
+       "emote": "player",
+       "icon": "sparkle",
+       "ms": 2000
+      }
+     ]
     },
     {
      "say": "You received the palm-leaf book of verses!"
@@ -2231,6 +2394,24 @@
      "music": "boss"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 900
+      },
+      {
+       "fx": "dust",
+       "ms": 2500
+      },
+      {
+       "emote": "tataka",
+       "icon": "anger",
+       "ms": 2200
+      }
+     ]
+    },
+    {
      "say": "A roar shakes the trees. Dust and stones rain down from the darkness ahead."
     },
     {
@@ -2316,6 +2497,23 @@
    "id": "ch1.tataka",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "grow": "tataka",
+       "scale": 1.6
+      },
+      {
+       "fx": "shake",
+       "ms": 700
+      },
+      {
+       "fx": "dust",
+       "ms": 2000
+      }
+     ]
+    },
+    {
      "say": "A shape as vast as a storm cloud bursts out of the darkness, hurling rocks and dust."
     },
     {
@@ -2376,7 +2574,48 @@
      },
      "onWin": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "arrow": {
+          "from": "player",
+          "to": "tataka"
+         },
+         "ms": 450
+        },
+        {
+         "wait": 450
+        },
+        {
+         "topple": [
+          "tataka"
+         ]
+        },
+        {
+         "fx": "shake",
+         "ms": 900
+        },
+        {
+         "fx": "dust",
+         "ms": 1800
+        }
+       ]
+      },
+      {
        "say": "Rama's arrow strikes true, and Tataka falls like a mountain."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "tint",
+         "color": "dawn"
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        }
+       ]
       },
       {
        "say": "Silence. Then birdsong, for the first time in years. The forest is free."
@@ -2393,6 +2632,20 @@
        "say": "Take the divine weapons that I hold: the {n:move.agneyastra}, the {n:move.varunastra}, the {n:move.vayavyastra}, and many more.",
        "who": "person.vishvamitra",
        "portrait": "vishvamitra"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "rays",
+         "ms": 3500
+        },
+        {
+         "emote": "player",
+         "icon": "sparkle",
+         "ms": 2200
+        }
+       ]
       },
       {
        "say": "Vishvamitra teaches Rama the mantras of the divine weapons. They will answer Rama as he grows in strength."
@@ -2437,7 +2690,39 @@
    "id": "ch1.siddha_arrive",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "focus": {
+        "x": 16,
+        "y": 6
+       }
+      },
+      {
+       "fx": "rays",
+       "ms": 4000
+      },
+      {
+       "hop": "disciple",
+       "n": 2
+      }
+     ]
+    },
+    {
      "say": "Siddhashrama: the hermitage where Vishnu once performed his austerities, before he was born as the dwarf Vamana. Vishvamitra's disciples run to greet him."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "glow": {
+        "x": 16,
+        "y": 4
+       },
+       "ms": 4000,
+       "color": "fire"
+      }
+     ]
     },
     {
      "say": "Princes, today I begin my sacrifice. For six days and nights I will keep a vow of silence.",
@@ -2448,6 +2733,24 @@
      "say": "Guard the altar well. On the last night, the night-wanderers will come.",
      "who": "person.vishvamitra",
      "portrait": "vishvamitra"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "glow": {
+        "x": 16,
+        "y": 4
+       },
+       "ms": 5000,
+       "color": "fire"
+      },
+      {
+       "emote": "vishvamitra",
+       "icon": "dots",
+       "ms": 2600
+      }
+     ]
     },
     {
      "say": "Vishvamitra takes his seat before the fire and speaks no more."
@@ -2547,6 +2850,35 @@
            "music": "boss"
           },
           {
+           "if": "style.katha",
+           "then": [
+            {
+             "glow": {
+              "x": 16,
+              "y": 4
+             },
+             "ms": 2500,
+             "color": "fire"
+            },
+            {
+             "fx": "embers",
+             "ms": 2500
+            },
+            {
+             "fx": "tint",
+             "color": "night"
+            },
+            {
+             "fx": "smoke",
+             "ms": 4000
+            },
+            {
+             "fx": "shake",
+             "ms": 700
+            }
+           ]
+          },
+          {
            "say": "The sacred fire leaps up. Then the sky darkens, and with a roar the night-wanderers come, led by Subahu and Maricha."
           },
           {
@@ -2591,13 +2923,66 @@
            },
            "onWin": [
             {
+             "if": "style.katha",
+             "then": [
+              {
+               "arrow": {
+                "from": "player",
+                "to": {
+                 "x": 31,
+                 "y": 0
+                }
+               },
+               "ms": 600
+              },
+              {
+               "fx": "wind",
+               "ms": 2500
+              }
+             ]
+            },
+            {
              "say": "Rama looses the weapon of Manu at Maricha. It does not kill him: it carries him a hundred leagues away and drops him, stunned, into the ocean."
+            },
+            {
+             "if": "style.katha",
+             "then": [
+              {
+               "fx": "flash",
+               "ms": 250
+              },
+              {
+               "fx": "embers",
+               "ms": 2500
+              }
+             ]
             },
             {
              "say": "With the fire weapon Rama strikes down Subahu, and the other night-wanderers flee into the dark."
             },
             {
              "music": "victory"
+            },
+            {
+             "if": "style.katha",
+             "then": [
+              {
+               "fx": "tint",
+               "color": "dawn"
+              },
+              {
+               "fx": "rays",
+               "ms": 3500
+              },
+              {
+               "glow": {
+                "x": 16,
+                "y": 4
+               },
+               "ms": 3500,
+               "color": "fire"
+              }
+             ]
             },
             {
              "say": "At dawn the sacrifice is complete, and Vishvamitra breaks his silence."

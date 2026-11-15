@@ -590,7 +590,7 @@
      "y": 26,
      "facing": "right",
      "event": "ch6.agastya",
-     "showIf": "ch6.indrajit_defeated"
+     "showIf": "ch6.indrajit_defeated&!style.katha"
     },
     {
      "id": "vanara_f",
@@ -633,7 +633,7 @@
      "tx": 11,
      "ty": 16,
      "facing": "up",
-     "requires": "restored.s-aditya-hrdayam",
+     "requires": "restored.s-aditya-hrdayam|style.katha&ch6.indrajit_defeated",
      "lockedEvent": "ch6.palace_locked"
     }
    ],
@@ -1095,6 +1095,40 @@
      ]
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "rays",
+       "ms": 3000
+      },
+      {
+       "glow": {
+        "x": 24,
+        "y": 11
+       },
+       "ms": 3000
+      },
+      {
+       "hop": [
+        "nala",
+        "worker",
+        "nila"
+       ],
+       "n": 2
+      },
+      {
+       "emote": "nala",
+       "icon": "anger",
+       "ms": 2200
+      },
+      {
+       "emote": "worker",
+       "icon": "exclaim",
+       "ms": 2200
+      }
+     ]
+    },
+    {
      "say": "A rakshasa descends from the sky with four companions and stands in the air above the beach. The vanaras raise rocks and trees."
     },
     {
@@ -1278,6 +1312,27 @@
      ]
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "glow": {
+        "x": 24,
+        "y": 11
+       },
+       "ms": 3500
+      },
+      {
+       "fx": "rays",
+       "ms": 3500
+      },
+      {
+       "emote": "vibhishana",
+       "icon": "sparkle",
+       "ms": 2600
+      }
+     ]
+    },
+    {
      "say": "Vibhishana bows at Rama's feet. Rama sprinkles him with sea water and names him king of Lanka."
     },
     {
@@ -1383,6 +1438,23 @@
          ]
         },
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "hop": [
+            "nala",
+            "worker",
+            "nila"
+           ],
+           "n": 3
+          },
+          {
+           "fx": "dust",
+           "ms": 2000
+          }
+         ]
+        },
+        {
          "say": "For five days the vanaras uproot trees and carry rocks. Nala sets them in the sea, and they float."
         },
         {
@@ -1398,6 +1470,19 @@
           },
           {
            "say": "Fourteen yojanas on the first day; then twenty, twenty-one, twenty-two and twenty-three. A hundred yojanas in all."
+          }
+         ]
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "fx": "rays",
+           "ms": 3500
+          },
+          {
+           "fx": "petals",
+           "ms": 4000
           }
          ]
         },
@@ -1435,6 +1520,23 @@
    "id": "ch6.setu_walk",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 800
+      },
+      {
+       "fx": "wind",
+       "ms": 2500
+      },
+      {
+       "fx": "rays",
+       "ms": 2500
+      }
+     ]
+    },
+    {
      "say": "The bridge Nala built stretches a hundred yojanas across the waves. The vanara army pours across it, roaring Rama's name."
     },
     {
@@ -1469,6 +1571,19 @@
    "cmds": [
     {
      "music": "kishkindha"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "night"
+      },
+      {
+       "fx": "lamps",
+       "ms": 6000
+      }
+     ]
     },
     {
      "say": "The army camps on {n:place.suvela_camp} hill. From its slopes you can see Lanka's golden walls, lit by a thousand torches."
@@ -1637,7 +1752,38 @@
      "music": "battle"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 1200
+      },
+      {
+       "fx": "dust",
+       "ms": 2500
+      },
+      {
+       "fx": "tint",
+       "color": "red"
+      },
+      {
+       "emote": "dhumraksha",
+       "icon": "anger",
+       "ms": 2400
+      }
+     ]
+    },
+    {
      "say": "The gates of Lanka open, and Ravana's armies pour out. The battle of Lanka begins."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "none"
+      }
+     ]
     },
     {
      "say": "The vanara physician Sushena tends the wounded behind the lines. Rest with him between battles."
@@ -1702,6 +1848,24 @@
    "id": "ch6.dhumraksha",
    "cmds": [
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "smoke",
+       "ms": 3000
+      },
+      {
+       "emote": "dhumraksha",
+       "icon": "anger",
+       "ms": 2200
+      },
+      {
+       "fx": "shake",
+       "ms": 400
+      }
+     ]
+    },
+    {
      "say": "Dhumraksha, Smoke-Eyed, one of Ravana's fiercest generals, blocks the way with a great iron club."
     },
     {
@@ -1751,6 +1915,24 @@
      },
      "onWin": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "topple": [
+          "dhumraksha"
+         ]
+        },
+        {
+         "fx": "shake",
+         "ms": 600
+        },
+        {
+         "fx": "dust",
+         "ms": 2000
+        }
+       ]
+      },
+      {
        "say": "Hanuman's blow ends Dhumraksha's charge. His army flees back toward the walls."
       },
       {
@@ -1774,6 +1956,23 @@
       },
       {
        "shloka": "s-vadhyamano"
+      }
+     ]
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 1500
+      },
+      {
+       "fx": "dust",
+       "ms": 2500
+      },
+      {
+       "grow": "kumbhakarna",
+       "scale": 2.4
       }
      ]
     },
@@ -1830,6 +2029,34 @@
      },
      "onWin": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "arrow": {
+          "from": "player",
+          "to": "kumbhakarna"
+         },
+         "ms": 500
+        },
+        {
+         "wait": 450
+        },
+        {
+         "topple": [
+          "kumbhakarna"
+         ]
+        },
+        {
+         "fx": "shake",
+         "ms": 1500
+        },
+        {
+         "fx": "dust",
+         "ms": 2500
+        }
+       ]
+      },
+      {
        "say": "Rama's arrows bring the giant down at last. Kumbhakarna falls like a mountain, and the earth trembles."
       },
       {
@@ -1839,7 +2066,139 @@
        "if": "style.katha",
        "then": [
         {
+         "prop": "k_rama",
+         "sprite": "rama",
+         "at": {
+          "x": 14,
+          "y": 14
+         }
+        },
+        {
+         "prop": "k_laks",
+         "sprite": "lakshmana",
+         "at": {
+          "x": 18,
+          "y": 14
+         }
+        },
+        {
+         "prop": "k_v1",
+         "sprite": "vanara",
+         "at": {
+          "x": 12,
+          "y": 13
+         }
+        },
+        {
+         "prop": "k_v2",
+         "sprite": "vanara",
+         "at": {
+          "x": 20,
+          "y": 13
+         }
+        },
+        {
+         "prop": "k_v3",
+         "sprite": "vanara",
+         "at": {
+          "x": 13,
+          "y": 11
+         }
+        },
+        {
+         "prop": "k_han",
+         "sprite": "hanuman",
+         "at": {
+          "x": 15,
+          "y": 12
+         }
+        },
+        {
+         "prop": "k_jam",
+         "sprite": "jambavan",
+         "at": {
+          "x": 17,
+          "y": 12
+         }
+        },
+        {
+         "fx": "tint",
+         "color": "night"
+        },
+        {
+         "fx": "smoke",
+         "ms": 5000
+        },
+        {
+         "arrow": {
+          "from": {
+           "x": 16,
+           "y": 2
+          },
+          "to": "k_rama"
+         },
+         "ms": 450
+        },
+        {
+         "arrow": {
+          "from": {
+           "x": 11,
+           "y": 3
+          },
+          "to": "k_laks"
+         },
+         "ms": 450
+        },
+        {
+         "arrow": {
+          "from": {
+           "x": 21,
+           "y": 3
+          },
+          "to": "k_v2"
+         },
+         "ms": 450
+        },
+        {
+         "wait": 450
+        },
+        {
+         "fx": "flash",
+         "ms": 350
+        },
+        {
+         "topple": [
+          "k_rama",
+          "k_laks",
+          "k_v1",
+          "k_v2",
+          "k_v3",
+          "k_jam"
+         ]
+        },
+        {
+         "fx": "shake",
+         "ms": 800
+        },
+        {
          "say": "Then Indrajit strikes from the clouds with Brahma's weapon. Rama, Lakshmana and the army fall senseless."
+        },
+        {
+         "emote": "k_jam",
+         "icon": "dots",
+         "ms": 2400
+        },
+        {
+         "hop": "k_han",
+         "n": 2
+        },
+        {
+         "prop": "k_han",
+         "to": {
+          "x": 15,
+          "y": 2
+         },
+         "ms": 1400
         },
         {
          "say": "Old Jambavan, wounded too, sends Hanuman north to the mountain of herbs."
@@ -1849,6 +2208,43 @@
         },
         {
          "cutscene": "herbs"
+        },
+        {
+         "prop": "k_han",
+         "to": {
+          "x": 15,
+          "y": 12
+         },
+         "ms": 900
+        },
+        {
+         "fx": "tint",
+         "color": "none"
+        },
+        {
+         "rise": "all"
+        },
+        {
+         "fx": "rays",
+         "ms": 3500
+        },
+        {
+         "hop": [
+          "k_rama",
+          "k_laks",
+          "k_v1",
+          "k_v2",
+          "k_v3",
+          "k_jam"
+         ],
+         "n": 2
+        },
+        {
+         "fx": "petals",
+         "ms": 3500
+        },
+        {
+         "wait": 1000
         }
        ]
       },
@@ -1865,6 +2261,24 @@
   {
    "id": "ch6.indrajit",
    "cmds": [
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "tint",
+       "color": "night"
+      },
+      {
+       "fx": "smoke",
+       "ms": 5000
+      },
+      {
+       "emote": "indrajit",
+       "icon": "anger",
+       "ms": 2200
+      }
+     ]
+    },
     {
      "say": "Indrajit, Ravana's son, who once defeated Indra himself, fights hidden inside clouds of illusion."
     },
@@ -1938,16 +2352,48 @@
        ]
       },
       {
-       "say": "The arrow flies true, and Indrajit's sorcery ends forever."
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "flash",
+         "ms": 300
+        },
+        {
+         "topple": [
+          "indrajit"
+         ]
+        },
+        {
+         "fx": "tint",
+         "color": "none"
+        },
+        {
+         "fx": "rays",
+         "ms": 2500
+        }
+       ]
       },
       {
-       "say": "Before the gate of Lanka stands a small, radiant sage. He seems to have been waiting for you."
+       "say": "The arrow flies true, and Indrajit's sorcery ends forever."
       },
       {
        "set": "ch6.indrajit_defeated"
       },
       {
-       "objective": "Speak with the sage before the gate."
+       "if": "style.katha",
+       "then": [
+        {
+         "objective": "Go to the city's southern gate and enter Ravana's palace."
+        }
+       ],
+       "else": [
+        {
+         "say": "Before the gate of Lanka stands a small, radiant sage. He seems to have been waiting for you."
+        },
+        {
+         "objective": "Speak with the sage before the gate."
+        }
+       ]
       }
      ]
     }
@@ -2117,6 +2563,28 @@
      "music": "boss"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "grow": "ravana",
+       "scale": 1.8
+      },
+      {
+       "fx": "shake",
+       "ms": 800
+      },
+      {
+       "fx": "rays",
+       "ms": 3500
+      },
+      {
+       "emote": "ravana",
+       "icon": "anger",
+       "ms": 2400
+      }
+     ]
+    },
+    {
      "say": "Ravana, ten-headed king of Lanka, rises from his throne. Indra's charioteer Matali brings a chariot from heaven for Rama."
     },
     {
@@ -2128,6 +2596,15 @@
      "say": "Return Sita, even now, and live.",
      "who": "person.rama",
      "portrait": "rama"
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "fx": "shake",
+       "ms": 400
+      }
+     ]
     },
     {
      "say": "Never!",
@@ -2185,7 +2662,48 @@
      },
      "onWin": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "arrow": {
+          "from": "player",
+          "to": "ravana"
+         },
+         "ms": 600
+        },
+        {
+         "wait": 550
+        },
+        {
+         "fx": "flash",
+         "ms": 400
+        },
+        {
+         "topple": [
+          "ravana"
+         ]
+        },
+        {
+         "fx": "shake",
+         "ms": 1200
+        }
+       ]
+      },
+      {
        "say": "Rama looses the brahmastra that Agastya blessed. It strikes Ravana's heart, and the ten-headed king falls."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "petals",
+         "ms": 6000
+        },
+        {
+         "fx": "rays",
+         "ms": 4000
+        }
+       ]
       },
       {
        "say": "The gods rain flowers from the sky. Vibhishana kneels beside his brother and weeps."
@@ -2214,6 +2732,67 @@
        "say": "Vibhishana was crowned king of Lanka, and Sita and Rama were together again at last."
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "hop": "player",
+         "n": 2
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "warp": "lanka_city",
+         "x": 1,
+         "y": 24,
+         "facing": "up"
+        },
+        {
+         "music": "ayodhya"
+        },
+        {
+         "focus": {
+          "x": 17,
+          "y": 12
+         }
+        },
+        {
+         "prop": "pushpaka",
+         "sprite": "vimana",
+         "at": {
+          "x": 17,
+          "y": 19
+         }
+        },
+        {
+         "grow": "pushpaka",
+         "scale": 2
+        },
+        {
+         "wait": 600
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "prop": "pushpaka",
+         "to": {
+          "x": 17,
+          "y": 9
+         },
+         "ms": 5000
+        },
+        {
+         "fx": "wind",
+         "ms": 3000
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        }
+       ]
+      },
+      {
        "say": "Then Rama, Sita, Lakshmana and all their friends boarded the flying chariot Pushpaka and rose into the sky, toward Ayodhya."
       },
       {
@@ -2221,6 +2800,54 @@
        "then": [
         {
          "say": "From the Pushpaka, Rama shows Sita the places of their story."
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "warp": "setu",
+         "x": 11,
+         "y": 1,
+         "facing": "down"
+        },
+        {
+         "music": "ayodhya"
+        },
+        {
+         "focus": {
+          "x": 11,
+          "y": 15
+         }
+        },
+        {
+         "prop": "pushpaka",
+         "sprite": "vimana",
+         "at": {
+          "x": 11,
+          "y": 23
+         }
+        },
+        {
+         "grow": "pushpaka",
+         "scale": 2
+        },
+        {
+         "wait": 600
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "prop": "pushpaka",
+         "to": {
+          "x": 11,
+          "y": 13
+         },
+         "ms": 5000
+        },
+        {
+         "fx": "wind",
+         "ms": 3000
         },
         {
          "shloka": "s-esha-setuh"
@@ -2266,6 +2893,61 @@
          "label": "k_p1_end"
         },
         {
+         "fade": "out"
+        },
+        {
+         "warp": "setu_shore",
+         "x": 1,
+         "y": 1,
+         "facing": "down"
+        },
+        {
+         "music": "ayodhya"
+        },
+        {
+         "focus": {
+          "x": 15,
+          "y": 8
+         }
+        },
+        {
+         "prop": "pushpaka",
+         "sprite": "vimana",
+         "at": {
+          "x": 15,
+          "y": 17
+         }
+        },
+        {
+         "grow": "pushpaka",
+         "scale": 2
+        },
+        {
+         "wait": 600
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "prop": "pushpaka",
+         "to": {
+          "x": 15,
+          "y": 9
+         },
+         "ms": 4500
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        },
+        {
+         "glow": {
+          "x": 24,
+          "y": 11
+         },
+         "ms": 3500
+        },
+        {
          "shloka": "s-sakrdeva",
          "mode": "hear"
         },
@@ -2304,6 +2986,61 @@
         },
         {
          "label": "k_p2_end"
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "warp": "rishyamuka",
+         "x": 8,
+         "y": 19,
+         "facing": "up"
+        },
+        {
+         "music": "ayodhya"
+        },
+        {
+         "focus": {
+          "x": 20,
+          "y": 6
+         }
+        },
+        {
+         "prop": "pushpaka",
+         "sprite": "vimana",
+         "at": {
+          "x": 9,
+          "y": 12
+         }
+        },
+        {
+         "grow": "pushpaka",
+         "scale": 2
+        },
+        {
+         "wait": 600
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "prop": "pushpaka",
+         "to": {
+          "x": 20,
+          "y": 6
+         },
+         "ms": 5000
+        },
+        {
+         "fx": "wind",
+         "ms": 3000
+        },
+        {
+         "glow": {
+          "x": 21,
+          "y": 3
+         },
+         "ms": 3500
         },
         {
          "shloka": "s-naham-janami",
@@ -2346,6 +3083,61 @@
          "label": "k_p3_end"
         },
         {
+         "fade": "out"
+        },
+        {
+         "warp": "panchavati",
+         "x": 3,
+         "y": 17,
+         "facing": "up"
+        },
+        {
+         "music": "ayodhya"
+        },
+        {
+         "focus": {
+          "x": 17,
+          "y": 6
+         }
+        },
+        {
+         "prop": "pushpaka",
+         "sprite": "vimana",
+         "at": {
+          "x": 30,
+          "y": 3
+         }
+        },
+        {
+         "grow": "pushpaka",
+         "scale": 2
+        },
+        {
+         "wait": 600
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "prop": "pushpaka",
+         "to": {
+          "x": 19,
+          "y": 4
+         },
+         "ms": 4500
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        },
+        {
+         "glow": {
+          "x": 16,
+          "y": 8
+         },
+         "ms": 3500
+        },
+        {
          "shloka": "s-golden-deer",
          "mode": "hear"
         },
@@ -2384,6 +3176,66 @@
         },
         {
          "label": "k_p4_end"
+        },
+        {
+         "fade": "out"
+        },
+        {
+         "warp": "ayodhya_city",
+         "x": 4,
+         "y": 27,
+         "facing": "up"
+        },
+        {
+         "music": "ayodhya"
+        },
+        {
+         "focus": {
+          "x": 17,
+          "y": 9
+         }
+        },
+        {
+         "prop": "pushpaka",
+         "sprite": "vimana",
+         "at": {
+          "x": 17,
+          "y": 17
+         }
+        },
+        {
+         "grow": "pushpaka",
+         "scale": 2
+        },
+        {
+         "wait": 600
+        },
+        {
+         "fade": "in"
+        },
+        {
+         "prop": "pushpaka",
+         "to": {
+          "x": 17,
+          "y": 10
+         },
+         "ms": 5000
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        },
+        {
+         "fx": "rays",
+         "ms": 3500
+        },
+        {
+         "glow": {
+          "x": 17,
+          "y": 5,
+          "w": 2
+         },
+         "ms": 3500
         },
         {
          "shloka": "s-ramo-dvir",
@@ -2449,6 +3301,25 @@
        "if": "style.katha",
        "then": [
         {
+         "focus": {
+          "x": 15,
+          "y": 7
+         }
+        },
+        {
+         "prop": "paduka2",
+         "sprite": "paduka",
+         "at": "bharata"
+        },
+        {
+         "prop": "paduka2",
+         "to": "rama_c",
+         "ms": 900
+        },
+        {
+         "hop": "bharata"
+        },
+        {
          "say": "Bharata places the sandals on Rama's feet and bows to him."
         },
         {
@@ -2461,6 +3332,30 @@
            "echo": "paduke"
           }
          ]
+        }
+       ]
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "focus": null
+        },
+        {
+         "fx": "lamps",
+         "ms": 6000
+        },
+        {
+         "fx": "petals",
+         "ms": 5000
+        },
+        {
+         "hop": [
+          "citizen_1",
+          "citizen_2",
+          "child_c"
+         ],
+         "n": 2
         }
        ]
       },
@@ -2496,13 +3391,97 @@
        "music": "ending"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "rays",
+         "ms": 4000
+        },
+        {
+         "glow": {
+          "x": 14,
+          "y": 5,
+          "w": 2,
+          "h": 1
+         },
+         "ms": 4000
+        },
+        {
+         "emote": "rama_c",
+         "icon": "sparkle",
+         "ms": 2600
+        }
+       ]
+      },
+      {
        "say": "Vasishtha pours the sacred waters. Rama sits on the throne with Sita beside him."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "emote": "kausalya",
+         "icon": "heart",
+         "ms": 2600
+        },
+        {
+         "emote": "sugriva_c",
+         "icon": "music",
+         "ms": 2600
+        }
+       ]
       },
       {
        "say": "Shatrughna holds the white royal umbrella, and Sugriva and Vibhishana wave the fans. Lakshmana and Bharata stand close by."
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "pearls",
+         "sprite": "necklace",
+         "at": "sita_c"
+        },
+        {
+         "prop": "pearls",
+         "to": "hanuman_c",
+         "ms": 1000
+        },
+        {
+         "emote": "hanuman_c",
+         "icon": "heart",
+         "ms": 2800
+        }
+       ]
+      },
+      {
        "say": "Sita takes a pearl necklace from her own neck and gives it to Hanuman, the friend who found her."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "prop": "pearls",
+         "carry": "hanuman_c"
+        },
+        {
+         "fx": "tint",
+         "color": "gold"
+        },
+        {
+         "fx": "petals",
+         "ms": 6000
+        },
+        {
+         "hop": [
+          "citizen_1",
+          "citizen_2",
+          "child_c",
+          "vanara_c"
+         ],
+         "n": 2
+        }
+       ]
       },
       {
        "say": "Rama ruled for many years, and in his kingdom no one knew fear, sickness or sorrow."
@@ -2756,7 +3735,24 @@
          "fade": "in"
         },
         {
+         "emote": "kusha",
+         "icon": "music",
+         "ms": 3000
+        },
+        {
+         "emote": "lava",
+         "icon": "music",
+         "ms": 3000
+        },
+        {
          "say": "The twins sing in the streets of Ayodhya. Rama hears them and brings them into his palace."
+        },
+        {
+         "glow": {
+          "x": 14,
+          "y": 5
+         },
+         "ms": 2800
         },
         {
          "say": "Rama sits on his throne. His brothers and ministers are with him."
@@ -2768,6 +3764,16 @@
         },
         {
          "say": "{player}, sing with them: say one line in every book."
+        },
+        {
+         "emote": "kusha",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
+         "emote": "lava",
+         "icon": "music",
+         "ms": 2400
         },
         {
          "say": "Kusha and Lava sing."
@@ -2784,6 +3790,16 @@
          "book": 1
         },
         {
+         "emote": "kusha",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
+         "emote": "lava",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
          "say": "Kusha and Lava sing."
         },
         {
@@ -2796,6 +3812,16 @@
         },
         {
          "book": 2
+        },
+        {
+         "emote": "kusha",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
+         "emote": "lava",
+         "icon": "music",
+         "ms": 2400
         },
         {
          "say": "Kusha and Lava sing."
@@ -2812,6 +3838,16 @@
          "book": 3
         },
         {
+         "emote": "kusha",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
+         "emote": "lava",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
          "say": "Kusha and Lava sing."
         },
         {
@@ -2824,6 +3860,16 @@
         },
         {
          "book": 4
+        },
+        {
+         "emote": "kusha",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
+         "emote": "lava",
+         "icon": "music",
+         "ms": 2400
         },
         {
          "say": "Kusha and Lava sing."
@@ -2840,6 +3886,16 @@
          "book": 5
         },
         {
+         "emote": "kusha",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
+         "emote": "lava",
+         "icon": "music",
+         "ms": 2400
+        },
+        {
          "say": "Kusha and Lava sing."
         },
         {
@@ -2852,6 +3908,11 @@
         },
         {
          "book": 6
+        },
+        {
+         "emote": "rama_c",
+         "icon": "heart",
+         "ms": 2600
         },
         {
          "say": "Rama listens with his brothers. His whole mind is on the story."
@@ -2873,6 +3934,14 @@
         },
         {
          "fade": "in"
+        },
+        {
+         "fx": "birds",
+         "ms": 2600
+        },
+        {
+         "fx": "rays",
+         "ms": 3500
         },
         {
          "say": "As long as there are mountains and rivers, Rama's story will live.",
@@ -3084,7 +4153,8 @@
    "action": {
     "talk": "agastya"
    },
-   "expectFlag": "ch6.restored_aditya"
+   "expectFlag": "ch6.restored_aditya",
+   "style": "abhyasa"
   },
   {
    "chapter": 6,

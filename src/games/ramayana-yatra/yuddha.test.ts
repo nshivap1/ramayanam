@@ -118,7 +118,8 @@ const STOPS = [
 ] as const;
 
 function homeward(style: JourneyStyle): GameState {
-  const s = after('ch6.restored_aditya', style, 5, 3);
+  // v0.6.1: Kathā meets Agastya inside Rāvaṇa's battle (no step before the gate) — the last shared step is Indrajit's fall
+  const s = after(style === 'katha' ? 'ch6.indrajit_defeated' : 'ch6.restored_aditya', style, 5, 3);
   return startScript({ ...s, save: { ...s.save, mapId: 'lanka_palace', x: 11, y: 6 } }, REAL, 'ch6.ravana', onWin);
 }
 

@@ -1260,6 +1260,19 @@
      "if": "ch3.sages_asked&!ch3.at_panchavati",
      "then": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "birds",
+         "ms": 2600
+        },
+        {
+         "fx": "petals",
+         "ms": 4000
+        }
+       ]
+      },
+      {
        "say": "Panchavati: five great banyan trees beside the Godavari. Lakshmana builds a fine hut of leaves and bamboo, and the seasons turn in peace."
       },
       {
@@ -1290,7 +1303,29 @@
        "music": "sorrow"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "shake",
+         "ms": 500
+        }
+       ]
+      },
+      {
        "say": "One day, Surpanakha, sister of Ravana, sees Rama and wants him for herself. Rama gently refuses, and Lakshmana drives her away when she turns on Sita."
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "tint",
+         "color": "red"
+        },
+        {
+         "fx": "smoke",
+         "ms": 4000
+        }
+       ]
       },
       {
        "say": "Wounded and furious, she flees to her brother Khara at Janasthana. Now an army of night-wanderers is gathering to the north."
@@ -1494,6 +1529,29 @@
        "if": "restored.s-ramo-vigrahavan",
        "then": [
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "focus": {
+            "x": 21,
+            "y": 8
+           }
+          },
+          {
+           "glow": {
+            "x": 27,
+            "y": 8
+           },
+           "ms": 3500
+          },
+          {
+           "emote": "golden_deer",
+           "icon": "sparkle",
+           "ms": 3000
+          }
+         ]
+        },
+        {
          "say": "A {w:mrga} (deer) of pure gold, dappled with silver and jewels, steps out from the trees near the hut."
         },
         {
@@ -1549,6 +1607,16 @@
          ]
         },
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "emote": "sita",
+           "icon": "heart",
+           "ms": 2600
+          }
+         ]
+        },
+        {
          "say": "Rama, look! I have never seen anything so beautiful.",
          "who": "person.sita",
          "portrait": "sita"
@@ -1592,6 +1660,14 @@
         },
         {
          "leave": "lakshmana"
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "focus": null
+          }
+         ]
         },
         {
          "say": "Lakshmana stays behind to guard Sita. Rama takes up his bow and follows the deer."
@@ -1699,7 +1775,44 @@
      "music": "boss"
     },
     {
+     "if": "style.katha",
+     "then": [
+      {
+       "focus": {
+        "x": 14,
+        "y": 6
+       }
+      },
+      {
+       "fx": "shake",
+       "ms": 1500
+      },
+      {
+       "fx": "dust",
+       "ms": 1800
+      },
+      {
+       "emote": "khara",
+       "icon": "anger",
+       "ms": 2600
+      },
+      {
+       "emote": "dushana",
+       "icon": "anger",
+       "ms": 2600
+      }
+     ]
+    },
+    {
      "say": "Drums thunder across the camp. Fourteen thousand night-wanderers stand ready, and at their head stand Khara and Dushana."
+    },
+    {
+     "if": "style.katha",
+     "then": [
+      {
+       "focus": null
+      }
+     ]
     },
     {
      "say": "Stand with me, Lakshmana. We fight for the sages of the forest.",
@@ -1849,10 +1962,45 @@
        },
        "onWin": [
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "topple": [
+            "dushana"
+           ]
+          },
+          {
+           "wait": 350
+          },
+          {
+           "topple": [
+            "khara"
+           ]
+          },
+          {
+           "fx": "shake",
+           "ms": 700
+          },
+          {
+           "fx": "wind",
+           "ms": 3000
+          }
+         ]
+        },
+        {
          "say": "Dushana falls, and then Khara himself. The army of Janasthana is scattered like dry leaves in the wind."
         },
         {
          "music": "victory"
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "fx": "petals",
+           "ms": 4000
+          }
+         ]
         },
         {
          "say": "The sages of the forest come out to bless Rama. Sita embraces him with joy."
@@ -2129,10 +2277,37 @@
          "if": "style.katha",
          "then": [
           {
+           "arrow": {
+            "from": "player",
+            "to": "deer_far"
+           },
+           "ms": 500
+          },
+          {
+           "wait": 500
+          },
+          {
+           "fx": "flash",
+           "ms": 250
+          },
+          {
            "set": "ch3.deer_fell"
           },
           {
+           "fx": "smoke",
+           "ms": 2200
+          },
+          {
            "say": "Struck by Rama's arrow, the deer falls. There lies Maricha, in his true form."
+          },
+          {
+           "emote": "maricha_true",
+           "icon": "exclaim",
+           "ms": 2200
+          },
+          {
+           "fx": "shake",
+           "ms": 400
           },
           {
            "say": "\"Ha Sita! Ha Lakshmana!\"",
@@ -2141,6 +2316,15 @@
           },
           {
            "set": "ch3.maricha_dead"
+          },
+          {
+           "topple": [
+            "maricha_true"
+           ]
+          },
+          {
+           "fx": "birds",
+           "ms": 2600
           },
           {
            "say": "Then Maricha dies. But his cry, in Rama's own voice, rings on through the forest."
@@ -2192,7 +2376,26 @@
          "fade": "in"
         },
         {
+         "if": "style.katha",
+         "then": [
+          {
+           "fx": "wind",
+           "ms": 3000
+          }
+         ]
+        },
+        {
          "say": "The hut is empty. Flowers lie scattered on the ground. Sita is gone."
+        },
+        {
+         "if": "style.katha",
+         "then": [
+          {
+           "emote": "player",
+           "icon": "exclaim",
+           "ms": 1800
+          }
+         ]
         },
         {
          "say": "Sita! Sita!",
@@ -2345,6 +2548,16 @@
        "music": "sorrow"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "topple": [
+          "jatayu"
+         ]
+        }
+       ]
+      },
+      {
        "say": "In a clearing, among the broken pieces of a great chariot, lies Jatayu, king of the vultures, gravely wounded."
       },
       {
@@ -2487,6 +2700,20 @@
        "portrait": "jatayu"
       },
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "tint",
+         "color": "night"
+        },
+        {
+         "emote": "player",
+         "icon": "tears",
+         "ms": 3200
+        }
+       ]
+      },
+      {
        "say": "With these words, Jatayu, faithful friend of Dasharatha, gives up his life in Rama's arms."
       },
       {
@@ -2500,6 +2727,23 @@
         {
          "shloka": "s-sarvatra-khalu",
          "mode": "hear"
+        }
+       ]
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "glow": {
+          "x": 14,
+          "y": 9
+         },
+         "ms": 5000,
+         "color": "fire"
+        },
+        {
+         "fx": "embers",
+         "ms": 4500
         }
        ]
       },
@@ -2602,6 +2846,31 @@
          },
          "onWin": [
           {
+           "if": "style.katha",
+           "then": [
+            {
+             "fx": "flash",
+             "ms": 300
+            },
+            {
+             "topple": [
+              "kabandha"
+             ]
+            },
+            {
+             "glow": {
+              "x": 15,
+              "y": 16
+             },
+             "ms": 3500
+            },
+            {
+             "fx": "rays",
+             "ms": 4000
+            }
+           ]
+          },
+          {
            "say": "Rama and Lakshmana cut free of Kabandha's arms. His curse is broken, and a shining celestial rises from the hollow."
           },
           {
@@ -2644,6 +2913,19 @@
      "if": "ch3.jatayu_done&!ch3.at_pampa",
      "then": [
       {
+       "if": "style.katha",
+       "then": [
+        {
+         "fx": "birds",
+         "ms": 2600
+        },
+        {
+         "fx": "petals",
+         "ms": 3500
+        }
+       ]
+      },
+      {
        "say": "Lake Pampa: clear water, lotuses of every colour, and the old hermitage of the sage Matanga on its shore."
       },
       {
@@ -2670,6 +2952,19 @@
       }
      ],
      "else": [
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "hop": "shabari"
+        },
+        {
+         "emote": "shabari",
+         "icon": "sparkle",
+         "ms": 2600
+        }
+       ]
+      },
       {
        "say": "An old woman in bark garments rises to greet them, her eyes full of light. She is Shabari, the last disciple of the sage Matanga."
       },
@@ -2701,6 +2996,31 @@
        "say": "Go to Rishyamuka hill, east of here. Sugriva the vanara lives there in hiding, with four companions. He will help you find Sita.",
        "who": "person.shabari",
        "portrait": "shabari"
+      },
+      {
+       "if": "style.katha",
+       "then": [
+        {
+         "glow": {
+          "x": 8,
+          "y": 8
+         },
+         "ms": 3500,
+         "color": "fire"
+        },
+        {
+         "fx": "embers",
+         "ms": 3500
+        },
+        {
+         "fx": "rays",
+         "ms": 4500
+        },
+        {
+         "fx": "flash",
+         "ms": 300
+        }
+       ]
       },
       {
        "say": "Then, with Rama's blessing, Shabari enters the sacred fire and rises, radiant, to the world of her teachers."

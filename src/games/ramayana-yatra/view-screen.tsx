@@ -11,8 +11,9 @@ import { toDevaDigits } from '@sanskrit';
 import type { BattleBgId, BattlerId, SpriteId, TileId } from './catalog';
 import { DELTA } from './input';
 import { type GuideTarget, affinityOf, burningBlocks, currentMap, glowingSpots, isKatha, playerSprite, roofBlock, roofFires, sightTiles, tileAt, visibleNpcs } from './logic';
-import { type KitView, createKitView, drawGlowRect, drawKitFigure, drawKitFx, drawKitProp, fallK, kitActive, kitShake, propAt, resetKitView, scaleK, syncKitView } from './view-stage';
+import { type KitView, createKitView, drawEmotes, drawGlowRect, drawKitFigure, drawKitFx, drawKitProp, fallK, hopY, kitActive, kitShake, propAt, resetKitView, scaleK, syncKitView } from './view-stage';
 import { INK, R } from './art-palette';
+import { FLYING_PROPS } from './art-v061';
 import { ELEMENT_COLOR, MOVE_STEP_MS, STEP_MS, Name, PlayerName, type ViewEnv, asciiLabel, englishName, useEnv } from './view-common';
 import { useUi } from './view-ui';
 import { type BattleBeat, type Dir, type Element, type GameState, type MapDef, TILE, VIEW_H, VIEW_W } from './types';
@@ -74,6 +75,9 @@ interface Vis {
   npcs: Map<string, Ent>;
   camX: number;
   camY: number;
+  /** v0.6.1: the kit's camera focus last seen ("" = the player) and when it changed (a slower glide for a while) */
+  focusKey: string;
+  focusAt: number;
   lastPending: unknown;
   fade: number;
   fadeTarget: number;
@@ -206,6 +210,8 @@ export function Screen({ stateRef, env, anim, onSwipe, overlay, title, guideRef 
     npcs: new Map(),
     camX: 0,
     camY: 0,
+    focusKey: '',
+    focusAt: -1e9,
     lastPending: null,
     fade: 0,
     fadeTarget: 0,
@@ -461,13 +467,21 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   const pp = entPos(player, now);
   const mw = map.width * TILE;
   const mh = map.height * TILE;
-  const tx = mw <= VIEW_W ? (mw - VIEW_W) / 2 : Math.max(0, Math.min(mw - VIEW_W, pp.x * TILE + 8 - VIEW_W / 2));
-  const ty = mh <= VIEW_H ? (mh - VIEW_H) / 2 : Math.max(0, Math.min(mh - VIEW_H, pp.y * TILE + 4 - VIEW_H / 2));
+  // v0.6.1: a script's `{ "focus" }` holds the camera on a tile (eased in and out more slowly than the walk follow)
+  const focus = s.stage?.focus;
+  const fk = focus ? `${focus.x},${focus.y}` : '';
+  if (fk !== v.focusKey) {
+    v.focusKey = fk;
+    v.focusAt = now;
+  }
+  const look = focus ?? pp;
+  const tx = mw <= VIEW_W ? (mw - VIEW_W) / 2 : Math.max(0, Math.min(mw - VIEW_W, look.x * TILE + 8 - VIEW_W / 2));
+  const ty = mh <= VIEW_H ? (mh - VIEW_H) / 2 : Math.max(0, Math.min(mh - VIEW_H, look.y * TILE + 4 - VIEW_H / 2));
   if (fresh || reduced) {
     v.camX = tx;
     v.camY = ty;
   } else {
-    const a = 1 - Math.exp(-dt / 70);
+    const a = 1 - Math.exp(-dt / (now - v.focusAt < 1600 ? 240 : 70));
     v.camX += (tx - v.camX) * a;
     v.camY += (ty - v.camY) * a;
     if (Math.abs(tx - v.camX) < 0.25) v.camX = tx;
@@ -563,6 +577,7 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
       }
     }
     const frame: 0 | 1 | 2 = p.moving && p.k < 0.6 ? (p.parity ? 1 : 2) : 0;
+    oy -= hopY(anim.kit, id, now, reduced); // v0.6.1: a kit hop
     const px = Math.round(p.x * TILE - cx + ox);
     const py = Math.round(p.y * TILE - cy + oy);
     if (px < -24 || px > VIEW_W + 8 || py < -24 || py > VIEW_H + 24) return;
@@ -591,18 +606,34 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   };
   for (const [id, ent] of v.npcs) pushEnt(ent, false, id);
   pushEnt(player, true, 'player');
-  // v0.6: the kit's props (placed on a tile, gliding, or carried over a figure's head)
+  // v0.6: the kit's props (placed on a tile, gliding, or carried over a figure's head). v0.6.1: a flying prop (the
+  // Puṣpaka) casts a shadow on its tile and is drawn in the air after the light, over every figure and roof
+  const flying: (() => void)[] = [];
   for (const [id, pr] of Object.entries(s.stage?.props ?? {})) {
     const carrier = pr.carry ? (pr.carry === 'player' ? player : v.npcs.get(pr.carry)) : undefined;
     const cp = carrier ? entPos(carrier, now) : null;
     const at = cp ? { x: cp.x, y: cp.y } : propAt(kit, id, pr.x, pr.y, now, reduced);
     const px = Math.round(at.x * TILE - cx);
     const py = Math.round(at.y * TILE - cy) - (cp ? Math.round(18 * scaleK(kit, pr.carry ?? '', now, reduced)) : 0);
+    if (!cp && FLYING_PROPS.has(pr.sprite)) {
+      const sc = scaleK(kit, id, now, reduced);
+      if (px < -16 * sc - 16 || px > VIEW_W + 16 * sc || py < -24 || py > VIEW_H + 40 * sc) continue;
+      list.push({ y: -1e9, draw: () => drawFlightShadow(ctx, px + 8, py + 14, sc) });
+      const bob = reduced ? 0 : Math.round(Math.sin(now / 420) * 1.5);
+      flying.push(() => drawKitProp(ctx, env.art, pr.sprite, px, py - FLIGHT_LIFT + bob, t, 0, sc));
+      continue;
+    }
     if (px < -24 || px > VIEW_W + 8 || py < -24 || py > VIEW_H + 24) continue;
     list.push({ y: at.y + (cp ? 0.002 : -0.001), draw: () => drawKitProp(ctx, env.art, pr.sprite, px, py, t, fallK(kit, id, now, reduced), scaleK(kit, id, now, reduced)) });
   }
   list.sort((a, b) => a.y - b.y);
   for (const it of list) it.draw();
+  // v0.6.1: a figure with an emote bubble shows that instead of the speaker's dots
+  const emoting = new Set(kit.fx.filter((f) => f.name === 'emote' && f.id && now >= f.at && now - f.at < f.ms).map((f) => f.id as string));
+  if (speaker && emoting.size) {
+    const sid = speaker === v.player ? 'player' : [...v.npcs.entries()].find(([, e]) => e === speaker)?.[0];
+    if (sid && emoting.has(sid)) speaker = null;
+  }
   if (speaker) {
     const p = entPos(speaker, now);
     const bob = reduced ? 0 : Math.round(Math.sin(now / 160));
@@ -620,6 +651,8 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   }
 
   env.art.drawLight(ctx, map.light, t);
+  // v0.6.1: the Puṣpaka in the air, above the light so its gold reads over a night city
+  for (const f of flying) f();
   // v0.5b (WP-B), above the light so they read at night: the lamplight a guard watches (P3), the burning roofs
   drawSight(ctx, map, s, cx, cy, t, reduced);
   if (fire) drawFire(ctx, map, fire, v, cx, cy, now, dt, reduced);
@@ -627,12 +660,40 @@ function drawWorld(ctx: CanvasRenderingContext2D, s: GameState, env: ViewEnv, v:
   for (const sp of glowingSpots(map, s.save.flags)) drawGlowRect(ctx, { x: sp.x * TILE - cx, y: sp.y * TILE - cy }, TILE, TILE, now, reduced, 0.55);
   if (pend?.kind === 'hotspot') drawGlowRect(ctx, { x: pend.x * TILE - cx, y: pend.y * TILE - cy }, TILE, TILE, now, reduced, 1);
   drawKitFx(ctx, kit, now, reduced, (x, y) => ({ x: x * TILE - cx, y: y * TILE - cy }));
+  // v0.6.1: emote bubbles over the figures (above the light, so they read at night)
+  drawEmotes(
+    ctx,
+    kit,
+    now,
+    reduced,
+    (id) => {
+      const ent = id === 'player' ? player : v.npcs.get(id);
+      if (ent) {
+        const q = entPos(ent, now);
+        return { x: q.x * TILE - cx, y: q.y * TILE - cy - hopY(kit, id, now, reduced), scale: scaleK(kit, id, now, reduced) };
+      }
+      const pr = s.stage?.props[id];
+      return pr ? { x: pr.x * TILE - cx, y: pr.y * TILE - cy, scale: scaleK(kit, id, now, reduced) } : null;
+    },
+    (x, y) => ({ x: x * TILE - cx, y: y * TILE - cy }),
+  );
   // the map pointer sits above the light, so it reads on night maps too
   if (guide && guide.map === map.id) {
     const ent = guide.kind === 'npc' && guide.npc ? v.npcs.get(guide.npc) : undefined;
     const gp = ent ? entPos(ent, now) : { x: guide.x, y: guide.y };
     v.guideMark = drawGuide(ctx, guide.kind, Math.round(gp.x * TILE - cx), Math.round(gp.y * TILE - cy), Math.round(pp.x * TILE - cx) + 8, Math.round(pp.y * TILE - cy) + 8, now, reduced);
   }
+}
+
+/** v0.6.1: how high (px) a flying prop rides above the tile its shadow falls on. */
+const FLIGHT_LIFT = 22;
+
+/** v0.6.1: the soft shadow a flying prop casts on the ground (cx, gy: its centre on the tile; sc: the prop's scale). */
+function drawFlightShadow(ctx: CanvasRenderingContext2D, cx: number, gy: number, sc: number): void {
+  const w = Math.round(6 * sc);
+  ctx.fillStyle = 'rgba(0,0,0,0.2)';
+  ctx.fillRect(cx - w, gy, w * 2, 2);
+  ctx.fillRect(cx - w + 2, gy - 1, w * 2 - 4, 4);
 }
 
 // ───────────────────────── Sundara-kāṇḍa in Kathā (v0.5b, WP-B) ─────────────────────────

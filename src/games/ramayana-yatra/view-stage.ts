@@ -10,14 +10,41 @@
  */
 import type { Art } from './art';
 import type { SpriteId } from './catalog';
-import type { Dir, StageState, TintColor } from './types';
+import type { Dir, EmoteIcon, GlowColor, KitScreenFx, StageState, TintColor } from './types';
 
 /** ms of a fall / rise, a growth and a prop's default glide. */
 export const FALL_MS = 380;
 export const GROW_MS = 800;
 export const GLIDE_MS = 600;
 
-export type KitFxView = { name: 'shake' | 'flash' | 'petals' | 'rain' | 'glow' | 'arrow'; at: number; ms: number; rect?: { x: number; y: number; w: number; h: number }; path?: { x: number; y: number }[] };
+export type KitFxView = {
+  name: KitScreenFx | 'glow' | 'arrow' | 'emote' | 'hop';
+  at: number;
+  ms: number;
+  rect?: { x: number; y: number; w: number; h: number };
+  path?: { x: number; y: number }[];
+  /** v0.6.1: a glow's look; an emote's figure and picture; a hop's figures and count */
+  color?: GlowColor;
+  id?: string;
+  icon?: EmoteIcon;
+  ids?: string[];
+  n?: number;
+};
+
+/** v0.6.1: a kit fx (from GameState.fx or a cutscene step) as the view keeps it. */
+export function kitFxView(f: { name: KitFxView['name']; ms: number; at?: { x: number; y: number; w: number; h: number }; path?: { x: number; y: number }[]; color?: GlowColor; id?: string; icon?: EmoteIcon; ids?: string[]; n?: number }): Omit<KitFxView, 'at'> {
+  return {
+    name: f.name,
+    ms: f.ms,
+    ...(f.at ? { rect: f.at } : {}),
+    ...(f.path ? { path: f.path } : {}),
+    ...(f.color ? { color: f.color } : {}),
+    ...(f.id ? { id: f.id } : {}),
+    ...(f.icon ? { icon: f.icon } : {}),
+    ...(f.ids ? { ids: f.ids } : {}),
+    ...(f.n ? { n: f.n } : {}),
+  };
+}
 
 export interface KitView {
   /** the stage last seen (null: none) */
@@ -61,7 +88,7 @@ export function syncKitView(v: KitView, stage: StageState | undefined | null, no
   }
   for (const [id, p] of Object.entries(cur?.props ?? {})) {
     const q = prev?.props[id];
-    if (q && !p.carry && !q.carry && (q.x !== p.x || q.y !== p.y)) v.glide.set(id, { at: now, fromX: q.x, fromY: q.y, ms: glideMs?.(id) ?? GLIDE_MS });
+    if (q && !p.carry && !q.carry && (q.x !== p.x || q.y !== p.y)) v.glide.set(id, { at: now, fromX: q.x, fromY: q.y, ms: glideMs?.(id) ?? p.ms ?? GLIDE_MS });
   }
   const t = cur?.tint ?? null;
   if (t !== v.tint.color) v.tint = { color: t, at: now, prev: v.tint.color };
@@ -150,6 +177,91 @@ export function kitShake(v: KitView, now: number, reduced: boolean): { x: number
   return a ? { x: Math.round(Math.sin(now / 18) * a), y: Math.round(Math.cos(now / 23) * a * 0.6) } : { x: 0, y: 0 };
 }
 
+/** v0.6.1: how far (px, upward) a figure is lifted by a hop now (0 with reduced motion). */
+export function hopY(v: KitView, id: string, now: number, reduced: boolean): number {
+  if (reduced) return 0;
+  let y = 0;
+  for (const f of v.fx) {
+    if (f.name !== 'hop' || !f.ids?.includes(id) || now < f.at || now - f.at >= f.ms) continue;
+    const n = f.n ?? 1;
+    const k = ((now - f.at) / f.ms) * n;
+    const ph = k - Math.floor(k);
+    y = Math.max(y, Math.sin(ph * Math.PI) * 6);
+  }
+  return Math.round(y);
+}
+
+/**
+ * v0.6.1: draw the emote bubbles. `where(id)` gives a figure's canvas top-left (px) now, or null (then the tile the
+ * emote was given at is used, through `tile`). A bubble pops in, floats up 2 px and fades at the end; reduced motion:
+ * it simply shows.
+ */
+export function drawEmotes(ctx: CanvasRenderingContext2D, v: KitView, now: number, reduced: boolean, where: (id: string) => { x: number; y: number; scale?: number } | null, tile: (x: number, y: number) => { x: number; y: number }): void {
+  for (const f of v.fx) {
+    if (f.name !== 'emote' || !f.icon || now < f.at || now - f.at >= f.ms) continue;
+    const el = now - f.at;
+    const pos: { x: number; y: number; scale?: number } | null = (f.id ? where(f.id) : null) ?? (f.rect ? tile(f.rect.x, f.rect.y) : null);
+    if (!pos) continue;
+    const sc = pos.scale ?? 1;
+    const pop = reduced ? 1 : Math.min(1, el / 120);
+    const rise = reduced ? 0 : Math.round(Math.min(1, el / 400) * 2);
+    const fade = Math.min(1, (f.ms - el) / 250);
+    const bx = Math.round(pos.x) + 1;
+    const by = Math.round(pos.y + 16 - 24 * sc) - 15 - rise;
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, fade);
+    if (pop < 1) {
+      ctx.translate(bx + 7, by + 11);
+      ctx.scale(pop, pop);
+      ctx.translate(-(bx + 7), -(by + 11));
+    }
+    drawEmoteBubble(ctx, bx, by, f.icon, reduced ? 0 : el);
+    ctx.restore();
+  }
+}
+
+const EMOTE_PX: Record<EmoteIcon, { rows: string[]; colors: Record<string, string> }> = {
+  music: { rows: ['...##...', '...#.#..', '...#..#.', '...#....', '.###....', '####....', '.##.....'], colors: { '#': '#3a2822' } },
+  heart: { rows: ['........', '.##.##..', '#######.', '#######.', '.#####..', '..###...', '...#....'], colors: { '#': '#d2384a' } },
+  tears: { rows: ['..#...#.', '..#...#.', '.###.###', '.###.###', '.###.###', '..#...#.', '........'], colors: { '#': '#4a8fd8' } },
+  exclaim: { rows: ['...##...', '...##...', '...##...', '...##...', '........', '...##...', '...##...'], colors: { '#': '#d2384a' } },
+  question: { rows: ['..####..', '.##..##.', '.....##.', '....##..', '...##...', '........', '...##...'], colors: { '#': '#3a2822' } },
+  anger: { rows: ['.#....#.', '..#..#..', '#......#', '........', '#......#', '..#..#..', '.#....#.'], colors: { '#': '#d2384a' } },
+  dots: { rows: ['........', '........', '........', '#..#..#.', '........', '........', '........'], colors: { '#': '#3a2822' } },
+  sleep: { rows: ['..###...', '.##.....', '##....*.', '##...***', '##....*.', '.##.....', '..###...'], colors: { '#': '#3c5aa8', '*': '#e0a838' } },
+  sparkle: { rows: ['...#....', '...#....', '.#####..', '#######.', '.#####..', '...#....', '...#....'], colors: { '#': '#e0a838' } },
+};
+
+/** A 16 × 13 picture bubble with its tail at the bottom left; `el` ms animates a few pictures (0 = still). */
+function drawEmoteBubble(ctx: CanvasRenderingContext2D, x: number, y: number, icon: EmoteIcon, el: number): void {
+  ctx.fillStyle = 'rgb(58,40,34)';
+  ctx.fillRect(x - 1, y, 16, 11);
+  ctx.fillRect(x, y - 1, 14, 13);
+  ctx.fillRect(x + 3, y + 12, 3, 2);
+  ctx.fillStyle = 'rgb(255,250,236)';
+  ctx.fillRect(x, y, 14, 11);
+  ctx.fillRect(x + 4, y + 11, 1, 1);
+  const art = EMOTE_PX[icon];
+  // the dots appear one by one; tears fall a little; the heart beats; the sparkle twinkles
+  const shown = icon === 'dots' && el > 0 ? Math.min(3, 1 + Math.floor(el / 280)) : 3;
+  const dy = icon === 'tears' && el > 0 ? Math.floor(el / 220) % 2 : 0;
+  for (let r = 0; r < art.rows.length; r++) {
+    const row = art.rows[r]!;
+    for (let c = 0; c < row.length; c++) {
+      const ch = row[c]!;
+      if (ch === '.') continue;
+      if (icon === 'dots' && Math.floor(c / 3) >= shown) continue;
+      if (icon === 'sparkle' && el > 0 && (r === 0 || r === 6 || c === 0 || c === 6) && Math.floor(el / 200) % 2) continue;
+      ctx.fillStyle = art.colors[ch] ?? '#3a2822';
+      ctx.fillRect(x + 3 + c, y + 2 + r + (icon === 'tears' && r >= 2 ? dy : 0), 1, 1);
+    }
+  }
+  if (icon === 'heart' && el > 0 && Math.floor(el / 300) % 2) {
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.fillRect(x + 5, y + 4, 1, 1);
+  }
+}
+
 /** The effects on screen now (names, sorted; the tint as tint:<colour>). */
 export function kitActive(v: KitView, now: number): string[] {
   const out = new Set<string>();
@@ -181,10 +293,18 @@ export function drawKitFx(ctx: CanvasRenderingContext2D, v: KitView, now: number
   for (const f of v.fx) {
     const k = clamp01((now - f.at) / Math.max(1, f.ms));
     if (now < f.at) continue;
-    if (f.name === 'glow' && f.rect) drawGlowRect(ctx, tile(f.rect.x, f.rect.y), f.rect.w * 16, f.rect.h * 16, now, reduced, 1 - k * k);
+    if (f.name === 'glow' && f.rect && f.color === 'fire') drawFlames(ctx, tile(f.rect.x, f.rect.y), f.rect.w * 16, f.rect.h * 16, now - f.at, f.ms, reduced);
+    else if (f.name === 'glow' && f.rect) drawGlowRect(ctx, tile(f.rect.x, f.rect.y), f.rect.w * 16, f.rect.h * 16, now, reduced, 1 - k * k);
     else if (f.name === 'arrow' && f.path && f.path.length >= 2) drawArrow(ctx, f.path.map((p) => tile(p.x + 0.5, p.y + 0.5)), k, reduced);
     else if (f.name === 'petals') drawFall(ctx, now - f.at, f.ms, reduced, 'petals', w, hh);
     else if (f.name === 'rain') drawFall(ctx, now - f.at, f.ms, reduced, 'rain', w, hh);
+    else if (f.name === 'wind') drawWind(ctx, now - f.at, f.ms, reduced, w, hh);
+    else if (f.name === 'smoke') drawSmoke(ctx, now - f.at, f.ms, reduced, w, hh);
+    else if (f.name === 'birds') drawBirds(ctx, now - f.at, f.ms, reduced, w, hh);
+    else if (f.name === 'embers') drawEmbers(ctx, now - f.at, f.ms, reduced, w, hh);
+    else if (f.name === 'dust') drawDust(ctx, now - f.at, f.ms, reduced, w, hh);
+    else if (f.name === 'rays') drawRays(ctx, now - f.at, f.ms, reduced, w, hh);
+    else if (f.name === 'lamps') drawLamps(ctx, now - f.at, f.ms, reduced, w, hh);
   }
   // the tint fades in (and out) over 600 ms; at once with reduced motion
   const tk = reduced ? 1 : clamp01((now - v.tint.at) / 600);
@@ -310,6 +430,202 @@ function drawFall(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced
   if (kind === 'rain') {
     ctx.fillStyle = `rgba(30,40,70,${0.18 * fade})`;
     ctx.fillRect(0, 0, w, hh);
+  }
+  ctx.restore();
+}
+
+// ───────────────────────── v0.6.1: more screen effects (notes/v061-animations.md) ─────────────────────────
+
+/** 0 → 1 over the first `a` ms, 1 → 0 over the last `b` ms. */
+function envelope(el: number, ms: number, a = 300, b = 500): number {
+  return Math.max(0, Math.min(1, el / a, (ms - el) / b));
+}
+
+/** Wind: pale streaks and a few leaves blowing across (reduced motion: a few still streaks). */
+function drawWind(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced: boolean, w: number, hh: number): void {
+  const fade = envelope(el, ms);
+  if (fade <= 0) return;
+  ctx.save();
+  for (let i = 0; i < 22; i++) {
+    const y = Math.round(h(i, 11) * hh);
+    const len = 10 + Math.round(h(i, 12) * 22);
+    const sp = 260 + h(i, 13) * 220;
+    const x = reduced ? h(i, 14) * w : ((h(i, 14) * (w + 60) + (el / 1000) * sp) % (w + 60)) - 40;
+    ctx.fillStyle = `rgba(240,244,255,${0.35 * fade})`;
+    ctx.fillRect(Math.round(x), y, len, 1);
+  }
+  for (let i = 0; i < 10; i++) {
+    const sp = 150 + h(i, 15) * 90;
+    const x = reduced ? h(i, 16) * w : ((h(i, 16) * (w + 40) + (el / 1000) * sp) % (w + 40)) - 20;
+    const y = reduced ? h(i, 17) * hh : h(i, 17) * hh + Math.sin(el / 180 + i) * 6;
+    ctx.fillStyle = i % 2 ? `rgba(120,150,60,${0.9 * fade})` : `rgba(170,120,60,${0.9 * fade})`;
+    ctx.fillRect(Math.round(x), Math.round(y), 2, 1);
+    ctx.fillRect(Math.round(x) + 1, Math.round(y) + 1, 1, 1);
+  }
+  ctx.restore();
+}
+
+/** Smoke: dark wisps rising from below and a dim veil (reduced motion: the veil and still wisps). */
+function drawSmoke(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced: boolean, w: number, hh: number): void {
+  const fade = envelope(el, ms, 500, 800);
+  if (fade <= 0) return;
+  ctx.save();
+  ctx.fillStyle = `rgba(28,22,40,${0.28 * fade})`;
+  ctx.fillRect(0, 0, w, hh);
+  for (let i = 0; i < 16; i++) {
+    const x0 = h(i, 21) * w;
+    const sp = 14 + h(i, 22) * 16;
+    const y = reduced ? h(i, 23) * hh : hh + 10 - (((el / 1000) * sp + h(i, 23) * (hh + 30)) % (hh + 30));
+    const x = reduced ? x0 : x0 + Math.sin(el / 700 + i) * 6;
+    const r = 5 + Math.round(h(i, 24) * 6);
+    ctx.fillStyle = `rgba(52,44,66,${0.35 * fade})`;
+    ctx.fillRect(Math.round(x - r), Math.round(y - r / 2), r * 2, r);
+    ctx.fillRect(Math.round(x - r / 2), Math.round(y - r), r, r * 2);
+  }
+  ctx.restore();
+}
+
+/** Birds: a small flock flapping across the sky, low left to high right (reduced motion: the flock, still). */
+function drawBirds(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced: boolean, w: number, hh: number): void {
+  const fade = envelope(el, ms, 150, 300);
+  if (fade <= 0) return;
+  const k = reduced ? 0.5 : el / ms;
+  ctx.save();
+  ctx.fillStyle = `rgba(40,30,30,${0.9 * fade})`;
+  for (let i = 0; i < 9; i++) {
+    const ox = (i % 3) * 9 + h(i, 31) * 6 - (i > 2 ? 6 : 0) * Math.floor(i / 3);
+    const oy = Math.floor(i / 3) * 6 + h(i, 32) * 4;
+    const x = Math.round(-30 + k * (w + 60) + ox);
+    const y = Math.round(hh * 0.62 - k * hh * 0.5 + oy);
+    const up = reduced ? true : Math.floor(el / 120 + i) % 2 === 0;
+    ctx.fillRect(x, y, 1, 1);
+    if (up) {
+      ctx.fillRect(x - 2, y - 1, 2, 1);
+      ctx.fillRect(x + 1, y - 1, 2, 1);
+    } else {
+      ctx.fillRect(x - 2, y + 1, 2, 1);
+      ctx.fillRect(x + 1, y + 1, 2, 1);
+    }
+  }
+  ctx.restore();
+}
+
+/** Embers: sparks rising over a warm glow from below (reduced motion: the glow and still sparks). */
+function drawEmbers(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced: boolean, w: number, hh: number): void {
+  const fade = envelope(el, ms);
+  if (fade <= 0) return;
+  ctx.save();
+  const g = ctx.createLinearGradient(0, hh, 0, hh * 0.4);
+  g.addColorStop(0, `rgba(255,120,40,${0.32 * fade})`);
+  g.addColorStop(1, 'rgba(255,120,40,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, w, hh);
+  for (let i = 0; i < 40; i++) {
+    const x0 = h(i, 41) * w;
+    const sp = 30 + h(i, 42) * 50;
+    const y = reduced ? h(i, 43) * hh : hh + 4 - (((el / 1000) * sp + h(i, 43) * hh) % (hh + 8));
+    const x = reduced ? x0 : x0 + Math.sin(el / 300 + i * 1.7) * 3;
+    const flick = reduced ? 1 : 0.5 + 0.5 * Math.sin(el / 70 + i * 3);
+    ctx.fillStyle = i % 3 ? `rgba(255,190,70,${(0.6 + 0.4 * flick) * fade})` : `rgba(255,110,40,${(0.6 + 0.4 * flick) * fade})`;
+    ctx.fillRect(Math.round(x), Math.round(y), 1, i % 4 ? 1 : 2);
+  }
+  ctx.restore();
+}
+
+/** Dust: a brown haze, falling grit and a few small stones (reduced motion: the haze and still grit). */
+function drawDust(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced: boolean, w: number, hh: number): void {
+  const fade = envelope(el, ms, 150, 700);
+  if (fade <= 0) return;
+  ctx.save();
+  ctx.fillStyle = `rgba(150,110,70,${0.2 * fade})`;
+  ctx.fillRect(0, 0, w, hh);
+  for (let i = 0; i < 45; i++) {
+    const x = h(i, 51) * w;
+    const sp = 60 + h(i, 52) * 90;
+    const y = reduced ? h(i, 53) * hh : ((h(i, 53) * hh + (el / 1000) * sp) % (hh + 6)) - 3;
+    ctx.fillStyle = `rgba(120,90,60,${0.75 * fade})`;
+    ctx.fillRect(Math.round(x), Math.round(y), 1, 1);
+  }
+  for (let i = 0; i < 6; i++) {
+    const x = h(i, 54) * w;
+    const sp = 160 + h(i, 55) * 80;
+    const y = reduced ? h(i, 56) * hh : ((h(i, 56) * hh * 0.5 + (el / 1000) * sp) % (hh + 6)) - 3;
+    ctx.fillStyle = `rgba(80,64,52,${0.9 * fade})`;
+    ctx.fillRect(Math.round(x), Math.round(y), 2, 2);
+  }
+  ctx.restore();
+}
+
+/** Rays: shafts of golden light from above, slowly swaying (reduced motion: still shafts). */
+function drawRays(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced: boolean, w: number, hh: number): void {
+  const fade = envelope(el, ms, 500, 900);
+  if (fade <= 0) return;
+  ctx.save();
+  const sway = reduced ? 0 : Math.sin(el / 900) * 10;
+  for (let i = 0; i < 5; i++) {
+    const cx = w * (0.15 + i * 0.18) + sway;
+    const top = 10 + h(i, 61) * 14;
+    const bottom = 34 + h(i, 62) * 22;
+    const g = ctx.createLinearGradient(0, 0, 0, hh);
+    g.addColorStop(0, `rgba(255,236,170,${0.34 * fade})`);
+    g.addColorStop(1, 'rgba(255,236,170,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.moveTo(cx - top / 2, 0);
+    ctx.lineTo(cx + top / 2, 0);
+    ctx.lineTo(cx + bottom / 2 + 30, hh);
+    ctx.lineTo(cx - bottom / 2 + 30, hh);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.fillStyle = `rgba(255,240,190,${0.12 * fade})`;
+  ctx.fillRect(0, 0, w, hh);
+  ctx.restore();
+}
+
+/** Lamps: little flames twinkling across the scene, each with a halo (reduced motion: steady lights). */
+function drawLamps(ctx: CanvasRenderingContext2D, el: number, ms: number, reduced: boolean, w: number, hh: number): void {
+  const fade = envelope(el, ms, 600, 900);
+  if (fade <= 0) return;
+  ctx.save();
+  for (let i = 0; i < 26; i++) {
+    const x = Math.round(h(i, 71) * w);
+    const y = Math.round(18 + h(i, 72) * (hh - 30));
+    const on = Math.min(1, Math.max(0, (el - h(i, 73) * 1200) / 300));
+    if (on <= 0) continue;
+    const flick = reduced ? 1 : 0.75 + 0.25 * Math.sin(el / 90 + i * 2.3);
+    ctx.fillStyle = `rgba(255,200,90,${0.22 * fade * on * flick})`;
+    ctx.fillRect(x - 3, y - 3, 7, 7);
+    ctx.fillStyle = `rgba(255,236,150,${0.95 * fade * on * flick})`;
+    ctx.fillRect(x, y - 1, 1, 2);
+    ctx.fillStyle = `rgba(255,150,60,${0.95 * fade * on})`;
+    ctx.fillRect(x, y + 1, 1, 1);
+  }
+  ctx.restore();
+}
+
+/** Flames over a w × hh px region (a `glow` with color "fire"); reduced motion: still flames. */
+function drawFlames(ctx: CanvasRenderingContext2D, p: { x: number; y: number }, w: number, hh: number, el: number, ms: number, reduced: boolean): void {
+  const fade = envelope(el, ms, 200, 500);
+  if (fade <= 0) return;
+  ctx.save();
+  const x0 = Math.round(p.x);
+  const y0 = Math.round(p.y);
+  const g = ctx.createRadialGradient(x0 + w / 2, y0 + hh * 0.7, 2, x0 + w / 2, y0 + hh * 0.7, Math.max(w, hh));
+  g.addColorStop(0, `rgba(255,170,60,${0.45 * fade})`);
+  g.addColorStop(1, 'rgba(255,120,40,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(x0 - w / 2, y0 - hh / 2, w * 2, hh * 2);
+  const cols = Math.max(3, Math.round(w / 3));
+  for (let i = 0; i < cols; i++) {
+    const t = reduced ? 0.6 : 0.55 + 0.45 * Math.sin(el / 80 + i * 1.9);
+    const fh = Math.round((hh * 0.55 + h(i, 81) * hh * 0.35) * t);
+    const fx = x0 + Math.round(((i + 0.5) / cols) * w);
+    for (let y = 0; y < fh; y++) {
+      const q = y / Math.max(1, fh);
+      ctx.fillStyle = q < 0.35 ? `rgba(255,90,30,${fade})` : q < 0.7 ? `rgba(255,170,50,${fade})` : `rgba(255,236,140,${fade})`;
+      ctx.fillRect(fx, y0 + hh - 1 - y, q > 0.8 ? 1 : 2, 1);
+    }
   }
   ctx.restore();
 }
